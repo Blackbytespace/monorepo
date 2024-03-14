@@ -1,0 +1,35 @@
+{
+    "name": "@lotsof/monorepo",
+    "version": "0.0.1",
+    "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
+    "type": "module",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "pre-commit": [],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lotsofdev/monorepo.git"
+    },
+    "keywords": [
+        "lotsof",
+        "sugar",
+        "monorepo"
+    ],
+    "author": "Lotsof <hello@lotsof.dev>",
+    "contributors": [
+        {
+            "name": "Olivier Bossel",
+            "email": "olivier.bossel@gmail.com",
+            "url": "http://olivierbossel.com"
+        }
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/lotsofdev/monorepo/issues"
+    },
+    "homepage": "https://lotsof.dev",
+    "globalDependencies": {},
+    "packageManager": "yarn@3.6.4"
+}

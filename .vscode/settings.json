@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.old/**": true,
+        "**/vendor": true,
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.cjs": {
+            "when": "$(basename).ts"
+        },
+        "**/*.js.map": true
+    },
+    "files.associations": {
+        // "*.css": "postcss"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll.eslint": "never"
+    }
+}
