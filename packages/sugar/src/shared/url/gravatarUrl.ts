@@ -1,4 +1,4 @@
-import __md5 from '../crypto/md5.js';
+import __md5 from '../crypto/md5';
 
 /**
  * @name                gravatarUrl

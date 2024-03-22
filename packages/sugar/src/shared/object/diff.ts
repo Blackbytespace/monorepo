@@ -1,5 +1,5 @@
 import __isEqual from 'is-equal';
-import __isPlainObject from '../is/isPlainObject.js';
+import __isPlainObject from '../is/isPlainObject';
 
 /**
  * @name                    diff

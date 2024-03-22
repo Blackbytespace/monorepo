@@ -1,8 +1,12 @@
 {
-  "types": ["node"],
   "compilerOptions": {
-    "moduleResolution": "node",
-    "sourceMap": false,
-    "lib": ["esnext", "dom"]
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "target": "es6",
+    "module": "es6",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
 }

@@ -1,13 +1,12 @@
-import __mapToObj from '../convert/mapToObject.js';
-import __isArray from '../is/isArray.js';
-import __isBoolean from '../is/isBoolean.js';
-import __isFunction from '../is/isFunction.js';
-import __isJson from '../is/isJson.js';
-import __isMap from '../is/isMap.js';
-import __isObject from '../is/isObject.js';
-import __deepMap from '../object/deepMap.js';
-import __deepMerge from '../object/deepMerge.js';
 import { decycle } from 'json-cyclic';
+import __mapToObj from '../convert/mapToObject';
+import __isArray from '../is/isArray';
+import __isBoolean from '../is/isBoolean';
+import __isFunction from '../is/isFunction';
+import __isJson from '../is/isJson';
+import __isMap from '../is/isMap';
+import __isObject from '../is/isObject';
+import __deepMap from '../object/deepMap';
 
 /**
  * @name        toString

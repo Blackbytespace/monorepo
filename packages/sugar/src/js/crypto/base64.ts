@@ -1,4 +1,4 @@
-import toString from '../../shared/string/toString.js';
+import toString from '../../shared/string/toString';
 
 /**
  * @name            base64

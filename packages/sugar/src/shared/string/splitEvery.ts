@@ -1,4 +1,4 @@
-import __countLineChars from './countLineChars.js';
+import __countLineChars from './countLineChars';
 
 /**
  * @name                        splitEvery

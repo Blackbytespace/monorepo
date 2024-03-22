@@ -1,5 +1,5 @@
-import __get from './get.js';
-import __set from './set.js';
+import __get from './get';
+import __set from './set';
 
 /**
  * @name                ensurePropertyExists

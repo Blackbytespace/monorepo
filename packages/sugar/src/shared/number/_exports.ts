@@ -1,4 +1,4 @@
-import __pad from './pad.js';
-import __toBase from './toBase.js';
+import __pad from './pad';
+import __toBase from './toBase';
 
 export { __pad, __toBase };

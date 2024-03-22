@@ -1,10 +1,10 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions';
 
-import __commonAudioFileExtensions from './commonAudioFileExtensions.js';
-import __commonImageFileExtensions from './commonImageFileExtensions.js';
-import __commonVideoFileExtensions from './commonVideoFileExtensions.js';
+import __commonAudioFileExtensions from './commonAudioFileExtensions';
+import __commonImageFileExtensions from './commonImageFileExtensions';
+import __commonVideoFileExtensions from './commonVideoFileExtensions';
 
-import __unique from '../array/unique.js';
+import __unique from '../array/unique';
 
 /**
  * @name            commonMediaFileExtensions

@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject.js';
-import __sort from './sort.js';
+import __isPlainObject from '../is/isPlainObject';
+import __sort from './sort';
 
 /**
  * @name                                sortDeep

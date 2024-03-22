@@ -1,7 +1,7 @@
-import __isClassInstance from '../is/isClassInstance.js';
-import __isPlainObject from '../is/isPlainObject.js';
-import __deepMerge from '../object/deepMerge.js';
-import __clone from './clone.js';
+import __isClassInstance from '../is/isClassInstance';
+import __isPlainObject from '../is/isPlainObject';
+import __deepMerge from '../object/deepMerge';
+import __clone from './clone';
 
 /**
  * @name                deepMap

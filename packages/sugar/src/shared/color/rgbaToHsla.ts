@@ -1,4 +1,4 @@
-import __parseRgba from './parseRgba.js';
+import __parseRgba from './parseRgba';
 
 /**
  * @name                    rgba2hsla

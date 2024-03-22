@@ -1,4 +1,4 @@
-import __isClass from '../is/isClass.js';
+import __isClass from '../is/isClass';
 
 /**
  * @name            getExtendsStack

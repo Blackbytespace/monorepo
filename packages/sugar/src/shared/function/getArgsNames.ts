@@ -23,7 +23,7 @@
  * @since       2.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
-export default function __getArgsNames(func: Function): string[] {) {
+export default function __getArgsNames(func: Function): string[] {
   // String representaation of the function code
   let str = func.toString();
   // Remove comments of the form /* ... */
@@ -45,7 +45,7 @@ export default function __getArgsNames(func: Function): string[] {) {
 
   const result = str.substring(start, end).split(', ');
 
-  const params = [];
+  const params: string[] = [];
 
   result.forEach((element) => {
     // Removing any default value

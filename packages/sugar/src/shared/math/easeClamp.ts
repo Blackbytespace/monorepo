@@ -1,5 +1,5 @@
-import __easeOutQuad from '../easing/easeOutQuad.js';
-import __clamp from './clamp.js';
+import __easeOutQuad from '../easing/easeOutQuad';
+import __clamp from './clamp';
 
 /**
  * @name                easeClamp

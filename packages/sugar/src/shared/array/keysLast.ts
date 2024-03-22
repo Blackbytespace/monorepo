@@ -1,4 +1,4 @@
-import __unique from './unique.js';
+import __unique from './unique';
 
 /**
  * @name                keysLast

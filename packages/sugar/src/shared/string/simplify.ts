@@ -1,4 +1,4 @@
-import __deepMerge from '../object/deepMerge.js';
+import __deepMerge from '../object/deepMerge';
 
 /**
  * @name                simply

@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import __isPlainObject from '../is/isPlainObject';
 
 /**
  * @name                        toPlainObject

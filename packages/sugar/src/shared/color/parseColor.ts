@@ -1,8 +1,8 @@
-import __hexToRgba from './hexToRgba.js';
-import __hslaToRgba from './hslaToRgba.js';
-import __parseHsla from './parseHsla.js';
-import __parseRgba from './parseRgba.js';
-import __rgbaToHsla from './rgbaToHsla.js';
+import __hexToRgba from './hexToRgba';
+import __hslaToRgba from './hslaToRgba';
+import __parseHsla from './parseHsla';
+import __parseRgba from './parseRgba';
+import __rgbaToHsla from './rgbaToHsla';
 
 /**
  * @name                parseColor

@@ -1,4 +1,4 @@
-import __sameItems from './sameItems.js';
+import __sameItems from './sameItems';
 
 /**
  * @name            intersection

@@ -1,4 +1,4 @@
-import __loopsCount from './loopsCount.js';
+import __loopsCount from './loopsCount';
 
 /**
  * @name                speedIndex

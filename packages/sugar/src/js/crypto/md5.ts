@@ -1,18 +1,15 @@
-// @ts-nocheck
-
 import md5 from 'blueimp-md5';
-import parse from '../../shared/string/parse.js';
-import toString from '../../shared/string/toString.js';
+import parse from '../../shared/string/parse';
+import toString from '../../shared/string/toString';
 
-const __encryptedMessages = {};
+const __encryptedMessages: any = {};
 
 /**
- * @name            md5
- * @namespace            js.crypto
- * @type            Object
+ * @name              md5
+ * @namespace         js.crypto
+ * @type              Object
  * @platform          js
- * @platform          node
- * @status              beta
+ * @status            stable
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the md5 algorithm
  *
@@ -29,42 +26,42 @@ const __encryptedMessages = {};
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default {
-    /**
-     * @name        encrypt
-     * @type          Function
-     *
-     * Encrypt
-     *
-     * @param       {String}      message         The message to encrypt
-     * @return      {String}                      The encrypted string
-     *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
-     */
-    encrypt: function (message) {
-        if (typeof message !== 'string') message = toString(message);
-        const string = md5(message);
-        __encryptedMessages[string] = message;
-        return string;
-    },
+  /**
+   * @name        encrypt
+   * @type          Function
+   *
+   * Encrypt
+   *
+   * @param       {String}      message         The message to encrypt
+   * @return      {String}                      The encrypted string
+   *
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   */
+  encrypt: function (message: any): string {
+    if (typeof message !== 'string') message = toString(message);
+    const string = md5(message);
+    __encryptedMessages[string] = message;
+    return string;
+  },
 
-    /**
-     * @name        decrypt
-     * @type        Function
-     *
-     * Decrypt
-     *
-     * @param       {String}        message         The message to decrypt
-     * @return      {String}                        The decrypted message
-     *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
-     */
-    decrypt: function (message) {
-        if (!__encryptedMessages[message]) {
-            console.warn(`The message "${message}" cannot be decrypted...`);
-            return;
-        }
-        const string = __encryptedMessages[message];
-        delete __encryptedMessages[message];
-        return parse(string);
-    },
+  /**
+   * @name        decrypt
+   * @type        Function
+   *
+   * Decrypt
+   *
+   * @param       {String}        message         The message to decrypt
+   * @return      {String}                        The decrypted message
+   *
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   */
+  decrypt: function (message: string): any {
+    if (!__encryptedMessages[message]) {
+      console.warn(`The message "${message}" cannot be decrypted...`);
+      return;
+    }
+    const string = __encryptedMessages[message];
+    delete __encryptedMessages[message];
+    return parse(string);
+  },
 };

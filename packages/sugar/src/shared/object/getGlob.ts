@@ -1,6 +1,6 @@
 import __minimatch from 'minimatch';
-import __deepize from './deepize.js';
-import __flatten from './flatten.js';
+import __deepize from './deepize';
+import __flatten from './flatten';
 
 /**
  * @name                        getGlob

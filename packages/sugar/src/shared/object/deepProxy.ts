@@ -1,9 +1,9 @@
-import __proxyArray from '../array/proxyArray.js';
-import __isDomElement from '../is/isDomElement.js';
-import __isPlainObject from '../is/isPlainObject.js';
-import __clone from '../object/clone.js';
-import __deepMap from '../object/deepMap.js';
-import __deepMerge from '../object/deepMerge.js';
+import __proxyArray from '../array/proxyArray';
+import __isDomElement from '../is/isDomElement';
+import __isPlainObject from '../is/isPlainObject';
+import __clone from '../object/clone';
+import __deepMap from '../object/deepMap';
+import __deepMerge from '../object/deepMerge';
 
 /**
  * @name                            deepProxy

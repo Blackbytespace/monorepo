@@ -1,17 +1,17 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
-import __expandPleasantCssClassnames from './expandPleasantCssClassnames.js';
-import __extractCssClassesNames from './extractCssClassesNames.js';
-import __replaceTags from './replaceTags.js';
-import __stripTags from './stripTags.js';
-import __unescapeHtml from './unescapeHtml.js';
-import __escapeHtml from './escapeHtml.js'
+import __escapeHtml from './escapeHtml.js';
+import __expandPleasantCssClassname from './expandPleasantCssClassname';
+import __expandPleasantCssClassnames from './expandPleasantCssClassnames';
+import __extractCssClassesNames from './extractCssClassesNames';
+import __replaceTags from './replaceTags';
+import __stripTags from './stripTags';
+import __unescapeHtml from './unescapeHtml';
 
 export {
-    __escapeHtml
-    __expandPleasantCssClassname,
-    __expandPleasantCssClassnames,
-    __extractCssClassesNames,
-    __replaceTags,
-    __stripTags,
-    __unescapeHtml,
+  __escapeHtml,
+  __expandPleasantCssClassname,
+  __expandPleasantCssClassnames,
+  __extractCssClassesNames,
+  __replaceTags,
+  __stripTags,
+  __unescapeHtml,
 };

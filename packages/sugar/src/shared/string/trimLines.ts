@@ -1,5 +1,3 @@
-import __deepMerge from '../object/deepMerge.js';
-
 /**
  * @name                trimLines
  * @namespace           shared.string

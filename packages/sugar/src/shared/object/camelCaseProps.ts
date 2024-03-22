@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject.js';
-import __camelCase from '../string/camelCase.js';
+import __isPlainObject from '../is/isPlainObject';
+import __camelCase from '../string/camelCase';
 
 /**
  * @name                camelCaseProps

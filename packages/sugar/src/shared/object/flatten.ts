@@ -1,4 +1,4 @@
-import __isPlain from '../is/isPlainObject.js';
+import __isPlain from '../is/isPlainObject';
 
 /**
  * @name                        flatten

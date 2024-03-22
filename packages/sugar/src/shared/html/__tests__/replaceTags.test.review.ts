@@ -1,7 +1,7 @@
-import __replaceTags from '../replaceTags.js';
+import __replaceTags from '../replaceTags';
 
 describe('sugar.shared.html.replaceTags', () => {
-    const html = `
+  const html = `
   <div>
     <bold>Hello world</bold>
     <h1>
@@ -10,14 +10,14 @@ describe('sugar.shared.html.replaceTags', () => {
   </div>
 `;
 
-    const res = __replaceTags(html, {
-        bold: (tag, content) => `<yop>${content}</yop>`,
-        h1: (tag, content) => content,
-    });
+  const res = __replaceTags(html, {
+    bold: (tag, content) => `<yop>${content}</yop>`,
+    h1: (tag, content) => content,
+  });
 
-    it('Should have replace the tags correctly', () => {
-        expect(res.replace(/\s/g, '')).toBe(
-            `
+  it('Should have replace the tags correctly', () => {
+    expect(res.replace(/\s/g, '')).toBe(
+      `
 <div>
 <yop>Hello world</yop>
 
@@ -25,6 +25,6 @@ describe('sugar.shared.html.replaceTags', () => {
 
 </div>
 `.replace(/\s/g, ''),
-        );
-    });
+    );
+  });
 });

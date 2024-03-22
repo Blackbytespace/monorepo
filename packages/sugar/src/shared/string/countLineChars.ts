@@ -1,5 +1,5 @@
 import __stripAnsi from 'strip-ansi';
-import __deepMerge from '../object/deepMerge.js';
+import __deepMerge from '../object/deepMerge';
 
 /**
  * @name                            countLineChars

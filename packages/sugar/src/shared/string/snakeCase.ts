@@ -1,4 +1,4 @@
-import __dashCase from './dashCase.js';
+import __dashCase from './dashCase';
 
 /**
  * @name                snakeCase

@@ -1,4 +1,4 @@
-import ltrim from '../string/ltrim.js';
+import ltrim from '../string/ltrim';
 
 /**
  * @name                queryStringToObject
@@ -30,7 +30,7 @@ export default function __queryStringToObject(str: string): any {
   str = str.replace(/%20/gm, ' ');
   str = decodeURIComponent(str);
   let chunks = str.split('&');
-  const obj = {};
+  const obj: any = {};
   chunks = chunks.filter((ch) => {
     return ch !== '';
   });

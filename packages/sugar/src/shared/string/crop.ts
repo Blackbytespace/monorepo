@@ -1,5 +1,5 @@
-import __deepMerge from '../object/deepMerge.js';
-import __countLineChars from './countLineChars.js';
+import __deepMerge from '../object/deepMerge';
+import __countLineChars from './countLineChars';
 
 /**
  * @name                    crop

@@ -1,0 +1,1 @@
+{"version":3,"file":"snakeCase.js","sourceRoot":"","sources":["snakeCase.ts"],"names":[],"mappings":"AAAA,OAAO,UAAU,MAAM,YAAY,CAAC;AAEpC;;;;;;;;;;;;;;;;;;;;;;;;GAwBG;AACH,MAAM,CAAC,OAAO,UAAU,WAAW,CAAC,IAAY;IAC9C,MAAM,QAAQ,GAAG,UAAU,CAAC,IAAI,CAAC,CAAC;IAClC,OAAO,QAAQ,CAAC,OAAO,CAAC,KAAK,EAAE,GAAG,CAAC,CAAC;AACtC,CAAC"}

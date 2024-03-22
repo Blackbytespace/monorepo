@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions';
 
 /**
  * @name            commonCompressedFileExtensions

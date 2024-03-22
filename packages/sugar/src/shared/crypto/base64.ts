@@ -2,8 +2,8 @@
 import __atob from 'atob';
 // @ts-ignore
 import __btoa from 'btoa';
-import parse from '../string/parse.js';
-import toString from '../string/toString.js';
+import parse from '../string/parse';
+import toString from '../string/toString';
 
 /**
  * @name            base64

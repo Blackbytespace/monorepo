@@ -1,5 +1,5 @@
-import __deepMap from './deepMap.js';
-import __set from './set.js';
+import __deepMap from './deepMap';
+import __set from './set';
 
 /**
  * @name                    toJson

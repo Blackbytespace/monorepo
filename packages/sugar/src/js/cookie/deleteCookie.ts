@@ -1,4 +1,4 @@
-import __setCookie from './setCookie.js';
+import __setCookie from './setCookie';
 
 /**
  * @name            deleteCookie

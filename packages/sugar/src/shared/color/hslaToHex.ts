@@ -1,4 +1,4 @@
-import __parseHsla from './parseHsla.js';
+import __parseHsla from './parseHsla';
 
 /**
  * @name                hslaToHex

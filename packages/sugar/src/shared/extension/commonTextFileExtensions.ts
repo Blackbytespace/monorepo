@@ -1,5 +1,5 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
-import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions';
 
 /**
  * @name            commonTextFileExtensions

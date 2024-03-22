@@ -1,4 +1,4 @@
-import __toString from '../string/toString.js';
+import __toString from '../string/toString';
 
 /**
  * @name                replaceTags

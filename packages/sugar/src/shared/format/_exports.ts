@@ -1,3 +1,3 @@
-import __formatFileSize from './fileSize.js';
+import __formatFileSize from './fileSize';
 
 export { __formatFileSize };

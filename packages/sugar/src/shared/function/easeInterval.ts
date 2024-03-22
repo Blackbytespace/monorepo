@@ -1,4 +1,4 @@
-import __easeInOutQuart from '../easing/easeInOutQuart.js';
+import __easeInOutQuart from '../easing/easeInOutQuart';
 
 /**
  * @name                easeInterval

@@ -1,4 +1,4 @@
-import __camelize from './camelize.js';
+import __camelize from './camelize';
 
 /**
  * @name                amelCase

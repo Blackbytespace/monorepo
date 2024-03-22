@@ -31,7 +31,7 @@
     },
     "homepage": "https://lotsof.dev",
     "globalDependencies": {},
-    "packageManager": "yarn@3.6.4",
+    "packageManager": "yarn@4.1.1",
     "devDependencies": {
         "vitest": "^1.4.0"
     }

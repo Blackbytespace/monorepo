@@ -1,4 +1,4 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
+import __expandPleasantCssClassname from './expandPleasantCssClassname';
 
 /**
  * @name            extractCssClassesNames

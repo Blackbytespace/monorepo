@@ -1,4 +1,6 @@
-import __parseString from '../string/parse.js';
+// @ts-nocheck
+
+import __parseString from '../string/parse';
 
 /**
  * @name                            parseSchema
@@ -61,7 +63,7 @@ import __parseString from '../string/parse.js';
  * @since       2.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __parseSchema(url, schema) {
+export default function __parseSchema(url: string, schema: string): any {
   const rawSchemaString = schema;
   const rawUrlString = url;
 
@@ -78,8 +80,8 @@ export default function __parseSchema(url, schema) {
   if (pathname.slice(0, 1) === '/') pathname = pathname.slice(1);
 
   // init the params object
-  const params = {};
-  const errors = {};
+  const params: any = {};
+  const errors: any = {};
   let match = true;
 
   // split the schema
@@ -87,7 +89,7 @@ export default function __parseSchema(url, schema) {
 
   // analyze all the schema parts
   schemaParts = schemaParts
-    .map((part) => {
+    .map((part: string) => {
       // check if is a param
       if (part.slice(0, 1) === '{' && part.slice(-1) === '}') {
         const isOptional = part.slice(0, 2) === '{?' || part.slice(-2) === '?}';
@@ -117,9 +119,9 @@ export default function __parseSchema(url, schema) {
       // this is not a parameter so return as is
       return part;
     })
-    .filter((l) => l !== '');
+    .filter((l: string) => l !== '');
 
-  schemaParts.forEach((part) => {
+  schemaParts.forEach((part: any) => {
     if (!part.name) return;
     params[part.name] = {
       ...part,
