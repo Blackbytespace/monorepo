@@ -25,7 +25,7 @@
  * @since     2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
-export default function __mapToObject(map: any): object {
+export default function __mapToObject(map: any): any {
   const obj = {};
   for (const [k, v] of map) obj[k] = v;
   return obj;

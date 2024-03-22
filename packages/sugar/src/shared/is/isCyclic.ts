@@ -27,7 +27,7 @@
  * @since       2.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
-export default function __isCyclic(obj: object): boolean {
+export default function __isCyclic(obj: any): boolean {
   var keys = [];
   var stack = [];
   var stackSet = new Set();

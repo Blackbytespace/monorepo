@@ -1,4 +1,3 @@
-// @ts-nocheck
 import __unique from './unique.js';
 
 /**

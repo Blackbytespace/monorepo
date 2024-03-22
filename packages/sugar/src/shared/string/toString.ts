@@ -7,12 +7,7 @@ import __isMap from '../is/isMap.js';
 import __isObject from '../is/isObject.js';
 import __deepMap from '../object/deepMap.js';
 import __deepMerge from '../object/deepMerge.js';
-// import { highlight as __cliHighlight } from 'cli-highlight';
 import { decycle } from 'json-cyclic';
-
-// import __prettyFormat from 'pretty-format';
-// import __reactTestPlugin from 'pretty-format/build/plugins/ReactTestComponent';
-// import __reactElementPlugin from 'pretty-format/build/plugins/ReactElement';
 
 /**
  * @name        toString
@@ -24,15 +19,13 @@ import { decycle } from 'json-cyclic';
  *
  * Convert passed value to a string
  *
- * @param    {Mixed}    value    The value to convert to string
+ * @param    {Mixed}    value                           The value to convert to string
  * @param     {Object}      [settings={}]             An object of settings to configure your toString process:
- * - beautify (true) {Boolean}: Specify if you want to beautify the output like objects, arrays, etc...
- * - highlight (true) {Boolean}: Specify if you want to color highlight the output like objects, arrays, etc...
- * - theme ({}) {Object}: The theme to use to colorize the output. See https://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
- * @return    {String}    The resulting string
+ * @return    {String}                                  The resulting string
  *
- * @todo      interface
- * @todo      doc
+ * @setting        {Boolean}        [beautify=true]        Specify if you want to beautify the output like objects, arrays, etc...
+ * @setting        {Boolean}        [verbose=true]        Specify if you want to output verbose information like stack trace, etc...
+ *
  * @todo      tests
  *
  * @snippet         __toString($1)
@@ -46,8 +39,18 @@ import { decycle } from 'json-cyclic';
  * @since     2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
-function fn(value, settings = {}) {
-  settings = __deepMerge({}, settings);
+
+interface IToStringSettings {
+  beautify?: boolean;
+  verbose?: boolean;
+}
+
+function fn(value: any, settings: IToStringSettings = {}): string {
+  settings = {
+    beautify: true,
+    verbose: true,
+    ...settings,
+  };
 
   // string
   if (typeof value === 'string') return value;
@@ -58,6 +61,17 @@ function fn(value, settings = {}) {
   // error
   if (value instanceof Error) {
     const errorStr = value.toString();
+    const stackStr = value.stack;
+    const messageStr = value.message;
+    if (settings.verbose) {
+      return [
+        `<red>${value.constructor.name || 'Error'}</red>`,
+        '',
+        messageStr,
+        '',
+        stackStr,
+      ].join('\n');
+    }
     return errorStr;
   }
 
@@ -81,12 +95,6 @@ function fn(value, settings = {}) {
     prettyString = prettyString
       .replace(/"([^"]+)":/g, '$1:')
       .replace(/\uFFFF/g, '\\"');
-    if (settings.highlight) {
-      // prettyString = __cliHighlight(prettyString, {
-      //   language: 'js',
-      //   theme: settings.theme
-      // });
-    }
     return prettyString;
   }
   // boolean

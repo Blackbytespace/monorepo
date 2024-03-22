@@ -4,7 +4,7 @@
  * @type            Function
  * @platform        js
  * @platform        node
- * @status          beta
+ * @status          stable
  *
  * This function take a string and replace all the special chars like "é", "à", etc...
  * with their simple version like "a", "e", etc...
@@ -13,6 +13,8 @@
  * @return      {String}                        The processed string
  *
  * @snippet         __simplifySpecialChars($1)
+ *
+ * @todo        tests
  *
  * @example         php
  * import { __simplifySpecialChars } from '@coffeekraken/sugar/string';
