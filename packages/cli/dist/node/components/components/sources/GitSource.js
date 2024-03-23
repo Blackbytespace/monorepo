@@ -4,6 +4,7 @@ export default class GitSource extends ComponentSource {
         super(name);
         this.name = 'Git';
         this._repositoryUrl = repositoryUrl;
+        console.log('init');
     }
     list(args) {
         console.log('List', args);
