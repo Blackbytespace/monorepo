@@ -14,7 +14,7 @@
  * @snippet         __commonEmailFileExtensions()
  *
  * @example         js
- * import { __commonEmailFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonEmailFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonEmailFileExtensions();
  *
  * @since       2.0.0

@@ -16,7 +16,7 @@ import __fs from 'fs-extra';
  * @snippet         __ensureFileSync($1)
  *
  * @example       js
- * import { __ensureFileSync } from '@coffeekraken/sugar/fs';
+ * import { __ensureFileSync } from '@coffeekraken/sugar/fs.js';
  * __ensureFileSync('my/cool/file.jpg');
  *
  * @see             https://github.com/jprichardson/node-fs-extra

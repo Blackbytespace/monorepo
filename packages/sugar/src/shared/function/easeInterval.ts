@@ -1,4 +1,4 @@
-import __easeInOutQuart from '../easing/easeInOutQuart';
+import __easeInOutQuart from '../easing/easeInOutQuart.js';
 
 /**
  * @name                easeInterval
@@ -33,7 +33,7 @@ import __easeInOutQuart from '../easing/easeInOutQuart';
  * await easeInterval;
  *
  * @example         js
- * import { __easeInterval } from '@coffeekraken/sugar/function';
+ * import { __easeInterval } from '@coffeekraken/sugar/function.js';
  * await __easeInterval(2000, (easedPercent) => {
  *      // do something...
  * }, {
@@ -74,6 +74,7 @@ export default function __easeInterval(
     function animate() {
       if (cleared) return;
       const percent = (100 / duration) * (Date.now() - startTime);
+      // @ts-ignore
       const easedPercent = settings.easing(percent / 100) * 100;
       cb(easedPercent);
       if (percent < 100) {
@@ -87,6 +88,7 @@ export default function __easeInterval(
     animate();
   });
 
+  // @ts-ignore
   pro.cancel = () => {
     cleared = true;
     cancelAnimationFrame(animationFrame);

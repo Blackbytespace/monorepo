@@ -1,4 +1,4 @@
-import __set from './set';
+import __set from './set.js';
 
 /**
  * @name            deepize
@@ -27,7 +27,7 @@ import __set from './set';
  * @snippet         __deepize($1)
  *
  * @example       js
- * import { __deepize } from '@coffeekraken/sugar/object';
+ * import { __deepize } from '@coffeekraken/sugar/object.js';
  * __deepize ({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
  * @since       2.0.0

@@ -16,7 +16,7 @@
  * @snippet         __pxToRem($1)
  *
  * @example         js
- * import { __pxToRem } from '@coffeekraken/sugar/convert';
+ * import { __pxToRem } from '@coffeekraken/sugar/convert.js';
  * __pxToRem(36);
  *
  * @since     2.0.0

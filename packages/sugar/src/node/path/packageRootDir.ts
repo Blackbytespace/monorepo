@@ -1,7 +1,5 @@
-// @ts-nocheck
-
-import __objectHash from '../../shared/object/objectHash';
-import __isFile from '../is/isFile';
+import __objectHash from '../../shared/object/objectHash.js';
+import __isFile from '../is/isFile.js';
 
 import __findPkgJson from 'find-package-json';
 
@@ -28,7 +26,7 @@ import __findPkgJson from 'find-package-json';
  * @snippet         __packageRootDir()
  *
  * @example         js
- * import { __packageRootDir } from '@coffeekraken/sugar/path';
+ * import { __packageRootDir } from '@coffeekraken/sugar/path.js';
  * const root = __packageRootDir();
  *
  * @see       https://www.npmjs.com/package/find-package-json
@@ -48,7 +46,7 @@ export default function __packageRootDir(
 ) {
   const finalSettings: IPackageRootSettings = {
     highest: false,
-    upCount: undefined,
+    upCount: 99999,
     requiredProperties: ['name', 'version'],
     ...(settings ?? {}),
   };

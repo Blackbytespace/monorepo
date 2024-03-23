@@ -23,7 +23,7 @@ import * as __fs from 'fs';
  * @snippet         __existsSync($1)
  *
  * @example         js
- * import { __existsSync } from '@coffeekraken/sugar/fs';
+ * import { __existsSync } from '@coffeekraken/sugar/fs.js';
  * __existsSync('/something/cool.txt'); // => true
  *
  * @since       2.0.0

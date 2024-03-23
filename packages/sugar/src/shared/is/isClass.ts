@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import __isClass from 'is-class';
+import __isClass from 'is-class.js';
 
 /**
  * @name                    class
@@ -20,7 +20,7 @@ import __isClass from 'is-class';
  * @snippet         __isClass($1)
  *
  * @example           js
- * import { __isClass } = from '@coffeekraken/sugar/is';
+ * import { __isClass } = from '@coffeekraken/sugar/is.js';
  * __isClass({ hello: 'world'}); // => false
  * const myCoolClass = class Coco{};
  * __isClass(myCoolClass); // => true

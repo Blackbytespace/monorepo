@@ -1,22 +1,20 @@
-// @ts-nocheck
 import md5 from 'blueimp-md5';
-import parse from '../../shared/string/parse';
-import toString from '../../shared/string/toString';
+import parse from '../../shared/string/parse.js';
+import toString from '../../shared/string/toString.js';
 const __encryptedMessages = {};
 /**
- * @name            md5
- * @namespace            js.crypto
- * @type            Object
+ * @name              md5
+ * @namespace         js.crypto
+ * @type              Object
  * @platform          js
- * @platform          node
- * @status              beta
+ * @status            stable
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the md5 algorithm
  *
  * @snippet         __md5.encrypt($1)
  *
  * @example         js
- * import { __md5 } from '@coffeekraken/sugar/crypto';
+ * import { __md5 } from '@coffeekraken/sugar/crypto.js';
  * __md5.encrypt('hello world');
  *
  * @todo        interface

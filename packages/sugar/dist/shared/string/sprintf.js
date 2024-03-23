@@ -29,6 +29,7 @@ import { sprintf as _sprintf } from 'sprintf-js';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __sprintf() {
+    // @ts-ignore
     return _sprintf.apply(this, arguments);
 }
 //# sourceMappingURL=sprintf.js.map

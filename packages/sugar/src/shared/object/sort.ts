@@ -24,7 +24,7 @@
  * })
  *
  * @example               js
- * import { __sort } from '@coffeekraken/sugar/object';
+ * import { __sort } from '@coffeekraken/sugar/object.js';
  * __sort({
  *    coco: { weight: 10 },
  *    lolo: { weight: 2 },
@@ -71,7 +71,7 @@ export default function __sort(
     }
 
     // call the sort function passed as parameter
-    return sort({ key: a, value: any[a] }, { key: b, value: any[b] });
+    return sort({ key: a, value: object[a] }, { key: b, value: object[b] });
   });
 
   // create the new sorted object

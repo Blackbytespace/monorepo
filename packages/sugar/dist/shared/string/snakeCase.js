@@ -1,4 +1,4 @@
-import __dashCase from './dashCase';
+import { snakeCase } from 'change-case';
 /**
  * @name                snakeCase
  * @namespace           shared.string
@@ -7,7 +7,7 @@ import __dashCase from './dashCase';
  * @platform            node
  * @status              stable
  *
- * snakeCase a string
+ * Snake case a string
  *
  * @param         {String}          text        The string to snakeCase
  * @return        {String}                      The snakeCased string
@@ -17,15 +17,14 @@ import __dashCase from './dashCase';
  * @snippet         __snakeCase($1)
  *
  * @example     js
- * import { __snakeCase } from '@coffeekraken/sugar/string';
- * __snakeCase('hello world'); // => hello_world
+ * import { __snakeCase } from '@coffeekraken/sugar/string.js';
+ * __snakeCase('hello world'); // => HELLO WORLD
  *
- * @see             https://www.npmjs.com/package/param-case
+ * @see             https://www.npmjs.com/package/change-case
  * @since       2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __snakeCase(text) {
-    const dashCase = __dashCase(text);
-    return dashCase.replace(/\-/g, '_');
+    return snakeCase(text);
 }
 //# sourceMappingURL=snakeCase.js.map

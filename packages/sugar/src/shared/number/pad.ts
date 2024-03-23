@@ -28,8 +28,8 @@ export default function __pad(
   width: number,
   character: string = '0',
 ): string {
-  number = number + '';
-  return number.length >= width
-    ? number
-    : new Array(width - number.length + 1).join(character) + number;
+  const numberStr = number + '';
+  return numberStr.length >= width
+    ? numberStr
+    : new Array(width - numberStr.length + 1).join(character) + number;
 }

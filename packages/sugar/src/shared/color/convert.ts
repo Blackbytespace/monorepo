@@ -1,7 +1,7 @@
-import __hslaToRgba from './hslaToRgba';
-import __parseColor from './parseColor';
-import __rgbaToHex from './rgbaToHex';
-import __rgbaToHsla from './rgbaToHsla';
+import __hslaToRgba from './hslaToRgba.js';
+import __parseColor from './parseColor.js';
+import __rgbaToHex from './rgbaToHex.js';
+import __rgbaToHsla from './rgbaToHsla.js';
 
 /**
  * @name                    convert
@@ -23,7 +23,7 @@ import __rgbaToHsla from './rgbaToHsla';
  * @snippet         __convert($1, $2)
  *
  * @example         js
- * import { __convert } from '@coffeekraken/sugar/color';
+ * import { __convert } from '@coffeekraken/sugar/color.js';
  * __convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
  *
  * @since       2.0.0
@@ -34,8 +34,9 @@ export default function __convert(
   format: string = 'rgba',
 ): string | object {
   // transforming the input into rgba object
-  let rgbaObj = {};
+  let rgbaObj: any = {};
   if (typeof input === 'string') {
+    // @ts-ignore
     rgbaObj = __parseColor(input, 'rgba');
   } else if (typeof input === 'object') {
     if (
@@ -49,7 +50,7 @@ export default function __convert(
       input.s !== undefined &&
       input.l !== undefined
     ) {
-      rgbaObj = __hslaToRgba(input);
+      rgbaObj = __hslaToRgba(input.h, input.s, input.l);
     }
   }
 
@@ -58,22 +59,23 @@ export default function __convert(
       return rgbaObj;
     case 'hsl':
     case 'hsla':
-      return __rgbaToHsla(rgbaObj);
+      return __rgbaToHsla(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
     case 'hex':
     case 'hexString':
-      return __rgbaToHex(rgbaObj);
+      return __rgbaToHex(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
     case 'rgbString':
       return `rgb(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b})`;
     case 'rgbaString':
       return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
     case 'hslString':
-      const hslObj = convert(rgbaObj, 'hsl');
+      const hslObj: any = __convert(rgbaObj, 'hsl');
       return `hsl(${hslObj.h},${hslObj.s},${hslObj.l})`;
     case 'hslaString':
-      const hslaObj = convert(rgbaObj, 'hsla');
+      const hslaObj: any = __convert(rgbaObj, 'hsla');
       return `hsla(${hslaObj.h},${hslaObj.s},${hslaObj.l},${hslaObj.a})`;
   }
 
-  // if nothing supported
-  return undefined;
+  throw new Error(
+    `The requested "${format}" color format is not supported for now...`,
+  );
 }

@@ -1,4 +1,4 @@
-import __deepMerge from '../object/deepMerge';
+import __deepMerge from '../object/deepMerge.js';
 export default function __simplify(string, settings = {}) {
     settings = __deepMerge({
         specialChars: true,

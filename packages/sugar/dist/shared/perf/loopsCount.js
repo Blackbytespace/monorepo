@@ -17,7 +17,7 @@
  * @snippet         __loopsCount($1)
  *
  * @example       js
- * import { __loopsCount } from '@coffeekraken/sugar/perf';
+ * import { __loopsCount } from '@coffeekraken/sugar/perf.js';
  * __loopsCount(); // 122003
  *
  * @since       2.0.0

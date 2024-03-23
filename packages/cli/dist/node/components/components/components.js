@@ -1,4 +1,4 @@
-import __listComponents from './listComponents';
+import __listComponents from './listComponents.js';
 export default function __registerCommands(program) {
     program.command('components.ls').action(() => {
         __listComponents();

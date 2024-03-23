@@ -7,12 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __SFile from '@coffeekraken/s-file';
-import __SSugarConfig from '@coffeekraken/s-sugar-config';
-import __wait from '../../../shared/time/wait';
-import __packageTmpDir from '../../path/packageTmpDir';
-import __pool from '../pool';
-import __removeSync from '../removeSync';
+import __SFile from '@coffeekraken/s-file.js';
+import __SSugarConfig from '@coffeekraken/s-sugar-config.js';
+import __wait from '../../../shared/time/wait.js';
+import __packageTmpDir from '../../path/packageTmpDir.js';
+import __pool from '../pool.js';
+import __removeSync from '../removeSync.js';
 jest.setTimeout(20000);
 describe('sugar.node.fs.pool', () => {
     it('Should correctly start a pool and listen for updates, deletion, etc...', () => {

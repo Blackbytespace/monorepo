@@ -1,10 +1,8 @@
-import __isCommandExists from './isCommandExists';
-import __isDirectory from './isDirectory';
-import __isFile from './isFile';
-import __isFolder from './isFolder';
-import __isInPackage from './isInPackage';
-import __isMonorepo from './isMonorepo';
-import __isSymlink from './isSymlink';
+import __isCommandExists from './isCommandExists.js';
+import __isDirectory from './isDirectory.js';
+import __isFile from './isFile.js';
+import __isFolder from './isFolder.js';
+import __isSymlink from './isSymlink.js';
 export * from '../../shared/is/_exports';
-export { __isCommandExists, __isDirectory, __isFile, __isFolder, __isInPackage, __isMonorepo, __isSymlink, };
+export { __isCommandExists, __isDirectory, __isFile, __isFolder, __isSymlink };
 //# sourceMappingURL=_exports.js.map

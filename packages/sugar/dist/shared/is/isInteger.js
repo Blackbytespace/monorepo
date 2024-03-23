@@ -16,7 +16,7 @@
  * @snippet         __isInteger($1)
  *
  * @example 	js
- * import { __isInteger } from '@coffeekraken/sugar/is';
+ * import { __isInteger } from '@coffeekraken/sugar/is.js';
  * __isInteger(10) => true
  * __isInteger('hello') => false
  *

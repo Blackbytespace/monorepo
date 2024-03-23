@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __copyText from '../copyText';
-import __readText from '../readText';
+import __copyText from '../copyText.js';
+import __readText from '../readText.js';
 describe('sugar.node.clipboad', () => {
     it('Should copy and past a text value correctly', () => __awaiter(void 0, void 0, void 0, function* () {
         const text = 'hello world';

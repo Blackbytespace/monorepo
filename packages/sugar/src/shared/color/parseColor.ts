@@ -1,8 +1,8 @@
-import __hexToRgba from './hexToRgba';
-import __hslaToRgba from './hslaToRgba';
-import __parseHsla from './parseHsla';
-import __parseRgba from './parseRgba';
-import __rgbaToHsla from './rgbaToHsla';
+import __hexToRgba from './hexToRgba.js';
+import __hslaToRgba from './hslaToRgba.js';
+import __parseHsla from './parseHsla.js';
+import __parseRgba from './parseRgba.js';
+import __rgbaToHsla from './rgbaToHsla.js';
 
 /**
  * @name                parseColor
@@ -16,7 +16,7 @@ import __rgbaToHsla from './rgbaToHsla';
  * Parse a string and return you the wanted object format like "rgba", "hsl" or "hsv".
  *
  * @param       {String}      color       The color to parse like (#ff0000 | rgba(...) | hsl(...) | hsv(...))
- * @param       {String}      [format='rgba']       The object format wanted. Can be "rgba", "hsl" or "hsv"
+ * @param       {String}      [format='rgba']       The object format wanted. Can be "rgba" or "hsla"
  * @return      {Object}                  The rgba representation of the passed color
  *
  * @todo      tests
@@ -24,34 +24,61 @@ import __rgbaToHsla from './rgbaToHsla';
  * @snippet         __parseColor($1)
  *
  * @example         js
- * import { __parseColor } from '@coffeekraken/sugar/color';
+ * import { __parseColor } from '@coffeekraken/sugar/color.js';
  * __parseColor('rgba(10,20,30,100)'); // => { r: 10, b: 20, b: 30, a: 100 }
  *
  * @since         2.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
-export default function __parseColor(color: string, format = 'rgba'): any {
+interface IParseColorRgbaResult {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+}
+
+interface IParseColorHslaResult {
+  h: number;
+  s: number;
+  l: number;
+  a: number;
+}
+
+export default function __parseColor(
+  color: string,
+  format = 'rgba',
+): IParseColorHslaResult | IParseColorRgbaResult {
   color = color.replace(/\s/g, '');
+
+  let parsedColor: any;
+
   if (color.startsWith('rgb')) {
-    color = __parseRgba(color);
+    parsedColor = __parseRgba(color);
   } else if (color.startsWith('hsl')) {
-    color = __parseHsla(color);
-    // console.log('CC__CC', color);
-    color = __hslaToRgba(color.h, color.s, color.l);
+    const hsla: any = __parseHsla(color);
+    parsedColor = __hslaToRgba(hsla.h, hsla.s, hsla.l);
   } else if (color.startsWith('#')) {
-    // console.log('parseHEx0, col', color);
-    color = __hexToRgba(color);
+    parsedColor = __hexToRgba(color);
+  } else {
+    throw new Error(
+      `The passed color "${color}" is in a format that cannot be parsed for now...`,
+    );
   }
 
   switch (format) {
     case 'hsla':
     case 'hsl':
-      return __rgbaToHsla(color);
+      return __rgbaToHsla(
+        parsedColor.r,
+        parsedColor.g,
+        parsedColor.b,
+        parsedColor.a,
+      );
       break;
     case 'rgba':
     case 'rgb':
     default:
-      return color;
+      return parsedColor;
       break;
   }
 }

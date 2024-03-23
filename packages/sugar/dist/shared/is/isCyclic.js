@@ -18,7 +18,7 @@
  * @snippet         __isCyclic($1)
  *
  * @example           js
- * import { __isCyclic } from '@coffeekraken/sugar/is';
+ * import { __isCyclic } from '@coffeekraken/sugar/is.js';
  * const obj = { hello: 'world' };
  * obj.cyclic = obj;
  * __isCyclic(obj);

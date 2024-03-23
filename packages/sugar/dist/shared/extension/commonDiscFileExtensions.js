@@ -14,7 +14,7 @@
  * @snippet         __commonDiscFileExtensions()
  *
  * @example         js
- * import { __commonDiscFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonDiscFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonDiscFileExtensions();
  *
  * @since       2.0.0

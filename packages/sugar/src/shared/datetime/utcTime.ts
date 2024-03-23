@@ -17,7 +17,7 @@
  * @snippet         __utcTime()
  *
  * @example         js
- * import { __utcTime } from '@coffeekraken/sugar/date';
+ * import { __utcTime } from '@coffeekraken/sugar/date.js';
  * __utcTime(); // => 10:20:32
  * __utcTime(true, true, false); // => 10:20
  *

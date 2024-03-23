@@ -17,7 +17,7 @@ import __urlSlug from 'url';
  * @snippet         __urlFromString($1)
  *
  * @example             js
- * import { __urlFromString } from '@coffeekraken/sugar/url';
+ * import { __urlFromString } from '@coffeekraken/sugar/url.js';
  * __urlFromString('Sir James Paul McCartney MBE is an English singer-songwriter');
  * // sir-james-paul-mc-cartney-mbe-is-an-english-singer-songwriter
  *
@@ -26,11 +26,11 @@ import __urlSlug from 'url';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function urlFromString(string: string): string {
-    return string
-        .split('/')
-        .map((l) => {
-            // @ts-ignore
-            return __urlSlug(l.trim());
-        })
-        .join('/');
+  return string
+    .split('/')
+    .map((l) => {
+      // @ts-ignore
+      return __urlSlug(l.trim());
+    })
+    .join('/');
 }

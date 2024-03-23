@@ -1,6 +1,6 @@
-import __isPlainObject from '../is/isPlainObject';
-import __unquote from '../string/unquote';
-import __get from './get';
+import __isPlainObject from '../is/isPlainObject.js';
+import __unquote from '../string/unquote.js';
+import __get from './get.js';
 
 /**
  * @name                    set
@@ -25,7 +25,7 @@ import __get from './get';
  * @snippet         __set($1, $2)
  *
  * @example               js
- * import { __set } from '@coffeekraken/sugar/object';
+ * import { __set } from '@coffeekraken/sugar/object.js';
  *  __set('myObject.cool.value', 'Hello world'); // => Hello world
  *
  * @since       2.0.0

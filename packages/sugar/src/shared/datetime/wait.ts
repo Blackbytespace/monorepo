@@ -20,7 +20,7 @@
  * await __wait($1)
  *
  * @example       js
- * import { __wait } from '@coffeekraken/sugar/datetime';
+ * import { __wait } from '@coffeekraken/sugar/datetime.js';
  * await __wait(2000);
  *
  * @since       2.0.0

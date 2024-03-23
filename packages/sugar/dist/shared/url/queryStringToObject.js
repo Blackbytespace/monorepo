@@ -1,4 +1,4 @@
-import ltrim from '../string/ltrim';
+import ltrim from '../string/ltrim.js';
 /**
  * @name                queryStringToObject
  * @namespace           shared.url

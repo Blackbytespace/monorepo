@@ -1,6 +1,6 @@
 // @ts-nocheck
-import __clipboardy from "clipboardy";
-import __ncp from "copy-paste";
+import __clipboardy from 'clipboardy';
+import __ncp from 'copy-paste';
 /**
  * @name            copyText
  * @namespace            node.clipboard
@@ -19,7 +19,7 @@ import __ncp from "copy-paste";
  * @snippet         __copyText($1)
  *
  * @example       js
- * import { __copyText } from '@lotsof/sugar/clipboard';
+ * import { __copyText } from '@lotsof/sugar/clipboard.js';
  * __copyText('Hello world');
  *
  * @since       2.0.0

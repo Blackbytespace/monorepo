@@ -16,7 +16,7 @@
  * @snippet         __isEmail($1)
  *
  * @example 	js
- * import { __isEmail } from '@coffeekraken/sugar/is';
+ * import { __isEmail } from '@coffeekraken/sugar/is.js';
  * __isEmail('john.doe@gmail.com') => true
  * __isEmail('plop@yop.com') => true
  * __isEmail('hello') => false

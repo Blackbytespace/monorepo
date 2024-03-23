@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @name                    hexToRgba
  * @namespace               shared.color
@@ -16,7 +17,7 @@
  * @snippet         __hexToRgba($1)
  *
  * @example         js
- * import { __hexToRgba } from '@coffeekraken/sugar/color';
+ * import { __hexToRgba } from '@coffeekraken/sugar/color.js';
  * __hexToRgba('#ff00ff');
  *
  * @see         https://www.npmjs.com/package/colors-convert

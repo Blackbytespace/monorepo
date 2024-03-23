@@ -1,4 +1,4 @@
-import __loopsCount from './loopsCount';
+import __loopsCount from './loopsCount.js';
 
 /**
  * @name                speedIndex
@@ -27,7 +27,7 @@ import __loopsCount from './loopsCount';
  * @snippet         __speedIndex($1, $2)
  *
  * @example       js
- * import { __speedIndex } from '@coffeekraken/sugar/perf';
+ * import { __speedIndex } from '@coffeekraken/sugar/perf.js';
  * __speedIndex(); // 78
  *
  * @since       2.0.0

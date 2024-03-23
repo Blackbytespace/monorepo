@@ -24,7 +24,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @snippet         __readText($1)
  *
  * @example         js
- * import { __copyText, __readText } from '@lotsof/sugar/clipboard';
+ * import { __copyText, __readText } from '@lotsof/sugar/clipboard.js';
  * await __readText();
  *
  * @since           2.0.0

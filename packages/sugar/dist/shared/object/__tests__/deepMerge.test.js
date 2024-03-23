@@ -1,4 +1,4 @@
-import __deepMerge from '../deepMerge';
+import __deepMerge from '../deepMerge.js';
 describe('sugar.shared.object.deepMerge', () => {
     it('Should merge two simple objects correctly', () => {
         const a = {

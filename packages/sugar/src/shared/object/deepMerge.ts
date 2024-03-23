@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                    deepMerge
@@ -29,7 +29,7 @@ import __isPlainObject from '../is/isPlainObject';
  * @snippet         __deepMerge($1, $2)
  *
  * @example           js
- * import { __deepMerge } from '@coffeekraken/sugar/object';
+ * import { __deepMerge } from '@coffeekraken/sugar/object.js';
  * __deepMerge({a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}});
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
@@ -68,7 +68,7 @@ export default function __deepMerge(...args: any[]): any {
     const firstProps = Object.getOwnPropertyNames(firstObj);
     firstProps.forEach((key) => {
       const desc = Object.getOwnPropertyDescriptor(firstObj, key);
-      if (desc.set || desc.get) {
+      if (desc?.set || desc?.get) {
         Object.defineProperty(newObj, key, desc);
       } else {
         newObj[key] = firstObj[key];
@@ -79,7 +79,7 @@ export default function __deepMerge(...args: any[]): any {
     secondProps.forEach((key) => {
       const secondObjDesc = Object.getOwnPropertyDescriptor(secondObj, key);
 
-      if (secondObjDesc.set || secondObjDesc.get) {
+      if (secondObjDesc?.set || secondObjDesc?.get) {
         Object.defineProperty(newObj, key, secondObjDesc);
       } else if (
         finalSettings.array &&

@@ -17,7 +17,7 @@ import __memoizee from 'memoizee';
  * @return      {Any}                       The memoized function result
  *
  * @example         js
- * import { __memoize } from '@coffeekraken/sugar/function';
+ * import { __memoize } from '@coffeekraken/sugar/function.js';
  * const fn =  __memoize(function(text) => {
  *    return `Hello ${text}`;
  * });

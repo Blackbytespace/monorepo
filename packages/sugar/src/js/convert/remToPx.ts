@@ -16,7 +16,7 @@
  * @snippet         __remToPx($1)
  *
  * @example         js
- * import { __remToPx } from '@coffeekraken/sugar/convert';
+ * import { __remToPx } from '@coffeekraken/sugar/convert.js';
  * __remToPx(2);
  *
  * @since       2.0.0

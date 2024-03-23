@@ -22,250 +22,250 @@
   "exports": {
     "./package.json": "./package.json",
     "./array": {
-      "default": "./src/shared/array/_exports.ts"
+      "default": "./dist/shared/array/_exports.js"
     },
     "./ascii": {
-      "default": "./src/shared/ascii/_exports.ts"
+      "default": "./dist/shared/ascii/_exports.js"
     },
     "./class": {
-      "default": "./src/shared/class/_exports.ts"
+      "default": "./dist/shared/class/_exports.js"
     },
     "./cli": {
-      "default": "./src/shared/cli/_exports.ts"
+      "default": "./dist/shared/cli/_exports.js"
     },
     "./clipboard": {
       "node": {
-        "default": "./src/node/clipboard/_exports.ts"
+        "default": "./dist/node/clipboard/_exports.js"
       },
       "browser": {
-        "default": "./src/js/clipboard/_exports.ts"
+        "default": "./dist/js/clipboard/_exports.js"
       }
     },
     "./coffeekraken": {
-      "default": "./src/node/coffeekraken/_exports.ts"
+      "default": "./dist/node/coffeekraken/_exports.js"
     },
     "./color": {
-      "default": "./src/shared/color/_exports.ts"
+      "default": "./dist/shared/color/_exports.js"
     },
     "./console": {
       "node": {
-        "default": "./src/node/console/_exports.ts"
+        "default": "./dist/node/console/_exports.js"
       },
       "browser": {
-        "default": "./src/js/console/_exports.ts"
+        "default": "./dist/js/console/_exports.js"
       }
     },
     "./convert": {
       "node": {
-        "default": "./src/node/convert/_exports.ts"
+        "default": "./dist/node/convert/_exports.js"
       },
       "browser": {
-        "default": "./src/js/convert/_exports.ts"
+        "default": "./dist/js/convert/_exports.js"
       }
     },
     "./cookie": {
-      "default": "./src/js/cookie/_exports.ts"
+      "default": "./dist/js/cookie/_exports.js"
     },
     "./crypto": {
       "node": {
-        "default": "./src/node/crypto/_exports.ts"
+        "default": "./dist/node/crypto/_exports.js"
       },
       "browser": {
-        "default": "./src/js/crypto/_exports.ts"
+        "default": "./dist/js/crypto/_exports.js"
       }
     },
     "./dom": {
-      "default": "./src/js/dom/_exports.ts"
+      "default": "./dist/js/dom/_exports.js"
     },
     "./composer": {
-      "default": "./src/node/composer/_exports.ts"
+      "default": "./dist/node/composer/_exports.js"
     },
     "./css": {
       "node": {
-        "default": "./src/node/css/_exports.ts"
+        "default": "./dist/node/css/_exports.js"
       },
       "browser": {
-        "default": "./src/js/css/_exports.ts"
+        "default": "./dist/js/css/_exports.js"
       }
     },
     "./datetime": {
-      "default": "./src/shared/datetime/_exports.ts"
+      "default": "./dist/shared/datetime/_exports.js"
     },
     "./dependencies": {
       "node": {
-        "default": "./src/node/dependencies/_exports.ts"
+        "default": "./dist/node/dependencies/_exports.js"
       },
       "browser": {
-        "default": "./src/js/dependencies/_exports.ts"
+        "default": "./dist/js/dependencies/_exports.js"
       }
     },
     "./dev": {
       "node": {
-        "default": "./src/node/dev/_exports.ts"
+        "default": "./dist/node/dev/_exports.js"
       },
       "browser": {
-        "default": "./src/js/dev/_exports.ts"
+        "default": "./dist/js/dev/_exports.js"
       }
     },
     "./easing": {
-      "default": "./src/shared/easing/_exports.ts"
+      "default": "./dist/shared/easing/_exports.js"
     },
     "./es6": {
-      "default": "./src/shared/es6/_exports.ts"
+      "default": "./dist/shared/es6/_exports.js"
     },
     "./extension": {
-      "default": "./src/shared/extension/_exports.ts"
+      "default": "./dist/shared/extension/_exports.js"
     },
     "./format": {
-      "default": "./src/shared/format/_exports.ts"
+      "default": "./dist/shared/format/_exports.js"
     },
     "./function": {
-      "default": "./src/shared/function/_exports.ts"
+      "default": "./dist/shared/function/_exports.js"
     },
     "./error": {
-      "default": "./src/node/error/_exports.ts"
+      "default": "./dist/node/error/_exports.js"
     },
     "./exec": {
-      "default": "./src/node/exec/_exports.ts"
+      "default": "./dist/node/exec/_exports.js"
     },
     "./feature": {
-      "default": "./src/js/feature/_exports.ts"
+      "default": "./dist/js/feature/_exports.js"
     },
     "./filter": {
-      "default": "./src/js/filter/_exports.ts"
+      "default": "./dist/js/filter/_exports.js"
     },
     "./fs": {
-      "default": "./src/node/fs/_exports.ts"
+      "default": "./dist/node/fs/_exports.js"
     },
     "./github": {
-      "default": "./src/node/github/_exports.ts"
+      "default": "./dist/node/github/_exports.js"
     },
     "./glob": {
       "node": {
-        "default": "./src/node/glob/_exports.ts"
+        "default": "./dist/node/glob/_exports.js"
       },
       "browser": {
-        "default": "./src/js/glob/_exports.ts"
+        "default": "./dist/js/glob/_exports.js"
       }
     },
     "./hash": {
-      "default": "./src/node/hash/_exports.ts"
+      "default": "./dist/node/hash/_exports.js"
     },
     "./html": {
-      "default": "./src/shared/html/_exports.ts"
+      "default": "./dist/shared/html/_exports.js"
     },
     "./is": {
       "node": {
-        "default": "./src/node/is/_exports.ts"
+        "default": "./dist/node/is/_exports.js"
       },
       "browser": {
-        "default": "./src/js/is/_exports.ts"
+        "default": "./dist/js/is/_exports.js"
       }
     },
     "./iterable": {
-      "default": "./src/shared/iterable/_exports.ts"
+      "default": "./dist/shared/iterable/_exports.js"
     },
     "./json": {
-      "default": "./src/shared/json/_exports.ts"
+      "default": "./dist/shared/json/_exports.js"
     },
     "./keyboard": {
       "node": {
-        "default": "./src/node/keyboard/_exports.ts"
+        "default": "./dist/node/keyboard/_exports.js"
       },
       "browser": {
-        "default": "./src/js/keyboard/_exports.ts"
+        "default": "./dist/js/keyboard/_exports.js"
       }
     },
     "./load": {
-      "default": "./src/node/load/_exports.ts"
+      "default": "./dist/node/load/_exports.js"
     },
     "./math": {
-      "default": "./src/shared/math/_exports.ts"
+      "default": "./dist/shared/math/_exports.js"
     },
     "./module": {
       "node": {
-        "default": "./src/node/module/_exports.ts"
+        "default": "./dist/node/module/_exports.js"
       },
       "browser": {
-        "default": "./src/js/module/_exports.ts"
+        "default": "./dist/js/module/_exports.js"
       }
     },
     "./monorepo": {
-      "default": "./src/node/monorepo/_exports.ts"
+      "default": "./dist/node/monorepo/_exports.js"
     },
     "./npm": {
-      "default": "./src/node/npm/_exports.ts"
+      "default": "./dist/node/npm/_exports.js"
     },
     "./network": {
-      "default": "./src/node/network/_exports.ts"
+      "default": "./dist/node/network/_exports.js"
     },
     "./number": {
-      "default": "./src/shared/number/_exports.ts"
+      "default": "./dist/shared/number/_exports.js"
     },
     "./object": {
-      "default": "./src/shared/object/_exports.ts"
+      "default": "./dist/shared/object/_exports.js"
     },
     "./og": {
-      "default": "./src/node/og/_exports.ts"
+      "default": "./dist/node/og/_exports.js"
     },
     "./package": {
       "node": {
-        "default": "./src/node/package/_exports.ts"
+        "default": "./dist/node/package/_exports.js"
       },
       "browser": {
-        "default": "./src/js/package/_exports.ts"
+        "default": "./dist/js/package/_exports.js"
       }
     },
     "./path": {
-      "default": "./src/node/path/_exports.ts"
+      "default": "./dist/node/path/_exports.js"
     },
     "./perf": {
-      "default": "./src/shared/perf/_exports.ts"
+      "default": "./dist/shared/perf/_exports.js"
     },
     "./php": {
-      "default": "./src/node/php/_exports.ts"
+      "default": "./dist/node/php/_exports.js"
     },
     "./process": {
-      "default": "./src/node/process/_exports.ts"
+      "default": "./dist/node/process/_exports.js"
     },
     "./project": {
-      "default": "./src/node/project/_exports.ts"
+      "default": "./dist/node/project/_exports.js"
     },
     "./storage": {
-      "default": "./src/js/storage/_exports.ts"
+      "default": "./dist/js/storage/_exports.js"
     },
     "./string": {
       "node": {
-        "default": "./src/node/string/_exports.ts"
+        "default": "./dist/node/string/_exports.js"
       },
       "browser": {
-        "default": "./src/js/string/_exports.ts"
+        "default": "./dist/js/string/_exports.js"
       }
     },
     "./terminal": {
-      "default": "./src/node/terminal/_exports.ts"
+      "default": "./dist/node/terminal/_exports.js"
     },
     "./token": {
       "node": {
-        "default": "./src/node/token/_exports.ts"
+        "default": "./dist/node/token/_exports.js"
       },
       "browser": {
-        "default": "./src/js/token/_exports.ts"
+        "default": "./dist/js/token/_exports.js"
       }
     },
     "./type": {
       "node": {
-        "default": "./src/node/type/_exports.ts"
+        "default": "./dist/node/type/_exports.js"
       },
       "browser": {
-        "default": "./src/js/type/_exports.ts"
+        "default": "./dist/js/type/_exports.js"
       }
     },
     "./url": {
-      "default": "./src/shared/url/_exports.ts"
+      "default": "./dist/shared/url/_exports.js"
     },
     "./version": {
-      "default": "./src/shared/version/_exports.ts"
+      "default": "./dist/shared/version/_exports.js"
     }
   },
   "devDependencies": {
@@ -279,8 +279,10 @@
     "vitest": "^1.3.1"
   },
   "dependencies": {
+    "aggregation": "^1.2.7",
     "blueimp-md5": "^2.19.0",
     "chalk": "^5.3.0",
+    "change-case": "^5.4.3",
     "clipboardy": "^4.0.0",
     "clone-class": "1.0.3",
     "copy-paste": "^1.5.3",
@@ -289,6 +291,7 @@
     "escape-html": "^1.0.3",
     "fast-folder-size": "^2.2.0",
     "fast-xml-parser": "^4.3.5",
+    "fecha": "^4.2.3",
     "filesize": "^10.1.0",
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.2.0",
@@ -303,6 +306,7 @@
     "json-cyclic": "^1.0.2",
     "lodash.clone": "^4.5.0",
     "lodash.clonedeep": "^4.5.0",
+    "memoizee": "^0.4.15",
     "micromatch": "^4.0.5",
     "minimatch": "^9.0.3",
     "object-encode": "^1.0.3",

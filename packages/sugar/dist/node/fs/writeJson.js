@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __ensureDirSync from './ensureDirSync';
-import __folderPath from './folderPath';
+import __ensureDirSync from './ensureDirSync.js';
+import __folderPath from './folderPath.js';
 import * as __fs from 'fs';
 /**
  * @name                writeJson
@@ -31,7 +31,7 @@ import * as __fs from 'fs';
  * await _writeJson($1, $2)
  *
  * @example       js
- * import { __writeJson } from '@coffeekraken/sugar/fs';
+ * import { __writeJson } from '@coffeekraken/sugar/fs.js';
  * __writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
  *    // do something on complete...
  * });
@@ -47,6 +47,7 @@ export default function __writeJson(path, data) {
         if (typeof jsonStr !== 'string') {
             jsonStr = JSON.stringify(data, null, 4);
         }
+        // @ts-ignore
         yield __fs.writeFile(path, jsonStr);
         return path;
     });

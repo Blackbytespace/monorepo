@@ -16,7 +16,7 @@
  * @snippet         __isIsoDateTime($1)
  *
  * @example 	js
- * import { __isIsoDateTime } from '@coffeekraken/sugar/is';
+ * import { __isIsoDateTime } from '@coffeekraken/sugar/is.js';
  * __isIsoDateTime('john.doe@gmail.com') => false
  * __isIsoDateTime('plop@yop.com') => false
  * __isIsoDateTime('2008-08-30 17:21:59') => true

@@ -1,8 +1,8 @@
 import __path from 'path';
 import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid';
-import __toString from '../../shared/string/toString';
-import __writeFileSync from './writeFileSync';
+import __uniqid from '../../node/string/uniqid.js';
+import __toString from '../../shared/string/toString.js';
+import __writeFileSync from './writeFileSync.js';
 
 /**
  * @name                writeTmpFile
@@ -27,7 +27,7 @@ import __writeFileSync from './writeFileSync';
  * await __writeTmpFile($1, $2)
  *
  * @example       js
- * import { __writeTmpFile } from '@coffeekraken/sugar/fs';
+ * import { __writeTmpFile } from '@coffeekraken/sugar/fs.js';
  * __writeTmpFile('Hello World').then((path) => {
  *    // do something on complete...
  * });

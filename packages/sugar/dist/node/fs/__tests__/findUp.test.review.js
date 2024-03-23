@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __findUp from '../findUp';
+import __findUp from '../findUp.js';
 describe('sugar.node.fs.findUp', () => {
     it('Should find a simple file upward correctly', () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield __findUp('file.jpg', {

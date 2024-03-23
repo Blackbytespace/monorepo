@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                        deepFilter
@@ -21,7 +21,7 @@ import __isPlainObject from '../is/isPlainObject';
  * @todo      tests
  *
  * @example           js
- * import { __deepFilter } from '@coffeekraken/sugar/object';
+ * import { __deepFilter } from '@coffeekraken/sugar/object.js';
  * __deepFilter ({
  *    coco: 'hello',
  *    plop: true,
@@ -102,7 +102,7 @@ export default function __deepFilter(
     ...(settings ?? {}),
   };
   return processObj(
-    settings.clone ? Object.assign({}, object) : any,
+    settings.clone ? Object.assign({}, object) : object,
     filter,
     settings,
   );

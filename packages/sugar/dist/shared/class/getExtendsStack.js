@@ -1,4 +1,4 @@
-import __isClass from '../is/isClass';
+import __isClass from '../is/isClass.js';
 const fn = function (cls, settings = {}) {
     const stack = {};
     if (!__isClass(cls)) {

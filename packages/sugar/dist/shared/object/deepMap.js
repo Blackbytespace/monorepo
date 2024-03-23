@@ -1,7 +1,7 @@
-import __isClassInstance from '../is/isClassInstance';
-import __isPlainObject from '../is/isPlainObject';
-import __deepMerge from '../object/deepMerge';
-import __clone from './clone';
+import __isClassInstance from '../is/isClassInstance.js';
+import __isPlainObject from '../is/isPlainObject.js';
+import __deepMerge from '../object/deepMerge.js';
+import __clone from './clone.js';
 export default function __deepMap(objectOrArray, processor, settings, _path = []) {
     settings = __deepMerge({
         classInstances: false,
@@ -12,16 +12,18 @@ export default function __deepMap(objectOrArray, processor, settings, _path = []
     const isArray = Array.isArray(objectOrArray);
     let newObject = isArray
         ? []
-        : settings.clone
+        : (settings === null || settings === void 0 ? void 0 : settings.clone)
             ? __clone(objectOrArray, { deep: true })
-            : anyOrArray;
+            : objectOrArray;
     Object.keys(objectOrArray).forEach((prop) => {
-        if (!settings.privateProps && prop.match(/^_/))
+        if (!(settings === null || settings === void 0 ? void 0 : settings.privateProps) && prop.match(/^_/))
             return;
         if (__isPlainObject(objectOrArray[prop]) ||
-            (__isClassInstance(objectOrArray[prop]) && settings.classInstances) ||
-            (Array.isArray(objectOrArray[prop]) && settings.array)) {
-            const res = __deepMap(objectOrArray[prop], processor, Object.assign(Object.assign({}, settings), { clone: false }), [..._path, prop]);
+            (__isClassInstance(objectOrArray[prop]) && (settings === null || settings === void 0 ? void 0 : settings.classInstances)) ||
+            (Array.isArray(objectOrArray[prop]) && (settings === null || settings === void 0 ? void 0 : settings.array))) {
+            const res = __deepMap(objectOrArray[prop], processor, Object.assign(Object.assign({}, settings), { clone: false }), 
+            // @ts-ignore
+            [..._path, prop]);
             if (isArray) {
                 newObject.push(res);
             }
@@ -35,10 +37,10 @@ export default function __deepMap(objectOrArray, processor, settings, _path = []
             }
             return;
         }
-        const res = processor({
-            object: anyOrArray,
+        const res = processor === null || processor === void 0 ? void 0 : processor({
+            object: objectOrArray,
             prop,
-            value: anyOrArray[prop],
+            value: objectOrArray[prop],
             path: [..._path, prop].join('.'),
         });
         if (res === -1) {

@@ -17,7 +17,7 @@
  * @snippet         __pxToEm($1)
  *
  * @example         js
- * import { __pxToEm } from '@lotsof/sugar/convert';
+ * import { __pxToEm } from '@lotsof/sugar/convert.js';
  * __pxToEm(36);
  *
  * @since     2.0.0

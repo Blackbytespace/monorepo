@@ -1,4 +1,4 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname';
+import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
 
 /**
  * @name            extractCssClassesNames
@@ -20,7 +20,7 @@ import __expandPleasantCssClassname from './expandPleasantCssClassname';
  * @snippet         __extractCssClassesNames($1)
  *
  * @example         js
- * import { __extractCssClassesNames } from '@coffeekraken/sugar/html';
+ * import { __extractCssClassesNames } from '@coffeekraken/sugar/html.js';
  * __extractCssClassesNames('...');
  *
  * @since       2.0.0

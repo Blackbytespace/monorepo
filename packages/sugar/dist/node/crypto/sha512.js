@@ -1,6 +1,6 @@
-import sha512 from 'crypto-js/sha512';
-import parse from '../../shared/string/parse';
-import toString from '../../shared/string/toString';
+import sha512 from 'crypto-js/sha512.js';
+import parse from '../../shared/string/parse.js';
+import toString from '../../shared/string/toString.js';
 const __encryptedMessages = {};
 /**
  * @name            sha512
@@ -14,7 +14,7 @@ const __encryptedMessages = {};
  * @snippet         __sha512.encrypt($1)
  *
  * @example         js
- * import { __sha512 } from '@coffeekraken/sugar/crypto';
+ * import { __sha512 } from '@coffeekraken/sugar/crypto.js';
  * __sha512.encrypt('hello world');
  *
  * @todo        interface

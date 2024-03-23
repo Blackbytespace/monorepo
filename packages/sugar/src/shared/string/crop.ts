@@ -1,5 +1,5 @@
-import __deepMerge from '../object/deepMerge';
-import __countLineChars from './countLineChars';
+import __deepMerge from '../object/deepMerge.js';
+import __countLineChars from './countLineChars.js';
 
 /**
  * @name                    crop
@@ -26,7 +26,7 @@ import __countLineChars from './countLineChars';
  * @snippet         __crop($1, $2)
  *
  * @example         js
- * import { __crop } from '@coffeekraken/sugar/string';
+ * import { __crop } from '@coffeekraken/sugar/string.js';
  * __crop('Hello World', 10); // => Hello w...
  *
  * @since       2.0.0
@@ -34,8 +34,8 @@ import __countLineChars from './countLineChars';
  */
 
 interface ICropSettings {
-  chars: string;
-  splitWords: boolean;
+  chars?: string;
+  splitWords?: boolean;
 }
 
 export default function __crop(
@@ -74,18 +74,20 @@ export default function __crop(
   let result = '';
   let currentWord = '';
   let currentLength = 0;
-  const openedHtmlTagsArray = [];
+  const openedHtmlTagsArray: string[] = [];
 
   for (let i = 0; i < parts.length; i++) {
     const c = parts[i];
 
     if (c.length === 1) {
       if (settings.splitWords) {
+        // @ts-ignore
         if (currentLength + 1 + settings.chars.length <= length) {
           result += c;
           currentLength += 1;
         } else {
           result += settings.chars;
+          // @ts-ignore
           currentLength += settings.chars.length;
           break;
         }
@@ -96,6 +98,7 @@ export default function __crop(
           if (
             __countLineChars(result) +
               __countLineChars(currentWord) +
+              // @ts-ignore
               __countLineChars(settings.chars) <=
             length
           ) {
@@ -132,20 +135,21 @@ export default function __crop(
         // we just add the single tag in the result
         result += singleHtmlTagMatch.input;
       } else if (closingHtmlTagMatch) {
-        const tagName = closingHtmlTagMatch.input.match(/^<\/(.*)>$/)[1];
+        const tagName = closingHtmlTagMatch?.input?.match(/^<\/(.*)>$/)?.[1];
         // check if this tag has been opened
-        if (openedHtmlTagsArray.indexOf(tagName) !== -1) {
+        if (tagName && openedHtmlTagsArray.indexOf(tagName) !== -1) {
           // the tag has been opened so we add it to the close
           result += closingHtmlTagMatch.input;
           // remove the tag from the opened array
           openedHtmlTagsArray.splice(openedHtmlTagsArray.indexOf(tagName), 1);
         }
       } else if (openingHtmlTagMatch) {
-        const tagName = openingHtmlTagMatch.input.match(/^<([a-zA-Z]+).*>$/)[1];
+        const tagName =
+          openingHtmlTagMatch?.input?.match?.(/^<([a-zA-Z]+).*>$/)?.[1];
         // add the tag in the result
         result += openingHtmlTagMatch.input;
         // add the tag to the openedTagArray
-        openedHtmlTagsArray.push(tagName);
+        tagName && openedHtmlTagsArray.push(tagName);
       }
     }
   }

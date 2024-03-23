@@ -1,4 +1,4 @@
-import __applyScope from '../applyScope';
+import __applyScope from '../applyScope.js';
 describe('sugar.shared.object.applyScope', () => {
     it('Should apply a simple scope correctly', (done) => {
         const myObj = {

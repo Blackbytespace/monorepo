@@ -16,7 +16,7 @@
  * @snippet         __get($1, $2)
  *
  * @example             js
- * import { __delete } from '@coffeekraken/sugar/object';
+ * import { __delete } from '@coffeekraken/sugar/object.js';
  * __delete(myObject, 'my.cool.value');
  * __delete(myObject, 'my.cool.value.0');
  *
@@ -40,6 +40,7 @@ export default function __delete(
   let o = object;
   while (a.length) {
     const n = a.shift();
+    if (!n) continue;
     if (a.length < 1) {
       if (Array.isArray(o)) {
         const idx = parseInt(n);

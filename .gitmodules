@@ -1,0 +1,3 @@
+[submodule "Components"]
+	path = packages/components
+	url = https://github.com/lotsofdev/components

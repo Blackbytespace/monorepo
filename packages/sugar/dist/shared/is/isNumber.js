@@ -16,7 +16,7 @@
  * @snippet         __isNumber($1)
  *
  * @example 	js
- * import { __isNumber } from '@coffeekraken/sugar/is';
+ * import { __isNumber } from '@coffeekraken/sugar/is.js';
  * __isNumber(12) => true
  * __isNumber(22.3) => true
  * __isNumber('20') => false

@@ -1,4 +1,4 @@
-import __easeInOutQuart from '../easing/easeInOutQuart';
+import __easeInOutQuart from '../easing/easeInOutQuart.js';
 export default function __easeInterval(duration, cb, settings = {}) {
     let cleared = false, animationFrame;
     const pro = new Promise((resolve) => {
@@ -9,6 +9,7 @@ export default function __easeInterval(duration, cb, settings = {}) {
             if (cleared)
                 return;
             const percent = (100 / duration) * (Date.now() - startTime);
+            // @ts-ignore
             const easedPercent = settings.easing(percent / 100) * 100;
             cb(easedPercent);
             if (percent < 100) {
@@ -23,6 +24,7 @@ export default function __easeInterval(duration, cb, settings = {}) {
         }
         animate();
     });
+    // @ts-ignore
     pro.cancel = () => {
         cleared = true;
         cancelAnimationFrame(animationFrame);

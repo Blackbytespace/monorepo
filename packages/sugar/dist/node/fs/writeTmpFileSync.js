@@ -1,8 +1,8 @@
 import __path from 'path';
 import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid';
-import __toString from '../../shared/string/toString';
-import __writeFileSync from './writeFileSync';
+import __uniqid from '../../node/string/uniqid.js';
+import __toString from '../../shared/string/toString.js';
+import __writeFileSync from './writeFileSync.js';
 export default function __writeTmpFileSync(data, settings = {}) {
     var _a;
     settings = Object.assign({ path: undefined }, settings);

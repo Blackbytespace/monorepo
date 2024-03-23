@@ -1,4 +1,4 @@
-import __set from './set';
+import __set from './set.js';
 /**
  * @name                        deleteProperty
  * @namespace                   shared.object
@@ -17,7 +17,7 @@ import __set from './set';
  * @snippet         __deleteProperty($1, $2)
  *
  * @example         js
- * import { __deleteProperty } from '@coffeekraken/sugar/object';
+ * import { __deleteProperty } from '@coffeekraken/sugar/object.js';
  * const myObject = {
  *    hello: 'world',
  *    plop: 'yop'
@@ -37,6 +37,8 @@ export default function __deleteProperty(object, dotPath) {
     let o = object;
     while (a.length) {
         const n = a.shift();
+        if (!n)
+            continue;
         if (a.length < 1) {
             if (Array.isArray(o)) {
                 const valueToDelete = o[n];

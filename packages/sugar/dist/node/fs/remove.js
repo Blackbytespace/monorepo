@@ -17,7 +17,7 @@ import __fs from 'fs-extra';
  * await __remove($1)
  *
  * @example       js
- * import { __remove } from '@coffeekraken/sugar/fs';
+ * import { __remove } from '@coffeekraken/sugar/fs.js';
  * await __remove('my/cool/file.json').then(() => {
  *    // do something on complete...
  * });

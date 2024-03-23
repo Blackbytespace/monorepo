@@ -24,7 +24,7 @@ import __deepClone from 'lodash.clonedeep';
  * @snippet         __clone($1)
  *
  * @example       js
- * import { __clone } from '@coffeekraken/sugar/object';
+ * import { __clone } from '@coffeekraken/sugar/object.js';
  * __clone({
  *    hello: 'world'
  * });
@@ -34,7 +34,7 @@ import __deepClone from 'lodash.clonedeep';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 interface ICloneSettings {
-  deep: boolean;
+  deep?: boolean;
 }
 
 export default function clone(object: any, settings: ICloneSettings = {}): any {

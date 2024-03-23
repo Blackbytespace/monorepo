@@ -1,8 +1,8 @@
 import __path from 'path';
 import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid';
-import __toString from '../../shared/string/toString';
-import __writeFileSync from './writeFileSync';
+import __uniqid from '../../node/string/uniqid.js';
+import __toString from '../../shared/string/toString.js';
+import __writeFileSync from './writeFileSync.js';
 
 /**
  * @name                writeTmpFileSync
@@ -26,7 +26,7 @@ import __writeFileSync from './writeFileSync';
  * @snippet         __writeTmpFileSync($1, $2)
  *
  * @example       js
- * import { __writeTmpFileSync } from '@coffeekraken/sugar/fs';
+ * import { __writeTmpFileSync } from '@coffeekraken/sugar/fs.js';
  * const path = __writeTmpFileSync('Hello World');
  *
  * @since           2.0.0

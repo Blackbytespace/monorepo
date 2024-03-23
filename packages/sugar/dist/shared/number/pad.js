@@ -24,9 +24,9 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __pad(number, width, character = '0') {
-    number = number + '';
-    return number.length >= width
-        ? number
-        : new Array(width - number.length + 1).join(character) + number;
+    const numberStr = number + '';
+    return numberStr.length >= width
+        ? numberStr
+        : new Array(width - numberStr.length + 1).join(character) + number;
 }
 //# sourceMappingURL=pad.js.map

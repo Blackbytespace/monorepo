@@ -16,7 +16,7 @@
  * @snippet         __getMethods($1)
  *
  * @example         js
- * import { __getMethods } from '@coffeekraken/sugar/class';
+ * import { __getMethods } from '@coffeekraken/sugar/class.js';
  * myClass {
  *  constructor() {}
  *  hello() {}

@@ -1,6 +1,6 @@
-import __minimatch from 'minimatch';
-import __deepize from './deepize';
-import __flatten from './flatten';
+import { minimatch as __minimatch } from 'minimatch';
+import __deepize from './deepize.js';
+import __flatten from './flatten.js';
 
 /**
  * @name                        getGlob
@@ -26,7 +26,7 @@ import __flatten from './flatten';
  * @snippet         __getGlob($1, $2)
  *
  * @example             js
- * import { __getGlob } from '@coffeekraken/sugar/object';
+ * import { __getGlob } from '@coffeekraken/sugar/object.js';
  * __getGlob({
  *  hello: {
  *     world: true,

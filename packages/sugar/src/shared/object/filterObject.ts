@@ -20,7 +20,7 @@
  * __filterObject
  *
  * @example           js
- * import { __filterObject } from '@coffeekraken/sugar/object';
+ * import { __filterObject } from '@coffeekraken/sugar/object.js';
  * __filterObject({
  *    coco: 'hello',
  *    plop: true

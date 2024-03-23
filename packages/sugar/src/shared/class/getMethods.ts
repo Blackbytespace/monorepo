@@ -16,7 +16,7 @@
  * @snippet         __getMethods($1)
  *
  * @example         js
- * import { __getMethods } from '@coffeekraken/sugar/class';
+ * import { __getMethods } from '@coffeekraken/sugar/class.js';
  * myClass {
  *  constructor() {}
  *  hello() {}
@@ -29,7 +29,7 @@
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __getMethods(toCheck: any): string[] {
-  let props = [];
+  let props: string[] = [];
   let obj = toCheck;
   do {
     const _props = Object.getOwnPropertyNames(obj);

@@ -1,4 +1,4 @@
-import { paramCase } from 'param-case';
+import { kebabCase } from 'change-case';
 /**
  * @name                dashCase
  * @namespace           shared.string
@@ -7,7 +7,7 @@ import { paramCase } from 'param-case';
  * @platform            node
  * @status              stable
  *
- * dashCase a string
+ * Dash case a string
  *
  * @param         {String}          text        The string to dashCase
  * @return        {String}                      The dashCased string
@@ -17,14 +17,14 @@ import { paramCase } from 'param-case';
  * @snippet         __dashCase($1)
  *
  * @example     js
- * import { __dashCase } from '@coffeekraken/sugar/string';
+ * import { __dashCase } from '@coffeekraken/sugar/string.js';
  * __dashCase('hello world'); // => hello-world
  *
- * @see             https://www.npmjs.com/package/param-case
+ * @see             https://www.npmjs.com/package/change-case
  * @since       2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __dashCase(text) {
-    return paramCase(text);
+    return kebabCase(text);
 }
 //# sourceMappingURL=dashCase.js.map

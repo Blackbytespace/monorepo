@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject';
-import __sort from './sort';
+import __isPlainObject from '../is/isPlainObject.js';
+import __sort from './sort.js';
 
 /**
  * @name                                sortDeep
@@ -23,7 +23,7 @@ import __sort from './sort';
  * })
  *
  * @example               js
- * import { __sortDeep } from '@coffeekraken/sugar/object';
+ * import { __sortDeep } from '@coffeekraken/sugar/object.js';
  * __sortDeep({
  *    lolo: { weight: 2 },
  *    coco: { weight: 10 },

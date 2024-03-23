@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as __fs from 'fs';
 import { globSync as __globSync } from 'glob';
-import __isGlob from '../../shared/is/isGlob';
+import __isGlob from '../../shared/is/isGlob.js';
 export default function __findUp(search, settings) {
     settings = Object.assign({ symlinks: true, cwd: process.cwd(), stopWhenFound: true }, settings);
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
         const cwd = settings.cwd;
+        // @ts-ignore
         let currentPath = cwd.split('/').filter((p) => p.trim() !== '');
         let foundedFiles = [];
         while (currentPath.length > 0) {

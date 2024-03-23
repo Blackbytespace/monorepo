@@ -16,7 +16,7 @@
  * @snippet         __isColor($1)
  *
  * @example 	js
- * import { __isColor } from '@coffeekraken/sugar/is';
+ * import { __isColor } from '@coffeekraken/sugar/is.js';
  * __isColor('red') => true
  * __isColor('#fff') => true
  * __isColor('hello') => false

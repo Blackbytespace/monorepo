@@ -14,7 +14,7 @@
  * @snippet         __easeInCubic($1)
  *
  * @example         js
- * import { __easeInCubic } from '@coffeekraken/sugar/easing';
+ * import { __easeInCubic } from '@coffeekraken/sugar/easing.js';
  * __easeInCubic(0.4);
  *
  * @todo      tests

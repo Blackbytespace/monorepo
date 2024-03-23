@@ -17,7 +17,7 @@
  * @snippet         __emToPx($1)
  *
  * @example         js
- * import { __emToPx } from '@lotsof/sugar/convert';
+ * import { __emToPx } from '@lotsof/sugar/convert.js';
  * __emToPx(2);
  *
  * @since       2.0.0

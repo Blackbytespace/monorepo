@@ -1,4 +1,4 @@
-import __commonImageFileExtensions from '../extension/commonImageFileExtensions';
+import __commonImageFileExtensions from '../extension/commonImageFileExtensions.js';
 
 /**
  * @name                isImageUrl
@@ -20,7 +20,7 @@ import __commonImageFileExtensions from '../extension/commonImageFileExtensions'
  * @snippet         __isImageUrl($1)
  *
  * @example               js
- * import { __isImageUrl } from '@coffeekraken/sugar/is';
+ * import { __isImageUrl } from '@coffeekraken/sugar/is.js';
  * __isImageUrl('something.jpg); // => true
  * __isImageUrl('other.pdf); // => false
  *

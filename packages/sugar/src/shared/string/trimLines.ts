@@ -21,7 +21,7 @@
  * @snippet         __trimLines($1)
  *
  * @example         js
- * import { __trimLines } from '@coffeekraken/sugar/string';
+ * import { __trimLines } from '@coffeekraken/sugar/string.js';
  * __trimLines(`my cool lines
  *      that have some lines to trim
  * and some not...`);

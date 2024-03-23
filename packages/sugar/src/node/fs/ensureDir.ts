@@ -19,7 +19,7 @@ import __fs from 'fs-extra';
  * await __ensureDir($1)
  *
  * @example       js
- * import { __ensureDir } from '@coffeekraken/sugar/fs';
+ * import { __ensureDir } from '@coffeekraken/sugar/fs.js';
  *  __ensureDir('my/cool/dir').then(() => {
  *    // do something...
  * });

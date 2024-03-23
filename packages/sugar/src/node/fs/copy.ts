@@ -18,7 +18,7 @@ import __fs from 'fs-extra';
  * await __copy($1, $2)
  *
  * @example       js
- * import { __copy } from '@coffeekraken/sugar/fs';
+ * import { __copy } from '@coffeekraken/sugar/fs.js';
  * await __copy('my/cool/file.jpg', 'my/new/file.jpg').then(() => {
  *    // do something on complete...
  * });

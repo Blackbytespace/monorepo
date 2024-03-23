@@ -1,4 +1,4 @@
-import __parseAuthorString from './parseAuthorString';
+import __parseAuthorString from './parseAuthorString.js';
 /**
  * @name                    formatPackageJson
  * @namespace               shared.package
@@ -22,7 +22,7 @@ import __parseAuthorString from './parseAuthorString';
  * @snippet         __formatPackageJson($1)
  *
  * @example       js
- * import { __formatPackageJson } from '@coffeekraken/sugar/package';
+ * import { __formatPackageJson } from '@coffeekraken/sugar/package.js';
  * __formatPackageJson({
  *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)"
  * }); // => {

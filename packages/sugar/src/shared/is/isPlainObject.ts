@@ -16,7 +16,7 @@
  * @snippet         __isPlainObject($1)
  *
  * @example           js
- * import { __isPlainObject } from '@coffeekraken/sugar/is';
+ * import { __isPlainObject } from '@coffeekraken/sugar/is.js';
  * __isPlainObject({ hello: 'world'}); // => true
  *
  * @since           2.0.0

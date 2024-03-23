@@ -16,7 +16,7 @@
  * @snippet         __isUrl($1)
  *
  * @example 	js
- * import { __isUrl } from '@coffeekraken/sugar/is';
+ * import { __isUrl } from '@coffeekraken/sugar/is.js';
  * __isUrl('http://google.com') => true
  * __isUrl('ftp://web.coco.com:2222') => false
  * __isUrl('hello') => false

@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __check from '../checkPathWithMultipleExtensions';
+import __check from '../checkPathWithMultipleExtensions.js';
 describe('sugar.node.fs.checkPathWithMultipleExtensions', () => {
     it('Should find a file with multiple extensions given', () => __awaiter(void 0, void 0, void 0, function* () {
         const filePath = __check(`${__dirname}/data/file.mkv`, [

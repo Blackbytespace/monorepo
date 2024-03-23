@@ -1,4 +1,4 @@
-import __isCjs from './isCjs';
+import __isCjs from './isCjs.js';
 
 /**
  * @name                isEsm
@@ -17,7 +17,7 @@ import __isCjs from './isCjs';
  * @todo            tests
  *
  * @example       js
- * import { __isEsm } from '@coffeekraken/sugar/is';
+ * import { __isEsm } from '@coffeekraken/sugar/is.js';
  * __isEsm(); // => true
  *
  * @since     2.0.0

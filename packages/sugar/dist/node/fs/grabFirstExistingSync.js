@@ -16,7 +16,7 @@ import * as __fs from 'fs';
  * @snippet         __gradFirst
  *
  * @example       js
- * import { __grabFirstExistinSync } from '@coffeekraken/sugar/fs';
+ * import { __grabFirstExistinSync } from '@coffeekraken/sugar/fs.js';
  * __grabFirstExisting([
  *  'file/1.txt',
  *  'file/2.txt
@@ -26,9 +26,13 @@ import * as __fs from 'fs';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __grabFirstExistingSync(paths) {
+    let result = '';
     for (let [idx, path] of Object.entries(paths)) {
-        if (__fs.existsSync(path))
-            return path;
+        if (__fs.existsSync(path)) {
+            result = path;
+            break;
+        }
     }
+    return result;
 }
 //# sourceMappingURL=grabFirstExistingSync.js.map

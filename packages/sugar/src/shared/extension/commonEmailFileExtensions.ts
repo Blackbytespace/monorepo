@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name            commonEmailFileExtensions
@@ -16,7 +16,7 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions';
  * @snippet         __commonEmailFileExtensions()
  *
  * @example         js
- * import { __commonEmailFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonEmailFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonEmailFileExtensions();
  *
  * @since       2.0.0

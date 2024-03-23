@@ -1,5 +1,5 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
-import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
 
 /**
  * @name            commonTextFileExtensions
@@ -17,7 +17,7 @@ import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions
  * @snippet         __commonTextFileExtensions()
  *
  * @example         js
- * import { __commonTextFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonTextFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonTextFileExtensions();
  *
  * @since       2.0.0

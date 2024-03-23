@@ -18,7 +18,7 @@
  * @todo      tests
  *
  * @example       js
- * import { __clamp } from '@coffeekraken/sugar/math';
+ * import { __clamp } from '@coffeekraken/sugar/math.js';
  * __clamp(10, 0, 100); // => 10
  * __clamp(0, 0, 100); // => 0
  * __clamp(100, 0, 100); // => 100

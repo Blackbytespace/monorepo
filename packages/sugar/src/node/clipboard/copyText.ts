@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import __clipboardy from "clipboardy";
-import __ncp from "copy-paste";
+import __clipboardy from 'clipboardy';
+import __ncp from 'copy-paste';
 
 /**
  * @name            copyText
@@ -21,7 +21,7 @@ import __ncp from "copy-paste";
  * @snippet         __copyText($1)
  *
  * @example       js
- * import { __copyText } from '@lotsof/sugar/clipboard';
+ * import { __copyText } from '@lotsof/sugar/clipboard.js';
  * __copyText('Hello world');
  *
  * @since       2.0.0
@@ -29,10 +29,10 @@ import __ncp from "copy-paste";
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __copyText(text: string): string {
-    try {
-        __clipboardy.writeSync(text);
-    } catch (e) {
-        __ncp.copy(text);
-    }
-    return text;
+  try {
+    __clipboardy.writeSync(text);
+  } catch (e) {
+    __ncp.copy(text);
+  }
+  return text;
 }

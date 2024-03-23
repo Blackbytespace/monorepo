@@ -1,4 +1,4 @@
-import __parseRgba from './parseRgba';
+import __parseRgba from './parseRgba.js';
 /**
  * @name                    rgba2hex
  * @namespace               shared.color
@@ -20,7 +20,7 @@ import __parseRgba from './parseRgba';
  * @snippet         __rgbaToHex($1)
  *
  * @example         js
- * import { __rgbaToHex } from '@coffeekraken/sugar/color';
+ * import { __rgbaToHex } from '@coffeekraken/sugar/color.js';
  * __rgbaToHex(10,20,30,10);
  *
  * @see         https://www.npmjs.com/package/colors-convert

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import __parseString from '../string/parse';
+import __parseString from '../string/parse.js';
 /**
  * @name                            parseSchema
  * @namespace                       shared.url
@@ -29,7 +29,7 @@ import __parseString from '../string/parse';
  * @todo      tests
  *
  * @example       js
- * import { __parseSchema } from '@coffeekraken/sugar/url';
+ * import { __parseSchema } from '@coffeekraken/sugar/url.js';
  * __parseSchema('https://github.com/myApp/master/3', '{project:string}/{?branch:string}/{?idx:number}');
  * // {
  * //   url: 'https://github.com/myApp/master/3',

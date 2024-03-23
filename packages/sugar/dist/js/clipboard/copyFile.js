@@ -25,7 +25,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @snippet         __copyFile($1)
  *
  * @example         js
- * import { __copyFile } from '@lotsof/sugar/clipboard';
+ * import { __copyFile } from '@lotsof/sugar/clipboard.js';
  * __copyFile('https://www.google.com/favicon.ico');
  *
  * @see             https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.

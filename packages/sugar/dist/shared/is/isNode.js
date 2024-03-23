@@ -15,7 +15,7 @@
  * @snippet         __isNode()
  *
  * @example               js
- * import { __isNode } from '@coffeekraken/sugar/is';
+ * import { __isNode } from '@coffeekraken/sugar/is.js';
  * __isNode(); // => true
  *
  * @since           2.0.0

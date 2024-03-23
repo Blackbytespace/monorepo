@@ -1,4 +1,4 @@
-import __toString from '../string/toString';
+import __toString from '../string/toString.js';
 /**
  * @name                replaceTags
  * @namespace           shared.html
@@ -18,7 +18,7 @@ import __toString from '../string/toString';
  * @snippet         __replaceTags($1m $2)
  *
  * @example             js
- * import { __replaceTags } from '@coffeekraken/sugar/html';
+ * import { __replaceTags } from '@coffeekraken/sugar/html.js';
  *  __replaceTags('<span>Hello</span> world', {
  *    span: (tag, content) => `<div>${content}</div>`; // => <div>Hello</div> world
  * });

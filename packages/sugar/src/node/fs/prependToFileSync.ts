@@ -1,5 +1,5 @@
 import * as __fs from 'fs';
-import __writeFileSync from '../fs/writeFileSync';
+import __writeFileSync from '../fs/writeFileSync.js';
 
 /**
  * @name            prependToFileSync
@@ -18,7 +18,7 @@ import __writeFileSync from '../fs/writeFileSync';
  * @snippet         __prependToFileSync($1, $2)
  *
  * @example         js
- * import { __prependToFileSync } from '@coffeekraken/sugar/fs';
+ * import { __prependToFileSync } from '@coffeekraken/sugar/fs.js';
  * __prependToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       2.0.0

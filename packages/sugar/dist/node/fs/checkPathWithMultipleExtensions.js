@@ -1,5 +1,5 @@
 import * as __fs from 'fs';
-import __extension from './extension';
+import __extension from './extension.js';
 /**
  * @name            checkPathWithMultipleExtensions
  * @namespace       node.fs
@@ -23,7 +23,7 @@ import __extension from './extension';
  * ])
  *
  * @example         js
- * import { __checkPathWithMultipleExtensions } from '@coffeekraken/sugar/fs';
+ * import { __checkPathWithMultipleExtensions } from '@coffeekraken/sugar/fs.js';
  * __checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
  *
  * @since       2.0.0

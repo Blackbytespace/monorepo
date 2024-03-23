@@ -1,4 +1,4 @@
-import __simplifySpecialChars from '../string/simplifySpecialChars';
+import __simplifySpecialChars from '../string/simplifySpecialChars.js';
 /**
  * @name            isIdCompliant
  * @namespace            shared.string
@@ -16,7 +16,7 @@ import __simplifySpecialChars from '../string/simplifySpecialChars';
  * @snippet         __isIdCompliant($1)
  *
  * @example         php
- * import { __isIdCompliant } from '@coffeekraken/sugar/string';
+ * import { __isIdCompliant } from '@coffeekraken/sugar/string.js';
  * __isIdCompliant('Hello world'); // => false
  * __isIdCompliant('hello-world'); // => true
  *

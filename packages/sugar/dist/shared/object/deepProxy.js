@@ -1,9 +1,9 @@
-import __proxyArray from '../array/proxyArray';
-import __isDomElement from '../is/isDomElement';
-import __isPlainObject from '../is/isPlainObject';
-import __clone from '../object/clone';
-import __deepMap from '../object/deepMap';
-import __deepMerge from '../object/deepMerge';
+import __proxyArray from '../array/proxyArray.js';
+import __isDomElement from '../is/isDomElement.js';
+import __isPlainObject from '../is/isPlainObject.js';
+import __clone from '../object/clone.js';
+import __deepMap from '../object/deepMap.js';
+import __deepMerge from '../object/deepMerge.js';
 /**
  * @name                            deepProxy
  * @namespace                       shared.object
@@ -38,13 +38,15 @@ import __deepMerge from '../object/deepMerge';
  * @todo      tests
  *
  * @example           js
- * import { __deepProxy } from '@coffeekraken/sugar/object';
+ * import { __deepProxy } from '@coffeekraken/sugar/object.js';
  * const a = __deepProxy({
  *    hello: 'world'
  * }, (actionObj) => {
  *    // do something with the actionObj...
  * });
  * a.hello = 'coco';
+ * // stop proxying
+ * a.cancel();
  *
  * @since       2.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
@@ -189,7 +191,10 @@ export default function __deepProxy(object, handlerFn, settings = {}) {
             },
         };
         if (Array.isArray(p.proxy)) {
+            // @ts-ignore
             p.proxy.revoke = revokePropertyObj.value;
+            // @ts-ignore
+            p.proxy.cancel = revokePropertyObj.value;
         }
         else {
             Object.defineProperties(p.proxy, {

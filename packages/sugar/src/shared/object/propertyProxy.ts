@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /**
  * @name                propertyProxy
  * @namespace           shared.object
@@ -19,7 +21,7 @@
  * @todo      tests
  *
  * @example 	js
- * import { __propertyProxy } from '@coffeekraken/sugar/object';
+ * import { __propertyProxy } from '@coffeekraken/sugar/object.js';
  * const myObject = {
  * 		title : 'World'
  * };

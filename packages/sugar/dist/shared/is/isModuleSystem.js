@@ -1,5 +1,5 @@
-import __isCjs from './isCjs';
-import __isEsm from './isEsm';
+import __isCjs from './isCjs.js';
+import __isEsm from './isEsm.js';
 /**
  * @name            isModuleSystem
  * @namespace       shared.is
@@ -18,7 +18,7 @@ import __isEsm from './isEsm';
  * @snippet         __isModuleSystem($1)
  *
  * @example       js
- * import { __isModuleSystem } from '@coffeekraken/sugar/is';
+ * import { __isModuleSystem } from '@coffeekraken/sugar/is.js';
  * __isModuleSystem('esm'); // => true
  * __isModuleSystem('cjs'); // => false
  *

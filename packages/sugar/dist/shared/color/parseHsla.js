@@ -16,7 +16,7 @@
  * @snippet         __parseHsla($1)
  *
  * @example         js
- * import { __parseHsla } from '@coffeekraken/sugar/color';
+ * import { __parseHsla } from '@coffeekraken/sugar/color.js';
  * __parseHsla('hsl(20,20,20)');
  *
  * @since       2.0.0

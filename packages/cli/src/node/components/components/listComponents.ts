@@ -1,6 +1,6 @@
-import { __packageRootDir } from '@lotsof/sugar/fs';
+import { __packageRootDir } from '@lotsof/sugar/path';
 import { globSync as __globSync } from 'glob';
-import type { IComponentList, IComponentListArgs } from './components.types';
+import type { IComponentList, IComponentListArgs } from './components.types.js';
 
 export default function listComponents(
   args: IComponentListArgs = {},

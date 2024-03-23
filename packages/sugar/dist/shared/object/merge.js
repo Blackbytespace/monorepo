@@ -18,7 +18,7 @@
  * @snippet         __merge($1, $2)
  *
  * @example           js
- * import { __merge } from '@coffeekraken/sugar/object';
+ * import { __merge } from '@coffeekraken/sugar/object.js';
  * __merge({a: 'hello'}, {a: 'plop', hello: 'world');
  *
  * @since       2.0.0
@@ -35,7 +35,7 @@ function _merge(firstObj, secondObj) {
     const firstProps = Object.getOwnPropertyNames(firstObj);
     firstProps.forEach((key) => {
         const desc = Object.getOwnPropertyDescriptor(firstObj, key);
-        if (desc.set || desc.get) {
+        if ((desc === null || desc === void 0 ? void 0 : desc.set) || (desc === null || desc === void 0 ? void 0 : desc.get)) {
             Object.defineProperty(newObj, key, desc);
         }
         else {
@@ -45,7 +45,7 @@ function _merge(firstObj, secondObj) {
     const secondProps = Object.getOwnPropertyNames(secondObj);
     secondProps.forEach((key) => {
         const desc = Object.getOwnPropertyDescriptor(secondObj, key);
-        if (desc.set || desc.get) {
+        if ((desc === null || desc === void 0 ? void 0 : desc.set) || (desc === null || desc === void 0 ? void 0 : desc.get)) {
             Object.defineProperty(newObj, key, desc);
         }
         else {

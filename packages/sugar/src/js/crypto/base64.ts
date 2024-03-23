@@ -1,19 +1,18 @@
-import toString from '../../shared/string/toString';
+import toString from '../../shared/string/toString.js';
 
 /**
  * @name            base64
- * @namespace            js.crypto
+ * @namespace       js.crypto
  * @type            Object
- * @platform          js
- * @platform          node
- * @status              beta
+ * @platform        js
+ * @status          stable
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the base64 algorithm
  *
  * @snippet         __base64.encrypt($1)
  *
  * @example         js
- * import { __base64 } from '@coffeekraken/sugar/crypto';
+ * import { __base64 } from '@coffeekraken/sugar/crypto.js';
  * __base64.encrypt('hello world');
  *
  * @todo        interface
@@ -25,10 +24,12 @@ import toString from '../../shared/string/toString';
 
 function base64ToBytes(base64) {
   const binString = atob(base64);
+  // @ts-ignore
   return Uint8Array.from(binString, (m) => m.codePointAt(0));
 }
 
 function bytesToBase64(bytes) {
+  // @ts-ignore
   const binString = Array.from(bytes, (x) => String.fromCodePoint(x)).join('');
   return btoa(binString);
 }

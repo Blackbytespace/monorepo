@@ -1,5 +1,5 @@
-import __get from './get';
-import __set from './set';
+import __get from './get.js';
+import __set from './set.js';
 /**
  * @name                ensurePropertyExists
  * @namespace           shared.object
@@ -20,7 +20,7 @@ import __set from './set';
  * @snippet         __ensurePropertyExists($1, $2)
  *
  * @example           js
- * import { __ensureProperyExists } from '@coffeekraken/sugar/object';
+ * import { __ensureProperyExists } from '@coffeekraken/sugar/object.js';
  * const myObj = { hello: 'world' }«
  * __ensureProperyExists(myObj, 'cool.object', {});
  * // { hello: 'world', cool: { object: {} } }

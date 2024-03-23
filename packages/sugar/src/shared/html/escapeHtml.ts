@@ -18,7 +18,7 @@ import __escape from 'escape-html';
  * @todo      tests
  *
  * @example         js
- * import { __escapeHtml } from '@coffeekraken/sugar/html';
+ * import { __escapeHtml } from '@coffeekraken/sugar/html.js';
  * __escapeHtml('<s-code-example>'); // => &lt;s-code-example&gt;
  *
  * @see             https://www.npmjs.com/package/escape-html

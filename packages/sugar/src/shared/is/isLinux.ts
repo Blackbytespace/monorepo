@@ -15,7 +15,7 @@
  * @snippet         __isLinux($1)
  *
  * @example       js
- * import { __isLinux } from '@coffeekraken/sugar/is';
+ * import { __isLinux } from '@coffeekraken/sugar/is.js';
  * __isLinux(); // => true
  *
  * @since           2.0.0

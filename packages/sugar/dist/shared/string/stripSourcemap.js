@@ -18,7 +18,7 @@
  * @todo     tests
  *
  * @example         js
- * import { __stripSourcemap } from '@coffeekraken/sugar/string';
+ * import { __stripSourcemap } from '@coffeekraken/sugar/string.js';
  * __stripSourcemap('...');
  *
  * @since       2.0.0

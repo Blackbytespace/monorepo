@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name                commonFontFileExtensions
@@ -16,7 +16,7 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions';
  * @snippet         __commonFontFileExtensions()
  *
  * @example         js
- * import { __commonFontFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonFontFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonFontFileExtensions();
  *
  * @since       2.0.0

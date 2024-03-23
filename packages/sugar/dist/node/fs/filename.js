@@ -1,4 +1,4 @@
-import __extension from '../fs/extension';
+import __extension from '../fs/extension.js';
 /**
  * @name                 filename
  * @namespace            node.fs
@@ -17,14 +17,15 @@ import __extension from '../fs/extension';
  * @snippet         __filename($1)
  *
  * @example       js
- * import { __filename } from '@coffeekraken/sugar/fs';
+ * import { __filename } from '@coffeekraken/sugar/fs.js';
  * __filename('hello/world.js'); // => world.js
  *
  * @since         2.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __filename(path, withExtension = true) {
-    let filename = path.split('/').pop();
+    var _a;
+    let filename = (_a = path.split('/').pop()) !== null && _a !== void 0 ? _a : '';
     if (!withExtension) {
         filename = filename.replace(`.${__extension(filename)}`, '');
     }

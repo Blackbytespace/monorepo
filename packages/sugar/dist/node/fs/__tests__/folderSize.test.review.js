@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __folderSize from '../folderSize';
+import __folderSize from '../folderSize.js';
 describe('sugar.node.fs.folderSize', () => {
     it('Should get a folder size correctly', () => __awaiter(void 0, void 0, void 0, function* () {
         const size = yield __folderSize(`${__dirname}/data/hashfolder`);

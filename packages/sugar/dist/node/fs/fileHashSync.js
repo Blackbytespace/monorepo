@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 import __crypto from 'crypto';
 import * as __fs from 'fs';
-import __deepMerge from '../../shared/object/deepMerge';
+import __deepMerge from '../../shared/object/deepMerge.js';
 export default function __fileHashSync(filePath, settings = {}) {
     var _a;
     settings = __deepMerge({

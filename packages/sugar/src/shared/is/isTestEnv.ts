@@ -15,7 +15,7 @@
  * @snippet         __isTestEnv()
  *
  * @example       js
- * import { __isTestEnv } from '@coffeekraken/sugar/is';
+ * import { __isTestEnv } from '@coffeekraken/sugar/is.js';
  * __isTestEnv(); // => true
  *
  * @since     2.0.0

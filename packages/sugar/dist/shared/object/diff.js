@@ -1,5 +1,5 @@
 import __isEqual from 'is-equal';
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 export default function __diff(object1, object2, settings = {}) {
     settings = Object.assign({ deep: true, added: true, deleted: false, equals: false, emptyObject: false, updated: true }, settings);
     const finalObj = {};

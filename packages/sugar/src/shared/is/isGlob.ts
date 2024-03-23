@@ -18,7 +18,7 @@ import __isGlob from 'is-glob';
  * @snippet         __isGlob($1)
  *
  * @example               js
- * import { __isGlob } from '@coffeekraken/sugar/is';
+ * import { __isGlob } from '@coffeekraken/sugar/is.js';
  * __isGlob('something/*.js); // => true
  *
  * @see       https://www.npmjs.com/package/is-glob

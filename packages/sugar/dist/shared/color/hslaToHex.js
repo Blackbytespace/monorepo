@@ -1,4 +1,5 @@
-import __parseHsla from './parseHsla';
+// @ts-nocheck
+import __parseHsla from './parseHsla.js';
 /**
  * @name                hslaToHex
  * @namespace           shared.color
@@ -20,7 +21,7 @@ import __parseHsla from './parseHsla';
  * @snippet         __hslaToHex($1)
  *
  * @example         js
- * import { __hslaToHex } from '@coffeekraken/sugar/color';
+ * import { __hslaToHex } from '@coffeekraken/sugar/color.js';
  * __hslaToHex(10,20,30);
  *
  * @see         https://www.npmjs.com/package/colors-convert

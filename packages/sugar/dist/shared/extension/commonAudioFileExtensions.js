@@ -14,7 +14,7 @@
  * @snippet         __commonAudioFileExtensions()
  *
  * @example         js
- * import { __commonAudioFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonAudioFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonAudioFileExtensions();
  *
  * @since       2.0.0

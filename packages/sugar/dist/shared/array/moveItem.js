@@ -16,7 +16,7 @@
  * @snippet         __moveItem($1, $2, $3)
  *
  * @example    js
- * import { __moveItem } from '@coffeekraken/sugar/array';
+ * import { __moveItem } from '@coffeekraken/sugar/array.js';
  * const myArray = ['hello','world','something'];
  * __moveItem(myArray, 0, 1); // ['world','hello','something']
  *

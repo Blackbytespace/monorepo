@@ -16,7 +16,7 @@
  * @snippet         __formatDuration($1)
  *
  * @example       js
- * import { __formatDuration } from '@coffeekraken/sugar/datetime';
+ * import { __formatDuration } from '@coffeekraken/sugar/datetime.js';
  * __formatDuration(2000); // => 2s
  *
  * @since       2.0.0
@@ -30,28 +30,16 @@ export default function __formatDuration(duration: number): string {
     return `${duration}ms`;
   }
   if (duration < 1000 * 60) {
-    const s = (duration / 1000).toFixed(0);
-    const ms = (duration - s * 1000).toFixed(0);
-
-    if (ms <= 0) return `${s}s`;
-    return `${s}.${ms}s`;
-
-    // if (s > 10) {
-    //     return `${s}s`;
-    // } else {
-    //     return `${s}s${ms > 0 ? `${ms}ms` : ''}`;
-    // }
+    const s = duration / 1000;
+    return `${s.toFixed(2)}s`;
   }
   if (duration < 1000 * 60 * 60) {
     const m = Math.floor(duration / 1000 / 60);
-    const s = ((duration - m * 1000 * 60) / 1000).toFixed(0);
-
+    const s = Math.round((duration - m * 1000 * 60) / 1000);
     return `${m}m${s > 0 ? `${s}s` : ''}`;
   }
-  // if (duration < 1000 * 60 * 60 * 60) {
-  const h = Math.floor(duration / 1000 / 60 / 60);
-  const m = ((duration - h * 1000 * 60 * 60) / 1000 / 60).toFixed(0);
 
+  const h = Math.floor(duration / 1000 / 60 / 60);
+  const m = Math.floor((duration - h * 1000 * 60 * 60) / 1000 / 60);
   return `${h}h${m > 0 ? `${m}m` : ''}`;
-  // }
 }

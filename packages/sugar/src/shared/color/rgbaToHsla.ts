@@ -1,4 +1,4 @@
-import __parseRgba from './parseRgba';
+import __parseRgba from './parseRgba.js';
 
 /**
  * @name                    rgba2hsla
@@ -21,7 +21,7 @@ import __parseRgba from './parseRgba';
  * @snippet         __rgbaToHsla($1)
  *
  * @example         js
- * import { __rgbaToHsla } from '@coffeekraken/sugar/color';
+ * import { __rgbaToHsla } from '@coffeekraken/sugar/color.js';
  * __rgbaToHsla(10,20,50,10);
  *
  * @see         https://www.npmjs.com/package/colors-convert

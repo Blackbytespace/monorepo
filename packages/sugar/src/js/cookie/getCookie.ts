@@ -15,7 +15,7 @@
  * @todo            tests
  *
  * @example         js
- * import { __getCookie } from '@lotsof/sugar/cookie';
+ * import { __getCookie } from '@lotsof/sugar/cookie.js';
  * __getCookie('myCookie');
  *
  * @since       2.0.0

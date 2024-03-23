@@ -1,12 +1,12 @@
 import { decycle } from 'json-cyclic';
-import __mapToObj from '../convert/mapToObject';
-import __isArray from '../is/isArray';
-import __isBoolean from '../is/isBoolean';
-import __isFunction from '../is/isFunction';
-import __isJson from '../is/isJson';
-import __isMap from '../is/isMap';
-import __isObject from '../is/isObject';
-import __deepMap from '../object/deepMap';
+import __mapToObj from '../convert/mapToObject.js';
+import __isArray from '../is/isArray.js';
+import __isBoolean from '../is/isBoolean.js';
+import __isFunction from '../is/isFunction.js';
+import __isJson from '../is/isJson.js';
+import __isMap from '../is/isMap.js';
+import __isObject from '../is/isObject.js';
+import __deepMap from '../object/deepMap.js';
 function fn(value, settings = {}) {
     settings = Object.assign({ beautify: true, verbose: true }, settings);
     // string
@@ -14,10 +14,10 @@ function fn(value, settings = {}) {
         return value;
     // null
     if (value === null)
-        return null;
+        return 'null';
     // undefined
     if (value === undefined)
-        return undefined;
+        return 'undefined';
     // error
     if (value instanceof Error) {
         const errorStr = value.toString();

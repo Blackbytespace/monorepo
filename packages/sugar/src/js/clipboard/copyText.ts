@@ -16,7 +16,7 @@
  * @snippet         __copy($1)
  *
  * @example         js
- * import { __copy } from '@lotsof/sugar/clipboard';
+ * import { __copy } from '@lotsof/sugar/clipboard.js';
  * __copy('Hello world');
  *
  * @see             https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.

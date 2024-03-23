@@ -21,7 +21,7 @@
  * })
  *
  * @example 		js
- * import { __debounce } from '@coffeekraken/sugar/function';
+ * import { __debounce } from '@coffeekraken/sugar/function.js';
  * const myDebouncedFn = __debounce(1000, () => {
  * 		// my function content that will be
  * 		// executed only once after the 1 second delay
@@ -36,8 +36,9 @@
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __debounce(delay, fn) {
-    let timer = null;
+    let timer;
     return function () {
+        // @ts-ignore
         const context = this, args = arguments;
         clearTimeout(timer);
         timer = setTimeout(function () {

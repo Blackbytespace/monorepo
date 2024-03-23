@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 export default function __deepClean(objectOrArray, settings) {
     settings = Object.assign({ array: true, clone: false, cleaner(value) {
             if (value === undefined || value === null || value === '') {
@@ -13,7 +13,7 @@ export default function __deepClean(objectOrArray, settings) {
     if (settings.clone) {
         workingObj = Array.isArray(objectOrArray)
             ? [...objectOrArray]
-            : any.assign({}, objectOrArray);
+            : Object.assign({}, objectOrArray);
     }
     else {
         workingObj = objectOrArray;

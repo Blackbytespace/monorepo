@@ -1,5 +1,5 @@
-import __easeOutQuad from '../easing/easeOutQuad';
-import __clamp from './clamp';
+import __easeOutQuad from '../easing/easeOutQuad.js';
+import __clamp from './clamp.js';
 
 /**
  * @name                easeClamp
@@ -19,7 +19,7 @@ import __clamp from './clamp';
  * @todo      tests
  *
  * @example       js
- * import { __easeClamp } from '@coffeekraken/sugar/math';
+ * import { __easeClamp } from '@coffeekraken/sugar/math.js';
  * __easeClamp(-20, -10, 0, 100, 110); // => -10
  *
  * @since     2.0.0

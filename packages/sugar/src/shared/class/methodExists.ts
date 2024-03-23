@@ -20,7 +20,7 @@
  * class Coco {
  *    hello() {}
  * }
- * import { __methodExists } from '@coffeekraken/sugar/class';
+ * import { __methodExists } from '@coffeekraken/sugar/class.js';
  * const myInstance = new Coco();
  * __methodExists(myInstance, 'hello', 'world'); // => ['world'];
  * __methodExists(myInstance, 'hello'); // => true
@@ -32,7 +32,7 @@ export default function __methodExists(
   instance: any,
   ...methods
 ): boolean | string[] {
-  const missingMethodsArray = [];
+  const missingMethodsArray: string[] = [];
   if (!Array.isArray(methods)) methods = [methods];
   methods.forEach((method) => {
     if (typeof instance[method] !== 'function')

@@ -18,7 +18,7 @@ import __path from 'path';
  * @todo        tests
  *
  * @example             js
- * import { __dirname } from '@coffeekraken/sugar/fs';
+ * import { __dirname } from '@coffeekraken/sugar/fs.js';
  * __dirname();
  *
  * @since           2.0.0

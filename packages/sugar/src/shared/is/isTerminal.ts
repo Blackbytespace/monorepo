@@ -13,7 +13,7 @@
  * @snippet         __isTerminal($1)
  *
  * @example         js
- * import { __isTerminal } from '@coffeekraken/sugar/is';
+ * import { __isTerminal } from '@coffeekraken/sugar/is.js';
  * __isTerminal(); // => true
  *
  * @since       2.0.0

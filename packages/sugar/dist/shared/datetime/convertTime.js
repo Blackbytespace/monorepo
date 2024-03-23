@@ -17,14 +17,14 @@
  * @snippet         __convertTime($1, $2)
  *
  * @example           js
- * import { __convertTime } from '@coffeekraken/sugar/datetime';
+ * import { __convertTime } from '@coffeekraken/sugar/datetime.js';
  * __convertTime('10s', 'ms'); // => 10000
  *
  * @since       2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __convertTime(from, to = 'ms') {
-    // init the fromMs variable
+    // @ts-ignore
     let fromMs = from;
     // check if the time is a string to convert it to ms
     if (typeof from === 'string') {

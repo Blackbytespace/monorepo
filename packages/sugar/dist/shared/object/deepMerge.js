@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 export default function __deepMerge(...args) {
     var _a;
     let settings = {}, hasSettings = false;
@@ -18,7 +18,7 @@ export default function __deepMerge(...args) {
         const firstProps = Object.getOwnPropertyNames(firstObj);
         firstProps.forEach((key) => {
             const desc = Object.getOwnPropertyDescriptor(firstObj, key);
-            if (desc.set || desc.get) {
+            if ((desc === null || desc === void 0 ? void 0 : desc.set) || (desc === null || desc === void 0 ? void 0 : desc.get)) {
                 Object.defineProperty(newObj, key, desc);
             }
             else {
@@ -28,7 +28,7 @@ export default function __deepMerge(...args) {
         const secondProps = Object.getOwnPropertyNames(secondObj);
         secondProps.forEach((key) => {
             const secondObjDesc = Object.getOwnPropertyDescriptor(secondObj, key);
-            if (secondObjDesc.set || secondObjDesc.get) {
+            if ((secondObjDesc === null || secondObjDesc === void 0 ? void 0 : secondObjDesc.set) || (secondObjDesc === null || secondObjDesc === void 0 ? void 0 : secondObjDesc.get)) {
                 Object.defineProperty(newObj, key, secondObjDesc);
             }
             else if (finalSettings.array &&

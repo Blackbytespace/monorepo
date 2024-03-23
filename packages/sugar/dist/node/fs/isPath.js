@@ -19,7 +19,7 @@ import __isValidPath from 'is-valid-path';
  * @snippet         __isPath($1)
  *
  * @example       js
- * import { __isPath } from '@coffeekraken/sugar/fs';
+ * import { __isPath } from '@coffeekraken/sugar/fs.js';
  * __isPath('hello/world'); // => true
  *
  * @see         https://www.npmjs.com/package/is-valid-path

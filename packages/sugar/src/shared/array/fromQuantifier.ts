@@ -59,7 +59,7 @@ export default function __fromQuantifier(
   }
 
   const actionMatch = quantifier.match(/^((>|<)?\=?)/);
-  if (actionMatch[0]) {
+  if (actionMatch?.[0]) {
     // @ts-ignore
     action = actionMatch[0];
   }

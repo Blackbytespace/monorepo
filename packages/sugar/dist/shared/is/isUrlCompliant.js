@@ -1,4 +1,4 @@
-import __urlCompliant from '../string/urlCompliant';
+import __urlCompliant from '../string/urlCompliant.js';
 /**
  * @name            isUrlCompliant
  * @namespace       shared.string
@@ -18,7 +18,7 @@ import __urlCompliant from '../string/urlCompliant';
  * @snippet         __isUrlCompliant($1)
  *
  * @example         php
- * import { __isUrlCompliant } from '@coffeekraken/sugar/string';
+ * import { __isUrlCompliant } from '@coffeekraken/sugar/string.js';
  * __isUrlCompliant('Hello world'); // false
  * __isUrlCompliant('/something/cool'); // true
  *

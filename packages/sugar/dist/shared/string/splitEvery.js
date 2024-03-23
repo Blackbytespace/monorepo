@@ -1,4 +1,4 @@
-import __countLineChars from './countLineChars';
+import __countLineChars from './countLineChars.js';
 export default function __splitEvery(text, every, settings = {}) {
     const finalSettings = Object.assign({ splitWords: true }, settings);
     if (finalSettings.splitWords) {
@@ -22,7 +22,7 @@ export default function __splitEvery(text, every, settings = {}) {
         });
         let finalLines = [''];
         let lineCount = 0;
-        let lastOpenedTag = null;
+        let lastOpenedTag = '';
         finalChunks.forEach((item) => {
             if (!item)
                 return;
@@ -42,7 +42,7 @@ export default function __splitEvery(text, every, settings = {}) {
                 const rest = lastOpenedTag + item.replace(toAdd, '');
                 // if (toAdd.slice(-1) !== ' ' && rest.slice(0, 1) !== ' ')
                 //   finalLines[finalLines.length - 1] += '-';
-                const restLines = splitEvery(rest, every);
+                const restLines = __splitEvery(rest, every);
                 finalLines = [...finalLines, ...restLines];
                 lineCount = __countLineChars(finalLines[finalLines.length - 1]);
             }

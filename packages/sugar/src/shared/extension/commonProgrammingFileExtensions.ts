@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name            commonProgrammingFileExtensions
@@ -16,7 +16,7 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions';
  * @snippet         __commonProgrammingFileExtensions()
  *
  * @example         js
- * import { __commonProgrammingFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonProgrammingFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonProgrammingFileExtensions();
  *
  * @since       2.0.0

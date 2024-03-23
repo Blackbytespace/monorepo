@@ -1,4 +1,4 @@
-import __sameItems from './sameItems';
+import __sameItems from './sameItems.js';
 /**
  * @name            intersection
  * @namespace       shared.array
@@ -21,7 +21,7 @@ import __sameItems from './sameItems';
  * @snippet         __intersection($1, $2)
  *
  * @example         js
- * import { __intersection } from '@coffeekraken/sugar/array';
+ * import { __intersection } from '@coffeekraken/sugar/array.js';
  * __intersection([1,2,3,4], [1,3,5]); // => [1,3]
  *
  * @since           2.0.0

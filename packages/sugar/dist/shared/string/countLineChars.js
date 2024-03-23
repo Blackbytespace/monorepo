@@ -1,5 +1,5 @@
 import __stripAnsi from 'strip-ansi';
-import __deepMerge from '../object/deepMerge';
+import __deepMerge from '../object/deepMerge.js';
 export default function __countLineChars(line, count = {}) {
     count = __deepMerge({
         htmlTags: false,

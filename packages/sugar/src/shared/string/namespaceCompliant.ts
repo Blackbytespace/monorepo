@@ -1,4 +1,4 @@
-import __simplifySpecialChars from './simplifySpecialChars';
+import __simplifySpecialChars from './simplifySpecialChars.js';
 
 /**
  * @name                namespaceCompliant
@@ -19,7 +19,7 @@ import __simplifySpecialChars from './simplifySpecialChars';
  * @todo     tests
  *
  * @example         php
- * import { __namespaceCompliant } from '@coffeekraken/sugar/string';
+ * import { __namespaceCompliant } from '@coffeekraken/sugar/string.js';
  * __namespaceCompliant('Hello world'); // => hello-world
  *
  * @since       2.0.0

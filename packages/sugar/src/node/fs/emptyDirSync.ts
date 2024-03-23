@@ -16,7 +16,7 @@ import __fs from 'fs-extra';
  * @snippet         __emptyDirSync($1)
  *
  * @example       js
- * import { __emptyDirSync } from '@coffeekraken/sugar/fs';
+ * import { __emptyDirSync } from '@coffeekraken/sugar/fs.js';
  * __emptyDirSync('my/cool/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra

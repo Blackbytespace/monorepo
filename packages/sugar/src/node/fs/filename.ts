@@ -1,4 +1,4 @@
-import __extension from '../fs/extension';
+import __extension from '../fs/extension.js';
 
 /**
  * @name                 filename
@@ -18,7 +18,7 @@ import __extension from '../fs/extension';
  * @snippet         __filename($1)
  *
  * @example       js
- * import { __filename } from '@coffeekraken/sugar/fs';
+ * import { __filename } from '@coffeekraken/sugar/fs.js';
  * __filename('hello/world.js'); // => world.js
  *
  * @since         2.0.0
@@ -28,7 +28,7 @@ export default function __filename(
   path: string,
   withExtension: boolean = true,
 ): string {
-  let filename = path.split('/').pop();
+  let filename = path.split('/').pop() ?? '';
   if (!withExtension) {
     filename = filename.replace(`.${__extension(filename)}`, '');
   }

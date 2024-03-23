@@ -1,7 +1,7 @@
 import __fs from 'fs-extra';
-import __toString from '../../shared/string/toString';
-import __ensureDirSync from '../fs/ensureDirSync';
-import __folderPath from './folderPath';
+import __toString from '../../shared/string/toString.js';
+import __ensureDirSync from '../fs/ensureDirSync.js';
+import __folderPath from './folderPath.js';
 
 /**
  * @name            writeFile
@@ -24,7 +24,7 @@ import __folderPath from './folderPath';
  * await __writeFile($1, $2)
  *
  * @example       js
- * import { __writeFile } from '@coffeekraken/sugar/fs';
+ * import { __writeFile } from '@coffeekraken/sugar/fs.js';
  * __writeFile('my/cool/file.txt', 'Hello World').then(() => {
  *    // do something on complete...
  * });

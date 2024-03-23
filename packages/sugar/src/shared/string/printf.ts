@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import __sprintf from 'sprintf-js';
+import __sprintf from 'sprintf-js.js';
 
 /**
  * @name                printf
@@ -21,7 +21,7 @@ import __sprintf from 'sprintf-js';
  * @snippet         __printf($1)
  *
  * @example     js
- * import { __printf } from '@coffeekraken/sugar/string';
+ * import { __printf } from '@coffeekraken/sugar/string.js';
  * __printf('Hello %s', 'world'); // => Hello world
  * __printf('Hello %s, I\'m %s', 'world', 'John Doe'); // Hello world, I'm John Doe
  * __printf('Hello %(first)s, I\'m %(name)s', { first : 'world', name : 'John Doe'}); // Hello world, I'm John Doe

@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 function processObj(object, filter, settings) {
     const newObj = {}, keys = Object.keys(object);
     // loop on the object keys
@@ -41,6 +41,6 @@ function processObj(object, filter, settings) {
 }
 export default function __deepFilter(object, filter, settings) {
     settings = Object.assign({ clone: true }, (settings !== null && settings !== void 0 ? settings : {}));
-    return processObj(settings.clone ? Object.assign({}, object) : any, filter, settings);
+    return processObj(settings.clone ? Object.assign({}, object) : object, filter, settings);
 }
 //# sourceMappingURL=deepFilter.js.map

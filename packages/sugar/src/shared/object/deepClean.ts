@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                deepClean
@@ -26,7 +26,7 @@ import __isPlainObject from '../is/isPlainObject';
  * __deepClean($1);
  *
  * @example       js
- * import { __deepClean } from '@coffeekraken/sugar/object';
+ * import { __deepClean } from '@coffeekraken/sugar/object.js';
  * __deepClean({
  *    hello: 'world',
  *    something: null
@@ -39,6 +39,7 @@ import __isPlainObject from '../is/isPlainObject';
 export interface IDeepCleanSettings {
   array?: boolean;
   clone?: boolean;
+  cleaner(value: any): boolean;
 }
 
 export default function __deepClean(
@@ -64,7 +65,7 @@ export default function __deepClean(
   if (settings.clone) {
     workingObj = Array.isArray(objectOrArray)
       ? [...objectOrArray]
-      : any.assign({}, objectOrArray);
+      : Object.assign({}, objectOrArray);
   } else {
     workingObj = objectOrArray;
   }

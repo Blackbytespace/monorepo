@@ -1,9 +1,9 @@
 // @ts-ignore
-import __atob from 'atob';
+import __atob from 'atob.js';
 // @ts-ignore
-import __btoa from 'btoa';
-import parse from '../string/parse';
-import toString from '../string/toString';
+import __btoa from 'btoa.js';
+import parse from '../string/parse.js';
+import toString from '../string/toString.js';
 
 /**
  * @name            base64
@@ -18,7 +18,7 @@ import toString from '../string/toString';
  * @snippet         __base64.encrypt($1)
  *
  * @example         js
- * import { __base64 } from '@coffeekraken/sugar/crypto';
+ * import { __base64 } from '@coffeekraken/sugar/crypto.js';
  * __base64.encrypt('hello world');
  *
  * @todo        interface

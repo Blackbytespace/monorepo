@@ -1,4 +1,4 @@
-import __filesize from 'filesize';
+import { filesize as __filesize } from 'filesize';
 
 /**
  * @name                formatFileSize
@@ -32,7 +32,7 @@ import __filesize from 'filesize';
  * @todo     tests
  *
  * @example             js
- * import { __formatFilesize } from '@coffeekraken/sugar/fs';
+ * import { __formatFilesize } from '@coffeekraken/sugar/fs.js';
  * __formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize
@@ -54,6 +54,10 @@ interface IFormatFileSizeSettings {
   spacer?: string;
 }
 
-export default function __formatFileSize(size: number | string, settings = {}) {
+export default function __formatFileSize(
+  size: number,
+  settings: IFormatFileSizeSettings = {},
+) {
+  // @ts-ignore
   return __filesize(size, settings);
 }

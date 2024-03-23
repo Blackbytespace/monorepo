@@ -14,7 +14,7 @@
  * @snippet         __mapToObject($1)
  *
  * @example       js
- * import { __mapToObject } from '@lotsof/sugar/convert';
+ * import { __mapToObject } from '@lotsof/sugar/convert.js';
  * const myMap = new Map();
  * myMap.set('hello', 'world');
  * __mapToObject(myMap);

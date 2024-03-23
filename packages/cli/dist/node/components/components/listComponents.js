@@ -1,4 +1,4 @@
-import { __packageRootDir } from '@lotsof/sugar/fs';
+import { __packageRootDir } from '@lotsof/sugar/path';
 import { globSync as __globSync } from 'glob';
 export default function listComponents(args = {}) {
     // search for "lotsof.json" files

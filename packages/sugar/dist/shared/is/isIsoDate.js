@@ -18,7 +18,7 @@
  * @snippet         __isIsoDate($1)
  *
  * @example 	js
- * import { __isIsoDate } from '@coffeekraken/sugar/is';
+ * import { __isIsoDate } from '@coffeekraken/sugar/is.js';
  * __isIsoDate('john.doe@gmail.com') => false
  * __isIsoDate('plop@yop.com') => false
  * __isIsoDate('hello') => false

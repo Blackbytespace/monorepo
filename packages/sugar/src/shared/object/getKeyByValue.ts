@@ -17,7 +17,7 @@
  * @snippet         __getKeyByValue($1, $2)
  *
  * @example       js
- * import { __getKeyByValue } from '@coffeekraken/sugar/object';
+ * import { __getKeyByValue } from '@coffeekraken/sugar/object.js';
  * __getKeyByValue({ hello: 'world' }, 'world'); // => hello
  *
  * @since     2.0.0

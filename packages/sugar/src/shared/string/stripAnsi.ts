@@ -18,7 +18,7 @@ import __stripAnsi from 'strip-ansi';
  * @todo    tests
  *
  * @example     js
- * import { __stripAnsi } from '@coffeekraken/sugar/string';
+ * import { __stripAnsi } from '@coffeekraken/sugar/string.js';
  * __stripAnsi('\u001B]8;;https://github.com\u0007Click\u001B]8;;\u0007'); // => Click
  *
  * @see         https://www.npmjs.com/package/strip-ansi

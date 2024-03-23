@@ -1,5 +1,5 @@
-import __deepMap from './deepMap';
-import __set from './set';
+import __deepMap from './deepMap.js';
+import __set from './set.js';
 /**
  * @name                    toJson
  * @namespace               shared.object
@@ -16,7 +16,7 @@ import __set from './set';
  * @snippet         __toJson($1)
  *
  * @example         js
- * import { __toJson } from '@coffeekraken/sugar/object';
+ * import { __toJson } from '@coffeekraken/sugar/object.js';
  * class MyClass {
  *      hello = 'world';
  *      something() {}

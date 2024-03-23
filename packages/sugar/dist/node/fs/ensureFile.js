@@ -18,7 +18,7 @@ import __fs from 'fs-extra';
  * await __ensureFile($1)
  *
  * @example       js
- * import { __ensureFile } from '@coffeekraken/sugar/fs';
+ * import { __ensureFile } from '@coffeekraken/sugar/fs.js';
  * await __ensureFile('my/cool/file.jpg').then(() => {
  *    // do something...
  * });

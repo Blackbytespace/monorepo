@@ -1,4 +1,4 @@
-import __isPlain from '../is/isPlainObject';
+import __isPlain from '../is/isPlainObject.js';
 
 /**
  * @name                        flatten
@@ -25,7 +25,7 @@ import __isPlain from '../is/isPlainObject';
  * @snippet         __flatten($1)
  *
  * @example             js
- * import { __flatten } from '@coffeekraken/sugar/object';
+ * import { __flatten } from '@coffeekraken/sugar/object.js';
  * __flatten({
  *    hello: {
  *      world: 'Coco'
@@ -72,7 +72,7 @@ export default function __flatten(
       continue;
     }
 
-    if (settings.excludeProps.indexOf(key) !== -1) {
+    if (settings.excludeProps?.indexOf(key) !== -1) {
       toReturn[key] = object[key];
       continue;
     }
@@ -96,6 +96,7 @@ export default function __flatten(
         } else {
           const part = key;
           if (
+            settings.separator &&
             settings.quoteSeparatedProperties &&
             part.includes(settings.separator)
           ) {

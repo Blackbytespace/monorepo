@@ -1,4 +1,4 @@
-import __unique from './unique';
+import __unique from './unique.js';
 
 /**
  * @name                keysLast
@@ -30,7 +30,7 @@ export default function __keysLast(array: any[], keys: any[]): any[] {
     return array.indexOf(key) !== -1;
   });
   // add the keys at start
-  let res = [].concat(array).concat(keys);
+  let res: any[] = (<any>[]).concat(array).concat(keys);
   // reverse the array
   res = res.reverse();
   // remove double items

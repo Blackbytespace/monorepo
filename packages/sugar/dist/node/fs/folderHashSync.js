@@ -1,8 +1,8 @@
-import __deepMerge from '../../shared/object/deepMerge';
-import __isDirectory from '../is/isDirectory';
-import __fileHashSync from './fileHashSync';
+import __deepMerge from '../../shared/object/deepMerge.js';
+import __isDirectory from '../is/isDirectory.js';
+import __fileHashSync from './fileHashSync.js';
 import * as __fs from 'fs';
-import __sha256 from '../crypto/sha256';
+import __sha256 from '../crypto/sha256.js';
 export default function __folderHashSync(folderPath, settings = {}) {
     settings = __deepMerge({
         recursive: true,

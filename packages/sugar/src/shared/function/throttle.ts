@@ -21,7 +21,7 @@
  * })
  *
  * @example 		js
- * import { __throttle } from '@coffeekraken/sugar/function';
+ * import { __throttle } from '@coffeekraken/sugar/function.js';
  * const myThrottledFn = __throttle(1000, () => {
  * 		// my function content that will be
  * 		// executed only once each second
@@ -39,8 +39,9 @@ export default function __throttle(threshhold: number, fn: Function): Function {
   threshhold || (threshhold = 250);
   let last;
   return function () {
+    // @ts-ignore
     const context = this;
-    const now = new Date(),
+    const now = Date.now(),
       args = arguments;
     if (!last || last <= now - threshhold) {
       last = now;

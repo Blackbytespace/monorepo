@@ -1,6 +1,6 @@
 import * as __fs from 'fs';
 import { globSync as __globSync } from 'glob';
-import __isGlob from '../../shared/is/isGlob';
+import __isGlob from '../../shared/is/isGlob.js';
 
 /**
  * @name            findUp
@@ -23,7 +23,7 @@ import __isGlob from '../../shared/is/isGlob';
  * await __findUp($1)
  *
  * @example         js
- * import { __findUp } from '@coffeekraken/sugar/fs';
+ * import { __findUp } from '@coffeekraken/sugar/fs.js';
  * const file = await __findUp('myCoolFile.json', {});
  * console.log(file.path);
  *
@@ -50,8 +50,9 @@ export default function __findUp(
 
   return new Promise(async (resolve) => {
     const cwd = settings.cwd;
+    // @ts-ignore
     let currentPath = cwd.split('/').filter((p) => p.trim() !== '');
-    let foundedFiles = [];
+    let foundedFiles: string[] = [];
 
     while (currentPath.length > 0) {
       const path = `/${currentPath.join('/')}`;

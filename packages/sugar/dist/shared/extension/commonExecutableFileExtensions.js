@@ -14,7 +14,7 @@
  * @snippet         __commonExecutableFileExtensions()
  *
  * @example         js
- * import { __commonExecutableFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonExecutableFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonExecutableFileExtensions();
  *
  * @since       2.0.0

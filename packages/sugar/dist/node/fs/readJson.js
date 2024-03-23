@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as __fs from 'fs';
-import __readJsonSync from './readJsonSync';
+import __readJsonSync from './readJsonSync.js';
 /**
  * @name            readJson
  * @namespace       node.fs
@@ -26,7 +26,7 @@ import __readJsonSync from './readJsonSync';
  * await __readJson($1)
  *
  * @example         js
- * import { __readJson } from '@coffeekraken/sugar/fs';
+ * import { __readJson } from '@coffeekraken/sugar/fs.js';
  * await __readJson('my-cool-json/file.json');
  *
  * @since       2.0.0

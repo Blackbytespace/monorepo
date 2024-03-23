@@ -1,4 +1,4 @@
-import __simplifySpecialChars from './simplifySpecialChars';
+import __simplifySpecialChars from './simplifySpecialChars.js';
 
 /**
  * @name            urlCompliant
@@ -20,7 +20,7 @@ import __simplifySpecialChars from './simplifySpecialChars';
  * @todo        tests
  *
  * @example         php
- * import { __urlCompliant } from '@coffeekraken/sugar/string';
+ * import { __urlCompliant } from '@coffeekraken/sugar/string.js';
  * __urlCompliant('Hello world'); // => hello-world
  *
  * @since       2.0.0

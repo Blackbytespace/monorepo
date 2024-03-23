@@ -15,7 +15,7 @@
  * @snippet         __isOsx()
  *
  * @example       js
- * import { __isOsx } from '@coffeekraken/sugar/is';
+ * import { __isOsx } from '@coffeekraken/sugar/is.js';
  * __isOsx(); // => true
  *
  * @since           2.0.0

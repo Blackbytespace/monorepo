@@ -17,7 +17,7 @@
  * @snippet         __parseAuthorString($1)
  *
  * @example       js
- * import { __parseAuthorString } from '@coffeekraken/sugar/package';
+ * import { __parseAuthorString } from '@coffeekraken/sugar/package.js';
  *  __parseAuthorString("Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)")
  * // => {
  *   "name": "Olivier Bossel",
@@ -39,9 +39,10 @@ export default function __parseAuthorString(
 ): IParseAuthorStringResult {
   const reg = /(.*)\s?<(.*)>\s?\((.*)\)/gm;
   const matches = reg.exec(string.trim());
-  const authorObj = {};
-  authorObj.name = matches?.[1]?.trim() ?? '';
-  authorObj.email = matches?.[2]?.trim() ?? '';
-  authorObj.url = matches?.[3]?.trim() ?? '';
+  const authorObj: IParseAuthorStringResult = {
+    name: matches?.[1]?.trim() ?? '',
+    email: matches?.[2]?.trim() ?? '',
+    url: matches?.[3]?.trim() ?? '',
+  };
   return authorObj;
 }

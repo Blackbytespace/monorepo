@@ -1,5 +1,5 @@
-import __unique from '../array/unique';
-import __unquote from '../string/unquote';
+import __unique from '../array/unique.js';
+import __unquote from '../string/unquote.js';
 /**
  * @name                get
  * @namespace           shared.object
@@ -21,7 +21,7 @@ import __unquote from '../string/unquote';
  * @snippet         __get($1, $2)
  *
  * @example             js
- * import { __get } from '@coffeekraken/sugar/object';
+ * import { __get } from '@coffeekraken/sugar/object.js';
  * __get(myObject, 'my.cool.value'); // => 'Hello world'
  *
  * @since     2.0.0

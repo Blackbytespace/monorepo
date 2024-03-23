@@ -1,4 +1,4 @@
-import __fileHashSync from '../fileHashSync';
+import __fileHashSync from '../fileHashSync.js';
 describe('sugar.node.fs.fileHash', () => {
     it('Should a simple file correctly', () => {
         const hash = __fileHashSync(`${__dirname}/data/3cb8876846e7c0e13896d23496ff7ac2.gif`);

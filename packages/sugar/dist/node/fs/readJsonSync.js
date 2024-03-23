@@ -16,7 +16,7 @@ import * as __fs from 'fs';
  * @snippet         __readJsonSync($1)
  *
  * @example         js
- * import { __readJsonSync } from '@coffeekraken/sugar/fs';
+ * import { __readJsonSync } from '@coffeekraken/sugar/fs.js';
  * __readJsonSync('my-cool-json/file.json');
  *
  * @since       2.0.0

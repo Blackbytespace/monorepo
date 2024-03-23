@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import __clipboardy from "clipboardy";
+import __clipboardy from 'clipboardy';
 
 /**
  * @name            readText
@@ -19,7 +19,7 @@ import __clipboardy from "clipboardy";
  * @snippet         __read()
  *
  * @example       js
- * import { __copy, __read } from '@lotsof/sugar/clipboard';
+ * import { __copy, __read } from '@lotsof/sugar/clipboard.js';
  * __copy('Hello world');
  * __read(); // => Hello world
  *
@@ -28,5 +28,5 @@ import __clipboardy from "clipboardy";
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __readText(): string {
-    return __clipboardy.readSync();
+  return __clipboardy.readSync();
 }

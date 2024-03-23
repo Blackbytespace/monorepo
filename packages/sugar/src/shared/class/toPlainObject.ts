@@ -16,7 +16,7 @@
  * @snippet         __toPlainObject($1)
  *
  * @example             js
- * import { __toPlainObject } from '@coffeekraken/sugar/class';
+ * import { __toPlainObject } from '@coffeekraken/sugar/class.js';
  * class Coco {
  *    constructor() {
  *      this.hello = 'world';

@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject';
-import __camelCase from '../string/camelCase';
+import __isPlainObject from '../is/isPlainObject.js';
+import __camelCase from '../string/camelCase.js';
 
 /**
  * @name                camelCaseProps
@@ -21,7 +21,7 @@ import __camelCase from '../string/camelCase';
  * @snippet         __camelCaseProps($1)
  *
  * @example         js
- * import { __camelCaseProps } from '@coffeekraken/sugar/object';
+ * import { __camelCaseProps } from '@coffeekraken/sugar/object.js';
  * __camelCaseProps({
  *    'hello-world': true
  * });

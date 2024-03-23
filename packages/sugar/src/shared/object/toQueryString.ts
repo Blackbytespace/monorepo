@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /**
  * @name                toQueryString
  * @namespace           shared.object

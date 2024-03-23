@@ -18,7 +18,7 @@
  * @snippet         __isCyclic($1)
  *
  * @example           js
- * import { __isCyclic } from '@coffeekraken/sugar/is';
+ * import { __isCyclic } from '@coffeekraken/sugar/is.js';
  * const obj = { hello: 'world' };
  * obj.cyclic = obj;
  * __isCyclic(obj);
@@ -28,8 +28,8 @@
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export default function __isCyclic(obj: any): boolean {
-  var keys = [];
-  var stack = [];
+  var keys: string[] = [];
+  var stack: any[] = [];
   var stackSet = new Set();
   var detected = false;
 

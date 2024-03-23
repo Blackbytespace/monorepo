@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __isCommandExists from '../isCommandExists';
+import __isCommandExists from '../isCommandExists.js';
 describe('sugar.node.command.isCommandExists', () => {
     it('Should get the "ls" basic system command correctly', () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield __isCommandExists('ls');

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import __clipboardy from "clipboardy";
+import __clipboardy from 'clipboardy';
 /**
  * @name            readText
  * @namespace            node.clipboard
@@ -17,7 +17,7 @@ import __clipboardy from "clipboardy";
  * @snippet         __read()
  *
  * @example       js
- * import { __copy, __read } from '@lotsof/sugar/clipboard';
+ * import { __copy, __read } from '@lotsof/sugar/clipboard.js';
  * __copy('Hello world');
  * __read(); // => Hello world
  *

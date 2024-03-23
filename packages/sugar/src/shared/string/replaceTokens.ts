@@ -1,5 +1,3 @@
-import __deepMerge from '../object/deepMerge';
-
 /**
  * @name                    replaceTokens
  * @namespace               js.string
@@ -31,15 +29,15 @@ import __deepMerge from '../object/deepMerge';
  * @todo      tests
  *
  * @example     js
- * import { __replaceTokens } from '@coffeekraken/sugar/string';
+ * import { __replaceTokens } from '@coffeekraken/sugar/string.js';
  * __replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
  *
  * @since     2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 interface IReplaceTokensSettings {
-  regexp: string;
-  stripUndefined: boolean;
+  regexp?: string;
+  stripUndefined?: boolean;
 }
 
 function replaceTokens(
@@ -47,17 +45,15 @@ function replaceTokens(
   argsObj: any,
   settings: IReplaceTokensSettings = {},
 ): string {
-  settings = __deepMerge(
-    {
-      regexp: '\\[([a-zA-Z0-9-_]+)\\]',
-      stripUndefined: true,
-    },
-    settings,
-  );
+  settings = {
+    regexp: '\\[([a-zA-Z0-9-_]+)\\]',
+    stripUndefined: true,
+    ...settings,
+  };
   let tokens;
-  const reg = new RegExp(settings.regexp, 'g');
+  const reg = new RegExp(settings.regexp ?? '\\[([a-zA-Z0-9-_]+)\\]', 'g');
   while ((tokens = reg.exec(string))) {
-    if (argsObj[tokens[1]] === undefined && !settings.stripUndefined) return;
+    if (argsObj[tokens[1]] === undefined && !settings.stripUndefined) return '';
     string = string.replace(tokens[0], argsObj[tokens[1]] || '');
   }
   return string;

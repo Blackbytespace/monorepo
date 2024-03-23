@@ -1,4 +1,4 @@
-import __countLineChars from './countLineChars';
+import __countLineChars from './countLineChars.js';
 
 /**
  * @name                        splitEvery
@@ -22,7 +22,7 @@ import __countLineChars from './countLineChars';
  * @snippet         __splitEvery($1, $2)
  *
  * @example           js
- * import { __splitEvery } from '@coffeekraken/sugar/string';
+ * import { __splitEvery } from '@coffeekraken/sugar/string.js';
  * __splitEvery('Hello World', 2, {
  *    splitWords: true
  * }); // => ['He','ll','o ','Wo','rl','d']
@@ -63,14 +63,14 @@ export default function __splitEvery(
       .map((item) => {
         return item.split(/(\s{1,99999999})/g);
       });
-    let finalChunks = [];
+    let finalChunks: string[] = [];
     chunks.forEach((chunk) => {
       finalChunks = [...finalChunks, ...chunk];
     });
 
     let finalLines = [''];
     let lineCount = 0;
-    let lastOpenedTag = null;
+    let lastOpenedTag = '';
 
     finalChunks.forEach((item) => {
       if (!item) return;
@@ -92,7 +92,7 @@ export default function __splitEvery(
         const rest = lastOpenedTag + item.replace(toAdd, '');
         // if (toAdd.slice(-1) !== ' ' && rest.slice(0, 1) !== ' ')
         //   finalLines[finalLines.length - 1] += '-';
-        const restLines = splitEvery(rest, every);
+        const restLines = __splitEvery(rest, every);
         finalLines = [...finalLines, ...restLines];
         lineCount = __countLineChars(finalLines[finalLines.length - 1]);
       } else {

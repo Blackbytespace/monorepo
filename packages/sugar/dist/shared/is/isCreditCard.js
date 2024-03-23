@@ -18,7 +18,7 @@
  * @snippet         __isCreditCard($1)
  *
  * @example 	js
- * import {__isCreditCard } from '@coffeekraken/sugar/is';
+ * import {__isCreditCard } from '@coffeekraken/sugar/is.js';
  * __isCreditCard('john.doe@gmail.com') => true
  * __isCreditCard('plop@yop.com') => true
  * __isCreditCard('hello') => false

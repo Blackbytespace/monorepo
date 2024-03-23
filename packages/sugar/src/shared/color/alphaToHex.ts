@@ -16,7 +16,7 @@
  * @snippet         __alphaToHex($1)
  *
  * @example         js
- * import { __alphaToHex } from '@coffeekraken/sugar/color';
+ * import { __alphaToHex } from '@coffeekraken/sugar/color.js';
  * __alphaToHex(1); // FF
  *
  * @since       2.0.0

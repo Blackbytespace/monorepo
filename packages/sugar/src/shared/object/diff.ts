@@ -1,5 +1,5 @@
 import __isEqual from 'is-equal';
-import __isPlainObject from '../is/isPlainObject';
+import __isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                    diff
@@ -28,7 +28,7 @@ import __isPlainObject from '../is/isPlainObject';
  * @snippet         __diff($1, $2)
  *
  * @example         js
- * import { __diff } from '@coffeekraken/sugar/object';
+ * import { __diff } from '@coffeekraken/sugar/object.js';
  * const myObject1 = {
  *    hello: 'world',
  *    plop: 'yop'

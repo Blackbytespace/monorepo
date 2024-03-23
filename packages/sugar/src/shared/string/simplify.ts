@@ -1,4 +1,4 @@
-import __deepMerge from '../object/deepMerge';
+import __deepMerge from '../object/deepMerge.js';
 
 /**
  * @name                simply
@@ -25,17 +25,17 @@ import __deepMerge from '../object/deepMerge';
  * @snippet         __simplify($1)
  *
  * @example       js
- * import { __simplify } from '@coffeekraken/sugar/string';
+ * import { __simplify } from '@coffeekraken/sugar/string.js';
  * __simplify('éàddö'); // => eaddo
  *
  * @since     2.0.0
  * @author    João Filipe Ventura Coelho <joaoventura93@outlook.com>
  */
 interface ISimplifySettings {
-  specialChars: boolean;
-  lowerCase: boolean;
-  dashSpace: boolean;
-  trim: boolean;
+  specialChars?: boolean;
+  lowerCase?: boolean;
+  dashSpace?: boolean;
+  trim?: boolean;
 }
 
 export default function __simplify(

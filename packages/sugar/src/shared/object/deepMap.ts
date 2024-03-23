@@ -1,7 +1,7 @@
-import __isClassInstance from '../is/isClassInstance';
-import __isPlainObject from '../is/isPlainObject';
-import __deepMerge from '../object/deepMerge';
-import __clone from './clone';
+import __isClassInstance from '../is/isClassInstance.js';
+import __isPlainObject from '../is/isPlainObject.js';
+import __deepMerge from '../object/deepMerge.js';
+import __clone from './clone.js';
 
 /**
  * @name                deepMap
@@ -30,7 +30,7 @@ import __clone from './clone';
  * })
  *
  * @example       js
- * import { __deepMap } from '@coffeekraken/sugar/object';
+ * import { __deepMap } from '@coffeekraken/sugar/object.js';
  * __deepMap({
  *    hello: 'world'
  * }, ({object, prop, value, path}) => {
@@ -51,7 +51,7 @@ export interface IDeepMapSettings {
 export default function __deepMap(
   objectOrArray: any,
   processor?: Function,
-  settings?: IDeepCleanSettings,
+  settings?: IDeepMapSettings,
   _path = [],
 ): any {
   settings = __deepMerge(
@@ -68,17 +68,17 @@ export default function __deepMap(
 
   let newObject = isArray
     ? []
-    : settings.clone
+    : settings?.clone
     ? __clone(objectOrArray, { deep: true })
-    : anyOrArray;
+    : objectOrArray;
 
   Object.keys(objectOrArray).forEach((prop) => {
-    if (!settings.privateProps && prop.match(/^_/)) return;
+    if (!settings?.privateProps && prop.match(/^_/)) return;
 
     if (
       __isPlainObject(objectOrArray[prop]) ||
-      (__isClassInstance(objectOrArray[prop]) && settings.classInstances) ||
-      (Array.isArray(objectOrArray[prop]) && settings.array)
+      (__isClassInstance(objectOrArray[prop]) && settings?.classInstances) ||
+      (Array.isArray(objectOrArray[prop]) && settings?.array)
     ) {
       const res = __deepMap(
         objectOrArray[prop],
@@ -87,6 +87,7 @@ export default function __deepMap(
           ...settings,
           clone: false,
         },
+        // @ts-ignore
         [..._path, prop],
       );
 
@@ -105,10 +106,10 @@ export default function __deepMap(
       return;
     }
 
-    const res = processor({
-      object: anyOrArray,
+    const res = processor?.({
+      object: objectOrArray,
       prop,
-      value: anyOrArray[prop],
+      value: objectOrArray[prop],
       path: [..._path, prop].join('.'),
     });
     if (res === -1) {

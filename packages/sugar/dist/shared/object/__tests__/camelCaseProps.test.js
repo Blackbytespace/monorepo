@@ -1,4 +1,4 @@
-import __camelCaseProps from '../camelCaseProps';
+import __camelCaseProps from '../camelCaseProps.js';
 describe('sugar.shared.object.camelCaseProps', () => {
     it('Should process a simple 1 level object correctly', () => {
         const newObj = __camelCaseProps({

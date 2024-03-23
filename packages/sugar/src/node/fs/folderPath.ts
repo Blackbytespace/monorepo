@@ -1,4 +1,4 @@
-import __isPath from '../../shared/is/isPath';
+import __isPath from '../../shared/is/isPath.js';
 
 /**
  * @name                folderPath
@@ -20,7 +20,7 @@ import __isPath from '../../shared/is/isPath';
  * @snippet         __folderPath($1)
  *
  * @example         js
- * import { __folderPath } from '@coffeekraken/sugar/fs';
+ * import { __folderPath } from '@coffeekraken/sugar/fs.js';
  * __folderPath('my/cool/path.js'); // => true
  *
  * @since           2.0.0
@@ -41,7 +41,7 @@ export default function __folderPath(
   };
 
   if (finalSettings.checkExistence) {
-    if (!__isPath(path)) return;
+    if (!__isPath(path)) return '';
   }
   const parts = path.split('/');
   if (parts.length <= 1) {

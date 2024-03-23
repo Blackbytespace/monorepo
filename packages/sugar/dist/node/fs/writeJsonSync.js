@@ -1,6 +1,6 @@
 import * as __fs from 'fs';
-import __ensureDirSync from './ensureDirSync';
-import __folderPath from './folderPath';
+import __ensureDirSync from './ensureDirSync.js';
+import __folderPath from './folderPath.js';
 /**
  * @name            writeJsonSync
  * @namespace       node.fs
@@ -19,7 +19,7 @@ import __folderPath from './folderPath';
  * @snippet         __writeJsonSync($1, $2)
  *
  * @example       js
- * import { __writeJsonSync } from '@coffeekraken/sugar/fs';
+ * import { __writeJsonSync } from '@coffeekraken/sugar/fs.js';
  * __writeJsonSync('my/cool/file.json', { hello: 'world' });
  *
  * @since         2.0.0
@@ -33,5 +33,6 @@ export default function __writeJsonSync(path, data) {
         jsonStr = JSON.stringify(data, null, 4);
     }
     __fs.writeFileSync(path, jsonStr);
+    return path;
 }
 //# sourceMappingURL=writeJsonSync.js.map

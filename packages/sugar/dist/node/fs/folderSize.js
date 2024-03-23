@@ -28,7 +28,7 @@ import __fastFolderSize from 'fast-folder-size';
  * await __folderSize($1)
  *
  * @example           js
- * import { __folderSize } from '@coffeekraken/sugar/fs';
+ * import { __folderSize } from '@coffeekraken/sugar/fs.js';
  * await __folderSize('my/cool/folder');
  *
  *
@@ -39,7 +39,7 @@ import __fastFolderSize from 'fast-folder-size';
 export default function __folderSize(folderPath) {
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
         __fastFolderSize(folderPath, (err, bytes) => {
-            resolve(bytes);
+            resolve(bytes !== null && bytes !== void 0 ? bytes : 0);
         });
     }));
 }

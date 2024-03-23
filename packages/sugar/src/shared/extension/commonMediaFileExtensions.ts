@@ -1,10 +1,10 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
 
-import __commonAudioFileExtensions from './commonAudioFileExtensions';
-import __commonImageFileExtensions from './commonImageFileExtensions';
-import __commonVideoFileExtensions from './commonVideoFileExtensions';
+import __commonAudioFileExtensions from './commonAudioFileExtensions.js';
+import __commonImageFileExtensions from './commonImageFileExtensions.js';
+import __commonVideoFileExtensions from './commonVideoFileExtensions.js';
 
-import __unique from '../array/unique';
+import __unique from '../array/unique.js';
 
 /**
  * @name            commonMediaFileExtensions
@@ -22,7 +22,7 @@ import __unique from '../array/unique';
  * @snippet         __commonMediaFileExtensions()
  *
  * @example         js
- * import { __commonMediaFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonMediaFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonMediaFileExtensions(); // => ['avi','mp3',...]
  *
  * @since       2.0.0

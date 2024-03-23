@@ -15,7 +15,7 @@ import __fs from 'fs-extra';
  * @snippet         __moveSync($1, $2)
  *
  * @example       js
- * import { __moveSync } from '@coffeekraken/sugar/fs';
+ * import { __moveSync } from '@coffeekraken/sugar/fs.js';
  * __moveSync('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra

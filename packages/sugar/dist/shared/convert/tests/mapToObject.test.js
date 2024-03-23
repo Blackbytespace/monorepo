@@ -1,4 +1,4 @@
-import __mapToObject from '../mapToObject';
+import __mapToObject from '../mapToObject.js';
 describe('sugar.shared.convert.__mapToObject', () => {
     it('Should convert a map to an object correctly', () => {
         const myMap = new Map();

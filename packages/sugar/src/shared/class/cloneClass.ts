@@ -18,7 +18,7 @@ import { cloneClass } from 'clone-class';
  * @snippet         __cloneClass($1)
  *
  * @example         js
- * import { __cloneClass } from '@coffeekraken/sugar/class';
+ * import { __cloneClass } from '@coffeekraken/sugar/class.js';
  * const NewClass = __cloneClass(class MyClass() {});
  *
  * @see             https://www.npmjs.com/package/clone-class

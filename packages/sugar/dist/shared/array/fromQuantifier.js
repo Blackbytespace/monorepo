@@ -40,7 +40,7 @@ export default function __fromQuantifier(quantifier, settings) {
         throw new Error(`<red>[fromQuantifier]</red> When using the action ">" or ">=", you MUST specify a settings.max value`);
     }
     const actionMatch = quantifier.match(/^((>|<)?\=?)/);
-    if (actionMatch[0]) {
+    if (actionMatch === null || actionMatch === void 0 ? void 0 : actionMatch[0]) {
         // @ts-ignore
         action = actionMatch[0];
     }

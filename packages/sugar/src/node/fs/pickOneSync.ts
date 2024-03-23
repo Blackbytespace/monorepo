@@ -22,7 +22,7 @@ import __micromatch from 'micromatch';
  * @snippet         __pickOneSync([$1])
  *
  * @example         js
- * import { __pickOneSync } from '@coffeekraken/sugar/fs';
+ * import { __pickOneSync } from '@coffeekraken/sugar/fs.js';
  * __pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
  *
  * @since       2.0.0
@@ -41,11 +41,14 @@ export default function __pickOneSync(
     cwd: process.cwd(),
     ...(settings ?? {}),
   };
+  let result: string = '';
   // check if we have a file
   const files = __fs.readdirSync(finalSettings.cwd);
   for (const fileName of files) {
     if (__micromatch.isMatch(fileName, filesNames)) {
-      return `${finalSettings.cwd}/${fileName}`;
+      result = `${finalSettings.cwd}/${fileName}`;
+      break;
     }
   }
+  return result;
 }

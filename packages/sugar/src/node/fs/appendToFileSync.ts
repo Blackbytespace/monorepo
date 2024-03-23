@@ -19,7 +19,7 @@ import * as __fs from 'fs';
  * @todo            tests
  *
  * @example         js
- * import { __appendToFileSync } from '@coffeekraken/sugar/fs';
+ * import { __appendToFileSync } from '@coffeekraken/sugar/fs.js';
  * __appendToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       2.0.0

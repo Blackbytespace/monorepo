@@ -17,7 +17,7 @@ import __fs from 'fs-extra';
  * @snippet         __ensureDirSync($1)
  *
  * @example       js
- * import { __ensureDirSync } from '@coffeekraken/sugar/fs';
+ * import { __ensureDirSync } from '@coffeekraken/sugar/fs.js';
  * __ensureDirSync('my/cool/dir');
  *
  * @see             https://github.com/jprichardson/node-fs-extra

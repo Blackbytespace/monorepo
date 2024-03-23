@@ -1,6 +1,6 @@
-import __toString from '../../shared/string/toString';
-import __ensureDirSync from './ensureDirSync';
-import __folderPath from './folderPath';
+import __toString from '../../shared/string/toString.js';
+import __ensureDirSync from './ensureDirSync.js';
+import __folderPath from './folderPath.js';
 import __fs from 'fs-extra';
 /**
  * @name                writeFileSync
@@ -20,7 +20,7 @@ import __fs from 'fs-extra';
  * @snippet         __writeFileSync($1, $2)
  *
  * @example       js
- * import { __writeFileSync } from '@coffeekraken/sugar/fs';
+ * import { __writeFileSync } from '@coffeekraken/sugar/fs.js';
  * __writeFileSync('my/cool/file.txt', 'Hello World');
  *
  * @see             https://github.com/jprichardson/node-fs-extra

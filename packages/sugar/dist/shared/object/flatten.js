@@ -1,5 +1,6 @@
-import __isPlain from '../is/isPlainObject';
+import __isPlain from '../is/isPlainObject.js';
 export default function __flatten(object, settings = {}) {
+    var _a;
     const toReturn = {};
     // make sure the passed object is not null, undefined
     if (!Array.isArray(object) && !__isPlain(object))
@@ -12,7 +13,7 @@ export default function __flatten(object, settings = {}) {
             toReturn[key] = null;
             continue;
         }
-        if (settings.excludeProps.indexOf(key) !== -1) {
+        if (((_a = settings.excludeProps) === null || _a === void 0 ? void 0 : _a.indexOf(key)) !== -1) {
             toReturn[key] = object[key];
             continue;
         }
@@ -28,7 +29,8 @@ export default function __flatten(object, settings = {}) {
                 }
                 else {
                     const part = key;
-                    if (settings.quoteSeparatedProperties &&
+                    if (settings.separator &&
+                        settings.quoteSeparatedProperties &&
                         part.includes(settings.separator)) {
                         toReturn[`${settings.quoteCharacter}${key}${settings.quoteCharacter}` +
                             settings.separator +

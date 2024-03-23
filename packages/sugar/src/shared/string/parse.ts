@@ -16,7 +16,7 @@
  * @snippet         __parse($1)
  *
  * @example           js
- * import { __parse } from '@coffeekraken/sugar/string';
+ * import { __parse } from '@coffeekraken/sugar/string.js';
  *  __parse('10'); // => 10
  *
  * @since     2.0.0

@@ -14,7 +14,7 @@
  * @snippet         __commonVideoFileExtensions()
  *
  * @example         js
- * import { __commonVideoFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonVideoFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonVideoFileExtensions();
  *
  * @since       2.0.0

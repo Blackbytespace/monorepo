@@ -22,7 +22,7 @@
  * })
  *
  * @example         js
- * import { __map } from '@coffeekraken/sugar/object';
+ * import { __map } from '@coffeekraken/sugar/object.js';
  * const myObject = {
  *    hello: 'world',
  *    cat: 'Nelson'
@@ -54,7 +54,7 @@ export default function __map(
   for (let i = 0; i < Object.keys(object).length; i++) {
     const prop = Object.keys(object)[i];
     const res = processor({
-      value: any[prop],
+      value: object[prop],
       key: prop,
       prop,
       i,

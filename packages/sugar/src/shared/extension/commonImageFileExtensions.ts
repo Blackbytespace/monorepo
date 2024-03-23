@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions';
+import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name            commonImageFileExtensions
@@ -16,7 +16,7 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions';
  * @snippet         __commonImageFileExtensions()
  *
  * @example         js
- * import { __commonImageFileExtensions } from '@coffeekraken/sugar/extension';
+ * import { __commonImageFileExtensions } from '@coffeekraken/sugar/extension.js';
  * const extensions = __commonImageFileExtensions();
  *
  * @since       2.0.0

@@ -1,6 +1,6 @@
-import __base64 from '../crypto/base64';
-import __isPlainObject from '../is/isPlainObject';
-import __unique from './unique';
+import __base64 from '../crypto/base64.js';
+import __isPlainObject from '../is/isPlainObject.js';
+import __unique from './unique.js';
 /**
  * @name            sameItems
  * @namespace       shared.array
@@ -23,7 +23,7 @@ import __unique from './unique';
  * @snippet         __sameItems($1, $2)
  *
  * @example         js
- * import { __sameItems } from '@coffeekraken/sugar/array';
+ * import { __sameItems } from '@coffeekraken/sugar/array.js';
  * __sameItems([1,2,3,4], [1,3,5]); // => [1,3]
  *
  * @since           2.0.0
@@ -51,7 +51,7 @@ export default function __sameItems(...args) {
             array2.forEach((array2Item) => {
                 let array2ItemHash = array2Item;
                 if (typeof array2Item !== 'string' && settings.hash) {
-                    array2ItemHash = __md5.encrypt(array2Item);
+                    array2ItemHash = __base64.encrypt(array2Item);
                     if (array1ItemHash === array2ItemHash) {
                         sameArray.push(array1Item);
                         return;

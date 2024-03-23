@@ -1,5 +1,5 @@
 import * as __fs from 'fs';
-import __xmlToJson from '../../shared/convert/xmlTojson';
+import __xmlToJson from '../../shared/convert/xmlTojson.js';
 
 /**
  * @name            readXmlSync
@@ -18,7 +18,7 @@ import __xmlToJson from '../../shared/convert/xmlTojson';
  * @snippet         __readXmlSync($1)
  *
  * @example         js
- * import { __readXmlSync } from '@coffeekraken/sugar/fs';
+ * import { __readXmlSync } from '@coffeekraken/sugar/fs.js';
  * __readXmlSync('my-cool-xml/file.xml');
  *
  * @since       2.0.0
