@@ -7,6 +7,12 @@ export interface IComponentSource extends IComponentSourceMetas {
   list(args: IComponentListArgs): IComponentList;
 }
 
+export interface ISourceSettings {
+  localDir?: string;
+}
+
+export interface IGitSourceSettings extends ISourceSettings {}
+
 export interface IComponent {
   name: string;
 }

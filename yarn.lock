@@ -40,14 +40,11 @@
     figlet "^1.7.0"
     glob "^10.3.10"
 
-"@lotsof/components@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/components":
-  version "0.0.1"
-  resolved "file:packages/components"
-
 "@lotsof/sugar@^0.0.1", "@lotsof/sugar@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugar":
   version "0.0.1"
   resolved "file:packages/sugar"
   dependencies:
+    aggregation "^1.2.7"
     blueimp-md5 "^2.19.0"
     chalk "^5.3.0"
     change-case "^5.4.3"
