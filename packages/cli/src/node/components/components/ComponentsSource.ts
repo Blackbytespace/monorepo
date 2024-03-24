@@ -7,7 +7,7 @@ import type {
 
 import { __existsSync } from '@lotsof/sugar/fs';
 
-import __Component from './Component.js';
+import __Component from './Components.js';
 
 import { globSync as __globSync } from 'glob';
 
@@ -86,7 +86,9 @@ export default abstract class ComponentSource {
         }
         const componentJson = __readJsonSync(componentJsonPath);
         componentJson.source = this.id;
-        componentsList[componentPath] = componentJson;
+        componentJson.path = componentPath;
+        componentJson.absPath = `${this.localDir}/${componentPath}`;
+        componentsList[`${this.id}/${componentJson.name}`] = componentJson;
       }
     }
 

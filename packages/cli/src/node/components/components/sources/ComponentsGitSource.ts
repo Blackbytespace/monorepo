@@ -5,7 +5,7 @@ import type {
   IComponentSourceUpdateResult,
   IGitSourceSettings,
 } from '../components.types.js';
-import ComponentSource from '../Source.js';
+import ComponentSource from '../ComponentsSource.js';
 
 export default class GitSource extends ComponentSource {
   private _repositoryUrl: string;

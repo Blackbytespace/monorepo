@@ -4,8 +4,8 @@ import {
   IComponentSourceMetas,
   IComponentSourceUpdateResult,
 } from './components.types.js';
-import ComponentSource from './Source.js';
-import ComponentGitSource from './sources/ComponentGitSource.js';
+import ComponentSource from './ComponentsSource.js';
+import ComponentGitSource from './sources/ComponentsGitSource.js';
 
 export default class Component {
   private static _sources: Record<string, ComponentSource> = {};

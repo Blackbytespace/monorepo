@@ -1,6 +1,6 @@
 import { __dirname, __readJsonSync } from '@lotsof/sugar/fs';
 import { __packageRootDir } from '@lotsof/sugar/path';
-import __Components from './Component.js';
+import __Components from './Components.js';
 import { IComponentSourceMetas } from './components.types.js';
 
 // get the lotsof file path from this package to register defaults
@@ -19,14 +19,23 @@ export default function __registerCommands(program: any): void {
       } source(s)...`,
     );
 
-    // update sources
-    await __Components.updateSources();
-
     // list components
     const components = await __Components.listComponents();
 
     console.log(components);
   });
+
+  program.command('components.update').action(async () => {
+    console.log(
+      `Updating components from ${
+        Object.keys(__Components.getSources()).length
+      } source(s)...`,
+    );
+
+    // update sources
+    await __Components.updateSources();
+  });
+
   program
     .command('components.add <components...> ')
     .description('add one or more components into your project')

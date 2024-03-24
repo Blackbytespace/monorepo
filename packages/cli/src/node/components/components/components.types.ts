@@ -21,6 +21,8 @@ export interface IGitSourceSettings extends IComponentSourceSettings {}
 
 export interface IComponent {
   source: string;
+  path: string;
+  absPath: string;
   name: string;
   description?: string;
 }

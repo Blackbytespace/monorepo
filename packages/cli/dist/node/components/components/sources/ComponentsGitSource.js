@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as __childProcess from 'child_process';
 import { homedir as __homedir } from 'os';
-import ComponentSource from '../Source.js';
+import ComponentSource from '../ComponentsSource.js';
 export default class GitSource extends ComponentSource {
     constructor(name, metas) {
         var _a;

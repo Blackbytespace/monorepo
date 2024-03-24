@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import ComponentGitSource from './sources/ComponentGitSource.js';
+import ComponentGitSource from './sources/ComponentsGitSource.js';
 class Component {
     static registerSourceFromMetas(id, sourceMetas) {
         let source;
@@ -65,4 +65,4 @@ class Component {
 }
 Component._sources = {};
 export default Component;
-//# sourceMappingURL=components.js.map
+//# sourceMappingURL=Components.js.map
