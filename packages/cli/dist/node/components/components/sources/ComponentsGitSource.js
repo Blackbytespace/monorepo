@@ -18,7 +18,10 @@ export default class GitSource extends ComponentSource {
         this.settings = Object.assign({ localDir: `${__homedir()}/.lotsof/components/git` }, ((_a = metas.settings) !== null && _a !== void 0 ? _a : {}));
         this._repositoryUrl = metas.repository;
     }
-    update(args) {
+    update() {
+        const _super = Object.create(null, {
+            update: { get: () => super.update }
+        });
         return __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c, _d;
             // cloning the repo
@@ -36,11 +39,8 @@ export default class GitSource extends ComponentSource {
                 const pullOutput = (_d = (_c = pullRes.output) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '';
                 console.log(pullOutput);
             }
-            return {
-                source: this.metas,
-                components: {},
-            };
+            return _super.update.call(this);
         });
     }
 }
-//# sourceMappingURL=GitSource.js.map
+//# sourceMappingURL=ComponentsGitSource.js.map

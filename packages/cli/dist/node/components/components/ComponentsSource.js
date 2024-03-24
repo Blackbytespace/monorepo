@@ -75,4 +75,4 @@ export default class ComponentSource {
         return componentsList;
     }
 }
-//# sourceMappingURL=Source.js.map
+//# sourceMappingURL=ComponentsSource.js.map

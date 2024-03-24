@@ -3,7 +3,7 @@ import { Command as __Command } from 'commander';
 import __figlet from 'figlet';
 // @ts-ignore
 import __packageJson from '../../package.json' assert { type: 'json' };
-import __registerComponentsCommands from './components/components/components.js';
+import __registerComponentsCommands from './components/components/components.api.js';
 const program = new __Command();
 console.log(__figlet.textSync('Lotsof'));
 program.version(__packageJson.version).description(__packageJson.description);

@@ -35,7 +35,7 @@ import __findPkgJson from 'find-package-json';
 
 export interface IPackageRootSettings {
   highest: boolean;
-  upCount: number;
+  upCount: number | undefined;
   requiredProperties: string[];
 }
 
@@ -46,7 +46,7 @@ export default function __packageRootDir(
 ) {
   const finalSettings: IPackageRootSettings = {
     highest: false,
-    upCount: 99999,
+    upCount: undefined,
     requiredProperties: ['name', 'version'],
     ...(settings ?? {}),
   };

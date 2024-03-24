@@ -3,7 +3,7 @@ import __isFile from '../is/isFile.js';
 import __findPkgJson from 'find-package-json';
 const __packageRootDirsCache = {};
 export default function __packageRootDir(from = process.cwd(), settings) {
-    const finalSettings = Object.assign({ highest: false, upCount: 99999, requiredProperties: ['name', 'version'] }, (settings !== null && settings !== void 0 ? settings : {}));
+    const finalSettings = Object.assign({ highest: false, upCount: undefined, requiredProperties: ['name', 'version'] }, (settings !== null && settings !== void 0 ? settings : {}));
     // cache
     const storageKey = __objectHash(Object.assign({ from }, finalSettings));
     if (!from && __packageRootDirsCache[storageKey]) {

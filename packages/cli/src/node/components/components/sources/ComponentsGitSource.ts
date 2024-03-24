@@ -1,36 +1,27 @@
 import * as __childProcess from 'child_process';
 import { homedir as __homedir } from 'os';
 import type {
-  IComponentList,
-  IComponentListArgs,
+  IComponentGitSourceMetas,
+  IComponentSourceUpdateResult,
   IGitSourceSettings,
 } from '../components.types.js';
 import ComponentSource from '../Source.js';
 
 export default class GitSource extends ComponentSource {
   private _repositoryUrl: string;
-  private _repositoryName: string;
 
   public settings: IGitSourceSettings = {};
 
-  constructor(
-    name: string,
-    repositoryUrl: string,
-    settings: IGitSourceSettings = {},
-  ) {
+  constructor(name: string, metas: IComponentGitSourceMetas) {
     super(name);
     this.settings = {
       localDir: `${__homedir()}/.lotsof/components/git`,
-      ...settings,
+      ...(metas.settings ?? {}),
     };
-    this._repositoryUrl = repositoryUrl;
-    this._repositoryName = (<string>repositoryUrl.split('/').pop()).replace(
-      '.git',
-      '',
-    );
+    this._repositoryUrl = metas.repository;
   }
 
-  async update(args?: IComponentListArgs): Promise<IComponentList> {
+  async update(): Promise<IComponentSourceUpdateResult> {
     // cloning the repo
     const res = await __childProcess.spawnSync(
       `git clone ${this._repositoryUrl} ${this.localDir}`,
@@ -53,9 +44,6 @@ export default class GitSource extends ComponentSource {
       console.log(pullOutput);
     }
 
-    return {
-      source: this.metas,
-      components: {},
-    };
+    return super.update();
   }
 }

@@ -6,7 +6,7 @@ import __figlet from 'figlet';
 // @ts-ignore
 import __packageJson from '../../package.json' assert { type: 'json' };
 
-import __registerComponentsCommands from './components/components/components.js';
+import __registerComponentsCommands from './components/components/components.api.js';
 
 const program = new __Command();
 

@@ -1,5 +1,11 @@
 export interface IComponentSourceMetas {
   name: string;
+  type: string;
+}
+
+export interface IComponentGitSourceMetas extends IComponentSourceMetas {
+  repository: string;
+  settings?: IGitSourceSettings;
 }
 
 export interface IComponentSource extends IComponentSourceMetas {
@@ -7,14 +13,16 @@ export interface IComponentSource extends IComponentSourceMetas {
   list(args: IComponentListArgs): IComponentList;
 }
 
-export interface ISourceSettings {
+export interface IComponentSourceSettings {
   localDir?: string;
 }
 
-export interface IGitSourceSettings extends ISourceSettings {}
+export interface IGitSourceSettings extends IComponentSourceSettings {}
 
 export interface IComponent {
+  source: string;
   name: string;
+  description?: string;
 }
 
 export interface IComponentPackage {
@@ -22,8 +30,10 @@ export interface IComponentPackage {
   path: string;
 }
 
+export interface IComponentSourceUpdateResult {}
+
 export interface IComponentList {
-  source: IComponentSourceMetas;
+  sources: Record<string, IComponentSourceMetas>;
   components: Record<string, IComponent>;
 }
 
