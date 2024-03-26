@@ -4,3 +4,9 @@
 [submodule "packages/cli"]
 	path = packages/cli
 	url = git@github.com:lotsofdev/cli.git
+[submodule "packages/components-test"]
+	path = packages/components-test
+	url = git@github.com:lotsofdev/components-test.git
+[submodule "packages/components"]
+	path = packages/components
+	url = git@github.com:lotsofdev/components.git
