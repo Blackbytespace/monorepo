@@ -1,3 +1,3 @@
-[submodule "Components"]
+[submodule "components"]
 	path = packages/components
-	url = https://github.com/lotsofdev/components
+	url = git@github.com:lotsofdev/components.git
