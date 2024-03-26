@@ -1,1 +1,0 @@
-{"version":3,"file":"copy.js","sourceRoot":"","sources":["../../../src/node/fs/copy.ts"],"names":[],"mappings":"AAAA,OAAO,IAAI,MAAM,UAAU,CAAC;AAE5B;;;;;;;;;;;;;;;;;;;;;;;;;;GA0BG;AACH,MAAM,CAAC,OAAO,UAAU,MAAM,CAAC,GAAW,EAAE,IAAY;IACtD,OAAO,IAAI,CAAC,IAAI,CAAC,GAAG,EAAE,IAAI,CAAC,CAAC;AAC9B,CAAC"}

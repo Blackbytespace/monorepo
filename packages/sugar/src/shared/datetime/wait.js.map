@@ -1,1 +1,0 @@
-{"version":3,"file":"wait.js","sourceRoot":"","sources":["wait.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2BG;AACH,MAAM,CAAC,OAAO,UAAU,MAAM,CAAC,UAAkB,CAAC;IAChD,OAAO,IAAI,OAAO,CAAC,CAAC,OAAO,EAAE,EAAE;QAC7B,UAAU,CAAC,GAAG,EAAE;YACd,OAAO,EAAE,CAAC;QACZ,CAAC,EAAE,OAAO,CAAC,CAAC;IACd,CAAC,CAAC,CAAC;AACL,CAAC"}

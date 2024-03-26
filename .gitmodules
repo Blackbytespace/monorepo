@@ -1,0 +1,6 @@
+[submodule "packages/sugar"]
+	path = packages/sugar
+	url = git@github.com:lotsofdev/sugar.git
+[submodule "packages/cli"]
+	path = packages/cli
+	url = git@github.com:lotsofdev/cli.git
