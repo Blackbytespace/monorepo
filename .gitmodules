@@ -1,12 +1,16 @@
 [submodule "packages/sugar"]
 	path = packages/sugar
 	url = git@github.com:lotsofdev/sugar.git
+	branch = master
 [submodule "packages/cli"]
 	path = packages/cli
 	url = git@github.com:lotsofdev/cli.git
+	branch = master
 [submodule "packages/components-test"]
 	path = packages/components-test
 	url = git@github.com:lotsofdev/components-test.git
+	branch = master
 [submodule "packages/components"]
 	path = packages/components
 	url = git@github.com:lotsofdev/components.git
+	branch = master
