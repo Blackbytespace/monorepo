@@ -1,0 +1,15 @@
+:root {
+  --s-color-base: #ccc;
+  /* --s-color-accent: #007bff;
+  --s-color-complementary: #6c757d;
+  --s-color-success: #28a745; */
+
+  /* @s-color base #ccc */
+
+  /* --sugar-color: #f00; */
+}
+
+body {
+  background-color: var(--sugar-color);
+  color: s-color(base);
+}
