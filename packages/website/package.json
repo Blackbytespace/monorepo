@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@lotsof/sugarcss": "^0.0.1",
     "browserslist": "^4.23.0",
     "lightningcss": "^1.24.1",
     "typescript": "^5.2.2",

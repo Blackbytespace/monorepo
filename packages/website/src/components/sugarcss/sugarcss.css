@@ -1,15 +1,25 @@
 :root {
-  --s-color-base: #ccc;
-  /* --s-color-accent: #007bff;
-  --s-color-complementary: #6c757d;
-  --s-color-success: #28a745; */
+  --s-color-main: #808080;
+  --s-color-accent: #ffbb00;
+  --s-color-complementary: #8054f9;
+  --s-color-success: #91ff00;
+  --s-color-warning: #ffd500;
+  --s-color-error: #ff003b;
+  --s-color-info: #00ffff;
 
-  /* @s-color base #ccc */
-
-  /* --sugar-color: #f00; */
+  --s-shade-text-main: --darken 15;
+  --s-shade-text-complementary: --lighten 15;
+  --s-shade-placeholder: --alpha 0.4;
+  --s-shade-foreground: --lighten 50;
+  --s-shade-background: --lighten 50;
+  --s-shade-surface: --lighten 40;
+  --s-shade-surface-main: --lighten 49;
+  --s-shade-border: --alpha 0.2;
+  --s-shade-hover: --lighten 40;
+  --s-shade-active: --darken 10;
 }
 
 body {
-  background-color: var(--sugar-color);
-  color: s-color(base);
+  background: s-color(main, background);
+  color: s-color(main, text);
 }

@@ -10,3 +10,6 @@
 [submodule "packages/components"]
 	path = packages/components
 	url = git@github.com:lotsofdev/components.git
+[submodule "packages/sugarcss"]
+	path = packages/sugarcss
+	url = git@github.com:lotsofdev/sugarcss.git

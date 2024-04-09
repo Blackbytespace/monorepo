@@ -90,6 +90,12 @@
     temp-dir "^3.0.0"
     unescape "^1.0.1"
 
+"@lotsof/sugarcss@^0.0.1", "@lotsof/sugarcss@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugarcss":
+  version "0.0.1"
+  resolved "file:packages/sugarcss"
+  dependencies:
+    "@lotsof/sugar" "^0.0.1"
+
 "@lotsof/website@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website":
   version "0.0.0"
   resolved "file:packages/website"
@@ -2804,10 +2810,10 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@^5.2.2, typescript@^5.4.2, typescript@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.4.3.tgz"
-  integrity sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==
+typescript@^5.2.2, typescript@^5.4.2, typescript@^5.4.3, typescript@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-5.4.4.tgz"
+  integrity sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==
 
 ufo@^1.3.2:
   version "1.5.2"
