@@ -1,4 +1,8 @@
 :root {
+  --s-media-mobile: 0 768px;
+  --s-media-tablet: 769px, 1024px;
+  --s-media-desktop: 1025px;
+
   --s-color-main: #808080;
   --s-color-accent: #ffbb00;
   --s-color-complementary: #8054f9;
@@ -17,9 +21,25 @@
   --s-shade-border: --alpha 0.2;
   --s-shade-hover: --lighten 40;
   --s-shade-active: --darken 10;
+
+  --s-padding: 10px;
 }
 
 body {
   background: s-color(main, background);
   color: s-color(main, text);
+  padding: s-scalable(--s-padding);
+
+  @media dark {
+    background: s-color(main, surface);
+    color: s-color(main, text);
+  }
+
+  @media tablet {
+    background: red;
+  }
+
+  .h1 {
+    color: blue;
+  }
 }
