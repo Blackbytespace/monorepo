@@ -95,6 +95,8 @@
   resolved "file:packages/sugarcss"
   dependencies:
     "@lotsof/sugar" "^0.0.1"
+    browserslist "^4.23.0"
+    lightningcss "^1.24.1"
 
 "@lotsof/website@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website":
   version "0.0.0"

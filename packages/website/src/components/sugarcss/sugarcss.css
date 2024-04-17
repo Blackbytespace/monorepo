@@ -56,18 +56,27 @@
 }
 
 .s-container {
-  @apply s-container;
+  /* @apply s-container; */
 }
 
 body {
   background: s-color(main, background);
   color: s-color(main, text);
-  padding: s-scalable(var(--s-padding));
+  /* padding: s-scalable(var(--s-padding)); */
 
   @media dark {
     background: s-color(main, surface);
     color: s-color(main, text);
+    display: none;
   }
+
+  /* @apply scrollbar; */
+
+  /* s-scrollbar: hide; */
+  /* @s-scrollbar hide; */
+  @s-scrollbar 10px #f00 #0f0;
+
+  /* @s-scrollbar (hide); */
 
   @media gte-wide {
   }
