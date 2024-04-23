@@ -11,8 +11,8 @@
   --s-layout-max-width: 1440px;
   --s-layout-side-padding: 20px;
 
-  --s-color-main: #808080;
-  --s-color-accent: #ffbb00;
+  --s-color-main: #9e9161;
+  --s-color-accent: #ffe03e;
   --s-color-complementary: #8054f9;
   --s-color-success: #91ff00;
   --s-color-warning: #ffd500;
@@ -23,7 +23,7 @@
   --s-shade-text-complementary: --lighten 15;
   --s-shade-placeholder: --alpha 0.4;
   --s-shade-foreground: --lighten 50;
-  --s-shade-background: --lighten 50;
+  --s-shade-background: --darken 50;
   --s-shade-surface: --lighten 40;
   --s-shade-surface-main: --lighten 49;
   --s-shade-border: --alpha 0.2;
@@ -64,24 +64,11 @@ body {
   color: s-color(main, text);
   /* padding: s-scalable(var(--s-padding)); */
 
-  @media dark {
-    background: s-color(main, surface);
-    color: s-color(main, text);
-    display: none;
-  }
-
   /* @apply scrollbar; */
 
   /* s-scrollbar: hide; */
   /* @s-scrollbar hide; */
-  @s-scrollbar 10px #f00 #0f0;
+  /* @s-scrollbar 10px #f00 #0f0; */
 
   /* @s-scrollbar (hide); */
-
-  @media gte-wide {
-  }
-
-  .h1 {
-    color: blue;
-  }
 }
