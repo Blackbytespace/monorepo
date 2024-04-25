@@ -21,4 +21,4 @@
 	url = git@github.com:lotsofdev/docblock.git
 [submodule "packages/docmap"]
 	path = packages/docmap
-	url = git@github.com:lotsofdev/docblock.git
+	url = git@github.com:lotsofdev/docmap.git
