@@ -14,7 +14,7 @@
 	path = packages/sugarcss
 	url = git@github.com:lotsofdev/sugarcss.git
 [submodule "packages/website-sugarcss"]
-	path = packages/sugarcss
+	path = packages/website-sugarcss
 	url = git@github.com:lotsofdev/website-sugarcss.git
 [submodule "packages/docblock"]
 	path = packages/docblock
