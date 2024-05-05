@@ -350,15 +350,15 @@
   resolved "https://registry.npmjs.org/@emmetio/scanner/-/scanner-1.0.4.tgz"
   integrity sha512-IqRuJtQff7YHHBk4G8YZ45uB9BaAGcwQeVzgj/zj8/UdOhtQpEIupUhSk8dys6spFIWVZVeK20CzGEnqR5SbqA==
 
-"@esbuild/darwin-x64@0.19.12":
+"@esbuild/darwin-arm64@0.19.12":
   version "0.19.12"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.19.12.tgz"
-  integrity sha512-hKoVkKzFiToTgn+41qGhsUJXFlIjxI/jSYeZf3ugemDYZldIXIxhvwN6erJGlX4t5h417iFuheZ7l+YVn05N3A==
+  resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.19.12.tgz"
+  integrity sha512-B6IeSgZgtEzGC42jsI+YYu9Z3HKRxp8ZT3cqhvliEHovq8HSX2YX8lNocDn79gCKJXOSaEot9MVYky7AKjCs8g==
 
-"@esbuild/darwin-x64@0.20.2":
+"@esbuild/darwin-arm64@0.20.2":
   version "0.20.2"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.20.2.tgz"
-  integrity sha512-tBcXp9KNphnNH0dfhv8KYkZhjc+H3XBkF5DKtswJblV7KlT9EI2+jeA8DgBjp908WEuYll6pF+UStUCfEpdysA==
+  resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.20.2.tgz"
+  integrity sha512-4J6IRT+10J3aJH3l1yzEg9y3wkTDgDk7TSDFX+wKFiWjqWp/iCfLIYzGyasx9l0SAFPT1HwSCR+0w/h1ES/MjA==
 
 "@fontsource-variable/sixtyfour@^5.0.2":
   version "5.0.2"
@@ -436,10 +436,11 @@
   dependencies:
     call-bind "^1.0.7"
 
-"@lotsof/cli@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/cli":
+"@lotsof/cli@file:/Users/olivier/data/web/lotsof/monorepo/packages/cli":
   version "0.0.1"
   resolved "file:packages/cli"
   dependencies:
+    "@lotsof/config" "^0.0.1"
     "@lotsof/docmap" "^0.0.1"
     "@lotsof/sugar" "^0.0.1"
     commander "^12.0.0"
@@ -447,14 +448,14 @@
     glob "^10.3.10"
     inquirer "^9.2.17"
 
-"@lotsof/config@^0.0.1", "@lotsof/config@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/config":
+"@lotsof/config@^0.0.1", "@lotsof/config@file:/Users/olivier/data/web/lotsof/monorepo/packages/config":
   version "0.0.1"
   resolved "file:packages/config"
   dependencies:
     "@lotsof/sugar" "^0.0.1"
     typescript "^5.4.5"
 
-"@lotsof/docblock@^0.0.1", "@lotsof/docblock@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/docblock":
+"@lotsof/docblock@^0.0.1", "@lotsof/docblock@file:/Users/olivier/data/web/lotsof/monorepo/packages/docblock":
   version "0.0.1"
   resolved "file:packages/docblock"
   dependencies:
@@ -463,7 +464,7 @@
     minimatch "^3.1.2"
     typescript "^5.4.5"
 
-"@lotsof/docmap@^0.0.1", "@lotsof/docmap@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/docmap":
+"@lotsof/docmap@^0.0.1", "@lotsof/docmap@file:/Users/olivier/data/web/lotsof/monorepo/packages/docmap":
   version "0.0.1"
   resolved "file:packages/docmap"
   dependencies:
@@ -472,7 +473,7 @@
     micromatch "^4.0.5"
     typescript "^5.4.5"
 
-"@lotsof/sugar@^0.0.1", "@lotsof/sugar@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugar":
+"@lotsof/sugar@^0.0.1", "@lotsof/sugar@file:/Users/olivier/data/web/lotsof/monorepo/packages/sugar":
   version "0.0.1"
   resolved "file:packages/sugar"
   dependencies:
@@ -516,7 +517,7 @@
     temp-dir "^3.0.0"
     unescape "^1.0.1"
 
-"@lotsof/sugarcss@^0.0.1", "@lotsof/sugarcss@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugarcss":
+"@lotsof/sugarcss@^0.0.1", "@lotsof/sugarcss@file:/Users/olivier/data/web/lotsof/monorepo/packages/sugarcss":
   version "0.0.1"
   resolved "file:packages/sugarcss"
   dependencies:
@@ -524,7 +525,7 @@
     browserslist "^4.23.0"
     lightningcss "^1.24.1"
 
-"@lotsof/website@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website":
+"@lotsof/website@file:/Users/olivier/data/web/lotsof/monorepo/packages/website":
   version "0.0.0"
   resolved "file:packages/website"
 
@@ -812,10 +813,10 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.25.tgz"
   integrity sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==
 
-"@rollup/rollup-darwin-x64@4.13.0":
+"@rollup/rollup-darwin-arm64@4.13.0":
   version "4.13.0"
-  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.13.0.tgz"
-  integrity sha512-U+Jcxm89UTK592vZ2J9st9ajRv/hrwHdnvyuJpa5A2ngGSVHypigidkQJP+YiGL6JODiUeMzkqQzbCG3At81Gg==
+  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.13.0.tgz"
+  integrity sha512-Ovf2evVaP6sW5Ut0GHyUSOqA6tVKfrTHddtmxGQc1CTQa1Cw3/KMCDEEICZBbyppcwnhMwcDce9ZRxdWRpVd6g==
 
 "@shikijs/core@1.3.0":
   version "1.3.0"
@@ -4101,10 +4102,10 @@ libnpmversion@^5.0.1:
     proc-log "^3.0.0"
     semver "^7.3.7"
 
-lightningcss-darwin-x64@1.24.1:
+lightningcss-darwin-arm64@1.24.1:
   version "1.24.1"
-  resolved "https://registry.npmjs.org/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.24.1.tgz"
-  integrity sha512-R4R1d7VVdq2mG4igMU+Di8GPf0b64ZLnYVkubYnGG0Qxq1KaXQtAzcLI43EkpnoWvB/kUg8JKCWH4S13NfiLcQ==
+  resolved "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.24.1.tgz"
+  integrity sha512-1jQ12jBy+AE/73uGQWGSafK5GoWgmSiIQOGhSEXiFJSZxzV+OXIx+a9h2EYHxdJfX864M+2TAxWPWb0Vv+8y4w==
 
 lightningcss@^1.21.0, lightningcss@^1.24.1:
   version "1.24.1"
@@ -7410,7 +7411,7 @@ web-namespaces@^2.0.0:
   resolved "https://registry.npmjs.org/web-namespaces/-/web-namespaces-2.0.1.tgz"
   integrity sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==
 
-"website-sugarcss@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website-sugarcss":
+"website-sugarcss@file:/Users/olivier/data/web/lotsof/monorepo/packages/website-sugarcss":
   version "0.0.1"
   resolved "file:packages/website-sugarcss"
   dependencies:

@@ -47,8 +47,14 @@
 
   --s-font-family-sans: 'Roboto', sans-serif;
   --s-font-family-serif: 'Merriweather', serif;
+  --s-font-family-code: 'Monaco', sans-serif;
+  --s-font-family-quote: 'Palatino', serif;
 
   --s-padding: 10px;
+
+  --s-size-easing: out-sin;
+  --s-size-min: 0;
+  --s-size-max: 100px;
 
   --s-space-easing: out-sin;
   --s-space-min: 0;
