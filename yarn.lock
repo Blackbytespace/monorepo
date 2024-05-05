@@ -436,7 +436,7 @@
   dependencies:
     call-bind "^1.0.7"
 
-"@lotsof/cli@file:/Users/olivier/data/web/lotsof/monorepo/packages/cli":
+"@lotsof/cli@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/cli":
   version "0.0.1"
   resolved "file:packages/cli"
   dependencies:
@@ -448,14 +448,14 @@
     glob "^10.3.10"
     inquirer "^9.2.17"
 
-"@lotsof/config@^0.0.1", "@lotsof/config@file:/Users/olivier/data/web/lotsof/monorepo/packages/config":
+"@lotsof/config@^0.0.1", "@lotsof/config@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/config":
   version "0.0.1"
   resolved "file:packages/config"
   dependencies:
     "@lotsof/sugar" "^0.0.1"
     typescript "^5.4.5"
 
-"@lotsof/docblock@^0.0.1", "@lotsof/docblock@file:/Users/olivier/data/web/lotsof/monorepo/packages/docblock":
+"@lotsof/docblock@^0.0.1", "@lotsof/docblock@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/docblock":
   version "0.0.1"
   resolved "file:packages/docblock"
   dependencies:
@@ -464,7 +464,7 @@
     minimatch "^3.1.2"
     typescript "^5.4.5"
 
-"@lotsof/docmap@^0.0.1", "@lotsof/docmap@file:/Users/olivier/data/web/lotsof/monorepo/packages/docmap":
+"@lotsof/docmap@^0.0.1", "@lotsof/docmap@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/docmap":
   version "0.0.1"
   resolved "file:packages/docmap"
   dependencies:
@@ -473,7 +473,7 @@
     micromatch "^4.0.5"
     typescript "^5.4.5"
 
-"@lotsof/sugar@^0.0.1", "@lotsof/sugar@file:/Users/olivier/data/web/lotsof/monorepo/packages/sugar":
+"@lotsof/sugar@^0.0.1", "@lotsof/sugar@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugar":
   version "0.0.1"
   resolved "file:packages/sugar"
   dependencies:
@@ -517,7 +517,7 @@
     temp-dir "^3.0.0"
     unescape "^1.0.1"
 
-"@lotsof/sugarcss@^0.0.1", "@lotsof/sugarcss@file:/Users/olivier/data/web/lotsof/monorepo/packages/sugarcss":
+"@lotsof/sugarcss@^0.0.1", "@lotsof/sugarcss@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/sugarcss":
   version "0.0.1"
   resolved "file:packages/sugarcss"
   dependencies:
@@ -525,7 +525,7 @@
     browserslist "^4.23.0"
     lightningcss "^1.24.1"
 
-"@lotsof/website@file:/Users/olivier/data/web/lotsof/monorepo/packages/website":
+"@lotsof/website@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website":
   version "0.0.0"
   resolved "file:packages/website"
 
@@ -7411,7 +7411,7 @@ web-namespaces@^2.0.0:
   resolved "https://registry.npmjs.org/web-namespaces/-/web-namespaces-2.0.1.tgz"
   integrity sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==
 
-"website-sugarcss@file:/Users/olivier/data/web/lotsof/monorepo/packages/website-sugarcss":
+"website-sugarcss@file:/Users/olivierbossel/data/web/lotsof/monorepo/packages/website-sugarcss":
   version "0.0.1"
   resolved "file:packages/website-sugarcss"
   dependencies:
