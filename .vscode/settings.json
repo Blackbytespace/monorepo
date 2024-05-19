@@ -2,12 +2,13 @@
   "files.exclude": {
     "**/.old/**": true,
     "**/vendor": true,
-    "**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "**/*.cjs": {
-      "when": "$(basename).ts"
-    },
+    "**/dist": true,
+    // "**/*.js": {
+    //   "when": "$(basename).ts"
+    // },
+    // "**/*.cjs": {
+    //   "when": "$(basename).ts"
+    // },
     "**/*.js.map": true
   },
   "files.associations": {
