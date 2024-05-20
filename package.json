@@ -1,41 +1,52 @@
 {
-    "name": "@lotsof/monorepo",
-    "version": "0.0.1",
-    "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
-    "type": "module",
-    "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
-    "pre-commit": [],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/lotsofdev/monorepo.git"
-    },
-    "keywords": [
-        "lotsof",
-        "sugar",
-        "monorepo"
-    ],
-    "author": "Lotsof <hello@lotsof.dev>",
-    "contributors": [
-        {
-            "name": "Olivier Bossel",
-            "email": "olivier.bossel@gmail.com",
-            "url": "http://olivierbossel.com"
-        }
-    ],
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/lotsofdev/monorepo/issues"
-    },
-    "homepage": "https://lotsof.dev",
-    "globalDependencies": {},
-    "packageManager": "yarn@4.1.1",
-    "devDependencies": {
-        "vitest": "^1.4.0"
-    },
-    "dependencies": {
-        "glob": "^10.3.10"
+  "name": "@lotsof/monorepo",
+  "version": "0.0.1",
+  "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev.advancedSelectElement & npm run dev.cli & npm run dev.config & npm run dev.docblock & npm run dev.docmap & npm run dev.litElement & npm run dev.sugar & npm run dev.sugarcss",
+    "dev.advancedSelectElement": "cd packages/advancedSelectElement && npm run dev",
+    "dev.cli": "(cd packages/cli && npm run dev)",
+    "dev.config": "(cd packages/config && npm run dev)",
+    "dev.docblock": "(cd packages/docblock && npm run dev)",
+    "dev.docmap": "(cd packages/docmap && npm run dev)",
+    "dev.litElement": "(cd packages/litElement && npm run dev)",
+    "dev.sugar": "(cd packages/sugar && npm run dev)",
+    "dev.sugarcss": "(cd packages/sugarcss && npm run dev)"
+  },
+  "pre-commit": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lotsofdev/monorepo.git"
+  },
+  "keywords": [
+    "lotsof",
+    "sugar",
+    "monorepo"
+  ],
+  "author": "Lotsof <hello@lotsof.dev>",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
     }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lotsofdev/monorepo/issues"
+  },
+  "homepage": "https://lotsof.dev",
+  "globalDependencies": {},
+  "packageManager": "yarn@4.1.1",
+  "devDependencies": {
+    "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "glob": "^10.3.10"
+  }
 }
