@@ -28,3 +28,6 @@
 [submodule "packages/litElement"]
 	path = packages/litElement
 	url = git@github.com:lotsofdev/lit-element.git
+[submodule "packages/config"]
+	path = packages/config
+	url = git@github.com:lotsofdev/config.git
