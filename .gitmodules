@@ -22,9 +22,9 @@
 [submodule "packages/docmap"]
 	path = packages/docmap
 	url = git@github.com:lotsofdev/docmap.git
-[submodule "packages/litElement"]
-	path = packages/litElement
-	url = git@github.com:lotsofdev/lit-element.git
 [submodule "packages/advancedSelectElement"]
 	path = packages/advancedSelectElement
 	url = git@github.com:lotsofdev/advanced-select-element.git
+[submodule "packages/litElement"]
+	path = packages/litElement
+	url = git@github.com:lotsofdev/lit-element.git
