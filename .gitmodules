@@ -31,3 +31,12 @@
 [submodule "packages/config"]
 	path = packages/config
 	url = git@github.com:lotsofdev/config.git
+[submodule "packages/website-sugar"]
+	path = packages/website-sugar
+	url = git@github.com:lotsofdev/website-sugar.git
+[submodule "packages/website-common"]
+	path = packages/website-common
+	url = git@github.com:lotsofdev/website-common.git
+[submodule "packages/website"]
+	path = packages/website
+	url = git@github.com:lotsofdev/website.git
