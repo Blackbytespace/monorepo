@@ -1,0 +1,20 @@
+{
+  "name": "@lotsof/types",
+  "version": "1.0.0",
+  "description": "Types system to share types libraries easily",
+  "type": "module",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@lotsof/sugar": "^1.0.0",
+    "typescript": "^5.4.5"
+  },
+  "main": "dist/node/exports.js",
+  "module": "dist/node/exports.js",
+  "types": "src/node/exports.ts",
+  "homepage": "https://lotsof.dev"
+}

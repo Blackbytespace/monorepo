@@ -1,0 +1,21 @@
+{
+  "name": "lotsof/types",
+  "description": "Types system to share types libraries easily",
+  "type": "library",
+  "autoload": {
+    "files": [
+      "autoload.php"
+    ]
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "homepage": "https://lotsof.dev"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  }
+}
