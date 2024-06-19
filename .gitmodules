@@ -40,3 +40,6 @@
 [submodule "packages/website"]
 	path = packages/website
 	url = git@github.com:lotsofdev/website.git
+[submodule "packages/website-components"]
+	path = packages/website-components
+	url = git@github.com:lotsofdev/website-components.git
