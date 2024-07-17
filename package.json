@@ -5,7 +5,8 @@
   "type": "module",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/wordpress-playground/wordpress/wp-content/themes/lotsof"
   ],
   "scripts": {
     "dev": "npm run dev.advancedSelectElement & npm run dev.cli & npm run dev.config & npm run dev.components & npm run dev.docblock & npm run dev.docmap & npm run dev.litElement & npm run dev.sugar & npm run dev.sugarcss & npm run dev.types",

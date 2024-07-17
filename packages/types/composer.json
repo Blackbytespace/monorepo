@@ -1,6 +1,7 @@
 {
   "name": "lotsof/types",
   "description": "Types system to share types libraries easily",
+  "version": "1.0.0",
   "type": "library",
   "autoload": {
     "files": [
@@ -15,7 +16,15 @@
       "homepage": "https://lotsof.dev"
     }
   ],
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../sugar"
+    }
+  ],
   "require": {
-    "php": ">=7.4"
+    "php": ">=8.0",
+    "lotsof/sugar": "^1.0.0",
+    "fakerphp/faker": "^1.23"
   }
 }
