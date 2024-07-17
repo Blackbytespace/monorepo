@@ -43,3 +43,6 @@
 [submodule "packages/website-components"]
 	path = packages/website-components
 	url = git@github.com:lotsofdev/website-components.git
+[submodule "packages/wordpress-playground"]
+	path = packages/wordpress-playground
+	url = git@github.com:lotsofdev/wordpress-playground.git
