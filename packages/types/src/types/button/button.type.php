@@ -44,7 +44,7 @@ class Button extends Base
     {
         $a = $this->link->toDomElement();
         $a = \Sugar\dom\changeTagName($a, 'button');
-        $a->setAttribute('class', $this->class . ' -' . $this->style);
+        $a->setAttribute('class', 'button ' . $this->class . ' -' . $this->style);
         return $a;
     }
 }

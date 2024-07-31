@@ -4,7 +4,7 @@ namespace Lotsof\Types;
 
 class Body extends Base
 {
-    public static function mock(string $suptitle = null, string $title = null, string $subtitle = null, string $lead = null, string $text = null, array $buttons = null, int $titleLevel = 1, int $suptitleLevel = 5, int $subtitleLevel = 4): Body
+    public static function mock(string $suptitle = null, string $title = null, string $subtitle = null, string $lead = null, string $text = null, array $buttons = null, int $titleLevel = 3, int $suptitleLevel = 5, int $subtitleLevel = 4, array $attrs = [], string $id = null): Body
     {
         $faker = \Faker\Factory::create();
 
@@ -34,34 +34,46 @@ class Body extends Base
             lead: $lead,
             text: $text,
             buttons: $buttons,
-            titleLevel: $titleLevel,
             suptitleLevel: $suptitleLevel,
-            subtitleLevel: $subtitleLevel
+            titleLevel: $titleLevel,
+            subtitleLevel: $subtitleLevel,
+            id: $id,
+            attrs: $attrs
         );
         return $body;
     }
 
+    protected ?string $id;
     protected ?string $suptitle;
     protected ?string $title;
     protected ?string $subtitle;
     protected ?string $lead;
     protected ?string $text;
-    protected ?array $buttons;
+    protected ?array $buttons = [];
+    protected ?bool $typoClasses = true;
+    protected int $suptitleLevel = 5;
     protected int $titleLevel = 3;
     protected int $subtitleLevel = 4;
-    protected int $suptitleLevel = 5;
+    protected array $attrs = [];
 
-    public function __construct(string $suptitle = null, string $title = null, string $subtitle = null, string $lead = null, string $text = null, array $buttons = null, int $titleLevel = 1, int $suptitleLevel = 5, int $subtitleLevel = 4)
+    public array $typesMap = [
+        'buttons' => Button::class
+    ];
+
+    public function __construct(string $suptitle = null, string $title = null, string $subtitle = null, string $lead = null, string $text = null, array $buttons = null, bool $typoClasses = true, int $titleLevel = 1, int $suptitleLevel = 5, int $subtitleLevel = 4, array $attrs = [], string $id = null)
     {
+        $this->id = $id;
         $this->suptitle = $suptitle;
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->lead = $lead;
         $this->text = $text;
         $this->buttons = $buttons;
+        $this->typoClasses = $typoClasses;
+        $this->suptitleLevel = $suptitleLevel;
         $this->titleLevel = $titleLevel;
         $this->subtitleLevel = $subtitleLevel;
-        $this->suptitleLevel = $suptitleLevel;
+        $this->attrs = $attrs;
     }
 
     public function hasButtons(): bool
@@ -71,39 +83,65 @@ class Body extends Base
 
     public function toDomElement(): \DOMElement
     {
-
         $dom = new \DOMDocument('1.0', 'utf-8');
 
         $body = $dom->createElement('div');
-        $body->setAttribute('class', 'body typo-rhythm typo-format');
+        $cls = 'body';
+        if ($this->typoClasses) {
+            $cls .= ' typo-rhythm typo-format';
+        }
+        $body->setAttribute('class', $cls);
+
+        if ($this->id !== null) {
+            $body->setAttribute('id', $this->id);
+        }
 
         if ($this->suptitle !== null) {
-            $suptitle = $dom->createElement('h5', $this->suptitle);
-            $suptitle->setAttribute('class', '_suptitle typo-h' . $this->suptitleLevel);
+            $suptitle = $dom->createElement('h' . $this->suptitleLevel, $this->suptitle);
+            $cls = '_suptitle';
+            if ($this->typoClasses) {
+                $cls .= ' typo-h' . $this->suptitleLevel;
+            }
+            $suptitle->setAttribute('class', $cls);
             $body->appendChild($suptitle);
         }
 
         if ($this->title !== null) {
             $title = $dom->createElement('h' . $this->titleLevel, $this->title);
-            $title->setAttribute('class', '_title typo-h' . $this->titleLevel);
+            $cls = '_title';
+            if ($this->typoClasses) {
+                $cls .= ' typo-h' . $this->titleLevel;
+            }
+            $title->setAttribute('class', $cls);
             $body->appendChild($title);
         }
 
         if ($this->subtitle !== null) {
             $subtitle = $dom->createElement('h' . $this->subtitleLevel, $this->subtitle);
-            $subtitle->setAttribute('class', '_subtitle typo-h' . $this->subtitleLevel);
+            $cls = '_subtitle';
+            if ($this->typoClasses) {
+                $cls .= ' typo-h' . $this->subtitleLevel;
+            }
             $body->appendChild($subtitle);
         }
 
         if ($this->lead !== null) {
             $lead = $dom->createElement('p', $this->lead);
-            $lead->setAttribute('class', '_lead typo-lead');
+            $cls = '_lead';
+            if ($this->typoClasses) {
+                $cls .= ' typo-lead';
+            }
+            $lead->setAttribute('class', $cls);
             $body->appendChild($lead);
         }
 
         if ($this->text !== null) {
             $text = $dom->createElement('p', $this->text);
-            $text->setAttribute('class', '_text typo-p');
+            $cls = '_text';
+            if ($this->typoClasses) {
+                $cls .= ' typo-p';
+            }
+            $text->setAttribute('class', $cls);
             $body->appendChild($text);
         }
 
@@ -114,6 +152,12 @@ class Body extends Base
                 $buttons->appendChild($dom->importNode($button->toDomElement(), true));
             }
             $body->appendChild($buttons);
+        }
+
+        if (!empty($this->attrs)) {
+            foreach ($this->attrs as $key => $value) {
+                $body->setAttribute($key, $value);
+            }
         }
 
         return $body;
