@@ -1,21 +1,38 @@
 export default class __Base {
     constructor(props = {}) {
-        // assign the properties to the instance
-        for (let [key, value] of Object.entries(props)) {
-            this.set(key, value);
+        this.id = '';
+        this.data = {};
+        if (props.id === undefined) {
+            this.id = `${this.constructor.name.toLowerCase()}-${Math.random()
+                .toString(36)
+                .substr(2, 9)}`;
         }
-    }
-    set($key, $value) {
-        this[$key] = $value;
-    }
-    toHtml() {
-        // @ts-ignore
-        if (!this.toDomElement) {
-            throw new Error(`toDomElement method not found in class ' . ${this.constructor.name} . '. You will need to implement your own \"toHtml\" method...`);
+        else {
+            this.id = props.id;
         }
-        // @ts-ignore
-        const $domElement = this.toDomElement();
-        return $domElement.outerHTML;
+        this.data = props;
+    }
+    validate() {
+        // @TODO    Implement json schema validation
+        return [];
+    }
+    set(key, value) {
+        this.data[key] = value;
+    }
+    toObject() {
+        return this.data;
+    }
+    has(key) {
+        if (this.data[key] === undefined || this.data[key] === null) {
+            return false;
+        }
+        if (typeof this.data[key] === 'string' && this.data[key].trim() === '') {
+            return false;
+        }
+        if (Array.isArray(this.data[key]) && this.data[key].length === 0) {
+            return false;
+        }
+        return true;
     }
 }
 //# sourceMappingURL=base.type.js.map

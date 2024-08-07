@@ -5,13 +5,14 @@ namespace Lotsof\Types;
 class Image extends Base
 {
 
-    public static function mock(string $src = null, string $title = null, string $alt = null, bool $lazy = null, array $attrs = []): Image
+    public static function mock(string $src = '', string $title = '', string $alt = '', bool $lazy = null, array $attrs = [], ?string $id = null): Image
     {
         $faker = \Faker\Factory::create();
         $image = new static(
-            src: $src !== null ? $src : 'https://picsum.photos/1600/900',
-            title: $title !== null ? $title : $faker->sentence(),
-            alt: $alt !== null ? $alt : $faker->sentence(),
+            id: $id,
+            src: $src !== '' ? $src : 'https://picsum.photos/1600/900',
+            title: $title !== '' ? $title : $faker->sentence(),
+            alt: $alt !== '' ? $alt : $faker->sentence(),
             lazy: $lazy !== null ? $lazy : $faker->boolean(),
             attrs: $attrs
         );
@@ -19,8 +20,8 @@ class Image extends Base
     }
 
     protected string $src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88B8AAuUB8e2ujYwAAAAASUVORK5CYII=';
-    protected ?string $title = null;
-    protected ?string $alt = null;
+    protected ?string $title = '';
+    protected ?string $alt = '';
     // protected array $sizes = [];
     protected bool $lazy = true;
     protected array $attrs = [
@@ -28,9 +29,9 @@ class Image extends Base
         'style' => 'object-fit: cover; background: white;',
     ];
 
-    public function __construct(string $src = null, string $title = null, string $alt = null, bool $lazy = true, array $attrs = [])
+    public function __construct(string $src = '', string $title = '', string $alt = '', bool $lazy = true, array $attrs = [], ?string $id = null)
     {
-        parent::__construct();
+        parent::__construct($id);
         $this->src = $src;
         $this->title = $title;
         $this->alt = $alt;
@@ -38,33 +39,5 @@ class Image extends Base
         if (count($attrs)) {
             $this->attrs = $attrs;
         }
-    }
-
-    public function toDomElement(): \DOMElement
-    {
-        $this->validate();
-
-        $dom = new \DOMDocument('1.0', 'utf-8');
-        $img = $dom->createElement('img');
-
-        if ($this->src !== null) {
-            $img->setAttribute('src', $this->src);
-        }
-        if ($this->lazy) {
-            $img->setAttribute('loading', 'lazy');
-        }
-        if ($this->title !== null) {
-            $img->setAttribute('title', $this->title);
-        }
-        if ($this->alt !== null) {
-            $img->setAttribute('alt', $this->alt);
-        }
-        if ($this->attrs !== null) {
-            foreach ($this->attrs as $key => $value) {
-                $img->setAttribute($key, $value);
-            }
-        }
-
-        return $img;
     }
 }

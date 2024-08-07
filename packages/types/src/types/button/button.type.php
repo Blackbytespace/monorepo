@@ -9,7 +9,7 @@ class Button extends Base
 
     public static function mock(): Button
     {
-        $faker = \Faker\Factory::create();
+        // $faker = \Faker\Factory::create();
         $button = new static(
             style: \Sugar\ar\pickRandom(['solid', 'outline', 'text']),
             link: \Lotsof\Types\Link::mock()
@@ -21,30 +21,14 @@ class Button extends Base
     protected string $class;
     protected ?\Lotsof\Types\Link $link;
 
-    public function __construct(string $style = 'solid', string $class = '_btn btn', \Lotsof\Types\Link $link = null)
+    public function __construct(string $style = 'solid', string $class = '_btn btn', \Lotsof\Types\Link $link = null, ?string $id = null)
     {
-        parent::__construct();
+        parent::__construct($id);
         $this->style = $style;
         $this->link = $link;
         if ($this->link === null) {
             $this->link = new \Lotsof\Types\Link();
         }
         $this->class = $class;
-    }
-
-    public function validate(): void
-    {
-        parent::validate();
-        if (!in_array($this->style, self::$styles)) {
-            throw new \Exception('Invalid style. Available styles are ' . implode(', ', self::$styles));
-        }
-    }
-
-    public function toDomElement(): \DOMElement
-    {
-        $a = $this->link->toDomElement();
-        $a = \Sugar\dom\changeTagName($a, 'button');
-        $a->setAttribute('class', 'button ' . $this->class . ' -' . $this->style);
-        return $a;
     }
 }

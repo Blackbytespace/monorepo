@@ -25,6 +25,7 @@
   "require": {
     "php": ">=8.0",
     "lotsof/sugar": "^1.0.0",
-    "fakerphp/faker": "^1.23"
+    "fakerphp/faker": "^1.23",
+    "justinrainbow/json-schema": "^6.0"
   }
 }

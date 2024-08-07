@@ -24,20 +24,28 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _CarpenterElement_src_accessor_storage, _CarpenterElement_adapter_accessor_storage, _CarpenterElement__currentComponent_accessor_storage, _CarpenterElement__currentComponentId_accessor_storage;
+var _CarpenterElement_src_accessor_storage, _CarpenterElement_adapter_accessor_storage, _CarpenterElement_widgets_accessor_storage, _CarpenterElement__currentComponent_accessor_storage, _CarpenterElement__currentComponentId_accessor_storage;
 import __LitElement from '@lotsof/litElement';
+import { Draft2019 } from 'json-schema-library';
+import '../components/wysiwygWidget/wysiwygWidget.js';
 // @todo    check why is a problem importing this functions
 // @ts-ignore
 import { __isInIframe } from '@lotsof/sugar/is';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { __get, __set } from '@lotsof/sugar/object';
+import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
+import { __deepMap, __get, __set } from '@lotsof/sugar/object';
 import '../../src/css/CarpenterElement.css';
 class CarpenterElement extends __LitElement {
+    static registerWidget(widget) {
+        this.widgets[widget.id] = widget;
+    }
     get src() { return __classPrivateFieldGet(this, _CarpenterElement_src_accessor_storage, "f"); }
     set src(value) { __classPrivateFieldSet(this, _CarpenterElement_src_accessor_storage, value, "f"); }
     get adapter() { return __classPrivateFieldGet(this, _CarpenterElement_adapter_accessor_storage, "f"); }
     set adapter(value) { __classPrivateFieldSet(this, _CarpenterElement_adapter_accessor_storage, value, "f"); }
+    get widgets() { return __classPrivateFieldGet(this, _CarpenterElement_widgets_accessor_storage, "f"); }
+    set widgets(value) { __classPrivateFieldSet(this, _CarpenterElement_widgets_accessor_storage, value, "f"); }
     get _currentComponent() { return __classPrivateFieldGet(this, _CarpenterElement__currentComponent_accessor_storage, "f"); }
     set _currentComponent(value) { __classPrivateFieldSet(this, _CarpenterElement__currentComponent_accessor_storage, value, "f"); }
     get _currentComponentId() { return __classPrivateFieldGet(this, _CarpenterElement__currentComponentId_accessor_storage, "f"); }
@@ -48,8 +56,10 @@ class CarpenterElement extends __LitElement {
         });
         _CarpenterElement_src_accessor_storage.set(this, '');
         _CarpenterElement_adapter_accessor_storage.set(this, null);
+        _CarpenterElement_widgets_accessor_storage.set(this, {});
         _CarpenterElement__currentComponent_accessor_storage.set(this, null);
         _CarpenterElement__currentComponentId_accessor_storage.set(this, '');
+        this._registeredWidgets = {};
         this._specs = {
             components: {},
         };
@@ -72,6 +82,11 @@ class CarpenterElement extends __LitElement {
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
+            // handle the widgets
+            this._registeredWidgets = Object.assign(Object.assign({ wysiwyg: {
+                    id: 'wysiwyg',
+                    tag: 's-carpenter-wysiwyg-widget',
+                } }, this.widgets), CarpenterElement.widgets);
             // if not in an iframe, init the environment
             // by creating an iframe and load the carpenter deamon
             // inside it
@@ -155,21 +170,50 @@ class CarpenterElement extends __LitElement {
         }, schema);
         return foundSchema;
     }
+    _validateValues(schema, value) {
+        const jsonSchema = new Draft2019(schema), errors = jsonSchema.validate(value);
+        return errors;
+    }
+    _renderComponentValueErrors(errors) {
+        return html `
+      <ul class=${this.cls('_values-errors')}>
+        ${errors.map((error) => html `
+            <li class=${this.cls('_values-error')}>
+              ${error.message
+            .replace('in `#`', '')
+            .replace('at `#`', '')
+            .trim()}
+            </li>
+          `)}
+      </ul>
+    `;
+    }
     _renderComponentValueEditWidget(value, path) {
         // get the schema for current path
-        var _a;
+        var _a, _b;
         // remove the numerical indexes in the path.
         // this is due to the fact that the schema is not
         // aware of the array indexes
         const pathWithoutIndexes = path.filter((p) => isNaN(parseInt(p)));
         // get the schema for the current path
         const schema = this._findInSchema((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.schema, pathWithoutIndexes);
+        // handle default value
+        if (value === null && schema.default !== undefined) {
+            __set((_b = this._currentComponent) === null || _b === void 0 ? void 0 : _b.values, path, schema.default);
+            value = schema.default;
+        }
+        // validate the value
+        let renderedErrors = '';
+        const errors = this._validateValues(schema, value);
+        if (errors.length) {
+            renderedErrors = this._renderComponentValueErrors(errors);
+        }
         if (schema) {
             switch (true) {
                 case schema.enum !== undefined:
                     return html `<select
-            class=${`${this.cls('_values-select')} form-select`}
-            @change=${(e) => {
+              class=${`${this.cls('_values-select')} form-select`}
+              @change=${(e) => {
                         var _a;
                         __set((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path, e.target.value);
                         this._applyUpdate({
@@ -178,31 +222,33 @@ class CarpenterElement extends __LitElement {
                             path,
                         });
                     }}
-          >
-            ${schema.enum.map((v) => {
+            >
+              ${schema.enum.map((v) => {
                         return html `<option value=${v} ?selected=${v === value}>
-                ${v}
-              </option>`;
+                  ${v}
+                </option>`;
                     })}
-          </select>`;
+            </select>
+            ${renderedErrors} `;
                     break;
                 case schema.type === 'string':
                     return html `<input
-            type="text"
-            .value=${value !== null && value !== void 0 ? value : ''}
-            class=${this.cls('_values-input')}
-            @input=${(e) => {
+              type="text"
+              .value=${value !== null && value !== void 0 ? value : ''}
+              class=${this.cls('_values-input')}
+              @input=${(e) => {
                         var _a;
                         __set((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path, e.target.value);
                     }}
-            @change=${(e) => {
+              @change=${(e) => {
                         this._applyUpdate({
                             component: this._currentComponent,
                             value: e.target.value,
                             path,
                         });
                     }}
-          />`;
+            />
+            ${renderedErrors} `;
                     break;
                 case schema.type === 'boolean':
                     return html `<input
@@ -261,6 +307,7 @@ class CarpenterElement extends __LitElement {
                 this.log(`No adapter defined to handle update of ${update.path.join('.')}...`, update.value);
                 return;
             }
+            console.log(update);
             // make the update throug the specified adapter
             const response = yield this.adapter.applyUpdate(update);
             // if the component has been totally updated
@@ -268,30 +315,90 @@ class CarpenterElement extends __LitElement {
             if (!update.component.$component.parentElement) {
                 update.component.$component = (_a = this.$iframeDocument) === null || _a === void 0 ? void 0 : _a.querySelector(`#${update.component.id}`);
             }
+            // update the component
+            this.requestUpdate();
         });
+    }
+    _createComponentDefaultValuesFromSchema(schema) {
+        const newValues = {};
+        __deepMap(schema, ({ object, prop, value, path }) => {
+            if (object.type !== 'object' && prop === 'type') {
+                const finalPath = path
+                    .split('.')
+                    .filter((p) => p !== 'properties' && p !== 'items' && p !== 'type');
+                let newValue = object.default;
+                if (newValue === undefined) {
+                    switch (true) {
+                        case object.enum !== undefined:
+                            newValue = object.enum[0];
+                            break;
+                            break;
+                        case value === 'string':
+                            newValue = '';
+                            break;
+                        case value === 'boolean':
+                            newValue = false;
+                            break;
+                        case value === 'number':
+                            if (object.minimum !== undefined) {
+                                newValue = object.minimum;
+                            }
+                            else {
+                                newValue = 0;
+                            }
+                            break;
+                    }
+                }
+                __set(newValues, finalPath, newValue);
+            }
+            return value;
+        });
+        return newValues;
     }
     _renderComponentValuesPreview(schema, path = []) {
         var _a;
         // get the values for the current path
         const values = __get((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path);
+        // check if we have a widget specified and that it is available
+        if (schema.widget) {
+            if (!this._registeredWidgets[schema.widget]) {
+                throw new Error(`The widget "${schema.widget}" is not registered in carpenter. Make sure to register it using SCarpenterElement.registerWidget static method...`);
+            }
+            const tag = literal `${unsafeStatic(this._registeredWidgets[schema.widget].tag)}`;
+            return staticHtml `
+        <${tag} @s-carpenter.update=${(e) => {
+                var _a;
+                __set((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path, e.detail);
+                console.log(this._currentComponent);
+                this._applyUpdate({
+                    component: this._currentComponent,
+                    value: e.detail,
+                    path,
+                });
+            }}></${tag}>
+      `;
+        }
         switch (true) {
             case schema.type === 'object' && schema.properties !== undefined:
                 return html `
           <ul class=${this.cls('_values-object')}>
-            ${Object.entries(schema.properties).map(([key, value]) => html `
+            ${Object.entries(schema.properties).map(([key, value]) => {
+                    var _a;
+                    return html `
                 <li class=${this.cls('_values-item')}>
                   <div
                     class=${this.cls('_values-prop')}
                     style="--prop-length: ${key.length}"
                   >
-                    ${key}
+                    ${(_a = value.title) !== null && _a !== void 0 ? _a : key}
                   </div>
                   ${this._renderComponentValuesPreview(schema.properties[key], [
-                    ...path,
-                    key,
-                ])}
+                        ...path,
+                        key,
+                    ])}
                 </li>
-              `)}
+              `;
+                })}
           </ul>
         `;
                 break;
@@ -312,11 +419,12 @@ class CarpenterElement extends __LitElement {
               class=${this.cls('_values-add')}
               @click=${() => {
                     var _a;
+                    const newValues = this._createComponentDefaultValuesFromSchema(schema.items);
                     if (!values) {
-                        __set((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path, [{}]);
+                        __set((_a = this._currentComponent) === null || _a === void 0 ? void 0 : _a.values, path, [newValues]);
                     }
                     else {
-                        values.push({});
+                        values.push(newValues);
                     }
                     this.requestUpdate();
                 }}
@@ -360,7 +468,8 @@ class CarpenterElement extends __LitElement {
         }
     }
 }
-_CarpenterElement_src_accessor_storage = new WeakMap(), _CarpenterElement_adapter_accessor_storage = new WeakMap(), _CarpenterElement__currentComponent_accessor_storage = new WeakMap(), _CarpenterElement__currentComponentId_accessor_storage = new WeakMap();
+_CarpenterElement_src_accessor_storage = new WeakMap(), _CarpenterElement_adapter_accessor_storage = new WeakMap(), _CarpenterElement_widgets_accessor_storage = new WeakMap(), _CarpenterElement__currentComponent_accessor_storage = new WeakMap(), _CarpenterElement__currentComponentId_accessor_storage = new WeakMap();
+CarpenterElement.widgets = {};
 export default CarpenterElement;
 __decorate([
     property({ type: String })
@@ -368,6 +477,9 @@ __decorate([
 __decorate([
     property()
 ], CarpenterElement.prototype, "adapter", null);
+__decorate([
+    property({ type: Object })
+], CarpenterElement.prototype, "widgets", null);
 __decorate([
     state()
 ], CarpenterElement.prototype, "_currentComponent", null);

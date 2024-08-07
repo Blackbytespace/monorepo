@@ -9,11 +9,6 @@ class __Button extends __Base {
             this.link = new __Link();
         }
     }
-    validate() {
-        if (!__Button.styles.includes(this.style)) {
-            throw new Error(`Invalid style. Available styles are: ${__Button.styles.join(', ')}`);
-        }
-    }
     toDomElement() {
         const $button = document.createElement('button');
         $button.classList.add(`button`);

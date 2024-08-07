@@ -5,10 +5,11 @@ namespace Lotsof\Types;
 class Video extends Base
 {
 
-    public static function mock(string $src = null, string $poster = null, string $title = null, bool $autoplay = null, bool $controls = null, bool $loop = false, bool $muted = null, bool $playsinline = null, array $attrs = []): Video
+    public static function mock(string $src = '', string $poster = '', string $title = '', bool $autoplay = null, bool $controls = null, bool $loop = false, bool $muted = null, bool $playsinline = null, array $attrs = [], ?string $id = null): Video
     {
         $faker = \Faker\Factory::create();
         $video = new static(
+            id: $id,
             src: 'https://media.istockphoto.com/id/1550973385/de/video/epische-filmszenen-schaffen-einen-ruhigen-und-beruhigenden-digitalen-3d-raum.mp4?s=mp4-640x640-is&k=20&c=XhLsTHmHBF8VH9CyNHliPb1xn2MpE-BvmeNR7ev7SuM=',
             title: $faker->sentence(),
             poster: 'https://picsum.photos/1600/900',
@@ -36,9 +37,9 @@ class Video extends Base
         'style' => 'object-fit: cover; background: white;',
     ];
 
-    public function __construct(string $src = null, string $poster = null, string $title = null, bool $autoplay = false, bool $controls = false, bool $loop = false, bool $muted = null, bool $playsinline = true, array $attrs = [])
+    public function __construct(string $src = '', string $poster = '', string $title = '', bool $autoplay = false, bool $controls = false, bool $loop = false, bool $muted = null, bool $playsinline = true, array $attrs = [], ?string $id = null)
     {
-        parent::__construct();
+        parent::__construct($id);
         $this->src = $src;
         $this->poster = $poster;
         $this->title = $title;
@@ -54,45 +55,5 @@ class Video extends Base
         if (count($attrs)) {
             $this->attrs = $attrs;
         }
-    }
-
-    public function toDomElement(): \DOMElement
-    {
-        $this->validate();
-
-        $dom = new \DOMDocument('1.0', 'utf-8');
-        $video = $dom->createElement('video');
-
-        if ($this->src !== null) {
-            $video->setAttribute('src', $this->src);
-        }
-        if ($this->poster !== null) {
-            $video->setAttribute('poster', $this->poster);
-        }
-        if ($this->title !== null) {
-            $video->setAttribute('title', $this->title);
-        }
-        if ($this->autoplay) {
-            $video->setAttribute('autoplay', '1');
-        }
-        if ($this->controls) {
-            $video->setAttribute('controls', '1');
-        }
-        if ($this->loop) {
-            $video->setAttribute('loop', '1');
-        }
-        if ($this->muted) {
-            $video->setAttribute('muted', '1');
-        }
-        if ($this->playsinline) {
-            $video->setAttribute('playsinline', '1');
-        }
-        if ($this->attrs !== null) {
-            foreach ($this->attrs as $key => $value) {
-                $video->setAttribute($key, $value);
-            }
-        }
-
-        return $video;
     }
 }

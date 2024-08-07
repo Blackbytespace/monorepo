@@ -4,7 +4,7 @@ namespace Lotsof\Types;
 
 class Card extends \Lotsof\Types\Base
 {
-    public static function mock(\Lotsof\Types\Body $body = null, \Lotsof\Types\Image $image = null, \Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null): Card
+    public static function mock(\Lotsof\Types\Body $body = null, \Lotsof\Types\Image $image = null, \Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null): Card
     {
         $faker = \Faker\Factory::create();
 
@@ -41,6 +41,7 @@ class Card extends \Lotsof\Types\Base
         }
 
         $card = new static(
+            id: $id,
             body: $body,
             image: $image,
             video: $video,
@@ -52,7 +53,7 @@ class Card extends \Lotsof\Types\Base
         return $card;
     }
 
-    protected \Lotsof\Types\Body $body;
+    protected ?\Lotsof\Types\Body $body;
     protected ?\Lotsof\Types\Image $image;
     protected ?\Lotsof\Types\Video $video;
     protected ?string $areaFigure = null;
@@ -60,8 +61,9 @@ class Card extends \Lotsof\Types\Base
     protected ?string $areaBeforeBody = null;
     protected ?string $areaAfterBody = null;
 
-    public function __construct(\Lotsof\Types\Body $body = null, \Lotsof\Types\Image $image = null, \Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null)
+    public function __construct(?\Lotsof\Types\Body $body = null, ?\Lotsof\Types\Image $image = null, ?\Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null)
     {
+        parent::__construct($id);
         $this->body = $body;
         $this->image = $image;
         $this->video = $video;

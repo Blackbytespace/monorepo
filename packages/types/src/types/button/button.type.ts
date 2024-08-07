@@ -24,14 +24,6 @@ export default class __Button extends __Base {
     }
   }
 
-  public validate(): void {
-    if (!__Button.styles.includes(this.style)) {
-      throw new Error(
-        `Invalid style. Available styles are: ${__Button.styles.join(', ')}`,
-      );
-    }
-  }
-
   public toDomElement(): HTMLElement {
     const $button = document.createElement('button');
     $button.classList.add(`button`);

@@ -41,18 +41,27 @@ export interface IBodyProps {
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default class __Body extends __Base {
-    protected suptitle?: string;
-    protected title?: string;
-    protected subtitle?: string;
-    protected lead?: string;
-    protected text?: string;
-    protected buttons?: any[];
-    protected typoClasses?: boolean;
-    protected subtitleLevel: number;
-    protected titleLevel: number;
-    protected suptitleLevel: number;
+    protected _suptitle: string;
+    get suptitle(): string;
+    protected _title: string;
+    get title(): string;
+    protected _subtitle: string;
+    get subtitle(): string;
+    protected _lead: string;
+    get lead(): string;
+    protected _text: string;
+    get text(): string;
+    protected _buttons: any[];
+    get buttons(): any[];
+    protected _typoClasses: boolean;
+    get typoClasses(): boolean;
+    protected _subtitleLevel: number;
+    get subtitleLevel(): number;
+    protected _titleLevel: number;
+    get titleLevel(): number;
+    protected _suptitleLevel: number;
+    get suptitleLevel(): number;
     constructor(props?: IBodyProps);
-    hasButtons(): boolean;
     toDomElement(): HTMLElement;
     toHtml(): string;
 }

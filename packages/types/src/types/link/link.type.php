@@ -74,39 +74,6 @@ class Link extends Base
         }
     }
 
-    public function toDomElement(): \DOMElement
-    {
-        $this->validate();
-
-        $dom = new \DOMDocument('1.0', 'utf-8');
-        $a = $dom->createElement('a');
-
-        if ($this->class !== null) {
-            $a->setAttribute('class', $this->class);
-        }
-        if ($this->href !== null) {
-            $a->setAttribute('href', $this->href);
-        }
-        if ($this->title !== null) {
-            $a->setAttribute('title', $this->title);
-        }
-        if ($this->target !== null) {
-            $a->setAttribute('target', $this->target);
-        }
-        // aria-label
-        if ($this->ariaLabel !== null) {
-            $a->setAttribute('aria-label', $this->ariaLabel);
-        }
-        if ($this->text !== null) {
-            $a->nodeValue = $this->text;
-        }
-        if ($this->rel() !== '') {
-            $a->setAttribute('rel', $this->rel());
-        }
-
-        return $a;
-    }
-
     public function rel(): string
     {
         return trim($this->noopener() . ' ' . $this->noreferrer());
@@ -120,11 +87,6 @@ class Link extends Base
     public function noopener(): string
     {
         return $this->noopener ? 'noopener' : '';
-    }
-
-    public function validate(): void
-    {
-        parent::validate();
     }
 
 }

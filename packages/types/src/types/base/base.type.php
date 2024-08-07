@@ -5,14 +5,34 @@ namespace Lotsof\Types;
 class Base implements \ArrayAccess
 {
 
+    protected string $id = '';
     private $_container = [];
 
-    public function __construct()
+    public function __construct(?string $id = null)
     {
+        if ($id === null) {
+            $classInfo = new \ReflectionClass($this);
+            $classFullName = $classInfo->getName();
+            $classNameParts = explode('\\', $classFullName);
+            $className = end($classNameParts);
+            $this->id = strtolower($className) . '-' . uniqid();
+        } else {
+            $this->id = $id;
+        }
     }
 
-    public function validate(): void
+    public function validate(): array
     {
+        $validator = new \JsonSchema\Validator;
+
+        $data = $this->toObject();
+
+        $validator->validate($data, $this->jsonSchema());
+        if ($validator->isValid()) {
+            return [];
+        } else {
+            return $validator->getErrors();
+        }
     }
 
     public function hydrate(array $data): void
@@ -66,12 +86,26 @@ class Base implements \ArrayAccess
         }
     }
 
-    public function __toString(): string
+    public function __get($prop): mixed
     {
-        if (method_exists($this, 'toHtml')) {
-            return $this->toHtml();
+        if (property_exists($this, $prop)) {
+            return $this->$prop;
         }
-        return '';
+        return null;
+    }
+
+    public function has(string $prop): bool
+    {
+        if (!property_exists($this, $prop)) {
+            return false;
+        }
+        if (is_string($this->$prop) && $this->$prop === '') {
+            return false;
+        }
+        if (is_array($this->$prop) && count($this->$prop) === 0) {
+            return false;
+        }
+        return true;
     }
 
     public function set(string $key, mixed $value): void
@@ -79,58 +113,15 @@ class Base implements \ArrayAccess
         $this->$key = $value;
     }
 
-    private function _resolveSchemaRefs(object $schema, string $schemaPath): object
-    {
-        // resolve $ref properties
-        $schema = \Sugar\object\deepMap($schema, function ($prop, &$value, &$object) use ($schemaPath) {
-            if ($prop === '$ref') {
-                $relPath = realpath(dirname($schemaPath) . '/' . $value);
-                if (!file_exists($relPath)) {
-                    throw new \Exception('Schema "' . $relPath . '" file not found referenced in "' . $schemaPath . '"');
-                }
-                $schema = file_get_contents($relPath);
-                $schema = json_decode($schema);
-                foreach ($schema as $key => $val) {
-                    $object->$key = $val;
-                }
-                return -1;
-            }
-            return $value;
-        });
-
-        // remove all $ref properties
-        $schema = \Sugar\object\deepFilter($schema, function ($prop, $value) {
-            if ($prop === '$ref') {
-                return false;
-            }
-            return true;
-        });
-
-        return $schema;
-    }
-
-    public function toSchema(): object
-    {
-        $class_info = new \ReflectionClass($this);
-        $folderPath = dirname($class_info->getFileName());
-        $className = explode("\\", basename($class_info->getName()));
-        $className = end($className);
-        $schemaPath = $folderPath . '/' . \Sugar\string\camelCase($className) . '.schema.json';
-
-        if (file_exists($schemaPath)) {
-            $schema = file_get_contents($schemaPath);
-            $schema = json_decode($schema);
-            $schema = $this->_resolveSchemaRefs($schema, $schemaPath);
-            return $schema;
-        }
-
-        return (object) [];
-    }
-
     public function toObject(): object
     {
         $vars = get_object_vars($this);
         foreach ($vars as $key => $value) {
+            // private _ properties
+            if (str_starts_with($key, '_')) {
+                unset($vars[$key]);
+                continue;
+            }
             // rercurse
             if (is_object($value) && method_exists($value, 'toObject')) {
                 $vars[$key] = $value->toObject();
@@ -149,22 +140,7 @@ class Base implements \ArrayAccess
             'vars' => array_keys($vars)
         ];
 
-        // html
-        if (debug_backtrace()[1]['function'] !== 'toHtml' && method_exists($this, 'toHtml')) {
-            $vars['html'] = $this->toHtml();
-        }
-
         return (object) $vars;
-    }
-
-    public function toHtml(): string
-    {
-        if (!method_exists($this, 'toDomElement')) {
-            throw new \Exception('toDomElement method not found in class ' . get_class($this) . '. You will need to implement your own \"toHtml\" method...');
-        }
-        $dom = new \DOMDocument('1.0', 'utf-8');
-        $dom->appendChild($dom->importNode($this->toDomElement(), true));
-        return $dom->saveHTML();
     }
 
     public function offsetSet($offset, $value): void

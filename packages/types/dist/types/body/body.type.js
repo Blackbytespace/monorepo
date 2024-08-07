@@ -30,17 +30,48 @@ import __Base from '../base/base.type.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default class __Body extends __Base {
+    get suptitle() {
+        return this.suptitle;
+    }
+    get title() {
+        return this.title;
+    }
+    get subtitle() {
+        return this.subtitle;
+    }
+    get lead() {
+        return this.lead;
+    }
+    get text() {
+        return this.text;
+    }
+    get buttons() {
+        return this.buttons;
+    }
+    get typoClasses() {
+        return this.typoClasses;
+    }
+    get subtitleLevel() {
+        return this.subtitleLevel;
+    }
+    get titleLevel() {
+        return this.titleLevel;
+    }
+    get suptitleLevel() {
+        return this.suptitleLevel;
+    }
     constructor(props = {}) {
         super(props);
-        this.typoClasses = true;
-        this.subtitleLevel = 4;
-        this.titleLevel = 3;
-        this.suptitleLevel = 5;
-    }
-    hasButtons() {
-        var _a;
-        // @ts-ignore
-        return ((_a = this.buttons) === null || _a === void 0 ? void 0 : _a.length) > 0;
+        this._suptitle = '';
+        this._title = '';
+        this._subtitle = '';
+        this._lead = '';
+        this._text = '';
+        this._buttons = [];
+        this._typoClasses = true;
+        this._subtitleLevel = 4;
+        this._titleLevel = 3;
+        this._suptitleLevel = 5;
     }
     toDomElement() {
         var _a, _b, _c, _d;
@@ -94,7 +125,7 @@ export default class __Body extends __Base {
             $text.innerHTML = this.text;
             $div.appendChild($text);
         }
-        if (this.hasButtons()) {
+        if (this.has('buttons')) {
             const $buttons = document.createElement('div');
             $buttons.classList.add('_buttons');
             (_d = this.buttons) === null || _d === void 0 ? void 0 : _d.forEach((button) => {

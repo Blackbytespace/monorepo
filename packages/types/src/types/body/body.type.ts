@@ -44,24 +44,58 @@ export interface IBodyProps {
  */
 
 export default class __Body extends __Base {
-  protected suptitle?: string;
-  protected title?: string;
-  protected subtitle?: string;
-  protected lead?: string;
-  protected text?: string;
-  protected buttons?: any[];
-  protected typoClasses?: boolean = true;
-  protected subtitleLevel: number = 4;
-  protected titleLevel: number = 3;
-  protected suptitleLevel: number = 5;
+  protected _suptitle: string = '';
+  public get suptitle(): string {
+    return this.suptitle;
+  }
+
+  protected _title: string = '';
+  public get title(): string {
+    return this.title;
+  }
+
+  protected _subtitle: string = '';
+  public get subtitle(): string {
+    return this.subtitle;
+  }
+
+  protected _lead: string = '';
+  public get lead(): string {
+    return this.lead;
+  }
+
+  protected _text: string = '';
+  public get text(): string {
+    return this.text;
+  }
+
+  protected _buttons: any[] = [];
+  public get buttons(): any[] {
+    return this.buttons;
+  }
+
+  protected _typoClasses: boolean = true;
+  public get typoClasses(): boolean {
+    return this.typoClasses;
+  }
+
+  protected _subtitleLevel: number = 4;
+  public get subtitleLevel(): number {
+    return this.subtitleLevel;
+  }
+
+  protected _titleLevel: number = 3;
+  public get titleLevel(): number {
+    return this.titleLevel;
+  }
+
+  protected _suptitleLevel: number = 5;
+  public get suptitleLevel(): number {
+    return this.suptitleLevel;
+  }
 
   constructor(props: IBodyProps = {}) {
     super(props);
-  }
-
-  public hasButtons(): boolean {
-    // @ts-ignore
-    return this.buttons?.length > 0;
   }
 
   toDomElement(): HTMLElement {
@@ -121,7 +155,7 @@ export default class __Body extends __Base {
       $div.appendChild($text);
     }
 
-    if (this.hasButtons()) {
+    if (this.has('buttons')) {
       const $buttons = document.createElement('div');
       $buttons.classList.add('_buttons');
       this.buttons?.forEach((button) => {

@@ -18,6 +18,18 @@ class ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
         ),
+        'M' => 
+        array (
+            'MabeEnum\\' => 9,
+        ),
+        'J' => 
+        array (
+            'JsonSchema\\' => 11,
+        ),
+        'I' => 
+        array (
+            'Icecave\\Repr\\' => 13,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -33,14 +45,37 @@ class ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'MabeEnum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/marc-mabe/php-enum/src',
+        ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
+        ),
+        'Icecave\\Repr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/icecave/repr/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Icecave\\Parity' => 
+            array (
+                0 => __DIR__ . '/..' . '/icecave/parity/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Stringable' => __DIR__ . '/..' . '/marc-mabe/php-enum/stubs/Stringable.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -48,6 +83,7 @@ class ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit90fb5b2b648dd92b3b734f8549bf55b5::$classMap;
 
         }, null, ClassLoader::class);

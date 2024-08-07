@@ -31,3 +31,7 @@ export interface ICarpenterCustomEvent extends CustomEvent {
 export interface ICarpenterAdapter {
     applyUpdate(ICarpenterUpdateObject: any): void;
 }
+export interface ICarpenterWidget {
+    id: string;
+    tag: string;
+}

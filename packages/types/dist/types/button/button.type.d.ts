@@ -11,6 +11,5 @@ export default class __Button extends __Base {
     protected class?: string;
     protected link: __Link;
     constructor(props?: IButtonProps);
-    validate(): void;
     toDomElement(): HTMLElement;
 }
