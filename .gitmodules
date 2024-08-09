@@ -46,3 +46,6 @@
 [submodule "packages/wordpress-playground"]
 	path = packages/wordpress-playground
 	url = git@github.com:lotsofdev/wordpress-playground.git
+[submodule "packages/jsonSchemaForm"]
+	path = packages/jsonSchemaForm
+	url = git@github.com:lotsofdev/jsonSchemaForm.git
