@@ -49,3 +49,6 @@
 [submodule "packages/jsonSchemaForm"]
 	path = packages/jsonSchemaForm
 	url = git@github.com:lotsofdev/jsonSchemaForm.git
+[submodule "packages/carpenter"]
+	path = packages/carpenter
+	url = git@github.com:lotsofdev/carpenter.git
