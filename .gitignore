@@ -16,3 +16,4 @@ node_modules
 .DS_Store
 .cache
 yarn-error.log
+node_modules
