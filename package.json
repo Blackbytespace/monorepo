@@ -9,7 +9,7 @@
     "packages/wordpress-playground/wordpress/wp-content/themes/lotsof"
   ],
   "scripts": {
-    "dev": "npm run dev.advancedSelectElement & npm run dev.carpenter & npm run dev.cli & npm run dev.config & npm run dev.docblock & npm run dev.docmap & npm run dev.litElement & npm run dev.sugar & npm run dev.sugarcss & npm run dev.types",
+    "dev": "npm run dev.advancedSelectElement & npm run dev.carpenter & npm run dev.cli & npm run dev.config & npm run dev.docblock & npm run dev.docmap & npm run dev.jsonSchemaForm & npm run dev.litElement & npm run dev.sugar & npm run dev.sugarcss & npm run dev.types",
     "dev.advancedSelectElement": "cd packages/advancedSelectElement && npm run dev",
     "dev.carpenter": "cd packages/carpenter && npm run dev",
     "dev.cli": "(cd packages/cli && npm run dev)",
@@ -17,6 +17,7 @@
     "dev.config": "(cd packages/config && npm run dev)",
     "dev.docblock": "(cd packages/docblock && npm run dev)",
     "dev.docmap": "(cd packages/docmap && npm run dev)",
+    "dev.jsonSchemaForm": "(cd packages/jsonSchemaForm && npm run dev)",
     "dev.litElement": "(cd packages/litElement && npm run dev)",
     "dev.sugar": "(cd packages/sugar && npm run dev)",
     "dev.sugarcss": "(cd packages/sugarcss && npm run dev)",
