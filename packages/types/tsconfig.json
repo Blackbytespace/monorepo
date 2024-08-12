@@ -1,5 +1,11 @@
 {
-  "exclude": ["./dist/**/*", "./vendor/**/*"],
+  "exclude": [
+    "lotsof.config.ts",
+    "**/*.test.*",
+    "dist/**/*",
+    "node_modules/**/*",
+    "vendor/**/*"
+  ],
   "compilerOptions": {
     "noImplicitAny": false,
     "jsx": "react",
@@ -11,6 +17,7 @@
     "module": "nodenext",
     "sourceMap": true,
     "declaration": true,
+
     "esModuleInterop": true,
     "moduleResolution": "nodenext"
   }
