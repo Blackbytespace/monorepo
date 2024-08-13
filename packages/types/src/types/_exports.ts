@@ -1,23 +1,23 @@
-import __Base from './base/base.type.js';
+import __BaseType from './base/base.type.js';
 import __bodyMock from './body/body.mock.js';
-import __Body from './body/body.type.js';
+import __BodyType from './body/body.type.js';
 import __buttonMock from './button/button.mock.js';
-import __Button from './button/button.type.js';
+import __ButtonType from './button/button.type.js';
 import __linkMock from './link/link.mock.js';
-import __Link from './link/link.type.js';
-import __Typo from './typo/typo.type.js';
+import __LinkType from './link/link.type.js';
+import __TypoType from './typo/typo.type.js';
 
 import type { ITypo } from './typo/typo.type.js';
 
 export type { ITypo };
 
 export {
-  __Base,
-  __Body,
+  __BaseType,
   __bodyMock,
-  __Button,
+  __BodyType,
   __buttonMock,
-  __Link,
+  __ButtonType,
   __linkMock,
-  __Typo,
+  __LinkType,
+  __TypoType,
 };

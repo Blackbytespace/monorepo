@@ -2,29 +2,29 @@
 
 namespace Lotsof\Types;
 
-class Card extends \Lotsof\Types\Base
+class CardType extends \Lotsof\Types\BaseType
 {
-    public static function mock(\Lotsof\Types\Body $body = null, \Lotsof\Types\Image $image = null, \Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null): Card
+    public static function mock(\Lotsof\Types\BodyType $body = null, \Lotsof\Types\ImageType $image = null, \Lotsof\Types\VideoType $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null): CardType
     {
         $faker = \Faker\Factory::create();
 
         $isVideo = random_int(0, 1);
 
         if ($image === null) {
-            $image = Image::mock();
+            $image = ImageType::mock();
             if ($isVideo) {
                 $image = null;
             }
         }
         if ($video === null) {
-            $video = Video::mock();
+            $video = VideoType::mock();
             if (!$isVideo) {
                 $video = null;
             }
         }
 
         if ($body === null) {
-            $body = Body::mock(
+            $body = BodyType::mock(
                 titleLevel: 3
             );
         }
@@ -53,15 +53,15 @@ class Card extends \Lotsof\Types\Base
         return $card;
     }
 
-    protected ?\Lotsof\Types\Body $body;
-    protected ?\Lotsof\Types\Image $image;
-    protected ?\Lotsof\Types\Video $video;
+    protected ?\Lotsof\Types\BodyType $body;
+    protected ?\Lotsof\Types\ImageType $image;
+    protected ?\Lotsof\Types\VideoType $video;
     protected ?string $areaFigure = null;
     protected ?string $areaBody = null;
     protected ?string $areaBeforeBody = null;
     protected ?string $areaAfterBody = null;
 
-    public function __construct(?\Lotsof\Types\Body $body = null, ?\Lotsof\Types\Image $image = null, ?\Lotsof\Types\Video $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null)
+    public function __construct(?\Lotsof\Types\BodyType $body = null, ?\Lotsof\Types\ImageType $image = null, ?\Lotsof\Types\VideoType $video = null, ?string $areaFigure = null, ?string $areaBody = null, ?string $areaBeforeBody = null, ?string $areaAfterBody = null, ?string $id = null)
     {
         parent::__construct($id);
         $this->body = $body;

@@ -2,9 +2,9 @@
 
 namespace Lotsof\Types;
 
-class Link extends Base
+class LinkType extends BaseType
 {
-    public static function mock(string $href = null, string $text = null, string $title = null, string $target = null, string $class = '_link', bool $noopener = null, bool $noreferrer = null, string $ariaLabel = null): Link
+    public static function mock(string $href = null, string $text = null, string $title = null, string $target = null, string $class = '_link', bool $noopener = null, bool $noreferrer = null, string $ariaLabel = null): LinkType
     {
         $faker = \Faker\Factory::create();
 
@@ -18,7 +18,7 @@ class Link extends Base
             $title = $faker->sentence();
         }
         if ($target === null) {
-            $target = \Sugar\ar\pickRandom(['_self', '_blank']);
+            $target = \Sugar\Array\pickRandom(['_self', '_blank']);
         }
         if ($noopener === null && $faker->boolean()) {
             $noopener = $faker->boolean();

@@ -2,9 +2,9 @@
 
 namespace Lotsof\Types;
 
-class Section extends Base
+class SectionType extends BaseType
 {
-    public static function mock(string $body = null, bool $fullWidth = null, ?Image $image = null, ?Video $video = null, ?string $id = null): Section
+    public static function mock(string $body = null, bool $fullWidth = null, ?Image $image = null, ?Video $video = null, ?string $id = null): SectionType
     {
         $faker = \Faker\Factory::create();
 

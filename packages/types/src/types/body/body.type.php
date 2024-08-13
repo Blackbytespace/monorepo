@@ -2,9 +2,9 @@
 
 namespace Lotsof\Types;
 
-class Body extends Base
+class BodyType extends BaseType
 {
-    public static function mock(string $suptitle = '', string $title = '', string $subtitle = '', string $lead = '', string $text = '', array $buttons = null, int $titleLevel = 3, int $suptitleLevel = 5, int $subtitleLevel = 4, array $attrs = [], string $id = null): Body
+    public static function mock(string $suptitle = '', string $title = '', string $subtitle = '', string $lead = '', string $text = '', array $buttons = null, int $titleLevel = 3, int $suptitleLevel = 5, int $subtitleLevel = 4, array $attrs = [], string $id = null): BodyType
     {
         $faker = \Faker\Factory::create();
 
@@ -24,7 +24,7 @@ class Body extends Base
             $text = $faker->words(random_int(5, 20), true);
         }
         if ($buttons === null) {
-            $buttons = $faker->boolean() ? \Sugar\ar\pickSome([Button::mock(), Button::mock(), Button::mock()]) : null;
+            $buttons = $faker->boolean() ? \Sugar\Array\pickSome([ButtonType::mock(), ButtonType::mock(), ButtonType::mock()]) : null;
         }
 
         $body = new static(
@@ -56,7 +56,7 @@ class Body extends Base
     protected array $attrs = [];
 
     public array $typesMap = [
-        'buttons' => Button::class
+        'buttons' => ButtonType::class
     ];
 
     public function __construct(string $suptitle = '', string $title = '', string $subtitle = '', string $lead = '', string $text = '', array $buttons = null, bool $typoClasses = true, int $titleLevel = 1, int $suptitleLevel = 5, int $subtitleLevel = 4, array $attrs = [], string $id = null)

@@ -1,4 +1,4 @@
-import __Base from '../base/base.type.js';
+import __BaseType from '../base/base.type.js';
 export interface IBodyProps {
     suptitle?: string;
     title?: string;
@@ -40,28 +40,7 @@ export interface IBodyProps {
  * @since           1.0.0
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export default class __Body extends __Base {
-    protected _suptitle: string;
-    get suptitle(): string;
-    protected _title: string;
-    get title(): string;
-    protected _subtitle: string;
-    get subtitle(): string;
-    protected _lead: string;
-    get lead(): string;
-    protected _text: string;
-    get text(): string;
-    protected _buttons: any[];
-    get buttons(): any[];
-    protected _typoClasses: boolean;
-    get typoClasses(): boolean;
-    protected _subtitleLevel: number;
-    get subtitleLevel(): number;
-    protected _titleLevel: number;
-    get titleLevel(): number;
-    protected _suptitleLevel: number;
-    get suptitleLevel(): number;
+export default class __BodyType extends __BaseType {
+    data: IBodyProps;
     constructor(props?: IBodyProps);
-    toDomElement(): HTMLElement;
-    toHtml(): string;
 }

@@ -1,5 +1,5 @@
-import __Base from '../base/base.type.js';
-import __Link from '../link/link.type.js';
+import __BaseType from '../base/base.type.js';
+import __LinkType from '../link/link.type.js';
 
 export interface IButtonProps {
   style?: 'solid' | 'outline' | 'text';
@@ -7,7 +7,7 @@ export interface IButtonProps {
   link?: __Link;
 }
 
-export default class __Button extends __Base {
+export default class __ButtonType extends __BaseType {
   public static styles: string[] = ['solid', 'outline', 'text'];
 
   protected style: 'solid' | 'outline' | 'text';
@@ -20,7 +20,7 @@ export default class __Button extends __Base {
 
     this.style = props.style ?? 'solid';
     if (!props.link) {
-      this.link = new __Link();
+      this.link = new __LinkType();
     }
   }
 

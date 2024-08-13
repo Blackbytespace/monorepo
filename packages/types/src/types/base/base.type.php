@@ -2,7 +2,7 @@
 
 namespace Lotsof\Types;
 
-class Base implements \ArrayAccess
+class BaseType implements \ArrayAccess
 {
 
     protected string $id = '';
@@ -61,7 +61,7 @@ class Base implements \ArrayAccess
             // if it exists, instanciate it with the data
             if (class_exists($className) && $arg !== null) {
                 // if it's an array, hydrate each element
-                if (!\Sugar\is\assocArray($arg)) {
+                if (!\Sugar\Is\assocArray($arg)) {
                     $this->$prop = array_map(function ($a) use ($className) {
                         $obj = new $className();
                         if (is_array($a)) {

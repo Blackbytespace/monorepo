@@ -1,4 +1,4 @@
-export default class __Base {
+export default class __BaseType {
     constructor(props = {}) {
         this.id = '';
         this.data = {};
@@ -10,7 +10,6 @@ export default class __Base {
         else {
             this.id = props.id;
         }
-        this.data = props;
     }
     validate() {
         // @TODO    Implement json schema validation

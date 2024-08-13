@@ -1,10 +1,6 @@
-interface IBase {
-  id?: string;
-}
-
-export default class __Base {
+export default class __BaseType {
   protected id: string = '';
-  protected data: any = {};
+  public data: any = {};
 
   constructor(props: any = {}) {
     if (props.id === undefined) {
@@ -14,12 +10,10 @@ export default class __Base {
     } else {
       this.id = props.id;
     }
-    this.data = props;
   }
 
   public validate(): any[] {
     // @TODO    Implement json schema validation
-
     return [];
   }
 

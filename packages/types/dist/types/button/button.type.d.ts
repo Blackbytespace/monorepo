@@ -1,11 +1,10 @@
-import __Base from '../base/base.type.js';
-import __Link from '../link/link.type.js';
+import __BaseType from '../base/base.type.js';
 export interface IButtonProps {
     style?: 'solid' | 'outline' | 'text';
     class?: string;
     link?: __Link;
 }
-export default class __Button extends __Base {
+export default class __ButtonType extends __BaseType {
     static styles: string[];
     protected style: 'solid' | 'outline' | 'text';
     protected class?: string;

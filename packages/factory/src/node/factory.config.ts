@@ -1,8 +1,6 @@
 import type { IFactoryConfig } from '../shared/factory.types.js';
 
-import { __defineConfig } from '@lotsof/config';
-
-import { __getConfig } from '@lotsof/config';
+import { __defineConfig, __getConfig } from '@lotsof/config';
 
 import type { IComponentsSettings } from '@lotsof/components';
 import { __dirname } from '@lotsof/sugar/fs';
@@ -16,9 +14,23 @@ const config: IFactoryConfig = {
     hostname: '0.0.0.0',
     port: 5183,
     entrypoint: __path.resolve(__dirname(), '../../src/php/index.php'),
+  },
+  ui: {
     assets: {
-      js: '//localhost:5183/src/js/index.ts',
-      css: '//localhost:5183/src/css/index.css',
+      js: '//0.0.0.0:5184/src/js/index.ts',
+      css: '//0.0.0.0:5184/src/css/index.css',
+    },
+  },
+  project: {
+    rootDir: process.cwd(),
+    server: {
+      protocol: 'http',
+      hostname: '0.0.0.0',
+      port: 5173,
+    },
+    assets: {
+      js: 'src/js/index.ts',
+      css: 'src/css/index.css',
     },
   },
 };

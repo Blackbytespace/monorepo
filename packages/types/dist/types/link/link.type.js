@@ -1,5 +1,5 @@
-import __Base from '../base/base.type.js';
-export default class __Link extends __Base {
+import __BaseType from '../base/base.type.js';
+export default class __LinkType extends __BaseType {
     constructor(props = {}) {
         super(props);
         this.target = '_self';

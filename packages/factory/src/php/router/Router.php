@@ -17,11 +17,42 @@ class Router
         $url = $_SERVER['REQUEST_URI'];
         if (isset($this->routes[$method])) {
             foreach ($this->routes[$method] as $routeUrl => $target) {
-                // Use named subpatterns in the regular expression pattern to capture each parameter value separately
-                $pattern = preg_replace('/\/:([^\/]+)/', '/(?P<$1>[^/]+)', $routeUrl);
+
+                $routeParts = explode('/', $routeUrl);
+                $urlParts = explode('/', $url);
+
+                $regs = [];
+                $values = [];
+
+                foreach ($routeParts as $key => $part) {
+                    if ($key == 0 || !isset($urlParts[$key])) {
+                        continue;
+                    }
+
+                    if (strpos($part, ':') === 0) {
+                        $paramName = str_replace(':', '', $part);
+                        if (str_ends_with($part, '?')) {
+                            $paramName = str_replace('?', '', $paramName);
+                            $regs[$paramName] = '(\/[^/]+)?';
+                        } else {
+                            $regs[$paramName] = '\/[^/]+';
+                        }
+                        $values[$key] = $urlParts[$key];
+                    } else {
+                        $regs[$part] = '\/' . $part;
+                        $values[$key] = -1;
+                    }
+                }
+
+                $pattern = '';
+                foreach ($regs as $paramName => $reg) {
+                    $pattern .= $reg;
+                }
+
                 if (preg_match('#^' . $pattern . '$#', $url, $matches)) {
-                    // Pass the captured parameter values as named arguments to the target function
-                    $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY); // Only keep named subpattern matches
+                    $params = array_filter($values, function ($value) {
+                        return $value != -1;
+                    });
                     call_user_func_array($target, $params);
                     return;
                 }

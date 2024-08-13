@@ -2,37 +2,37 @@
 
 namespace Lotsof\Types;
 
-class Hero extends Base
+class HeroType extends BaseType
 {
-    public static function mock(?Body $body = null, ?Image $image = null, ?Video $video = null, ?string $size = null, ?string $align = null, ?string $theme = null, ?string $id = null): Hero
+    public static function mock(?BodyType $body = null, ?ImageType $image = null, ?VideoType $video = null, ?string $size = null, ?string $align = null, ?string $theme = null, ?string $id = null): HeroType
     {
         $faker = \Faker\Factory::create();
 
         if ($body === null) {
-            $body = Body::mock();
+            $body = BodyType::mock();
         }
         $isVideo = $faker->boolean();
         if ($image === null && !$isVideo) {
-            $image = Image::mock();
+            $image = ImageType::mock();
         } else {
-            $image = new Image();
+            $image = new ImageType();
         }
         if ($video === null && $isVideo) {
-            $video = Video::mock();
+            $video = VideoType::mock();
         } else {
-            $video = new Video();
+            $video = new VideoType();
         }
         if ($size === null) {
-            $size = \Sugar\ar\pickRandom(['small', 'medium', 'large']);
+            $size = \Sugar\Array\pickRandom(['small', 'medium', 'large']);
         }
         if ($align === null) {
-            $align = \Sugar\ar\pickRandom(['left', 'center', 'right']);
+            $align = \Sugar\Array\pickRandom(['left', 'center', 'right']);
         }
         if ($theme === null) {
-            $theme = \Sugar\ar\pickRandom(['light', 'dark']);
+            $theme = \Sugar\Array\pickRandom(['light', 'dark']);
         }
 
-        $section = new static(
+        $hero = new static(
             id: $id,
             theme: $theme,
             size: $size,
@@ -41,22 +41,22 @@ class Hero extends Base
             image: $image,
             video: $video
         );
-        return $section;
+        return $hero;
     }
 
     protected string $theme;
     protected string $size;
     protected string $align;
-    protected ?Body $body = null;
-    protected ?Image $image = null;
-    protected ?Video $video = null;
+    protected ?BodyType $body = null;
+    protected ?ImageType $image = null;
+    protected ?VideoType $video = null;
 
     // public array $typesMap = [
     //     'image' => Image::class,
     //     'video' => Video::class,
     // ];
 
-    public function __construct(?Body $body = null, ?Image $image = null, ?Video $video = null, string $size = 'medium', string $align = 'left', string $theme = 'light', ?string $id = null)
+    public function __construct(?BodyType $body = null, ?ImageType $image = null, ?VideoType $video = null, string $size = 'medium', string $align = 'left', string $theme = 'light', ?string $id = null)
     {
         parent::__construct($id);
         $this->theme = $theme;

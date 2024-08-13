@@ -1,12 +1,12 @@
-import __Base from '../base/base.type.js';
-import __Link from '../link/link.type.js';
-class __Button extends __Base {
+import __BaseType from '../base/base.type.js';
+import __LinkType from '../link/link.type.js';
+class __ButtonType extends __BaseType {
     constructor(props = {}) {
         var _a;
         super(props);
         this.style = (_a = props.style) !== null && _a !== void 0 ? _a : 'solid';
         if (!props.link) {
-            this.link = new __Link();
+            this.link = new __LinkType();
         }
     }
     toDomElement() {
@@ -24,6 +24,6 @@ class __Button extends __Base {
         return $button;
     }
 }
-__Button.styles = ['solid', 'outline', 'text'];
-export default __Button;
+__ButtonType.styles = ['solid', 'outline', 'text'];
+export default __ButtonType;
 //# sourceMappingURL=button.type.js.map

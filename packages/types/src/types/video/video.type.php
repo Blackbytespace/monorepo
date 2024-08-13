@@ -2,10 +2,10 @@
 
 namespace Lotsof\Types;
 
-class Video extends Base
+class VideoType extends BaseType
 {
 
-    public static function mock(string $src = '', string $poster = '', string $title = '', bool $autoplay = null, bool $controls = null, bool $loop = false, bool $muted = null, bool $playsinline = null, array $attrs = [], ?string $id = null): Video
+    public static function mock(string $src = '', string $poster = '', string $title = '', bool $autoplay = null, bool $controls = null, bool $loop = false, bool $muted = null, bool $playsinline = null, array $attrs = [], ?string $id = null): VideoType
     {
         $faker = \Faker\Factory::create();
         $video = new static(

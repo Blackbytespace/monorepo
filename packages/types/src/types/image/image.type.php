@@ -2,10 +2,10 @@
 
 namespace Lotsof\Types;
 
-class Image extends Base
+class ImageType extends BaseType
 {
 
-    public static function mock(string $src = '', string $title = '', string $alt = '', bool $lazy = null, array $attrs = [], ?string $id = null): Image
+    public static function mock(string $src = '', string $title = '', string $alt = '', bool $lazy = null, array $attrs = [], ?string $id = null): ImageType
     {
         $faker = \Faker\Factory::create();
         $image = new static(

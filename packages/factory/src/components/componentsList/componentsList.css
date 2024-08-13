@@ -1,0 +1,28 @@
+.s-factory_components-list {
+  .s-factory_components-list-item {
+    display: flex;
+  }
+
+  .s-factory_components-list-item {
+  }
+
+  .s-factory_components-list-item-name {
+    font-weight: bold;
+    flex-grow: 1;
+  }
+
+  .s-factory_components-list-item-engines {
+    display: flex;
+    gap: s-space(10);
+  }
+
+  .s-factory_components-list-item.-active {
+    background: blue;
+
+    .s-factory_components-list-item-engine {
+      &.-active {
+        background: green;
+      }
+    }
+  }
+}

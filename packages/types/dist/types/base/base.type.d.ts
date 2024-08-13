@@ -1,6 +1,6 @@
-export default class __Base {
+export default class __BaseType {
     protected id: string;
-    protected data: any;
+    data: any;
     constructor(props?: any);
     validate(): any[];
     set(key: string, value: any): void;

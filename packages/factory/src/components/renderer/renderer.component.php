@@ -1,6 +1,6 @@
 <?php
 
-namespace Components\Renderer;
+namespace Factory\Renderer;
 
 // global configuration
 $viewsFolder = realpath(__DIR__ . '/..');

@@ -1,4 +1,4 @@
-import __Base from '../base/base.type.js';
+import __BaseType from '../base/base.type.js';
 
 export interface ILinkProps {
   href?: string;
@@ -11,7 +11,7 @@ export interface ILinkProps {
   ariaLabel?: string;
 }
 
-export default class __Link extends __Base {
+export default class __LinkType extends __BaseType {
   protected href?: string;
   protected text?: string;
   protected title?: string;

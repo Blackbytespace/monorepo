@@ -1,6 +1,6 @@
-import __Base from '../base/base.type.js';
+import __BaseType from '../base/base.type.js';
 import { __richText } from '@lotsof/sugar/faker';
-export default class Typo extends __Base {
+export default class TypoType extends __BaseType {
     static mock(props = {}, settings) {
         const text = __richText(settings);
         return new this(Object.assign({ text }, props));
