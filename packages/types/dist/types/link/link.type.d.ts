@@ -1,5 +1,5 @@
 import __BaseType from '../base/base.type.js';
-export interface ILinkProps {
+export type TLinkProps = {
     href?: string;
     text?: string;
     title?: string;
@@ -8,7 +8,7 @@ export interface ILinkProps {
     noopener?: boolean;
     noreferrer?: boolean;
     ariaLabel?: string;
-}
+};
 export default class __LinkType extends __BaseType {
     protected href?: string;
     protected text?: string;
@@ -18,7 +18,7 @@ export default class __LinkType extends __BaseType {
     protected noopener?: boolean;
     protected noreferrer?: boolean;
     protected ariaLabel?: string;
-    constructor(props?: ILinkProps);
+    constructor(props?: TLinkProps);
     toDomElement(): HTMLElement;
     rel(): string;
 }

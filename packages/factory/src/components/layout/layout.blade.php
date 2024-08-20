@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <s-factory></s-factory>
-    </div>
+    <s-factory verbose></s-factory>
 </body>
 
 </html>

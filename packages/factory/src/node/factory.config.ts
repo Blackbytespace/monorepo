@@ -1,14 +1,14 @@
-import type { IFactoryConfig } from '../shared/factory.types.js';
+import type { TFactoryConfig } from '../shared/factory.types.js';
 
 import { __defineConfig, __getConfig } from '@lotsof/config';
 
-import type { IComponentsSettings } from '@lotsof/components';
+import type { TComponentsSettings } from '@lotsof/components';
 import { __dirname } from '@lotsof/sugar/fs';
 import __path from 'path';
 
-const componentsConfig: IComponentsSettings = __getConfig().components.settings;
+const componentsConfig: TComponentsSettings = __getConfig().components.settings;
 
-const config: IFactoryConfig = {
+const config: TFactoryConfig = {
   components: componentsConfig,
   server: {
     hostname: '0.0.0.0',

@@ -2,13 +2,14 @@
 
 namespace Factory\Renderers;
 
-function react(object $component, array $data, object $config): string
+function react(object $component, object $config): string
 {
-    $componentPath = $config->components->rootDir . '/' . $component->name . '/' . $component->name . '.tsx';
+    $componentPath = $component->getPath() . '/' . $component->getName() . '.tsx';
     $componentUrl = \Factory\Project\assetViteUrl($componentPath);
     $mockUrl = '';
-    if ($component->mocks['react']) {
-        $mockUrl = \Factory\Project\assetViteUrl($component->mocks['react']);
+    $mocks = $component->getMocks();
+    if (isset($mocks['react'])) {
+        $mockUrl = \Factory\Project\assetViteUrl($mocks['react']);
     }
 
 

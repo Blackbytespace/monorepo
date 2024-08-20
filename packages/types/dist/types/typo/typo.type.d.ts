@@ -1,10 +1,10 @@
 import __BaseType from '../base/base.type.js';
-import type { IRichTextSettings } from '@lotsof/sugar/faker';
-export interface ITypo {
+import type { TRichTextSettings } from '@lotsof/sugar/faker';
+export type TTypoProps = {
     text?: string;
     id?: string;
-}
+};
 export default class TypoType extends __BaseType {
-    static mock(props?: ITypo, settings?: IRichTextSettings): TypoType;
-    constructor(props?: ITypo);
+    static mock(props?: TTypoProps, settings?: TRichTextSettings): TypoType;
+    constructor(props?: TTypoProps);
 }

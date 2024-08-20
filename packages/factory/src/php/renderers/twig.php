@@ -2,7 +2,7 @@
 
 namespace Factory\Renderers;
 
-function twig(object $component, array $data, object $config): string
+function twig(object $component, object $config): string
 {
     // make sure we have a temp directory to store the cache
     $tmpDir = sys_get_temp_dir();
@@ -17,7 +17,7 @@ function twig(object $component, array $data, object $config): string
     ]);
 
     // render the view
-    $relPath = \Sugar\Fs\relativePath($config->components->rootDir, $component->path);
-    $viewPath = $relPath . '/' . basename($component->path) . '.twig';
-    return $twig->render($viewPath, (array) $data);
+    $relPath = \Sugar\Fs\relativePath($config->components->rootDir, $component->getPath());
+    $viewPath = $relPath . '/' . basename($component->getPath()) . '.twig';
+    return $twig->render($viewPath, \Sugar\Convert\toArray($component->getValues()));
 }

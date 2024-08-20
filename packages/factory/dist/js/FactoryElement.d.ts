@@ -1,37 +1,43 @@
-import __LitElement from '@lotsof/litElement';
+import __LitElement from '@lotsof/lit-element';
+import '@lotsof/json-schema-form';
 import '../../src/css/FactoryElement.css';
-import { IFactoryComponent, IFactorySpecs } from '../shared/factory.types.js';
+import { TFactoryComponent, TFactoryComponentJson, TFactoryMediaQuery, TFactorySpecs } from '../shared/factory.types.js';
 export default class FactoryElement extends __LitElement {
     src: string;
-    specs: IFactorySpecs;
-    _currentComponent: IFactoryComponent | null;
+    mediaQueries: Record<string, TFactoryMediaQuery>;
+    mediaQuery: string;
+    commandPanelHotkey: string;
+    specs: TFactorySpecs;
+    _currentComponent: TFactoryComponent | null;
     _currentComponentId: string;
+    _currentMediaQuery: string;
     private _$iframe?;
+    private _$canvas?;
     constructor();
-    /**
-     * @name      isDaemon
-     * @type      Boolean
-     * @get
-     *
-     * Return true if the component runs into the iframe (in deamon mode)
-     *
-     * @since     1.0.0
-     */
-    get isDaemon(): boolean;
     get currentEngine(): string | undefined;
+    get currentComponent(): TFactoryComponentJson | undefined;
     get currentComponentId(): string | undefined;
+    get currentMediaQuery(): TFactoryMediaQuery | undefined;
+    update(changedProperties: any): void;
+    private _updateMediaQueries;
     private _fetchSpecs;
     get $iframeDocument(): Document | null | undefined;
     mount(): Promise<void>;
+    private _initCommandPanel;
     private _initListeners;
-    registerComponent(component: IFactoryComponent): void;
     private _initEnvironment;
     private _setIframeContent;
-    private _injectFactoryDeamon;
-    private _applyUpdate;
-    private _renderComponentInIframe;
+    private _updateIframeSize;
+    private _updateComponent;
     selectComponent(id: string, engine?: string): void;
+    selectMediaQuery(name: string): void;
+    private _applyUpdate;
     private _renderComponents;
     private _renderSidebar;
+    private _renderMediaQueries;
+    private _renderTopbar;
+    private _renderBottombar;
+    private _renderCommandPanel;
+    private _renderEditor;
     render(): import("lit-html").TemplateResult<1>;
 }

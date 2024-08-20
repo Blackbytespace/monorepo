@@ -1,8 +1,11 @@
+@import './sidebare.bare.css';
+
 .s-factory_sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: clamp(350px, 25%, 400px);
-  height: 100%;
-  background: yellow;
+  background: s-color(main, background);
+  box-shadow: var(--s-factory-depth);
+  @s-transition();
+  @s-radius;
+
+  .s-factory_sidebar-inner {
+  }
 }

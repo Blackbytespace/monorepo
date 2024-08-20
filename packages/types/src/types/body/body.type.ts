@@ -1,6 +1,6 @@
 import __BaseType from '../base/base.type.js';
 
-export interface IBodyProps {
+export type TBodyProps = {
   suptitle?: string;
   title?: string;
   subtitle?: string;
@@ -10,7 +10,7 @@ export interface IBodyProps {
   titleLevel?: number;
   subtitleLevel?: number;
   suptitleLevel?: number;
-}
+};
 
 /**
  * @name            Body
@@ -22,7 +22,7 @@ export interface IBodyProps {
  *
  * This class is used to create a new instance of the Body type.
  *
- * @param           {IBodyProps}           [props]           An object containing the properties of the Body type.
+ * @param           {TBodyProps}           [props]           An object containing the properties of the Body type.
  *
  * @property       {string}              [suptitle=null]       The suptitle of the body
  * @property       {string}              [title=null]          The title of the body
@@ -44,7 +44,7 @@ export interface IBodyProps {
  */
 
 export default class __BodyType extends __BaseType {
-  public data: IBodyProps = {
+  public data: TBodyProps = {
     suptitle: '',
     title: '',
     subtitle: '',
@@ -56,7 +56,7 @@ export default class __BodyType extends __BaseType {
     suptitleLevel: 5,
   };
 
-  constructor(props: IBodyProps = {}) {
+  constructor(props: TBodyProps = {}) {
     super();
     this.data = {
       ...this.data,

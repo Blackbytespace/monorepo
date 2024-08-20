@@ -1,0 +1,55 @@
+@import './topbar.bare.css';
+
+.s-factory_topbar {
+  /* padding: s-space(30); */
+  padding-inline: s-space(20);
+  gap: s-space(20);
+  background: s-color(main, background);
+  box-shadow: var(--s-factory-depth);
+  @s-transition();
+  @s-radius;
+  font-size: s-size(20);
+  user-select: none;
+
+  .s-factory_topbar-title {
+    color: s-color(accent);
+
+    svg {
+      width: 1em;
+      height: 1em;
+      scale: 1.5;
+    }
+  }
+  .s-factory_topbar-component {
+    gap: s-space(20);
+  }
+  .s-factory_topbar-component-name {
+    color: s-color(main, --alpha 0.6);
+    border-inline-start: 1px solid s-color(main, border);
+    padding-inline-start: s-space(20);
+  }
+  .s-factory_topbar-component-version {
+    color: s-color(main, --alpha 0.6);
+    border-inline-start: 1px solid s-color(main, border);
+    padding-inline-start: s-space(20);
+  }
+  .s-factory_topbar-component-engine {
+    display: flex;
+    align-items: center;
+    gap: s-space(10);
+    position: relative;
+    top: 0;
+    color: s-color(main, --alpha 0.6);
+    border-inline-start: 1px solid s-color(main, border);
+    padding-inline-start: s-space(20);
+
+    svg {
+      width: 1em;
+      height: 1em;
+
+      [fill] {
+        fill: s-color(accent, --alpha 0.6);
+      }
+    }
+  }
+}

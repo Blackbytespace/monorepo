@@ -1,17 +1,17 @@
 import __BaseType from '../base/base.type.js';
 
-import type { IRichTextSettings } from '@lotsof/sugar/faker';
+import type { TRichTextSettings } from '@lotsof/sugar/faker';
 import { __richText } from '@lotsof/sugar/faker';
 
-export interface ITypo {
+export type TTypoProps = {
   text?: string;
   id?: string;
-}
+};
 
 export default class TypoType extends __BaseType {
   public static mock(
-    props: ITypo = {},
-    settings?: IRichTextSettings,
+    props: TTypoProps = {},
+    settings?: TRichTextSettings,
   ): TypoType {
     const text = __richText(settings);
     return new this({
@@ -20,7 +20,7 @@ export default class TypoType extends __BaseType {
     });
   }
 
-  constructor(props: ITypo = {}) {
+  constructor(props: TTypoProps = {}) {
     super(props);
   }
 }

@@ -1,11 +1,11 @@
-import type { ILinkProps } from './link.type.js';
+import type { TLinkProps } from './link.type.js';
 import __LinkType from './link.type.js';
 
 import { __pickRandom } from '@lotsof/sugar/array';
 
 import { faker } from '@faker-js/faker';
 
-export default function __linkTypeMock(props: ILinkProps = {}): __LinkType {
+export default function __linkTypeMock(props: TLinkProps = {}): __LinkType {
   return new __LinkType({
     href: faker.internet.url(),
     text: faker.lorem.words({ min: 1, max: 3 }),

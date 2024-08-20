@@ -15,6 +15,9 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php')) {
 // load the config
 $config = \Factory\Config\get();
 
+// create a components instance
+$components = new \Lotsof\Components\Components($config);
+
 // load the components index.php if exists
 if (file_exists($config->components->rootDir . '/index.php')) {
     require_once $config->components->rootDir . '/index.php';
@@ -44,57 +47,64 @@ $router->addRoute('GET', '/component/:name/:engine?', function (string $name) {
     exit;
 });
 
-$router->addRoute('GET', '/api/render/:name/:engine', function (string $name, ?string $engine = '') {
+$router->addRoute('POST', '/api/render/:name/:engine', function (string $name, ?string $engine = '') {
 
     global $config;
+    global $components;
+
+    // get the raw POST data
+    $rawData = file_get_contents("php://input");
+    $postedData = json_decode($rawData);
 
     // get the component
-    if (!\Factory\Components\componentExists($name)) {
-        throw new \Exception('Component "' . $name . '" not found');
+    $component = $components->getComponent($name);
+    $engines = $component->getEngines();
+    $mocks = $component->getMocks();
+
+    if (isset($postedData->values)) {
+        $component->setValues($postedData->values);
     }
-    $component = \Factory\Components\getComponent($name);
 
     // set the default engine if not passed in url
     if ($engine === '') {
-        $engine = $component->engines[0];
+        $engine = $engines[0];
     }
 
     // check if the engine is supported
-    if (!in_array($engine, $component->engines)) {
-        throw new \Exception('Engine "' . $engine . '" not supported on the component "' . $name . '". Here are the supported engines: ' . implode(', ', $component->engines));
+    if (!in_array($engine, $engines)) {
+        throw new \Exception('Engine "' . $engine . '" not supported on the component "' . $name . '". Here are the supported engines: ' . implode(', ', $engines));
     }
 
     // preparing mock data
-    $data = [];
-    switch ($engine) {
-        case 'blade':
-        case 'twig':
-        case 'component':
-            if (isset($component->mocks[$engine])) {
-                $data = require $component->mocks[$engine];
-            } else {
-                throw new \Exception('No mock data found for the engine "' . $engine . '" on the component "' . $name . '".');
-            }
-            break;
-        case 'react':
-            $data = [];
-            break;
+    if (!$component->hasValues()) {
+        switch ($engine) {
+            case 'blade':
+            case 'twig':
+            case 'component':
+                if (isset($mocks[$engine])) {
+                    $values = require $mocks[$engine];
+                    $component->setValues($values);
+                } else {
+                    throw new \Exception('No mock data found for the engine "' . $engine . '" on the component "' . $name . '".');
+                }
+                break;
+            case 'react':
+                // $data = [];
+                break;
+        }
     }
 
     // switch on the engines
     $html = '';
     switch ($engine) {
         case 'blade':
-            $html = \Factory\Renderers\blade($component, (array) $data, $config);
+            $html = \Factory\Renderers\blade($component, $config);
             break;
         case 'twig':
-            $html = \Factory\Renderers\twig($component, \Sugar\Convert\toArray($data), $config);
-            break;
-        case 'component':
-            $html = require $component->path . '/' . $component->name . '.preview.php';
+            $html = \Factory\Renderers\twig($component, $config);
             break;
         case 'react':
-            $html = \Factory\Renderers\react($component, (array) $data, $config);
+            $html = \Factory\Renderers\react($component, $config);
             break;
     }
 
@@ -112,7 +122,10 @@ $router->addRoute('GET', '/api/render/:name/:engine', function (string $name, ?s
         }
     }
 
-    print $html;
+    print json_encode((object) [
+        'html' => $html,
+        'values' => $component->getValues()
+    ]);
 
     exit;
 });
@@ -121,11 +134,12 @@ $router->addRoute('GET', '/api/specs', function () {
 
     // try to find the component
     global $config;
+    global $components;
 
-    $components = \Factory\Components\listComponents();
+    $componentsList = $components->getComponentsListObject();
 
     print json_encode((object) [
-        'components' => $components,
+        'components' => $componentsList,
         'config' => $config
     ]);
 

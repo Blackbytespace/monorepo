@@ -1,78 +1,89 @@
-import { IComponentsSettings } from '@lotsof/components';
+import { TComponentsSettings } from '@lotsof/components';
 
-import { IComponentsComponentJson } from '@lotsof/components';
+import { TComponentsComponentJson } from '@lotsof/components';
 
-export interface IFactoryServerConfig {
+export type TFactoryServerConfig = {
   hostname: string;
   port: number;
   entrypoint: string;
-}
+};
 
-export interface IFactoryComponentJson extends IComponentsComponentJson {
+export type TFactoryMediaQuery = {
+  name: string;
+  min: number;
+  max: number;
+};
+
+export type TFactoryComponentJson = TComponentsComponentJson & {
   path: string;
-}
+  engines: string[];
+  mocks: Record<string, string>;
+  files: string[];
+  values: any;
+  schema: any;
+};
 
-export interface IFactorySpecs {
-  components: Record<string, IFactoryComponentJson>;
-  config: IFactoryConfig;
-}
+export type TFactorySpecs = {
+  components: Record<string, TFactoryComponentJson>;
+  config: TFactoryConfig;
+};
 
-export interface IFactoryUiConfig {
+export type TFactoryUTConfig = {
   assets: Record<string, string>;
-}
+};
 
-export interface IFactoryProjectServerConfig {
+export type TFactoryProjectServerConfig = {
   protocol: 'http' | 'https';
   hostname: string;
   port: number;
-}
+};
 
-export interface IFactoryProjectConfig {
+export type TFactoryProjectConfig = {
   rootDir: string;
-  server: IFactoryProjectServerConfig;
+  server: TFactoryProjectServerConfig;
   assets: Record<string, string>;
-}
+};
 
-export interface IFactoryConfig {
-  components: IComponentsSettings;
-  server: IFactoryServerConfig;
-  ui: IFactoryUiConfig;
-  project: IFactoryProjectConfig;
-}
+export type TFactoryConfig = {
+  components: TComponentsSettings;
+  server: TFactoryServerConfig;
+  ui: TFactoryUTConfig;
+  project: TFactoryProjectConfig;
+};
 
 import { JSONSchema7 } from 'json-schema';
 
 import {
-  IJsonSchemaFormUpdateObject,
-  IJsonSchemaFormWidget,
+  TJsonSchemaFormUpdateObject,
+  TJsonSchemaFormWidget,
 } from '@lotsof/json-schema-form/src/shared/JsonSchemaForm.types.js';
 
-export interface IFactoryComponent {
+export type TFactoryComponent = {
   id: string;
   name: string;
   description?: string;
   schema: JSONSchema7;
   values: any;
   $component: Element;
-}
+};
 
-export interface IFactoryUpdateObject extends IJsonSchemaFormUpdateObject {
-  component: IFactoryComponent;
-}
+export type TFactoryUpdateObject = TJsonSchemaFormUpdateObject & {
+  component: TFactoryComponent;
+};
 
-export interface IFactoryUpdateResult {
-  component: IFactoryComponent;
+export type TFactoryUpdateResult = {
+  component: TFactoryComponent;
   path: string[];
   value: any;
   html?: string;
-}
+};
 
-export interface IFactoryCustomEvent extends CustomEvent {
-  detail: IFactoryComponent;
-}
+export type TFactoryCustomEvent = CustomEvent & {
+  detail: TFactoryComponent;
+};
 
-export interface IFactoryAdapter {
-  applyUpdate(IFactoryUpdateObject): void;
-}
+export type TFactoryAdapter = {
+  applyUpdate(TFactoryUpdateObject): void;
+};
 
-export interface IFactoryWidget extends IJsonSchemaFormWidget {}
+export type TFactoryWidget = TJsonSchemaFormWidget & {};

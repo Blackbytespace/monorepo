@@ -1,11 +1,11 @@
 import __BaseType from '../base/base.type.js';
 import __LinkType from '../link/link.type.js';
 
-export interface IButtonProps {
+export type TButtonProps = {
   style?: 'solid' | 'outline' | 'text';
   class?: string;
-  link?: __Link;
-}
+  link?: __LinkType;
+};
 
 export default class __ButtonType extends __BaseType {
   public static styles: string[] = ['solid', 'outline', 'text'];
@@ -15,7 +15,7 @@ export default class __ButtonType extends __BaseType {
   // @ts-ignore
   protected link: __Link;
 
-  public constructor(props: IButtonProps = {}) {
+  public constructor(props: TButtonProps = {}) {
     super(props);
 
     this.style = props.style ?? 'solid';

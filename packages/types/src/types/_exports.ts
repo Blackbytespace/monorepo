@@ -7,9 +7,9 @@ import __linkMock from './link/link.mock.js';
 import __LinkType from './link/link.type.js';
 import __TypoType from './typo/typo.type.js';
 
-import type { ITypo } from './typo/typo.type.js';
+import type { TTypoProps } from './typo/typo.type.js';
 
-export type { ITypo };
+export type { TTypoProps };
 
 export {
   __BaseType,

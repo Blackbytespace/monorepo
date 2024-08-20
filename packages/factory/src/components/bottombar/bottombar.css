@@ -1,0 +1,9 @@
+@import './bottombar.bare.css';
+
+.s-factory_bottombar {
+  background: s-color(main, background);
+  padding: s-space(10);
+  box-shadow: var(--s-factory-depth);
+  @s-radius;
+  @s-transition();
+}

@@ -10,9 +10,11 @@
     "build": "tsc & vite build"
   },
   "dependencies": {
-    "@lotsof/litElement": "^1.0.0",
+    "@lotsof/lit-element": "^1.0.0",
     "@lotsof/sugar": "^1.0.0",
+    "@lotsof/i18n": "^1.0.0",
     "@lotsof/sugarcss": "^1.0.0",
+    "@lotsof/advanced-select-element": "^1.0.0",
     "@lotsof/json-schema-form": "^1.0.0",
     "@lotsof/components": "^1.0.0",
     "@types/json-schema": "^7.0.15",

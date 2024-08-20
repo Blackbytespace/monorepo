@@ -1,7 +1,7 @@
 <?php
 
 define('FACTORY_SUPPORTED_ENGINES', [
-    'component' => ['.preview.php'],
+    // 'component' => ['.preview.php'],
     'blade' => ['.blade.php'],
     'twig' => ['.twig'],
     'react' => ['.jsx', '.tsx'],
@@ -10,7 +10,7 @@ define('FACTORY_SUPPORTED_ENGINES', [
 ]);
 
 define('FACTORY_SUPPORTED_MOCKS_BY_ENGINES', [
-    'component' => ['.mock.php'],
+    // 'component' => ['.mock.php'],
     'blade' => ['.mock.php'],
     'twig' => ['.mock.php'],
     'react' => ['.mock.js', '.mock.ts'],
