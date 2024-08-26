@@ -14,6 +14,7 @@
 
 /node_modules
 /packages/*/node_modules
+/packages/*/vendor
 .DS_Store
 .cache
 yarn-error.log
