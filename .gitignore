@@ -12,7 +12,8 @@
 #!.yarn/cache
 .pnp.*
 
-node_modules
+/node_modules
+/packages/*/node_modules
 .DS_Store
 .cache
 yarn-error.log
