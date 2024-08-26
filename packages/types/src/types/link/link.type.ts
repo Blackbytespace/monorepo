@@ -1,6 +1,6 @@
 import __BaseType from '../base/base.type.js';
 
-export type TLinkProps = {
+export type TLink = {
   href?: string;
   text?: string;
   title?: string;
@@ -21,7 +21,7 @@ export default class __LinkType extends __BaseType {
   protected noreferrer?: boolean;
   protected ariaLabel?: string;
 
-  constructor(props: TLinkProps = {}) {
+  constructor(props: TLink = {}) {
     super(props);
 
     if (!this.title && this.text) {

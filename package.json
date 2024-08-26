@@ -26,7 +26,7 @@
     "docmap.dev": "(cd packages/docmap && npm run dev)",
     "docmap.push": "(cd packages/docmap && git push)",
     "factory.dev": "(cd packages/factory && npm run dev)",
-    "factory.push": "(cd packages/factory && git push)",
+    "factory.push": "(cd packages/factory && gsit push)",
     "i18n.dev": "(cd packages/i18n && npm run dev)",
     "i18n.push": "(cd packages/i18n && git push)",
     "jsonSchemaForm.dev": "(cd packages/jsonSchemaForm && npm run dev)",

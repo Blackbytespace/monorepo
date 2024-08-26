@@ -1,5 +1,5 @@
 import __BaseType from '../base/base.type.js';
-export type TLinkProps = {
+export type TLink = {
     href?: string;
     text?: string;
     title?: string;
@@ -18,7 +18,7 @@ export default class __LinkType extends __BaseType {
     protected noopener?: boolean;
     protected noreferrer?: boolean;
     protected ariaLabel?: string;
-    constructor(props?: TLinkProps);
+    constructor(props?: TLink);
     toDomElement(): HTMLElement;
     rel(): string;
 }

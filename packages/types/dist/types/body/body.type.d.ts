@@ -1,5 +1,5 @@
 import __BaseType from '../base/base.type.js';
-export type TBodyProps = {
+export type TBody = {
     suptitle?: string;
     title?: string;
     subtitle?: string;
@@ -20,7 +20,7 @@ export type TBodyProps = {
  *
  * This class is used to create a new instance of the Body type.
  *
- * @param           {TBodyProps}           [props]           An object containing the properties of the Body type.
+ * @param           {TBody}           [props]           An object containing the properties of the Body type.
  *
  * @property       {string}              [suptitle=null]       The suptitle of the body
  * @property       {string}              [title=null]          The title of the body
@@ -41,6 +41,6 @@ export type TBodyProps = {
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default class __BodyType extends __BaseType {
-    data: TBodyProps;
-    constructor(props?: TBodyProps);
+    data: TBody;
+    constructor(props?: TBody);
 }

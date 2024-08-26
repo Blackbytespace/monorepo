@@ -9,7 +9,7 @@ import __BaseType from '../base/base.type.js';
  *
  * This class is used to create a new instance of the Body type.
  *
- * @param           {TBodyProps}           [props]           An object containing the properties of the Body type.
+ * @param           {TBody}           [props]           An object containing the properties of the Body type.
  *
  * @property       {string}              [suptitle=null]       The suptitle of the body
  * @property       {string}              [title=null]          The title of the body

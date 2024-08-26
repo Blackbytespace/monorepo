@@ -6,6 +6,6 @@ import __ButtonType from './button/button.type.js';
 import __linkMock from './link/link.mock.js';
 import __LinkType from './link/link.type.js';
 import __TypoType from './typo/typo.type.js';
-import type { TTypoProps } from './typo/typo.type.js';
-export type { TTypoProps };
+import type { TTypo } from './typo/typo.type.js';
+export type { TTypo };
 export { __BaseType, __bodyMock, __BodyType, __buttonMock, __ButtonType, __linkMock, __LinkType, __TypoType, };

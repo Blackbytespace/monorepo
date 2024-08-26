@@ -1,7 +1,7 @@
 import __BaseType from '../base/base.type.js';
 import __LinkType from '../link/link.type.js';
 
-export type TButtonProps = {
+export type TButton = {
   style?: 'solid' | 'outline' | 'text';
   class?: string;
   link?: __LinkType;
@@ -15,7 +15,7 @@ export default class __ButtonType extends __BaseType {
   // @ts-ignore
   protected link: __Link;
 
-  public constructor(props: TButtonProps = {}) {
+  public constructor(props: TButton = {}) {
     super(props);
 
     this.style = props.style ?? 'solid';

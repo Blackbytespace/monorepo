@@ -1,4 +1,4 @@
-import type { TBodyProps } from './body.type.js';
+import type { TBody } from './body.type.js';
 import __BodyType from './body.type.js';
 
 import __buttonMock from '../button/button.mock.js';
@@ -6,7 +6,7 @@ import __buttonMock from '../button/button.mock.js';
 import { faker } from '@faker-js/faker';
 import { __pickSome } from '@lotsof/sugar/array';
 
-export default function __bodyMock(props: TBodyProps = {}): __BodyType {
+export default function __bodyMock(props: TBody = {}): __BodyType {
   const buttons = __pickSome(
     [__buttonMock(), __buttonMock(), __buttonMock()],
     0,
