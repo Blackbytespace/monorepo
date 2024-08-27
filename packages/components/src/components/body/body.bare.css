@@ -1,0 +1,23 @@
+.body {
+  display: block;
+  width: 100%;
+
+  ._suptitle {
+  }
+
+  ._title {
+  }
+
+  ._subtitle {
+  }
+
+  ._lead {
+  }
+
+  ._text {
+  }
+
+  ._buttons {
+    display: flex;
+  }
+}

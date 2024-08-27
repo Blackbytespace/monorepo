@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "card",
+  "description": "Simple card component",
+  "files": ["*.php", "*.css"],
+  "composerJson": {
+    "require": {
+      "lotsof/types": "^1.0.0"
+    }
+  }
+}

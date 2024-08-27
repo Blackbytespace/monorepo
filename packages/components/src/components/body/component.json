@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "name": "body",
+  "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
+  "files": ["*.css"],
+  "subset": {
+    "engine": {
+      "question": "Which engine do you use?",
+      "type": "checkbox",
+      "choices": ["blade", "twig", "tsx"],
+      "component": {
+        "twig": {
+          "files": ["*.twig", "body.type.php", "body.component.php"],
+          "dependencies": {
+            "@lotsof/components/renderer": "^1.0.0"
+          }
+        },
+        "blade": {
+          "files": ["*.blade.php", "body.type.php", "body.component.php"],
+          "dependencies": {
+            "@lotsof/components/renderer": "^1.0.0"
+          }
+        },
+        "tsx": {
+          "files": ["*.tsx", "body.type.ts", "body.component.ts"],
+          "packageJson": {
+            "dependencies": {
+              "react": "^18.0.0"
+            }
+          }
+        }
+      }
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@lotsof/types": "^1.0"
+    }
+  },
+  "composerJson": {
+    "require": {
+      "lotsof/types": "^1.0"
+    }
+  }
+}

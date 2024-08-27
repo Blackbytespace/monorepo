@@ -1,0 +1,19 @@
+{
+    "name": "test 2",
+    "values": {
+        "id": "buttontype-66c5c29e822ae",
+        "style": "solid",
+        "class": "_btn btn",
+        "link": {
+            "id": "",
+            "href": "http:\/\/klocko.net\/",
+            "text": "harum wefwfwfewef",
+            "title": "harum",
+            "target": "_self",
+            "class": "_link",
+            "noopener": false,
+            "noreferrer": null,
+            "ariaLabel": "harum"
+        }
+    }
+}

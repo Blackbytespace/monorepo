@@ -1,0 +1,37 @@
+{
+  "name": "@lotsof/components",
+  "version": "1.0.0-alpha.0",
+  "description": "Components system to share components libraries easily",
+  "type": "module",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch & vite --host",
+    "build": "tsc && vite build",
+    "postinstall": "npm run install.composer",
+    "install.composer": "composer install"
+  },
+  "dependencies": {
+    "@lotsof/carpenter": "^1.0.0",
+    "@lotsof/components": "^1.0.0-alpha",
+    "@lotsof/config": "^1.0.0-alpha",
+    "@lotsof/sugar": "^1.0.0-alpha",
+    "@lotsof/sugarcss": "^1.0.0-alpha",
+    "@lotsof/types": "^1.0.0-alpha",
+    "glob": "^10.4.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  },
+  "exports": {
+    ".": {
+      "node": "./dist/node/_exports.js",
+      "browser": "./dist/js/_exports.js"
+    }
+  },
+  "types": "src/node/_exports.ts",
+  "homepage": "https://lotsof.dev"
+}

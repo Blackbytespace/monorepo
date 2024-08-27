@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "button",
+  "description": "Buttons component",
+  "files": ["*.php", "*.css"],
+  "composerJson": {
+    "require": {
+      "fakerphp/faker": "^1.23"
+    }
+  }
+}

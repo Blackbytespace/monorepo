@@ -1,0 +1,26 @@
+{
+  "name": "lotsof/components",
+  "version": "1.0.0-alpha.0",
+  "description": "Lotsof components",
+  "type": "project",
+  "autoload": {
+    "files": [
+      "src/php/_requires.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../types"
+    },
+    {
+      "type": "path",
+      "url": "../sugar"
+    }
+  ],
+  "require": {
+    "lotsof/types": "^1.0.0@alpha",
+    "eftec/bladeone": "^4.13",
+    "twig/twig": "^3.10"
+  }
+}

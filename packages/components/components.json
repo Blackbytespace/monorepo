@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "@lotsof/components",
+  "type": "git",
+  "url": "git@github.com:lotsofdev/components.git",
+  "dependencies": {
+    "@lotsof/components-test": {
+      "type": "git",
+      "url": "git@github.com:lotsofdev/components-test.git"
+    }
+  },
+  "composerJson": {
+    "dependencies": {
+      "lotsof/types": "^1.0.0"
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@lotsof/types": "^1.0.0"
+    }
+  }
+}
