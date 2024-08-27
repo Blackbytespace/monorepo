@@ -5,8 +5,10 @@ Welcome in the Lotsof monorepo.
 ## Glossary
 
 1. [Packages](#packages)
-2. [Clone repository](#clone)
-3. [Install monorepo](#install)
+2. [Requirements](#requirements)
+3. [Clone repository](#clone)
+4. [Install](#install)
+5. [Develop](#develop)
 
 ## Packages
 
@@ -139,6 +141,11 @@ And a lot more like `TCard`, `THero`, `TImage`, etc...
 
 > All these types are available in **`TS`** as well as in **`PHP`** for convinience.
 
+### Requirements
+
+- Node: `^20.0.0`
+- PHP: `^8.0.0`
+
 ### Clone
 
 To clone this monorepo, make use of this command:
@@ -149,6 +156,34 @@ git clone --recurse-submodules https://github.com/lotsofdev/monorepo.git
 
 This will ensure you have the **submodules** correctly cloned as well.
 
-### Install monorepo
+### Install
 
-To install the repository,
+To install the repository, simple launch:
+
+```sh
+npm i
+```
+
+This will install all the dependencies (nodes and php) for all the packages.
+
+### Develop
+
+To develop in this monorepo, you have 2 solutions:
+
+##### Global
+
+You can launch the development process in all the packages at once using this command from the monorepo root directory:
+
+```sh
+npm run dev
+```
+
+> Note that this will not launch the development process in the packages prefixed by **website-** or **wordpress-**
+
+##### Package by package
+
+You can also if you prefer, launch the same command into any package folder to launch the development process in this specific package only:
+
+```sh
+cd packages/sugar && npm run dev
+```
