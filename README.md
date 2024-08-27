@@ -9,6 +9,7 @@ Welcome in the Lotsof monorepo.
 3. [Clone repository](#clone)
 4. [Install](#install)
 5. [Develop](#develop)
+6. [Contribute](#contribute)
 
 ## Packages
 
@@ -151,10 +152,8 @@ And a lot more like `TCard`, `THero`, `TImage`, etc...
 To clone this monorepo, make use of this command:
 
 ```sh
-git clone --recurse-submodules https://github.com/lotsofdev/monorepo.git
+git clone https://github.com/lotsofdev/monorepo.git
 ```
-
-This will ensure you have the **submodules** correctly cloned as well.
 
 ### Install
 
@@ -187,3 +186,9 @@ You can also if you prefer, launch the same command into any package folder to l
 ```sh
 cd packages/sugar && npm run dev
 ```
+
+### Contribute
+
+To contribute, follow [these guidelines](CONTRIBUTE.md).
+
+> This project is meant to be open. In that regard, everyone is welcome to contribute to it. The only requirement is that you follow our [code of conduct](CODEOFCONDUCT.md)

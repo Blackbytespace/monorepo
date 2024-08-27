@@ -5,11 +5,11 @@ Here's the different ways you can help us improve our beloved packages:
 
 1. **Notice an issue**
    - Create an issue on Github
-   - Make sure to create it in the package repository and **NOT** in the monorepo
 2. **Fix something**
-   - Fork the package repo and **NOT** the monorepo
+   - Fork the package repo
    - Fix the issue you have found
    - Create a pull request
+   - Make sure to follow our [Git flow](#git-flow) guidelines
 
 ## Git flow
 
@@ -22,9 +22,11 @@ Our git workflow is very simple and normally well known by developers around the
 Here's the branches schema that has to be followed:
 
 - `master`: Master branch that represent the published packages.
-- `hotfix/...`: Branches that handle hotfix and will be merged into `master` and `develop`
+- `hotfix/package-name...`: Branches that handle hotfix and will be merged into `master` and `develop`
+  - Example for the `sugar` package: `hotfix/sugar-querySelectorLive`
 - `develop`: Main development branch where features, fixes, etc... will be merged.
-- `feature/...`: Feature branches on which maintainers and developers has to work.
+- `feature/package-name-...`: Feature branches on which maintainers and developers has to work.
+  - Example for the `sugar` package: `feature/sugar-myAwesomeQueryFunction`
 
 Why no `release` branch?
 
