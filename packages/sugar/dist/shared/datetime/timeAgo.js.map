@@ -1,0 +1,1 @@
+{"version":3,"file":"timeAgo.js","sourceRoot":"","sources":["../../../src/shared/datetime/timeAgo.ts"],"names":[],"mappings":"AAAA,cAAc;AACd,OAAO,OAAO,MAAM,QAAQ,CAAC;AAE7B;;;;;;;;;;;;;;;;;;;;;;;;;GAyBG;AACH,MAAM,CAAC,OAAO,UAAU,SAAS,CAC/B,SAAiB,EACjB,SAAsC,QAAQ;IAE9C,OAAO,OAAO,CAAC,SAAS,EAAE;QACxB,MAAM;KACP,CAAC,CAAC;AACL,CAAC"}
