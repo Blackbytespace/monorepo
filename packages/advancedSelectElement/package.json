@@ -1,0 +1,23 @@
+{
+  "name": "@lotsof/advanced-select-element",
+  "version": "1.0.0-alpha.0",
+  "description": "Simple class that extends the features of the wonderful lit-element package",
+  "type": "module",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@lotsof/sugar": "^1.0.0-alpha",
+    "@lotsof/lit-element": "^1.0.0-alpha",
+    "@lotsof/i18n": "^1.0.0-alpha",
+    "lit": "^3.1.3",
+    "typescript": "^5.4.5"
+  },
+  "main": "dist/js/_exports.js",
+  "module": "dist/js/_exports.js",
+  "types": "src/js/_exports.ts",
+  "homepage": "https://lotsof.dev"
+}
