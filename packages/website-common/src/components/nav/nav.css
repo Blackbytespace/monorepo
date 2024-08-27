@@ -1,0 +1,33 @@
+.lo-nav {
+  .lo-burger {
+    --s-color-current: #fff;
+  }
+  .lo-menu {
+    position: absolute;
+    top: calc(100% + s-size(10));
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+    @s-transition (fast);
+
+    &:focus,
+    &:focus-within {
+      pointer-events: all;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .lo-burger {
+    &.-active,
+    &:focus,
+    &:focus-within {
+      & + .lo-menu {
+        pointer-events: all;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

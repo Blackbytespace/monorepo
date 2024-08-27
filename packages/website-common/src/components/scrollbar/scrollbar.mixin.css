@@ -1,0 +1,3 @@
+@mixin lo-scrollbar {
+  @s-scrollbar (2px, s-color(accent), s-color(accent, --darken 40));
+}

@@ -1,0 +1,31 @@
+.astro-code {
+  background: s-color(main, background) !important;
+  font-size: 16px;
+  padding: s-space(40) 0;
+  border-radius: s-radius();
+
+  @include lo-scrollbar;
+
+  @media mobile {
+    font-size: 12px;
+  }
+
+  .line {
+    padding: s-space(0) s-space(40);
+    line-height: 0.3em;
+
+    display: block;
+
+    @media mobile {
+      padding: s-space(0) s-space(20);
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  [style*='#31748F'] {
+    color: s-color(complementary) !important;
+  }
+}

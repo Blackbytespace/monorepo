@@ -1,0 +1,18 @@
+/* @mixin log {
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: s-color(accent, --darken 40);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: s-color(accent);
+  }
+} */
+
+body {
+  overflow-x: hidden;
+  @include lo-scrollbar;
+  /* @s-scrollbar (2px, s-color(accent), s-color(accent, --darken 40)); */
+}

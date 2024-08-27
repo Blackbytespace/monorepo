@@ -1,0 +1,50 @@
+.advanced-select {
+  .advanced-select_keywords {
+  }
+  .advanced-select_keyword {
+  }
+
+  .advanced-select_before {
+  }
+
+  .advanced-select_after {
+  }
+
+  .advanced-select_dropdown {
+  }
+
+  .advanced-select_list {
+  }
+
+  .advanced-select_item {
+    &:hover,
+    &.-preselected {
+    }
+    &.-selected {
+    }
+  }
+
+  .advanced-select_highlight {
+  }
+
+  .advanced-select_loading {
+  }
+
+  .advanced-select_no-item {
+  }
+
+  &:not([interactive]) {
+  }
+
+  &.-inline {
+  }
+
+  &.-top {
+  }
+
+  &.-loading {
+  }
+
+  &.-empty {
+  }
+}

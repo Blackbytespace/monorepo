@@ -1,0 +1,50 @@
+.btn {
+  display: inline-block;
+  padding: s-space(20) s-space(30);
+  border-radius: s-radius();
+  border: 2px solid s-color(accent);
+  color: s-color(accent, --lighten 50) !important;
+  font-size: s-size(16);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+    drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  animation: lo-logo 1s linear infinite;
+
+  &:hover {
+    background: s-color(accent, --alpha 0.1) !important;
+  }
+
+  p {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@keyframes lo-btn {
+  0% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+}

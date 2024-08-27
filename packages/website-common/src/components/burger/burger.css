@@ -1,0 +1,50 @@
+.lo-burger {
+  font-size: 30px;
+  aspect-ratio: 1;
+  width: 1em;
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    min-width: 40px;
+    min-height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  ._line-1,
+  ._line-2 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0.15em;
+    background: s-color(accent);
+    transform-origin: 50% 50%;
+    transform: translateY(-50%);
+    @s-transition (fast);
+  }
+  ._line-1 {
+    top: 30%;
+  }
+  ._line-2 {
+    top: 70%;
+  }
+
+  &.-active,
+  &:focus,
+  &:focus-within {
+    ._line-1 {
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    ._line-2 {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}

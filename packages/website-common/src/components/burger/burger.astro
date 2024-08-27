@@ -1,0 +1,15 @@
+<script>
+  document.querySelectorAll('.lo-burger').forEach(($burger) => {
+    $burger.addEventListener('pointerup', () => {
+      if (document.activeElement === $burger) {
+        // @ts-ignore
+        // document.activeElement?.blur?.();
+      }
+    });
+  });
+</script>
+
+<div class="lo-burger" tabindex="0">
+  <div class="_line-1"></div>
+  <div class="_line-2"></div>
+</div>

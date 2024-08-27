@@ -1,0 +1,45 @@
+.internal-nav {
+  width: 200px;
+  position: fixed;
+  left: calc(50% + s-container(maxWidth) / 2);
+  top: 300px;
+  z-index: 10;
+  padding: s-space(30);
+  user-select: none;
+
+  @media tablet {
+    display: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-left: 1px solid s-color(accent, --darken 20);
+    border-top: 1px solid s-color(accent, --darken 20);
+    background: linear-gradient(
+      -45deg,
+      transparent 50%,
+      s-color(main, --darken 41)
+    );
+  }
+
+  ._list {
+    li {
+      color: s-color(accent, --lighten 40);
+      font-size: s-size(20);
+      display: block;
+      padding: s-space(10);
+      cursor: pointer;
+
+      &.-active,
+      &:hover {
+        color: s-color(accent);
+      }
+    }
+  }
+}

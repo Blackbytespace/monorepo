@@ -1,0 +1,21 @@
+@import './settings/settings.css';
+
+@import './scrollbar/scrollbar.mixin.css';
+@import './platform/platform.mixin.css';
+
+@import './advancedSelect/advancedSelect.css';
+@import './bkg/bkg.css';
+@import './btn/btn.css';
+@import './burger/burger.css';
+@import './code/code.css';
+@import './crt/crt.css';
+@import './footer/footer.css';
+@import './internalNav/internalNav.css';
+@import './layout/layout.css';
+@import './main/main.css';
+@import './markdown/markdown.css';
+@import './menu/menu.css';
+@import './nav/nav.css';
+@import './platform/platform.css';
+@import './shortcut/shortcut.css';
+@import './typo/typo.css';

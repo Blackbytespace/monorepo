@@ -1,0 +1,72 @@
+<script>
+  import { __querySelectorLive } from '@lotsof/sugar/dom';
+
+  class SimpleScrollspy {
+    offset: number = window.innerHeight / 2;
+    $menu: HTMLElement;
+    $links: NodeListOf<HTMLElement>;
+    _targets: WeakMap<HTMLElement, HTMLElement> = new WeakMap();
+    constructor($menu: HTMLElement) {
+      this.$menu = $menu;
+      this.$links = this.$menu.querySelectorAll('li');
+      this.$links.forEach(($link) => {
+        const $elm = document.querySelector(`#${$link.id}`);
+        this._targets.set($link, $elm as HTMLElement);
+      });
+
+      document.addEventListener('scroll', () => {
+        let found = false;
+
+        for (let [i, $link] of Array.from(this.$links).reverse().entries()) {
+          const $target = this._targets.get($link) as HTMLElement,
+            bound = $target.getBoundingClientRect();
+
+          if (found) {
+            $link.classList.remove('-active');
+            continue;
+          }
+
+          if (bound.top <= this.offset) {
+            $link.classList.add('-active');
+            found = true;
+          } else {
+            $link.classList.remove('-active');
+          }
+        }
+      });
+    }
+  }
+
+  let $internalNavList = document.querySelector('.internal-nav ._list');
+
+  __querySelectorLive('h2', ($title) => {
+    const $li = document.createElement('li') as HTMLElement;
+    $li.innerHTML = $title.textContent as string;
+    $li.id = $title.id;
+    $internalNavList?.appendChild($li);
+    $li.addEventListener('pointerup', (e) => {
+      const $target = document.querySelector(`#${$title.id}`);
+      if (!$target) return;
+      window.scrollTo({
+        top: $target.getBoundingClientRect().top + window.scrollY - 200,
+        behavior: 'smooth',
+      });
+      e.preventDefault();
+    });
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    new SimpleScrollspy($internalNavList as HTMLElement);
+  });
+
+  document.addEventListener('astro:before-preparation', () => {
+    $internalNavList = document.querySelector('.internal-nav ._list');
+    if ($internalNavList) {
+      $internalNavList.innerHTML = '';
+    }
+  });
+</script>
+
+<nav class="internal-nav" transition:persist>
+  <ol class="_list"></ol>
+</nav>

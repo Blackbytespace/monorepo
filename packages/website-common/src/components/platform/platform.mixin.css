@@ -1,0 +1,23 @@
+@mixin lo-platform {
+  display: flex;
+  align-items: center;
+  gap: s-space(10);
+  font: s-font(code);
+  font-size: s-size(12);
+  padding: s-space(5) s-space(10);
+  text-transform: uppercase;
+  border-radius: s-radius();
+
+  &.-css {
+    background: s-color(accent, --darken 30);
+  }
+  &.-js {
+    background: s-color(accent, --darken 30);
+  }
+  &.-node {
+    background: s-color(complementary, --darken 30);
+  }
+  &.-php {
+    background: s-color(php, --darken 10);
+  }
+}

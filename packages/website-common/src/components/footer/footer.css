@@ -1,0 +1,17 @@
+.footer {
+  background: s-color(main, background);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    s-color(main, background) 100%
+  );
+  text-align: center;
+  padding: s-space(50) s-space(30);
+  user-select: none;
+
+  p {
+    font-size: s-size(18) !important;
+    color: rgba(255, 255, 255, 0.6);
+    @s-container;
+  }
+}

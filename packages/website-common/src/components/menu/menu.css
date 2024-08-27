@@ -1,0 +1,22 @@
+.lo-menu {
+  background: s-color(main, background);
+  border: 1px solid s-color(accent);
+
+  ._item {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  ._link {
+    flex-grow: 1;
+    display: flex;
+    gap: s-space(10);
+    padding: s-size(15) s-size(30);
+
+    &:hover,
+    &:focus {
+      background: s-color(accent);
+      color: s-color(accent, --lighten 50);
+    }
+  }
+}

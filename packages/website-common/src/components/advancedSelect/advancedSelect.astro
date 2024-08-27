@@ -1,0 +1,21 @@
+---
+
+---
+
+<script>
+  import __AdvancedSelectElement from '@lotsof/advanced-select-element';
+
+  __AdvancedSelectElement.define('advanced-select', __AdvancedSelectElement, {
+    items() {
+      return [
+        {
+          value: 'Hello',
+        },
+      ];
+    },
+  });
+</script>
+
+<advanced-select>
+  <input type="search" class="_input" placeholder="Search" />
+</advanced-select>
