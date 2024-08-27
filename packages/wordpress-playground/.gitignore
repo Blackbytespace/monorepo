@@ -1,0 +1,11 @@
+node_modules/
+vendor/
+docker/data/
+.DS_Store
+
+# global
+.env
+
+# backups
+backups
+!backups/.gitkeep

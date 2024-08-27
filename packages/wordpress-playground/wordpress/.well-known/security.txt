@@ -1,0 +1,4 @@
+Contact: mailto:security@fmv.ch
+Expires: 2023-12-31T22:59:00.000Z
+Preferred-Languages: en, fr, de
+Canonical: https://www.fmv.ch/.well-known/security.txt
