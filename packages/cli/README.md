@@ -12,6 +12,7 @@ The `lotsof` cli allows you to access all the packages exposed command line util
 
 - [`lotsof` CLI](#lotsof-cli)
   - [Install](#install)
+  - [Features](#features)
   - [Contribute](#contribute)
 
 ---
@@ -34,7 +35,7 @@ You should see the CLI documentation.
 
 ---
 
-## Features
+## Features
 
 The features provided by the CLI depends on the `lotsof` packages you have in your current project.
 

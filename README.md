@@ -17,35 +17,35 @@ Here you can get access to all the packages developed by our team. Things like:
 
 #### Custom Elements
 
-##### [Lit Element](https://github.com/lotsofdev/lit-element) **TS**
+##### [Lit Element](https://github.com/lotsofdev/monorepo/tree/master/packages/litElement) **TS**
 
 Base class on top of the wonderful [Lit](https://lit.dev) library that add some features like `mountWhen`, etc...
 
-##### [Advanced Select Element](https://github.com/lotsofdev/advanced-select-element) **TS**
+##### [Advanced Select Element](hhttps://github.com/lotsofdev/monorepo/tree/master/packages/advancedSelectElement) **TS**
 
 Fully customizable advanced select element with built-in search and more...
 
-##### [JSON Schema Form Element](https://github.com/lotsofdev/json-schema-form) **TS**
+##### [JSON Schema Form Element](https://github.com/lotsofdev/monorepo/tree/master/packages/jsonSchemaForm) **TS**
 
 Fully customizable and easy to use element to display form based on the [json-schema](https://json-schema.org/) standard.
 
 #### Tools
 
-##### [Lotsof CLI](https://github.com/lotsofdev/cli) **SH**
+##### [Lotsof CLI](https://github.com/lotsofdev/monorepo/tree/master/packages/cli) **SH**
 
 Useful CLI that allows you to use all our tools quickly and efficiently.
 
-##### [Factory](https://github.com/lotsofdev/cli) **TS/PHP**
+##### [Factory](https://github.com/lotsofdev/monorepo/tree/master/packages/factory) **TS/PHP**
 
 All in one components development UI supporting Blade, Twig, React, Vue, and more...
 
 #### Libraries
 
-##### [I18n](https://github.com/lotsofdev/i18n) **TS**
+##### [I18n](https://github.com/lotsofdev/monorepo/tree/master/packages/i18n) **TS**
 
 Simple but complete i18n library for your JS projects. It is used inside our tools like elements, etc...
 
-##### [Sugar](https://github.com/lotsofdev/sugar) **TS/PHP**
+##### [Sugar](https://github.com/lotsofdev/monorepo/tree/master/packages/sugar) **TS/PHP**
 
 Useful toolbox that gives you access to nice functions like:
 
@@ -54,7 +54,7 @@ Useful toolbox that gives you access to nice functions like:
 - `onScrollEnd`: Do something when scroll as reached the end
 - And many many many more to discover...
 
-##### [SugarCSS](https://github.com/lotsofdev/sugarcss) **CSS**
+##### [SugarCSS](https://github.com/lotsofdev/monorepo/tree/master/packages/sugarcss) **CSS**
 
 [Lightningcss](https://lightningcss.dev/) plugin based on `variables` that gives you a ton of features like:
 
@@ -93,7 +93,7 @@ h1 {
 
 And a lot more like: **Font management**, **Spaces management**, **Easing management**, etc...
 
-##### [Types](https://github.com/lotsofdev/types) **TS/PHP**
+##### [Types](https://github.com/lotsofdev/monorepo/tree/master/packages/types) **TS/PHP**
 
 The `types` package gives you access to a multiple of pre-made data types to be used as base for your own types or as is like:
 
