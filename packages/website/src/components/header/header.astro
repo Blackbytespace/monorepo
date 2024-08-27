@@ -1,0 +1,38 @@
+---
+import __logoLotsofPicto from '@lotsof/website-common/src/img/logo-lotsof-picto.svg?raw';
+import __logoLotsof from '@lotsof/website-common/src/img/logo-lotsof.svg?raw';
+import __pictoNewNasty from '@lotsof/website-common/src/img/picto-new-n-tasty.svg?raw';
+
+import sugarcssPackageJson from '@lotsof/sugarcss/package.json';
+
+const sugarcssVersion = sugarcssPackageJson.version;
+---
+
+<header class="lo-header">
+  <div class="_logo">
+    <Fragment set:html={__logoLotsofPicto} />
+    <Fragment set:html={__logoLotsof} />
+  </div>
+  <Fragment set:html={__pictoNewNasty} />
+
+  <ul class="_sites">
+    <li class="_site">
+      <a
+        class="-sugarcss"
+        href="https://sugarcss.lotsof.dev"
+        title="Lotsof | Sugarcss"
+      >
+        <div class="_title">Sugarcss</div>
+        <div class="_description">The toolkit that make CSS pleasant again</div>
+      </a>
+    </li>
+    <li class="_site">
+      <a class="-sugar" href="https://sugar.lotsof.dev" title="Lotsof | Sugar">
+        <div class="_title">Sugar</div>
+        <div class="_description">
+          Plenty of useful functions for Node/JS and PHP
+        </div>
+      </a>
+    </li>
+  </ul>
+</header>

@@ -1,0 +1,279 @@
+.lo-header {
+  position: fixed;
+  left: 50%;
+  height: 100svh;
+  transform: translate(-50%);
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  opacity: 0;
+  @s-container;
+  @s-transition();
+  animation: lo-welcome-anim-in 0.3s ease-out 0.3s forwards;
+  pointer-events: none;
+
+  svg {
+    [fill] {
+      fill: s-color(accent, text);
+    }
+  }
+
+  ._logo {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 50px);
+    transform: translateY(calc(-50% - 200px));
+    transform-origin: 0 0;
+
+    @media mobile {
+      top: 20%;
+      left: calc(50% - 35px);
+      transform: none;
+    }
+  }
+
+  .logo-lotsof-picto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 130px;
+    height: 200px;
+    opacity: 1;
+    transform: translate(-100%, -50%) scale(1);
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+    animation: lo-logo 1s linear infinite;
+    @s-transition();
+
+    [fill] {
+      fill: s-color(accent, --lighten 20);
+    }
+
+    @media mobile {
+      width: 70px;
+      height: 100px;
+    }
+  }
+
+  .logo-lotsof {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    height: 58px;
+    opacity: 1;
+    transform: translateX(0);
+    @s-transition();
+
+    [fill] {
+      fill: white;
+    }
+
+    @media mobile {
+      height: 40px;
+    }
+  }
+
+  .picto-new-n-tasty {
+    position: absolute;
+    top: calc(50% - 130px);
+    left: calc(50% + 40px);
+    width: 200px;
+    transform: translateX(-50%) translateY(-50%) rotate(13deg);
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+    animation: lo-new-n-tasty 0.25s linear infinite;
+    transition: all 0.1s ease-out;
+
+    [fill] {
+      fill: s-color(ternary, --lighten 20);
+    }
+
+    @media mobile {
+      top: calc(20% + 40px);
+      left: calc(50% + 40px);
+      width: 150px;
+    }
+  }
+
+  ._sites {
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: s-space(20);
+    position: absolute;
+    top: calc(50% + s-space(100));
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+
+    @media mobile {
+      top: calc(50% + s-space(20));
+      width: clamp(0px, 90vw, 430px);
+    }
+  }
+
+  ._site a {
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(
+      -90deg,
+      s-color(main, --darken 37),
+      s-color(main, --alpha 0.1)
+    );
+    border: 1px solid transparent;
+    overflow: hidden;
+    box-shadow: 0px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0px 6.7px 5.3px rgba(0, 0, 0, 0.028), 0px 12.5px 10px rgba(0, 0, 0, 0.035),
+      0px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      0px 41.8px 33.4px rgba(0, 0, 0, 0.05), 0px 100px 80px rgba(0, 0, 0, 0.07);
+    @s-radius;
+    @s-transition (fast);
+
+    @media mobile {
+      flex-direction: column;
+    }
+
+    &.-sugar {
+      background: linear-gradient(
+        -90deg,
+        s-color(sugar-main, --darken 37),
+        s-color(sugar-main, --alpha 0.1)
+      );
+
+      &:hover,
+      &:focus {
+        border: 1px solid s-color(sugar-main);
+      }
+
+      ._title {
+        background: linear-gradient(
+          45deg,
+          s-color(sugar-main, --darken 36),
+          s-color(sugar-accent, --alpha 0.05)
+        );
+      }
+    }
+    &.-sugarcss {
+      background: linear-gradient(
+        -90deg,
+        s-color(sugarcss-main, --darken 37),
+        s-color(sugarcss-main, --alpha 0.1)
+      );
+
+      &:hover,
+      &:focus {
+        border: 1px solid s-color(sugarcss-main);
+      }
+
+      ._title {
+        background: linear-gradient(
+          45deg,
+          s-color(sugarcss-main, --darken 36),
+          s-color(sugarcss-accent, --alpha 0.05)
+        );
+      }
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid s-color(accent);
+    }
+
+    ._title {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      justify-content: end;
+      width: 130px;
+      padding: s-space(30);
+      background: linear-gradient(
+        45deg,
+        s-color(main, --darken 36),
+        s-color(accent, --alpha 0.05)
+      );
+      color: s-color(accent, text);
+      font: s-font(code);
+
+      @media mobile {
+        width: 100%;
+        justify-content: start;
+        font-size: s-size(18);
+      }
+    }
+
+    ._description {
+      padding: s-space(30);
+
+      @media mobile {
+        font-size: s-size(18);
+      }
+    }
+  }
+}
+
+@keyframes lo-welcome-anim-in {
+  0% {
+    transform: translateX(-50%) translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes lo-new-n-tasty {
+  0% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+}
+
+@keyframes lo-logo {
+  0% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+}
