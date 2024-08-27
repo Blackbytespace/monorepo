@@ -19,4 +19,4 @@
 .cache
 yarn-error.log
 
-.nx/cache
+.nx
