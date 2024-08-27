@@ -1,0 +1,49 @@
+---
+layout: ../../layouts/markdown.astro
+title: 'Lotsof | Sugarcss | Using with Vite'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+# Using vith Vite
+
+<div class="typo-lead">
+  **Sugarcss** is the perfect companion of [Vite](https://vitejs.dev/) to build
+  your next web project. Follow these simple steps to get started:
+</div>
+
+## Installation
+
+To use lightningcss with Vite, first install the vite package like so:
+
+```bash
+npm i vite @lotsof/sugarcss -D
+```
+
+## Configuration
+
+Then, create a `vite.config.js` file at the root of your project with the following content:
+
+```js
+import { sugarize } from '@lotsof/sugarcss';
+
+export default {
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: sugarize({
+      minify: true,
+    }),
+  },
+  build: {
+    cssMinify: 'lightningcss',
+  },
+};
+```
+
+## Usage
+
+You can now start your vite server like normal and take advantage of all the great features of **Sugarcss**:
+
+```bash
+vite
+```

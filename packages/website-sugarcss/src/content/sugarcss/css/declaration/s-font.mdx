@@ -1,0 +1,82 @@
+---
+title: 's-font'
+namespace: '@lotsof.sugarcss.css.declaration'
+type: 'Declaration'
+status: 'stable'
+since: '0.0.1'
+platform: '[{"name":"css","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://hello@lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# s-font
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Declaration</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">0.0.1</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -css">css</span></div>
+</div>
+<div class="_namespace">@lotsof.sugarcss.css.declaration</div>
+<div class="_description">
+<p>This variable allows you to declare a font easily and use it in your css.
+You can declare as many fonts as you want.</p>
+
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">family<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font family to use</p>
+</li>
+<li class="_item">
+<span class="_name">size<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font size to use</p>
+</li>
+<li class="_item">
+<span class="_name">lineHeight<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font line height to use</p>
+</li>
+<li class="_item">
+<span class="_name">weight<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font weight to use</p>
+</li>
+<li class="_item">
+<span class="_name">style<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font style to use</p>
+</li>
+<li class="_item">
+<span class="_name">variant<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font variant to use</p>
+</li>
+<li class="_item">
+<span class="_name">stretch<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The font stretch to use</p>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```css
+:root {
+   --s-font-default: s-font-family(sans) 16px 26px;
+   --s-font-lead: s-font-family(sans) 26px 40px;
+   --s-font-title: VT323 s-size(100) s-size(100) 300;
+   --s-font-code: s-font-family(code) 16px 26px 300;
+}
+
+.my-element {
+   font: s-font(default);
+}
+```
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://hello@lotsof.dev" target="_blank" class="_url">https://hello@lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

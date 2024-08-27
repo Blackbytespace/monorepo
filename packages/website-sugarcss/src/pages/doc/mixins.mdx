@@ -1,0 +1,41 @@
+---
+layout: ../../layouts/markdown.astro
+title: 'Lotsof | Sugarcss | Mixins'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+# Mixins
+
+<div class="typo-lead">
+  **Sugarcss** comes with a bunch of useful mixins that you can use in your
+  styles to make your life easier. You can as well make use of this system to
+  create your own mixins.
+</div>
+
+## Declaring a mixin
+
+To declare a mixin, you simply have to define it with the `@mixin` directive like so:
+
+```css
+@mixin myMixin {
+  color: red;
+}
+```
+
+## Using a mixin
+
+To use a mixin, you simply have to include it in your styles with the `@include` directive like so:
+
+```css
+.my-element {
+  @include myMixin;
+}
+```
+
+## Built-in mixins
+
+Some mixins are included by default in **Sugarcss** to help you in your daily.
+Here's the list of included mixins:
+
+- `s-destyle`: Apply the famous [destyle.css](https://nicolas-cusan.github.io/destyle.css/) reset.

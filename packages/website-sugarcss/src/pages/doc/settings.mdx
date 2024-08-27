@@ -1,0 +1,43 @@
+---
+layout: ../../layouts/markdown.astro
+title: 'Lotsof | Sugarcss | Settings'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+# Settings
+
+<div class="typo-lead">
+  Sugarcss support multiple settings to customize the behavior of the plugin.
+  These settings can be passed when initializing the plugin, or directly from
+  your css files through css variables like `--s-settings-mobile-first: false`.
+</div>
+
+## Available settings
+
+Here's the list of available settings you can use:
+
+- `mobileFirst`: `false` by default. Set to `true` to make Sugarcss mobile first.
+- `verbose` : `false` by default. Set to `true` to enable verbose mode and see what's happened in your console.
+
+## Plugin settings
+
+You can configure the plugin settings when initializing it like so:
+
+```js
+{
+  mobileFirst: true,
+  verbose: true
+}
+```
+
+## Css variables
+
+You can also configure the plugin settings directly from your css files like so:
+
+```css
+:root {
+  --s-setting-mobile-first: true;
+  --s-setting-verbose: true;
+}
+```

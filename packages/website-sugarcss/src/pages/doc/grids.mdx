@@ -1,0 +1,63 @@
+---
+layout: ../../layouts/markdown.astro
+title: 'Lotsof | Sugarcss | Grids'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+# Grids
+
+<div class="typo-lead">
+  **Sugarcss** let you define your grids in a simple css way and use them
+  everywhere you want in your styles with ease.
+</div>
+
+## Register a grid
+
+To register a grid, you simply have to define a css variable in your `:root` element like so:
+
+```css
+:root {
+  --s-grid-mygrid: '1 1 2 _ 3 3 3' 20px;
+}
+```
+
+Here, we define a grid named `mygrid` that has 3 columns, 2 rows and a gap of `20px`.
+
+## Apply a grid
+
+Here's how to apply a registered or custom grid to an element:
+
+```css
+.my-element {
+  // registered grid
+  @s-grid (mygrid);
+
+  // custom grid
+  @s-grid ('1 1 1', 20px);
+}
+```
+
+## Html structure
+
+Here's the grid result in a simple html structure:
+
+```html
+<div class="s-grid-mygrid">
+  <div>Area #1</div>
+  <div>Area #2</div>
+  <div>Area #3</div>
+</div>
+```
+
+## Result
+
+It will produce a grid like so:
+
+```
+|------------|------------|------------|
+| Area #1                 | Area #2    |
+|------------|------------|------------|
+| Area #3                              |
+|------------|------------|------------|
+```

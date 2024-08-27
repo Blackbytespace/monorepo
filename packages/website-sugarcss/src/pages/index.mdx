@@ -1,0 +1,102 @@
+---
+layout: ../layouts/markdown.astro
+title: 'Lotsof | Sugarcss'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+<div class="typo-lead">
+  Sugarcss is a [lightningcss](https://lightningcss.dev/) plugin that gives you
+  access to a lot of advanced features like **color management/modifiers**, easy
+  **responsive breakpoints** declaration and usage, **spaces management** and a
+  lot more to discover.
+</div>
+
+## Principles
+
+Sugarcss let you define your design tokens in a simple css way and use them everywhere you want in your styles with ease.
+
+```css
+:root {
+  --s-media-mobile: 0 768px;
+  --s-media-tablet: 769px 1024px;
+  --s-media-desktop: 1025px;
+  /* other media... */
+
+  /* layout stuffs (min, max, side-padding) */
+  --s-container-default: 320px 900px 20px;
+  --s-container-wide: 320px 1440px 20px;
+
+  --s-color-main: #9e9161;
+  --s-color-accent: #d2b02d;
+  /* other colors... */
+
+  --s-shade-text: --lighten 20;
+  --s-shade-background: --darken 20;
+  /* other color shades... */
+
+  --s-font-family-sans: 'Roboto', sans-serif;
+  --s-font-family-code: 'Monaco', sans-serif;
+  /* other fonts... */
+
+  --s-grid-special: '1 1 2 _ 3 3 3' 20px;
+  --s-grid-2cols: '1 2' 20px;
+  /* other grids */
+
+  /**
+   * And more options to discover like:
+   * - easings
+   * - fonts
+   * - spaces
+   * - sizes
+   * - radius
+   */
+}
+```
+
+You will then be able to access these tokens in your styles through `functions`or `mixins` like so:
+
+```css
+body {
+  /* Apply the "main" color with the "background" shade (modifier) */
+  background: s-color(main, background);
+
+  /* Apply another color on mobile */
+  @media mobile {
+    background: s-color(accent, --darken 10);
+  }
+
+  /* Can easily make specific queries like:
+   * - lt-... : Lower than
+   * - lte-... : Lower than or equal
+   * - e-... : Equal
+   * - gt-... : Greater than
+   * - gte-... : Greater than or equal
+   */
+  @media lt-tablet {
+    background: s-color(accent, --lighten 10);
+  }
+
+  /* Apply a registered container */
+  .my-container {
+    @s-container();
+  }
+
+  /* Apply a registered grid like so: */
+  .my-grid {
+    @s-grid (special);
+  }
+  /* Or apply a custom grid diredtly */
+  .my-grid {
+    @s-grid ('1 1 2 _ 3 3 3', 20px);
+  }
+}
+```
+
+## Using with Vite
+
+Follow the [Vite installation guide](/vite) to get started with **Sugarcss**.
+
+<a href="/doc/vite" title="Lotsof Sugarcss Vite installation guide" class="btn">
+  Get started with Vite
+</a>
