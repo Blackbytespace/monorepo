@@ -1,0 +1,89 @@
+---
+title: 'easeInterval'
+namespace: '@lotsof.sugar.shared.function'
+type: 'Function'
+status: 'stable'
+since: '2.0.0'
+platform: '[{"name":"js","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
+---
+
+<div class="docmap-mdx">
+# easeInterval
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.shared.function</div>
+<div class="_description">
+ª@todo      tests
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">duration<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Number</span>
+<p class="_description">The duration of your interval process you want</p>
+</li>
+<li class="_item">
+<span class="_name">cb</span><span class="_default"></span> <span class="_type">Function</span>
+<p class="_description">A callback function to call at each interval</p>
+</li>
+<li class="_item">
+<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TEaseIntervalSettings</span>
+<p class="_description">Some settings to customize your interval process</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">An SPromise that will be resolved once the process is complete, and through which you can subscribe to the "interval" event that is the same as the "cb" parameter</span><span class="_default"></span><span class="_type">SPromise</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __easeInterval } from '@lotsof/sugar/function';
+await __easeInterval(2000, (easedPercent) => {
+     // do something...
+}, {
+     interval: 1000 / 25 // 25 times by second
+});
+```
+</div>
+<div class="_settings">
+## Settings
+<ol class="_list">
+<li class="_item">
+<span class="_name">inteval</span><span class="_default">40</span> <span class="_type">Number</span>
+<p class="_description">An interval in ms to call your callback function</p>
+</li>
+<li class="_item">
+<span class="_name">easing</span><span class="_default">easeInOutQuart</span> <span class="_type">Function</span>
+<p class="_description">An easing function that take as parameter a value between 0 and 1</p>
+</li>
+<li class="_item">
+<span class="_name">from</span><span class="_default">0</span> <span class="_type">Number</span>
+<p class="_description">The value to start with</p>
+</li>
+<li class="_item">
+<span class="_name">to</span><span class="_default">100</span> <span class="_type">Number</span>
+<p class="_description">The value to end with</p>
+</li>
+</ol>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,348 @@
+.lo-header {
+  position: fixed;
+  left: 50%;
+  height: 300px;
+  transform: translate(-50%);
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  @s-container;
+  @s-transition();
+
+  @media mobile {
+    left: s-container(sidePadding);
+    transform: none;
+    top: 0;
+    height: 250px;
+  }
+
+  body.-home & {
+    height: 500px;
+
+    @media mobile {
+      height: 300px;
+    }
+  }
+
+  .scrolled & {
+    height: 80px !important;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 150px;
+    transform: translateX(-50%);
+    @s-transition();
+  }
+
+  .scrolled &:before {
+    background: s-color(main, background);
+    background: linear-gradient(
+      to bottom,
+      s-color(main, background) 40%,
+      transparent 100%
+    );
+  }
+
+  ._title {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    font: s-font(title);
+    color: s-color(accent, --lighten 20);
+    text-transform: uppercase;
+    font-size: 200px;
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+    animation: lo-logo 1s linear infinite;
+    transform: translate(-50%, -50%);
+    @s-transition();
+
+    .scrolled & {
+      top: 50%;
+      font-size: 50px;
+    }
+
+    @media mobile {
+      top: 70%;
+      font-size: 100px;
+    }
+  }
+
+  ._version {
+    position: absolute;
+    top: 70%;
+    left: 85%;
+    font: s-font(title);
+    color: s-color(complementary, --darken 40);
+    font-size: 50px;
+    text-shadow: 1px 1px 3px s-color(accent, --lighten 40);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    @s-transition();
+
+    .scrolled & {
+      top: 55%;
+      left: 92%;
+      font-size: 20px;
+      text-shadow: 0 0 0 s-color(accent, --lighten 20);
+      color: s-color(accent, --lighten 50);
+    }
+
+    @media mobile {
+      top: 77%;
+      left: 82%;
+      font-size: 30px;
+
+      .scrolled & {
+        opacity: 0;
+      }
+    }
+  }
+
+  ._claim {
+    position: absolute;
+    top: 85%;
+    left: 40%;
+    font: s-font(code);
+    font-size: s-size(22);
+    text-transform: uppercase;
+    transform: translate(-50%, -50%) rotate(7deg);
+    opacity: 0;
+    pointer-events: none;
+    @s-transition();
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+    animation: lo-claim 0.4s linear infinite;
+
+    @media mobile {
+      display: none;
+    }
+
+    .-home & {
+      opacity: 1;
+    }
+
+    .scrolled & {
+      opacity: 0;
+    }
+
+    @media mobile {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  svg {
+    [fill] {
+      fill: s-color(accent, text);
+    }
+  }
+
+  .lo-nav {
+    position: absolute;
+    z-index: 50;
+    top: 135px;
+    right: 0;
+    font-size: 20px;
+    @s-transition;
+
+    @media mobile {
+      top: 70px;
+      right: s-container(sidePadding);
+    }
+
+    .scrolled & {
+      top: 30px;
+    }
+  }
+
+  ._logo {
+    position: absolute;
+    top: 140px;
+    left: 0;
+    transform: translateY(-50%);
+    transform-origin: 0 0;
+    @s-transition();
+
+    @media mobile {
+      transform: none;
+      top: 70px;
+      left: 50px !important;
+
+      .scrolled & {
+        transform: translateY(-50%) scale(0.9);
+        top: 35px !important;
+        left: 60px !important;
+      }
+    }
+
+    .scrolled & {
+      top: 35%;
+      left: 0;
+    }
+  }
+
+  .logo-lotsof-picto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    opacity: 1;
+    transform: translate(-100%, -50%) scale(1);
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+    animation: lo-logo 1s linear infinite;
+    @s-transition();
+
+    [fill] {
+      fill: s-color(accent, --lighten 20);
+    }
+
+    .scrolled & {
+      transform: translate(-100%, -30%) scale(0.8);
+
+      @media mobile {
+        transform: translate(-100%, -30%) scale(1) rotate(-90deg);
+      }
+    }
+
+    .scrolled & {
+    }
+  }
+
+  .logo-lotsof {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    opacity: 1;
+    transform: translateX(0);
+    @s-transition();
+
+    [fill] {
+      fill: white;
+    }
+
+    .scrolled & {
+      @media mobile {
+        opacity: 0;
+      }
+    }
+  }
+
+  .picto-new-n-tasty {
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    width: 300px;
+    transform: translateX(-50%) rotate(13deg);
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+    animation: lo-new-n-tasty 0.25s linear infinite;
+    transition: all 0.1s ease-out;
+
+    @media mobile {
+      left: 50%;
+      top: 75%;
+    }
+
+    [fill] {
+      fill: s-color(ternary, --lighten 20);
+    }
+
+    .scrolled & {
+      top: 50%;
+      left: calc(50% + 40px);
+      width: 100px;
+    }
+  }
+}
+
+@keyframes lo-new-n-tasty {
+  0% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(ternary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(ternary, --saturate 100) 0 0 5px);
+  }
+}
+
+@keyframes lo-logo {
+  0% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
+  }
+}
+
+@keyframes lo-claim {
+  0% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+  }
+  17% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 5px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+  }
+  40% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 2px);
+  }
+  48% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+  }
+  84% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 12px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(complementary, --saturate 100) 0 0 10px)
+      drop-shadow(s-color(complementary, --saturate 100) 0 0 5px);
+  }
+}

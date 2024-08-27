@@ -1,0 +1,78 @@
+---
+title: 'fromQuantifier'
+namespace: '@lotsof.sugar.shared.array'
+type: 'Function'
+status: 'stable'
+platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+
+<div class="docmap-mdx">
+# fromQuantifier
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.shared.array</div>
+<div class="_description">
+This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc...
+This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the
+s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">quantifier<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String&vert;Number</span>
+<p class="_description">The quantifier to generate</p>
+</li>
+<li class="_item">
+<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TFromQuantifierSettings</span>
+<p class="_description">Some settings to configure your array generation</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">The generated array</span><span class="_default"></span><span class="_type">Array</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __fromQuantifier } from '@lotsof/sugar/array'
+__fromQuantifier(3); // => [0,1,2]
+__fromQuantifier('3-5'); // => [3,4,5]
+__fromQuantifier('3-6', {
+   value(i) => `c-${i}`
+}); // => ['c-3','c-4','c-5','c-6']
+```
+</div>
+<div class="_settings">
+## Settings
+<ol class="_list">
+<li class="_item">
+<span class="_name">max<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Number</span>
+<p class="_description">The maximum wanted when using > and >= quantifiers</p>
+</li>
+<li class="_item">
+<span class="_name">value<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Function</span>
+<p class="_description">A function that take the current index and that MUST return the value wanted in the generated array</p>
+</li>
+</ol>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,59 @@
+---
+title: 'splitEvery'
+namespace: '@lotsof.sugar.shared.array'
+type: 'Function'
+status: 'stable'
+platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# splitEvery
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.shared.array</div>
+<div class="_description">
+Split an array every N items
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">array<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Array</span>
+<p class="_description">The array to split</p>
+</li>
+<li class="_item">
+<span class="_name">every<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Number</span>
+<p class="_description">Every how many items to split the array</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">An array of arrays splited</span><span class="_default"></span><span class="_type">Array</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __splitEvery } from '@lotsof/sugar/array';
+__splitEvery([1,2,3,4,5,6,7,8,9], 3);
+// [[1,2,3],[4,5,6],[7,8,9]]
+```
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

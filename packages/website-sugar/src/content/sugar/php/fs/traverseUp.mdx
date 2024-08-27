@@ -1,0 +1,72 @@
+---
+title: 'traverseUp'
+namespace: '@lotsof.sugar.php.fs'
+type: 'Function'
+status: 'beta'
+since: '2.0.0'
+platform: '[{"name":"php","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# traverseUp
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -beta">beta</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -php">php</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.php.fs</div>
+<div class="_description">
+Go up through the filesystem from a specified folder until the closure returns truc and returns the path
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">from<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">Specify the folder path from which to start</p>
+</li>
+<li class="_item">
+<span class="_name">callback<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Function&vert;null</span>
+<p class="_description">The callback function to call on each folder path&period; It this returns true&comma; the process stops and the current folder path is returned</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">The folder path on which the callback has returned true, or null if not</span><span class="_default"></span><span class="_type">String</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```php
+const finalPath = \Sugar\fs\traverseUp('/Users/something/cool', function($path) {
+   if (count(explode('/', $path)) <= 2) {
+     return true;
+   }
+}); // '/Users/something'
+```
+</div>
+<div class="_todo">
+## Todo
+<ul class="_list">
+<li class="_item">
+<span class="_description">tests</span>
+<span class="_priority -normal">normal</span>
+</li>
+</ul>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

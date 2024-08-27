@@ -1,0 +1,59 @@
+---
+title: 'chdir'
+namespace: '@lotsof.sugar.node.fs'
+type: 'Function'
+status: 'stable'
+since: '2.0.0'
+platform: '[{"name":"node","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# chdir
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -node">node</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.node.fs</div>
+<div class="_description">
+This function allows you to change the process working directory.
+If you make use of the `__spawn` sugar function, it will also change
+the directory of the parent process if you call this function in a childProcess.
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">path<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The folder path you want to go to</p>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __chdir } from '@lotsof/sugar/fs';
+__chdir('/my/cool/file.txt', 'Hello world');
+```
+</div>
+<div class="_todo">
+## Todo
+<ul class="_list">
+<li class="_item">
+<span class="_description">tests</span>
+<span class="_priority -normal">normal</span>
+</li>
+</ul>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

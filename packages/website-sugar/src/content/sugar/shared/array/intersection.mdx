@@ -1,0 +1,75 @@
+---
+title: 'intersection'
+namespace: '@lotsof.sugar.shared.array'
+type: 'Function'
+status: 'stable'
+since: '2.0.0'
+platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# intersection
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.shared.array</div>
+<div class="_description">
+This function take two arrays and return all the items that are the same.
+You can specify if you want only comparing by reference for object, etc... or if
+you want to transform items in hashes and compare that instead.
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">...arrays<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Array</span>
+<p class="_description">The arrays you want to compare</p>
+</li>
+<li class="_item">
+<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Object</span>
+<p class="_description">Some settings to refine your comparaison process</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">An array containing all the items that are present in all the passed arrays</span><span class="_default"></span><span class="_type">Array</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __intersection } from '@lotsof/sugar/array';
+__intersection([1,2,3,4], [1,3,5]); // => [1,3]
+```
+</div>
+<div class="_settings">
+## Settings
+<ol class="_list">
+<li class="_item">
+<span class="_name">references</span><span class="_default">true</span> <span class="_type">Boolean</span>
+<p class="_description">Specify if you want to use the references comparaison or not</p>
+</li>
+<li class="_item">
+<span class="_name">hash</span><span class="_default">true</span> <span class="_type">Boolean</span>
+<p class="_description">Specify if you want to allows transforming object etc in to hashes and compare this instead</p>
+</li>
+</ol>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

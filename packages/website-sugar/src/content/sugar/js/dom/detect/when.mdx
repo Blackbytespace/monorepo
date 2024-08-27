@@ -1,0 +1,110 @@
+---
+title: 'when'
+namespace: '@lotsof.sugar.js.dom.detect'
+type: 'Function'
+status: 'stable'
+since: '2.0.0'
+platform: '[{"name":"js","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+---
+
+<div class="docmap-mdx">
+# when
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
+</div>
+<div class="_namespace">@lotsof.sugar.js.dom.detect</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">$elm<span class="_required">*</span></span><span class="_default"></span> <span class="_type">HTMLElement</span>
+<p class="_description">The element to listen on</p>
+</li>
+<li class="_item">
+<span class="_name">trigger<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String&vert;String&lsqb;&rsqb;</span>
+<p class="_description">The trigger&lpar;s&rpar; to listen on</p>
+</li>
+<li class="_item">
+<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TwhenSettings</span>
+<p class="_description">Some settings like offset&comma; etc&period;&period;&period;</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">A promise resolved when all the triggers are fulfilled</span><span class="_default"></span><span class="_type">SPromise&lt;HTMLElement&gt;</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```js
+import { __when } from '@lotsof/sugar/dom';
+__when($elm, 'inViewport', {
+   whenInViewport: {
+      offset: 50
+   }
+}).then(() => {
+     // do something
+});
+```
+</div>
+<div class="_settings">
+## Settings
+<ol class="_list">
+<li class="_item">
+<span class="_name">whenInViewport</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;TWhenInViewportSettings&gt;</span>
+<p class="_description">Some settings for the whenInViewport function</p>
+</li>
+<li class="_item">
+<span class="_name">whenNearViewport</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;TWhenNearViewportSettings&gt;</span>
+<p class="_description">Some settings for the whenNearViewport function</p>
+</li>
+<li class="_item">
+<span class="_name">whenEntersViewport</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;IWhenEntersViewportSettubgs&gt;</span>
+<p class="_description">Some settings for the whenEntersViewport function</p>
+</li>
+<li class="_item">
+<span class="_name">whenOutOfViewport</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;TWhenOutOfViewportSettings&gt;</span>
+<p class="_description">Some settings for the whenOutOfViewport function</p>
+</li>
+<li class="_item">
+<span class="_name">whenInteract</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;TWhenInteractSettings&gt;</span>
+<p class="_description">Some settings for the whenInteract function</p>
+</li>
+<li class="_item">
+<span class="_name">whenVisible</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;TWhenVisibleSettings&gt;</span>
+<p class="_description">Some settings for the whenVisible function</p>
+</li>
+<li class="_item">
+<span class="_name">whenStylesheetsReady</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Partial&lt;IWhenStyleSheetsReadySettings&gt;</span>
+<p class="_description">Some settings for the whenStylesheetsReady function</p>
+</li>
+</ol>
+</div>
+<div class="_todo">
+## Todo
+<ul class="_list">
+<li class="_item">
+<span class="_description">tests</span>
+<span class="_priority -normal">normal</span>
+</li>
+</ul>
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>
