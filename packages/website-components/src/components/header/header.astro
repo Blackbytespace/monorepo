@@ -1,0 +1,30 @@
+---
+import LoNav from '@lotsof/website-common/src/components/nav/nav.astro';
+import __logoLotsofPicto from '@lotsof/website-common/src/img/logo-lotsof-picto.svg?raw';
+import __logoLotsof from '@lotsof/website-common/src/img/logo-lotsof.svg?raw';
+import __pictoNewNasty from '@lotsof/website-common/src/img/picto-new-n-tasty.svg?raw';
+
+import sugarcssPackageJson from '@lotsof/sugarcss/package.json';
+
+const sugarcssVersion = sugarcssPackageJson.version;
+---
+
+<header class="lo-header">
+  <a class="_logo" href="/" title="Sugarcss">
+    <Fragment set:html={__logoLotsofPicto} />
+    <Fragment set:html={__logoLotsof} />
+  </a>
+  <LoNav />
+  <a href="/" title="Sugarcss">
+    <h1 class="_title">Components</h1>
+    <h4 class="_version">v{sugarcssVersion}</h4>
+    <Fragment set:html={__pictoNewNasty} />
+  </a>
+  <a
+    href="/doc/create"
+    title="Lotsof | Components | Create your own components"
+    class="btn"
+  >
+    Make my own components!
+  </a>
+</header>

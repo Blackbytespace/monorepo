@@ -1,0 +1,40 @@
+---
+// @ts-nocheck
+import Layout from '../../layouts/markdown.astro';
+
+import { __toSlug } from '@lotsof/website-common/src/components/utils/utils.js';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allDoc = await getCollection('components');
+
+  const params = [];
+  for (let [i, docObj] of allDoc.entries()) {
+    params.push({
+      params: {
+        namespace: __toSlug(docObj.id),
+      },
+    });
+  }
+
+  return params;
+}
+
+const allDoc = await getCollection('components'),
+  params = Astro.params;
+
+let DocItem;
+for (let [i, docObj] of allDoc.entries()) {
+  if (__toSlug(docObj.id) === params.namespace) {
+    DocItem = await docObj.render();
+    break;
+  }
+}
+---
+
+<Layout
+  title={`Lotsof | Components | ${DocItem.remarkPluginFrontmatter.title}`}
+>
+  <DocItem.Content />
+</Layout>

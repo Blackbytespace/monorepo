@@ -1,0 +1,73 @@
+---
+layout: ../../layouts/markdown.astro
+title: 'Lotsof | Components | Add your own components'
+author: 'Olivier Bossel'
+date: '22 April 2024'
+---
+
+# Create your own components
+
+<div class="typo-lead">
+  **Lotsof** components system is made to be extensible and allow you to add
+  your own components to the library.
+</div>
+
+## Repository
+
+To make use of your own components, you simply have to create a **publicly accessible git repository** with your components in it like so:
+
+```bash
+└── src
+  └── components
+    └── myComponent
+      └── component.json
+      └── myComponent.js
+      └── myComponent.css
+    └── otherComponent
+      └── component.json
+      └── otherComponent.js
+```
+
+## Component.json
+
+The _component.json_ files are required to describe your component like so:
+
+```json
+{
+  "version": "1.0.0",
+  "name": "helloWorld",
+  "description": "Simple hello world component to test the component system",
+  "dependencies": {
+    "@lotsof/components/config": "^1.0.0"
+  }
+}
+```
+
+## Lotsof.json
+
+Last but not least, you can add your components library to your project by creating the `lotsof.json` file in the root of your project like so:
+
+```json
+{
+  "components": {
+    "sources": {
+      "myComponentsLibrary": {
+        "type": "git",
+        "url": "https://your-git-service.com/your-components-library.git"
+      }
+    }
+  }
+}
+```
+
+## Updating library
+
+Once you have setted your components library in your `lotsof.json` file, you can simply run the following command to update your library:
+
+```bash
+lotsof components.update
+```
+
+This will update your local component libraty with the latest version of your components library. You can now list the available components with the `lotsof components.ls` command.
+
+> Note that updating the library will not update the components in your project.
