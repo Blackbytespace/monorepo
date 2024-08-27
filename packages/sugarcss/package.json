@@ -1,0 +1,32 @@
+{
+  "name": "@lotsof/sugarcss",
+  "description": "Add a sugar in your css with nice features like live update and more",
+  "version": "1.0.0-alpha.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "main": "./dist/node/sugarcss.js",
+  "types": "./src/node/sugarcss.types.ts",
+  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
+  "license": "MIT",
+  "globalDependencies": {},
+  "dependencies": {
+    "@lotsof/config": "^1.0.0-alpha",
+    "@lotsof/sugar": "^1.0.0-alpha",
+    "browserslist": "^4.23.0",
+    "lightningcss": "^1.26.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.4"
+  }
+}
