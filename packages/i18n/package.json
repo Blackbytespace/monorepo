@@ -1,0 +1,21 @@
+{
+  "name": "@lotsof/i18n",
+  "version": "1.0.0-alpha.0",
+  "description": "Simple but powerfull package that let you handle i18n of your websites/apps easily and elegantly",
+  "type": "module",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@lotsof/sugar": "^1.0.0-alpha",
+    "typescript": "^5.4.5"
+  },
+  "exports": {
+    "browser": {
+      "default": "./dist/shared/_exports.js"
+    }
+  },
+  "homepage": "https://lotsof.dev"
+}
