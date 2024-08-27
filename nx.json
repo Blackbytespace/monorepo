@@ -1,0 +1,61 @@
+{
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": []
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "build.permissions": {
+      "dependsOn": []
+    },
+    "test": {
+      "cache": true,
+      "dependsOn": []
+    },
+    "postinstall": {
+      "dependsOn": []
+    },
+    "install.composer": {
+      "dependsOn": []
+    },
+    "start": {
+      "dependsOn": []
+    },
+    "preview": {
+      "dependsOn": []
+    },
+    "astro": {
+      "dependsOn": []
+    },
+    "i": {
+      "dependsOn": []
+    },
+    "install.env": {
+      "dependsOn": []
+    },
+    "install.htaccess": {
+      "dependsOn": []
+    },
+    "install.theme": {
+      "dependsOn": []
+    },
+    "install.wordpress": {
+      "dependsOn": []
+    },
+    "install.hosts": {
+      "dependsOn": []
+    },
+    "theme.dev": {
+      "dependsOn": []
+    },
+    "theme.build": {
+      "dependsOn": []
+    },
+    "theme.install": {
+      "dependsOn": []
+    }
+  }
+}

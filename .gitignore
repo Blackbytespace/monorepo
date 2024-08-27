@@ -18,3 +18,5 @@
 .DS_Store
 .cache
 yarn-error.log
+
+.nx/cache
