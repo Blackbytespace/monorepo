@@ -2,6 +2,23 @@
 
 This custom element allows you to create with ease some fully customizable advanced select with built-in search, keyboard support, and more.
 
+---
+
+- [Advanced Select Element](#advanced-select-element)
+  - [Coming features](#coming-features)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [Simple example](#simple-example)
+    - [Using groups](#using-groups)
+    - [Fetch items from an API](#fetch-items-from-an-api)
+    - [Different items depending on search](#different-items-depending-on-search)
+  - [Attributes](#attributes)
+  - [Events](#events)
+  - [API](#api)
+  - [Contribute](#contribute)
+
+---
+
 ## Features
 
 - Framework agnostic
@@ -39,11 +56,15 @@ This custom element allows you to create with ease some fully customizable advan
 
 - Infinite scroll in conjuction with the `maxDisplay` attribute
 
+---
+
 ## Install
 
 ```sh
 npm i @lotsof/advanced-select-element
 ```
+
+---
 
 ## Usage
 
@@ -188,6 +209,8 @@ __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
 })
 ```
 
+---
+
 ## Attributes
 
 Here's the list of attributes that can be passed through the html attributes, or through the `define` function like so:
@@ -235,6 +258,8 @@ Here's the list:
  */
 ```
 
+---
+
 ## Events
 
 Here's the list of events you can subscribe to:
@@ -251,6 +276,8 @@ Here's the list of events you can subscribe to:
  * @event           sAdvancedSelect.loaded               Dispatched when the element exit the loading state
  */
 ```
+
+---
 
 ## API
 
@@ -381,3 +408,11 @@ Here's all the methods you can access through the element directly:
  * @since       1.0.0
  */
 ```
+
+---
+
+## Contribute
+
+To contribute to this package, please [follow these guidelines](https://github.com/lotsofdev/monorepo/blob/master/CONTRIBUTE.md).
+
+Everyone is welcome as long as they respect our [code of conduct](https://github.com/lotsofdev/monorepo/blob/master/CODEOFCONDUCT.md).

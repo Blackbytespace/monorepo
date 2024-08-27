@@ -1,4 +1,4 @@
-# Lotsof Config
+# Lotsof i18n
 
 TBD
 

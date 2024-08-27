@@ -1,4 +1,4 @@
-# Lotsof Config
+# Lotsof Docmap
 
 TBD
 
