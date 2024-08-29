@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/config",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Simple and useful way to configure all the lotsof ecosystem",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -12,10 +12,10 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/cli": "^1.0.0-alpha.2",
-    "@lotsof/docmap": "^1.0.0-alpha.2",
-    "@lotsof/factory": "^1.0.0-alpha.2",
-    "@lotsof/sugar": "^1.0.0-alpha.2",
+    "@lotsof/cli": "^1.0.0-alpha.3",
+    "@lotsof/docmap": "^1.0.0-alpha.3",
+    "@lotsof/factory": "^1.0.0-alpha.3",
+    "@lotsof/sugar": "^1.0.0-alpha.3",
     "typescript": "^5.4.5"
   },
   "main": "dist/node/_exports.js",
