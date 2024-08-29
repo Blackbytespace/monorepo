@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/config",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Simple and useful way to configure all the lotsof ecosystem",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -11,10 +11,10 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@lotsof/cli": "^1.0.0-alpha.1",
-    "@lotsof/docmap": "^1.0.0-alpha.1",
-    "@lotsof/factory": "^1.0.0-alpha.1",
-    "@lotsof/sugar": "^1.0.0-alpha.1",
+    "@lotsof/cli": "^1.0.0-alpha.2",
+    "@lotsof/docmap": "^1.0.0-alpha.2",
+    "@lotsof/factory": "^1.0.0-alpha.2",
+    "@lotsof/sugar": "^1.0.0-alpha.2",
     "typescript": "^5.4.5"
   },
   "main": "dist/node/_exports.js",

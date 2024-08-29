@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/wordpress-playground",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.2",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -20,6 +20,5 @@
   },
   "author": "",
   "license": "MIT",
-  "homepage": "https://lotsof.dev",
-  "dependencies": {}
+  "homepage": "https://lotsof.dev"
 }

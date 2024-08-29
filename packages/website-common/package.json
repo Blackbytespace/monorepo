@@ -2,7 +2,5 @@
   "name": "@lotsof/website-common",
   "type": "module",
   "private": true,
-  "version": "1.0.0",
-  "dependencies": {},
-  "devDependencies": {}
+  "version": "1.0.0-alpha.2"
 }

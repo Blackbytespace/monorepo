@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/website-sugar",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.2",
   "private": true,
   "scripts": {
     "dev": "astro dev --host",
@@ -16,19 +16,19 @@
     "@fontsource-variable/sixtyfour": "^5.0.2",
     "@fontsource/sixtyfour": "^5.0.2",
     "@fontsource/vt323": "^5.0.13",
-    "@lotsof/advanced-select-element": "^1.0.0-alpha",
-    "@lotsof/config": "^1.0.0-alpha",
-    "@lotsof/website-common": "^1.0.0",
-    "@lotsof/docmap": "^1.0.0-alpha",
-    "@lotsof/sugar": "^1.0.0-alpha",
-    "@lotsof/sugarcss": "^1.0.0-alpha",
+    "@lotsof/advanced-select-element": "^1.0.0-alpha.2",
+    "@lotsof/config": "^1.0.0-alpha.2",
+    "@lotsof/docmap": "^1.0.0-alpha.2",
+    "@lotsof/sugar": "^1.0.0-alpha.2",
+    "@lotsof/sugarcss": "^1.0.0-alpha.2",
+    "@lotsof/types": "^1.0.0-alpha.2",
+    "@lotsof/website-common": "^1.0.0-alpha.2",
     "@pixi/filter-crt": "^5.1.1",
     "astro": "^4.6.3",
     "i": "^0.3.7",
     "npm": "^10.5.2",
     "pixi.js": "^8.1.0",
-    "typescript": "^5.4.5",
-    "@lotsof/types": "^1.0.0-alpha"
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "vite": "^5.2.12"
