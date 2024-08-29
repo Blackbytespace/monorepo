@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/factory",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Useful components factory UI that allows you to build and test your own components easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -13,13 +13,13 @@
     "install.composer": "composer install"
   },
   "dependencies": {
-    "@lotsof/lit-element": "^1.0.0-alpha",
-    "@lotsof/sugar": "^1.0.0-alpha",
-    "@lotsof/i18n": "^1.0.0-alpha",
-    "@lotsof/sugarcss": "^1.0.0-alpha",
-    "@lotsof/advanced-select-element": "^1.0.0-alpha",
-    "@lotsof/json-schema-form": "^1.0.0-alpha",
-    "@lotsof/components": "^1.0.0-alpha",
+    "@lotsof/advanced-select-element": "^1.0.0-alpha.1",
+    "@lotsof/components": "^1.0.0-alpha.1",
+    "@lotsof/i18n": "^1.0.0-alpha.1",
+    "@lotsof/json-schema-form": "^1.0.0-alpha.1",
+    "@lotsof/lit-element": "^1.0.0-alpha.1",
+    "@lotsof/sugar": "^1.0.0-alpha.1",
+    "@lotsof/sugarcss": "^1.0.0-alpha.1",
     "@types/json-schema": "^7.0.15",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"

@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/i18n",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Simple but powerfull package that let you handle i18n of your websites/apps easily and elegantly",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -10,7 +10,7 @@
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map"
   },
   "dependencies": {
-    "@lotsof/sugar": "^1.0.0-alpha",
+    "@lotsof/sugar": "^1.0.0-alpha.1",
     "typescript": "^5.4.5"
   },
   "exports": {
