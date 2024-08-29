@@ -325,5 +325,6 @@
     "temp-dir": "^3.0.0",
     "unescape": "^1.0.1",
     "uuid": "^9.0.1"
-  }
+  },
+  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }

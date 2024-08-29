@@ -30,5 +30,6 @@
   "main": "dist/js/_exports.js",
   "module": "dist/js/_exports.js",
   "types": "src/js/_exports.ts",
-  "homepage": "https://lotsof.dev"
+  "homepage": "https://lotsof.dev",
+  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }

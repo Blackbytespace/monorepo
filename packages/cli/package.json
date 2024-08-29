@@ -43,5 +43,6 @@
     "figlet": "^1.7.0",
     "glob": "^10.4.1",
     "inquirer": "^9.2.17"
-  }
+  },
+  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }
