@@ -60,23 +60,7 @@ export default function media(v: any, settings: TSugarCssSettings): any {
       }
     });
 
-    if (
-      ['dark', 'light'].includes(
-        mediaQuery.condition?.value?.name ?? mediaQuery.mediaType,
-      )
-    ) {
-      switch (mediaQuery.condition?.value?.name ?? mediaQuery.mediaType) {
-        case 'dark':
-          mediaQuery.mediaType = '(prefers-color-scheme: dark)';
-          // mediaQuery.mediaType = 'screen';
-          break;
-        case 'light':
-          mediaQuery.mediaType = '(prefers-color-scheme: light)';
-          // mediaQuery.mediaType = 'screen';
-          break;
-      }
-      mediaQuery.condition = null;
-    } else if (possibleMedias.includes(mediaQuery.mediaType)) {
+    if (possibleMedias.includes(mediaQuery.mediaType)) {
       // parse the media
       let operator = '',
         media = '';
@@ -131,68 +115,52 @@ export default function media(v: any, settings: TSugarCssSettings): any {
 
       // set the new media
       mediaQuery.mediaType = query;
+    } else if (
+      ['dark', 'light'].includes(
+        mediaQuery.condition?.value?.name ?? mediaQuery.mediaType,
+      )
+    ) {
+      const theme = mediaQuery.condition?.value?.name ?? mediaQuery.mediaType;
+      return [
+        {
+          type: 'style',
+          value: {
+            selectors: [
+              [
+                {
+                  type: 'type',
+                  name: 'body',
+                },
+                {
+                  type: 'class',
+                  name: `-${theme}`,
+                },
+                {
+                  type: 'combinator',
+                  value: 'descendant',
+                },
+                {
+                  type: 'nesting',
+                },
+              ],
+            ],
+            declarations: {
+              importantDeclarations: [],
+              declarations: [],
+            },
+            rules: v.value.rules.map((rule) => {
+              return rule;
+            }),
+            loc: {
+              source_index: 2,
+              line: 98,
+              column: 5,
+            },
+          },
+        },
+      ];
     }
   }
-
-  // console.log(JSON.stringify(v, null, 2));
-
-  // return v;
-
-  const ast = [
-    {
-      type: 'style',
-      value: {
-        selectors: [
-          [
-            {
-              type: 'type',
-              name: 'body',
-            },
-            {
-              type: 'class',
-              name: '-dark',
-            },
-            {
-              type: 'combinator',
-              value: 'descendant',
-            },
-            {
-              type: 'nesting',
-            },
-          ],
-        ],
-        declarations: {
-          importantDeclarations: [],
-          declarations: [],
-        },
-        rules: v.value.rules.map((rule) => {
-          // if (rule.value.selectors.length) {
-          //   rule.value.selectors[0].unshift({
-          //     type: 'combinator',
-          //     value: 'descendant',
-          //   });
-          // }
-
-          // rule.value.selectors[0].unshift({
-          //   type: 'combinator',
-          //   value: 'descendant',
-          // });
-          // rule.value.selectors[0].unshift({
-          //   type: 'nesting',
-          // });
-          return rule;
-        }),
-        loc: {
-          source_index: 2,
-          line: 98,
-          column: 5,
-        },
-      },
-    },
-  ];
-
-  // console.log(JSON.stringify(ast, null, 2));
-  return ast;
 
   return v;
 }

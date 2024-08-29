@@ -99,4 +99,8 @@ body {
 body {
   font: s-font(default);
   color: s-color(main, text);
+
+  @media mobile {
+    background: red;
+  }
 }

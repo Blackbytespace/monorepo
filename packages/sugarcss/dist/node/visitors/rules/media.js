@@ -57,20 +57,7 @@ export default function media(v, settings) {
                 possibleMedias.push(`${operator}${media}`);
             }
         });
-        if (['dark', 'light'].includes((_c = (_b = (_a = mediaQuery.condition) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.name) !== null && _c !== void 0 ? _c : mediaQuery.mediaType)) {
-            switch ((_f = (_e = (_d = mediaQuery.condition) === null || _d === void 0 ? void 0 : _d.value) === null || _e === void 0 ? void 0 : _e.name) !== null && _f !== void 0 ? _f : mediaQuery.mediaType) {
-                case 'dark':
-                    mediaQuery.mediaType = '(prefers-color-scheme: dark)';
-                    // mediaQuery.mediaType = 'screen';
-                    break;
-                case 'light':
-                    mediaQuery.mediaType = '(prefers-color-scheme: light)';
-                    // mediaQuery.mediaType = 'screen';
-                    break;
-            }
-            mediaQuery.condition = null;
-        }
-        else if (possibleMedias.includes(mediaQuery.mediaType)) {
+        if (possibleMedias.includes(mediaQuery.mediaType)) {
             // parse the media
             let operator = '', media = '';
             const parts = mediaQuery.mediaType.split('-');
@@ -88,7 +75,7 @@ export default function media(v, settings) {
             let query = '';
             switch (operator) {
                 case 'lt':
-                    query = `(max-width: ${(_g = mediaArgs.min) !== null && _g !== void 0 ? _g : 0}px)`;
+                    query = `(max-width: ${(_a = mediaArgs.min) !== null && _a !== void 0 ? _a : 0}px)`;
                     break;
                 case 'lte':
                     query = `(max-width: ${mediaArgs.max}px)`;
@@ -97,7 +84,7 @@ export default function media(v, settings) {
                     query = `(min-width: ${mediaArgs.min}px) and (max-width: ${mediaArgs.max}px)`;
                     break;
                 case 'gt':
-                    query = `(min-width: ${(_h = mediaArgs.max) !== null && _h !== void 0 ? _h : 0}px)`;
+                    query = `(min-width: ${(_b = mediaArgs.max) !== null && _b !== void 0 ? _b : 0}px)`;
                     break;
                 case 'gte':
                     query = `(min-width: ${mediaArgs.min}px)`;
@@ -120,62 +107,48 @@ export default function media(v, settings) {
             // set the new media
             mediaQuery.mediaType = query;
         }
+        else if (['dark', 'light'].includes((_e = (_d = (_c = mediaQuery.condition) === null || _c === void 0 ? void 0 : _c.value) === null || _d === void 0 ? void 0 : _d.name) !== null && _e !== void 0 ? _e : mediaQuery.mediaType)) {
+            const theme = (_h = (_g = (_f = mediaQuery.condition) === null || _f === void 0 ? void 0 : _f.value) === null || _g === void 0 ? void 0 : _g.name) !== null && _h !== void 0 ? _h : mediaQuery.mediaType;
+            return [
+                {
+                    type: 'style',
+                    value: {
+                        selectors: [
+                            [
+                                {
+                                    type: 'type',
+                                    name: 'body',
+                                },
+                                {
+                                    type: 'class',
+                                    name: `-${theme}`,
+                                },
+                                {
+                                    type: 'combinator',
+                                    value: 'descendant',
+                                },
+                                {
+                                    type: 'nesting',
+                                },
+                            ],
+                        ],
+                        declarations: {
+                            importantDeclarations: [],
+                            declarations: [],
+                        },
+                        rules: v.value.rules.map((rule) => {
+                            return rule;
+                        }),
+                        loc: {
+                            source_index: 2,
+                            line: 98,
+                            column: 5,
+                        },
+                    },
+                },
+            ];
+        }
     }
-    // console.log(JSON.stringify(v, null, 2));
-    // return v;
-    const ast = [
-        {
-            type: 'style',
-            value: {
-                selectors: [
-                    [
-                        {
-                            type: 'type',
-                            name: 'body',
-                        },
-                        {
-                            type: 'class',
-                            name: '-dark',
-                        },
-                        {
-                            type: 'combinator',
-                            value: 'descendant',
-                        },
-                        {
-                            type: 'nesting',
-                        },
-                    ],
-                ],
-                declarations: {
-                    importantDeclarations: [],
-                    declarations: [],
-                },
-                rules: v.value.rules.map((rule) => {
-                    // if (rule.value.selectors.length) {
-                    //   rule.value.selectors[0].unshift({
-                    //     type: 'combinator',
-                    //     value: 'descendant',
-                    //   });
-                    // }
-                    // rule.value.selectors[0].unshift({
-                    //   type: 'combinator',
-                    //   value: 'descendant',
-                    // });
-                    // rule.value.selectors[0].unshift({
-                    //   type: 'nesting',
-                    // });
-                    return rule;
-                }),
-                loc: {
-                    source_index: 2,
-                    line: 98,
-                    column: 5,
-                },
-            },
-        },
-    ];
-    // console.log(JSON.stringify(ast, null, 2));
-    return ast;
     return v;
 }
 //# sourceMappingURL=media.js.map
