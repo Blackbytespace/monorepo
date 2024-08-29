@@ -70,8 +70,14 @@ export default function container(v, settings) {
                                                 {
                                                     type: 'token',
                                                     value: {
+                                                        type: 'comma',
+                                                    },
+                                                },
+                                                {
+                                                    type: 'token',
+                                                    value: {
                                                         type: 'ident',
-                                                        value: args.values.container,
+                                                        value: 'default',
                                                     },
                                                 },
                                             ],

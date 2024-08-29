@@ -8,7 +8,8 @@
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc && npm run build.permissions",
     "build.permissions": "chmod +x ./dist/node/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "publish": "npm publish --access public"
   },
   "bin": {
     "lotsof": "./dist/node/index.js"

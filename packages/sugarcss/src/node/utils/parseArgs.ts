@@ -12,6 +12,7 @@ export type TParseArgsResult = {
 export type TParseArgsSettings = {
   separator: string | string[];
   resolve: boolean;
+  debug: boolean;
 };
 
 export default function parseArgs(
@@ -22,8 +23,13 @@ export default function parseArgs(
   const finalSettings: TParseArgsSettings = {
     separator: ['comma'],
     resolve: true,
+    debug: false,
     ...(settings ?? {}),
   };
+
+  if (!finalSettings.separator.length) {
+    finalSettings.separator = ['comma'];
+  }
 
   const separators = Array.isArray(finalSettings.separator)
     ? finalSettings.separator
@@ -37,6 +43,10 @@ export default function parseArgs(
     currentProp = schema?.[argId] ?? `arg${argId}`;
 
   const handleArg = (arg) => {
+    if (finalSettings.debug) {
+      console.log('arg:', arg);
+    }
+
     // some tokens to avoid
     const avoid = [
       'parenthesis-block',
@@ -53,6 +63,9 @@ export default function parseArgs(
     if (separators.includes(arg.value.type)) {
       dashedArg = '';
       argId++;
+      if (finalSettings.debug) {
+        console.log('separator', arg, argId);
+      }
       currentProp = schema?.[argId] ?? `arg${argId}`;
       return;
     }
@@ -81,14 +94,16 @@ export default function parseArgs(
           // get the raw value
           arg.rawValue = v.raw ?? v;
 
+          // set the resulting value
           __set(resultArgs, currentProp, arg);
-
-          // set the new currentProp
-          currentProp = schema?.[argId] ?? `arg${argId}`;
         }
 
         break;
       default:
+        if (finalSettings.debug) {
+          console.log('h', currentProp, arg);
+        }
+
         // get the raw value
         arg.rawValue = arg.value.value;
 

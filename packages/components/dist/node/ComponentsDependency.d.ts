@@ -1,4 +1,4 @@
-import type { IComponentsDependency } from './Components.types.js';
+import type { TComponentsDependency } from './Components.types.js';
 export default class ComponentsDependency {
     static resetInstalledDependencies(): void;
     private _type;
@@ -11,6 +11,6 @@ export default class ComponentsDependency {
     get version(): string;
     get dev(): boolean;
     get level(): 'library' | 'component';
-    constructor(dependency: IComponentsDependency);
+    constructor(dependency: TComponentsDependency);
     install(): Promise<ComponentsDependency>;
 }

@@ -1,89 +1,89 @@
 import Components from './Components.js';
 import ComponentsLibrary from './ComponentsLibrary.js';
 import { __ComponentsComponent } from './_exports.js';
-export interface IComponentsComposerJson {
+export type TComponentsComposerJson = {
     require?: Record<string, string>;
     'require-dev'?: Record<string, string>;
-}
-export interface IComponentsPackageJson {
+};
+export type TComponentsPackageJson = {
     dependencies?: Record<string, string>;
     devDependencies?: Record<string, string>;
     globalDependencies?: Record<string, string>;
-}
-export interface IComponentsConfig {
-    settings: IComponentsSettings;
-}
-export interface IComponentDefaults {
+};
+export type TComponentsConfig = {
+    settings: TComponentsSettings;
+};
+export type TComponentDefaults = {
     engine?: string | string[];
-}
-export interface IComponentsComponentsJson {
-    libraries?: Record<string, IComponentsLibrarySettings>;
-}
-export interface IComponentsLibraryJson {
+};
+export type TComponentsComponentsJson = {
+    libraries?: Record<string, TComponentsLibrarySettings>;
+};
+export type TComponentsLibraryJson = {
     version: string;
     name: string;
     description?: string;
     folders?: string[];
     dependencies?: Record<string, string>;
-    composerJson?: IComponentsComposerJson;
-    packageJson?: IComponentsPackageJson;
-}
-export interface IComponentsComponentJsonExtendable {
+    composerJson?: TComponentsComposerJson;
+    packageJson?: TComponentsComposerJson;
+};
+export type TComponentsComponentJsonExtendable = {
     files?: string[];
     dependencies?: Record<string, string>;
-    composerJson?: IComponentsComposerJson;
-    packageJson?: IComponentsPackageJson;
-}
-export interface IComponentsComponentJson extends IComponentsComponentJsonExtendable {
+    composerJson?: TComponentsComposerJson;
+    packageJson?: TComponentsComposerJson;
+};
+export type TComponentsComponentJson = TComponentsComponentJsonExtendable & {
     version: string;
     name: string;
     description?: string;
-    subset?: Record<'engine', IComponentsComponentJsonSubset>;
-}
-export interface IComponentsComponentSettings {
+    subset?: Record<'engine', TComponentsComponentJsonSubset>;
+};
+export type TComponentsComponentSettings = {
     $components: Components;
-}
-export interface IComponentsLibrarySettings {
+};
+export type TComponentsLibrarySettings = {
     name: string;
     type?: 'git';
     url?: string;
     $components: Components;
-}
-export interface IComponentsComponentJsonSubset {
+};
+export type TComponentsComponentJsonSubset = {
     type: 'list' | 'checkbox';
     question: string;
     choices: string[];
-    component: IComponentsComponentJsonExtendable;
-}
-export interface IComponentsDependency {
+    component: TComponentsComponentJsonExtendable;
+};
+export type TComponentsDependency = {
     name: string;
     type: 'npm' | 'composer' | 'component';
     version: string;
     dev?: boolean;
     level: 'library' | 'component';
     component?: __ComponentsComponent;
-}
-export interface IComponentsDependencies {
-    [key: string]: IComponentsDependency;
-}
-export interface IComponentsSettings {
+};
+export type TComponentsDependencies = {
+    [key: string]: TComponentsDependency;
+};
+export type TComponentsSettings = {
     libraryRootDir: string;
     rootDir: string;
-    defaults: IComponentDefaults;
-}
-export interface IComponentsLibraryUpdateResult {
+    defaults: TComponentDefaults;
+};
+export type TComponentsLibraryUpdateResult = {
     updated: boolean;
-}
-export interface IComponentsLibrariesUpdateResult {
+};
+export type TComponentsLibrariesUpdateResult = {
     libraries: Record<string, ComponentsLibrary>;
-}
-export interface IComponentsAddComponentOptions {
+};
+export type TComponentsAddComponentOptions = {
     dir: string;
     y: boolean;
     name?: string;
     engine?: string | string[];
-}
-export interface IComponentsAddComponentResult {
+};
+export type TComponentsAddComponentResult = {
     component: __ComponentsComponent;
     addedComponents: __ComponentsComponent[];
-}
+};

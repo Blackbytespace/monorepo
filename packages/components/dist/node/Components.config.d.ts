@@ -1,3 +1,3 @@
-import type { IComponentsConfig } from '@lotsof/components';
-declare const config: IComponentsConfig;
+import type { TComponentsConfig } from '@lotsof/components';
+declare const config: TComponentsConfig;
 export default config;

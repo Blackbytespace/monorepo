@@ -35,9 +35,7 @@ import __containerExists from '../../ensure/containerExists.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function container(value, settings) {
-    const args = __parseArgs(value.arguments, ['prop', 'container'], {
-        separator: ['white-space', 'comma'],
-    });
+    const args = __parseArgs(value.arguments, ['prop', 'container']);
     args.values = Object.assign({ container: 'default', prop: 'width' }, args.values);
     __containerExists(args.values.container);
     const props = [];

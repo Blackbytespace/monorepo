@@ -25,7 +25,6 @@ import __fitRule from './visitors/rules/fit.js';
 import __gridRule from './visitors/rules/grid.js';
 import __mapColorRule from './visitors/rules/mapColor.js';
 import __mediaRule from './visitors/rules/media.js';
-import __modeRule from './visitors/rules/mode.js';
 import __radiusRule from './visitors/rules/radius.js';
 import __scrollbarRule from './visitors/rules/scrollbar.js';
 import __transitionRule from './visitors/rules/transition.js';
@@ -124,7 +123,6 @@ export default function sugarcss(settings = {}) {
     env.rules['s-map-color'] = __mapColorRule;
     env.rules['s-container'] = __containerRule;
     env.rules['s-grid'] = __gridRule;
-    env.rules['s-mode'] = __modeRule;
     let mixins = new Map();
     const visitors = {
         Function: {
@@ -210,8 +208,6 @@ export default function sugarcss(settings = {}) {
                             return __mapColorRule(rule, finalSettings);
                         case rule.name === `s-grid`:
                             return __gridRule(rule, finalSettings);
-                        case rule.name === `s-mode`:
-                            return __modeRule(rule, finalSettings);
                     }
                 }
                 catch (e) {

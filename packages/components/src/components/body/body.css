@@ -1,6 +1,8 @@
 @import './body.bare.css';
 
 .body {
+  @s-container;
+
   ._suptitle {
   }
 

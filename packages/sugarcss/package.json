@@ -7,7 +7,8 @@
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "publish": "npm publish --access public"
   },
   "main": "./dist/node/sugarcss.js",
   "types": "./src/node/sugarcss.types.ts",

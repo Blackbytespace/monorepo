@@ -79,8 +79,14 @@ export default function container(v: any, settings: TSugarCssSettings): any {
                         {
                           type: 'token',
                           value: {
+                            type: 'comma',
+                          },
+                        },
+                        {
+                          type: 'token',
+                          value: {
                             type: 'ident',
-                            value: args.values.container,
+                            value: 'default',
                           },
                         },
                       ],

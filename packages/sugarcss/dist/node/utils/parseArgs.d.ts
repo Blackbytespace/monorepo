@@ -5,5 +5,6 @@ export type TParseArgsResult = {
 export type TParseArgsSettings = {
     separator: string | string[];
     resolve: boolean;
+    debug: boolean;
 };
 export default function parseArgs(args: any[], schema?: string[], settings?: Partial<TParseArgsSettings>): TParseArgsResult;

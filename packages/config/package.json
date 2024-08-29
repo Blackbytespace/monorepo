@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@lotsof/cli": "^1.0.0-alpha.2",

@@ -4,7 +4,10 @@ import __toString from './toString.js';
 import __parsedArgsToRawValues from './parsedArgsToRawValues.js';
 export default function parseArgs(args, schema = [], settings) {
     var _a;
-    const finalSettings = Object.assign({ separator: ['comma'], resolve: true }, (settings !== null && settings !== void 0 ? settings : {}));
+    const finalSettings = Object.assign({ separator: ['comma'], resolve: true, debug: false }, (settings !== null && settings !== void 0 ? settings : {}));
+    if (!finalSettings.separator.length) {
+        finalSettings.separator = ['comma'];
+    }
     const separators = Array.isArray(finalSettings.separator)
         ? finalSettings.separator
         : [finalSettings.separator];
@@ -12,7 +15,10 @@ export default function parseArgs(args, schema = [], settings) {
     let dashedArg;
     let argId = 0, currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
     const handleArg = (arg) => {
-        var _a, _b, _c;
+        var _a, _b;
+        if (finalSettings.debug) {
+            console.log('arg:', arg);
+        }
         // some tokens to avoid
         const avoid = [
             'parenthesis-block',
@@ -28,6 +34,9 @@ export default function parseArgs(args, schema = [], settings) {
         if (separators.includes(arg.value.type)) {
             dashedArg = '';
             argId++;
+            if (finalSettings.debug) {
+                console.log('separator', arg, argId);
+            }
             currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
             return;
         }
@@ -52,12 +61,14 @@ export default function parseArgs(args, schema = [], settings) {
                     const v = env.functions[arg.value.name](arg.value);
                     // get the raw value
                     arg.rawValue = (_b = v.raw) !== null && _b !== void 0 ? _b : v;
+                    // set the resulting value
                     __set(resultArgs, currentProp, arg);
-                    // set the new currentProp
-                    currentProp = (_c = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _c !== void 0 ? _c : `arg${argId}`;
                 }
                 break;
             default:
+                if (finalSettings.debug) {
+                    console.log('h', currentProp, arg);
+                }
                 // get the raw value
                 arg.rawValue = arg.value.value;
                 // handle others

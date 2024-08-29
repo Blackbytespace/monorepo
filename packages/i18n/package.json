@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
-    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map"
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@lotsof/sugar": "^1.0.0-alpha.2",

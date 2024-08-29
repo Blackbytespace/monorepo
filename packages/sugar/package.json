@@ -9,7 +9,8 @@
     "build": "tsc",
     "test": "vitest",
     "postinstall": "npm run install.composer",
-    "install.composer": "composer install"
+    "install.composer": "composer install",
+    "publish": "npm publish --access public"
   },
   "homepage": "https://sugar.lotsof.dev",
   "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",

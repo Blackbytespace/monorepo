@@ -41,9 +41,7 @@ export default function container(
   value: any,
   settings: TSugarCssSettings,
 ): any {
-  const args = __parseArgs(value.arguments, ['prop', 'container'], {
-    separator: ['white-space', 'comma'],
-  });
+  const args = __parseArgs(value.arguments, ['prop', 'container']);
   args.values = {
     container: 'default',
     prop: 'width',
