@@ -376,14 +376,14 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // input class
-    this._$input.classList.add(...this.cls('_input').split(' '));
+    this._$input.classList.add(...this.cls('_input'));
     if (this.classes.input) {
       this._$input.classList.add(this.classes.input);
     }
 
     // container class
     this._$container = this;
-    this._$container.classList.add(...this.cls().split(' '));
+    this._$container.classList.add(...this.cls());
     if (this.classes.container) {
       this._$container.classList.add(this.classes.container);
     }

@@ -1,4 +1,4 @@
-.s-factory-command-panel {
+.s-factory-command-panel-select {
   display: block;
   width: 100%;
 
@@ -15,41 +15,41 @@
   &.-inline {
   }
 
-  .s-factory-command-panel_before {
+  .s-advanced-select_before {
   }
 
-  .s-factory-command-panel_after {
+  .s-advanced-select_after {
   }
 
-  .s-factory-command-panel_input {
+  .s-advanced-select_input {
     outline: none;
     display: block;
     font-size: s-size(20);
     width: 100%;
   }
 
-  .s-factory-command-panel_prefix {
+  .s-advanced-select_prefix {
     font-family: monospace;
     opacity: 0.3;
     margin-inline-end: s-space(10);
   }
 
-  .s-factory-command-panel_dropdown {
+  .s-advanced-select_dropdown {
     background: s-color(main, background);
     box-shadow: var(--s-factory-depth);
     @s-radius;
   }
 
-  .s-factory-command-panel_keywords {
+  .s-advanced-select_keywords {
   }
-  .s-factory-command-panel_keyword {
+  .s-advanced-select_keyword {
   }
 
-  .s-factory-command-panel_items {
+  .s-advanced-select_items {
     padding: s-space(10);
     @s-scrollbar (2px, s-color(accent), s-color(accent, --alpha 0.02));
   }
-  .s-factory-command-panel_item {
+  .s-advanced-select_item {
     padding: s-space(10) s-space(20);
     font-size: s-size(20);
     white-space: nowrap;
@@ -72,27 +72,27 @@
     &.-match {
     }
   }
-  .s-factory-command-panel_group-item {
+  .s-advanced-select_group-item {
   }
 
-  .s-factory-command-panel_highlight {
+  .s-advanced-select_highlight {
     background: s-color(accent);
     color: s-color(accent, foreground);
     @s-radius;
   }
 
-  .s-factory-command-panel_group {
+  .s-advanced-select_group {
   }
-  .s-factory-command-panel_group-label {
-  }
-
-  .s-factory-command-panel_group-items {
-  }
-  .s-factory-command-panel_group-items-inner {
+  .s-advanced-select_group-label {
   }
 
-  .s-factory-command-panel_empty {
+  .s-advanced-select_group-items {
   }
-  .s-factory-command-panel_loading {
+  .s-advanced-select_group-items-inner {
+  }
+
+  .s-advanced-select_empty {
+  }
+  .s-advanced-select_loading {
   }
 }

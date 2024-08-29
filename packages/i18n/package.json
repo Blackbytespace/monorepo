@@ -6,7 +6,8 @@
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map"
   },
   "dependencies": {
     "@lotsof/sugar": "^1.0.0-alpha",

@@ -37,7 +37,6 @@ import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvance
  * @attribute       {TAdvancedSelectElementClasses}        [classes=null]                                  Some classes to apply to the different elements
  * @attribute       {Boolean}       [inline=false]                                  Specify if the dropdown should be displayed inline
  *
- *
  * @event           sAdvancedSelect.items                Dispatched when the items are setted of updated
  * @event           sAdvancedSelect.select               Dispatched when an item has been selected
  * @event           sAdvancedSelect.preselect            Dispatched when an item has been preselected
@@ -136,31 +135,134 @@ export default class AdvancedSelectElement extends __LitElement {
     private _grabTemplatesFromDom;
     private _renderTemplate;
     /**
-     * Preselect an item
+     * @name          preselect
+     * @type          Function
+     *
+     * Preselect an item in the dropdown
+     *
+     * @param       {String|TAdvancedSelectElementItem}        item        The item to preselect. Can be a string that represent the id of the item, or the item itself
+     * @param       {Object}        [settings={}]           Some settings to configure your preselection
+     *
+     * @since       1.0.0
      */
     preselect(item: string | TAdvancedSelectElementItem, settings?: {
         preventFocus?: boolean;
     }): void;
+    /**
+     * @name        resetPreselected
+     * @type        Function
+     *
+     * Reset the preselected item
+     *
+     * @since       1.0.0
+     */
     resetPreselected(): void;
+    /**
+     * @name        setSearch
+     * @type        Function
+     *
+     * Set the search value and refresh items accordingly
+     *
+     * @param       {String}        value       The value to set
+     *
+     * @since       1.0.0
+     */
     setSearch(value: string): void;
     /**
-     * Select an item
+     * @name       select
+     * @type       Function
+     *
+     * Select an item in the dropdown
+     *
+     * @param       {String|TAdvancedSelectElementItem}        item        The item to select. Can be a string that represent the id of the item, or the item itself
+     *
+     * @since       1.0.0
      */
     select(item?: string | TAdvancedSelectElementItem): void;
     resetSelected(): void;
     /**
-     *  Reset
+     * @name        reset
+     * @type        Function
+     *
+     * Reset the advanced select (preselected, selected, search, etc...)
+     *
+     * @since       1.0.0
      */
     reset(): void;
+    /**
+     * @name        getItemById
+     * @type        Function
+     *
+     * Get an item by it's id
+     *
+     * @param       {String}        id        The id of the item to get
+     * @return      {TAdvancedSelectElementItem}        The item found
+     *
+     * @since       1.0.0
+     */
     getItemById(id: string): TAdvancedSelectElementItem;
+    /**
+     * @name       getPreselectedItem
+     * @type       Function
+     *
+     * Get the preselected item
+     *
+     * @return      {TAdvancedSelectElementItem}        The preselected item
+     *
+     * @since       1.0.0
+     */
     getPreselectedItem(): TAdvancedSelectElementItem;
+    /**
+     * @name        getSelectedItem
+     * @type        Function
+     *
+     * Get the selected item
+     *
+     * @return      {TAdvancedSelectElementItem}        The selected item
+     *
+     * @since       1.0.0
+     */
     getSelectedItem(): TAdvancedSelectElementItem;
+    /**
+     * @name        getMatchItems
+     * @type        Function
+     *
+     * Get the items that match the search
+     *
+     * @return      {TAdvancedSelectElementItem[]}        The items that match the search
+     *
+     * @since       1.0.0
+     */
     getMatchItems(): TAdvancedSelectElementItem[];
     _open(): void;
     _close(): void;
+    /**
+     * @name        focus
+     * @type        Function
+     *
+     * Focus the input and open the dropdown
+     *
+     * @since       1.0.0
+     */
     focus(): void;
+    /**
+     * @name       blur
+     * @type       Function
+     *
+     * Blur the input and close the dropdown
+     *
+     * @since       1.0.0
+     */
     blur(): void;
     private _isLoadingTimeout;
+    /**
+     * @name        refreshItems
+     * @type        Function
+     *
+     * Refresh the items in the dropdown
+     *
+     * @since       1.0.0
+     */
     refreshItems(): Promise<void>;
     private _initItems;
     private _initItem;

@@ -66,7 +66,6 @@ import { __stripTags } from '@lotsof/sugar/html';
  * @attribute       {TAdvancedSelectElementClasses}        [classes=null]                                  Some classes to apply to the different elements
  * @attribute       {Boolean}       [inline=false]                                  Specify if the dropdown should be displayed inline
  *
- *
  * @event           sAdvancedSelect.items                Dispatched when the items are setted of updated
  * @event           sAdvancedSelect.select               Dispatched when an item has been selected
  * @event           sAdvancedSelect.preselect            Dispatched when an item has been preselected
@@ -305,13 +304,13 @@ export default class AdvancedSelectElement extends __LitElement {
                 this._updateListSizeAndPosition();
             });
             // input class
-            this._$input.classList.add(...this.cls('_input').split(' '));
+            this._$input.classList.add(...this.cls('_input'));
             if (this.classes.input) {
                 this._$input.classList.add(this.classes.input);
             }
             // container class
             this._$container = this;
-            this._$container.classList.add(...this.cls().split(' '));
+            this._$container.classList.add(...this.cls());
             if (this.classes.container) {
                 this._$container.classList.add(this.classes.container);
             }
@@ -421,7 +420,15 @@ export default class AdvancedSelectElement extends __LitElement {
         return this._baseTemplates(finalApi);
     }
     /**
-     * Preselect an item
+     * @name          preselect
+     * @type          Function
+     *
+     * Preselect an item in the dropdown
+     *
+     * @param       {String|TAdvancedSelectElementItem}        item        The item to preselect. Can be a string that represent the id of the item, or the item itself
+     * @param       {Object}        [settings={}]           Some settings to configure your preselection
+     *
+     * @since       1.0.0
      */
     preselect(item, settings) {
         var _a;
@@ -447,10 +454,28 @@ export default class AdvancedSelectElement extends __LitElement {
         // make sure the ui is up to date
         this.requestUpdate();
     }
+    /**
+     * @name        resetPreselected
+     * @type        Function
+     *
+     * Reset the preselected item
+     *
+     * @since       1.0.0
+     */
     resetPreselected() {
         var _a;
         (_a = this.getPreselectedItem()) === null || _a === void 0 ? void 0 : _a.state.preselected = false;
     }
+    /**
+     * @name        setSearch
+     * @type        Function
+     *
+     * Set the search value and refresh items accordingly
+     *
+     * @param       {String}        value       The value to set
+     *
+     * @since       1.0.0
+     */
     setSearch(value) {
         return __awaiter(this, void 0, void 0, function* () {
             this._$input.value = value;
@@ -461,7 +486,14 @@ export default class AdvancedSelectElement extends __LitElement {
         });
     }
     /**
-     * Select an item
+     * @name       select
+     * @type       Function
+     *
+     * Select an item in the dropdown
+     *
+     * @param       {String|TAdvancedSelectElementItem}        item        The item to select. Can be a string that represent the id of the item, or the item itself
+     *
+     * @since       1.0.0
      */
     select(item = this.getPreselectedItem()) {
         if (typeof item === 'string') {
@@ -511,7 +543,12 @@ export default class AdvancedSelectElement extends __LitElement {
         (_a = this.getSelectedItem()) === null || _a === void 0 ? void 0 : _a.state.selected = false;
     }
     /**
-     *  Reset
+     * @name        reset
+     * @type        Function
+     *
+     * Reset the advanced select (preselected, selected, search, etc...)
+     *
+     * @since       1.0.0
      */
     reset() {
         this.resetPreselected();
@@ -519,15 +556,56 @@ export default class AdvancedSelectElement extends __LitElement {
         this.setSearch('');
         this.dispatch('reset');
     }
+    /**
+     * @name        getItemById
+     * @type        Function
+     *
+     * Get an item by it's id
+     *
+     * @param       {String}        id        The id of the item to get
+     * @return      {TAdvancedSelectElementItem}        The item found
+     *
+     * @since       1.0.0
+     */
     getItemById(id) {
         return this._filteredItems.find((item) => item.id === id);
     }
+    /**
+     * @name       getPreselectedItem
+     * @type       Function
+     *
+     * Get the preselected item
+     *
+     * @return      {TAdvancedSelectElementItem}        The preselected item
+     *
+     * @since       1.0.0
+     */
     getPreselectedItem() {
         return this._filteredItems.find((item) => item.state.preselected);
     }
+    /**
+     * @name        getSelectedItem
+     * @type        Function
+     *
+     * Get the selected item
+     *
+     * @return      {TAdvancedSelectElementItem}        The selected item
+     *
+     * @since       1.0.0
+     */
     getSelectedItem() {
         return this._filteredItems.find((item) => item.state.selected);
     }
+    /**
+     * @name        getMatchItems
+     * @type        Function
+     *
+     * Get the items that match the search
+     *
+     * @return      {TAdvancedSelectElementItem[]}        The items that match the search
+     *
+     * @since       1.0.0
+     */
     getMatchItems() {
         return this._filteredItems.filter((item) => item.state.match);
     }
@@ -548,13 +626,37 @@ export default class AdvancedSelectElement extends __LitElement {
         (_a = document.activeElement) === null || _a === void 0 ? void 0 : _a.blur();
         this.dispatch('close');
     }
+    /**
+     * @name        focus
+     * @type        Function
+     *
+     * Focus the input and open the dropdown
+     *
+     * @since       1.0.0
+     */
     focus() {
         this._$input.focus();
     }
+    /**
+     * @name       blur
+     * @type       Function
+     *
+     * Blur the input and close the dropdown
+     *
+     * @since       1.0.0
+     */
     blur() {
         this._$input.blur();
         this._close();
     }
+    /**
+     * @name        refreshItems
+     * @type        Function
+     *
+     * Refresh the items in the dropdown
+     *
+     * @since       1.0.0
+     */
     refreshItems() {
         return __awaiter(this, void 0, void 0, function* () {
             clearTimeout(this._isLoadingTimeout);

@@ -1,13 +1,13 @@
 .s-factory-json-schema-form {
   padding: s-space(10, 20, 10, 10);
 
-  .s-factory-json-schema-form_inner {
+  .s-json-schema-form_inner {
   }
 
-  .s-factory-json-schema-form_values {
+  .s-json-schema-form_values {
   }
 
-  .s-factory-json-schema-form_values-item {
+  .s-json-schema-form_values-item {
     border-bottom: 1px solid s-color(main, border);
     padding: s-space(20) 0;
 
@@ -70,26 +70,26 @@
   .s-json-schema-form_values-object-item-title {
   }
 
-  .s-factory-json-schema-form_values-object-item,
-  .s-factory-json-schema-form_values-array-item {
+  .s-json-schema-form_values-object-item,
+  .s-json-schema-form_values-array-item {
     border-left: 1px solid s-color(accent, border);
     border-bottom: 1px solid s-color(main, border);
     @s-transition();
 
     &:hover,
-    &:has(.s-factory-json-schema-form_values-item:hover) {
+    &:has(.s-json-schema-form_values-item:hover) {
       border-left: 1px solid s-color(accent, --alpha 0.2);
     }
   }
 
-  .s-factory-json-schema-form_values-label {
+  .s-json-schema-form_values-label {
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
     align-items: center;
     padding-inline: s-space(20);
   }
-  .s-factory-json-schema-form_values-prop {
+  .s-json-schema-form_values-prop {
     text-transform: uppercase;
     font-size: s-size(15);
     opacity: 0.5;
@@ -97,7 +97,7 @@
     flex-grow: 1;
   }
 
-  .s-factory-json-schema-form_values-value {
+  .s-json-schema-form_values-value {
     flex-grow: 1;
     justify-content: end;
     width: 65%;
@@ -105,13 +105,13 @@
     flex-shrink: 0;
     display: flex;
 
-    .s-factory-json-schema-form_values-select {
+    .s-json-schema-form_values-select {
       width: 100%;
     }
-    .s-factory-json-schema-form_values-input {
+    .s-json-schema-form_values-input {
       width: 100%;
     }
-    .s-factory-json-schema-form_values-checkbox {
+    .s-json-schema-form_values-checkbox {
     }
 
     .-number {
@@ -126,9 +126,8 @@
     }
   }
 
-  .s-factory-json-schema-form_values-label:hover
-    + .s-factory-json-schema-form_values-value,
-  .s-factory-json-schema-form_values-value:hover {
+  .s-json-schema-form_values-label:hover + .s-json-schema-form_values-value,
+  .s-json-schema-form_values-value:hover {
     input,
     select,
     textarea {
@@ -136,7 +135,7 @@
     }
   }
 
-  .s-factory-json-schema-form_values-errors {
+  .s-json-schema-form_values-errors {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -148,7 +147,7 @@
     background: s-color(error, --alpha 0.1);
     @s-radius;
   }
-  .s-factory-json-schema-form_values-error {
+  .s-json-schema-form_values-error {
     display: block;
     width: 100%;
     flex-grow: 1;

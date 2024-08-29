@@ -72,14 +72,11 @@ export default function color(value, settings) {
     }
     // inline shades
     return {
-        raw: 'red',
-    };
-    return {
         raw: [
             `hsla(`,
             `calc(var(--s-color-${color}-h) + ${(_a = modifiers.spin) !== null && _a !== void 0 ? _a : '0'}),`,
-            `calc(${(_b = modifiers.saturation) !== null && _b !== void 0 ? _b : `(var(--s-color-${color}-s) + ${(_c = modifiers.lighten) !== null && _c !== void 0 ? _c : '0'} - ${(_d = modifiers.darken) !== null && _d !== void 0 ? _d : '0'})`} * 1%),`,
-            `calc(${(_e = modifiers.lightness) !== null && _e !== void 0 ? _e : `var(--s-color-${color}-l) + ${(_f = modifiers.saturate) !== null && _f !== void 0 ? _f : '0'} - ${(_g = modifiers.desaturate) !== null && _g !== void 0 ? _g : '0'})`} * 1%),`,
+            `calc(${(_b = modifiers.saturation) !== null && _b !== void 0 ? _b : `calc(calc(var(--s-color-${color}-s) + ${(_c = modifiers.saturate) !== null && _c !== void 0 ? _c : '0'}) - ${(_d = modifiers.desaturate) !== null && _d !== void 0 ? _d : '0'})`} * 1%),`,
+            `calc(${(_e = modifiers.lightness) !== null && _e !== void 0 ? _e : `calc(calc(var(--s-color-${color}-l) + ${(_f = modifiers.lighten) !== null && _f !== void 0 ? _f : '0'}) - ${(_g = modifiers.darken) !== null && _g !== void 0 ? _g : '0'})`} * 1%),`,
             `${(_h = modifiers.alpha) !== null && _h !== void 0 ? _h : `var(--s-color-${color}-a, 1)`}`,
             `)`,
         ].join(''),

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
     "test": "vitest",
     "postinstall": "npm run install.composer",

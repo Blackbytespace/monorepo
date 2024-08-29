@@ -7,6 +7,7 @@ export type TLitElementDispatchSettings = {
     cancelable: boolean;
     detail: any;
 };
+export type TClassesSchema = 'slim' | 'full';
 export type TLitElementState = {
     status: 'idle' | 'error';
     [key: string]: any;
@@ -20,14 +21,39 @@ export type TSLitElementDefaultProps = {
     verbose: boolean;
     prefixEvent: boolean;
     activeWhen: 'inViewport'[];
-    mountWhen: 'directly' | 'direct' | 'inViewport';
+    mountWhen: 'direct' | 'inViewport' | 'nearViewport' | 'interact' | 'visible' | 'domReady';
     adoptStyle: boolean;
     saveState: boolean;
     stateId: string;
     shadowDom: boolean;
-    darkModeClass: string;
+    classesSchema: TClassesSchema;
+    [key: string]: any;
 };
 export type TSLitElementSettings = {};
+/**
+ * @name            LitElement
+ * @type            Class
+ *
+ * This class represent a custom HTMLElement that extends the LitElement class from the lit library.
+ * It adds some cool features like the ability to wait for the component to be in the viewport before
+ * actually instanciate it, etc...
+ *
+ * @param       {String}        internalName        The internal name of the component
+ * @param       {TSLitElementDefaultProps}        props        The default props to apply to the component
+ *
+ * @attribute       {String}        id              The id of the component
+ * @attribute       {String}        name            The name of the component
+ * @attribute       {Boolean}       [verbose=false]         Specify if the component should be verbose or not
+ * @attribute       {'inViewport'[]}      [activeWhen=[]]      Specify when the component is considered as active
+ * @attribute       {'direct'|'inViewport'|'nearViewport'|'interact'|'visible'|'domReady'}      [mountWhen='direct']      Specify when the component should be mounted
+ * @attribute       {Boolean}       [prefixEvent=true]      Specify if the event dispatched by the component should be prefixed by the component name
+ * @attribute       {Boolean}       [adoptStyle=true]       Specify if the component should adopt the styles of the context when the shadow dom is used
+ * @attribute       {Boolean}       [saveState=false]       Specify if the state of the component should be saved in the localStorage
+ * @attribute       {String}        [stateId='']            Specify the id to use to save the state in the localStorage
+ * @attribute       {Boolean}       [shadowDom=false]       Specify if the component should use the shadow dom or not
+ *
+ * @since           1.0.0
+ */
 export default class LitElement extends __LitElement {
     static _keepInjectedCssBeforeStylesheetLinksInited: boolean;
     static _defaultProps: Record<string, Record<string, any>>;
@@ -35,13 +61,13 @@ export default class LitElement extends __LitElement {
     name: string;
     verbose: boolean;
     activeWhen: 'inViewport'[];
-    mountWhen: 'directly' | 'direct' | 'inViewport';
+    mountWhen: 'direct' | 'inViewport' | 'nearViewport' | 'interact' | 'visible' | 'domReady';
     prefixEvent: boolean;
     adoptStyle: boolean;
     saveState: boolean;
     stateId: string;
     shadowDom: boolean;
-    lnf: boolean;
+    classesSchema: TClassesSchema;
     protected _internalName: string;
     _shouldUpdate: boolean;
     _isInViewport: boolean;
@@ -110,44 +136,44 @@ export default class LitElement extends __LitElement {
      * @since       2.0.0
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
-    constructor(internalName: string);
+    constructor(internalName: string, props?: TSLitElementDefaultProps);
     connectedCallback(): void;
+    /**
+     * @name           setState
+     * @type            Function
+     *
+     * This method allows you to set the state of the component.
+     * It will merge the new state with the existing one.
+     * This state will be saved in the localStorage if the "saveState" attribute is set to true.
+     *
+     * @param           {Partial<LitElement['_state']>}          newState          The new state to set
+     *
+     * @since           1.0.0
+     */
     setState(newState: Partial<LitElement['_state']>): void;
     log(...args: any[]): void;
     _getDocumentFromElement($elm: any): any;
     /**
      * @name           dispatch
      * @type            Function
-     * @async
      *
      * This method allows you to dispatch some CustomEvents from your component node itself.
-     * 1. An event called "%componentName.%eventName"
-     * 2. An event called "%componentName" with in the detail object a "eventType" property set to the event name
-     * 3. An event called "%eventName" with in the detail object a "eventComponent" property set to the component name
+     *
+     * If the "prefixEvent" attribute is set to true, the event will be dispatched with the following names:
+     * 1. An event called "%internalName.%eventName"
+     * 2. An event called "%name.%eventName" if the "name" property is setted
+     * 3. An event called "%tagName.%eventName" if the tagName is different from the internalName
+     *
+     * Otherwise, the event will be dispatched with the following names:
+     * 1. An event called "%eventName"
      *
      * @param           {String}            eventName     The event name to dispatch
      * @param           {TLitElementDispatchSettings}          [settings={}]     The settings to use for the dispatch
      *
-     * @since       2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @since           1.0.0
      */
     dispatch(eventName: string, settings?: Partial<TLitElementDispatchSettings>): void;
-    /**
-     * @name        adoptStyleInShadowRoot
-     * @type        Function
-     * @async
-     *
-     * This method allows you to make the passed shadowRoot element adopt
-     * the style of the passed context who's by default the document itself
-     *
-     * @param       {HTMLShadowRootElement}         $shadowRoot             The shadow root you want to adopt the $context styles
-     * @param      {HTMLElement}                   [$context=document]     The context from which you want to adopt the styles
-     * @return      {Promise}                                               Return a promise fullfilled when the styles have been adopted
-     *
-     * @since       2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
-     */
-    adoptStyleInShadowRoot($shadowRoot: ShadowRoot, $context?: HTMLElement | typeof document): Promise<any>;
+    private _adoptStyleInShadowRoot;
     /**
      * @name          internalCls
      * @type          Function
@@ -158,40 +184,31 @@ export default class LitElement extends __LitElement {
      * @param         {String}        cls         The class you want to process. Can be multiple classes separated by a space. If null, does not print any class at all but the "style" one
      * @return        {String}                    The generated internalName based class that you can apply
      *
-     * @since         2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @since         1.0.0
      */
-    internalCls(cls?: string): string;
+    internalCls(cls?: string, schema?: TClassesSchema): string;
     /**
      * @name          cls
      * @type          Function
      *
-     * This method allows you to get a component ready class like my-component__something, etc...
+     * This method allows you to get a class that is based on the tagName of the component.
+     *
+     * If the "classesSchema" attribute is set to "full", the class will be generated like this:
+     * 1. %internalName_%lowerCaseClassName
+     * 2. %tagName_%lowerCaseClassName if the tagName is different from the internalName
+     * 3. %name_%lowerCaseClassName if the "name" property is setted
+     *
+     * If the "classesSchema" attribute is set to "slim", the class will be generated like this:
+     * 1. _%lowerCaseClassName
      *
      * @param         {String}        cls         The class you want to process. Can be multiple classes separated by a space. If null, does not print any class at all but the "style" one
-     * @return        {String}                    The generated class that you can apply
+     * @param         {TClassesSchema}       [classesSchema=this.classesSchema]         The schema to use to generate the class. Can be "slim" or "full"
+     * @return        {String[]}                    The generated class(es) that you can apply
      *
-     * @since         2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @since         1.0.0
      */
-    cls(cls?: string, style?: string): string;
-    /**
-     * @name           waitAndExecute
-     * @type            Function
-     * @async
-     *
-     * This async method allows you to wait for the component (node) has reached
-     * his "mount" state. This state depends fully on the "mountWhen" property.
-     * When the state has been reached, the passed callback will be executed.
-     *
-     * @param       {String|String[]}            when            When you want to execute the callback. Can be "direct", "inViewport", "nearViewport", "outOfViewport", "interact", "visible" or "stylesheetReady"
-     * @param       {Function}          callback            The callback to execute
-     * @return          {Promise}           A promise fullfilled when the component (node) has reached his "mount" state
-     *
-     * @since       2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
-     */
-    waitAndExecute(when: string | string[], callback?: Function): Promise<any>;
+    cls(cls?: string, classesSchema?: TClassesSchema): string[];
+    private _waitAndExecute;
     /**
      * @name            isActive
      * @type            Function
@@ -210,8 +227,7 @@ export default class LitElement extends __LitElement {
      *
      * @return    {Boolean}       true if is mounted, false if not
      *
-     * @since   2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @since     1.0.0
      */
     isMounted(): boolean;
     /**
@@ -220,8 +236,9 @@ export default class LitElement extends __LitElement {
      *
      * true if the component is in the viewport, false if not
      *
-     * @since   2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @return         {Boolean}       true if in the viewport, false if not
+     *
+     * @since           1.0.0
      */
     isInViewport(): boolean;
     /**
@@ -232,8 +249,7 @@ export default class LitElement extends __LitElement {
      * This method allows you to actually mount your feature behavior.
      * It will be called depending on the "mountWhen" setting setted.
      *
-     * @since           2.0.0
-     * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+     * @since           1.0.0
      */
     protected mount(): void;
     private _mount;

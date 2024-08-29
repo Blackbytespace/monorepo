@@ -225,7 +225,7 @@ export default class FactoryElement extends __LitElement {
   }
 
   private _initCommandPanel(): void {
-    __AdvancedSelectElement.define('s-factory-command-panel', {
+    __AdvancedSelectElement.define('s-factory-command-panel-select', {
       items: (api: TAdvancedSelectElementItemsFunctionApi) => {
         switch (true) {
           case api.search?.startsWith('/'):
@@ -453,13 +453,12 @@ export default class FactoryElement extends __LitElement {
 
     // create the canvas
     const $canvas = document.createElement('div');
-    $canvas.classList.add(this.cls('_canvas'));
-    this._$canvas = $canvas;
+    $canvas.classList.add(...this.cls('_canvas'));
     this.appendChild($canvas);
 
     // create the iframe
     const $iframe = document.createElement('iframe');
-    $iframe.classList.add(this.cls('_iframe'));
+    $iframe.classList.add(...this.cls('_iframe'));
     __iframeAutoSize($iframe, { width: false, height: true });
     this._$iframe = $iframe;
 
@@ -846,7 +845,7 @@ export default class FactoryElement extends __LitElement {
 
   private _renderCommandPanel(): any {
     return html`<nav class="${this.cls('_command-panel')}">
-      <s-factory-command-panel
+      <s-factory-command-panel-select
         .verbose=${this.verbose}
         id="s-factory-command-panel"
         mountWhen="direct"
@@ -860,7 +859,7 @@ export default class FactoryElement extends __LitElement {
           class="form-input"
           placeholder=${__i18n(`Command panel (${this.commandPanelHotkey})`)}
         />
-      </s-factory-command-panel>
+      </s-factory-command-panel-select>
     </nav>`;
   }
 

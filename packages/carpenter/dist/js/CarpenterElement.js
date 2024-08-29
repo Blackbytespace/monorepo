@@ -117,7 +117,7 @@ class CarpenterElement extends __LitElement {
         document.body.appendChild(this);
         // create the iframe
         const $iframe = document.createElement('iframe');
-        $iframe.classList.add(this.cls('_iframe'));
+        $iframe.classList.add(...this.cls('_iframe'));
         this._$iframe = $iframe;
         // append the iframe to the body
         document.body.appendChild($iframe);

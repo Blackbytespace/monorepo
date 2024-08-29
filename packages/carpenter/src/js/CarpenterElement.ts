@@ -119,7 +119,7 @@ export default class CarpenterElement extends __LitElement {
 
     // create the iframe
     const $iframe = document.createElement('iframe');
-    $iframe.classList.add(this.cls('_iframe'));
+    $iframe.classList.add(...this.cls('_iframe'));
     this._$iframe = $iframe;
 
     // append the iframe to the body

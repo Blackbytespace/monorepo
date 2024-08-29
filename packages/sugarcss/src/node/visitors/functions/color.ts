@@ -88,22 +88,19 @@ export default function color(value: any, settings: TSugarCssSettings): any {
 
   // inline shades
   return {
-    raw: 'red',
-  };
-  return {
     raw: [
       `hsla(`,
       `calc(var(--s-color-${color}-h) + ${modifiers.spin ?? '0'}),`,
       `calc(${
         modifiers.saturation ??
-        `(var(--s-color-${color}-s) + ${modifiers.lighten ?? '0'} - ${
-          modifiers.darken ?? '0'
-        })`
+        `calc(calc(var(--s-color-${color}-s) + ${
+          modifiers.saturate ?? '0'
+        }) - ${modifiers.desaturate ?? '0'})`
       } * 1%),`,
       `calc(${
         modifiers.lightness ??
-        `var(--s-color-${color}-l) + ${modifiers.saturate ?? '0'} - ${
-          modifiers.desaturate ?? '0'
+        `calc(calc(var(--s-color-${color}-l) + ${modifiers.lighten ?? '0'}) - ${
+          modifiers.darken ?? '0'
         })`
       } * 1%),`,
       `${modifiers.alpha ?? `var(--s-color-${color}-a, 1)`}`,

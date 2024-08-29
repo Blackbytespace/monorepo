@@ -9,7 +9,9 @@
     "packages/wordpress-playground/wordpress/wp-content/themes/lotsof"
   ],
   "scripts": {
-    "dev": "npm run advancedSelectElement.dev & npm run carpenter.dev & npm run cli.dev & components.dev & npm run config.dev & npm run docblock.dev & npm run docmap.dev & npm run factory.dev & npm run i18n.dev & npm run jsonSchemaForm.dev & npm run litElement.dev & npm run sugar.dev & npm run sugarcss.dev & npm run types.dev",
+    "dev": "npx lerna run dev --stream",
+    "clean": "npx lerna run clean",
+    "dev1": "npm run advancedSelectElement.dev & npm run carpenter.dev & npm run cli.dev & components.dev & npm run config.dev & npm run docblock.dev & npm run docmap.dev & npm run factory.dev & npm run i18n.dev & npm run jsonSchemaForm.dev & npm run litElement.dev & npm run sugar.dev & npm run sugarcss.dev & npm run types.dev",
     "push": "npm run advancedSelectElement.push & npm run carpenter.push & npm run cli.push & components.push & npm run config.push & npm run docblock.push & npm run docmap.push & npm run factory.push & npm run jsonSchemaForm.push & npm run litElement.push & npm run sugar.push & npm run sugarcss.push & npm run types.push & npm run website.push & npm run website-common.push & npm run website-components.push & npm run website-sugar.push & npm run website-sugarcss.push & npm run wordpress-playground.push",
     "advancedSelectElement.dev": "cd packages/advancedSelectElement && npm run dev",
     "advancedSelectElement.push": "cd packages/advancedSelectElement && git push",

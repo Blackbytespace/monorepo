@@ -61,7 +61,7 @@ body {
   --s-radius-default: 6px;
   --s-radius-special: 20px, 12px, 20px, 4px;
 
-  /* &.-dark {
+  &.-dark {
     --s-radius-default: 20px;
 
     --s-color-main: hsl(47, 0%, 50%);
@@ -86,7 +86,7 @@ body {
     --s-shade-border: --alpha 0.1;
     --s-shade-hover: --lighten 40;
     --s-shade-active: --darken 10;
-  } */
+  }
 }
 
 ::selection {

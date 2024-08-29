@@ -7,6 +7,7 @@ import {
   __whenInViewport,
 } from '@lotsof/sugar/dom';
 
+import { __unique } from '@lotsof/sugar/array';
 import { __camelCase } from '@lotsof/sugar/string';
 import { LitElement as __LitElement, html as __html } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -20,6 +21,8 @@ export type TLitElementDispatchSettings = {
   cancelable: boolean;
   detail: any;
 };
+
+export type TClassesSchema = 'slim' | 'full';
 
 export type TLitElementState = {
   status: 'idle' | 'error';
@@ -36,15 +39,47 @@ export type TSLitElementDefaultProps = {
   verbose: boolean;
   prefixEvent: boolean;
   activeWhen: 'inViewport'[];
-  mountWhen: 'directly' | 'direct' | 'inViewport';
+  mountWhen:
+    | 'direct'
+    | 'inViewport'
+    | 'nearViewport'
+    | 'interact'
+    | 'visible'
+    | 'domReady';
   adoptStyle: boolean;
   saveState: boolean;
   stateId: string;
   shadowDom: boolean;
-  darkModeClass: string;
+  classesSchema: TClassesSchema;
+  [key: string]: any;
 };
 
 export type TSLitElementSettings = {};
+
+/**
+ * @name            LitElement
+ * @type            Class
+ *
+ * This class represent a custom HTMLElement that extends the LitElement class from the lit library.
+ * It adds some cool features like the ability to wait for the component to be in the viewport before
+ * actually instanciate it, etc...
+ *
+ * @param       {String}        internalName        The internal name of the component
+ * @param       {TSLitElementDefaultProps}        props        The default props to apply to the component
+ *
+ * @attribute       {String}        id              The id of the component
+ * @attribute       {String}        name            The name of the component
+ * @attribute       {Boolean}       [verbose=false]         Specify if the component should be verbose or not
+ * @attribute       {'inViewport'[]}      [activeWhen=[]]      Specify when the component is considered as active
+ * @attribute       {'direct'|'inViewport'|'nearViewport'|'interact'|'visible'|'domReady'}      [mountWhen='direct']      Specify when the component should be mounted
+ * @attribute       {Boolean}       [prefixEvent=true]      Specify if the event dispatched by the component should be prefixed by the component name
+ * @attribute       {Boolean}       [adoptStyle=true]       Specify if the component should adopt the styles of the context when the shadow dom is used
+ * @attribute       {Boolean}       [saveState=false]       Specify if the state of the component should be saved in the localStorage
+ * @attribute       {String}        [stateId='']            Specify the id to use to save the state in the localStorage
+ * @attribute       {Boolean}       [shadowDom=false]       Specify if the component should use the shadow dom or not
+ *
+ * @since           1.0.0
+ */
 
 export default class LitElement extends __LitElement {
   static _keepInjectedCssBeforeStylesheetLinksInited = false;
@@ -52,6 +87,7 @@ export default class LitElement extends __LitElement {
   static _defaultProps: Record<string, Record<string, any>> = {};
 
   @property({ type: String })
+  // @ts-ignore
   public id: string | undefined = undefined;
 
   @property({ type: String })
@@ -64,7 +100,13 @@ export default class LitElement extends __LitElement {
   public activeWhen: 'inViewport'[] = [];
 
   @property({ type: String })
-  public mountWhen: 'directly' | 'direct' | 'inViewport' = 'direct';
+  public mountWhen:
+    | 'direct'
+    | 'inViewport'
+    | 'nearViewport'
+    | 'interact'
+    | 'visible'
+    | 'domReady' = 'direct';
 
   @property({ type: Boolean })
   public prefixEvent: boolean = true;
@@ -81,8 +123,8 @@ export default class LitElement extends __LitElement {
   @property({ type: Boolean })
   public shadowDom: boolean = false;
 
-  @property({ type: Boolean })
-  public lnf: boolean = false;
+  @property({ type: String })
+  public classesSchema: TClassesSchema = 'slim';
 
   protected _internalName: string = this.tagName.toLowerCase();
 
@@ -216,14 +258,14 @@ export default class LitElement extends __LitElement {
    * @since       2.0.0
    * @author 		Olivier Bossel<olivier.bossel@gmail.com>
    */
-  constructor(internalName: string) {
+  constructor(internalName: string, props?: TSLitElementDefaultProps) {
     super();
     if (internalName) {
       this._internalName = internalName;
     }
 
     // monitor if the component is in viewport or not
-    this._whenInViewportPromise = __whenInViewport(this, {
+    this._whenInViewportPromise = __whenInViewport(this as HTMLElement, {
       once: false,
       whenIn: () => {
         this._isInViewport = true;
@@ -258,12 +300,16 @@ export default class LitElement extends __LitElement {
       return this._shouldUpdate;
     };
 
-    const defaultProps = LitElement.getDefaultProps(this.tagName.toLowerCase());
+    const defaultProps = {
+      ...LitElement.getDefaultProps(internalName.toLowerCase()),
+      ...LitElement.getDefaultProps(this.tagName.toLowerCase()),
+      ...(props ?? {}),
+    };
     const mountWhen =
       this.getAttribute('mountWhen') ?? defaultProps.mountWhen ?? 'direct';
 
     // wait until mount
-    this.waitAndExecute(mountWhen, () => {
+    this._waitAndExecute(mountWhen, () => {
       this._mount();
     });
   }
@@ -276,12 +322,7 @@ export default class LitElement extends __LitElement {
     }
 
     // component class
-    this.classList.add(...this.cls('').split(' '));
-
-    // look and feel class
-    if (this.lnf) {
-      this.classList.add('-lnf');
-    }
+    this.classList.add(...this.cls(''));
 
     // shadow handler
     if (this.shadowDom === false) {
@@ -323,7 +364,19 @@ export default class LitElement extends __LitElement {
     super.connectedCallback();
   }
 
-  setState(newState: Partial<LitElement['_state']>): void {
+  /**
+   * @name           setState
+   * @type            Function
+   *
+   * This method allows you to set the state of the component.
+   * It will merge the new state with the existing one.
+   * This state will be saved in the localStorage if the "saveState" attribute is set to true.
+   *
+   * @param           {Partial<LitElement['_state']>}          newState          The new state to set
+   *
+   * @since           1.0.0
+   */
+  public setState(newState: Partial<LitElement['_state']>): void {
     this.state = {
       ...this.state,
       ...newState,
@@ -353,30 +406,42 @@ export default class LitElement extends __LitElement {
   /**
    * @name           dispatch
    * @type            Function
-   * @async
    *
    * This method allows you to dispatch some CustomEvents from your component node itself.
-   * 1. An event called "%componentName.%eventName"
-   * 2. An event called "%componentName" with in the detail object a "eventType" property set to the event name
-   * 3. An event called "%eventName" with in the detail object a "eventComponent" property set to the component name
+   *
+   * If the "prefixEvent" attribute is set to true, the event will be dispatched with the following names:
+   * 1. An event called "%internalName.%eventName"
+   * 2. An event called "%name.%eventName" if the "name" property is setted
+   * 3. An event called "%tagName.%eventName" if the tagName is different from the internalName
+   *
+   * Otherwise, the event will be dispatched with the following names:
+   * 1. An event called "%eventName"
    *
    * @param           {String}            eventName     The event name to dispatch
    * @param           {TLitElementDispatchSettings}          [settings={}]     The settings to use for the dispatch
    *
-   * @since       2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @since           1.0.0
    */
-  dispatch(
+  public dispatch(
     eventName: string,
     settings?: Partial<TLitElementDispatchSettings>,
   ): void {
     const finalSettings: TLitElementDispatchSettings = {
-      $elm: this,
+      $elm: this as HTMLElement,
       bubbles: true,
       cancelable: true,
       detail: {},
       ...(settings ?? {}),
     };
+
+    let eventsNames: string[] = [];
+
+    // from the "internalName" property
+    let finalEventName = __camelCase(eventName);
+    if (this.prefixEvent) {
+      finalEventName = `${__camelCase(this._internalName)}.${finalEventName}`;
+    }
+    eventsNames.push(finalEventName);
 
     // from the "name" property
     if (this.name && this.name !== this.tagName.toLowerCase()) {
@@ -384,51 +449,31 @@ export default class LitElement extends __LitElement {
       if (this.prefixEvent) {
         finalEventName = `${__camelCase(this.name)}.${finalEventName}`;
       }
-      this.log('Dispatching event from "name" property', finalEventName);
-      // %componentName.%eventName
-      finalSettings.$elm.dispatchEvent(
-        new CustomEvent(finalEventName, finalSettings),
-      );
+      eventsNames.push(finalEventName);
     }
-
-    // from the "internalName" property
-    let finalEventName = __camelCase(eventName);
-    if (this.prefixEvent) {
-      finalEventName = `${__camelCase(this._internalName)}.${finalEventName}`;
-    }
-    finalSettings.$elm.dispatchEvent(
-      new CustomEvent(finalEventName, finalSettings),
-    );
-    this.log('Dispatching event from "internalName" property', finalEventName);
 
     // from the tagName
-    // %componentName.%eventName
-    finalEventName = __camelCase(eventName);
-    if (this.prefixEvent) {
-      finalEventName = `${__camelCase(this.tagName)}.${finalEventName}`;
+    if (this.tagName !== this._internalName) {
+      // %componentName.%eventName
+      finalEventName = __camelCase(eventName);
+      if (this.prefixEvent) {
+        finalEventName = `${__camelCase(this.tagName)}.${finalEventName}`;
+      }
+      eventsNames.push(finalEventName);
     }
-    finalSettings.$elm.dispatchEvent(
-      new CustomEvent(finalEventName, finalSettings),
-    );
-    this.log('Dispatching event from "tagName" property', finalEventName);
+
+    eventsNames = __unique(eventsNames);
+
+    for (let eventName of eventsNames) {
+      this.log('Dispatching event from "name" property', eventName);
+      // %componentName.%eventName
+      finalSettings.$elm.dispatchEvent(
+        new CustomEvent(eventName, finalSettings),
+      );
+    }
   }
 
-  /**
-   * @name        adoptStyleInShadowRoot
-   * @type        Function
-   * @async
-   *
-   * This method allows you to make the passed shadowRoot element adopt
-   * the style of the passed context who's by default the document itself
-   *
-   * @param       {HTMLShadowRootElement}         $shadowRoot             The shadow root you want to adopt the $context styles
-   * @param      {HTMLElement}                   [$context=document]     The context from which you want to adopt the styles
-   * @return      {Promise}                                               Return a promise fullfilled when the styles have been adopted
-   *
-   * @since       2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
-   */
-  adoptStyleInShadowRoot(
+  private _adoptStyleInShadowRoot(
     $shadowRoot: ShadowRoot,
     $context?: HTMLElement | typeof document,
   ): Promise<any> {
@@ -445,108 +490,133 @@ export default class LitElement extends __LitElement {
    * @param         {String}        cls         The class you want to process. Can be multiple classes separated by a space. If null, does not print any class at all but the "style" one
    * @return        {String}                    The generated internalName based class that you can apply
    *
-   * @since         2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @since         1.0.0
    */
-  internalCls(cls: string = ''): string {
+  public internalCls(
+    cls: string = '',
+    schema: TClassesSchema = this.classesSchema,
+  ): string {
     if (!cls) {
       return this._internalName;
     }
-    return `${this._internalName.toLowerCase()}${
-      cls && !cls.match(/^(_{1,2}|-)/) ? '-' : ''
-    }${cls}`;
+
+    let finalCls = '';
+    if (this.classesSchema === 'full') {
+      finalCls += this._internalName.toLowerCase();
+    }
+
+    return `${finalCls}${cls && !cls.match(/^(_{1,2}|-)/) ? '-' : ''}${cls}`;
   }
 
   /**
    * @name          cls
    * @type          Function
    *
-   * This method allows you to get a component ready class like my-component__something, etc...
+   * This method allows you to get a class that is based on the tagName of the component.
+   *
+   * If the "classesSchema" attribute is set to "full", the class will be generated like this:
+   * 1. %internalName_%lowerCaseClassName
+   * 2. %tagName_%lowerCaseClassName if the tagName is different from the internalName
+   * 3. %name_%lowerCaseClassName if the "name" property is setted
+   *
+   * If the "classesSchema" attribute is set to "slim", the class will be generated like this:
+   * 1. _%lowerCaseClassName
    *
    * @param         {String}        cls         The class you want to process. Can be multiple classes separated by a space. If null, does not print any class at all but the "style" one
-   * @return        {String}                    The generated class that you can apply
+   * @param         {TClassesSchema}       [classesSchema=this.classesSchema]         The schema to use to generate the class. Can be "slim" or "full"
+   * @return        {String[]}                    The generated class(es) that you can apply
    *
-   * @since         2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @since         1.0.0
    */
-  cls(cls: string = '', style: string = ''): string {
+  public cls(
+    cls: string = '',
+    classesSchema: TClassesSchema = this.classesSchema,
+  ): string[] {
     let clsString = '';
 
+    let finalClasses: string[] = [];
+
     if (!cls) {
-      cls = this.tagName.toLowerCase();
+      finalClasses.push(this.tagName.toLowerCase());
       if (this._internalName !== cls) {
-        cls += ` ${this._internalName}`;
+        finalClasses.push(this._internalName.toLowerCase());
       }
       if (this.name && this.name !== this.tagName.toLowerCase()) {
-        cls += ` ${this.name.toLowerCase()}`;
+        finalClasses.push(this.name.toLowerCase());
       }
-      return cls;
+      // ensure the toString method is correct
+      finalClasses.toString = function () {
+        return this.join(' ');
+      };
+      // return final classes
+      return finalClasses;
     }
 
-    clsString = cls
-      .split(' ')
-      .map((clsName) => {
-        let clses: string[] = [];
-        // internal name
-        if (this.tagName.toLowerCase() !== this._internalName) {
-          clses.push(
-            `${this._internalName.toLowerCase()}${
-              clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
-            }${clsName}`,
-          );
-        }
-        // class from the component tagname if wanted
-        clses.push(
+    // handle schema
+    if (classesSchema === 'full') {
+      clsString += `${this._internalName.toLowerCase()}`;
+    }
+
+    cls.split(' ').forEach((clsName) => {
+      let clses: string[] = [];
+      // internal name (always full schema)
+      finalClasses.push(
+        `${this._internalName.toLowerCase()}${
+          clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
+        }${clsName}`,
+      );
+      // class from the component tagname if wanted
+      if (classesSchema === 'full') {
+        finalClasses.push(
           `${this.tagName.toLowerCase()}${
             clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
           }${clsName}`,
         );
-        // if a special "name" is setted
-        if (this.name && this.name !== this.tagName.toLowerCase()) {
-          clses.push(
+      } else {
+        finalClasses.push(
+          `${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`,
+        );
+      }
+      // if a special "name" is setted
+      if (this.name && this.name !== this.tagName.toLowerCase()) {
+        if (classesSchema === 'full') {
+          finalClasses.push(
             `${this.name.toLowerCase()}${
               clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
             }${clsName}`,
           );
+        } else {
+          finalClasses.push(
+            `${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`,
+          );
         }
-        // replace '---' by '--'
-        clses = clses.map((c) => c.replace('---', '--'));
+      }
+    });
 
-        return clses.join(' ');
-      })
-      .join(' ');
+    // sanitize
+    finalClasses = finalClasses.map((c) => c.replace(/[\-]+/, '-'));
+    finalClasses = __unique(finalClasses);
 
-    if (style) {
-      clsString += ` ${style}`;
-    }
+    // ensure the toString method is correct
+    finalClasses.toString = function () {
+      return this.join(' ');
+    };
 
-    return clsString;
+    // return final classes
+    return finalClasses;
   }
 
-  /**
-   * @name           waitAndExecute
-   * @type            Function
-   * @async
-   *
-   * This async method allows you to wait for the component (node) has reached
-   * his "mount" state. This state depends fully on the "mountWhen" property.
-   * When the state has been reached, the passed callback will be executed.
-   *
-   * @param       {String|String[]}            when            When you want to execute the callback. Can be "direct", "inViewport", "nearViewport", "outOfViewport", "interact", "visible" or "stylesheetReady"
-   * @param       {Function}          callback            The callback to execute
-   * @return          {Promise}           A promise fullfilled when the component (node) has reached his "mount" state
-   *
-   * @since       2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
-   */
-  waitAndExecute(when: string | string[], callback?: Function): Promise<any> {
+  private _waitAndExecute(
+    when: string | string[],
+    callback?: Function,
+  ): Promise<any> {
     return new Promise(async (resolve, reject) => {
       if (!Array.isArray(when)) {
         when = [when];
       }
 
       // wait
-      if (!when.includes('direct') && !when.includes('directly')) {
+      if (!when.includes('direct')) {
         await __when(this, when);
       } else {
         await __wait();
@@ -581,8 +651,7 @@ export default class LitElement extends __LitElement {
    *
    * @return    {Boolean}       true if is mounted, false if not
    *
-   * @since   2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @since     1.0.0
    */
   isMounted() {
     return this.hasAttribute('mounted');
@@ -594,8 +663,9 @@ export default class LitElement extends __LitElement {
    *
    * true if the component is in the viewport, false if not
    *
-   * @since   2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @return         {Boolean}       true if in the viewport, false if not
+   *
+   * @since           1.0.0
    */
   isInViewport(): boolean {
     return this._isInViewport;
@@ -609,8 +679,7 @@ export default class LitElement extends __LitElement {
    * This method allows you to actually mount your feature behavior.
    * It will be called depending on the "mountWhen" setting setted.
    *
-   * @since           2.0.0
-   * @author 		Olivier Bossel<olivier.bossel@gmail.com>
+   * @since           1.0.0
    */
   protected mount() {}
   private async _mount() {
@@ -636,7 +705,7 @@ export default class LitElement extends __LitElement {
       this.tagName,
     );
     if (this.adoptStyle && this.shadowRoot) {
-      await this.adoptStyleInShadowRoot(this.shadowRoot);
+      await this._adoptStyleInShadowRoot(this.shadowRoot);
     }
 
     return true;
