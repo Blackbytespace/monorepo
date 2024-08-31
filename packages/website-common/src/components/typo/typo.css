@@ -10,6 +10,7 @@
 .typo-format h5 {
   font: s-font(title);
   line-height: 1.4em;
+  @include lo-glow;
 }
 
 .typo-h1,
@@ -116,6 +117,7 @@
 .typo-a,
 .typo-format a {
   color: s-color(accent);
+  text-decoration: underline;
 }
 
 .typo-rhythm * + .btn {

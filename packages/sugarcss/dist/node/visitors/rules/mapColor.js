@@ -34,7 +34,7 @@ import __ensureColorExists from '../../ensure/colorExists.js';
  */
 export default function color(v, settings) {
     // parse args
-    const args = Object.assign({}, __parseArgs(v.prelude, ['name', 'to']));
+    const args = Object.assign({}, __parseArgs(v.prelude, ['to', 'name']));
     args.values = Object.assign({ to: 'current', name: 'accent' }, args.values);
     __ensureColorExists(args.values.name);
     const ast = [
@@ -60,7 +60,7 @@ export default function color(v, settings) {
                                         type: 'var',
                                         value: {
                                             name: {
-                                                ident: `--s-color-${args.values.name}`,
+                                                ident: `--s-color-${args.values.name}-o`,
                                                 from: null,
                                             },
                                             fallback: null,

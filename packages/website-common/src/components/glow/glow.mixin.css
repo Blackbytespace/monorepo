@@ -1,0 +1,18 @@
+@keyframes lo-glow {
+  0% {
+    filter: drop-shadow(s-color(current) 0 0 10px)
+      drop-shadow(s-color(current) 0 0 5px);
+  }
+  50% {
+    filter: drop-shadow(s-color(current) 0 0 5px)
+      drop-shadow(s-color(current) 0 0 5px);
+  }
+  100% {
+    filter: drop-shadow(s-color(current) 0 0 10px)
+      drop-shadow(s-color(current) 0 0 5px);
+  }
+}
+
+@mixin lo-glow {
+  animation: lo-glow 1s linear infinite;
+}

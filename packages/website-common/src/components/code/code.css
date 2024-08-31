@@ -1,5 +1,5 @@
 .astro-code {
-  background: s-color(main, background) !important;
+  background: s-color(main, --darken 42) !important;
   font-size: 16px;
   padding: s-space(40) 0;
   border-radius: s-radius();

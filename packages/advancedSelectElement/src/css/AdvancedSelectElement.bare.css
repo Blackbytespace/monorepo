@@ -11,6 +11,9 @@
   }
 
   .s-advanced-select_dropdown {
+  }
+
+  &:not([inline]) .s-advanced-select_dropdown {
     position: absolute;
     z-index: 10;
     top: 100%;
@@ -45,7 +48,7 @@
     pointer-events: all !important;
   }
 
-  .s-advanced-select_items {
+  &:not([inline]) .s-advanced-select_items {
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -66,15 +69,5 @@
     * {
       pointer-events: none;
     }
-  }
-}
-
-.s-advanced-select[inline] {
-  .s-advanced-select_dropdown {
-    position: static;
-    margin: 0;
-    max-width: 100%;
-    pointer-events: all;
-    opacity: 1;
   }
 }

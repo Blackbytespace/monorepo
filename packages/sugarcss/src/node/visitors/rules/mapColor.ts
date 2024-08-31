@@ -39,7 +39,7 @@ import __ensureColorExists from '../../ensure/colorExists.js';
 export default function color(v: any, settings: TSugarCssSettings): any {
   // parse args
   const args = {
-    ...__parseArgs(v.prelude, ['name', 'to']),
+    ...__parseArgs(v.prelude, ['to', 'name']),
   };
   args.values = {
     to: 'current',
@@ -72,7 +72,7 @@ export default function color(v: any, settings: TSugarCssSettings): any {
                     type: 'var',
                     value: {
                       name: {
-                        ident: `--s-color-${args.values.name}`,
+                        ident: `--s-color-${args.values.name}-o`,
                         from: null,
                       },
                       fallback: null,

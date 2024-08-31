@@ -1,6 +1,6 @@
-.lo-markdown {
-  padding-top: 500px;
-  padding-bottom: s-space(100);
+.markdown {
+  padding-block: s-space(100);
+  padding-inline: s-space(40);
 
   @media mobile {
     padding-top: 350px;

@@ -1,5 +1,6 @@
 @import './settings/settings.css';
 
+@import './glow/glow.mixin.css';
 @import './scrollbar/scrollbar.mixin.css';
 @import './platform/platform.mixin.css';
 

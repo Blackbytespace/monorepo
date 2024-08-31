@@ -14,7 +14,7 @@
   "dependencies": {
     "@lotsof/config": "^1.0.0-alpha.4",
     "@lotsof/docblock": "^1.0.0-alpha.4",
-    "@lotsof/sugar": "^1.0.0-alpha.3",
+    "@lotsof/sugar": "^1.0.0-alpha.4",
     "micromatch": "^4.0.5",
     "typescript": "^5.4.5"
   },

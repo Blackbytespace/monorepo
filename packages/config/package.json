@@ -15,7 +15,7 @@
     "@lotsof/cli": "^1.0.0-alpha.4",
     "@lotsof/docmap": "^1.0.0-alpha.4",
     "@lotsof/factory": "^1.0.0-alpha.4",
-    "@lotsof/sugar": "^1.0.0-alpha.3",
+    "@lotsof/sugar": "^1.0.0-alpha.4",
     "typescript": "^5.4.5"
   },
   "main": "dist/node/_exports.js",

@@ -1,31 +1,18 @@
-.lo-search {
-  position: fixed;
-  z-index: 500;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(10px);
-  pointer-events: none;
-  opacity: 0;
-  @s-transition (fast);
-
-  .-search & {
-    pointer-events: all;
-    opacity: 1;
-  }
-
-  .advanced-select_item {
-    display: flex;
-    align-items: center;
-  }
+.search {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 1;
 
   ._scope {
     display: inline-block;
     width: 60px;
     /* text-align: right; */
     margin-inline-end: s-space(30);
+  }
+
+  mark {
+    background: none;
   }
 
   ._name {
@@ -42,77 +29,49 @@
   ._platform {
     margin-inline-end: s-space(10);
   }
-  .advanced-select_item:hover,
-  .advanced-select_item.-preselected {
-    ._platform {
-      background: s-color(accent);
-      color: s-color(accent, --darken 30);
-    }
-  }
-
-  ._container {
-    @s-container;
-    position: absolute;
-    top: 20vh;
-    left: 50%;
-    border: solid 2px s-color(complementary);
-    transform: translate(-50%, calc(-50% + 50px));
-    @s-radius();
-    @s-transition();
-
-    .-search & {
-      transform: translate(-50%, -50%);
-    }
-
-    @media tablet {
-      top: 10vh;
-    }
+  .s-advanced-select_item:hover,
+  .s-advanced-select_item.-preselected {
   }
 
   ._input {
-    background: s-color(main, background);
-    padding: s-space(30);
+    background: s-color(main, --darken 42);
+    padding: s-space(30) s-space(50);
     width: 100%;
     outline: none;
     font: s-font(code);
+    border-block: 1px solid s-color(accent, --alpha 0.1);
   }
 }
 
-.advanced-select {
+.lo-search.s-advanced-select {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 1;
+  overflow: hidden;
+
   &.-filtered {
   }
 
-  .advanced-select_keywords {
+  .s-advanced-select_keywords {
   }
-  .advanced-select_keyword {
-  }
-
-  .advanced-select_before {
+  .s-advanced-select_keyword {
   }
 
-  .advanced-select_after {
+  .s-advanced-select_before {
   }
 
-  .advanced-select_dropdown {
-    background: s-color(main, background);
-    width: clamp(
-      s-container(minWidth),
-      calc(80vw),
-      calc(100vw - s-container(sidePadding) * 2)
-    );
-    @s-radius();
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-    animation: lo-search 0.5s linear infinite;
+  .s-advanced-select_after {
   }
 
-  .advanced-select_items {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: stretch;
+  .s-advanced-select_dropdown {
+    flex-grow: 0;
+    flex-shrink: 1;
+    overflow-y: auto;
+    @include lo-scrollbar;
+  }
 
+  .s-advanced-select_items {
     @media tablet {
     }
 
@@ -128,75 +87,34 @@
     }
   }
 
-  .advanced-select_group {
-    /* flex-grow: 1; */
-    padding: s-space(30);
-    width: 20%;
+  .s-advanced-select_group {
+    padding: s-space(50);
     border: 1px solid s-color(accent, --alpha 0.05);
-
-    &:nth-child(2n-1) {
-      background: s-color(main, --darken 42);
-    }
-
-    @media tablet {
-      flex-shrink: 0;
-      flex-grow: 0;
-      width: 33.33%;
-    }
-    @media mobile {
-      width: 100%;
-    }
-
-    /* &:has(.advanced-select_item.-preselected),
-    &:hover,
-    &:focus-within {
-      .advanced-select_group-items {
-        grid-template-rows: 1fr;
-      }
-    } */
-
-    /* & {
-      .advanced-select_item {
-      }
-
-      &:has(.advanced-select_item.-preselected),
-      &:has(.advanced-select_item.-filtered.-match),
-      &:hover,
-      &:focus-within {
-        .advanced-select_item {
-          opacity: 1;
-        }
-      }
-    } */
   }
-  .advanced-select_group-label {
+  .s-advanced-select_group-label {
     padding: s-space(5) s-space(10);
+    margin-bottom: s-space(20);
     font: s-font(title);
-    font-size: 22px;
-    color: s-color(accent);
-    font-weight: bold;
+    font-size: 32px;
+    color: s-color(current, text);
+    font-weight: normal;
     text-transform: uppercase;
+
+    @s-map-color (current, accent);
+    @include lo-glow;
   }
 
-  .advanced-select_group-items {
-    /* display: grid;
-    grid-template-rows: 0fr;
-    overflow: hidden;
-    @s-transition (slow); */
+  .s-advanced-select_group-items {
   }
 
-  .advanced-select_group-items-inner {
-    display: flex;
-    flex-direction: column;
-    min-height: 100px;
-    /* transition: visibility 1s; */
-    /* visibility: hidden; */
+  .s-advanced-select_group-items-inner {
   }
 
-  .advanced-select_item {
+  .s-advanced-select_item {
     padding: s-space(5) s-space(10);
     font: s-font(code);
-    border: 2px solid s-color(accent, --alpha 0);
+    border: 2px solid s-color(current, --alpha 0);
+    color: s-color(current, --lighten 50);
     display: none;
     @s-radius();
 
@@ -205,24 +123,24 @@
     }
 
     &.-preselected {
-      filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-        drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-      animation: lo-search 0.5s linear infinite;
-      border: 2px solid s-color(accent);
+      border: 2px solid s-color(current);
+      @include lo-glow;
     }
     &.-selected {
-      background: s-color(accent, --darken 20);
+      @s-map-color (current, complementary);
     }
+
+    @s-map-color (current, accent);
   }
 
-  .advanced-select_highlight {
-    color: s-color(accent);
+  .s-advanced-select_highlight {
+    color: s-color(current);
   }
 
-  .advanced-select_loading {
+  .s-advanced-select_loading {
   }
 
-  .advanced-select_no-item {
+  .s-advanced-select_no-item {
   }
 
   &:not([interactive]) {
@@ -238,32 +156,5 @@
   }
 
   &.-empty {
-  }
-}
-
-@keyframes lo-search {
-  0% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-  }
-  17% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 5px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-  }
-  40% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 2px);
-  }
-  48% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-  }
-  84% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 12px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
-  }
-  100% {
-    filter: drop-shadow(s-color(accent, --saturate 100) 0 0 10px)
-      drop-shadow(s-color(accent, --saturate 100) 0 0 5px);
   }
 }

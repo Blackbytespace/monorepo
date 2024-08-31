@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@lotsof/sugar": "^1.0.0-alpha.3",
+    "@lotsof/sugar": "^1.0.0-alpha.4",
     "typescript": "^5.4.5"
   },
   "main": "dist/types/_exports.js",

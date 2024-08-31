@@ -48,6 +48,13 @@ export default function color(v, settings: TSugarCssSettings): any {
         value: v.value,
       },
     },
+    {
+      property: `--s-color-${name}-o`,
+      value: {
+        name: `--s-color-${name}-o`,
+        value: v.value,
+      },
+    },
   ];
 
   const hslaColor = __convert(v.value[0]?.value ?? v.value[0], 'hsla');

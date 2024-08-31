@@ -30,6 +30,7 @@ const { frontmatter, title } = Astro.props;
 
 <script>
   import '../components/index';
+import './main.css';
 
   document.addEventListener('astro:page-load', () => {
     if (document.location.pathname === '/') {
@@ -60,15 +61,23 @@ const { frontmatter, title } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <LoHeader />
-    <main class="lo-main">
-      <div class="lo-markdown typo-format typo-rhythm">
-        <slot />
+    <main class="main">
+      <div class="main_inner">
+        <nav class="main_nav">
+          <LoHeader />
+          <LoSearch />
+        </nav> 
+        <div class="main_body">
+          <div class="main_body-inner">
+            <div class="markdown typo-format typo-rhythm">
+              <slot />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <InternalNav />
-    <LoFooter />
-    <LoSearch />
+    <!-- <InternalNav /> -->
+    <!-- <LoFooter /> -->
     <LoCrt />
   </body>
 </html>

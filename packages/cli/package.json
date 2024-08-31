@@ -39,7 +39,7 @@
     "@lotsof/config": "^1.0.0-alpha.4",
     "@lotsof/docmap": "^1.0.0-alpha.4",
     "@lotsof/factory": "^1.0.0-alpha.4",
-    "@lotsof/sugar": "^1.0.0-alpha.3",
+    "@lotsof/sugar": "^1.0.0-alpha.4",
     "commander": "^12.0.0",
     "figlet": "^1.7.0",
     "glob": "^10.4.1",

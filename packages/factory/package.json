@@ -14,12 +14,12 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/advanced-select-element": "^1.0.0-alpha.3",
+    "@lotsof/advanced-select-element": "^1.0.0-alpha.4",
     "@lotsof/components": "^1.0.0-alpha.4",
-    "@lotsof/i18n": "^1.0.0-alpha.3",
-    "@lotsof/json-schema-form": "^1.0.0-alpha.3",
-    "@lotsof/lit-element": "^1.0.0-alpha.3",
-    "@lotsof/sugar": "^1.0.0-alpha.3",
+    "@lotsof/i18n": "^1.0.0-alpha.4",
+    "@lotsof/json-schema-form": "^1.0.0-alpha.4",
+    "@lotsof/lit-element": "^1.0.0-alpha.4",
+    "@lotsof/sugar": "^1.0.0-alpha.4",
     "@lotsof/sugarcss": "^1.0.0-alpha.4",
     "@types/json-schema": "^7.0.15",
     "lit": "^3.1.3",

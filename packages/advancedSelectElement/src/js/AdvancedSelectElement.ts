@@ -472,6 +472,11 @@ export default class AdvancedSelectElement extends __LitElement {
     if (this._$input.value) {
       this._filterValue = this._$input.value;
     }
+
+    // when inlinem refresh items directly
+    if (this.inline) {
+      this.refreshItems();
+    }
   }
 
   private _initListeners(): void {

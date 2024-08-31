@@ -1,8 +1,8 @@
-.lo-nav {
-  .lo-burger {
+.nav {
+  .burger {
     --s-color-current: #fff;
   }
-  .lo-menu {
+  .menu {
     position: absolute;
     top: calc(100% + s-size(10));
     right: 0;
@@ -19,11 +19,11 @@
     }
   }
 
-  .lo-burger {
+  .burger {
     &.-active,
     &:focus,
     &:focus-within {
-      & + .lo-menu {
+      & + .menu {
         pointer-events: all;
         opacity: 1;
         transform: translateY(0);

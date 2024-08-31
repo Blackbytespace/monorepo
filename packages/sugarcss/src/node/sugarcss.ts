@@ -188,7 +188,8 @@ export default function sugarcss(
           console.log(JSON.stringify(v, null, 4));
         }
         switch (true) {
-          case v.name.startsWith(`--s-color-`):
+          case v.name.startsWith(`--s-color-`) &&
+            v.name.match(/\-(h|s|l|a|o)$/) === null:
             return __colorDeclaration(v, finalSettings);
           case v.name.startsWith(`--s-shade-`):
             return __shadeDeclaration(v, finalSettings);

@@ -40,15 +40,11 @@ import __argsToCustomPropertiesAst from '../../utils/argsToCustomPropertiesAst.j
 
 export default function font(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-font-`, '');
-  const args = __parseArgs(v.value, [
-    'family',
-    'size',
-    'lineHeight',
-    'weight',
-    'style',
-    'variant',
-    'stretch',
-  ]);
+  const args = __parseArgs(
+    v.value,
+    ['family', 'size', 'lineHeight', 'weight', 'style', 'variant', 'stretch'],
+    {},
+  );
 
   env.fonts.fonts[name] = args.values;
 

@@ -1,3 +1,3 @@
-.lo-platform {
+.platform {
   @include lo-platform;
 }
