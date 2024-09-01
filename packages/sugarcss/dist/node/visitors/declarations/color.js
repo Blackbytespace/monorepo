@@ -15,7 +15,6 @@ import { __convert } from '@lotsof/sugar/color';
  * @example         css
  * :root {
  *    --s-color-main: #ff0000;
- *    --s-color-main: #9e9161;
  *    --s-color-accent: #d2b02d;
  *    --s-color-complementary: #00f0ff;
  *    --s-color-ternary: #9ec468;
@@ -23,8 +22,9 @@ import { __convert } from '@lotsof/sugar/color';
  *
  * .my-element {
  *   color: s-color(accent);
- *   color: s-color(accent, test);
+ *   color: s-color(accent, --saturation 100);
  *   color: s-color(accent, --darken 20 --spin 30);
+ *   color: s-color(complementary, --alpha 0.2);
  * }
  *
  * @since           0.0.1
@@ -33,9 +33,6 @@ import { __convert } from '@lotsof/sugar/color';
 export default function color(v, settings) {
     var _a, _b;
     const name = v.name.replace(`--s-color-`, '').replace(/\-[a-z]$/, '');
-    // if (env.colors[name]) {
-    //   return;
-    // }
     const result = [
         {
             property: `--s-color-${name}`,

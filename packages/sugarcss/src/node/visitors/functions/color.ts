@@ -12,10 +12,13 @@ import __parseArgs from '../../utils/parseArgs.js';
  * Allow to apply modifiers or shades to the color like darken, lighten, saturate, desaturate, spin, etc...
  * Here's the list of available modifiers:
  *
+ * - `lightness`: 0-100
  * - `lighten`: 0-100
  * - `darken`: 0-100
+ * - `saturation`: 0-100
  * - `saturate`: 0-100
  * - `desaturate`: 0-100
+ * - `hue`: 0-360
  * - `spin`: 0-360
  * - `alpha`: 0-1
  *
@@ -69,17 +72,17 @@ export default function color(value: any, settings: TSugarCssSettings): any {
       lSpecial = `var(--s-shade-${shade}-${color}-lighten, var(--s-shade-${shade}-lighten, 0)) - var(--s-shade-${shade}-${color}-darken, var(--s-shade-${shade}-darken ,0))`,
       aSpecial = `var(--s-shade-${shade}-${color}-alpha, var(--s-shade-${shade}-alpha, var(--s-color-${color}-a, 1)))`;
 
-    const h = `calc(var(--s-color-${color}-h) + ${hSpecial})`,
-      s = `calc(var(--s-color-${color}-s) + ${sSpecial})`,
-      l = `calc(var(--s-color-${color}-l) + ${lSpecial})`,
+    const h = `var(--s-shade-${shade}-${color}-hue, var(--s-shade-${shade}-hue, calc(var(--s-color-${color}-h) + ${hSpecial})))`,
+      s = `var(--s-shade-${shade}-${color}-saturation, var(--s-shade-${shade}-saturation, calc(var(--s-color-${color}-s) + ${sSpecial})))`,
+      l = `var(--s-shade-${shade}-${color}-lightness, var(--s-shade-${shade}-lightness, calc(var(--s-color-${color}-l) + ${lSpecial})))`,
       a = aSpecial;
 
     return {
       raw: [
         `hsla(`,
-        `var(--s-shade-${shade}-hue, ${h}),`,
-        `calc(var(--s-shade-${shade}-saturation, ${s}) * 1%),`,
-        `calc(var(--s-shade-${shade}-lightness, ${l}) * 1%),`,
+        `${h},`,
+        `calc(${s} * 1%),`,
+        `calc(${l} * 1%),`,
         `${a}`,
         `)`,
       ].join(''),

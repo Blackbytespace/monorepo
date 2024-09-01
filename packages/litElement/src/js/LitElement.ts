@@ -260,9 +260,12 @@ export default class LitElement extends __LitElement {
    */
   constructor(internalName: string, props?: TSLitElementDefaultProps) {
     super();
+
     if (internalName) {
       this._internalName = internalName;
     }
+
+    this._id = `s-${Math.round(Math.random() * 100)}`;
 
     // monitor if the component is in viewport or not
     this._whenInViewportPromise = __whenInViewport(this as HTMLElement, {
@@ -283,8 +286,6 @@ export default class LitElement extends __LitElement {
         // @ts-ignore
         await nodeFirstUpdated();
       }
-      // set the component as mounted
-      this.setAttribute('mounted', 'true');
     };
 
     // litElement shouldUpdate
@@ -492,19 +493,11 @@ export default class LitElement extends __LitElement {
    *
    * @since         1.0.0
    */
-  public internalCls(
-    cls: string = '',
-    schema: TClassesSchema = this.classesSchema,
-  ): string {
+  public internalCls(cls: string = ''): string {
     if (!cls) {
       return this._internalName;
     }
-
-    let finalCls = '';
-    if (this.classesSchema === 'full') {
-      finalCls += this._internalName.toLowerCase();
-    }
-
+    let finalCls = this._internalName.toLowerCase();
     return `${finalCls}${cls && !cls.match(/^(_{1,2}|-)/) ? '-' : ''}${cls}`;
   }
 
@@ -654,7 +647,7 @@ export default class LitElement extends __LitElement {
    * @since     1.0.0
    */
   isMounted() {
-    return this.hasAttribute('mounted');
+    return this._LitElementMounted || this.hasAttribute('mounted');
   }
 
   /**
@@ -707,6 +700,10 @@ export default class LitElement extends __LitElement {
     if (this.adoptStyle && this.shadowRoot) {
       await this._adoptStyleInShadowRoot(this.shadowRoot);
     }
+
+    // set the component as mounted
+    this.setAttribute('mounted', 'true');
+    this._LitElementMounted = true;
 
     return true;
   }

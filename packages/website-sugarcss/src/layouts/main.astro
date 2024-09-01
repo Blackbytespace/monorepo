@@ -30,7 +30,6 @@ const { frontmatter, title } = Astro.props;
 
 <script>
   import '../components/index';
-import './main.css';
 
   document.addEventListener('astro:page-load', () => {
     if (document.location.pathname === '/') {
@@ -41,7 +40,7 @@ import './main.css';
   });
 </script>
 
-<html lang="en" transition:animate={fade({ duration: '0.1s' })}>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={__packageJson.description} />
@@ -58,7 +57,7 @@ import './main.css';
     <meta property="og:site_name" content="Lotsof | Sugarcss" />
     <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
     <title>{frontmatter?.title ?? title}</title>
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
   <body>
     <main class="main">
@@ -76,8 +75,6 @@ import './main.css';
         </div>
       </div>
     </main>
-    <!-- <InternalNav /> -->
-    <!-- <LoFooter /> -->
     <LoCrt />
   </body>
 </html>

@@ -14,7 +14,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *
  * @example         css
  * :root {
- *      --s-sizes: 0px 80px linear;
+ *      --s-sizes: 0px, 80px;
  * }
  *
  * .my-element {

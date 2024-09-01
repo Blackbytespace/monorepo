@@ -15,7 +15,7 @@ export default function parseArgs(args, schema = [], settings) {
     let dashedArg;
     let argId = 0, currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
     const handleArg = (arg) => {
-        var _a, _b;
+        var _a, _b, _c;
         if (finalSettings.debug) {
             console.log('arg:', arg);
         }
@@ -23,11 +23,13 @@ export default function parseArgs(args, schema = [], settings) {
         const avoid = [
             'parenthesis-block',
             'close-parenthesis',
-            'white-space',
             'comment',
             'colon',
             'semicolon',
         ];
+        if (!separators.includes('white-space')) {
+            avoid.push('white-space');
+        }
         if (avoid.includes(arg.value.type)) {
             return;
         }
@@ -59,10 +61,15 @@ export default function parseArgs(args, schema = [], settings) {
                 }
                 else if (env.functions[arg.value.name]) {
                     const v = env.functions[arg.value.name](arg.value);
+                    if (finalSettings.debug) {
+                        console.log('function', currentProp, v);
+                    }
                     // get the raw value
                     arg.rawValue = (_b = v.raw) !== null && _b !== void 0 ? _b : v;
                     // set the resulting value
                     __set(resultArgs, currentProp, arg);
+                    // update current prop
+                    currentProp = (_c = schema === null || schema === void 0 ? void 0 : schema[argId + 1]) !== null && _c !== void 0 ? _c : `arg${argId + 1}`;
                 }
                 break;
             default:
@@ -78,9 +85,10 @@ export default function parseArgs(args, schema = [], settings) {
     for (let [i, arg] of args.entries()) {
         handleArg(arg);
     }
+    const values = __parsedArgsToRawValues(resultArgs);
     return {
         ast: resultArgs,
-        values: __parsedArgsToRawValues(resultArgs),
+        values,
     };
 }
 //# sourceMappingURL=parseArgs.js.map

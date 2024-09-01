@@ -14,7 +14,6 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @example         css
  * :root {
  *    --s-color-main: #ff0000;
- *    --s-color-main: #9e9161;
  *    --s-color-accent: #d2b02d;
  *    --s-color-complementary: #00f0ff;
  *    --s-color-ternary: #9ec468;
@@ -22,8 +21,9 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *
  * .my-element {
  *   color: s-color(accent);
- *   color: s-color(accent, test);
+ *   color: s-color(accent, --saturation 100);
  *   color: s-color(accent, --darken 20 --spin 30);
+ *   color: s-color(complementary, --alpha 0.2);
  * }
  *
  * @since           0.0.1

@@ -19,7 +19,7 @@ import __ensureEasingFunctionExists from '../../ensure/easingFunctionExists.js';
  *
  * @example         css
  * :root {
- *      --s-sizes: 0px 80px linear;
+ *      --s-sizes: 0px, 80px;
  * }
  *
  * .my-element {

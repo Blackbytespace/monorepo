@@ -52,10 +52,11 @@
   }
 
   .main_body {
+    flex-grow: 1;
     overflow-y: auto;
     @include lo-scrollbar;
   }
   .main_body-inner {
-    width: clamp(400px, 70%, 800px);
+    width: clamp(100px, 100%, 960px);
   }
 }

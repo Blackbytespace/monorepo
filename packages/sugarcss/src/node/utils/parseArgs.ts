@@ -51,11 +51,14 @@ export default function parseArgs(
     const avoid = [
       'parenthesis-block',
       'close-parenthesis',
-      'white-space',
       'comment',
       'colon',
       'semicolon',
     ];
+    if (!separators.includes('white-space')) {
+      avoid.push('white-space');
+    }
+
     if (avoid.includes(arg.value.type)) {
       return;
     }
@@ -91,11 +94,18 @@ export default function parseArgs(
         } else if (env.functions[arg.value.name]) {
           const v = env.functions[arg.value.name](arg.value);
 
+          if (finalSettings.debug) {
+            console.log('function', currentProp, v);
+          }
+
           // get the raw value
           arg.rawValue = v.raw ?? v;
 
           // set the resulting value
           __set(resultArgs, currentProp, arg);
+
+          // update current prop
+          currentProp = schema?.[argId + 1] ?? `arg${argId + 1}`;
         }
 
         break;
@@ -116,8 +126,9 @@ export default function parseArgs(
     handleArg(arg);
   }
 
+  const values = __parsedArgsToRawValues(resultArgs);
   return {
     ast: resultArgs,
-    values: __parsedArgsToRawValues(resultArgs),
+    values,
   };
 }

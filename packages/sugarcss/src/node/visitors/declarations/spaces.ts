@@ -19,7 +19,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * @example         css
  * :root {
- *      --s-spaces: 0 80px linear;
+ *      --s-spaces: 0 80px;
  * }
  *
  * .my-element {

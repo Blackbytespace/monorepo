@@ -22,9 +22,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function setting(v, settings) {
-    const name = __camelCase(v.name.replace(`--s-setting-`, '')), args = __parseArgs(v.value, ['value'], {
-        separator: ['white-space', 'comma'],
-    });
+    const name = __camelCase(v.name.replace(`--s-setting-`, '')), args = __parseArgs(v.value, ['value']);
     env.settings[name] = __parse(args.values.value);
     if (settings.verbose) {
         console.log(`Registered setting: <cyan>${name}</cyan>: <yellow>${env.settings[name]}</yellow>`);

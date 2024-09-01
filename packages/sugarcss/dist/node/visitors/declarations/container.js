@@ -16,12 +16,13 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * @example         css
  * :root {
- *    // min-width max-width side-padding
  *    --s-container-default: 320px 1200px 20px;
+ *    --s-container-full: 0 100% 20px;
  * }
  *
  * .my-element {
- *      @s-container();
+ *    @s-container();
+ *    @s-container(full);
  * }
  *
  * @since           0.0.1

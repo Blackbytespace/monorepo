@@ -26,9 +26,7 @@ import __parseArgs from '../../utils/parseArgs.js';
 
 export default function setting(v, settings: TSugarCssSettings): any {
   const name = __camelCase(v.name.replace(`--s-setting-`, '')),
-    args = __parseArgs(v.value, ['value'], {
-      separator: ['white-space', 'comma'],
-    });
+    args = __parseArgs(v.value, ['value']);
 
   env.settings[name] = __parse(args.values.value);
 

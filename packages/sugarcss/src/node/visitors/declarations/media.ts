@@ -26,11 +26,11 @@ import __parseArgs from '../../utils/parseArgs.js';
  * .my-element {
  *    color: s-color(accent);
  *
- *    \@media mobile {
+ *    @media mobile {
  *        color: red;
  *    }
  *
- *    \@media lt-tablet {
+ *    @media lt-tablet {
  *        color: blue;
  *    }
  * }

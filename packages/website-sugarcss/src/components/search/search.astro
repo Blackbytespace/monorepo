@@ -1,14 +1,12 @@
 <script>
 import __AdvancedSelectElement from '@lotsof/advanced-select-element';
-import { __querySelectorLive } from '@lotsof/sugar/dom';
-import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import { __idCompliant } from '@lotsof/sugar/string';
 import { __toSlug } from '@lotsof/website-common/src/components/utils/utils';
 import { navigate } from 'astro:transitions/client';
 
   let cachedItems: any[];
 
-  document.addEventListener('advancedSelect.select', (e) => {
+  document.addEventListener('sAdvancedSelect.select', (e) => {
     const item = (e as CustomEvent).detail.item;
     if (item.slug) {
       navigate(item.slug);
@@ -17,23 +15,6 @@ import { navigate } from 'astro:transitions/client';
     }
   });
 
-  function toggleSearch() {
-    // cancel registered escape queue
-    escapeQueuePromise?.cancel?.();
-
-    // toggle search
-    document.body.classList.toggle('-search');
-
-    // focus in search
-    if (document.body.classList.contains('-search')) {
-      (document.querySelector('search input') as HTMLElement)?.focus();
-    }
-
-    // register escape queue
-    escapeQueuePromise = __escapeQueue(() => {
-      document.body.classList.remove('-search');
-    });
-  }
 
   __AdvancedSelectElement.define('lo-search', {
     async items() {
@@ -68,6 +49,7 @@ import { navigate } from 'astro:transitions/client';
           id: __idCompliant(item.id),
           label: `${item.data.title}`,
           value: `${item.id.replace(/\//gm, '.').replace(/\.mdx$/, '')}`,
+          preventSet: true
         });
       });
 
@@ -81,30 +63,35 @@ import { navigate } from 'astro:transitions/client';
               label: 'Get started',
               value: 'install',
               slug: '/',
+              preventSet: true,
             },
             {
               id: 'vite',
               label: 'Use with vite',
               value: 'vite',
               slug: '/doc/vite',
+              preventSet: true,
             },
             {
               id: 'settings',
               label: 'Settings',
               value: 'settings',
               slug: '/doc/settings',
+              preventSet: true,
             },
             {
               id: 'mixins',
               label: 'Mixins',
               value: 'mixins',
               slug: '/doc/mixins',
+              preventSet: true,
             },
             {
               id: 'grids',
               label: 'Grids',
               value: 'grids',
               slug: '/doc/grids',
+              preventSet: true,
             },
           ],
         },
@@ -114,29 +101,10 @@ import { navigate } from 'astro:transitions/client';
     },
   });
 
-  let escapeQueuePromise: any;
-  document.addEventListener('keyup', (e) => {
-    if (e.ctrlKey && e.key === 'p') {
-      toggleSearch();
-    }
-  });
 
-  const $container = document.querySelector('.search ._container');
-  document.querySelector('.search')?.addEventListener('pointerup', (e) => {
-    if ($container?.contains(e.target as HTMLElement)) {
-      return;
-    }
-    toggleSearch();
-  });
+  
 
-  __querySelectorLive('[lo-search]', ($elm: HTMLElement) => {
-    $elm.addEventListener('pointerup', (e) => {
-      e.preventDefault();
-      setTimeout(() => {
-        toggleSearch();
-      }, 100);
-    });
-  });
+  
 </script>
 
 <form class="search" transition:persist>

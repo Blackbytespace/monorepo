@@ -214,6 +214,7 @@ export default class AdvancedSelectElement extends __LitElement {
   constructor() {
     super('s-advanced-select');
   }
+
   private async mount() {
     this._displayedMaxItems = this.maxItems;
 
@@ -329,9 +330,15 @@ export default class AdvancedSelectElement extends __LitElement {
     }
     this._$input.setAttribute('autocomplete', 'off');
     this._$form = this._$input.form as HTMLFormElement;
+
     // prevent from sending form if search is opened
+    this._$input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+      }
+    });
     this._$form?.addEventListener('submit', (e) => {
-      if (!this.isActive()) {
+      if (this.isActive()) {
         e.preventDefault();
       }
     });
@@ -457,6 +464,8 @@ export default class AdvancedSelectElement extends __LitElement {
         return;
       }
 
+      e.preventDefault();
+
       // protect agains actions when not focus
       if (!this.isActive()) return;
       this.select();
@@ -539,6 +548,7 @@ export default class AdvancedSelectElement extends __LitElement {
     if (typeof item === 'string') {
       item = this.getItemById(item);
     }
+
     // reset preselected
     this.getPreselectedItem()?.state.preselected = false;
     // check if the component is in not selectable mode
@@ -582,7 +592,6 @@ export default class AdvancedSelectElement extends __LitElement {
   public async setSearch(value: string): void {
     this._$input.value = value;
     this._filterValue = value;
-    this._filterItems();
     await this.refreshItems();
     this.requestUpdate();
   }
@@ -604,7 +613,7 @@ export default class AdvancedSelectElement extends __LitElement {
       item = this.getItemById(item);
     }
     // reset preselected
-    // this.getPreselectedItem()?.state.selected = false;
+    this.getPreselectedItem()?.state.preselect = false;
     // check if the component is in not selectable mode
     if (this.notSelectable) return;
     // do not select if not match the search
@@ -770,6 +779,7 @@ export default class AdvancedSelectElement extends __LitElement {
    *
    * @since       1.0.0
    */
+  private _firstRefresh: boolean = true;
   public async refreshItems(): Promise<void> {
     clearTimeout(this._isLoadingTimeout);
     this._isLoadingTimeout = setTimeout(() => {
@@ -814,11 +824,23 @@ export default class AdvancedSelectElement extends __LitElement {
     clearTimeout(this._isLoadingTimeout);
     this._isLoading = false;
 
-    // preselect the first item in the list
-    if (this._filteredItems.length) {
-      this.preselect(this._filteredItems[0], {
+    // restore
+    const $selected = this.querySelector(
+      `.${this.internalCls('_item')}.-selected`,
+    );
+    if ($selected) {
+      this.preselect($selected?.dataset.id, {
         preventFocus: true,
       });
+      console.log(`.${this.internalCls('_item')}.-selected`, $selected);
+      return;
+    } else {
+      // preselect the first item in the list
+      if (this._filteredItems.length) {
+        this.preselect(this._filteredItems[0], {
+          preventFocus: true,
+        });
+      }
     }
   }
 

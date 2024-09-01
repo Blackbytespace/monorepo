@@ -22,8 +22,7 @@ import __containerExists from '../../ensure/containerExists.js';
  *
  * @example         css
  * :root {
- *    // min-width max-width side-padding
- *    --s-container-default: 320px 1200px 20px;
+ *    --s-container-default: 320px, 1200px, 20px;
  * }
  *
  * .my-element {

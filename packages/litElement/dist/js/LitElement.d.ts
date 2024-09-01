@@ -186,7 +186,7 @@ export default class LitElement extends __LitElement {
      *
      * @since         1.0.0
      */
-    internalCls(cls?: string, schema?: TClassesSchema): string;
+    internalCls(cls?: string): string;
     /**
      * @name          cls
      * @type          Function
@@ -229,7 +229,7 @@ export default class LitElement extends __LitElement {
      *
      * @since     1.0.0
      */
-    isMounted(): boolean;
+    isMounted(): any;
     /**
      * @name            isInViewport
      * @type            Function

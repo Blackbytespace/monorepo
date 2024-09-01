@@ -35,7 +35,6 @@ You can declare as many colors as you want.</p>
 ```css
 :root {
    --s-color-main: #ff0000;
-   --s-color-main: #9e9161;
    --s-color-accent: #d2b02d;
    --s-color-complementary: #00f0ff;
    --s-color-ternary: #9ec468;
@@ -43,8 +42,9 @@ You can declare as many colors as you want.</p>
 
 .my-element {
   color: s-color(accent);
-  color: s-color(accent, test);
+  color: s-color(accent, --saturation 100);
   color: s-color(accent, --darken 20 --spin 30);
+  color: s-color(complementary, --alpha 0.2);
 }
 ```
 </div>

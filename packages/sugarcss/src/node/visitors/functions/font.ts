@@ -27,9 +27,9 @@ import __ensureFontExists from '../../ensure/fontExists.js';
  *
  * @example         css
  * :root {
- *   --s-font-...: "Roboto,sans-serif" %size %lineHeight %weight %style %variant %stretch;
+ *   --s-font-...: "Roboto,sans-serif", %size, %lineHeight, %weight, %style, %variant;
  *   --s-font-family-code: "Fira Code", monospace;
- *   --s-font-code: s-font-family(code) 16px 26px 300;
+ *   --s-font-code: s-font-family(code), 16px, 26px, 300;
  * }
  *
  * .my-element {
@@ -40,9 +40,7 @@ import __ensureFontExists from '../../ensure/fontExists.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function font(value: any, settings: TSugarCssSettings): any {
-  const args = __parseArgs(value.arguments, ['name'], {
-    separator: ['white-space', 'comma'],
-  });
+  const args = __parseArgs(value.arguments, ['name']);
 
   const fontsArgs = env.fonts.fonts;
 
@@ -52,7 +50,7 @@ export default function font(value: any, settings: TSugarCssSettings): any {
 
   // size and line-height
   let size: string | number = '1em',
-    lineHeight: string | number = '1em';
+    lineHeight: string | number = '1.5em';
   if (fontArgs.size) {
     if (`${fontArgs.size}`.match(/^[0-9]+$/)) {
       size = `${fontArgs.size}px`;
@@ -73,10 +71,7 @@ export default function font(value: any, settings: TSugarCssSettings): any {
   props.push(`var(--s-font-${args.values.name}-style, normal)`);
   props.push(`var(--s-font-${args.values.name}-variant, normal)`);
   props.push(`var(--s-font-${args.values.name}-weight, normal)`);
-  // props.push(`var(--s-font-${args.values.name}-stretch)`);
-  props.push(
-    `var(--s-font-${args.values.name}-size, ${size})/var(--s-font-${args.values.name}-line-height, normal)`,
-  );
+  props.push(`${size}/${lineHeight}`);
   props.push(`var(--s-font-${args.values.name}-family, sans-serif)`);
 
   return {

@@ -58,14 +58,15 @@ You can declare as many fonts as you want.</p>
 ## Example
 ```css
 :root {
-   --s-font-default: s-font-family(sans) 16px 26px;
-   --s-font-lead: s-font-family(sans) 26px 40px;
-   --s-font-title: VT323 s-size(100) s-size(100) 300;
-   --s-font-code: s-font-family(code) 16px 26px 300;
+   --s-font-default: s-font-family(sans), 16px, 26px;
+   --s-font-lead: s-font-family(sans), 26px, 40px;
+   --s-font-title: VT323, s-size(100), s-size(100), 300;
+   --s-font-code: s-font-family(code), 16px, 26px, 300;
 }
 
 .my-element {
    font: s-font(default);
+   font: s-font(lead);
 }
 ```
 </div>

@@ -22,9 +22,9 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *
  * @example         css
  * :root {
- *   --s-font-...: "Roboto,sans-serif" %size %lineHeight %weight %style %variant %stretch;
+ *   --s-font-...: "Roboto,sans-serif", %size, %lineHeight, %weight, %style, %variant;
  *   --s-font-family-code: "Fira Code", monospace;
- *   --s-font-code: s-font-family(code) 16px 26px 300;
+ *   --s-font-code: s-font-family(code), 16px, 26px, 300;
  * }
  *
  * .my-element {

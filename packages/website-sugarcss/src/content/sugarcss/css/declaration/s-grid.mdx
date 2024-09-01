@@ -28,14 +28,18 @@ You can register as many grid as you want like in the example below.</p>
 <span class="_name">layout<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
 <p class="_description">The grid layout to register like &grave;1 1 2 &lowbar; 3 3 3&grave;</p>
 </li>
+<li class="_item">
+<span class="_name">gap<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<p class="_description">The grid gap to register like &grave;20px&grave;</p>
+</li>
 </ol>
 </div>
 <div class="_examples">
 ## Example
 ```css
 :root {
-   --s-grid-default: 1 1 2 _ 3 3 3;
-   --s-grid-2cols: 1 2;
+   --s-grid-default: 1 1 2 _ 3 3 3, 20px;
+   --s-grid-2cols: 1 2, 40px;
 }
 
 .my-element {

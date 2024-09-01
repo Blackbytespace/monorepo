@@ -90,6 +90,7 @@
 .typo-format .typo-lead p {
   font: s-font(lead);
   margin-bottom: s-space(60) !important;
+  font-size: s-size(30);
 
   @media mobile {
     font-size: s-size(26);
@@ -109,9 +110,20 @@
 .typo-format code {
   font: s-font(code);
   background: s-color(main, background);
-  padding: s-space(10) s-space(10);
   border-radius: s-radius();
+  padding: s-space(10);
   color: s-color(accent, --darken 10);
+}
+.typo-format pre code {
+  display: flex;
+  flex-direction: column;
+  gap: s-space(10);
+  padding: s-space(30, 40);
+  @include lo-scrollbar;
+
+  .line:last-child:empty {
+    display: none;
+  }
 }
 
 .typo-a,

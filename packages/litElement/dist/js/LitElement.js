@@ -177,6 +177,7 @@ class LitElement extends __LitElement {
         if (internalName) {
             this._internalName = internalName;
         }
+        this._id = `s-${Math.round(Math.random() * 100)}`;
         // monitor if the component is in viewport or not
         this._whenInViewportPromise = __whenInViewport(this, {
             once: false,
@@ -195,8 +196,6 @@ class LitElement extends __LitElement {
                 // @ts-ignore
                 yield nodeFirstUpdated();
             }
-            // set the component as mounted
-            this.setAttribute('mounted', 'true');
         });
         // litElement shouldUpdate
         // @ts-ignore
@@ -356,14 +355,11 @@ class LitElement extends __LitElement {
      *
      * @since         1.0.0
      */
-    internalCls(cls = '', schema = this.classesSchema) {
+    internalCls(cls = '') {
         if (!cls) {
             return this._internalName;
         }
-        let finalCls = '';
-        if (this.classesSchema === 'full') {
-            finalCls += this._internalName.toLowerCase();
-        }
+        let finalCls = this._internalName.toLowerCase();
         return `${finalCls}${cls && !cls.match(/^(_{1,2}|-)/) ? '-' : ''}${cls}`;
     }
     /**
@@ -481,7 +477,7 @@ class LitElement extends __LitElement {
      * @since     1.0.0
      */
     isMounted() {
-        return this.hasAttribute('mounted');
+        return this._LitElementMounted || this.hasAttribute('mounted');
     }
     /**
      * @name            isInViewport
@@ -529,6 +525,9 @@ class LitElement extends __LitElement {
             if (this.adoptStyle && this.shadowRoot) {
                 yield this._adoptStyleInShadowRoot(this.shadowRoot);
             }
+            // set the component as mounted
+            this.setAttribute('mounted', 'true');
+            this._LitElementMounted = true;
             return true;
         });
     }

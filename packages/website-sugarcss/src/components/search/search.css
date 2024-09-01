@@ -139,6 +139,9 @@
 
   .s-advanced-select_loading {
   }
+  .s-advanced-select_empty {
+    padding: s-space(30 50);
+  }
 
   .s-advanced-select_no-item {
   }

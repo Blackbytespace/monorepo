@@ -10,10 +10,13 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * Allow to apply modifiers or shades to the color like darken, lighten, saturate, desaturate, spin, etc...
  * Here's the list of available modifiers:
  *
+ * - `lightness`: 0-100
  * - `lighten`: 0-100
  * - `darken`: 0-100
+ * - `saturation`: 0-100
  * - `saturate`: 0-100
  * - `desaturate`: 0-100
+ * - `hue`: 0-360
  * - `spin`: 0-360
  * - `alpha`: 0-1
  *

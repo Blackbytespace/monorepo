@@ -18,7 +18,7 @@ import __ensireRadiusExists from '../../ensure/radiusExists.js';
  * @example         css
  * :root {
  *    --s-radius-default: 10px;
- *    --s-radius-special: 20px 10px 12px 34px;
+ *    --s-radius-special: 20px, 10px, 12px, 34px;
  * }
  *
  * .my-element {

@@ -263,6 +263,7 @@ export default class AdvancedSelectElement extends __LitElement {
      *
      * @since       1.0.0
      */
+    private _firstRefresh;
     refreshItems(): Promise<void>;
     private _initItems;
     private _initItem;
