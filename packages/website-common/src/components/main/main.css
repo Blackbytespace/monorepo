@@ -40,6 +40,17 @@
     flex-direction: column;
     border-inline-end: 1px solid s-color(accent, border);
 
+    @media mobile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+      background: s-color(main, background);
+    }
+
     .header {
       flex-grow: 0;
       flex-shrink: 0;
@@ -55,8 +66,20 @@
     flex-grow: 1;
     overflow-y: auto;
     @include lo-scrollbar;
+
+    @media mobile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
   .main_body-inner {
     width: clamp(100px, 100%, 960px);
+
+    @media mobile {
+      width: 100%;
+    }
   }
 }

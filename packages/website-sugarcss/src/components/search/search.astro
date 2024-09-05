@@ -1,5 +1,6 @@
 <script>
 import __AdvancedSelectElement from '@lotsof/advanced-select-element';
+// @ts-ignore
 import { __idCompliant } from '@lotsof/sugar/string';
 import { __toSlug } from '@lotsof/website-common/src/components/utils/utils';
 import { navigate } from 'astro:transitions/client';
@@ -15,6 +16,13 @@ import { navigate } from 'astro:transitions/client';
     }
   });
 
+  const $loSearch = document.querySelector('lo-search') as HTMLElement;
+  document.addEventListener('keydown', () => {
+    if (document.activeElement?.tagName === 'INPUT') {
+      return;
+    }
+    $loSearch?.focus();
+  })
 
   __AdvancedSelectElement.define('lo-search', {
     async items() {
@@ -100,14 +108,10 @@ import { navigate } from 'astro:transitions/client';
       return cachedItems;
     },
   });
-
-
-  
-
   
 </script>
 
-<form class="search" transition:persist>
+<form class="search">
   <lo-search inline>
     <input type="search" class="_input" placeholder="Search" />
   </lo-search>

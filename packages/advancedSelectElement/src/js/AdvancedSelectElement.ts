@@ -332,19 +332,19 @@ export default class AdvancedSelectElement extends __LitElement {
     this._$form = this._$input.form as HTMLFormElement;
 
     // prevent from sending form if search is opened
-    this._$input.addEventListener('keydown', (e) => {
+    this.addEventListenerOn(this._$input, 'keydown', (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
       }
     });
-    this._$form?.addEventListener('submit', (e) => {
+    this.addEventListenerOn(this._$form, 'submit', (e) => {
       if (this.isActive()) {
         e.preventDefault();
       }
     });
 
     // handle update on key event
-    this._$input.addEventListener('keyup', async (e) => {
+    this.addEventListenerOn(this._$input, 'keyup', async (e) => {
       if (!this.isActive()) {
         return;
       }
@@ -372,7 +372,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle update on focus
-    this._$input.addEventListener('focus', (e) => {
+    this.addEventListenerOn(this._$input, 'focus', (e) => {
       if (!this.isActive()) {
         return;
       }
@@ -402,7 +402,7 @@ export default class AdvancedSelectElement extends __LitElement {
     ) as HTMLElement;
 
     // handle scroll behaviors
-    document.addEventListener('scroll', () => {
+    this.addEventListenerOn(document, 'scroll', () => {
       this._updateListSizeAndPosition();
     });
     this._updateListSizeAndPosition();
@@ -415,7 +415,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle arrows
-    document.addEventListener('keyup', (e) => {
+    this.addEventListenerOn(document, 'keyup', (e) => {
       if (!this.isActive()) return;
       if (!this._filteredItems.length) return;
 
@@ -425,7 +425,6 @@ export default class AdvancedSelectElement extends __LitElement {
         ArrowLeft: 'left',
         ArrowRight: 'right',
       };
-
       if (!directionsMap[e.key]) return;
 
       // mark the arrow as used
@@ -446,7 +445,9 @@ export default class AdvancedSelectElement extends __LitElement {
       let direction;
 
       if (!this.getPreselectedItem()) {
-        this.preselect($items[0].dataset.id);
+        this.preselect($items[0].dataset.id, {
+          scrollIntoView: true,
+        });
       } else {
         let $nearestElement: HTMLElement = __nearestElement($from, $items, {
           direction: directionsMap[e.key],
@@ -454,12 +455,14 @@ export default class AdvancedSelectElement extends __LitElement {
         if (!$nearestElement) {
           return;
         }
-        this.preselect($nearestElement.dataset.id);
+        this.preselect($nearestElement.dataset.id, {
+          scrollIntoView: true,
+        });
       }
     });
 
     // handle return key
-    document.addEventListener('keyup', (e) => {
+    this.addEventListenerOn(document, 'keyup', (e) => {
       if (e.key !== 'Enter') {
         return;
       }
@@ -543,18 +546,29 @@ export default class AdvancedSelectElement extends __LitElement {
     item: string | TAdvancedSelectElementItem,
     settings?: {
       preventFocus?: boolean;
+      scrollIntoView?: boolean;
     },
   ): void {
     if (typeof item === 'string') {
       item = this.getItemById(item);
     }
-
     // reset preselected
     this.getPreselectedItem()?.state.preselected = false;
     // check if the component is in not selectable mode
     if (this.notSelectable) return;
     // do not preselect if not match the search
     if (!item.state.match) return;
+    // make sure the element is visible
+    if (settings?.scrollIntoView) {
+      const $item = this.getItemDomElement(item);
+      if ($item) {
+        $item.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest',
+        });
+      }
+    }
     // set the new preselected
     item.state.preselected = true;
     // set focus in the input
@@ -614,6 +628,8 @@ export default class AdvancedSelectElement extends __LitElement {
     }
     // reset preselected
     this.getPreselectedItem()?.state.preselect = false;
+    // reset selected
+    this.getSelectedItem()?.state.selected = false;
     // check if the component is in not selectable mode
     if (this.notSelectable) return;
     // do not select if not match the search
@@ -657,6 +673,12 @@ export default class AdvancedSelectElement extends __LitElement {
 
   public resetSelected(): void {
     this.getSelectedItem()?.state.selected = false;
+  }
+
+  public getItemDomElement(item: TAdvancedSelectElementItem): HTMLElement {
+    return this.querySelector(
+      `.${this.internalCls('_item')}[data-id="${item.id}"]`,
+    );
   }
 
   /**
@@ -736,7 +758,7 @@ export default class AdvancedSelectElement extends __LitElement {
       this.reset();
       this._close();
     });
-    await this.refreshItems();
+    // await this.refreshItems();
     this.dispatch('open');
   }
   public _close(): void {
@@ -779,7 +801,6 @@ export default class AdvancedSelectElement extends __LitElement {
    *
    * @since       1.0.0
    */
-  private _firstRefresh: boolean = true;
   public async refreshItems(): Promise<void> {
     clearTimeout(this._isLoadingTimeout);
     this._isLoadingTimeout = setTimeout(() => {
@@ -831,14 +852,15 @@ export default class AdvancedSelectElement extends __LitElement {
     if ($selected) {
       this.preselect($selected?.dataset.id, {
         preventFocus: true,
+        scrollIntoView: true,
       });
-      console.log(`.${this.internalCls('_item')}.-selected`, $selected);
       return;
     } else {
       // preselect the first item in the list
       if (this._filteredItems.length) {
         this.preselect(this._filteredItems[0], {
           preventFocus: true,
+          scrollIntoView: true,
         });
       }
     }

@@ -7,11 +7,9 @@ import '@fontsource/sixtyfour';
 import '@fontsource/vt323';
 import '../components/index.css';
 
-import InternalNav from '@lotsof/website-common/src/components/internalNav/internalNav.astro';
 import LoHeader from '../components/header/header.astro';
 import LoCrt from '@lotsof/website-common/src/components/crt/crt.astro';
 import LoSearch from '../components/search/search.astro';
-import LoFooter from '@lotsof/website-common/src/components/footer/footer.astro';
 
 import __pictoNewNTasta from '../img/picto-new-n-tasty.svg?raw';
 
@@ -26,6 +24,7 @@ const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' });
 
 // @ts-ignore
 const { frontmatter, title } = Astro.props;
+const packageJson = __packageJson as any;
 ---
 
 <script>
@@ -43,10 +42,10 @@ const { frontmatter, title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={__packageJson.description} />
+    <meta name="description" content={packageJson.description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:description" content={__packageJson.description} />
+    <meta property="og:description" content={packageJson.description} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={frontmatter?.title ?? title} />
     <meta property="og:type" content="article" />
@@ -57,16 +56,16 @@ const { frontmatter, title } = Astro.props;
     <meta property="og:site_name" content="Lotsof | Sugarcss" />
     <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
     <title>{frontmatter?.title ?? title}</title>
-    <!-- <ViewTransitions /> -->
+    <ViewTransitions />
   </head>
   <body>
     <main class="main">
       <div class="main_inner">
-        <nav class="main_nav">
+        <nav class="main_nav" transition:persist>
           <LoHeader />
           <LoSearch />
         </nav> 
-        <div class="main_body">
+        <div class="main_body" transition:animate={fade({ duration: '0.1s' })} transition:name="body">
           <div class="main_body-inner">
             <div class="markdown typo-format typo-rhythm">
               <slot />

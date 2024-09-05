@@ -101,6 +101,5 @@ body {
   color: s-color(main, text);
 
   @media mobile {
-    background: red;
   }
 }

@@ -15,6 +15,11 @@ import { TWhenInViewportResult } from '../../../sugar/dist/js/dom/when/whenInVie
 
 export { __html as html };
 
+export type TLitElementEventListenerObject = {
+  listener: EventListenerOrEventListenerObject;
+  type: string;
+};
+
 export type TLitElementDispatchSettings = {
   $elm: HTMLElement;
   bubbles: boolean;
@@ -97,7 +102,7 @@ export default class LitElement extends __LitElement {
   public verbose: boolean = false;
 
   @property({ type: Array })
-  public activeWhen: 'inViewport'[] = [];
+  public activeWhen: 'inViewport'[] = ['inViewport'];
 
   @property({ type: String })
   public mountWhen:
@@ -128,9 +133,11 @@ export default class LitElement extends __LitElement {
 
   protected _internalName: string = this.tagName.toLowerCase();
 
-  _shouldUpdate = false;
-  _isInViewport = false;
-  _whenInViewportPromise: TWhenInViewportResult;
+  private _shouldUpdate = false;
+  private _isInViewport = false;
+  private _whenInViewportPromise: TWhenInViewportResult;
+  private _listenersMap: Map<HTMLElement, TLitElementEventListenerObject[]> =
+    new Map();
 
   protected _state: any = {};
   get state(): LitElement['_state'] {
@@ -265,7 +272,7 @@ export default class LitElement extends __LitElement {
       this._internalName = internalName;
     }
 
-    this._id = `s-${Math.round(Math.random() * 100)}`;
+    this.setAttribute('id', this.id ?? `s-${Math.round(Math.random() * 9999)}`);
 
     // monitor if the component is in viewport or not
     this._whenInViewportPromise = __whenInViewport(this as HTMLElement, {
@@ -320,6 +327,15 @@ export default class LitElement extends __LitElement {
     const defaultProps = LitElement.getDefaultProps(this.tagName.toLowerCase());
     for (let [name, value] of Object.entries(defaultProps)) {
       this[name] = value;
+    }
+
+    // add back the listeners
+    for (let [$elm, listenersObj] of this._listenersMap.entries()) {
+      if (listenersObj.length) {
+        listenersObj.forEach((listenerObj) => {
+          $elm.addEventListener(listenerObj.type, listenerObj.listener);
+        });
+      }
     }
 
     // component class
@@ -402,6 +418,69 @@ export default class LitElement extends __LitElement {
       $elm = $elm.parentNode;
     }
     return $elm;
+  }
+
+  /**
+   * @name           addEventListener
+   * @type            Function
+   *
+   * This method allows you to add an event listener on the component itself.
+   * It will automatically remove the listener when the component is disconnected and added again when connected.
+   *
+   * @param           {String}            type            The event type to listen for
+   * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+   * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+   *
+   * @since           1.0.0
+   */
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void {
+    this.addEventListenerOn(this as HTMLElement, type, listener, options);
+  }
+
+  /**
+   * @name           addEventListenerOn
+   * @type            Function
+   *
+   * This method allows you to add an event listener on any element.
+   * It will automatically remove the listener when the component is disconnected and added again when connected.
+   *
+   * @param           {HTMLElement}            $elm            The element on which to add the event listener
+   * @param           {String}            type            The event type to listen for
+   * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+   * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+   *
+   * @since           1.0.0
+   */
+  addEventListenerOn(
+    $elm: HTMLElement,
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void {
+    // protect
+    if (!$elm) {
+      return;
+    }
+
+    // get or create the listeners stack for this element
+    let stack: TLitElementEventListenerObject[] =
+      this._listenersMap.get($elm) ?? [];
+
+    // add the listner into the element listeners stack
+    stack.push({
+      listener,
+      type,
+    });
+
+    // register the event listener on the element
+    $elm.addEventListener(type, listener, options);
+
+    // set the listeners stack into the map
+    this._listenersMap.set($elm, stack);
   }
 
   /**
@@ -709,6 +788,14 @@ export default class LitElement extends __LitElement {
   }
 
   disconnectedCallback() {
+    for (let [$elm, listenersObj] of this._listenersMap.entries()) {
+      if (listenersObj.length) {
+        listenersObj.forEach((listenerObj) => {
+          $elm.removeEventListener(listenerObj.type, listenerObj.listener);
+        });
+      }
+    }
+
     super.disconnectedCallback();
     this._whenInViewportPromise.cancel?.();
   }

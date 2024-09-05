@@ -32,4 +32,4 @@ export type TPackageRootSettings = {
     upCount: number | undefined;
     requiredProperties: string[];
 };
-export default function __packageRootDir(from?: any, settings?: Partial<TPackageRootSettings>): any;
+export default function __packageRootDir(from?: string, settings?: Partial<TPackageRootSettings>): any;

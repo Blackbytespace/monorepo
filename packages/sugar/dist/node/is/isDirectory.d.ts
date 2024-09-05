@@ -26,4 +26,4 @@
 export type TIsDirectorySettings = {
     symlink?: boolean;
 };
-export default function __isDirectory(path: string, settings?: TIsDirectorySettings): any;
+export default function __isDirectory(path: string, settings?: TIsDirectorySettings): boolean;

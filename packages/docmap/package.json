@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/docmap",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Powerful class that let you generate and read docmap.json file. A docmap.json file is a \"directory\" that lists all the documentation found in your code using docblocks and the \"@namespace\" tag.",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -12,9 +12,9 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.4",
-    "@lotsof/docblock": "^1.0.0-alpha.4",
-    "@lotsof/sugar": "^1.0.0-alpha.4",
+    "@lotsof/config": "^1.0.0-alpha.5",
+    "@lotsof/docblock": "^1.0.0-alpha.5",
+    "@lotsof/sugar": "^1.0.0-alpha.5",
     "micromatch": "^4.0.5",
     "typescript": "^5.4.5"
   },

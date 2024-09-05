@@ -123,10 +123,12 @@
     }
 
     &.-preselected {
+      color: s-color(current, --lighten 50) !important;
       border: 2px solid s-color(current);
       @include lo-glow;
     }
     &.-selected {
+      color: s-color(complementary);
       @s-map-color (current, complementary);
     }
 

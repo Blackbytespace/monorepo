@@ -29,14 +29,6 @@ You can declare as many fonts as you want.</p>
 <p class="_description">The font family to use</p>
 </li>
 <li class="_item">
-<span class="_name">size<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
-<p class="_description">The font size to use</p>
-</li>
-<li class="_item">
-<span class="_name">lineHeight<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
-<p class="_description">The font line height to use</p>
-</li>
-<li class="_item">
 <span class="_name">weight<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
 <p class="_description">The font weight to use</p>
 </li>
@@ -48,20 +40,16 @@ You can declare as many fonts as you want.</p>
 <span class="_name">variant<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
 <p class="_description">The font variant to use</p>
 </li>
-<li class="_item">
-<span class="_name">stretch<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
-<p class="_description">The font stretch to use</p>
-</li>
 </ol>
 </div>
 <div class="_examples">
 ## Example
 ```css
 :root {
-   --s-font-default: s-font-family(sans), 16px, 26px;
-   --s-font-lead: s-font-family(sans), 26px, 40px;
-   --s-font-title: VT323, s-size(100), s-size(100), 300;
-   --s-font-code: s-font-family(code), 16px, 26px, 300;
+   --s-font-default: s-font-family(sans);
+   --s-font-lead: s-font-family(sans);
+   --s-font-title: VT323 600;
+   --s-font-code: s-font-family(code) 300;
 }
 
 .my-element {

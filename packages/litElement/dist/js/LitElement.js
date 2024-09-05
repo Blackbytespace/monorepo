@@ -157,12 +157,12 @@ class LitElement extends __LitElement {
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
     constructor(internalName, props) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         super();
         this.id = undefined;
         this.name = '';
         this.verbose = false;
-        this.activeWhen = [];
+        this.activeWhen = ['inViewport'];
         this.mountWhen = 'direct';
         this.prefixEvent = true;
         this.adoptStyle = true;
@@ -173,11 +173,12 @@ class LitElement extends __LitElement {
         this._internalName = this.tagName.toLowerCase();
         this._shouldUpdate = false;
         this._isInViewport = false;
+        this._listenersMap = new Map();
         this._state = {};
         if (internalName) {
             this._internalName = internalName;
         }
-        this._id = `s-${Math.round(Math.random() * 100)}`;
+        this.setAttribute('id', (_a = this.id) !== null && _a !== void 0 ? _a : `s-${Math.round(Math.random() * 9999)}`);
         // monitor if the component is in viewport or not
         this._whenInViewportPromise = __whenInViewport(this, {
             once: false,
@@ -189,7 +190,7 @@ class LitElement extends __LitElement {
             },
         });
         // @ts-ignore
-        const nodeFirstUpdated = (_a = this.firstUpdated) === null || _a === void 0 ? void 0 : _a.bind(this);
+        const nodeFirstUpdated = (_b = this.firstUpdated) === null || _b === void 0 ? void 0 : _b.bind(this);
         // @ts-ignore
         this.firstUpdated = () => __awaiter(this, void 0, void 0, function* () {
             if (nodeFirstUpdated) {
@@ -199,7 +200,7 @@ class LitElement extends __LitElement {
         });
         // litElement shouldUpdate
         // @ts-ignore
-        const nodeShouldUpdate = (_b = this.shouldUpdate) === null || _b === void 0 ? void 0 : _b.bind(this);
+        const nodeShouldUpdate = (_c = this.shouldUpdate) === null || _c === void 0 ? void 0 : _c.bind(this);
         // @ts-ignore
         this.shouldUpdate = () => {
             if (nodeShouldUpdate) {
@@ -211,7 +212,7 @@ class LitElement extends __LitElement {
             return this._shouldUpdate;
         };
         const defaultProps = Object.assign(Object.assign(Object.assign({}, LitElement.getDefaultProps(internalName.toLowerCase())), LitElement.getDefaultProps(this.tagName.toLowerCase())), (props !== null && props !== void 0 ? props : {}));
-        const mountWhen = (_d = (_c = this.getAttribute('mountWhen')) !== null && _c !== void 0 ? _c : defaultProps.mountWhen) !== null && _d !== void 0 ? _d : 'direct';
+        const mountWhen = (_e = (_d = this.getAttribute('mountWhen')) !== null && _d !== void 0 ? _d : defaultProps.mountWhen) !== null && _e !== void 0 ? _e : 'direct';
         // wait until mount
         this._waitAndExecute(mountWhen, () => {
             this._mount();
@@ -222,6 +223,14 @@ class LitElement extends __LitElement {
         const defaultProps = LitElement.getDefaultProps(this.tagName.toLowerCase());
         for (let [name, value] of Object.entries(defaultProps)) {
             this[name] = value;
+        }
+        // add back the listeners
+        for (let [$elm, listenersObj] of this._listenersMap.entries()) {
+            if (listenersObj.length) {
+                listenersObj.forEach((listenerObj) => {
+                    $elm.addEventListener(listenerObj.type, listenerObj.listener);
+                });
+            }
         }
         // component class
         this.classList.add(...this.cls(''));
@@ -287,6 +296,54 @@ class LitElement extends __LitElement {
             $elm = $elm.parentNode;
         }
         return $elm;
+    }
+    /**
+     * @name           addEventListener
+     * @type            Function
+     *
+     * This method allows you to add an event listener on the component itself.
+     * It will automatically remove the listener when the component is disconnected and added again when connected.
+     *
+     * @param           {String}            type            The event type to listen for
+     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+     *
+     * @since           1.0.0
+     */
+    addEventListener(type, listener, options) {
+        this.addEventListenerOn(this, type, listener, options);
+    }
+    /**
+     * @name           addEventListenerOn
+     * @type            Function
+     *
+     * This method allows you to add an event listener on any element.
+     * It will automatically remove the listener when the component is disconnected and added again when connected.
+     *
+     * @param           {HTMLElement}            $elm            The element on which to add the event listener
+     * @param           {String}            type            The event type to listen for
+     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+     *
+     * @since           1.0.0
+     */
+    addEventListenerOn($elm, type, listener, options) {
+        var _a;
+        // protect
+        if (!$elm) {
+            return;
+        }
+        // get or create the listeners stack for this element
+        let stack = (_a = this._listenersMap.get($elm)) !== null && _a !== void 0 ? _a : [];
+        // add the listner into the element listeners stack
+        stack.push({
+            listener,
+            type,
+        });
+        // register the event listener on the element
+        $elm.addEventListener(type, listener, options);
+        // set the listeners stack into the map
+        this._listenersMap.set($elm, stack);
     }
     /**
      * @name           dispatch
@@ -533,6 +590,13 @@ class LitElement extends __LitElement {
     }
     disconnectedCallback() {
         var _a, _b;
+        for (let [$elm, listenersObj] of this._listenersMap.entries()) {
+            if (listenersObj.length) {
+                listenersObj.forEach((listenerObj) => {
+                    $elm.removeEventListener(listenerObj.type, listenerObj.listener);
+                });
+            }
+        }
         super.disconnectedCallback();
         (_b = (_a = this._whenInViewportPromise).cancel) === null || _b === void 0 ? void 0 : _b.call(_a);
     }

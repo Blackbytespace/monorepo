@@ -1,6 +1,9 @@
 import { LitElement as __LitElement, html as __html } from 'lit';
-import { TWhenInViewportResult } from '../../../sugar/dist/js/dom/when/whenInViewport.js';
 export { __html as html };
+export type TLitElementEventListenerObject = {
+    listener: EventListenerOrEventListenerObject;
+    type: string;
+};
 export type TLitElementDispatchSettings = {
     $elm: HTMLElement;
     bubbles: boolean;
@@ -69,9 +72,10 @@ export default class LitElement extends __LitElement {
     shadowDom: boolean;
     classesSchema: TClassesSchema;
     protected _internalName: string;
-    _shouldUpdate: boolean;
-    _isInViewport: boolean;
-    _whenInViewportPromise: TWhenInViewportResult;
+    private _shouldUpdate;
+    private _isInViewport;
+    private _whenInViewportPromise;
+    private _listenersMap;
     protected _state: any;
     get state(): LitElement['_state'];
     set state(state: LitElement['_state']);
@@ -153,6 +157,35 @@ export default class LitElement extends __LitElement {
     setState(newState: Partial<LitElement['_state']>): void;
     log(...args: any[]): void;
     _getDocumentFromElement($elm: any): any;
+    /**
+     * @name           addEventListener
+     * @type            Function
+     *
+     * This method allows you to add an event listener on the component itself.
+     * It will automatically remove the listener when the component is disconnected and added again when connected.
+     *
+     * @param           {String}            type            The event type to listen for
+     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+     *
+     * @since           1.0.0
+     */
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    /**
+     * @name           addEventListenerOn
+     * @type            Function
+     *
+     * This method allows you to add an event listener on any element.
+     * It will automatically remove the listener when the component is disconnected and added again when connected.
+     *
+     * @param           {HTMLElement}            $elm            The element on which to add the event listener
+     * @param           {String}            type            The event type to listen for
+     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+     *
+     * @since           1.0.0
+     */
+    addEventListenerOn($elm: HTMLElement, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     /**
      * @name           dispatch
      * @type            Function

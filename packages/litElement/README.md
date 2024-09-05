@@ -199,6 +199,35 @@ Here's all the methods available on an extended `LitElement`:
  */
 
 /**
+ * @name           addEventListener
+ * @type            Function
+ *
+ * This method allows you to add an event listener on the component itself.
+ * It will automatically remove the listener when the component is disconnected and added again when connected.
+ *
+ * @param           {String}            type            The event type to listen for
+ * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+ * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+ *
+ * @since           1.0.0
+ */
+
+/**
+ * @name           addEventListenerOn
+ * @type            Function
+ *
+ * This method allows you to add an event listener on any element.
+ * It will automatically remove the listener when the component is disconnected and added again when connected.
+ *
+ * @param           {HTMLElement}            $elm            The element on which to add the event listener
+ * @param           {String}            type            The event type to listen for
+ * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+ * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+ *
+ * @since           1.0.0
+ */
+
+/**
  * @name      isMounted
  * @type      Function
  *

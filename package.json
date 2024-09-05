@@ -11,7 +11,7 @@
     "dev": "npx lerna run dev --stream",
     "clean": "npx lerna run clean --stream",
     "test": "npx lerna run test --stream",
-    "publish": "npx lerna run publish --stream"
+    "publish": "npx lerna run publish"
   },
   "pre-commit": [],
   "repository": {

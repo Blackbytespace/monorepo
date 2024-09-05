@@ -84,7 +84,7 @@
     right: s-space(50);
 
     [fill] {
-      fill: s-color(current);
+      fill: s-color(current, --lighten 25);
     }
 
     @s-map-color (current, ternary);

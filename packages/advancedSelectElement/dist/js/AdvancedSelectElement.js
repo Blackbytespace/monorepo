@@ -152,15 +152,6 @@ export default class AdvancedSelectElement extends __LitElement {
         this._templatesFromHtml = {};
         this._isArrowUsed = false;
         this._baseTemplates = (api) => { };
-        /**
-         * @name        refreshItems
-         * @type        Function
-         *
-         * Refresh the items in the dropdown
-         *
-         * @since       1.0.0
-         */
-        this._firstRefresh = true;
         this._currentItemIdx = 0;
     }
     mount() {
@@ -263,7 +254,7 @@ export default class AdvancedSelectElement extends __LitElement {
     }
     firstUpdated() {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b, _c;
+            var _a, _b;
             // input
             this._$input =
                 (_a = this.querySelector('input')) !== null && _a !== void 0 ? _a : document.createElement('input');
@@ -273,18 +264,18 @@ export default class AdvancedSelectElement extends __LitElement {
             this._$input.setAttribute('autocomplete', 'off');
             this._$form = this._$input.form;
             // prevent from sending form if search is opened
-            this._$input.addEventListener('keydown', (e) => {
+            this.addEventListenerOn(this._$input, 'keydown', (e) => {
                 if (e.key === 'Escape') {
                     e.preventDefault();
                 }
             });
-            (_c = this._$form) === null || _c === void 0 ? void 0 : _c.addEventListener('submit', (e) => {
+            this.addEventListenerOn(this._$form, 'submit', (e) => {
                 if (this.isActive()) {
                     e.preventDefault();
                 }
             });
             // handle update on key event
-            this._$input.addEventListener('keyup', (e) => __awaiter(this, void 0, void 0, function* () {
+            this.addEventListenerOn(this._$input, 'keyup', (e) => __awaiter(this, void 0, void 0, function* () {
                 if (!this.isActive()) {
                     return;
                 }
@@ -308,7 +299,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 }
             }));
             // handle update on focus
-            this._$input.addEventListener('focus', (e) => {
+            this.addEventListenerOn(this._$input, 'focus', (e) => {
                 if (!this.isActive()) {
                     return;
                 }
@@ -332,7 +323,7 @@ export default class AdvancedSelectElement extends __LitElement {
             this._$list = this.querySelector('ul');
             this._$dropdown = this.querySelector(`.${this.internalCls('_dropdown')}`);
             // handle scroll behaviors
-            document.addEventListener('scroll', () => {
+            this.addEventListenerOn(document, 'scroll', () => {
                 this._updateListSizeAndPosition();
             });
             this._updateListSizeAndPosition();
@@ -345,7 +336,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 this._filterItems();
             });
             // handle arrows
-            document.addEventListener('keyup', (e) => {
+            this.addEventListenerOn(document, 'keyup', (e) => {
                 if (!this.isActive())
                     return;
                 if (!this._filteredItems.length)
@@ -369,7 +360,9 @@ export default class AdvancedSelectElement extends __LitElement {
                     this.querySelectorAll(`.${this.internalCls('_item')}`)[0];
                 let direction;
                 if (!this.getPreselectedItem()) {
-                    this.preselect($items[0].dataset.id);
+                    this.preselect($items[0].dataset.id, {
+                        scrollIntoView: true,
+                    });
                 }
                 else {
                     let $nearestElement = __nearestElement($from, $items, {
@@ -378,11 +371,13 @@ export default class AdvancedSelectElement extends __LitElement {
                     if (!$nearestElement) {
                         return;
                     }
-                    this.preselect($nearestElement.dataset.id);
+                    this.preselect($nearestElement.dataset.id, {
+                        scrollIntoView: true,
+                    });
                 }
             });
             // handle return key
-            document.addEventListener('keyup', (e) => {
+            this.addEventListenerOn(document, 'keyup', (e) => {
                 if (e.key !== 'Enter') {
                     return;
                 }
@@ -462,6 +457,17 @@ export default class AdvancedSelectElement extends __LitElement {
         // do not preselect if not match the search
         if (!item.state.match)
             return;
+        // make sure the element is visible
+        if (settings === null || settings === void 0 ? void 0 : settings.scrollIntoView) {
+            const $item = this.getItemDomElement(item);
+            if ($item) {
+                $item.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'nearest',
+                });
+            }
+        }
         // set the new preselected
         item.state.preselected = true;
         // set focus in the input
@@ -514,12 +520,14 @@ export default class AdvancedSelectElement extends __LitElement {
      * @since       1.0.0
      */
     select(item = this.getPreselectedItem()) {
-        var _a;
+        var _a, _b;
         if (typeof item === 'string') {
             item = this.getItemById(item);
         }
         // reset preselected
         (_a = this.getPreselectedItem()) === null || _a === void 0 ? void 0 : _a.state.preselect = false;
+        // reset selected
+        (_b = this.getSelectedItem()) === null || _b === void 0 ? void 0 : _b.state.selected = false;
         // check if the component is in not selectable mode
         if (this.notSelectable)
             return;
@@ -560,6 +568,9 @@ export default class AdvancedSelectElement extends __LitElement {
     resetSelected() {
         var _a;
         (_a = this.getSelectedItem()) === null || _a === void 0 ? void 0 : _a.state.selected = false;
+    }
+    getItemDomElement(item) {
+        return this.querySelector(`.${this.internalCls('_item')}[data-id="${item.id}"]`);
     }
     /**
      * @name        reset
@@ -636,7 +647,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 this.reset();
                 this._close();
             });
-            yield this.refreshItems();
+            // await this.refreshItems();
             this.dispatch('open');
         });
     }
@@ -668,6 +679,14 @@ export default class AdvancedSelectElement extends __LitElement {
         this._$input.blur();
         this._close();
     }
+    /**
+     * @name        refreshItems
+     * @type        Function
+     *
+     * Refresh the items in the dropdown
+     *
+     * @since       1.0.0
+     */
     refreshItems() {
         return __awaiter(this, void 0, void 0, function* () {
             clearTimeout(this._isLoadingTimeout);
@@ -713,8 +732,8 @@ export default class AdvancedSelectElement extends __LitElement {
             if ($selected) {
                 this.preselect($selected === null || $selected === void 0 ? void 0 : $selected.dataset.id, {
                     preventFocus: true,
+                    scrollIntoView: true,
                 });
-                console.log(`.${this.internalCls('_item')}.-selected`, $selected);
                 return;
             }
             else {
@@ -722,6 +741,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 if (this._filteredItems.length) {
                     this.preselect(this._filteredItems[0], {
                         preventFocus: true,
+                        scrollIntoView: true,
                     });
                 }
             }

@@ -147,6 +147,7 @@ export default class AdvancedSelectElement extends __LitElement {
      */
     preselect(item: string | TAdvancedSelectElementItem, settings?: {
         preventFocus?: boolean;
+        scrollIntoView?: boolean;
     }): void;
     /**
      * @name        resetPreselected
@@ -180,6 +181,7 @@ export default class AdvancedSelectElement extends __LitElement {
      */
     select(item?: string | TAdvancedSelectElementItem): void;
     resetSelected(): void;
+    getItemDomElement(item: TAdvancedSelectElementItem): HTMLElement;
     /**
      * @name        reset
      * @type        Function
@@ -263,7 +265,6 @@ export default class AdvancedSelectElement extends __LitElement {
      *
      * @since       1.0.0
      */
-    private _firstRefresh;
     refreshItems(): Promise<void>;
     private _initItems;
     private _initItem;

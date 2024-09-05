@@ -24,4 +24,4 @@
 export type TIsFileSettings = {
     symlink?: boolean;
 };
-export default function __isFile(path: string, settings?: TIsFileSettings): any;
+export default function __isFile(path: string, settings?: TIsFileSettings): boolean;
