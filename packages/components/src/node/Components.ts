@@ -79,6 +79,8 @@ export default class Components {
     return this.registerLibrary(library);
   }
 
+  public getProjectType(): 
+
   public registerLibrary(library: __ComponentsLibrary): __ComponentsLibrary {
     this._libraries[library.name] = library;
     return this._libraries[library.name];

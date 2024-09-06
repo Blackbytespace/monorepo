@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/i18n",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Simple but powerfull package that let you handle i18n of your websites/apps easily and elegantly",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -11,7 +11,7 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/sugar": "^1.0.0-alpha.5",
+    "@lotsof/sugar": "^1.0.0-alpha.6",
     "typescript": "^5.4.5"
   },
   "exports": {

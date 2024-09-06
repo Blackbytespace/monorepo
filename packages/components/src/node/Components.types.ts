@@ -45,6 +45,7 @@ export type TComponentsComponentJsonExtendable = {
 export type TComponentsComponentJson = TComponentsComponentJsonExtendable & {
   version: string;
   name: string;
+  type: 'ui' | 'lib';
   description?: string;
   subset?: Record<'engine', TComponentsComponentJsonSubset>;
 };

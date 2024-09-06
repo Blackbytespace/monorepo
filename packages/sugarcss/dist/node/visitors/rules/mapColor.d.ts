@@ -11,8 +11,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * You can then change it by using this rule like this: `@s-map-color(complementary, current);`.
  * This will set the `current` color to the `complementary` one.
  *
- * @param       {String}        name              The color name you want to map
- * @param       {String}        to                The color name you want to map to
+ * @param       {String}        [name="accent"]              The color name you want to map
+ * @param       {String}        [to="current"]                The color name you want to map to
  * @return      {Css}                             The generated css
  *
  * @snippet       @s-map-color($1, $2);

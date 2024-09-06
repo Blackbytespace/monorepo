@@ -15,8 +15,8 @@ import __ensureColorExists from '../../ensure/colorExists.js';
  * You can then change it by using this rule like this: `@s-map-color(complementary, current);`.
  * This will set the `current` color to the `complementary` one.
  *
- * @param       {String}        name              The color name you want to map
- * @param       {String}        to                The color name you want to map to
+ * @param       {String}        [name="accent"]              The color name you want to map
+ * @param       {String}        [to="current"]                The color name you want to map to
  * @return      {Css}                             The generated css
  *
  * @snippet       @s-map-color($1, $2);
@@ -48,8 +48,8 @@ export default function color(v: any, settings: TSugarCssSettings): any {
     ...__parseArgs(v.prelude, ['name', 'to']),
   };
   args.values = {
-    to: 'accent',
-    name: 'current',
+    to: 'current',
+    name: 'accent',
     ...args.values,
   };
 

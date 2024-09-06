@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "body",
+  "type": "ui",
   "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
   "files": ["*.css"],
   "subset": {

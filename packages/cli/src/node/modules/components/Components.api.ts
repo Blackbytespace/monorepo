@@ -20,7 +20,7 @@ function setup() {
   // get the lotsof file path from this package to register defaults
   const packageRootDir = __packageRootDir(__dirname()),
     componentsJson: TComponentsComponentsJson = __readJsonSync(
-      `${packageRootDir}/components.json`,
+      `${packageRootDir}/library.json`,
     );
 
   for (let [name, librarySettings] of Object.entries(
