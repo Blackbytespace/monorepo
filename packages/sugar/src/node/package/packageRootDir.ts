@@ -1,7 +1,7 @@
+import __findPkgJson from 'find-package-json';
+import __fs from 'fs';
 import __objectHash from '../../shared/object/objectHash.js';
 import __isFile from '../is/isFile.js';
-
-import __findPkgJson from 'find-package-json';
 
 /**
  * @name                    packageRootDir
@@ -60,7 +60,13 @@ export default function __packageRootDir(
     return __packageRootDirsCache[storageKey];
   }
 
-  if (__isFile(from)) from = from.split('/').slice(0, -1).join('/');
+  if (__isFile(from)) {
+    from = from.split('/').slice(0, -1).join('/');
+  }
+
+  if (__fs.existsSync(`${from}/package.json`)) {
+    return from;
+  }
 
   const f = __findPkgJson(from);
   let file = f.next();

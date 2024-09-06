@@ -7,12 +7,6 @@ export type TComponentsComposerJson = {
   'require-dev'?: Record<string, string>;
 };
 
-export type TComponentsPackageJson = {
-  dependencies?: Record<string, string>;
-  devDependencies?: Record<string, string>;
-  globalDependencies?: Record<string, string>;
-};
-
 export type TComponentsConfig = {
   settings: TComponentsSettings;
 };
@@ -21,8 +15,10 @@ export type TComponentDefaults = {
   engine?: string | string[];
 };
 
-export type TComponentsComponentsJson = {
+export type TComponentsComponentsConfigJson = {
   libraries?: Record<string, TComponentsLibrarySettings>;
+  folders: Record<'ui' | 'component' | 'lib', string>;
+  default: TComponentDefaults;
 };
 
 export type TComponentsLibraryJson = {

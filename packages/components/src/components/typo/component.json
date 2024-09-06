@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "typo",
+  "type": "ui",
   "description": "Typography component",
   "files": ["typo.component.php", "typo.preview.php", "*.css"],
   "subset": {

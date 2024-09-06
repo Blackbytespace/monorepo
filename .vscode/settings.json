@@ -2,7 +2,7 @@
   "files.exclude": {
     "**/.old/**": true,
     "**/vendor": true,
-    // "**/dist": true,
+    "**/dist": true,
     // "**/*.js": {
     //   "when": "$(basename).ts"
     // },

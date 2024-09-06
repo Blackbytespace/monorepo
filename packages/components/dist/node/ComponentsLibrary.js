@@ -17,21 +17,21 @@ export default class ComponentsLibrary {
     get settings() {
         return this._settings;
     }
-    get componentsJson() {
-        return this._componentsJson;
+    get libraryJson() {
+        return this._libraryJson;
     }
     get name() {
-        return this._componentsJson.name;
+        return this._libraryJson.name;
     }
     get description() {
         var _a;
-        return (_a = this._componentsJson.description) !== null && _a !== void 0 ? _a : this.name;
+        return (_a = this._libraryJson.description) !== null && _a !== void 0 ? _a : this.name;
     }
     get rootDir() {
         return this._rootDir;
     }
     get version() {
-        return this._componentsJson.version;
+        return this._libraryJson.version;
     }
     get dependencies() {
         return this._dependencies;
@@ -41,7 +41,7 @@ export default class ComponentsLibrary {
         this.updated = false;
         this._settings = settings;
         this._rootDir = rootDir;
-        this._componentsJson = __readJsonSync(`${this.rootDir}/componentsLibrary.json`);
+        this._libraryJson = __readJsonSync(`${this.rootDir}/componentsLibrary.json`);
         this._addDependencies();
     }
     getComponents() {
@@ -50,8 +50,8 @@ export default class ComponentsLibrary {
         const componentsList = {};
         // check if we have the "components.folders" settings
         let folders = ['src/components/*'];
-        if ((_a = this.componentsJson) === null || _a === void 0 ? void 0 : _a.folders) {
-            folders = this.componentsJson.folders;
+        if ((_a = this.libraryJson) === null || _a === void 0 ? void 0 : _a.folders) {
+            folders = this.libraryJson.folders;
         }
         // list components
         for (let [i, path] of folders.entries()) {
@@ -81,8 +81,8 @@ export default class ComponentsLibrary {
     }
     _addDependencies() {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
-        if (this.componentsJson.dependencies) {
-            for (let [name, dep] of Object.entries((_a = this.componentsJson.dependencies) !== null && _a !== void 0 ? _a : {})) {
+        if (this.libraryJson.dependencies) {
+            for (let [name, dep] of Object.entries((_a = this.libraryJson.dependencies) !== null && _a !== void 0 ? _a : {})) {
                 const dependency = new __ComponentsDependency({
                     type: 'component',
                     level: 'library',
@@ -92,7 +92,7 @@ export default class ComponentsLibrary {
                 this.addDependency(dependency);
             }
         }
-        const npmDependencies = Object.assign(Object.assign(Object.assign({}, ((_d = (_c = (_b = this.componentsJson) === null || _b === void 0 ? void 0 : _b.packageJson) === null || _c === void 0 ? void 0 : _c.dependencies) !== null && _d !== void 0 ? _d : {})), ((_g = (_f = (_e = this.componentsJson) === null || _e === void 0 ? void 0 : _e.packageJson) === null || _f === void 0 ? void 0 : _f.devDependencies) !== null && _g !== void 0 ? _g : {})), ((_k = (_j = (_h = this.componentsJson) === null || _h === void 0 ? void 0 : _h.packageJson) === null || _j === void 0 ? void 0 : _j.globalDependencies) !== null && _k !== void 0 ? _k : {}));
+        const npmDependencies = Object.assign(Object.assign(Object.assign({}, ((_d = (_c = (_b = this.libraryJson) === null || _b === void 0 ? void 0 : _b.packageJson) === null || _c === void 0 ? void 0 : _c.dependencies) !== null && _d !== void 0 ? _d : {})), ((_g = (_f = (_e = this.libraryJson) === null || _e === void 0 ? void 0 : _e.packageJson) === null || _f === void 0 ? void 0 : _f.devDependencies) !== null && _g !== void 0 ? _g : {})), ((_k = (_j = (_h = this.libraryJson) === null || _h === void 0 ? void 0 : _h.packageJson) === null || _j === void 0 ? void 0 : _j.globalDependencies) !== null && _k !== void 0 ? _k : {}));
         if (Object.keys(npmDependencies).length) {
             for (let [name, dep] of Object.entries(npmDependencies)) {
                 const dependency = new __ComponentsDependency({
@@ -104,7 +104,7 @@ export default class ComponentsLibrary {
                 this.addDependency(dependency);
             }
         }
-        const composerDependencies = Object.assign(Object.assign({}, ((_m = (_l = this.componentsJson.composerJson) === null || _l === void 0 ? void 0 : _l.require) !== null && _m !== void 0 ? _m : {})), ((_p = (_o = this.componentsJson.composerJson) === null || _o === void 0 ? void 0 : _o['require-dev']) !== null && _p !== void 0 ? _p : {}));
+        const composerDependencies = Object.assign(Object.assign({}, ((_m = (_l = this.libraryJson.composerJson) === null || _l === void 0 ? void 0 : _l.require) !== null && _m !== void 0 ? _m : {})), ((_p = (_o = this.libraryJson.composerJson) === null || _o === void 0 ? void 0 : _o['require-dev']) !== null && _p !== void 0 ? _p : {}));
         if (Object.keys(composerDependencies).length) {
             for (let [name, dep] of Object.entries(composerDependencies)) {
                 const dependency = new __ComponentsDependency({

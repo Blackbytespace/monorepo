@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "config",
+  "type": "lib",
   "description": "Config proxy component",
   "files": ["*.php"],
   "dependencies": {

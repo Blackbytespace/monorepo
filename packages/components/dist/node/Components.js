@@ -7,9 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import __fs from 'fs';
 import * as __glob from 'glob';
 import __inquier from 'inquirer';
+import __componentsGenericConfig from './configFiles/generic.json' assert { type: 'json' };
+import __componentsLaravelConfig from './configFiles/laravel.json' assert { type: 'json' };
+import __componentsNextConfig from './configFiles/next.json' assert { type: 'json' };
+import __componentsNuxtConfig from './configFiles/nuxt.json' assert { type: 'json' };
 import { __isCommandExists } from '@lotsof/sugar/is';
+import { __detectProjectType, } from '@lotsof/sugar/project';
 import { __getConfig } from '@lotsof/config';
 import './Components.config.js';
 import { __packageRootDir } from '@lotsof/sugar/package';
@@ -41,10 +47,38 @@ export default class Components {
             }
         });
     }
+    init() {
+        // add the "components.config.json" file depending on the project type
+        const projectType = this.getProjectType();
+        let componentsConfig;
+        switch (projectType.type) {
+            case 'nuxt':
+                componentsConfig = __componentsNuxtConfig;
+                break;
+            case 'next':
+                componentsConfig = __componentsNextConfig;
+                break;
+            case 'laravel':
+                componentsConfig = __componentsLaravelConfig;
+                break;
+            default:
+                componentsConfig = __componentsGenericConfig;
+                break;
+        }
+        const componentsConfigPath = `${__packageRootDir()}/components.config.json`;
+        if (__fs.existsSync(componentsConfigPath)) {
+            throw new Error(`The components.config.json file already exists. Either remove it and run the command again or update it manually.`);
+        }
+        __fs.writeFileSync(componentsConfigPath, JSON.stringify(componentsConfig, null, 2));
+        return Promise.resolve();
+    }
     registerLibraryFromSettings(settings) {
         settings.$components = this;
         const library = new __ComponentsLibrary(`${this.libraryRootDir}/${settings.name}`, settings);
         return this.registerLibrary(library);
+    }
+    getProjectType() {
+        return __detectProjectType();
     }
     registerLibrary(library) {
         this._libraries[library.name] = library;

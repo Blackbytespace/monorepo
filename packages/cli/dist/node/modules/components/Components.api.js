@@ -18,7 +18,7 @@ function setup() {
     // init a new components instance
     _components = new __Components();
     // get the lotsof file path from this package to register defaults
-    const packageRootDir = __packageRootDir(__dirname()), componentsJson = __readJsonSync(`${packageRootDir}/components.json`);
+    const packageRootDir = __packageRootDir(__dirname()), componentsJson = __readJsonSync(`${packageRootDir}/components.config.json`);
     for (let [name, librarySettings] of Object.entries((_a = componentsJson.libraries) !== null && _a !== void 0 ? _a : {})) {
         librarySettings.name = name;
         _components.registerLibraryFromSettings(librarySettings);
@@ -27,6 +27,15 @@ function setup() {
 export default function __registerCommands(program) {
     program.hook('preAction', () => __awaiter(this, void 0, void 0, function* () {
         setup();
+        // @ts-ignore
+        const projectType = _components.getProjectType();
+        console.log(`▓ Project type: <yellow>${projectType.type}</yellow> (<magenta>${projectType.version}</magenta>)`);
+        console.log(' ');
+    }));
+    program.command('components.init').action(() => __awaiter(this, void 0, void 0, function* () {
+        console.log(`▓ Initializing components environment...`);
+        // init components
+        yield _components.init();
     }));
     program.command('components.libraries.ls').action(() => __awaiter(this, void 0, void 0, function* () {
         console.log(`▓ Listing libraries...`);

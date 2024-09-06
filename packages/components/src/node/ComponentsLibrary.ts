@@ -18,7 +18,7 @@ import __ComponentsComponent from './ComponentsComponent.js';
 
 export default class ComponentsLibrary {
   private _settings: TComponentsLibrarySettings;
-  private _componentsJson: TComponentsLibraryJson;
+  private _libraryJson: TComponentsLibraryJson;
   private _rootDir: string;
   private _dependencies: Record<string, __ComponentsDependency> = {};
 
@@ -28,16 +28,16 @@ export default class ComponentsLibrary {
     return this._settings;
   }
 
-  public get componentsJson(): TComponentsLibraryJson {
-    return this._componentsJson;
+  public get libraryJson(): TComponentsLibraryJson {
+    return this._libraryJson;
   }
 
   public get name(): string {
-    return this._componentsJson.name;
+    return this._libraryJson.name;
   }
 
   public get description(): string {
-    return this._componentsJson.description ?? this.name;
+    return this._libraryJson.description ?? this.name;
   }
 
   public get rootDir(): string {
@@ -45,7 +45,7 @@ export default class ComponentsLibrary {
   }
 
   public get version(): string {
-    return this._componentsJson.version;
+    return this._libraryJson.version;
   }
 
   public get dependencies(): Record<string, __ComponentsDependency> {
@@ -55,7 +55,7 @@ export default class ComponentsLibrary {
   constructor(rootDir: string, settings: TComponentsLibrarySettings) {
     this._settings = settings;
     this._rootDir = rootDir;
-    this._componentsJson = __readJsonSync(
+    this._libraryJson = __readJsonSync(
       `${this.rootDir}/componentsLibrary.json`,
     );
     this._addDependencies();
@@ -67,8 +67,8 @@ export default class ComponentsLibrary {
 
     // check if we have the "components.folders" settings
     let folders = ['src/components/*'];
-    if (this.componentsJson?.folders) {
-      folders = this.componentsJson.folders;
+    if (this.libraryJson?.folders) {
+      folders = this.libraryJson.folders;
     }
 
     // list components
@@ -107,9 +107,9 @@ export default class ComponentsLibrary {
   }
 
   private _addDependencies(): void {
-    if (this.componentsJson.dependencies) {
+    if (this.libraryJson.dependencies) {
       for (let [name, dep] of Object.entries(
-        this.componentsJson.dependencies ?? {},
+        this.libraryJson.dependencies ?? {},
       )) {
         const dependency = new __ComponentsDependency({
           type: 'component',
@@ -122,9 +122,9 @@ export default class ComponentsLibrary {
     }
 
     const npmDependencies = {
-      ...(this.componentsJson?.packageJson?.dependencies ?? {}),
-      ...(this.componentsJson?.packageJson?.devDependencies ?? {}),
-      ...(this.componentsJson?.packageJson?.globalDependencies ?? {}),
+      ...(this.libraryJson?.packageJson?.dependencies ?? {}),
+      ...(this.libraryJson?.packageJson?.devDependencies ?? {}),
+      ...(this.libraryJson?.packageJson?.globalDependencies ?? {}),
     };
     if (Object.keys(npmDependencies).length) {
       for (let [name, dep] of Object.entries(npmDependencies)) {
@@ -139,8 +139,8 @@ export default class ComponentsLibrary {
     }
 
     const composerDependencies = {
-      ...(this.componentsJson.composerJson?.require ?? {}),
-      ...(this.componentsJson.composerJson?.['require-dev'] ?? {}),
+      ...(this.libraryJson.composerJson?.require ?? {}),
+      ...(this.libraryJson.composerJson?.['require-dev'] ?? {}),
     };
     if (Object.keys(composerDependencies).length) {
       for (let [name, dep] of Object.entries(composerDependencies)) {

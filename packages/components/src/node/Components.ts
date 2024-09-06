@@ -1,7 +1,18 @@
+import __fs from 'fs';
 import * as __glob from 'glob';
 import __inquier from 'inquirer';
 
+import __componentsGenericConfig from './configFiles/generic.json' assert { type: 'json' };
+import __componentsLaravelConfig from './configFiles/laravel.json' assert { type: 'json' };
+import __componentsNextConfig from './configFiles/next.json' assert { type: 'json' };
+import __componentsNuxtConfig from './configFiles/nuxt.json' assert { type: 'json' };
+
 import { __isCommandExists } from '@lotsof/sugar/is';
+
+import {
+  __detectProjectType,
+  type TDetectProjectTypeResult,
+} from '@lotsof/sugar/project';
 
 import { __getConfig } from '@lotsof/config';
 
@@ -66,6 +77,42 @@ export default class Components {
     }
   }
 
+  public init(): Promise<void> {
+    // add the "components.config.json" file depending on the project type
+    const projectType = this.getProjectType();
+
+    let componentsConfig: any;
+
+    switch (projectType.type) {
+      case 'nuxt':
+        componentsConfig = __componentsNuxtConfig;
+        break;
+      case 'next':
+        componentsConfig = __componentsNextConfig;
+        break;
+      case 'laravel':
+        componentsConfig = __componentsLaravelConfig;
+        break;
+      default:
+        componentsConfig = __componentsGenericConfig;
+        break;
+    }
+
+    const componentsConfigPath = `${__packageRootDir()}/components.config.json`;
+
+    if (__fs.existsSync(componentsConfigPath)) {
+      throw new Error(
+        `The components.config.json file already exists. Either remove it and run the command again or update it manually.`,
+      );
+    }
+    __fs.writeFileSync(
+      componentsConfigPath,
+      JSON.stringify(componentsConfig, null, 2),
+    );
+
+    return Promise.resolve();
+  }
+
   public registerLibraryFromSettings(
     settings: TComponentsLibrarySettings,
   ): __ComponentsLibrary {
@@ -79,7 +126,9 @@ export default class Components {
     return this.registerLibrary(library);
   }
 
-  public getProjectType(): 
+  public getProjectType(): TDetectProjectTypeResult {
+    return __detectProjectType();
+  }
 
   public registerLibrary(library: __ComponentsLibrary): __ComponentsLibrary {
     this._libraries[library.name] = library;

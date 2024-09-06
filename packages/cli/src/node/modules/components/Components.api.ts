@@ -5,10 +5,10 @@ import { __getConfig } from '@lotsof/config';
 
 // @ts-ignore
 import __Components, {
-  TComponentsComponentsJson,
-  TComponentsLibrarySettings,
   __ComponentsComponent,
   __ComponentsDependency,
+  type TComponentsComponentsConfigJson,
+  type TComponentsLibrarySettings,
 } from '@lotsof/components';
 
 let _components: __Components;
@@ -19,8 +19,8 @@ function setup() {
 
   // get the lotsof file path from this package to register defaults
   const packageRootDir = __packageRootDir(__dirname()),
-    componentsJson: TComponentsComponentsJson = __readJsonSync(
-      `${packageRootDir}/library.json`,
+    componentsJson: TComponentsComponentsConfigJson = __readJsonSync(
+      `${packageRootDir}/components.config.json`,
     );
 
   for (let [name, librarySettings] of Object.entries(
@@ -36,6 +36,20 @@ function setup() {
 export default function __registerCommands(program: any): void {
   program.hook('preAction', async () => {
     setup();
+
+    // @ts-ignore
+    const projectType = _components.getProjectType();
+    console.log(
+      `▓ Project type: <yellow>${projectType.type}</yellow> (<magenta>${projectType.version}</magenta>)`,
+    );
+    console.log(' ');
+  });
+
+  program.command('components.init').action(async () => {
+    console.log(`▓ Initializing components environment...`);
+
+    // init components
+    await _components.init();
   });
 
   program.command('components.libraries.ls').action(async () => {

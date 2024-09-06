@@ -1,0 +1,16 @@
+{
+    "libraries": {
+        "@lotsof/components": {
+            "type": "git",
+            "url": "git@github.com:lotsofdev/components.git"
+        }
+    },
+    "folders": {
+        "components": "~/components",
+        "ui": "~/components/ui",
+        "lib": "~/lib"
+    },
+    "default": {
+        "engine": "tsx"
+    }
+}

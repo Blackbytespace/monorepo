@@ -8,8 +8,24 @@
     "engine": {
       "question": "Which engine do you use?",
       "type": "checkbox",
-      "choices": ["blade", "twig", "tsx"],
+      "choices": ["tsx", "vue", "blade", "twig"],
       "component": {
+        "tsx": {
+          "files": ["*.tsx", "body.type.ts"],
+          "packageJson": {
+            "dependencies": {
+              "react": "^18.0.0"
+            }
+          }
+        },
+        "vue": {
+          "files": ["*.vue", "body.type.ts"],
+          "packageJson": {
+            "dependencies": {
+              "vue": "^3.5.3"
+            }
+          }
+        },
         "twig": {
           "files": ["*.twig", "body.type.php", "body.component.php"],
           "dependencies": {
@@ -20,14 +36,6 @@
           "files": ["*.blade.php", "body.type.php", "body.component.php"],
           "dependencies": {
             "@lotsof/components/renderer": "^1.0.0"
-          }
-        },
-        "tsx": {
-          "files": ["*.tsx", "body.type.ts", "body.component.ts"],
-          "packageJson": {
-            "dependencies": {
-              "react": "^18.0.0"
-            }
           }
         }
       }

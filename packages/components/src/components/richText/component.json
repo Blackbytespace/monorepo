@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "richText",
+  "type": "ui",
   "description": "Simple rich text component",
   "files": ["*.php"],
   "composerJson": {

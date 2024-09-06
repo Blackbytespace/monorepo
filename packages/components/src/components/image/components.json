@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "image",
+  "type": "ui",
   "description": "Simple image component",
   "files": ["*"],
   "dependencies": {}

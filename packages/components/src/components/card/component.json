@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "card",
+  "type": "component",
   "description": "Simple card component",
   "files": ["*.php", "*.css"],
   "composerJson": {

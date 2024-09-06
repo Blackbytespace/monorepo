@@ -1,6 +1,7 @@
+import __findPkgJson from 'find-package-json';
+import __fs from 'fs';
 import __objectHash from '../../shared/object/objectHash.js';
 import __isFile from '../is/isFile.js';
-import __findPkgJson from 'find-package-json';
 const __packageRootDirsCache = {};
 export default function __packageRootDir(from = process.cwd(), settings) {
     const finalSettings = Object.assign({ highest: false, upCount: undefined, requiredProperties: ['name', 'version'] }, (settings !== null && settings !== void 0 ? settings : {}));
@@ -9,8 +10,12 @@ export default function __packageRootDir(from = process.cwd(), settings) {
     if (!from && __packageRootDirsCache[storageKey]) {
         return __packageRootDirsCache[storageKey];
     }
-    if (__isFile(from))
+    if (__isFile(from)) {
         from = from.split('/').slice(0, -1).join('/');
+    }
+    if (__fs.existsSync(`${from}/package.json`)) {
+        return from;
+    }
     const f = __findPkgJson(from);
     let file = f.next();
     let finalFile, upCountIdx = 0;

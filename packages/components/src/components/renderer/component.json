@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "renderer",
+  "type": "lib",
   "description": "Simple renderer engine component that support blade and twig",
   "files": [
     "renderer.php",

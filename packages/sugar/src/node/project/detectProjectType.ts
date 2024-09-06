@@ -1,4 +1,5 @@
 import __fs from 'fs';
+import __packageRootDir from '../package/packageRootDir.js';
 
 /**
  * @name            detectProjectType
@@ -8,7 +9,15 @@ import __fs from 'fs';
  * @status          beta
  *
  * This function allows you to detect the project type like "next", "nuxt", etc...
- * If the project type is not detected, it will return "generic" for the type and "1.0.0" for the version.
+ * If the project type is not detected, it will return "unknown" for the type and "1.0.0" for the version.
+ * Here the list of detected project types:
+ *
+ * - next
+ * - nuxt
+ * - astro
+ * - remix
+ * - sveltekit
+ * - laravel
  *
  * @param       {String}            [cwd=process.cwd()]         The root project directory to detect the type from
  * @return      {IDetectProjectTypeResult}                      An object that describe the detected project type
@@ -35,17 +44,42 @@ export type TDetectProjectTypeResult = {
 export default function detectProjectType(
   cwd = process.cwd(),
 ): TDetectProjectTypeResult {
-  const packageJson = JSON.parse(
-    __fs.readFileSync(`${cwd}/package.json`, 'utf8').toString(),
-  );
+  let packageJson: any = {},
+    composerJson: any = {};
+
+  const packageRootDir = __packageRootDir(cwd);
+
+  try {
+    packageJson = JSON.parse(
+      __fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString(),
+    );
+  } catch (e) {}
+  try {
+    composerJson = JSON.parse(
+      __fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString(),
+    );
+  } catch (e) {}
+
+  // detecting the package type laravel
+  if (composerJson.require?.['laravel/framework']) {
+    const version = composerJson.require['laravel/framework'].replace(/\^/, '');
+    return {
+      type: 'laravel',
+      version,
+      rawVersion: composerJson.require['laravel/framework'],
+      major: parseInt(version.split('.')[0]),
+      minor: parseInt(version.split('.')[1]),
+      fix: parseInt(version.split('.')[2]),
+    };
+  }
 
   // detecting the package type next
   if (
-    __fs.existsSync(`${cwd}/next.config.js`) ||
-    __fs.existsSync(`${cwd}/next.config.mjs`) ||
-    __fs.existsSync(`${cwd}/next.config.ts`)
+    __fs.existsSync(`${packageRootDir}/next.config.js`) ||
+    __fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
+    __fs.existsSync(`${packageRootDir}/next.config.ts`)
   ) {
-    const version = packageJson.dependencies.next.replace(/\^/, '');
+    const version = packageJson.dependencies?.next.replace(/\^/, '');
     return {
       type: 'next',
       version,
@@ -58,9 +92,9 @@ export default function detectProjectType(
 
   // detecting the package type nuxt
   if (
-    __fs.existsSync(`${cwd}/nuxt.config.js`) ||
-    __fs.existsSync(`${cwd}/nuxt.config.mjs`) ||
-    __fs.existsSync(`${cwd}/nuxt.config.ts`)
+    __fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
+    __fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
+    __fs.existsSync(`${packageRootDir}/nuxt.config.ts`)
   ) {
     const version = packageJson.dependencies.nuxt.replace(/\^/, '');
     return {
@@ -73,17 +107,53 @@ export default function detectProjectType(
     };
   }
 
+  // detecting the package type svelte
+  if (
+    __fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
+    __fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
+    __fs.existsSync(`${packageRootDir}/svelte.config.ts`)
+  ) {
+    const version = packageJson.dependencies?.['@sveltejs/kit'].replace(
+      /\^/,
+      '',
+    );
+    return {
+      type: 'sveltekit',
+      version,
+      rawVersion: packageJson.dependencies['@sveltejs/kit'],
+      major: parseInt(version.split('.')[0]),
+      minor: parseInt(version.split('.')[1]),
+      fix: parseInt(version.split('.')[2]),
+    };
+  }
+
   // detecting the package type astro
   if (
-    __fs.existsSync(`${cwd}/astro.config.js`) ||
-    __fs.existsSync(`${cwd}/astro.config.mjs`) ||
-    __fs.existsSync(`${cwd}/astro.config.ts`)
+    __fs.existsSync(`${packageRootDir}/astro.config.js`) ||
+    __fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
+    __fs.existsSync(`${packageRootDir}/astro.config.ts`)
   ) {
-    const version = packageJson.dependencies.astro.replace(/\^/, '');
+    const version = packageJson.dependencies?.astro.replace(/\^/, '');
     return {
       type: 'astro',
       version,
       rawVersion: packageJson.dependencies.astro,
+      major: parseInt(version.split('.')[0]),
+      minor: parseInt(version.split('.')[1]),
+      fix: parseInt(version.split('.')[2]),
+    };
+  }
+
+  // detecting the package type remix
+  if (packageJson.dependencies?.['@remix-run/serve']) {
+    const version = packageJson.dependencies['@remix-run/serve'].replace(
+      /\^/,
+      '',
+    );
+    return {
+      type: 'remix',
+      version,
+      rawVersion: packageJson.dependencies['@remix-run/serve'],
       major: parseInt(version.split('.')[0]),
       minor: parseInt(version.split('.')[1]),
       fix: parseInt(version.split('.')[2]),

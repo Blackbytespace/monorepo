@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "section",
+  "type": "component",
   "description": "Simple section component",
   "files": ["*.php", "*.css"],
   "composerJson": {
