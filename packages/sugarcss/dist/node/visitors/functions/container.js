@@ -1,5 +1,4 @@
 import __parseArgs from '../../utils/parseArgs.js';
-import __containerExists from '../../ensure/containerExists.js';
 /**
  * @name            s-container
  * @namespace       css.function
@@ -36,7 +35,6 @@ import __containerExists from '../../ensure/containerExists.js';
 export default function container(value, settings) {
     const args = __parseArgs(value.arguments, ['prop', 'container']);
     args.values = Object.assign({ container: 'default', prop: 'width' }, args.values);
-    __containerExists(args.values.container);
     const props = [];
     switch (args.values.prop) {
         case 'minWidth':

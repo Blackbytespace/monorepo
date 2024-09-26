@@ -1,6 +1,5 @@
 import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
-import __ensureEasingFunctionExists from '../../ensure/easingFunctionExists.js';
 /**
  * @name            s-size
  * @namespace       css.function
@@ -44,8 +43,6 @@ export default function size(value, settings) {
             }
         }
     }
-    // protect against invalid easings
-    __ensureEasingFunctionExists(sizeArgs.easing);
     // prepare the easing function
     const easingFunction = env.easingFunctions[easing];
     // calculate the delta between min and max

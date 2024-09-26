@@ -37,7 +37,9 @@ export default function __addPackageDependencies(deps, settings) {
             }
             const componentVersion = __semver.minVersion(version), projectVersion = __semver.coerce(packageJson[depProp][name]);
             // check if the dependency satifdy the semver range
-            if (componentVersion.major < projectVersion.major) {
+            if (componentVersion &&
+                projectVersion &&
+                componentVersion.major < projectVersion.major) {
                 throw new Error(`The dependency "<yellow>${name}</yellow>"@<magenta>${version}</magenta> that you want to add already exists in the package.json and does not satisfy the version <magenta>${packageJson[depProp][name]}</magenta> required by the project...`);
             }
         }

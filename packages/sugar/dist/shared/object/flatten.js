@@ -1,50 +1,48 @@
-import __isPlain from '../is/isPlainObject.js';
-export default function __flatten(object, settings = {}) {
-    var _a;
-    const toReturn = {};
-    // make sure the passed object is not null, undefined
-    if (!Array.isArray(object) && !__isPlain(object))
-        return object;
-    settings = Object.assign({ separator: '.', array: false, quoteSeparatedProperties: true, quoteCharacter: '"', excludeProps: [], keepLastIntact: false }, settings);
-    for (const key in object) {
-        if (object[key] === undefined)
-            continue;
-        if (object[key] === null) {
-            toReturn[key] = null;
-            continue;
+/**
+ * @name                        flatten
+ * @namespace                   shared.object
+ * @type                        Function
+ * @platform                    js
+ * @platform                    node
+ * @status                      stable
+ *
+ * Transform the passed multiple level object into a single level one
+ *
+ * @param               {Object}                          object                    The object to flatten
+ * @param               {Object}                          [settings={}]             An object of settings to configure your flatten process
+ * @return              {Object}                                                    The flatten object
+ *
+ * @setting               {String}            [separation="."]          The separation character to use for preperty names
+ * @setting               {String}            [prefix=""]               A prefix to add to the property names
+ *
+ * @todo      tests
+ *
+ * @snippet         __flatten($1)
+ *
+ * @example             js
+ * import { __flatten } from '@lotsof/sugar/object';
+ * __flatten({
+ *    hello: {
+ *      world: 'Coco'
+ *    }
+ * });
+ *
+ * @since       2.0.0
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ */
+export default function __flatten(obj, settings) {
+    const finalSettings = Object.assign({ separator: '.', prefix: '' }, (settings !== null && settings !== void 0 ? settings : {}));
+    return Object.keys(obj).reduce((acc, k) => {
+        const pre = finalSettings.prefix.length
+            ? finalSettings.prefix + finalSettings.separator
+            : '';
+        if (typeof obj[k] === 'object' && obj[k] !== null) {
+            Object.assign(acc, __flatten(obj[k], Object.assign(Object.assign({}, finalSettings), { prefix: pre + k })));
         }
-        if (((_a = settings.excludeProps) === null || _a === void 0 ? void 0 : _a.indexOf(key)) !== -1) {
-            toReturn[key] = object[key];
-            continue;
+        else {
+            acc[pre + k] = obj[k];
         }
-        if ((Array.isArray(object[key]) && settings.array) ||
-            (!Array.isArray(object[key]) && typeof object[key]) == 'object') {
-            const isArray = Array.isArray(object[key]);
-            const flatObject = __flatten(object[key], Object.assign(Object.assign({}, settings), { keepLastIntact: false }));
-            for (const x in flatObject) {
-                if (flatObject[x] === undefined)
-                    continue;
-                if (isArray) {
-                    toReturn[`${key}[${x}]`] = flatObject[x];
-                }
-                else {
-                    const part = key;
-                    if (settings.separator &&
-                        settings.quoteSeparatedProperties &&
-                        part.includes(settings.separator)) {
-                        toReturn[`${settings.quoteCharacter}${key}${settings.quoteCharacter}` +
-                            settings.separator +
-                            x] = flatObject[x];
-                    }
-                    else {
-                        toReturn[key + settings.separator + x] = flatObject[x];
-                    }
-                }
-            }
-            continue;
-        }
-        toReturn[key] = object[key];
-    }
-    return toReturn;
+        return acc;
+    }, {});
 }
 //# sourceMappingURL=flatten.js.map

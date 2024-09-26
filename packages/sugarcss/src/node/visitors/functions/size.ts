@@ -2,8 +2,6 @@ import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __ensureEasingFunctionExists from '../../ensure/easingFunctionExists.js';
-
 /**
  * @name            s-size
  * @namespace       css.function
@@ -51,9 +49,6 @@ export default function size(value: any, settings: TSugarCssSettings): any {
       }
     }
   }
-
-  // protect against invalid easings
-  __ensureEasingFunctionExists(sizeArgs.easing);
 
   // prepare the easing function
   const easingFunction = env.easingFunctions[easing];

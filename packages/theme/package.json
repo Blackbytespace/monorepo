@@ -1,0 +1,41 @@
+{
+  "name": "@lotsof/theme",
+  "description": "Useful theme related stuffs",
+  "version": "1.0.0-alpha.18",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "build": "tsc",
+    "test": "vitest",
+    "publish": "npm publish --access public"
+  },
+  "types": "./src/shared/theme.types.ts",
+  "exports": {
+    "browser": {
+      "default": "./dist/js/_exports.js"
+    },
+    "node": {
+      "default": "./dist/node/_exports.js"
+    }
+  },
+  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
+  "license": "MIT",
+  "globalDependencies": {},
+  "dependencies": {
+    "@lotsof/config": "^1.0.0-alpha.18",
+    "@lotsof/sugar": "^1.0.0-alpha.18",
+    "glob": "^11.0.0",
+    "puppeteer": "^23.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.4"
+  }
+}

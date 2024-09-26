@@ -25,7 +25,7 @@ function setup() {
 
   for (let [name, librarySettings] of Object.entries(
     componentsJson.libraries ?? {},
-  )) {
+  ) as [string, TComponentsLibrarySettings][]) {
     librarySettings.name = name;
     _components.registerLibraryFromSettings(
       <TComponentsLibrarySettings>librarySettings,
@@ -76,7 +76,10 @@ export default function __registerCommands(program: any): void {
 
     let currentPackageName = '';
 
-    for (let [componentName, component] of Object.entries(components)) {
+    for (let [componentName, component] of Object.entries(components) as [
+      string,
+      any,
+    ][]) {
       if (currentPackageName !== component.library.name) {
         currentPackageName = component.library.name;
         console.log(`│ <cyan>${currentPackageName}</cyan>`);
@@ -168,7 +171,10 @@ export default function __registerCommands(program: any): void {
         Object.entries(result.libraries).length ? 's' : ''
       } updated:`,
     );
-    for (let [libraryName, library] of Object.entries(result.libraries)) {
+    for (let [libraryName, library] of Object.entries(result.libraries) as [
+      String,
+      any,
+    ][]) {
       console.log(
         `│ - ${library.updated ? '<green>' : ''}${library.name}${
           library.updated ? '</green>' : ''

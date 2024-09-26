@@ -4,11 +4,10 @@
   "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
   "type": "module",
   "workspaces": [
-    "packages/*",
-    "packages/wordpress-playground/wordpress/wp-content/themes/lotsof"
+    "packages/*"
   ],
   "scripts": {
-    "dev": "npx lerna run dev --stream",
+    "dev": "npx lerna run dev",
     "clean": "npx lerna run clean --stream",
     "test": "npx lerna run test --stream",
     "publish": "npx lerna run publish"

@@ -13,10 +13,7 @@
  * @return              {Object}                                                    The flatten object
  *
  * @setting               {String}            [separation="."]          The separation character to use for preperty names
- * @setting 							{Boolean}			    	[array=false] 		Specify if you want to flatten array or not
- * @setting               {Boolean}          [quoteSeparatedProperties=true]      Specify if you want to quote dotted properties to be able to restore them correctly later
- * @setting               {String}        [quoteCharacter='"']        Specify the quote character to use when need to quote separated properties
- * @setting               {Boolean}       [keepLastIntact=false]       Specify if you want to keep the last level (object, array) intact and not to flatten each properties
+ * @setting               {String}            [prefix=""]               A prefix to add to the property names
  *
  * @todo      tests
  *
@@ -34,11 +31,7 @@
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TFlattenSettings = {
-    separator?: string;
-    array?: boolean;
-    quoteSeparatedProperties?: boolean;
-    quoteCharacter?: string;
-    excludeProps?: string[];
-    keepLastIntact?: boolean;
+    separator: string;
+    prefix: string;
 };
-export default function __flatten(object: any, settings?: TFlattenSettings): any;
+export default function __flatten(obj: any, settings?: Partial<TFlattenSettings>): Record<string, any>;

@@ -1,4 +1,3 @@
-import __ensureTransitionExists from '../../ensure/transitionExists.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-transition
@@ -31,7 +30,6 @@ export default function transition(value, settings) {
         separator: ['white-space', 'comma'],
     }));
     args.values = Object.assign({ name: 'default' }, args.values);
-    __ensureTransitionExists(args.values.name);
     const parts = [];
     parts.push(`var(--s-transition-${args.values.name}-duration, 0.3s)`);
     parts.push(`var(--s-transition-${args.values.name}-property, all)`);

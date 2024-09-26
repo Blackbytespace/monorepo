@@ -1,4 +1,3 @@
-import __ensureFontFamilyExists from '../../ensure/fontFamilyExists.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-font-family
@@ -28,8 +27,6 @@ export default function fontFamily(value, settings) {
     const args = __parseArgs(value.arguments, ['name'], {
         separator: ['white-space', 'comma'],
     });
-    // protect against invalid fonts
-    __ensureFontFamilyExists(args.values.name);
     return {
         raw: `var(--s-font-family-${args.values.name})`,
     };

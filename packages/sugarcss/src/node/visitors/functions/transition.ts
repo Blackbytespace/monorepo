@@ -1,4 +1,3 @@
-import __ensureTransitionExists from '../../ensure/transitionExists.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -42,8 +41,6 @@ export default function transition(
     name: 'default',
     ...args.values,
   };
-
-  __ensureTransitionExists(args.values.name);
 
   const parts: string[] = [];
   parts.push(`var(--s-transition-${args.values.name}-duration, 0.3s)`);

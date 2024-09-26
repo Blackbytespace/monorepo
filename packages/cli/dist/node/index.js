@@ -17,6 +17,7 @@ import { __loadConfig } from '@lotsof/config';
 import __registerComponentsCommands from './modules/components/Components.api.js';
 import __registerDocmapCommands from './modules/docmap/Docmap.api.js';
 import __registerFactoryCommands from './modules/factory/factory.api.js';
+import __registerPuppetCommands from './modules/puppet/puppet.api.js';
 const nativeConsoleLog = console.log;
 console.log = (...args) => {
     args.forEach((arg) => {
@@ -36,5 +37,6 @@ program.hook('preAction', () => __awaiter(void 0, void 0, void 0, function* () {
 __registerDocmapCommands(program);
 __registerComponentsCommands(program);
 __registerFactoryCommands(program);
+__registerPuppetCommands(program);
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map

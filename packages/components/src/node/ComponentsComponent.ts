@@ -222,7 +222,7 @@ export default class ComponentsComponent {
           type: 'npm',
           level: 'component',
           name,
-          version: dep,
+          version: dep as string,
         });
         this.addDependency(dependency);
       }

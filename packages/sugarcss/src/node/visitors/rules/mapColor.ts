@@ -1,8 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __ensureColorExists from '../../ensure/colorExists.js';
-
 /**
  * @name            s-map-color
  * @namespace       css.rule
@@ -52,8 +50,6 @@ export default function color(v: any, settings: TSugarCssSettings): any {
     name: 'accent',
     ...args.values,
   };
-
-  __ensureColorExists(args.values.name);
 
   const ast = [
     {

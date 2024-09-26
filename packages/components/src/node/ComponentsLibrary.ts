@@ -132,7 +132,7 @@ export default class ComponentsLibrary {
           type: 'npm',
           level: 'library',
           name,
-          version: dep,
+          version: dep as string,
         });
         this.addDependency(dependency);
       }

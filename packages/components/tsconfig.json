@@ -19,7 +19,7 @@
     "target": "es6",
     "module": "nodenext",
     "sourceMap": true,
-    "declaration": true,
+    // "declaration": true,
 
     "esModuleInterop": true,
     "moduleResolution": "nodenext"

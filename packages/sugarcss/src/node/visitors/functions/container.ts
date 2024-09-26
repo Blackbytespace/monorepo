@@ -1,8 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __containerExists from '../../ensure/containerExists.js';
-
 /**
  * @name            s-container
  * @namespace       css.function
@@ -46,8 +44,6 @@ export default function container(
     prop: 'width',
     ...args.values,
   };
-
-  __containerExists(args.values.container);
 
   const props: string[] = [];
 

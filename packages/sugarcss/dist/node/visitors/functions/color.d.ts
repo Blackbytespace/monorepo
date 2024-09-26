@@ -24,6 +24,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *
  * @param      {String}        color                The color name you want to apply like "main", "accent", etc...
  * @param      {String}        shadeOrModifiers      The shade name you want to apply like "text", "placeholder", etc... or a string of modifiers like --lighten 10 --saturate 20
+ * @param      {String}        modifiers             A string of modifiers like --lighten 10 --saturate 20, etc...
  * @return     {Css}                                The generated css
  *
  * @example         css

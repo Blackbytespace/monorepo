@@ -1,4 +1,3 @@
-import __ensureFontFamilyExists from '../../ensure/fontFamilyExists.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -33,9 +32,6 @@ export default function fontFamily(
   const args = __parseArgs(value.arguments, ['name'], {
     separator: ['white-space', 'comma'],
   });
-
-  // protect against invalid fonts
-  __ensureFontFamilyExists(args.values.name);
 
   return {
     raw: `var(--s-font-family-${args.values.name})`,

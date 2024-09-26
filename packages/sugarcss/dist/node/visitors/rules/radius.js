@@ -1,5 +1,4 @@
 import __parseArgs from '../../utils/parseArgs.js';
-import __ensureRadiusExists from '../../ensure/radiusExists.js';
 /**
  * @name            s-radius
  * @namespace       css.rule
@@ -36,7 +35,6 @@ export default function radius(v, settings) {
     // parse args
     const args = Object.assign({}, __parseArgs(v.prelude, ['name']));
     args.values = Object.assign({ name: 'default' }, args.values);
-    __ensureRadiusExists(args.values.name);
     const ast = [
         {
             type: 'style',

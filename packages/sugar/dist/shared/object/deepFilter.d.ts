@@ -27,7 +27,12 @@
  *      property: 'world'
  *    }
  * }, ({key, item}) => typeof item === 'string');
- * // { coco: 'hello' }
+ * // {
+ * //   coco: 'hello'
+ * //   sub: {
+ * //     property: 'world'
+ * //   }
+ * // }
  *
  * @since         2.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)

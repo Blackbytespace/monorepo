@@ -37,6 +37,8 @@ export default function fontFamily(v, settings: TSugarCssSettings): any {
     separator: ['white-space', 'comma'],
   });
 
+  console.log('n', args);
+
   const result: any[] = [];
 
   // save in env

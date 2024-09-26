@@ -1,4 +1,3 @@
-import __ensureEasingFunctionExists from '../../ensure/easingFunctionExists.js';
 import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
@@ -48,9 +47,6 @@ export default function space(value: any, settings: TSugarCssSettings): any {
       continue;
     }
   }
-
-  // protect against invalid easings
-  __ensureEasingFunctionExists(spaceArgs.easing);
 
   // prepare the easing function
   const easingFunction = env.easingFunctions[easing];

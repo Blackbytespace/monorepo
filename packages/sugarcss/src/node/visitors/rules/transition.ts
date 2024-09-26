@@ -1,8 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __ensureTransitionExists from '../../ensure/transitionExists.js';
-
 import { env } from '../../sugarcss.js';
 
 /**
@@ -44,8 +42,6 @@ export default function transition(v: any, settings: TSugarCssSettings): any {
     name: 'default',
     ...args.values,
   };
-
-  __ensureTransitionExists(args.values.name);
 
   const ast = [
     {

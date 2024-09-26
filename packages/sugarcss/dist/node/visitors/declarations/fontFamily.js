@@ -32,6 +32,7 @@ export default function fontFamily(v, settings) {
     const args = __parseArgs(v.value, [], {
         separator: ['white-space', 'comma'],
     });
+    console.log('n', args);
     const result = [];
     // save in env
     env.fonts.family[name] = Object.values(args.values);

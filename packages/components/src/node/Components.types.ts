@@ -1,3 +1,4 @@
+import { TComponentsPackageJson } from '../../dist/node/Components.types.js';
 import Components from './Components.js';
 import ComponentsLibrary from './ComponentsLibrary.js';
 import { __ComponentsComponent } from './_exports.js';
@@ -28,14 +29,14 @@ export type TComponentsLibraryJson = {
   folders?: string[];
   dependencies?: Record<string, string>;
   composerJson?: TComponentsComposerJson;
-  packageJson?: TComponentsComposerJson;
+  packageJson?: TComponentsPackageJson;
 };
 
 export type TComponentsComponentJsonExtendable = {
   files?: string[];
   dependencies?: Record<string, string>;
   composerJson?: TComponentsComposerJson;
-  packageJson?: TComponentsComposerJson;
+  packageJson?: TComponentsPackageJson;
 };
 
 export type TComponentsComponentJson = TComponentsComponentJsonExtendable & {

@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/components",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.18",
   "description": "Components system to share components libraries easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -9,17 +9,16 @@
     "dev": "tsc --watch & vite --host",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc && vite build",
-    "postinstall": "npm run install.composer",
     "install.composer": "composer install",
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/carpenter": "^1.0.0-alpha.6",
+    "@lotsof/carpenter": "^1.0.0-alpha.18",
     "@lotsof/components": "^1.0.0-alpha",
-    "@lotsof/config": "^1.0.0-alpha.6",
-    "@lotsof/sugar": "^1.0.0-alpha.6",
-    "@lotsof/sugarcss": "^1.0.0-alpha.6",
-    "@lotsof/types": "^1.0.0-alpha.6",
+    "@lotsof/config": "^1.0.0-alpha.18",
+    "@lotsof/sugar": "^1.0.0-alpha.18",
+    "@lotsof/sugarcss": "^1.0.0-alpha.18",
+    "@lotsof/types": "^1.0.0-alpha.18",
     "glob": "^10.4.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.4.5"

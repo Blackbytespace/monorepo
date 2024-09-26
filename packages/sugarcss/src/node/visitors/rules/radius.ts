@@ -1,8 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __ensureRadiusExists from '../../ensure/radiusExists.js';
-
 /**
  * @name            s-radius
  * @namespace       css.rule
@@ -45,8 +43,6 @@ export default function radius(v: any, settings: TSugarCssSettings): any {
     name: 'default',
     ...args.values,
   };
-
-  __ensureRadiusExists(args.values.name);
 
   const ast = [
     {

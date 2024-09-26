@@ -1,5 +1,3 @@
-import __isPlain from '../is/isPlainObject.js';
-
 /**
  * @name                        flatten
  * @namespace                   shared.object
@@ -15,10 +13,7 @@ import __isPlain from '../is/isPlainObject.js';
  * @return              {Object}                                                    The flatten object
  *
  * @setting               {String}            [separation="."]          The separation character to use for preperty names
- * @setting 							{Boolean}			    	[array=false] 		Specify if you want to flatten array or not
- * @setting               {Boolean}          [quoteSeparatedProperties=true]      Specify if you want to quote dotted properties to be able to restore them correctly later
- * @setting               {String}        [quoteCharacter='"']        Specify the quote character to use when need to quote separated properties
- * @setting               {Boolean}       [keepLastIntact=false]       Specify if you want to keep the last level (object, array) intact and not to flatten each properties
+ * @setting               {String}            [prefix=""]               A prefix to add to the property names
  *
  * @todo      tests
  *
@@ -37,84 +32,34 @@ import __isPlain from '../is/isPlainObject.js';
  */
 
 export type TFlattenSettings = {
-  separator?: string;
-  array?: boolean;
-  quoteSeparatedProperties?: boolean;
-  quoteCharacter?: string;
-  excludeProps?: string[];
-  keepLastIntact?: boolean;
+  separator: string;
+  prefix: string;
 };
 
 export default function __flatten(
-  object: any,
-  settings: TFlattenSettings = {},
-): any {
-  const toReturn = {};
-
-  // make sure the passed object is not null, undefined
-  if (!Array.isArray(object) && !__isPlain(object)) return object;
-
-  settings = {
+  obj,
+  settings?: Partial<TFlattenSettings>,
+): Record<string, any> {
+  const finalSettings: TFlattenSettings = {
     separator: '.',
-    array: false,
-    quoteSeparatedProperties: true,
-    quoteCharacter: '"',
-    excludeProps: [],
-    keepLastIntact: false,
-    ...settings,
+    prefix: '',
+    ...(settings ?? {}),
   };
-
-  for (const key in object) {
-    if (object[key] === undefined) continue;
-
-    if (object[key] === null) {
-      toReturn[key] = null;
-      continue;
+  return Object.keys(obj).reduce((acc, k) => {
+    const pre = finalSettings.prefix.length
+      ? finalSettings.prefix + finalSettings.separator
+      : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null) {
+      Object.assign(
+        acc,
+        __flatten(obj[k], {
+          ...finalSettings,
+          prefix: pre + k,
+        }),
+      );
+    } else {
+      acc[pre + k] = obj[k];
     }
-
-    if (settings.excludeProps?.indexOf(key) !== -1) {
-      toReturn[key] = object[key];
-      continue;
-    }
-
-    if (
-      (Array.isArray(object[key]) && settings.array) ||
-      (!Array.isArray(object[key]) && typeof object[key]) == 'object'
-    ) {
-      const isArray = Array.isArray(object[key]);
-
-      const flatObject = __flatten(object[key], {
-        ...settings,
-        keepLastIntact: false,
-      });
-
-      for (const x in flatObject) {
-        if (flatObject[x] === undefined) continue;
-
-        if (isArray) {
-          toReturn[`${key}[${x}]`] = flatObject[x];
-        } else {
-          const part = key;
-          if (
-            settings.separator &&
-            settings.quoteSeparatedProperties &&
-            part.includes(settings.separator)
-          ) {
-            toReturn[
-              `${settings.quoteCharacter}${key}${settings.quoteCharacter}` +
-                settings.separator +
-                x
-            ] = flatObject[x];
-          } else {
-            toReturn[key + settings.separator + x] = flatObject[x];
-          }
-        }
-      }
-      continue;
-    }
-
-    toReturn[key] = object[key];
-  }
-
-  return toReturn;
+    return acc;
+  }, {});
 }

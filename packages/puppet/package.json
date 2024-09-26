@@ -1,0 +1,35 @@
+{
+  "name": "@lotsof/puppet",
+  "description": "Useful puppeteer utilities to help you in your daily tasks",
+  "version": "1.0.0-alpha.18",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "build": "tsc",
+    "test": "vitest",
+    "publish": "npm publish --access public"
+  },
+  "main": "./dist/node/_exports.js",
+  "types": "./src/node/puppet.types.ts",
+  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
+  "license": "MIT",
+  "globalDependencies": {},
+  "dependencies": {
+    "@lotsof/theme": "^1.0.0-alpha.18",
+    "@lotsof/config": "^1.0.0-alpha.18",
+    "@lotsof/sugar": "^1.0.0-alpha.18",
+    "glob": "^11.0.0",
+    "puppeteer": "^23.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.4"
+  }
+}

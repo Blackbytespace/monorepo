@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "TThemeParameterOption": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": ["label", "value"]
+    },
+    "TThemePreviewGenerate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "keepClasses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["url"]
+    },
+    "TThemePreviewServe": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": ["url"]
+    },
+    "TThemePreview": {
+      "type": "object",
+      "properties": {
+        "generate": {
+          "$ref": "#/definitions/TThemePreviewGenerate"
+        },
+        "serve": {
+          "$ref": "#/definitions/TThemePreviewServe"
+        }
+      }
+    },
+    "TThemeCombinations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "TThemeParameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TThemeParameterOption"
+          }
+        }
+      },
+      "required": ["id", "name", "options"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TThemeParameter"
+      }
+    },
+    "preview": {
+      "$ref": "#/definitions/TThemePreview"
+    },
+    "combinations": {
+      "$ref": "#/definitions/TThemeCombinations"
+    }
+  },
+  "required": ["name", "parameters"]
+}

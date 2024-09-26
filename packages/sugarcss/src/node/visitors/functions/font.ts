@@ -2,8 +2,6 @@ import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import __ensureFontExists from '../../ensure/fontExists.js';
-
 /**
  * @name            s-font
  * @namespace       css.function
@@ -43,8 +41,6 @@ export default function font(value: any, settings: TSugarCssSettings): any {
   const args = __parseArgs(value.arguments, ['name']);
 
   const fontsArgs = env.fonts.fonts;
-
-  __ensureFontExists(args.values.name);
 
   const fontArgs = fontsArgs[args.values.name];
 

@@ -7,6 +7,7 @@ import __deepize from './deepize.js';
 import __deepMap from './deepMap.js';
 import __deepMerge from './deepMerge.js';
 import __deepProxy from './deepProxy.js';
+import __deepSearch from './deepSearch.js';
 import __delete from './delete.js';
 import __deleteProperty from './deleteProperty.js';
 import __diff from './diff.js';
@@ -36,6 +37,7 @@ export {
   __deepMap,
   __deepMerge,
   __deepProxy,
+  __deepSearch,
   __deepize,
   __delete,
   __deleteProperty,

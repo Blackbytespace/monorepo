@@ -1,5 +1,4 @@
 import __parseArgs from '../../utils/parseArgs.js';
-import __ensureTransitionExists from '../../ensure/transitionExists.js';
 import { env } from '../../sugarcss.js';
 /**
  * @name            s-transition
@@ -34,7 +33,6 @@ export default function transition(v, settings) {
     // parse args
     const args = Object.assign({}, __parseArgs(v.prelude, ['name']));
     args.values = Object.assign({ name: 'default' }, args.values);
-    __ensureTransitionExists(args.values.name);
     const ast = [
         {
             type: 'style',
