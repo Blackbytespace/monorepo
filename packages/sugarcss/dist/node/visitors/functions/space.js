@@ -58,7 +58,11 @@ export default function space(value, settings) {
         spaces.push(resultCalc);
     }
     return {
-        raw: spaces.join(' '),
+        raw: spaces
+            .map((s) => {
+            return `calc(${s} * var(--s-scale, 1))`;
+        })
+            .join(' '),
     };
 }
 //# sourceMappingURL=space.js.map

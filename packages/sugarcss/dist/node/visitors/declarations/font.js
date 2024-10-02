@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 import __argsToCustomPropertiesAst from '../../utils/argsToCustomPropertiesAst.js';
 /**
@@ -38,7 +37,6 @@ export default function font(v, settings) {
         separator: ['white-space', 'comma'],
         // debug: true,
     });
-    env.fonts.fonts[name] = args.values;
     if (settings.verbose) {
         console.log(`Registered font: <cyan>${name}</cyan>: <yellow>${JSON.stringify(args.values)}</yellow>`);
     }

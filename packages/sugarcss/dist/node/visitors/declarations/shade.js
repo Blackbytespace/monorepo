@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-shade
@@ -70,7 +69,6 @@ export default function share(v, settings) {
         'lightness',
         'alpha',
     ];
-    env.shades[shade] = finalShade;
     // custom css variables
     for (let key of supportedModifiers) {
         const value = (_a = finalShade[key]) !== null && _a !== void 0 ? _a : 0;
@@ -96,7 +94,7 @@ export default function share(v, settings) {
         });
     }
     if (settings.verbose) {
-        console.log(`Registered shade: <cyan>${shade}</cyan>: <yellow>${JSON.stringify(env.shades[shade], null)}</yellow>`);
+        console.log(`Registered shade: <cyan>${shade}</cyan>: <yellow>${JSON.stringify(finalShade, null)}</yellow>`);
     }
     return result;
 }

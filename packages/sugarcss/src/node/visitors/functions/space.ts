@@ -76,6 +76,10 @@ export default function space(value: any, settings: TSugarCssSettings): any {
   }
 
   return {
-    raw: spaces.join(' '),
+    raw: spaces
+      .map((s) => {
+        return `calc(${s} * var(--s-scale, 1))`;
+      })
+      .join(' '),
   };
 }

@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 import { __dashCase } from '@lotsof/sugar/string';
 /**
@@ -74,8 +73,6 @@ export default function radius(v, settings) {
     else {
         throw new Error(`Invalid number of arguments for radius: ${args.values.length}. Either 1 value applied on all corners, or 4 values, 1 for each corner.`);
     }
-    // save in env
-    env.radiuses[name] = values;
     // custom css variables
     ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'].forEach((corner) => {
         result.push({

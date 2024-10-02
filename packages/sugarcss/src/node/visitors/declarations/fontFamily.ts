@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -37,13 +36,7 @@ export default function fontFamily(v, settings: TSugarCssSettings): any {
     separator: ['white-space', 'comma'],
   });
 
-  console.log('n', args);
-
   const result: any[] = [];
-
-  // save in env
-  env.fonts.family[name] = Object.values(args.values);
-
   const tokens: any[] = [];
 
   for (let [key, value] of Object.entries(args.values)) {
@@ -62,24 +55,21 @@ export default function fontFamily(v, settings: TSugarCssSettings): any {
     });
   }
 
+  // remove the last comma
+  tokens.pop();
+
   // custom css variables
-  for (let [key, value] of Object.entries(args.values)) {
-    result.push({
-      property: `--s-font-family-${name}-${key}`,
-      value: {
-        name: `--s-font-family-${name}-${key}`,
-        value: tokens,
-      },
-    });
-  }
+  result.push({
+    property: `--s-font-family-${name}`,
+    value: {
+      name: `--s-font-family-${name}`,
+      value: tokens,
+    },
+  });
 
   if (settings.verbose) {
-    console.log(
-      `Registered font family argument: <cyan>${name}</cyan>: <yellow>${JSON.stringify(
-        env.fonts.family[name],
-      )}</yellow>`,
-    );
+    console.log(`Registered font family <yellow>${name}</yellow>`);
   }
 
-  return;
+  return result;
 }

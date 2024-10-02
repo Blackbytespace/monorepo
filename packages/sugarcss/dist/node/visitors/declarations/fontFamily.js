@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-font-family
@@ -32,10 +31,7 @@ export default function fontFamily(v, settings) {
     const args = __parseArgs(v.value, [], {
         separator: ['white-space', 'comma'],
     });
-    console.log('n', args);
     const result = [];
-    // save in env
-    env.fonts.family[name] = Object.values(args.values);
     const tokens = [];
     for (let [key, value] of Object.entries(args.values)) {
         tokens.push({
@@ -52,19 +48,19 @@ export default function fontFamily(v, settings) {
             },
         });
     }
+    // remove the last comma
+    tokens.pop();
     // custom css variables
-    for (let [key, value] of Object.entries(args.values)) {
-        result.push({
-            property: `--s-font-family-${name}-${key}`,
-            value: {
-                name: `--s-font-family-${name}-${key}`,
-                value: tokens,
-            },
-        });
-    }
+    result.push({
+        property: `--s-font-family-${name}`,
+        value: {
+            name: `--s-font-family-${name}`,
+            value: tokens,
+        },
+    });
     if (settings.verbose) {
-        console.log(`Registered font family argument: <cyan>${name}</cyan>: <yellow>${JSON.stringify(env.fonts.family[name])}</yellow>`);
+        console.log(`Registered font family <yellow>${name}</yellow>`);
     }
-    return;
+    return result;
 }
 //# sourceMappingURL=fontFamily.js.map

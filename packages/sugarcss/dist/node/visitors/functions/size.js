@@ -60,7 +60,11 @@ export default function size(value, settings) {
         sizes.push(resultCalc);
     }
     return {
-        raw: sizes.join(' '),
+        raw: sizes
+            .map((s) => {
+            return `calc(${s} * var(--s-scale, 1))`;
+        })
+            .join(' '),
     };
 }
 //# sourceMappingURL=size.js.map

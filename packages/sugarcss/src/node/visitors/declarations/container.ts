@@ -1,5 +1,4 @@
 import { __dashCase } from '@lotsof/sugar/string';
-import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -36,16 +35,8 @@ export default function container(v, settings: TSugarCssSettings): any {
       separator: ['white-space', 'comma'],
     });
 
-  if (!env.containers[name]) {
-    env.containers[name] = args.values;
-  }
-
   if (settings.verbose) {
-    console.log(
-      `Registered container: <cyan>${name}</cyan>: <yellow>${JSON.stringify(
-        env.containers[name],
-      )}</yellow>`,
-    );
+    console.log(`Registered container: <cyan>${name}</cyan>`);
   }
 
   const result: any[] = [];

@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import { __convert } from '@lotsof/sugar/color';
 /**
  * @name            s-color
@@ -50,7 +49,6 @@ export default function color(v, settings) {
         },
     ];
     const hslaColor = __convert((_b = (_a = v.value[0]) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : v.value[0], 'hsla');
-    env.colors[name] = hslaColor;
     ['h', 's', 'l', 'a'].forEach((key) => {
         result.push({
             property: `--s-color-${name}-${key}`,

@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-easing
@@ -29,10 +28,6 @@ export default function easing(v, settings) {
         separator: ['white-space', 'comma'],
     });
     const result = [];
-    // save in env
-    env.easings[name] = {
-        function: args.values.function,
-    };
     // custom css variables
     if (args.ast.function) {
         result.push({

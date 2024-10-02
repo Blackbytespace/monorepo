@@ -1,5 +1,4 @@
 import { __dashCase } from '@lotsof/sugar/string';
-import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 /**
  * @name            s-container
@@ -33,11 +32,8 @@ export default function container(v, settings) {
     const name = v.name.replace(`--s-container-`, ''), args = __parseArgs(v.value, ['minWidth', 'maxWidth', 'sidePadding'], {
         separator: ['white-space', 'comma'],
     });
-    if (!env.containers[name]) {
-        env.containers[name] = args.values;
-    }
     if (settings.verbose) {
-        console.log(`Registered container: <cyan>${name}</cyan>: <yellow>${JSON.stringify(env.containers[name])}</yellow>`);
+        console.log(`Registered container: <cyan>${name}</cyan>`);
     }
     const result = [];
     for (let [key, value] of Object.entries(args.values)) {

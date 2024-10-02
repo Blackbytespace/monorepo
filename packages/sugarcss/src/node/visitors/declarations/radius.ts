@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import { TSugarCssRadius, TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -83,9 +82,6 @@ export default function radius(v, settings: TSugarCssSettings): any {
       `Invalid number of arguments for radius: ${args.values.length}. Either 1 value applied on all corners, or 4 values, 1 for each corner.`,
     );
   }
-
-  // save in env
-  env.radiuses[name] = values;
 
   // custom css variables
   ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'].forEach((corner) => {

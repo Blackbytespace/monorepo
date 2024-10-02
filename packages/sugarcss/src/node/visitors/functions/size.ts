@@ -78,6 +78,10 @@ export default function size(value: any, settings: TSugarCssSettings): any {
   }
 
   return {
-    raw: sizes.join(' '),
+    raw: sizes
+      .map((s) => {
+        return `calc(${s} * var(--s-scale, 1))`;
+      })
+      .join(' '),
   };
 }

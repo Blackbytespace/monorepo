@@ -17,6 +17,7 @@ import __isScrollable from './isScrollable.js';
 import __isTablet from './isTablet.js';
 import __isUcBrowser from './isUcBrowser.js';
 import __isUserScrolling from './isUserScrolling.js';
+import __isVideoPlaying from './isVideoPlaying.js';
 import __isVisible from './isVisible.js';
 
 export * from '../../shared/is/_exports.js';
@@ -40,5 +41,6 @@ export {
   __isTablet,
   __isUcBrowser,
   __isUserScrolling,
+  __isVideoPlaying,
   __isVisible,
 };

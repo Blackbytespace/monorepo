@@ -1,3 +1,4 @@
+import { __unique } from '@lotsof/sugar/array';
 export default function __getDefaultThemeClasses(theme) {
     const defaultThemeClasses = [];
     for (let [parameterId, parameter] of Object.entries(theme.parameters)) {
@@ -5,6 +6,6 @@ export default function __getDefaultThemeClasses(theme) {
             defaultThemeClasses.push(parameter.default);
         }
     }
-    return defaultThemeClasses.sort();
+    return __unique(defaultThemeClasses).sort();
 }
 //# sourceMappingURL=getDefaultThemeClasses.js.map

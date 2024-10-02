@@ -17,7 +17,8 @@ import __isScrollable from './isScrollable.js';
 import __isTablet from './isTablet.js';
 import __isUcBrowser from './isUcBrowser.js';
 import __isUserScrolling from './isUserScrolling.js';
+import __isVideoPlaying from './isVideoPlaying.js';
 import __isVisible from './isVisible.js';
 export * from '../../shared/is/_exports.js';
-export { __isChrome, __isCrawler, __isEdge, __isFirefox, __isFocus, __isFocusWithin, __isHover, __isIe, __isInIframe, __isInViewport, __isMobile, __isOpera, __isPhone, __isSafari, __isSamsungBrowser, __isScrollable, __isTablet, __isUcBrowser, __isUserScrolling, __isVisible, };
+export { __isChrome, __isCrawler, __isEdge, __isFirefox, __isFocus, __isFocusWithin, __isHover, __isIe, __isInIframe, __isInViewport, __isMobile, __isOpera, __isPhone, __isSafari, __isSamsungBrowser, __isScrollable, __isTablet, __isUcBrowser, __isUserScrolling, __isVideoPlaying, __isVisible, };
 //# sourceMappingURL=_exports.js.map

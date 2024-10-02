@@ -1,5 +1,4 @@
 import __parseArgs from '../../utils/parseArgs.js';
-import __ensireRadiusExists from '../../ensure/radiusExists.js';
 /**
  * @name            s-radius
  * @namespace       css.function
@@ -31,7 +30,6 @@ export default function radius(value, settings) {
         separator: ['white-space', 'comma'],
     }));
     args.values = Object.assign({ name: 'default' }, args.values);
-    __ensireRadiusExists(args.values.name);
     return {
         raw: `var(--s-radius-${args.values.name})`,
     };

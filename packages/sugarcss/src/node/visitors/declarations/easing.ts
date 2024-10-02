@@ -1,4 +1,3 @@
-import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -33,11 +32,6 @@ export default function easing(v, settings: TSugarCssSettings): any {
     });
 
   const result: any[] = [];
-
-  // save in env
-  env.easings[name] = {
-    function: args.values.function,
-  };
 
   // custom css variables
   if (args.ast.function) {
