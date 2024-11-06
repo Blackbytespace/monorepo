@@ -38,7 +38,7 @@ export default function transition(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-transition-`, ''),
     args = __parseArgs(
       v.value,
-      ['property', 'duration', 'easing', 'delay', 'behavior'],
+      ['property', 'duration', 'timing-function', 'delay'],
       {
         separator: ['white-space', 'comma'],
       },

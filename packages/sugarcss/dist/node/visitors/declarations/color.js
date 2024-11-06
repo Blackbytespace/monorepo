@@ -66,7 +66,8 @@ export default function color(v, settings) {
             },
         });
     });
-    if (settings.verbose) {
+    // @TODO      do not check for color name
+    if (settings.verbose && name !== 'current') {
         console.log(`Registered color: <cyan>${name}</cyan>: <yellow>${JSON.stringify(hslaColor)}</yellow>`);
     }
     return result;

@@ -32,7 +32,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function transition(v, settings) {
-    const name = v.name.replace(`--s-transition-`, ''), args = __parseArgs(v.value, ['property', 'duration', 'easing', 'delay', 'behavior'], {
+    const name = v.name.replace(`--s-transition-`, ''), args = __parseArgs(v.value, ['property', 'duration', 'timing-function', 'delay'], {
         separator: ['white-space', 'comma'],
     });
     const result = [];

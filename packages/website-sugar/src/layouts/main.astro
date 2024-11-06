@@ -1,0 +1,62 @@
+---
+import MainLayout from '@lotsof/website-common/src/components/main/main.astro';
+import '../components/index.css';
+
+import __packageJson from '../../package.json';
+import faviconSvgSrc from '../img/favicon.svg';
+
+const searchItems = {
+  type: 'group',
+  label: 'Documentation',
+  items: [
+    {
+      id: 'install',
+      label: 'Get started',
+      value: 'install',
+      slug: '/',
+      preventSet: true,
+    },
+    {
+      id: 'vite',
+      label: 'Use with vite',
+      value: 'vite',
+      slug: '/doc/vite',
+      preventSet: true,
+    },
+    {
+      id: 'settings',
+      label: 'Settings',
+      value: 'settings',
+      slug: '/doc/settings',
+      preventSet: true,
+    },
+    {
+      id: 'mixins',
+      label: 'Mixins',
+      value: 'mixins',
+      slug: '/doc/mixins',
+      preventSet: true,
+    },
+    {
+      id: 'grids',
+      label: 'Grids',
+      value: 'grids',
+      slug: '/doc/grids',
+      preventSet: true,
+    },
+  ],
+};
+---
+
+<script>
+  import '../components/index';
+</script>
+
+<MainLayout
+  faviconSvg={faviconSvgSrc}
+  searchItems={searchItems}
+  version={__packageJson.version}
+  title="Sugar"
+>
+  <slot />
+</MainLayout>

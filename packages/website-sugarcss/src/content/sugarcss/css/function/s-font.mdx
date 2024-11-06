@@ -21,12 +21,9 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 The supported fonts properties are:</p>
 <ul>
 <li><code>family</code>: The font family like &quot;sans-serif&quot;, &quot;serif&quot;, etc...</li>
-<li><code>size</code>: The font size like &quot;1em&quot;, &quot;12px&quot;, etc...</li>
-<li><code>lineHeight</code>: The font line-height like &quot;1em&quot;, &quot;12px&quot;, etc...</li>
 <li><code>weight</code>: The font weight like &quot;normal&quot;, &quot;bold&quot;, etc...</li>
 <li><code>style</code>: The font style like &quot;normal&quot;, &quot;italic&quot;, etc...</li>
 <li><code>variant</code>: The font variant like &quot;normal&quot;, &quot;small-caps&quot;, etc...</li>
-<li><code>stretch</code>: The font stretch like &quot;normal&quot;, &quot;condensed&quot;, etc...</li>
 </ul>
 
 </div>
@@ -51,9 +48,9 @@ The supported fonts properties are:</p>
 ## Example
 ```css
 :root {
-  --s-font-...: "Roboto,sans-serif", %size, %lineHeight, %weight, %style, %variant;
+  --s-font-...: "Roboto,sans-serif", %weight, %style, %variant;
   --s-font-family-code: "Fira Code", monospace;
-  --s-font-code: s-font-family(code), 16px, 26px, 300;
+  --s-font-code: s-font-family(code), 300;
 }
 
 .my-element {

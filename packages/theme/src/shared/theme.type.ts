@@ -4,7 +4,8 @@ export type TThemeParameterOption = {
 };
 
 export type TThemePreviewsGenerate = {
-  name?: string;
+  outDir: string;
+  name: string;
   url: string;
   selector?: string;
   keepClasses?: string[];
@@ -19,7 +20,7 @@ export type TThemePreviews = {
   serve?: TThemePreviewsServe;
 };
 
-export type TThemeConbinations = {
+export type TThemeCombinations = {
   [key: string]: string[];
 };
 
@@ -39,6 +40,6 @@ export type TTheme = {
   description?: string;
   parameters: TThemeParameter[];
   previews?: TThemePreviews;
-  combinations?: TThemeConbinations;
+  combinations?: TThemeCombinations;
   values: TThemeValues;
 };

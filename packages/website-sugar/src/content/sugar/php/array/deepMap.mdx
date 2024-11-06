@@ -43,10 +43,10 @@ This function allows you to map deeply on an array (object)
 <div class="_examples">
 ## Example
 ```php
-\Sugar\ar\deepMap([
+\Sugar\Array\deepMap([
    'prop1' => 'Hello',
    'prop2' => 'World'
-], function($prop, $value, $object) {
+], function($prop, $value, $array) {
      return 'Hello ' . $value;
 });
 // [

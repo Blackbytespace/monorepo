@@ -1,5 +1,5 @@
 /**
- * @name 		        hotkey
+ * @name 		            hotkey
  * @namespace           js.keyboard
  * @type                Function
  * @platform            js

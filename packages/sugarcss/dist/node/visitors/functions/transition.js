@@ -33,7 +33,7 @@ export default function transition(value, settings) {
     const parts = [];
     parts.push(`var(--s-transition-${args.values.name}-duration, 0.3s)`);
     parts.push(`var(--s-transition-${args.values.name}-property, all)`);
-    parts.push(`var(--s-transition-${args.values.name}-easing, linear)`);
+    parts.push(`var(--s-transition-${args.values.name}-timing-function, ease-in-out)`);
     parts.push(`var(--s-transition-${args.values.name}-delay, 0s)`);
     return {
         raw: parts.join(' '),

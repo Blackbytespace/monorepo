@@ -43,7 +43,7 @@ Go up through the filesystem from a specified folder until the closure returns t
 <div class="_examples">
 ## Example
 ```php
-const finalPath = \Sugar\fs\traverseUp('/Users/something/cool', function($path) {
+const finalPath = \Sugar\Fs\traverseUp('/Users/something/cool', function($path) {
    if (count(explode('/', $path)) <= 2) {
      return true;
    }

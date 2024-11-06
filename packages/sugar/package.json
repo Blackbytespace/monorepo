@@ -1,12 +1,13 @@
 {
   "name": "@lotsof/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
-  "version": "1.0.0-alpha.25",
+  "version": "1.0.0-alpha.33",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
+    "doc.build": "lotsof docmap.build",
     "test": "vitest",
     "publish": "npm publish --access public"
   },
@@ -24,243 +25,132 @@
   "exports": {
     "./package.json": "./package.json",
     "./array": {
+      "types": "./dist/shared/array/_exports.d.ts",
       "default": "./dist/shared/array/_exports.js"
     },
-    "./ascii": {
-      "default": "./dist/shared/ascii/_exports.js"
-    },
     "./class": {
+      "types": "./dist/shared/class/_exports.d.ts",
       "default": "./dist/shared/class/_exports.js"
     },
-    "./cli": {
-      "default": "./dist/shared/cli/_exports.js"
-    },
     "./clipboard": {
-      "node": {
-        "default": "./dist/node/clipboard/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/clipboard/_exports.js"
-      }
+      "types": "./dist/js/clipboard/_exports.d.ts",
+      "node": "./dist/node/clipboard/_exports.js",
+      "default": "./dist/js/clipboard/_exports.js"
     },
     "./color": {
+      "types": "./dist/shared/color/_exports.d.ts",
       "default": "./dist/shared/color/_exports.js"
     },
     "./console": {
-      "node": {
-        "default": "./dist/node/console/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/console/_exports.js"
-      }
+      "types": "./dist/node/console/_exports.d.ts",
+      "node": "./dist/node/console/_exports.js"
     },
     "./convert": {
-      "node": {
-        "default": "./dist/node/convert/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/convert/_exports.js"
-      }
+      "types": "./dist/js/convert/_exports.d.ts",
+      "default": "./dist/js/convert/_exports.js"
     },
     "./cookie": {
+      "types": "./dist/js/cookie/_exports.d.ts",
       "default": "./dist/js/cookie/_exports.js"
     },
     "./crypto": {
-      "node": {
-        "default": "./dist/node/crypto/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/crypto/_exports.js"
-      }
+      "types": "./dist/js/crypto/_exports.d.ts",
+      "node": "./dist/node/crypto/_exports.js",
+      "default": "./dist/js/crypto/_exports.js"
     },
     "./dom": {
+      "types": "./dist/js/dom/_exports.d.ts",
       "default": "./dist/js/dom/_exports.js"
     },
     "./composer": {
-      "default": "./dist/node/composer/_exports.js"
+      "types": "./dist/node/composer/_exports.d.ts",
+      "node": "./dist/node/composer/_exports.js"
     },
     "./css": {
-      "node": {
-        "default": "./dist/node/css/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/css/_exports.js"
-      }
+      "types": "./dist/shared/css/_exports.d.ts",
+      "default": "./dist/shared/css/_exports.js"
     },
     "./datetime": {
+      "types": "./dist/shared/datetime/_exports.d.ts",
       "default": "./dist/shared/datetime/_exports.js"
-    },
-    "./dependencies": {
-      "node": {
-        "default": "./dist/node/dependencies/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/dependencies/_exports.js"
-      }
-    },
-    "./dev": {
-      "node": {
-        "default": "./dist/node/dev/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/dev/_exports.js"
-      }
     },
     "./easing": {
       "default": "./dist/shared/easing/_exports.js"
     },
-    "./es6": {
-      "default": "./dist/shared/es6/_exports.js"
-    },
     "./extension": {
+      "types": "./dist/shared/extension/_exports.d.ts",
       "default": "./dist/shared/extension/_exports.js"
     },
     "./faker": {
+      "types": "./dist/shared/faker/_exports.d.ts",
       "default": "./dist/shared/faker/_exports.js"
     },
     "./format": {
+      "types": "./dist/shared/format/_exports.d.ts",
       "default": "./dist/shared/format/_exports.js"
     },
     "./function": {
+      "types": "./dist/shared/function/_exports.d.ts",
       "default": "./dist/shared/function/_exports.js"
     },
-    "./error": {
-      "default": "./dist/node/error/_exports.js"
-    },
-    "./exec": {
-      "default": "./dist/node/exec/_exports.js"
-    },
     "./feature": {
+      "types": "./dist/js/feature/_exports.d.ts",
       "default": "./dist/js/feature/_exports.js"
     },
-    "./filter": {
-      "default": "./dist/js/filter/_exports.js"
-    },
     "./fs": {
-      "default": "./dist/node/fs/_exports.js"
-    },
-    "./github": {
-      "default": "./dist/node/github/_exports.js"
-    },
-    "./glob": {
-      "node": {
-        "default": "./dist/node/glob/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/glob/_exports.js"
-      }
-    },
-    "./hash": {
-      "default": "./dist/node/hash/_exports.js"
+      "types": "./dist/node/fs/_exports.d.ts",
+      "node": "./dist/node/fs/_exports.js"
     },
     "./html": {
+      "types": "./dist/shared/html/_exports.d.ts",
       "default": "./dist/shared/html/_exports.js"
     },
     "./is": {
+      "types": "./dist/js/is/_exports.d.ts",
       "node": "./dist/node/is/_exports.js",
-      "browser": "./dist/js/is/_exports.js",
-      "default": "./dist/shared/is/_exports.js"
-    },
-    "./iterable": {
-      "default": "./dist/shared/iterable/_exports.js"
-    },
-    "./json": {
-      "default": "./dist/shared/json/_exports.js"
+      "default": "./dist/js/is/_exports.js"
     },
     "./keyboard": {
       "types": "./src/js/keyboard/_exports.ts",
       "node": "./dist/node/keyboard/_exports.js",
-      "browser": "./dist/js/keyboard/_exports.js"
-    },
-    "./load": {
-      "default": "./dist/node/load/_exports.js"
+      "default": "./dist/js/keyboard/_exports.js"
     },
     "./math": {
+      "types": "./dist/shared/math/_exports.d.ts",
       "default": "./dist/shared/math/_exports.js"
     },
-    "./module": {
-      "node": {
-        "default": "./dist/node/module/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/module/_exports.js"
-      }
-    },
-    "./monorepo": {
-      "default": "./dist/node/monorepo/_exports.js"
-    },
-    "./npm": {
-      "default": "./dist/node/npm/_exports.js"
-    },
-    "./network": {
-      "default": "./dist/node/network/_exports.js"
-    },
     "./number": {
+      "types": "./dist/shared/number/_exports.d.ts",
       "default": "./dist/shared/number/_exports.js"
     },
     "./object": {
+      "types": "./dist/shared/object/_exports.d.ts",
       "default": "./dist/shared/object/_exports.js"
     },
-    "./og": {
-      "default": "./dist/node/og/_exports.js"
-    },
     "./package": {
-      "node": {
-        "default": "./dist/node/package/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/package/_exports.js"
-      }
-    },
-    "./path": {
-      "default": "./dist/node/path/_exports.js"
-    },
-    "./perf": {
-      "default": "./dist/shared/perf/_exports.js"
-    },
-    "./php": {
-      "default": "./dist/node/php/_exports.js"
-    },
-    "./process": {
-      "default": "./dist/node/process/_exports.js"
+      "types": "./dist/node/package/_exports.d.ts",
+      "node": "./dist/node/package/_exports.js"
     },
     "./project": {
+      "types": "./dist/node/project/_exports.d.ts",
       "default": "./dist/node/project/_exports.js"
     },
     "./scroll": {
+      "types": "./dist/js/scroll/_exports.d.ts",
       "default": "./dist/js/scroll/_exports.js"
     },
-    "./storage": {
-      "default": "./dist/js/storage/_exports.js"
-    },
     "./string": {
+      "types": "./dist/js/string/_exports.d.ts",
       "node": "./dist/node/string/_exports.js",
-      "browser": "./dist/js/string/_exports.js"
-    },
-    "./terminal": {
-      "default": "./dist/node/terminal/_exports.js"
-    },
-    "./token": {
-      "node": {
-        "default": "./dist/node/token/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/token/_exports.js"
-      }
+      "default": "./dist/js/string/_exports.js"
     },
     "./type": {
-      "node": {
-        "default": "./dist/node/type/_exports.js"
-      },
-      "browser": {
-        "default": "./dist/js/type/_exports.js"
-      }
+      "types": "./dist/node/type/_exports.d.ts",
+      "node": "./dist/node/type/_exports.js"
     },
     "./url": {
+      "types": "./dist/shared/url/_exports.d.ts",
       "default": "./dist/shared/url/_exports.js"
-    },
-    "./version": {
-      "default": "./dist/shared/version/_exports.js"
     }
   },
   "devDependencies": {

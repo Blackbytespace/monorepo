@@ -51,8 +51,8 @@ $obj = (object) [
   "yop" => 'plop',
   "helloPlop" => true
 ];
-\Sugar\object\filter($obj, '^hel'); // (object) ["hello" => 'world', "helloPlop" => true]
-\Sugar\object\filter($obj, function($key, $value) {
+\Sugar\Object\filter($obj, '^hel'); // (object) ["hello" => 'world', "helloPlop" => true]
+\Sugar\Object\filter($obj, function($key, $value) {
   return false;
 }); // (object) []
 ```

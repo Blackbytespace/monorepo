@@ -1,8 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
-import { env } from '../../sugarcss.js';
-
 /**
  * @name            s-transition
  * @namespace       css.rule
@@ -57,14 +55,33 @@ export default function transition(v: any, settings: TSugarCssSettings): any {
         declarations: {
           importantDeclarations: [],
           declarations: [
-            {
-              property: 'custom',
+            'property',
+            'duration',
+            'timing-function',
+            'delay',
+          ].map((prop) => {
+            return {
+              property: 'unparsed',
               value: {
-                name: 'transition',
-                value: env.transitions[args.values.name].ast.value,
+                propertyId: {
+                  property: `transition-${prop}`,
+                  vendor_prefix: [],
+                },
+                value: [
+                  {
+                    type: 'var',
+                    value: {
+                      name: {
+                        ident: `--s-transition-${args.values.name}-${prop}`,
+                        from: null,
+                      },
+                      fallback: null,
+                    },
+                  },
+                ],
               },
-            },
-          ],
+            };
+          }),
         },
         rules: [],
         loc: {

@@ -1,0 +1,50 @@
+---
+interface Props {
+  version: string;
+  title: string;
+  searchItems: any;
+  faviconSvg: any;
+}
+
+import { fade } from 'astro:transitions';
+
+import Layout from '../layout/layout.astro';
+import LoHeader from '../header/header.astro';
+import LoCrt from '../crt/crt.astro';
+import LoSearch from '../search/search.astro';
+
+import './main';
+---
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    if (document.location.pathname === '/') {
+      document.body.classList.add('-home');
+    } else {
+      document.body.classList.remove('-home');
+    }
+  });
+</script>
+
+<Layout faviconSvg={Astro.props.faviconSvg}>
+  <main class="main">
+    <div class="main_inner">
+      <nav class="main_nav" transition:persist>
+        <LoHeader title={Astro.props.title} version={Astro.props.version} />
+        <LoSearch items={Astro.props.searchItems} />
+      </nav>
+      <div
+        class="main_body"
+        transition:animate={fade({ duration: '0.1s' })}
+        transition:name="body"
+      >
+        <div class="main_body-inner">
+          <div class="markdown typo-format typo-rhythm">
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <LoCrt />
+</Layout>

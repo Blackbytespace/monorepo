@@ -1,79 +1,62 @@
 ---
-interface Props {
-  title: string;
-}
-
-import '@fontsource/sixtyfour';
-import '@fontsource/vt323';
+import MainLayout from '@lotsof/website-common/src/components/main/main.astro';
 import '../components/index.css';
 
-import LoHeader from '../components/header/header.astro';
-import LoCrt from '@lotsof/website-common/src/components/crt/crt.astro';
-import LoSearch from '../components/search/search.astro';
-
-import __pictoNewNTasta from '../img/picto-new-n-tasty.svg?raw';
-
-import { ViewTransitions, fade } from 'astro:transitions';
-
-import { getImage } from 'astro:assets';
+import __packageJson from '../../package.json';
 import faviconSvgSrc from '../img/favicon.svg';
 
-import __packageJson from '../../package.json';
-
-const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' });
-
-// @ts-ignore
-const { frontmatter, title } = Astro.props;
-const packageJson = __packageJson as any;
+const searchItems = {
+  type: 'group',
+  label: 'Documentation',
+  items: [
+    {
+      id: 'install',
+      label: 'Get started',
+      value: 'install',
+      slug: '/',
+      preventSet: true,
+    },
+    {
+      id: 'vite',
+      label: 'Use with vite',
+      value: 'vite',
+      slug: '/doc/vite',
+      preventSet: true,
+    },
+    {
+      id: 'settings',
+      label: 'Settings',
+      value: 'settings',
+      slug: '/doc/settings',
+      preventSet: true,
+    },
+    {
+      id: 'mixins',
+      label: 'Mixins',
+      value: 'mixins',
+      slug: '/doc/mixins',
+      preventSet: true,
+    },
+    {
+      id: 'grids',
+      label: 'Grids',
+      value: 'grids',
+      slug: '/doc/grids',
+      preventSet: true,
+    },
+  ],
+};
 ---
 
 <script>
   import '../components/index';
-
-  document.addEventListener('astro:page-load', () => {
-    if (document.location.pathname === '/') {
-      document.body.classList.add('-home');
-    } else {
-      document.body.classList.remove('-home');
-    }
-  });
 </script>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={packageJson.description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="og:description" content={packageJson.description} />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content={frontmatter?.title ?? title} />
-    <meta property="og:type" content="article" />
-    <meta
-      property="og:image"
-      content="https://cdn.lotsof.dev/img/sugarcss-lotsof-og-image.png"
-    />
-    <meta property="og:site_name" content="Lotsof | Sugarcss" />
-    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
-    <title>{frontmatter?.title ?? title}</title>
-    <ViewTransitions />
-  </head>
-  <body>
-    <main class="main">
-      <div class="main_inner">
-        <nav class="main_nav" transition:persist>
-          <LoHeader />
-          <LoSearch />
-        </nav> 
-        <div class="main_body" transition:animate={fade({ duration: '0.1s' })} transition:name="body">
-          <div class="main_body-inner">
-            <div class="markdown typo-format typo-rhythm">
-              <slot />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <LoCrt />
-  </body>
-</html>
+<MainLayout
+  faviconSvg={faviconSvgSrc}
+  searchItems={searchItems}
+  version={__packageJson.version}
+  title="Sugarcss"
+>
+  <slot />
+</MainLayout>

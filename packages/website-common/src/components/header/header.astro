@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  version: string;
+}
+
+import __logoLotsofPicto from '@lotsof/website-common/src/img/logo-lotsof-picto.svg?raw';
+import __logoLotsof from '@lotsof/website-common/src/img/logo-lotsof.svg?raw';
+import __pictoNewNasty from '@lotsof/website-common/src/img/picto-new-n-tasty.svg?raw';
+
+const { title, version } = Astro.props;
+---
+
+<header class="header">
+  <a class="_logo" href="/" title={title}>
+    <Fragment set:html={__logoLotsofPicto} />
+    <Fragment set:html={__logoLotsof} />
+  </a>
+  <a href="/" title={title}>
+    <h1 class="_title">{title}</h1>
+    <h4 class="_version">v{version}</h4>
+    <Fragment set:html={__pictoNewNasty} />
+  </a>
+  <button class="_menu"></button>
+</header>

@@ -1,0 +1,77 @@
+---
+title: 's-map-color'
+namespace: '@lotsof.sugarcss.css.rule'
+type: 'AtRule'
+status: 'stable'
+since: '0.0.1'
+platform: '[{"name":"css","description":""}]'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://hello@lotsof.dev"}'
+---
+<div class="docmap-mdx">
+# s-map-color
+<div class="_metas">
+<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">AtRule</span></div>
+<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
+<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">0.0.1</span></div>
+<div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -css">css</span></div>
+</div>
+<div class="_namespace">@lotsof.sugarcss.css.rule</div>
+<div class="_description">
+<p>This rule allows you to remap a color with a new one.
+This is useful when using the <code>current</code> coloe in your components.
+You can then change it by using this rule like this: <code>@s-map-color(complementary, current);</code>.
+This will set the <code>current</code> color to the <code>complementary</code> one.</p>
+
+</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">name</span><span class="_default">accent</span> <span class="_type">String</span>
+<p class="_description">The color name you want to map</p>
+</li>
+<li class="_item">
+<span class="_name">to</span><span class="_default">current</span> <span class="_type">String</span>
+<p class="_description">The color name you want to map to</p>
+</li>
+</ol>
+</div>
+<div class="_return">
+## Return
+<ol class="_list">
+<li class="_item">
+<span class="_description">The generated css</span><span class="_default"></span><span class="_type">Css</span>
+</li>
+</ol>
+</div>
+<div class="_examples">
+## Example
+```css
+:root {
+   --s-color-accent: #ff0000;
+   --s-color-complementary: #00ff00;
+   --s-color-current: #0000ff;
+}
+
+.my-element {
+   ._title {
+      color: s-color(current);
+   }
+
+   &.-error {
+     @s-map-color(complementary)
+   }
+}
+```
+</div>
+<div class="_author">
+## Author
+<ul class="_list">
+<li class="_item">
+<span class="_name">Olivier Bossel</span>
+<span class="_email">olivier.bossel@gmail.com</span>
+<a href="https://hello@lotsof.dev" target="_blank" class="_url">https://hello@lotsof.dev</a>
+</li>
+</ul>
+</div>
+</div>

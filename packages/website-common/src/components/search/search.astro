@@ -1,0 +1,103 @@
+---
+interface Props {
+  items: any;
+}
+
+const items = Astro.props;
+
+console.log('Items', items);
+---
+
+<script>
+  import __AdvancedSelectElement from '@lotsof/advanced-select-element';
+  // @ts-ignore
+  import { __isMobile } from '@lotsof/sugar/is';
+  import { __idCompliant } from '@lotsof/sugar/string';
+  import { __toSlug } from '@lotsof/website-common/src/components/utils/utils';
+  import { navigate } from 'astro:transitions/client';
+  let cachedItems: any[];
+
+  // console.log('item', items);
+
+  document.addEventListener('sAdvancedSelect.select', (e) => {
+    const item = (e as CustomEvent).detail.item;
+    setTimeout(
+      () => {
+        (document.activeElement as HTMLElement)?.blur();
+      },
+      __isMobile() ? 100 : 0,
+    );
+    setTimeout(
+      () => {
+        if (item.slug) {
+          navigate(item.slug);
+        } else {
+          navigate(`/doc/${__toSlug(item.value)}`);
+        }
+      },
+      __isMobile() ? 200 : 0,
+    );
+  });
+
+  const $loSearch = document.querySelector('lo-search') as HTMLElement;
+  document.addEventListener('keydown', () => {
+    if (document.activeElement?.tagName === 'INPUT') {
+      return;
+    }
+    $loSearch?.focus();
+  });
+
+  __AdvancedSelectElement.define('lo-search', {
+    async items() {
+      if (cachedItems) {
+        return cachedItems;
+      }
+
+      const request = await fetch('/api/doc'),
+        data = await request.json();
+
+      const sections: Record<string, any> = {};
+
+      data.forEach((item: any) => {
+        let platforms = [];
+        try {
+          platforms = JSON.parse(item.data.platform);
+        } catch (e) {}
+        // @ts-ignore
+        platforms = platforms.map((p: string) => p.name.toLowerCase());
+
+        const group = item.data.namespace.split('.')[3];
+
+        if (!sections[group]) {
+          sections[group] = {
+            type: 'group',
+            label: group,
+            items: [],
+          };
+        }
+
+        sections[group].items.push({
+          id: __idCompliant(item.id),
+          label: `${item.data.title}`,
+          value: `${item.id.replace(/\//gm, '.').replace(/\.mdx$/, '')}`,
+          preventSet: true,
+        });
+      });
+
+      cachedItems = [
+        (window as any).searchItems ?? {},
+        ...Object.values(sections),
+      ];
+      return cachedItems;
+    },
+  });
+</script>
+
+<form class="search">
+  <script style="application/json" define:vars={{ items }} is:inline>
+    window.searchItems = items.items;
+  </script>
+  <lo-search inline>
+    <input type="search" class="_input" placeholder="Search" />
+  </lo-search>
+</form>

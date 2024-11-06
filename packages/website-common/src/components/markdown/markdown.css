@@ -9,6 +9,8 @@
   }
 
   @media mobile {
+    padding-block: s-space(50);
+    padding-inline: s-space(20);
   }
 
   h1,
@@ -273,6 +275,10 @@
         color: s-color(error, --lighten 30);
       }
     }
+  }
+
+  ._author {
+    display: none;
   }
 
   ._author,

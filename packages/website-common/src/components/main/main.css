@@ -7,6 +7,13 @@
   padding: 1px;
   @s-radius;
 
+  @media mobile {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -17,7 +24,7 @@
     bottom: 0;
     pointer-events: none;
     border: 1px solid s-color(current);
-    @s-map-color (current, accent);
+    @s-map-color (accent);
     @include lo-glow;
     @s-radius;
   }
@@ -25,6 +32,7 @@
   .main_inner {
     display: flex;
     position: absolute;
+    z-index: 10;
     top: 0;
     left: 0;
     right: 0;
@@ -39,6 +47,7 @@
     display: flex;
     flex-direction: column;
     border-inline-end: 1px solid s-color(accent, border);
+    @s-transition();
 
     @media mobile {
       position: absolute;
@@ -47,8 +56,14 @@
       right: 0;
       bottom: 0;
       width: 100%;
-      z-index: 100;
+      z-index: 9999;
       background: s-color(main, background);
+      translate: 100% 0;
+
+      &:focus,
+      &:focus-within {
+        translate: 0 0;
+      }
     }
 
     .header {
@@ -69,6 +84,7 @@
 
     @media mobile {
       position: absolute;
+      z-index: -1;
       top: 0;
       left: 0;
       right: 0;

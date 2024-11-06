@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/theme",
   "description": "Useful theme related stuffs",
-  "version": "1.0.0-alpha.25",
+  "version": "1.0.0-alpha.33",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,12 +12,9 @@
   },
   "types": "./src/shared/theme.types.ts",
   "exports": {
-    "browser": {
-      "default": "./dist/js/_exports.js"
-    },
-    "node": {
-      "default": "./dist/node/_exports.js"
-    }
+    "types": "./src/shared/theme.types.ts",
+    "default": "./dist/js/_exports.js",
+    "node": "./dist/node/_exports.js"
   },
   "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
   "contributors": [
@@ -30,8 +27,8 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.25",
-    "@lotsof/sugar": "^1.0.0-alpha.25",
+    "@lotsof/config": "^1.0.0-alpha.33",
+    "@lotsof/sugar": "^1.0.0-alpha.33",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

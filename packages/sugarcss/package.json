@@ -1,12 +1,13 @@
 {
   "name": "@lotsof/sugarcss",
   "description": "Add a sugar in your css with nice features like live update and more",
-  "version": "1.0.0-alpha.25",
+  "version": "1.0.0-alpha.33",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
+    "doc.build": "lotsof docmap.build",
     "test": "vitest",
     "publish": "npm publish --access public"
   },
@@ -23,10 +24,10 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.25",
-    "@lotsof/sugar": "^1.0.0-alpha.25",
+    "@lotsof/config": "^1.0.0-alpha.33",
+    "@lotsof/sugar": "^1.0.0-alpha.33",
     "browserslist": "^4.23.0",
-    "lightningcss": "^1.26.0"
+    "lightningcss": "^1.28.1"
   },
   "devDependencies": {
     "typescript": "^5.4.4"

@@ -1,7 +1,2 @@
-/* @import './fonts/fonts.css'; */
 @import './sugarcss/sugarcss.css';
-
 @import '@lotsof/website-common/src/components/index.css';
-
-@import './header/header.css';
-@import './search/search.css';

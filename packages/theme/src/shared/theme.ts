@@ -1,6 +1,12 @@
 import __generateThemeClassesCombinations from './generateThemeClassesCombinations.js';
 import __getDefaultThemeClasses from './getDefaultThemeClasses.js';
-import type { TTheme } from './theme.type.js';
+import type {
+  TTheme,
+  TThemeCombinations,
+  TThemeParameter,
+  TThemePreviews,
+  TThemeValues,
+} from './theme.type.js';
 import __themeValuesToClasses from './themeValuesToClasses.js';
 
 export default class Theme {
@@ -18,19 +24,19 @@ export default class Theme {
     return this._theme.description ?? '';
   }
 
-  public get parameters(): TTheme['parameters'] {
+  public get parameters(): TThemeParameter[] {
     return this._theme.parameters;
   }
 
-  public get previews(): TTheme['previews'] {
+  public get previews(): TThemePreviews | undefined {
     return this._theme.previews;
   }
 
-  public get combinations(): TTheme['combinations'] {
+  public get combinations(): TThemeCombinations | undefined {
     return this._theme.combinations;
   }
 
-  public get values(): TTheme['values'] {
+  public get values(): TThemeValues {
     return this._theme.values;
   }
 
