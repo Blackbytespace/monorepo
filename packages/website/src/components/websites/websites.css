@@ -32,6 +32,7 @@
       width: 100%;
       height: 100%;
       border: 1px solid s-color(current, --alpha 0);
+      pointer-events: none;
       @s-transition (slow);
       @include lo-glow;
     }
