@@ -25,11 +25,11 @@
     "@pixi/filter-crt": "^5.1.1",
     "astro": "^4.6.3",
     "i": "^0.3.7",
-    "npm": "^10.5.2",
+    "npm": "^10.5.4",
     "pixi.js": "^8.1.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "vite": "^5.2.12"
+    "vite": "^5.4.2"
   }
 }

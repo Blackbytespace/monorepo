@@ -1,5 +1,5 @@
 <script>
-  let active = localStorage.getItem('lo-crt') === 'true';
+  let active = localStorage.getItem('lo-crt');
 
   const $trigger = document.querySelector('#lo-crt-trigger'),
     $crt = document.querySelector('#lo-crt');
@@ -25,7 +25,7 @@
     }
   });
 
-  if (active) {
+  if (active === null || active === 'true') {
     show();
   }
 </script>

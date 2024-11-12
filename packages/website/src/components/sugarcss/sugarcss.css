@@ -16,7 +16,7 @@
 
   --s-grid-default: '1 1 2 _ 3 4 4 _ 3 5 5' 20px;
 
-  --s-color-main: #9b9b9b;
+  --s-color-main: #9e9161;
   --s-color-accent: #d2b02d;
   --s-color-complementary: #00f0ff;
   --s-color-ternary: #9ec468;
@@ -26,10 +26,6 @@
   --s-color-error: #ff003b;
   --s-color-info: #00ffff;
   --s-color-php: #777cb5;
-  --s-color-sugar-main: #61939e;
-  --s-color-sugar-accent: #d2b02d;
-  --s-color-sugarcss-main: #9e9161;
-  --s-color-sugarcss-accent: #d2b02d;
 
   --s-shade-text: --lighten 20;
   --s-shade-text-main: --lighten 35;
@@ -55,10 +51,10 @@
   --s-sizes: 0 80px linear;
   --s-spaces: 0 80px linear;
 
-  --s-font-default: s-font-family(sans) 16px 1.6em;
-  --s-font-lead: s-font-family(sans) 26px 1.5em;
-  --s-font-title: VT323 s-size(100) 1.1em 300;
-  --s-font-code: s-font-family(code) 16px 1.6em 300;
+  --s-font-default: s-font-family(sans);
+  --s-font-lead: s-font-family(sans);
+  --s-font-title: VT323 300;
+  --s-font-code: s-font-family(code) 300;
 
   --s-radius-default: 6px;
   --s-radius-special: 20px 12px 20px 4px;
@@ -70,14 +66,3 @@
 }
 
 @include s-destyle;
-
-.s-container {
-  @s-container;
-  margin: 0 0 !important;
-}
-
-body {
-  font: s-font(default);
-  background: s-color(main, --darken 36);
-  color: s-color(main, text);
-}
