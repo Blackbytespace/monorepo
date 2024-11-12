@@ -2,6 +2,7 @@
 interface Props {
   version: string;
   title: string;
+  ogImageUrl: string;
   searchItems: any;
   faviconSvg: any;
 }
@@ -26,7 +27,11 @@ import './main';
   });
 </script>
 
-<Layout faviconSvg={Astro.props.faviconSvg}>
+<Layout
+  faviconSvg={Astro.props.faviconSvg}
+  title={Astro.props.title}
+  ogImageUrl={Astro.props.ogImageUrl}
+>
   <main class="main">
     <div class="main_inner">
       <nav class="main_nav" transition:persist>

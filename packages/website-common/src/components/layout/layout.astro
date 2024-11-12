@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   faviconSvg: any;
+  ogImageUrl: string;
 }
 
 import '../fonts/fonts';
@@ -19,7 +20,7 @@ const faviconSvg = await getImage({
 });
 
 // @ts-ignore
-const { frontmatter, title } = Astro.props;
+const { frontmatter, title, ogImageUrl } = Astro.props;
 const packageJson = __packageJson as any;
 ---
 
@@ -37,10 +38,7 @@ const packageJson = __packageJson as any;
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={frontmatter?.title ?? title} />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:image"
-      content="https://cdn.lotsof.dev/img/sugarcss-lotsof-og-image.png"
-    />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Lotsof | Sugarcss" />
     <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
     <title>{frontmatter?.title ?? title}</title>
