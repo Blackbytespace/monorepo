@@ -20,7 +20,7 @@ import __xmlToJson from '../../shared/convert/xmlTojson.js';
  * import { __readXmlSync } from '@lotsof/sugar/fs';
  * __readXmlSync('my-cool-xml/file.xml');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __readXmlSync(path) {

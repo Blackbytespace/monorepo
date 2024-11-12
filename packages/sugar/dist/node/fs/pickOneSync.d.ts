@@ -22,7 +22,7 @@
  * import { __pickOneSync } from '@lotsof/sugar/fs';
  * __pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TPickOneSyncSettings = {

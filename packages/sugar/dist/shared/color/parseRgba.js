@@ -19,7 +19,7 @@
  * import { __parseRgba } from '@lotsof/sugar/color';
  * __parseRgba('rgba(20,10,100,20)');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __parseRgba(rgbaString) {

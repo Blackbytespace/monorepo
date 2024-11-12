@@ -25,7 +25,7 @@ import __fastFolderSize from 'fast-folder-size';
  *
  *
  * @see             https://www.npmjs.com/package/get-folder-size
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __folderSize(folderPath: string): Promise<number> {

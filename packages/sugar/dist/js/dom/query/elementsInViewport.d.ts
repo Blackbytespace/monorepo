@@ -20,7 +20,7 @@
  * import { __elementsInViewport } from '@lotsof/sugar/dom';
  * const $elements = __elementsInViewport();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TElementsInViewportSettings = {

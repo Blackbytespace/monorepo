@@ -24,7 +24,7 @@ import __uniqid from '../../../js/string/uniqid.js';
  * import { __injectStyle } from '@lotsof/sugar/dom';
  *  __injectStyle('a { color: red; }');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

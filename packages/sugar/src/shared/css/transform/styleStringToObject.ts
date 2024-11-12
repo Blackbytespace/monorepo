@@ -26,7 +26,7 @@ import __parse from '../../string/parse.js';
  * // 		display : 'block'
  * // }
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __styleStringToObject(style: string): any {

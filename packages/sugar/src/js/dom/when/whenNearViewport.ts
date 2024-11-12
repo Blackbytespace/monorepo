@@ -32,7 +32,7 @@ import __closestScrollableElement from '../query/closestScrollableElement.js';
  * 		// do something with your element that has entered the viewport...
  * });
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

@@ -24,7 +24,7 @@
  * }
  * __toPlainObject(new Coco()); // => { hello: 'world' }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
 export default function __toPlainObject(theClass: any): any {

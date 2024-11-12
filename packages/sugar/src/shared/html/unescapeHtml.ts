@@ -22,7 +22,7 @@ import __unescape from 'unescape';
  * __unescapeHtml('&lt;s-code-example&gt;'); // => <s-code-example>
  *
  * @see             https://www.npmjs.com/package/unescape
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __unescapeHtml(html: string): string {

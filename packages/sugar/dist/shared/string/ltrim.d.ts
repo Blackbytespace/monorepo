@@ -21,7 +21,7 @@
  * import { __ltrim } from '@lotsof/sugar/string'
  *  __ltrim('Hello World', 'Hello') // World
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __ltrim(string: string, needle: string, trimResult?: boolean): string;

@@ -29,7 +29,7 @@ import __countLineChars from './countLineChars.js';
  * import { __crop } from '@lotsof/sugar/string';
  * __crop('Hello World', 10); // => Hello w...
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

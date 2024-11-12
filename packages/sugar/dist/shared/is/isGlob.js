@@ -21,7 +21,7 @@ import __isGlob from 'is-glob';
  * __isGlob('something/*.js); // => true
  *
  * @see       https://www.npmjs.com/package/is-glob
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function (string) {

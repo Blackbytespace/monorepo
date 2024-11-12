@@ -23,7 +23,7 @@ import * as __fs from 'fs';
  *  'file/2.txt
  * ]); // => 'file/2.txt'
 ' *
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __grabFirstExistingSync(paths: string[]): string {

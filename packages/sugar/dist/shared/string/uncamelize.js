@@ -20,7 +20,7 @@
  * import { __uncamelize } from '@lotsof/sugar/string'
  * __uncamelize('helloWorldAndUniverse') // hello-world-and-universe
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __uncamelize(text, separator = '-') {

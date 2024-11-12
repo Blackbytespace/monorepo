@@ -23,7 +23,7 @@ import __Mark from 'mark.js';
  * __highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
  *
  * @see         https://markjs.io
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

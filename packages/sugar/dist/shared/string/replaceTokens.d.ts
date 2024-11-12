@@ -28,7 +28,7 @@
  * import { __replaceTokens } from '@lotsof/sugar/string';
  * __replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TReplaceTokensSettings = {

@@ -28,7 +28,7 @@
  * import { __countLineChars } from '@lotsof/sugar/string';
  *  __countLineChars('Hello <red>World</red>'); // 11
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TCountLineCharsSettings = {

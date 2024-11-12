@@ -22,7 +22,7 @@ import __isPlainObject from '../is/isPlainObject.js';
  * import { __toPlainObject } from '@lotsof/sugar/object';
  * __toPlainObject({ something: 'cool' });
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TToPlainObjectSettings = {

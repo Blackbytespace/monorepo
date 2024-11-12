@@ -25,7 +25,7 @@ import __unquote from '../string/unquote.js';
  * import { __get } from '@lotsof/sugar/object';
  * __get(myObject, 'my.cool.value'); // => 'Hello world'
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 function get(obj: any, path: string | string[]): any {

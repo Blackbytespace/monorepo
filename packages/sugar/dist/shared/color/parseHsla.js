@@ -19,7 +19,7 @@
  * import { __parseHsla } from '@lotsof/sugar/color';
  * __parseHsla('hsl(20,20,20)');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __parseHsla(hslaString) {

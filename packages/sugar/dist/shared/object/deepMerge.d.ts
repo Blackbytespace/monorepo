@@ -31,7 +31,7 @@
  * __deepMerge({a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}});
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TDeepMergeSettings = {

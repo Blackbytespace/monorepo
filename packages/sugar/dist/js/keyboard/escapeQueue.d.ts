@@ -33,7 +33,7 @@
  * // if you want to cancel your subscription
  * promise.cancel();
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TEscapeQueueSettings = {

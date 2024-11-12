@@ -21,7 +21,7 @@ import __unique from '../array/unique.js';
  * import { __commonMediaFileExtensions } from '@lotsof/sugar/extension';
  * const extensions = __commonMediaFileExtensions(); // => ['avi','mp3',...]
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __commonMediaFileExtensions(settings = {}) {

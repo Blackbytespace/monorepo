@@ -23,7 +23,7 @@ import { encode } from 'html-entities';
  * __encodeEntities('<s-code-example>'); // => &lt;s-code-example&gt;
  *
  * @see             https://www.npmjs.com/package/escape-html
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function _encodeEntities(html: string): string {

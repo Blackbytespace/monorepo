@@ -22,7 +22,7 @@ import __ncp from 'copy-paste';
  * import { __copyText } from '@lotsof/sugar/clipboard';
  * __copyText('Hello world');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */

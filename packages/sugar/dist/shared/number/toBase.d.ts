@@ -22,7 +22,7 @@
  * import { __toBase } from '@lotsof/sugar/number'
  * __toBase(1024, 62); // qF
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TToBaseSettings = {

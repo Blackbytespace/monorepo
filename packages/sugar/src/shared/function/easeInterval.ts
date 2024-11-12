@@ -40,7 +40,7 @@ import __easeInOutQuart from '../easing/easeInOutQuart.js';
  *      interval: 1000 / 25 // 25 times by second
  * });
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
 

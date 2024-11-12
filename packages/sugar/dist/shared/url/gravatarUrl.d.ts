@@ -20,7 +20,7 @@
  * import { __gravatarUrl } from '@lotsof/sugar/url';
  * __gravatarUrl('olivier.bossel@gmail.com'); // https://www.gravatar.com/avatar/b5df60055b6287bb7c90c0078ce20a5f
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __gravatarUrl(email: string, size?: number): string;

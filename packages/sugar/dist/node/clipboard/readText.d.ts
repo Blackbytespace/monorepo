@@ -19,7 +19,7 @@
  * __copy('Hello world');
  * __read(); // => Hello world
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */

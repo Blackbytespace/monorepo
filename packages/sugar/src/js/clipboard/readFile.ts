@@ -18,7 +18,7 @@
  * import { __readFile } from '@lotsof/sugar/clipboard';
  * await __readFile();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default async function __readText(): Promise<any> {

@@ -25,7 +25,7 @@ import __parse from '../../../shared/string/parse.js';
  * const opacity = __getStyleProperty(myCoolHTMLElement, 'opacity');
  *
  * @see 		https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __getStyleProperty(

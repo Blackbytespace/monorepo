@@ -22,7 +22,7 @@ import __hashSum from 'hash-sum';
  * __objectHash('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @see             https://www.npmjs.com/package/hash-sum
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function objectHash(obj: any): string {

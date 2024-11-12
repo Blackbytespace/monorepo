@@ -20,7 +20,7 @@
  * import { __convertTime } from '@lotsof/sugar/datetime';
  * __convertTime('10s', 'ms'); // => 10000
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 declare function __convertTime(from: string | number, to?: string): number;

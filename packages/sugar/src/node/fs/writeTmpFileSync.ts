@@ -29,7 +29,7 @@ import __writeFileSync from './writeFileSync.js';
  * import { __writeTmpFileSync } from '@lotsof/sugar/fs';
  * const path = __writeTmpFileSync('Hello World');
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

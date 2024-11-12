@@ -20,7 +20,7 @@
  * __pascalCase('hello world'); // => HelloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __pascalCase(text: string): string;

@@ -25,7 +25,7 @@ import __sameItems from './sameItems.js';
  * import { __intersection } from '@lotsof/sugar/array';
  * __intersection([1,2,3,4], [1,3,5]); // => [1,3]
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default __sameItems;

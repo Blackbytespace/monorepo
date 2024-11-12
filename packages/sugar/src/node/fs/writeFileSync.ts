@@ -26,7 +26,7 @@ import __fs from 'fs-extra';
  * __writeFileSync('my/cool/file.txt', 'Hello World');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __writeFileSync(

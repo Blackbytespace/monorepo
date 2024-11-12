@@ -25,7 +25,7 @@ import __getTransitionProperties from '../style/getTransitionProperties.js';
  * import { __whenTransitionEnd } from '@lotsof/sugar/dom'
  * await __whenTransitionEnd(myCoolHTMLElement);
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __whenTransitionEnd($elm) {

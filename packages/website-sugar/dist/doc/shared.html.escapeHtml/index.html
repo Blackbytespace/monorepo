@@ -1,26 +1,27 @@
-<!DOCTYPE html> <html lang="en" data-astro-transition-scope="astro-2rcqpeji-1"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v4.9.2"><meta property="og:description"><meta property="og:locale" content="en_US"><meta property="og:title" content="Lotsof | Sugar | escapeHtml"><meta property="og:type" content="article"><meta property="og:image" content="https://cdn.lotsof.dev/img/sugar-lotsof-og-image.png"><meta property="og:site_name" content="Lotsof | Sugar"><link rel="icon" href="/_astro/favicon.BGZFy621_4yxpr.svg" type="image/svg+xml"><title>Lotsof | Sugar | escapeHtml</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><style>.advanced-select {
+<!DOCTYPE html>   <html lang="en"> <head><meta charset="UTF-8"><meta name="description"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v4.16.9"><meta property="og:description"><meta property="og:locale" content="en_US"><meta property="og:title"><meta property="og:type" content="article"><meta property="og:image" content="https://cdn.lotsof.dev/img/sugarcss-lotsof-og-image.png"><meta property="og:site_name" content="Lotsof | Sugarcss"><link rel="icon" href="/_astro/favicon.BGZFy621_4yxpr.svg" type="image/svg+xml"><title></title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><style>.s-advanced-select {
   flex-direction: column;
   display: flex;
   position: relative;
 }
 
-.advanced-select .advanced-select_keywords {
+.s-advanced-select .s-advanced-select_keywords {
   flex-grow: 0;
   width: 100%;
 }
 
-.advanced-select .advanced-select_before {
+.s-advanced-select .s-advanced-select_before {
   flex-grow: 0;
   width: 100%;
 }
 
-.advanced-select .advanced-select_after {
+.s-advanced-select .s-advanced-select_after {
   flex-grow: 0;
   width: 100%;
 }
 
-.advanced-select .advanced-select_dropdown {
+.s-advanced-select:not([inline]) .s-advanced-select_dropdown {
   z-index: 10;
+  opacity: 0;
   pointer-events: none;
   flex-direction: column;
   min-width: 100%;
@@ -34,97 +35,94 @@
   transform: translateX(-50%);
 }
 
-.advanced-select:focus-within .advanced-select_dropdown {
+.s-advanced-select:focus-within .s-advanced-select_dropdown {
   pointer-events: all;
   opacity: 1;
 }
 
-.advanced-select.-top .advanced-select_dropdown {
+.s-advanced-select.-top .s-advanced-select_dropdown {
   top: auto;
   bottom: 100%;
 }
 
-.advanced-select .advanced-select_input:focus + .advanced-select_dropdown {
+.s-advanced-select .s-advanced-select_input:focus + .s-advanced-select_dropdown {
   opacity: 1;
   pointer-events: all !important;
 }
 
-.advanced-select .advanced-select_dropdown:focus {
+.s-advanced-select .s-advanced-select_dropdown:focus {
   opacity: 1;
   pointer-events: all !important;
 }
 
-.advanced-select .advanced-select_dropdown:focus-within {
+.s-advanced-select .s-advanced-select_dropdown:focus-within {
   opacity: 1;
   pointer-events: all !important;
 }
 
-.advanced-select .advanced-select_items {
+.s-advanced-select:not([inline]) .s-advanced-select_items {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.advanced-select .advanced-select_item {
+.s-advanced-select .s-advanced-select_item {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
   outline: none;
+  display: none;
   position: relative;
 }
 
-.advanced-select:not([interactive]) .advanced-select_item {
+.s-advanced-select .s-advanced-select_item.-match {
+  display: block;
+}
+
+.s-advanced-select:not([interactive]) .s-advanced-select_item {
   cursor: pointer;
 }
 
-.advanced-select:not([interactive]) .advanced-select_item * {
+.s-advanced-select:not([interactive]) .s-advanced-select_item * {
   pointer-events: none;
 }
-
-.advanced-select[inline] .advanced-select_dropdown {
-  pointer-events: all;
-  opacity: 1;
-  max-width: 100%;
-  margin: 0;
-  position: static;
-}
 </style>
-<link rel="stylesheet" href="/_astro/_namespace_.CXGQQ01C.css"><script type="module" src="/_astro/hoisted.8n89Zg0e.js"></script><style>[data-astro-transition-scope="astro-2rcqpeji-1"] { view-transition-name: astro-2rcqpeji-1; }@layer astro { ::view-transition-old(astro-2rcqpeji-1) { 
+<link rel="stylesheet" href="/_astro/_namespace_.be-KKVsn.css"><script type="module" src="/_astro/hoisted.T38cYOGW.js"></script><style>[data-astro-transition-scope="astro-wf6ek4n7-2"] { view-transition-name: body; }@layer astro { ::view-transition-old(body) { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }::view-transition-new(astro-2rcqpeji-1) { 
+	animation-name: astroFadeOut; }::view-transition-new(body) { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-2rcqpeji-1) { 
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(body) { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-2rcqpeji-1) { 
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(body) { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-2rcqpeji-1"],
-			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-2rcqpeji-1"] { 
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-wf6ek4n7-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-wf6ek4n7-2"] { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-2rcqpeji-1"],
-			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-2rcqpeji-1"] { 
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-wf6ek4n7-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-wf6ek4n7-2"] { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-2rcqpeji-1"],
-			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-2rcqpeji-1"] { 
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-wf6ek4n7-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-wf6ek4n7-2"] { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-2rcqpeji-1"],
-			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-2rcqpeji-1"] { 
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-wf6ek4n7-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-wf6ek4n7-2"] { 
 	animation-duration: 0.1s;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head> <body> <header class="lo-header"> <a class="_logo" href="/" title="Sugarcss"> <svg class="logo-lotsof-picto" width="41" height="105" viewBox="0 0 41 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+	animation-name: astroFadeIn; }</style></head> <body>  <main class="main"> <div class="main_inner"> <nav class="main_nav" data-astro-transition-persist="astro-vtsxng37-1"> <header class="header"> <a class="_logo" href="/" title="Sugar"> <svg class="logo-lotsof-picto" width="41" height="105" viewBox="0 0 41 105" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="0.3125" width="8.13557" height="57.7626" rx="4.06779" fill="black"/>
 <rect y="65.5931" width="8.13558" height="16.2711" rx="4.06779" fill="black"/>
 <rect width="8.13558" height="53.6948" rx="4.06779" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 16.5781 104.135)" fill="black"/>
@@ -153,21 +151,7 @@
         d="M79.7555 55.7919V56.7382C79.7555 58.2559 79.5498 59.6182 79.1384 60.825C78.727 62.0318 78.1464 63.0604 77.3967 63.9107C76.647 64.7518 75.751 65.3964 74.7087 65.8444C73.6756 66.2924 72.5282 66.5164 71.2665 66.5164C70.0139 66.5164 68.8665 66.2924 67.8242 65.8444C66.7911 65.3964 65.8951 64.7518 65.1363 63.9107C64.3774 63.0604 63.7877 62.0318 63.3671 60.825C62.9557 59.6182 62.75 58.2559 62.75 56.7382V55.7919C62.75 54.2651 62.9557 52.9028 63.3671 51.7051C63.7786 50.4982 64.3591 49.4697 65.1088 48.6194C65.8677 47.7691 66.7637 47.12 67.7968 46.672C68.8391 46.224 69.9865 46 71.2391 46C72.5008 46 73.6482 46.224 74.6813 46.672C75.7236 47.12 76.6196 47.7691 77.3693 48.6194C78.1281 49.4697 78.7133 50.4982 79.1247 51.7051C79.5453 52.9028 79.7555 54.2651 79.7555 55.7919ZM75.6002 56.7382V55.7645C75.6002 54.7039 75.5042 53.7714 75.3122 52.9668C75.1202 52.1622 74.8367 51.4857 74.4619 50.9371C74.087 50.3885 73.6299 49.9771 73.0905 49.7028C72.551 49.4194 71.9339 49.2777 71.2391 49.2777C70.5442 49.2777 69.9271 49.4194 69.3876 49.7028C68.8574 49.9771 68.4048 50.3885 68.0299 50.9371C67.6642 51.4857 67.3854 52.1622 67.1934 52.9668C67.0014 53.7714 66.9054 54.7039 66.9054 55.7645V56.7382C66.9054 57.7896 67.0014 58.7222 67.1934 59.5359C67.3854 60.3404 67.6688 61.0216 68.0437 61.5793C68.4185 62.1278 68.8757 62.5438 69.4151 62.8273C69.9545 63.1107 70.5716 63.2524 71.2665 63.2524C71.9613 63.2524 72.5785 63.1107 73.1179 62.8273C73.6573 62.5438 74.1099 62.1278 74.4756 61.5793C74.8413 61.0216 75.1202 60.3404 75.3122 59.5359C75.5042 58.7222 75.6002 57.7896 75.6002 56.7382Z"
         fill="black" />
 </svg>
-     </a> <nav class="lo-nav">  <div class="lo-burger" tabindex="0"> <div class="_line-1"></div> <div class="_line-2"></div> </div> <nav class="lo-menu"> <ol class="_menu"> <li class="_item"> <a class="_link" href="" title="" lo-search>
-Documentation <span class="lo-shortcut">(ctrl+p)</span> </a> </li> <!-- <li class="_item">
-      <a
-        class="_link"
-        href="https://github.com/lotsofdev/sugarcss"
-        title="Discuss about Sugarcss on Discord"
-        target="_blank"
-      >
-        Discuss
-      </a>
-    </li> --> <li class="_item"> <a class="_link" href="https://github.com/lotsofdev/sugarcss" title="Contribute to Sugarcss on Github" target="_blank">
-Contribute
-</a> </li> <li class="_item"> <a class="_link" href="https://github.com/lotsofdev/sugarcss" title="Lotsof Sugarcss on Github" target="_blank">
-Github
-</a> </li> </ol> </nav> </nav> <a href="/" title="Sugarcss"> <h1 class="_title">Sugar</h1> <h4 class="_version">v0.0.1</h4> <svg class="picto-new-n-tasty" viewBox="0 0 618 194" fill="none" xmlns="http://www.w3.org/2000/svg">
+     </a> <a href="/" title="Sugar" style="--chars: 5;"> <h1 class="_title">Sugar</h1> <h4 class="_version">v1.0.0-alpha.34</h4> <svg class="picto-new-n-tasty" viewBox="0 0 618 194" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
         d="M617.951 0C612.895 0.105 603.302 0.456004 599.265 3.742C595.712 6.634 595.555 13.807 594.602 18C591.798 30.324 589.149 42.707 586.209 55C584.644 61.545 582.883 68.338 581.952 75C581.653 77.136 580.623 80.467 582.018 82.397C584.513 85.847 592.868 83.396 595.441 81.157C600.875 76.428 601.658 63.645 603.53 57C605.697 49.312 607.936 41.65 610.231 34C613.487 23.147 617.857 11.383 617.951 0Z"
         fill="black" />
@@ -199,8 +183,9 @@ Github
         d="M180.954 106.211C183.777 105.811 186.272 106.208 188.954 107C188.638 108.323 188.32 109.649 188.001 110.977C186.564 116.96 185.116 122.99 183.846 129C183.345 131.373 182.571 135.471 185.388 136.824C190.063 139.071 193.923 130.158 194.899 127C195.867 123.87 195.179 120.443 194.512 117.121C193.356 111.362 192.262 105.914 199.958 102.862C201.516 102.244 203.271 102.041 204.91 102.452C212.197 104.28 209.953 114.754 208.718 120C205.967 131.684 198.072 144.388 186.954 149.672C180.419 152.778 171.269 152.582 166.954 146H164.954C159.698 155.171 139.958 165.547 134.954 151C125.923 160.025 111.931 170.755 97.9693 165.258C92.9193 163.269 91.0633 158.014 90.9733 153C90.8063 143.593 95.2653 133.665 102.047 127.184C108.129 121.374 120.237 115.107 128.895 118.603C137.529 122.09 131.316 135.557 126.849 139.79C122.936 143.499 117.623 145.676 112.669 147.707C112.43 147.805 112.191 147.902 111.954 148C118.163 155.833 127.976 152.103 133.456 144.96C136.88 140.496 138.9 134.472 139.87 129C140.053 127.966 140.163 126.829 140.276 125.663C140.531 123.014 140.802 120.211 141.981 118.105C144.416 113.755 152.048 110.804 156.895 111.238C160.789 111.588 160.871 114.862 160.283 118.001C159.72 121.014 158.802 123.934 157.884 126.853C157.038 129.546 156.192 132.237 155.624 135C155.142 137.347 154.533 143.842 158.908 142.503C162.322 141.458 163.985 136.698 165.172 133.301C165.334 132.838 165.487 132.4 165.634 132C166.712 129.076 167.268 125.964 167.808 122.945C169.231 114.99 170.537 107.685 180.954 106.211ZM110 140C115.58 137.374 118.099 132.982 119 127C112.734 128.775 110.322 133.8 110 140Z"
         fill="black" />
 </svg>
-     </a> <div class="_claim">The toolkit that realy helps you!</div> </header> <main class="lo-main"> <div class="lo-markdown typo-format typo-rhythm">  <div class="docmap-mdx"><h1 id="escapehtml">escapeHtml</h1><div class="_metas"><div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div><div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div><div class="_since"><span class="_since-label">Since:</span><span class="_since-value">2.0.0</span></div><div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div></div><div class="_namespace">@lotsof.sugar.shared.html</div><div class="_description"><p>This function allows you to escape some html characters like &amp;lt;, etc…</p></div><div class="_params"><h2 id="params">Params</h2><ol class="_list"><li class="_item"><span class="_name">html<span class="_required">*</span></span><span class="_default"></span><span class="_type">String</span><p class="_description">The html to unescape</p></li></ol></div><div class="_return"><h2 id="return">Return</h2><ol class="_list"><li class="_item"><span class="_description">The unescaped html</span><span class="_default"></span><span class="_type">String</span></li></ol></div><div class="_examples"><h2 id="example">Example</h2><pre class="astro-code lotsof" style="background-color:#191724;color:#e0def4;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:#31748F">import </span><span style="color:#908CAA">{</span><span style="color:#E0DEF4;font-style:italic"> __escapeHtml</span><span style="color:#908CAA"> }</span><span style="color:#31748F"> from </span><span style="color:#F6C177">&#39;@lotsof/sugar/html&#39;</span><span style="color:#908CAA">;</span></span>
-<span class="line"><span style="color:#EBBCBA">__escapeHtml</span><span style="color:#E0DEF4">(</span><span style="color:#F6C177">&#39;&lt;s-code-example&gt;&#39;</span><span style="color:#E0DEF4">)</span><span style="color:#908CAA">;</span><span style="color:#908CAA;font-style:italic"> //</span><span style="color:#6E6A86;font-style:italic"> =&gt; &amp;lt;s-code-example&amp;gt;</span></span>
-<span class="line"></span></code></pre></div><div class="_todo"><h2 id="todo">Todo</h2><ul class="_list"><li class="_item"><span class="_description">tests</span><span class="_priority -normal">normal</span></li></ul></div><div class="_author"><h2 id="author">Author</h2><ul class="_list"><li class="_item"><span class="_name">Olivier Bossel</span><span class="_email"><a href="mailto:olivier.bossel@gmail.com">olivier.bossel@gmail.com</a></span><a href="https://lotsof.dev" target="_blank" class="_url"><a href="https://lotsof.dev">https://lotsof.dev</a></a></li></ul></div></div>  </div> </main>  <nav class="internal-nav" data-astro-transition-persist="astro-nnovngcy-2"> <ol class="_list"></ol> </nav> <footer class="footer typo-format"> <p>
-Released under the <a href="https://github.com/lotsofdev/sugarcss/blob/master/LICENSE.md" target="_blank">MIT License</a>.
-</p> <p>Copyright © 2024 - Olivier Bossel & Lotsof Contributors</p> </footer>  <form class="lo-search" data-astro-transition-persist="astro-brx7aw3i-3"> <lo-search> <input type="search" class="_input" placeholder="Search"> </lo-search> </form>  <div data-astro-transition-persist="astro-lyvhk26o-4"> <div class="lo-crt" id="lo-crt"> <div class="_noise"></div> <div class="_scanlines"></div> <div class="_scanline-1"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-2"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-4"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-3"> <div class="_line"></div> <div class="_dot"></div> </div> </div> <div class="lo-crt_vignette"></div> <div id="lo-crt-trigger" class="lo-crt-trigger"> <svg viewBox="0 0 937 954" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M134.289 953.5C126.289 953.5 125.289 912 125.289 912L228.789 920C228.789 920 230.289 953.5 219.789 953.5H134.289Z" fill="black"></path> <path d="M803.863 953.5C811.863 953.5 812.863 912 812.863 912L709.363 920C709.363 920 707.863 953.5 718.363 953.5H803.863Z" fill="black"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M45.3062 273.626C98.7243 214.626 837.461 213.625 889.81 273.626C942.159 333.626 961.789 842.626 889.81 899.126C817.831 955.625 112.326 971.125 45.3073 894.626C-21.7111 818.126 -8.11195 332.625 45.3062 273.626ZM104.646 357.956C142.797 315.874 670.398 315.16 707.786 357.956C745.174 400.752 759.193 763.799 707.786 804.098C656.379 844.396 152.511 855.451 104.647 800.888C56.7831 746.325 66.4956 400.037 104.646 357.956ZM825.289 491C852.903 491 875.289 468.614 875.289 441C875.289 413.386 852.903 391 825.289 391C797.675 391 775.289 413.386 775.289 441C775.289 468.614 797.675 491 825.289 491ZM884.289 569C884.289 596.614 861.903 619 834.289 619C806.675 619 784.289 596.614 784.289 569C784.289 541.386 806.675 519 834.289 519C861.903 519 884.289 541.386 884.289 569ZM832.289 750C859.903 750 882.289 727.614 882.289 700C882.289 672.386 859.903 650 832.289 650C804.675 650 782.289 672.386 782.289 700C782.289 727.614 804.675 750 832.289 750Z" fill="black"></path> <ellipse cx="457.289" cy="229" rx="74" ry="50" fill="black"></ellipse> <path d="M240.789 100.5L406.289 214L452.789 204.5L254.289 88L240.789 100.5Z" fill="black"></path> <circle cx="246.289" cy="94" r="33" fill="black"></circle> <path d="M629.917 45.5841L502.456 200.587L455.147 204.377L613.477 37.3257L629.917 45.5841Z" fill="black"></path> <circle cx="33" cy="33" r="33" transform="matrix(-0.96065 0.277762 0.277762 0.96065 645.363 0)" fill="black"></circle> </svg> </div> </div> </body></html>
+     </a> <button class="_menu"></button> </header>  <form class="search"> <script style="application/json">(function(){const items = {"items":{"type":"group","label":"Documentation","items":[{"id":"install","label":"Get started","value":"install","slug":"/","preventSet":true}]}};
+
+    window.searchItems = items.items;
+  })();</script> <lo-search inline="true"> <input type="search" class="_input" placeholder="Search"> <button class="_expand"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path fill="black" d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"></path> </svg> <div class="tooltip -hotkey -justify-start">cmd+shift+p</div> </button> </lo-search> </form> </nav> <div class="main_body" data-astro-transition-scope="astro-wf6ek4n7-2"> <div class="main_body-inner"> <div class="markdown typo-format typo-rhythm">   <div class="docmap-mdx"><h1 id="escapehtml">escapeHtml</h1><div class="_metas"><div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div><div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div><div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div><div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div></div><div class="_namespace">@lotsof.sugar.shared.html</div><div class="_description"><p>This function allows you to escape some html characters like &amp;lt;, etc…</p></div><div class="_params"><h2 id="params">Params</h2><ol class="_list"><li class="_item"><span class="_name">html<span class="_required">*</span></span><span class="_default"></span><span class="_type">String</span><p class="_description">The html to unescape</p></li></ol></div><div class="_return"><h2 id="return">Return</h2><ol class="_list"><li class="_item"><span class="_description">The unescaped html</span><span class="_default"></span><span class="_type">String</span></li></ol></div><div class="_examples"><h2 id="example">Example</h2><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { __escapeHtml } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@lotsof/sugar/html&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">__escapeHtml</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;&lt;s-code-example&gt;&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// =&gt; &amp;lt;s-code-example&amp;gt;</span></span>
+<span class="line"></span></code></pre></div><div class="_todo"><h2 id="todo">Todo</h2><ul class="_list"><li class="_item"><span class="_description">tests</span><span class="_priority -normal">normal</span></li></ul></div><div class="_author"><h2 id="author">Author</h2><ul class="_list"><li class="_item"><span class="_name">Olivier Bossel</span><span class="_email"><a href="mailto:olivier.bossel@gmail.com">olivier.bossel@gmail.com</a></span><a href="https://lotsof.dev" target="_blank" class="_url"><a href="https://lotsof.dev">https://lotsof.dev</a></a></li></ul></div></div>   </div> </div> </div> </div> </main>  <div data-astro-transition-persist="astro-lyvhk26o-3"> <div class="crt" id="lo-crt"> <div class="_noise"></div> <div class="_scanlines"></div> <div class="_scanline-1"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-2"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-4"> <div class="_line"></div> <div class="_dot"></div> </div> <div class="_scanline-3"> <div class="_line"></div> <div class="_dot"></div> </div> </div> <div class="lo-crt_vignette"></div> <div id="lo-crt-trigger" class="crt-trigger"> <svg viewBox="0 0 937 954" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M134.289 953.5C126.289 953.5 125.289 912 125.289 912L228.789 920C228.789 920 230.289 953.5 219.789 953.5H134.289Z" fill="black"></path> <path d="M803.863 953.5C811.863 953.5 812.863 912 812.863 912L709.363 920C709.363 920 707.863 953.5 718.363 953.5H803.863Z" fill="black"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M45.3062 273.626C98.7243 214.626 837.461 213.625 889.81 273.626C942.159 333.626 961.789 842.626 889.81 899.126C817.831 955.625 112.326 971.125 45.3073 894.626C-21.7111 818.126 -8.11195 332.625 45.3062 273.626ZM104.646 357.956C142.797 315.874 670.398 315.16 707.786 357.956C745.174 400.752 759.193 763.799 707.786 804.098C656.379 844.396 152.511 855.451 104.647 800.888C56.7831 746.325 66.4956 400.037 104.646 357.956ZM825.289 491C852.903 491 875.289 468.614 875.289 441C875.289 413.386 852.903 391 825.289 391C797.675 391 775.289 413.386 775.289 441C775.289 468.614 797.675 491 825.289 491ZM884.289 569C884.289 596.614 861.903 619 834.289 619C806.675 619 784.289 596.614 784.289 569C784.289 541.386 806.675 519 834.289 519C861.903 519 884.289 541.386 884.289 569ZM832.289 750C859.903 750 882.289 727.614 882.289 700C882.289 672.386 859.903 650 832.289 650C804.675 650 782.289 672.386 782.289 700C782.289 727.614 804.675 750 832.289 750Z" fill="black"></path> <ellipse cx="457.289" cy="229" rx="74" ry="50" fill="black"></ellipse> <path d="M240.789 100.5L406.289 214L452.789 204.5L254.289 88L240.789 100.5Z" fill="black"></path> <circle cx="246.289" cy="94" r="33" fill="black"></circle> <path d="M629.917 45.5841L502.456 200.587L455.147 204.377L613.477 37.3257L629.917 45.5841Z" fill="black"></path> <circle cx="33" cy="33" r="33" transform="matrix(-0.96065 0.277762 0.277762 0.96065 645.363 0)" fill="black"></circle> </svg> </div> </div>  </body></html>

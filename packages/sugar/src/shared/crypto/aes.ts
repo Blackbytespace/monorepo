@@ -1,5 +1,4 @@
 import AES from 'crypto-js/aes.js';
-import utf8 from 'crypto-js/enc-utf8.js';
 import toString from '../../shared/string/toString.js';
 
 /**
@@ -17,7 +16,7 @@ import toString from '../../shared/string/toString.js';
  * import { __aes } from '@lotsof/sugar/crypto';
  * __aes.encrypt('hello world');
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
  */
 

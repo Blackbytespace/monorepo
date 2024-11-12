@@ -25,7 +25,7 @@ import __parseHsla from './parseHsla.js';
  * __hslaToHex(10,20,30);
  *
  * @see         https://www.npmjs.com/package/colors-convert
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 function HSLToHex(h, s, l) {

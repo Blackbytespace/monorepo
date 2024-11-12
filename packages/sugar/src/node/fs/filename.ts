@@ -21,7 +21,7 @@ import __extension from '../fs/extension.js';
  * import { __filename } from '@lotsof/sugar/fs';
  * __filename('hello/world.js'); // => world.js
  *
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __filename(

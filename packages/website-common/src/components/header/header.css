@@ -8,7 +8,7 @@
     color: s-color(current, --lighten 20);
     line-height: normal;
     text-transform: uppercase;
-    font-size: 100px;
+    font-size: calc(319px / var(--chars) * 2.5);
 
     @s-map-color (accent);
     @include lo-glow;

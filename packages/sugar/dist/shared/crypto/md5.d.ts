@@ -13,7 +13,7 @@
  * import { __md5 } from '@lotsof/sugar/crypto';
  * __md5.encrypt('hello world');
  *
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 declare const _default: {

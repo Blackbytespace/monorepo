@@ -29,7 +29,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * const myShadowRoot = $myElement.shadowRoot;
  * await __adoptStyleInShadowRoot(myShadowRoot);
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
 export default function __adoptStyleInShadowRoot($shadowRoot_1) {

@@ -26,7 +26,7 @@ import __distanceBetween from '../../../shared/math/distanceBetween.js';
  *      direction: 'top'
  * });
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://olivier.bossel@gmail.com)
  */
 export type TNearestElementSettings = {

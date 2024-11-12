@@ -23,7 +23,7 @@ import __isPath from '../../shared/is/isPath.js';
  * import { __folderPath } from '@lotsof/sugar/fs';
  * __folderPath('my/cool/path.js'); // => true
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

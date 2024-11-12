@@ -17,7 +17,7 @@
  * import { __distanceFromElementTopToViewportBottom } from '@lotsof/sugar/dom';
  * __distanceFromElementTopToViewportBottom(myElement); // => 23
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __distanceFromElementTopToViewportBottom(elm: HTMLElement): number;

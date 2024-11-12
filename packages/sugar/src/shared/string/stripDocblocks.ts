@@ -19,7 +19,7 @@
  * import { __stripDocblocks } from '@lotsof/sugar/string';
  * __stripDocblocks('...');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __stripDocblocks(str: string): string {

@@ -92,7 +92,7 @@
     }
   }
   .main_body-inner {
-    width: clamp(100px, 100%, 960px);
+    width: clamp(100px, 100%, 1160px);
 
     @media mobile {
       width: 100%;

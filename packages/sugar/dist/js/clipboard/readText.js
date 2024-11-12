@@ -27,7 +27,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * import { __copyText, __readText } from '@lotsof/sugar/clipboard';
  * await __readText();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __readText() {

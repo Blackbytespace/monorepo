@@ -21,7 +21,7 @@ import { noCase } from 'change-case';
  * __noCase('hello world'); // => hello world
  *
  * @see             https://www.npmjs.com/package/change-case
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __noCase(text) {

@@ -21,7 +21,7 @@
  * import { __idCompliant } from '@lotsof/sugar/string';
  * __idCompliant('Hello world'); // => hello-world
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TIdCompliantSettings = {

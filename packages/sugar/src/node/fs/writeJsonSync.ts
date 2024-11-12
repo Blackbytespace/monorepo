@@ -23,7 +23,7 @@ import __folderPath from './folderPath.js';
  * import { __writeJsonSync } from '@lotsof/sugar/fs';
  * __writeJsonSync('my/cool/file.json', { hello: 'world' });
  *
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __writeJsonSync(path: string, data: any): string {

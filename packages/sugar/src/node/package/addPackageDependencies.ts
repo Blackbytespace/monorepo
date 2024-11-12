@@ -31,7 +31,7 @@ import __packageRootDir from './packageRootDir.js';
  * import { __addPackageDependencies } from '@lotsof/sugar/package`;
  * __addPackageDependencies('lodash');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

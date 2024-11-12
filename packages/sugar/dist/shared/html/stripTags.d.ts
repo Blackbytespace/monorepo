@@ -23,7 +23,7 @@
  * __stripTags('<p><span>Hello</span> world</p>', '<span>') // <span>Hello</span> world
  *
  * @see       https://www.npmjs.com/package/striptags
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function stripTags(html: string, allowedTags?: string[], tagReplacement?: string): string;

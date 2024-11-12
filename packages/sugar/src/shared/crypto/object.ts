@@ -18,7 +18,7 @@ import __encodeObject from 'object-encode';
  *      hello: 'world'
  * });
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
  */
 export default {

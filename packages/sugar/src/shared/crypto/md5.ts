@@ -1,7 +1,6 @@
+import __md5 from 'crypto-js/md5.js';
 import parse from '../../shared/string/parse.js';
 import toString from '../../shared/string/toString.js';
-import __md5 from 'crypto-js/md5.js';
-import __utf8 from 'crypto-js/enc-utf8.js';
 
 const __encryptedMessages: any = {};
 
@@ -20,7 +19,7 @@ const __encryptedMessages: any = {};
  * import { __md5 } from '@lotsof/sugar/crypto';
  * __md5.encrypt('hello world');
  *
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default {

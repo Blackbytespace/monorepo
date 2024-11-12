@@ -22,7 +22,7 @@ var _a, _b;
  * 		// i'm in the viewport
  * }
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 let _isUserScrolling = false, _isUserScrollingTimeout;

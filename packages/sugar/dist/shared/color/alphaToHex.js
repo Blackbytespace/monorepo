@@ -19,7 +19,7 @@
  * import { __alphaToHex } from '@lotsof/sugar/color';
  * __alphaToHex(1); // FF
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __alphaToHex(alpha) {

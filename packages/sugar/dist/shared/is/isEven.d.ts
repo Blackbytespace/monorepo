@@ -20,7 +20,7 @@
  * __isEven(1) // false
  * __isEven(2) // true
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isEven(value: number): boolean;

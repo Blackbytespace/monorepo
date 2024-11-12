@@ -15,7 +15,7 @@ import toString from '../../shared/string/toString.js';
  * import { __aes } from '@lotsof/sugar/crypto';
  * __aes.encrypt('hello world');
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
  */
 const __encryptedMessages = {};

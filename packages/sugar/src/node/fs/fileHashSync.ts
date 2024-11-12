@@ -29,7 +29,7 @@ import __deepMerge from '../../shared/object/deepMerge.js';
  * import { __fileHashSync } from '@lotsof/sugar/fs';
  * __fileHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

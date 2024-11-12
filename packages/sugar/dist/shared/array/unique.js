@@ -18,7 +18,7 @@
  * import { __unique } from '@lotsof/sugar/array';
  * __unique(['hello','world','hello','world']); // => ['hello','world']
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __unique(array) {

@@ -16,7 +16,7 @@ const { title, version } = Astro.props;
     <Fragment set:html={__logoLotsofPicto} />
     <Fragment set:html={__logoLotsof} />
   </a>
-  <a href="/" title={title}>
+  <a href="/" title={title} style={`--chars: ${title.length};`}>
     <h1 class="_title">{title}</h1>
     <h4 class="_version">v{version}</h4>
     <Fragment set:html={__pictoNewNasty} />

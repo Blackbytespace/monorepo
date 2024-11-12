@@ -18,7 +18,7 @@
  * import { __isTestEnv } from '@lotsof/sugar/is';
  * __isTestEnv(); // => true
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isTestEnv(): boolean {

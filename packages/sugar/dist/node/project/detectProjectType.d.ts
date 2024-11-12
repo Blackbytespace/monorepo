@@ -25,7 +25,7 @@
  * import { __detectProjectType } from '@coffeekraken/sugar/project';
  * __detectProjectType();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
  */
 export type TDetectProjectTypeResult = {

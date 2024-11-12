@@ -20,7 +20,7 @@ import * as __fs from 'fs';
  * import { __isfolder } from '@lotsof/sugar/is';
  * __isfolder('something/cool');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TIsFolderSettings = {

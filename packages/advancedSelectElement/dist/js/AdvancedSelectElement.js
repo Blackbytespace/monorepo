@@ -188,7 +188,9 @@ export default class AdvancedSelectElement extends __LitElement {
                         break;
                     case 'group':
                         return html ` <h4 class="${this.cls('_group-label')}">
-              ${__i18n(item.label)}
+              <span class="${this.cls('_group-label-inner')}">
+                ${__i18n(item.label)}
+              <span>
             </h4>
             <ul class="${this.cls('_group-items')}">
               <div class="${this.cls('_group-items-inner')}">${$items}</div>

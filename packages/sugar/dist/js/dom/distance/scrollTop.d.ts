@@ -17,7 +17,7 @@
  * import { __scrollTop } from '@lotsof/sugar/dom';
  * __scrollTop();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev) (https://olivierbossel.com)
  */
 declare function scrollTop(): number;

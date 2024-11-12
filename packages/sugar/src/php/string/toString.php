@@ -4,7 +4,7 @@ namespace Sugar\String;
 
 /**
  * @name            toString
- * @namespace            php.string
+ * @namespace       php.string
  * @type            Function
  * @platform        php
  * @status          beta

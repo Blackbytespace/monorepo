@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
  * import { __uniqid } from '@lotsof/sugar/string';
  * const id = __uniqid();
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default uuidv4;

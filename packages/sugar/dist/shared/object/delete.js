@@ -20,7 +20,7 @@
  * __delete(myObject, 'my.cool.value');
  * __delete(myObject, 'my.cool.value.0');
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __delete(object, dotpath) {

@@ -27,7 +27,7 @@ import __countLineChars from './countLineChars.js';
  *    splitWords: true
  * }); // => ['He','ll','o ','Wo','rl','d']
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

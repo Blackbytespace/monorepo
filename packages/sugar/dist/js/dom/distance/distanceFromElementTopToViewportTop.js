@@ -19,7 +19,7 @@ import __offsetFromViewport from '../offset/offsetFromViewport.js';
  * import { __distanceFromElementTopToViewportTop } from '@lotsof/sugar/dom';
  * __distanceFromElementTopToViewportTop(myElement); // => 23
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __distanceFromElementTopToViewportTop(elm) {

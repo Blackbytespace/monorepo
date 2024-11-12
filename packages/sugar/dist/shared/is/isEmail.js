@@ -21,7 +21,7 @@
  * __isEmail('plop@yop.com') => true
  * __isEmail('hello') => false
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isEmail(value) {

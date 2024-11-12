@@ -24,7 +24,7 @@ import __set from './set.js';
  * }
  * __toJson(new MyClass()); // => { hello: 'world' }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __toJson(object: any): any {

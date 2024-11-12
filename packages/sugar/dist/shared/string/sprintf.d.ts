@@ -24,7 +24,7 @@
  * __sprintf('Hello %(name)s', user) // Hello Dolly
  *
  * @see    https://github.com/alexei/sprintf.js
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __sprintf(): string;

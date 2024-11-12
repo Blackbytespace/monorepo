@@ -21,7 +21,7 @@
  * import { __stripSourcemap } from '@lotsof/sugar/string';
  * __stripSourcemap('...');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __stripSourcemap(str: string): string {

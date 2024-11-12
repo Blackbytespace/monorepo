@@ -19,7 +19,7 @@
  * __isIdCompliant('Hello world'); // => false
  * __isIdCompliant('hello-world'); // => true
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isIdCompliant(str: string): boolean;

@@ -18,7 +18,7 @@
  * const array = ['hello','world'];
  * __pickRandom(array); // => 'world'
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __pickRandom(array: any[], count?: number): any;

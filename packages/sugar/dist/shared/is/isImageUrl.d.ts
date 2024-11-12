@@ -20,7 +20,7 @@
  * __isImageUrl('something.jpg); // => true
  * __isImageUrl('other.pdf); // => false
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function (string: string): boolean;

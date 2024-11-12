@@ -29,7 +29,7 @@ import { TTypeStringObject } from '../../shared/type/parseTypeString.js';
  * //    }],
  * // }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com>
  */
 export type TResolveTypeStringResult = {

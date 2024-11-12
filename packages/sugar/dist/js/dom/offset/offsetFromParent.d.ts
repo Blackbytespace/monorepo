@@ -19,7 +19,7 @@
  * const offsetFromParentElm = __offsetFromParent(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __offsetFromParent(elm: HTMLElement): {

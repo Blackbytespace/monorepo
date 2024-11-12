@@ -20,7 +20,7 @@
  * import { __loopsCount } from '@lotsof/sugar/perf';
  * __loopsCount(); // 122003
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function loopsCount(timeframe = 100) {

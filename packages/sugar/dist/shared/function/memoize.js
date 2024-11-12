@@ -25,7 +25,7 @@ import __memoizee from 'memoizee';
  * const result2 = fn('world'); // taken from cache
  *
  * @see             https://www.npmjs.com/package/memoizee
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __memoize(...args) {

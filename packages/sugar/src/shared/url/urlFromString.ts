@@ -22,7 +22,7 @@ import __urlSlug from 'url';
  * // sir-james-paul-mc-cartney-mbe-is-an-english-singer-songwriter
  *
  * @see             https://www.npmjs.com/package/url-slug
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function urlFromString(string: string): string {

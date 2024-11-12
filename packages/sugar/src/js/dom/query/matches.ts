@@ -22,7 +22,7 @@
  * }
  *
  * @see 		https://developer.mozilla.org/en/docs/Web/API/Element/matches
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __matches(el: HTMLElement, selector: string): boolean {

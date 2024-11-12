@@ -4,7 +4,7 @@ namespace Sugar\String;
 
 /**
  * @name                camelCase
- * @namespace           string
+ * @namespace           php.string
  * @type                Function
  * @platform            php
  * @status              stable

@@ -20,7 +20,7 @@ import __whenLinkLoaded from '../when/whenLinkLoaded.js';
  * import { __injectStylesheet } from '@lotsof/sugar/dom'
  * __injectStylesheet('/dist/css/style.css')
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __injectStylesheet(

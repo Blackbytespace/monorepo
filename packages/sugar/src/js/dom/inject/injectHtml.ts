@@ -18,7 +18,7 @@
  * import { __injectHtml } from '@lotsof/sugar/dom'
  *  __injectHtml('<html>...</html>`, $myElement);
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

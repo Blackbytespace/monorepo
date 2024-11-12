@@ -15,7 +15,7 @@
  * import { __scrollLeft } from '@lotsof/sugar/dom'
  * __scrollLeft() // 40
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://olivier.bossel@gmail.com)
  */
 export default function __scrollLeft() {

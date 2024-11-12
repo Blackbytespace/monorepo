@@ -18,7 +18,7 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * import { __commonImageFileExtensions } from '@lotsof/sugar/extension';
  * const extensions = __commonImageFileExtensions();
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __commonImageFileExtensions(settings?: Partial<ICommonFileExtensionsSettings>): string[];

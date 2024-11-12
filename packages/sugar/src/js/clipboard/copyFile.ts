@@ -20,7 +20,7 @@
  * __copyFile('https://www.google.com/favicon.ico');
  *
  * @see             https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default async function __copyFile(url: string): Promise<void> {

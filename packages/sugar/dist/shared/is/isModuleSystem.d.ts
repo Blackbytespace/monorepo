@@ -20,7 +20,7 @@
  * __isModuleSystem('esm'); // => true
  * __isModuleSystem('cjs'); // => false
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isModuleSystem(systemNames: ('esm' | 'cjs')[]): boolean;

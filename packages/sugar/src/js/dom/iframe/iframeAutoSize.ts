@@ -23,7 +23,7 @@
  * import { __iframeAutoSize } from '@lotsof/sugar/dom';
  * __iframeAutoSize($1, $2);
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

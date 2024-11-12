@@ -65,4 +65,4 @@
   background: s-color(accent, --darken 10);
 }
 
-@include s-destyle;
+@include s-reset;

@@ -20,7 +20,7 @@
  * import { __pxToEm } from '@lotsof/sugar/convert';
  * __pxToEm(36);
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __pxToEm(

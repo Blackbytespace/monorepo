@@ -21,7 +21,7 @@ import ltrim from '../string/ltrim.js';
  * __queryStringToObject('?var1=value1&var2=value2') // { var1: 'value1', var2: 'value2' }
  *
  * @see  	http://stackoverflow.com/questions/8648892/convert-url-parameters-to-a-javascript-object
- * @since     2.0.0
+ * @since     1.0.0
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __queryStringToObject(str) {

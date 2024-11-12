@@ -30,7 +30,7 @@ import __unquote from '../../../shared/string/unquote.js';
  * // using promise
  * await __whenBackgroundImageLoaded($elm);
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __whenBackgroundImageLoaded(

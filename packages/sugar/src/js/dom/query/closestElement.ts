@@ -28,7 +28,7 @@ import __querySelectorUp from './querySelectorUp.js';
  *   return elm.hasAttribute('my-cool-attribute')
  * })
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default __querySelectorUp;

@@ -27,7 +27,7 @@
  * import { __setCookie } from '@lotsof/sugar/cookie';
  * __setCookie('myCookie', 'hello world');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export interface ISetCookieSettings {

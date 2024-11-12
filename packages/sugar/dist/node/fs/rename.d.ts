@@ -18,7 +18,7 @@
  * await __rename('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TRenameSettings = {

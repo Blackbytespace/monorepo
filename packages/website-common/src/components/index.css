@@ -12,6 +12,7 @@
 @import './crt/crt.css';
 @import './footer/footer.css';
 @import './header/header.css';
+@import './hotkey/hotkey.css';
 @import './internalNav/internalNav.css';
 @import './layout/layout.css';
 @import './main/main.css';
@@ -20,5 +21,5 @@
 @import './nav/nav.css';
 @import './search/search.css';
 @import './platform/platform.css';
-@import './shortcut/shortcut.css';
+@import './tooltip/tooltip.css';
 @import './typo/typo.css';

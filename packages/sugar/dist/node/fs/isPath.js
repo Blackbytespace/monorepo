@@ -23,7 +23,7 @@ import __isValidPath from 'is-valid-path';
  * __isPath('hello/world'); // => true
  *
  * @see         https://www.npmjs.com/package/is-valid-path
- * @since         2.0.0
+ * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isPath(path, checkExistence = false) {

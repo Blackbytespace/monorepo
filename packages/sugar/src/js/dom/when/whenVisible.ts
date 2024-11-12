@@ -28,7 +28,7 @@ import __uniqid from '../../string/uniqid.js';
  * 		// do something with your element that is now visible
  * });
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

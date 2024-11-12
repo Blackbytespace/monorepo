@@ -29,7 +29,7 @@ import __readJsonSync from './readJsonSync.js';
  * import { __readJson } from '@lotsof/sugar/fs';
  * await __readJson('my-cool-json/file.json');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __readJson(path) {

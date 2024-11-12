@@ -23,7 +23,7 @@
  * const file = await __findUp('myCoolFile.json', {});
  * console.log(file.path);
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TFindUpSettings = {

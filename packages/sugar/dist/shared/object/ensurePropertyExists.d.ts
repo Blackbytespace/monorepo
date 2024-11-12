@@ -23,7 +23,7 @@
  * __ensureProperyExists(myObj, 'cool.object', {});
  * // { hello: 'world', cool: { object: {} } }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __ensureProperyExists(obj: any, path: string, value?: any): any;

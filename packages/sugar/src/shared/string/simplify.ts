@@ -28,7 +28,7 @@ import __deepMerge from '../object/deepMerge.js';
  * import { __simplify } from '@lotsof/sugar/string';
  * __simplify('éàddö'); // => eaddo
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    João Filipe Ventura Coelho <joaoventura93@outlook.com>
  */
 export type TSimplifySettings = {

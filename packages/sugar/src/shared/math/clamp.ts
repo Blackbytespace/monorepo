@@ -24,7 +24,7 @@
  * __clamp(100, 0, 100); // => 100
  * __clamp(101, 0, 100); // => 100
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __clamp(num: number, min: number, max: number): number {

@@ -21,7 +21,7 @@
  * import { __wait } from '@lotsof/sugar/datetime';
  * await __wait(2000);
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __wait(timeout?: number): Promise<void>;

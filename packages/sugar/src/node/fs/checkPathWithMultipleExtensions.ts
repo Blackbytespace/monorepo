@@ -27,7 +27,7 @@ import __extension from './extension.js';
  * import { __checkPathWithMultipleExtensions } from '@lotsof/sugar/fs';
  * __checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __checkPathWithMultipleExtensions(

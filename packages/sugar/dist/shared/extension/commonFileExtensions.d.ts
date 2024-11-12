@@ -31,7 +31,7 @@
  * import { __commonFileExtensions } from '@lotsof/sugar/extension';
  * const extensions = __commonFileExtensions(); // => ['avi','mp3',...]
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type Types = ('audio' | 'compressed' | 'data' | 'disc' | 'email' | 'executable' | 'font' | 'image' | 'media' | 'programming' | 'text' | 'video' | 'web')[];

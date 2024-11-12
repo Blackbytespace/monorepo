@@ -24,7 +24,7 @@ import { format } from 'fecha';
  * import { __format } from '@lotsof/sugar/string'
  *
  * @see       https://www.npmjs.com/package/fecha
- * @since     2.0.0
+ * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TFormat =

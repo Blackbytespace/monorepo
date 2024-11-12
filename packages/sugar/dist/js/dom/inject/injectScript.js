@@ -19,7 +19,7 @@ import __whenScriptLoaded from '../when/whenScriptLoaded.js';
  * import { __injectScript } from '@lotsof/sugar/dom'
  *  __injectScript('dist/js/app.js')
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __injectScript(src, $parent = document.body) {

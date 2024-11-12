@@ -21,7 +21,7 @@
  * __isNumber(22.3) => true
  * __isNumber('20') => false
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isNumber(source: any): boolean {

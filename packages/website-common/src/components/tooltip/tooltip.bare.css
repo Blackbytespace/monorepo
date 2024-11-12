@@ -1,0 +1,66 @@
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--tooltip-arrow-size));
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: top center;
+  opacity: 0;
+  pointer-events: none;
+
+  :hover > & {
+    opacity: 1;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: calc(var(--tooltip-arrow-size) * -1);
+    border-width: var(--tooltip-arrow-size);
+    border-style: solid;
+    border-color: var(--tooltip-background) transparent transparent transparent;
+  }
+
+  &.-justify-start {
+    bottom: auto;
+    top: 50%;
+    left: auto;
+    right: calc(100% + var(--tooltip-arrow-size));
+    translate: 0 -50%;
+
+    &:before {
+      top: 50%;
+      left: 100%;
+      rotate: -90deg;
+      translate: var(--tooltip-arrow-size) -50%;
+    }
+  }
+  &.-justify-end {
+    bottom: auto;
+    top: 50%;
+    right: auto;
+    left: calc(100% + var(--tooltip-arrow-size));
+    translate: 0 -50%;
+
+    &:before {
+      top: 50%;
+      left: auto;
+      right: 100%;
+      rotate: 90deg;
+      translate: 0 -50%;
+    }
+  }
+  &.-align-start {
+  }
+  &.-align-end {
+    bottom: auto;
+    top: calc(100% + var(--tooltip-arrow-size));
+
+    &:before {
+      top: auto;
+      bottom: 100%;
+      rotate: 180deg;
+    }
+  }
+}

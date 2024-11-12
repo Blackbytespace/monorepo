@@ -22,7 +22,7 @@
  *    span: (tag, content) => `<div>${content}</div>`; // => <div>Hello</div> world
  * });
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __replaceTags(text: string, tags: Record<string, Function>): string;

@@ -36,7 +36,7 @@ import __set from './set.js';
  * import { __deepize } from '@lotsof/sugar/object';
  * __deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __deepize(object) {

@@ -31,7 +31,7 @@ import __sha256 from '../../shared/crypto/sha256.js';
  * import { __folderHashSync } from '@lotsof/sugar/fs';
  * __folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

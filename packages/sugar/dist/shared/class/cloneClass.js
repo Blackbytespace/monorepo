@@ -21,7 +21,7 @@ import { cloneClass } from 'clone-class';
  * const NewClass = __cloneClass(class MyClass() {});
  *
  * @see             https://www.npmjs.com/package/clone-class
- * @since           2.0.0
+ * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function (cls) {

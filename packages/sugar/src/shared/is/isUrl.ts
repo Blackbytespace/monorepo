@@ -22,7 +22,7 @@
  * __isUrl('hello') => false
  *
  * @see             https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isUrl(data: any): boolean {

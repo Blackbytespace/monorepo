@@ -19,7 +19,7 @@
  * import { __pickSome } from '@lotsof/sugar/array':
  * __pickSome(['hello','world','test'], 1, 2);
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __pickSome(

@@ -20,7 +20,7 @@
  * import { __getKeyByValue } from '@lotsof/sugar/object';
  * __getKeyByValue({ hello: 'world' }, 'world'); // => hello
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __getKeyByValue(object, value) {

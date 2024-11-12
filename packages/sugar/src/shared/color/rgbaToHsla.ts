@@ -25,7 +25,7 @@ import __parseRgba from './parseRgba.js';
  * __rgbaToHsla(10,20,50,10);
  *
  * @see         https://www.npmjs.com/package/colors-convert
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

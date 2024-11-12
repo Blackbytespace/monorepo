@@ -4,22 +4,23 @@ interface Props {
 }
 
 const items = Astro.props;
-
-console.log('Items', items);
 ---
 
 <script>
   import __AdvancedSelectElement from '@lotsof/advanced-select-element';
   // @ts-ignore
   import { __isMobile } from '@lotsof/sugar/is';
+  import { __hotkey } from '@lotsof/sugar/keyboard';
   import { __idCompliant } from '@lotsof/sugar/string';
   import { __toSlug } from '@lotsof/website-common/src/components/utils/utils';
   import { navigate } from 'astro:transitions/client';
+
+  const $expand = document.querySelector('.search ._expand') as HTMLElement;
+
   let cachedItems: any[];
 
-  // console.log('item', items);
-
   document.addEventListener('sAdvancedSelect.select', (e) => {
+    document.body.classList.remove('-search-large');
     const item = (e as CustomEvent).detail.item;
     setTimeout(
       () => {
@@ -76,20 +77,42 @@ console.log('Items', items);
           };
         }
 
+        const platformsHtml = platforms
+          .map((platform: string) => {
+            return `<span class="platform -${platform}">${platform}</span>`;
+          })
+          .join('');
+
         sections[group].items.push({
           id: __idCompliant(item.id),
-          label: `${item.data.title}`,
+          label: `<div class="_item">
+            <div class="_title">${item.data.title}</div>
+            <div class="_platforms">${platformsHtml}</div>
+          </div>`,
           value: `${item.id.replace(/\//gm, '.').replace(/\.mdx$/, '')}`,
           preventSet: true,
         });
       });
 
-      cachedItems = [
-        (window as any).searchItems ?? {},
-        ...Object.values(sections),
-      ];
+      cachedItems = [...Object.values(sections)];
+      if ((window as any).searchItems) {
+        cachedItems = [(window as any).searchItems, ...cachedItems];
+      }
       return cachedItems;
     },
+    hotkey: ['cmd+p', 'cmd+shift+p'],
+  });
+
+  // expand
+  $expand?.addEventListener('click', () => {
+    document.body.classList.add('-search-large');
+  });
+
+  __hotkey('cmd+shift+p', () => {
+    document.body.classList.add('-search-large');
+  });
+  __hotkey('escape', () => {
+    document.body.classList.remove('-search-large');
   });
 </script>
 
@@ -99,5 +122,14 @@ console.log('Items', items);
   </script>
   <lo-search inline>
     <input type="search" class="_input" placeholder="Search" />
+    <button class="_expand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path
+          fill="black"
+          d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"
+        ></path>
+      </svg>
+      <div class="tooltip -hotkey -justify-start">cmd+shift+p</div>
+    </button>
   </lo-search>
 </form>

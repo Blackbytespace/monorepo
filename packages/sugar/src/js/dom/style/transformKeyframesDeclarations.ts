@@ -23,7 +23,7 @@ import __getDefinedStyles from './getDefinedStyles.js';
  * import { __transformKeyframesDeclarations } from '@lotsof/sugar/dom';
  *
  * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/transform-keyframe-declaration.js
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

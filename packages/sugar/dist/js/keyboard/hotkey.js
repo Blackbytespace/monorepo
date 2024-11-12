@@ -17,7 +17,7 @@
  * - the pressed key is the "escape" key.
  *
  *
- * @param       {String}        key         The key to listen for
+ * @param       {String|String[]}        key         The key(s) to listen for
  * @param       {Function}      callback    The callback to call when the hotkey is pressed
  * @param       {THotkeySettings}      [settings={}]       Some settings to configure your hotkey
  * @return      {THotkeyApi}                          An object with a cancel method that you can call to cancel the hotkey
@@ -40,11 +40,24 @@
  * // if you want to cancel the hotkey
  * hotkeyApi.cancel();
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __hotkey(key, callback, settings) {
     const finalSettings = Object.assign({ ctx: document.body, preventDefault: true }, (settings !== null && settings !== void 0 ? settings : {}));
+    // multiple keys
+    if (Array.isArray(key)) {
+        const hotkeyApis = key.map((k) => {
+            return __hotkey(k, callback, settings);
+        });
+        return {
+            cancel: () => {
+                hotkeyApis.forEach((api) => {
+                    api.cancel();
+                });
+            },
+        };
+    }
     const keys = key.split('+').map((k) => {
         if (k === 'command' || k === 'cmd') {
             return 'meta';

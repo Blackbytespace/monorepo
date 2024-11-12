@@ -33,7 +33,7 @@ import __flatten from './flatten.js';
  *     plop: false
  * }, 'hello.*');
  *
- * @since     2.0.0
+ * @since     1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export type TGetGlobSettings = {

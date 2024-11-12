@@ -23,7 +23,7 @@ import __jsAgo from 'js-ago';
  * __timeAgo(1611344957); // => 7 secs ago
  *
  * @see         https://www.npmjs.com/package/js-ago
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __timeAgo(timestamp, format = 'medium') {

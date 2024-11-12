@@ -27,7 +27,7 @@ import __sprintf from 'sprintf-js';
  * __printf('Hello %(first)s, I\'m %(name)s', { first : 'world', name : 'John Doe'}); // Hello world, I'm John Doe
  *
  * @see 				https://www.npmjs.com/package/sprintf-js
- * @since       2.0.0
+ * @since       1.0.0
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __printf(...args): string {

@@ -1,0 +1,11 @@
+@import './hotkey.bare.css';
+
+.hotkey {
+  font: s-font(code);
+  color: s-color(accent);
+  background: s-color(main, --darken 30 --alpha 0.5);
+  padding: s-space(10) s-space(10);
+  border-radius: s-radius();
+  font-size: 10px;
+  text-transform: uppercase;
+}

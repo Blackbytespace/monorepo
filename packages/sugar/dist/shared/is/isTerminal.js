@@ -16,7 +16,7 @@
  * import { __isTerminal } from '@lotsof/sugar/is';
  * __isTerminal(); // => true
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __isTerminal() {

@@ -2,4 +2,7 @@
   [style*='#31748F'] {
     color: s-color(complementary) !important;
   }
+
+  background: s-color(main, background) !important;
+  @s-scrollbar (2px, s-color(main, --alpha 0.2), s-color(main, --darken 40));
 }

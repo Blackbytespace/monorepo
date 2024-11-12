@@ -2,7 +2,7 @@ import { filesize as __filesize } from 'filesize';
 
 /**
  * @name                formatFileSize
- * @namespace           shared.formar
+ * @namespace           shared.format
  * @type                Function
  * @platform            node
  * @platform            js
@@ -36,7 +36,7 @@ import { filesize as __filesize } from 'filesize';
  * __formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

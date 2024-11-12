@@ -20,7 +20,7 @@
  * __stripAnsi('\u001B]8;;https://github.com\u0007Click\u001B]8;;\u0007'); // => Click
  *
  * @see         https://www.npmjs.com/package/strip-ansi
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function stripAnsi(string: string): string;

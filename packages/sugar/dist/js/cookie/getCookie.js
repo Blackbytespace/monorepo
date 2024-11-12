@@ -18,7 +18,7 @@
  * import { __getCookie } from '@lotsof/sugar/cookie';
  * __getCookie('myCookie');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __getCookie(name) {

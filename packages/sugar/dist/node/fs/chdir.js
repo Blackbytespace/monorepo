@@ -19,7 +19,7 @@
  * import { __chdir } from '@lotsof/sugar/fs';
  * __chdir('/my/cool/file.txt', 'Hello world');
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function __chdir(path) {

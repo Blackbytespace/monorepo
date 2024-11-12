@@ -42,7 +42,7 @@ import __when from '../when/when.js';
  * // cancel the query manually when needed
  * query.cancel();
  *
- * @since           2.0.0
+ * @since           1.0.0
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 

@@ -20,7 +20,7 @@
  * __getKeyframesDeclarations('myCoolAnimation', [myCoolCssRules]);
  *
  * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-keyframe-declarations.js
- * @since           2.0.0
+ * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 export default function getKeyframesDeclarations(animationName: any, rules: any): CSSKeyframeRule[];
