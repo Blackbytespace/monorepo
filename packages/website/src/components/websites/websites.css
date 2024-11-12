@@ -14,6 +14,7 @@
 
   ._website {
     position: relative;
+    @s-transition();
 
     &.-sugar {
       @s-map-color (complementary);
@@ -22,6 +23,7 @@
       @s-map-color (accent);
     }
 
+    &:after,
     &:before {
       content: '';
       position: absolute;
@@ -33,7 +35,19 @@
       @s-transition (slow);
       @include lo-glow;
     }
+    &:hover:before {
+      scale: 0.98;
+    }
+    &:hover:after {
+      scale: 0.96 1.02;
+      opacity: 0.4;
+    }
 
+    &:hover {
+      scale: 1.02;
+    }
+
+    &:hover:after,
     &:hover:before {
       border: 1px solid s-color(current);
     }
@@ -43,17 +57,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: s-size(30);
+      padding: s-size(30) s-size(40);
       @s-radius;
+      @s-transition (fast);
+    }
+    &:hover a {
+      /* padding-inline: s-size(30); */
     }
   }
 
   ._title {
     font: s-font(title);
-    font-size: calc(var(--websites-width) / var(--chars) * 2.1);
+    font-size: calc(var(--websites-width) / var(--chars) * 2);
     color: s-color(current, text);
     text-transform: uppercase;
-    line-height: 1;
+    line-height: 0.9;
     @include lo-glow;
   }
 

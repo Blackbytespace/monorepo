@@ -2,6 +2,8 @@
   width: 400px;
   margin: 0 auto;
   margin-top: s-space(100);
+  position: relative;
+  z-index: 999;
 
   @media mobile {
     margin-top: 0;
