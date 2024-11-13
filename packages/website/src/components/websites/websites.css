@@ -15,12 +15,16 @@
   ._website {
     position: relative;
     @s-transition();
+    perspective: 800px;
 
     &.-sugar {
       @s-map-color (complementary);
     }
     &.-sugarcss {
       @s-map-color (accent);
+    }
+
+    &:hover {
     }
 
     &:after,
@@ -33,15 +37,28 @@
       height: 100%;
       border: 1px solid s-color(current, --alpha 0);
       pointer-events: none;
-      @s-transition (slow);
+      background: s-color(accent, --alpha 0 --darken 100);
+      transition: border 0.1s ease-out, scale 0.1s ease-out,
+        background 0.2s ease-out;
       @include lo-glow;
+    }
+    &:before {
+      transform: rotateY(calc(var(--mouse-x) * 5deg))
+        rotateX(calc(var(--mouse-y) * -5deg));
+    }
+    &:after {
+      transform: rotateY(calc(var(--mouse-x) * 30deg))
+        rotateX(calc(var(--mouse-y) * -10deg))
+        translateY(calc(var(--mouse-y) * 20px))
+        translateX(calc(var(--mouse-x) * -20px));
     }
     &:hover:before {
       scale: 0.98;
     }
     &:hover:after {
-      scale: 0.96 1.02;
+      scale: 0.94 1.03;
       opacity: 0.4;
+      background: s-color(accent, --alpha 0.1 --darken 100);
     }
 
     &:hover {
@@ -50,7 +67,7 @@
 
     &:hover:after,
     &:hover:before {
-      border: 1px solid s-color(current);
+      border: 1px solid s-color(current, --lighten 20);
     }
 
     a {

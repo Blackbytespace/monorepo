@@ -5,6 +5,7 @@
   right: s-space(30);
   bottom: s-space(30);
   padding: 1px;
+  perspective: 800px;
   @s-radius;
 
   @media mobile {
@@ -29,8 +30,17 @@
     @include lo-glow;
     @s-radius;
   }
+  &:before {
+    transform: rotateY(calc(var(--mouse-x) * 0.3deg))
+      rotateX(calc(var(--mouse-y) * -0.3deg));
+  }
   &:after {
-    scale: 0.995 1.01;
+    transform: rotateY(calc(var(--mouse-x) * 0.1deg))
+      rotateX(calc(var(--mouse-y) * -0.1deg));
+    display: none;
+  }
+  &:after {
+    scale: 0.98 1.01;
     opacity: 0.3;
   }
 
@@ -85,7 +95,8 @@
   .main_body {
     flex-grow: 1;
     overflow-y: auto;
-    @include lo-scrollbar;
+    /* @include lo-scrollbar; */
+    @s-scrollbar (hide);
 
     @media mobile {
       position: absolute;

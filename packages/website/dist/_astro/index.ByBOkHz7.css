@@ -1269,6 +1269,7 @@ body {
   left: calc(calc(((1) * 24 + 0) * 1px) * var(--s-scale, 1));
   right: calc(calc(((1) * 24 + 0) * 1px) * var(--s-scale, 1));
   bottom: calc(calc(((1) * 24 + 0) * 1px) * var(--s-scale, 1));
+  perspective: 800px;
   padding: 1px;
   position: absolute;
 }
@@ -1353,9 +1354,18 @@ body {
   border-bottom-right-radius: var(--s-radius-default-bottom-right);
 }
 
+.main:before {
+  transform: rotateY(calc(var(--mouse-x) * .3deg)) rotateX(calc(var(--mouse-y) * -.3deg));
+}
+
+.main:after {
+  transform: rotateY(calc(var(--mouse-x) * .1deg)) rotateX(calc(var(--mouse-y) * -.1deg));
+  display: none;
+}
+
 .main:after {
   opacity: .3;
-  scale: .995 1.01;
+  scale: .98 1.01;
 }
 
 .main .main_inner {
@@ -1430,17 +1440,13 @@ body {
   overflow-y: auto;
 }
 
+.main .main_body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .main .main_body::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
-}
-
-.main .main_body::-webkit-scrollbar-track {
-  background-color: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 40) * 1%), var(--s-color-accent-a, 1));
-}
-
-.main .main_body::-webkit-scrollbar-thumb {
-  background-color: var(--s-color-accent);
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -2685,6 +2691,7 @@ body {
 }
 
 .websites ._website {
+  perspective: 800px;
   position: relative;
 }
 
@@ -2717,18 +2724,13 @@ body {
   content: "";
   border: 1px solid hsla(calc(var(--s-color-current-h)  + 0), calc(calc(calc(var(--s-color-current-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-current-l)  + 0)  - 0) * 1%), 0);
   pointer-events: none;
+  background: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 100) * 1%), 0);
   width: 100%;
   height: 100%;
+  transition: border .1s ease-out, scale .1s ease-out, background .2s ease-out;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.websites ._website:after {
-  transition-property: var(--s-transition-slow-property);
-  transition-duration: var(--s-transition-slow-duration);
-  transition-timing-function: var(--s-transition-slow-timing-function);
-  transition-delay: var(--s-transition-slow-delay);
 }
 
 .websites ._website:after {
@@ -2739,22 +2741,25 @@ body {
   content: "";
   border: 1px solid hsla(calc(var(--s-color-current-h)  + 0), calc(calc(calc(var(--s-color-current-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-current-l)  + 0)  - 0) * 1%), 0);
   pointer-events: none;
+  background: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 100) * 1%), 0);
   width: 100%;
   height: 100%;
+  transition: border .1s ease-out, scale .1s ease-out, background .2s ease-out;
   position: absolute;
   top: 0;
   left: 0;
 }
 
 .websites ._website:before {
-  transition-property: var(--s-transition-slow-property);
-  transition-duration: var(--s-transition-slow-duration);
-  transition-timing-function: var(--s-transition-slow-timing-function);
-  transition-delay: var(--s-transition-slow-delay);
+  animation: 1s linear infinite lo-glow;
 }
 
 .websites ._website:before {
-  animation: 1s linear infinite lo-glow;
+  transform: rotateY(calc(var(--mouse-x) * 5deg)) rotateX(calc(var(--mouse-y) * -5deg));
+}
+
+.websites ._website:after {
+  transform: rotateY(calc(var(--mouse-x) * 30deg)) rotateX(calc(var(--mouse-y) * -10deg)) translateY(calc(var(--mouse-y) * 20px)) translateX(calc(var(--mouse-x) * -20px));
 }
 
 .websites ._website:hover:before {
@@ -2763,7 +2768,8 @@ body {
 
 .websites ._website:hover:after {
   opacity: .4;
-  scale: .96 1.02;
+  background: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 100) * 1%), .1);
+  scale: .94 1.03;
 }
 
 .websites ._website:hover {
@@ -2771,11 +2777,11 @@ body {
 }
 
 .websites ._website:hover:after {
-  border: 1px solid var(--s-color-current);
+  border: 1px solid hsla(calc(var(--s-color-current-h)  + 0), calc(calc(calc(var(--s-color-current-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-current-l)  + 20)  - 0) * 1%), var(--s-color-current-a, 1));
 }
 
 .websites ._website:hover:before {
-  border: 1px solid var(--s-color-current);
+  border: 1px solid hsla(calc(var(--s-color-current-h)  + 0), calc(calc(calc(var(--s-color-current-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-current-l)  + 20)  - 0) * 1%), var(--s-color-current-a, 1));
 }
 
 .websites ._website a {

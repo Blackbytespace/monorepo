@@ -6,7 +6,6 @@ interface Props {
 }
 
 import '../fonts/fonts';
-
 import { ViewTransitions, fade } from 'astro:transitions';
 import './layout.css';
 
@@ -25,6 +24,7 @@ const packageJson = __packageJson as any;
 ---
 
 <script>
+  import '../mousePosition/mousePosition';
   import './layout';
 </script>
 
