@@ -17,7 +17,6 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * @example         css
  * :root {
- *      /* Define min, max and a easing function * /
  *      --s-sizes: 0 80px;
  *
  *      /* Define named sizes * /
