@@ -1,6 +1,6 @@
 /**
  * @name                formatFileSize
- * @namespace           shared.formar
+ * @namespace           shared.format
  * @type                Function
  * @platform            node
  * @platform            js

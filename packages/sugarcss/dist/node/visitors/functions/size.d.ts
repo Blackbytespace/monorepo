@@ -7,20 +7,29 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @status          stable
  *
  * This function allows you to apply a size depending on the
- * min, max and easing function declared using the `--s-sizes` variable.
+ * min, max and easing function declared using the `--s-sizes` variable, or registered with
+ * a custom name like --s-size-small, --s-size-medium, etc...
  *
- * @param      {Number}        size         The size you want to apply between 0 and 100
+ * @param      {Number|String}        size         The size you want to apply
  * @return     {Css}                        The generated css
  *
  * @example         css
  * :root {
- *      --s-sizes: 0px, 80px;
+ *      /* Define min, max and a easing function * /
+ *      --s-sizes: 0 80px;
+ *
+ *      /* Define named sizes * /
+ *      --s-size-small: 10px;
+ *      --s-size-medium: 20px;
+ *      --s-size-large: 40px;
  * }
  *
  * .my-element {
- *    font-size: s-size(10); // 8px
- *    font-size: s-size(20); // 16px
- *    font-size: s-size(100); // 80px
+ *    padding: s-size(10); // 80px / 100 * 10 = 8px
+ *    padding: s-size(100); // 80px / 100 * 100 = 80px
+ *    padding: s-size(small); // 10px
+ *    padding: s-size(medium); // 20px
+ *    padding: s-size(large); // 40px
  * }
  *
  * @since           0.0.1

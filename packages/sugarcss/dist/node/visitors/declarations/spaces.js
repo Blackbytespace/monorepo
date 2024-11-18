@@ -9,7 +9,8 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @status          stable
  *
  * This variable allows you to declare the spaces values to use in your css.
- * You can declare as many spaces as you want.
+ * You can either declare a min and max space value and an easing function to be used when you
+ * ask for a space value with a number.
  *
  * @param     {String}         min                The easing value for the min space
  * @param     {String}         max                The easing value for the max space
@@ -17,13 +18,13 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * @example         css
  * :root {
+ *      /* Define min, max and a easing function * /
  *      --s-spaces: 0 80px;
  * }
  *
  * .my-element {
- *    padding: s-space(10); // 8px
- *    padding: s-space(20); // 16px
- *    padding: s-space(100); // 80px
+ *    padding: s-space(10); // 80px / 100 * 10 = 8px
+ *    padding: s-space(100); // 80px / 100 * 100 = 80px
  * }
  *
  * @since           0.0.1
@@ -51,7 +52,11 @@ export default function spaces(v, settings) {
         });
     }
     if (settings.verbose) {
-        console.log(`Registered spaces settings: <yellow>${JSON.stringify(env.spaces)}</yellow>`);
+        console.log(`Registered spaces settings: <yellow>${JSON.stringify({
+            min: value.min,
+            max: value.max,
+            easing: value.easing,
+        })}</yellow>`);
     }
     return result;
 }

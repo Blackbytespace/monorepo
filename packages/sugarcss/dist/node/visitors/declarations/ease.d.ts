@@ -9,7 +9,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * This variable allows you to declare an easing function easily and use it in your css.
  * You can declare as many easings as you want.
  *
- * @param      {String}        color                The color value to declare
+ * @param      {String}        easing                The easing you want to declare
  *
  * @example         css
  * :root {

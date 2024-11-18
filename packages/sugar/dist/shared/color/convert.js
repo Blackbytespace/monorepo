@@ -47,25 +47,35 @@ export default function __convert(input, format = 'rgba') {
             rgbaObj = __hslaToRgba(input.h, input.s, input.l);
         }
     }
+    const hslaObj = __rgbaToHsla(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
     switch (format) {
+        case 'rgb':
+            return {
+                r: rgbaObj.r,
+                g: rgbaObj.g,
+                b: rgbaObj.b,
+            };
+        case 'rgbString':
+            return `rgb(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b})`;
         case 'rgba':
             return rgbaObj;
+        case 'rgbaString':
+            return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
         case 'hsl':
+            return {
+                h: hslaObj.h,
+                s: hslaObj.s,
+                l: hslaObj.l,
+            };
+        case 'hslString':
+            return `hsl(${hslaObj.h},${hslaObj.s},${hslaObj.l})`;
         case 'hsla':
-            return __rgbaToHsla(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
+            return hslaObj;
+        case 'hslaString':
+            return `hsla(${hslaObj.h},${hslaObj.s},${hslaObj.l},${hslaObj.a})`;
         case 'hex':
         case 'hexString':
             return __rgbaToHex(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
-        case 'rgbString':
-            return `rgb(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b})`;
-        case 'rgbaString':
-            return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
-        case 'hslString':
-            const hslObj = __convert(rgbaObj, 'hsl');
-            return `hsl(${hslObj.h},${hslObj.s},${hslObj.l})`;
-        case 'hslaString':
-            const hslaObj = __convert(rgbaObj, 'hsla');
-            return `hsla(${hslaObj.h},${hslaObj.s},${hslaObj.l},${hslaObj.a})`;
     }
     throw new Error(`The requested "${format}" color format is not supported for now...`);
 }

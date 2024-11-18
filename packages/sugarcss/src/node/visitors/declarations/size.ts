@@ -1,4 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
+import __parseArgs from '../../utils/parseArgs.js';
+
 /**
  * @name            s-size
  * @namespace       css.declaration
@@ -28,4 +30,25 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @since           0.0.1
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
-export default function size(v: any, settings: TSugarCssSettings): any;
+
+export default function size(v, settings: TSugarCssSettings): any {
+  const name = v.name.replace(`--s-size-`, '').replace(/\-[a-z]$/, '');
+  const args = __parseArgs(v.value, ['value'], {
+    separator: ['white-space', 'comma'],
+  });
+
+  const result: any[] = [];
+
+  let value = args.values;
+
+  if (settings.verbose) {
+    console.log(
+      `Registered size: <cyan>${name}</cyan>: <yellow>${JSON.stringify({
+        name,
+        value: value.value,
+      })}</yellow>`,
+    );
+  }
+
+  return result;
+}

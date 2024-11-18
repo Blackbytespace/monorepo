@@ -35,6 +35,10 @@ import { __convert } from '@lotsof/sugar/color';
 export default function color(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-color-`, '').replace(/\-[a-z]$/, '');
 
+  if (v.value[0]?.type !== 'color') {
+    return;
+  }
+
   const result: any[] = [
     {
       property: `--s-color-${name}`,
@@ -52,7 +56,8 @@ export default function color(v, settings: TSugarCssSettings): any {
     },
   ];
 
-  const hslaColor = __convert(v.value[0]?.value ?? v.value[0], 'hsla');
+  const hslaColor = __convert(v.value[0]?.value ?? v.value[0], 'hsla'),
+    hexColor = __convert(v.value[0]?.value ?? v.value[0], 'hex');
 
   ['h', 's', 'l', 'a'].forEach((key) => {
     result.push({
@@ -75,7 +80,7 @@ export default function color(v, settings: TSugarCssSettings): any {
   // @TODO      do not check for color name
   if (settings.verbose && name !== 'current') {
     console.log(
-      `Registered color: <cyan>${name}</cyan>: <yellow>${JSON.stringify(
+      `Registered color: <cyan>${name}</cyan>: <magenta>${hexColor}</magenta> <yellow>${JSON.stringify(
         hslaColor,
       )}</yellow>`,
     );

@@ -33,7 +33,7 @@ export default function container(v, settings) {
         separator: ['white-space', 'comma'],
     });
     if (settings.verbose) {
-        console.log(`Registered container: <cyan>${name}</cyan>`);
+        console.log(`Registered container: <cyan>${name}</cyan>: <yellow>${JSON.stringify(args.values)}</yellow>`);
     }
     const result = [];
     for (let [key, value] of Object.entries(args.values)) {

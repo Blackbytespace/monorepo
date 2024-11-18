@@ -36,7 +36,11 @@ export default function container(v, settings: TSugarCssSettings): any {
     });
 
   if (settings.verbose) {
-    console.log(`Registered container: <cyan>${name}</cyan>`);
+    console.log(
+      `Registered container: <cyan>${name}</cyan>: <yellow>${JSON.stringify(
+        args.values,
+      )}</yellow>`,
+    );
   }
 
   const result: any[] = [];

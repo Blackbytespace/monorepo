@@ -1,4 +1,6 @@
+import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
+
 /**
  * @name            s-space
  * @namespace       css.declaration
@@ -28,19 +30,25 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @since           0.0.1
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
-export default function space(v, settings) {
-    const name = v.name.replace(`--s-space-`, '').replace(/\-[a-z]$/, '');
-    const args = __parseArgs(v.value, ['value'], {
-        separator: ['white-space', 'comma'],
-    });
-    const result = [];
-    let value = args.values;
-    if (settings.verbose) {
-        console.log(`Registered space: <yellow>${JSON.stringify({
-            name,
-            value: value.value,
-        })}</yellow>`);
-    }
-    return result;
+
+export default function space(v, settings: TSugarCssSettings): any {
+  const name = v.name.replace(`--s-space-`, '').replace(/\-[a-z]$/, '');
+  const args = __parseArgs(v.value, ['value'], {
+    separator: ['white-space', 'comma'],
+  });
+
+  const result: any[] = [];
+
+  let value = args.values;
+
+  if (settings.verbose) {
+    console.log(
+      `Registered space: <yellow>${JSON.stringify({
+        name,
+        value: value.value,
+      })}</yellow>`,
+    );
+  }
+
+  return result;
 }
-//# sourceMappingURL=space.js.map

@@ -283,8 +283,6 @@ body {
   --s-spaces-min: 0;
   --s-spaces-max: 80px;
   --s-spaces-easing: linear;
-  --s-size-small: 10px;
-  --s-size-large: 100px;
   --s-font-default-family: var(--s-font-family-sans);
   --s-font-lead-family: var(--s-font-family-sans);
   --s-font-title-family: VT323;
@@ -573,7 +571,7 @@ th {
   padding: calc(var(--s-space-20, calc(((1) * 16 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-30, calc(((1) * 24 + 0) * 1px)) * var(--s-scale, 1));
   border-radius: var(--s-radius-default);
   border: 2px solid var(--s-color-accent);
-  font-size: calc(var(--s-size-16, calc(((1) * 12.8 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-16, calc(((1) * 16 + 0) * 1px)) * var(--s-scale, 1));
   letter-spacing: .05em;
   cursor: pointer;
   filter: drop-shadow(hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 100)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 0) * 1%), var(--s-color-accent-a, 1)) 0 0 10px) drop-shadow(hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 100)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 0) * 1%), var(--s-color-accent-a, 1)) 0 0 5px);
@@ -1118,7 +1116,7 @@ th {
 
 .footer p {
   color: rgba(255, 255, 255, .6);
-  font-size: calc(var(--s-size-18, calc(((1) * 14.4 + 0) * 1px)) * var(--s-scale, 1)) !important;
+  font-size: calc(var(--s-size-18, calc(((1) * 18 + 0) * 1px)) * var(--s-scale, 1)) !important;
 }
 
 .footer p {
@@ -1142,11 +1140,9 @@ th {
 
 .header ._title {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .header ._title {
@@ -1173,11 +1169,9 @@ th {
 
 .header ._version {
   --s-color-current: var(--s-color-complementary-o);
-  --s-color-current-o: var(--s-color-complementary-o);
   --s-color-current-h: var(--s-color-complementary-h);
   --s-color-current-s: var(--s-color-complementary-s);
   --s-color-current-l: var(--s-color-complementary-l);
-  --s-color-current-a: 1;
 }
 
 .header ._version {
@@ -1190,8 +1184,8 @@ th {
 
 .header ._menu {
   background: hsla(var(--s-shade-background-main-hue, var(--s-shade-background-hue, calc(var(--s-color-main-h)  + var(--s-shade-background-main-spin, var(--s-shade-background-spin, 0))))), calc(var(--s-shade-background-main-saturation, var(--s-shade-background-saturation, calc(var(--s-color-main-s)  + var(--s-shade-background-main-saturate, var(--s-shade-background-saturate, 0))  - var(--s-shade-background-main-desaturate, var(--s-shade-background-desaturate, 0))))) * 1%), calc(var(--s-shade-background-main-lightness, var(--s-shade-background-lightness, calc(var(--s-color-main-l)  + var(--s-shade-background-main-lighten, var(--s-shade-background-lighten, 0))  - var(--s-shade-background-main-darken, var(--s-shade-background-darken, 0))))) * 1%), var(--s-shade-background-main-alpha, var(--s-shade-background-alpha, var(--s-color-main-a, 1))));
-  width: calc(var(--s-size-70, calc(((1) * 56 + 0) * 1px)) * var(--s-scale, 1));
-  height: calc(var(--s-size-70, calc(((1) * 56 + 0) * 1px)) * var(--s-scale, 1));
+  width: calc(var(--s-size-70, calc(((1) * 70 + 0) * 1px)) * var(--s-scale, 1));
+  height: calc(var(--s-size-70, calc(((1) * 70 + 0) * 1px)) * var(--s-scale, 1));
   border: 1px solid var(--s-color-accent);
   position: absolute;
   top: 0;
@@ -1220,11 +1214,9 @@ th {
 
 .header .logo-lotsof-picto {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .header .logo-lotsof-picto {
@@ -1270,11 +1262,9 @@ th {
 
 .header .picto-new-n-tasty {
   --s-color-current: var(--s-color-ternary-o);
-  --s-color-current-o: var(--s-color-ternary-o);
   --s-color-current-h: var(--s-color-ternary-h);
   --s-color-current-s: var(--s-color-ternary-s);
   --s-color-current-l: var(--s-color-ternary-l);
-  --s-color-current-a: 1;
 }
 
 .header .picto-new-n-tasty {
@@ -1324,7 +1314,7 @@ th {
 
 .internal-nav ._list li {
   color: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 40)  - 0) * 1%), var(--s-color-accent-a, 1));
-  font-size: calc(var(--s-size-20, calc(((1) * 16 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-20, calc(((1) * 20 + 0) * 1px)) * var(--s-scale, 1));
   padding: calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   cursor: pointer;
   display: block;
@@ -1385,11 +1375,9 @@ body {
 
 .main:after {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .main:after {
@@ -1417,11 +1405,9 @@ body {
 
 .main:before {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .main:before {
@@ -1649,7 +1635,7 @@ body {
 
 .markdown ._type-value {
   color: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 20)  - 0) * 1%), var(--s-color-accent-a, 1));
-  font-size: calc(var(--s-size-12, calc(((1) * 9.6 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-12, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1));
   background: hsla(calc(var(--s-color-accent-h)  + 0), calc(calc(calc(var(--s-color-accent-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-accent-l)  + 0)  - 30) * 1%), var(--s-color-accent-a, 1));
   padding: calc(var(--s-space-5, calc(((1) * 4 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   text-transform: uppercase;
@@ -1679,7 +1665,7 @@ body {
 .markdown ._status-value {
   color: var(--s-color-success);
   background: hsla(calc(var(--s-color-success-h)  + 0), calc(calc(calc(var(--s-color-success-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-success-l)  + 0)  - 30) * 1%), var(--s-color-success-a, 1));
-  font-size: calc(var(--s-size-12, calc(((1) * 9.6 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-12, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1));
   padding: calc(var(--s-space-5, calc(((1) * 4 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   text-transform: uppercase;
   letter-spacing: .1em;
@@ -1712,7 +1698,7 @@ body {
 
 .markdown ._since-value {
   color: var(--s-color-complementary);
-  font-size: calc(var(--s-size-12, calc(((1) * 9.6 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-12, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1));
   background: hsla(calc(var(--s-color-complementary-h)  + 0), calc(calc(calc(var(--s-color-complementary-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-complementary-l)  + 0)  - 30) * 1%), var(--s-color-complementary-a, 1));
   padding: calc(var(--s-space-5, calc(((1) * 4 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   text-transform: uppercase;
@@ -1743,7 +1729,7 @@ body {
   align-items: center;
   gap: calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   font: var(--s-font-code-style, normal) var(--s-font-code-variant, normal) var(--s-font-code-weight, normal) var(--s-font-code-size, 1em) / var(--s-font-code-line-height, 1.5em) var(--s-font-code-family, sans-serif);
-  font-size: calc(var(--s-size-12, calc(((1) * 9.6 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-12, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1));
   padding: calc(var(--s-space-5, calc(((1) * 4 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   text-transform: uppercase;
   border-radius: var(--s-radius-default);
@@ -2026,7 +2012,7 @@ body {
 
 .menu ._link {
   gap: calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
-  padding: calc(var(--s-size-15, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-size-30, calc(((1) * 24 + 0) * 1px)) * var(--s-scale, 1));
+  padding: calc(var(--s-size-15, calc(((1) * 15 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-size-30, calc(((1) * 30 + 0) * 1px)) * var(--s-scale, 1));
   flex-grow: 1;
   display: flex;
 }
@@ -2051,7 +2037,7 @@ body {
 }
 
 .nav .menu {
-  top: calc(100% + calc(var(--s-size-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1)));
+  top: calc(100% + calc(var(--s-size-10, calc(((1) * 10 + 0) * 1px)) * var(--s-scale, 1)));
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -2124,7 +2110,7 @@ body {
 
 .search ._expand {
   top: 30px;
-  right: calc(var(--s-size-30, calc(((1) * 24 + 0) * 1px)) * var(--s-scale, 1));
+  right: calc(var(--s-size-30, calc(((1) * 30 + 0) * 1px)) * var(--s-scale, 1));
   width: 1em;
   height: 1em;
   line-height: 1;
@@ -2268,11 +2254,9 @@ body {
 
 .lo-search.s-advanced-select .s-advanced-select_group-label {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .lo-search.s-advanced-select .s-advanced-select_group-label-inner {
@@ -2313,11 +2297,9 @@ body {
 
 .lo-search.s-advanced-select .s-advanced-select_item.-selected {
   --s-color-current: var(--s-color-complementary-o);
-  --s-color-current-o: var(--s-color-complementary-o);
   --s-color-current-h: var(--s-color-complementary-h);
   --s-color-current-s: var(--s-color-complementary-s);
   --s-color-current-l: var(--s-color-complementary-l);
-  --s-color-current-a: 1;
 }
 
 .lo-search.s-advanced-select .s-advanced-select_item.-preselected .platform {
@@ -2338,11 +2320,9 @@ body {
 
 .lo-search.s-advanced-select .s-advanced-select_item {
   --s-color-current: var(--s-color-accent-o);
-  --s-color-current-o: var(--s-color-accent-o);
   --s-color-current-h: var(--s-color-accent-h);
   --s-color-current-s: var(--s-color-accent-s);
   --s-color-current-l: var(--s-color-accent-l);
-  --s-color-current-a: 1;
 }
 
 .lo-search.s-advanced-select .s-advanced-select_highlight {
@@ -2357,7 +2337,7 @@ body {
   align-items: center;
   gap: calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   font: var(--s-font-code-style, normal) var(--s-font-code-variant, normal) var(--s-font-code-weight, normal) var(--s-font-code-size, 1em) / var(--s-font-code-line-height, 1.5em) var(--s-font-code-family, sans-serif);
-  font-size: calc(var(--s-size-12, calc(((1) * 9.6 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-12, calc(((1) * 12 + 0) * 1px)) * var(--s-scale, 1));
   padding: calc(var(--s-space-5, calc(((1) * 4 + 0) * 1px)) * var(--s-scale, 1)) calc(var(--s-space-10, calc(((1) * 8 + 0) * 1px)) * var(--s-scale, 1));
   text-transform: uppercase;
   border-radius: var(--s-radius-default);
@@ -2481,7 +2461,7 @@ body {
 
 .tooltip.-hotkey {
   font: var(--s-font-code-style, normal) var(--s-font-code-variant, normal) var(--s-font-code-weight, normal) var(--s-font-code-size, 1em) / var(--s-font-code-line-height, 1.5em) var(--s-font-code-family, sans-serif);
-  font-size: calc(var(--s-size-14, calc(((1) * 11.2 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-14, calc(((1) * 14 + 0) * 1px)) * var(--s-scale, 1));
   letter-spacing: .1em;
   color: hsla(calc(var(--s-color-current-h)  + 0), calc(calc(calc(var(--s-color-current-s)  + 0)  - 0) * 1%), calc(calc(calc(var(--s-color-current-l)  + 50)  - 0) * 1%), var(--s-color-current-a, 1));
   text-transform: uppercase !important;
@@ -2497,12 +2477,12 @@ body {
 }
 
 .typo-h1, .typo-format h1 {
-  font-size: calc(var(--s-size-100, calc(((1) * 80 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-100, calc(((1) * 100 + 0) * 1px)) * var(--s-scale, 1));
 }
 
 @media (max-width: 768px) {
   :is(.typo-h1, .typo-format h1) {
-    font-size: calc(var(--s-size-60, calc(((1) * 48 + 0) * 1px)) * var(--s-scale, 1));
+    font-size: calc(var(--s-size-60, calc(((1) * 60 + 0) * 1px)) * var(--s-scale, 1));
   }
 }
 
@@ -2517,13 +2497,13 @@ body {
 }
 
 .typo-h2, .typo-format h2 {
-  font-size: calc(var(--s-size-50, calc(((1) * 40 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-50, calc(((1) * 50 + 0) * 1px)) * var(--s-scale, 1));
   color: hsla(var(--s-shade-text-accent-hue, var(--s-shade-text-hue, calc(var(--s-color-accent-h)  + var(--s-shade-text-accent-spin, var(--s-shade-text-spin, 0))))), calc(var(--s-shade-text-accent-saturation, var(--s-shade-text-saturation, calc(var(--s-color-accent-s)  + var(--s-shade-text-accent-saturate, var(--s-shade-text-saturate, 0))  - var(--s-shade-text-accent-desaturate, var(--s-shade-text-desaturate, 0))))) * 1%), calc(var(--s-shade-text-accent-lightness, var(--s-shade-text-lightness, calc(var(--s-color-accent-l)  + var(--s-shade-text-accent-lighten, var(--s-shade-text-lighten, 0))  - var(--s-shade-text-accent-darken, var(--s-shade-text-darken, 0))))) * 1%), var(--s-shade-text-accent-alpha, var(--s-shade-text-alpha, var(--s-color-accent-a, 1))));
 }
 
 @media (max-width: 768px) {
   :is(.typo-h2, .typo-format h2) {
-    font-size: calc(var(--s-size-45, calc(((1) * 36 + 0) * 1px)) * var(--s-scale, 1));
+    font-size: calc(var(--s-size-45, calc(((1) * 45 + 0) * 1px)) * var(--s-scale, 1));
   }
 }
 
@@ -2538,13 +2518,13 @@ body {
 }
 
 .typo-h3, .typo-format h3 {
-  font-size: calc(var(--s-size-40, calc(((1) * 32 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-40, calc(((1) * 40 + 0) * 1px)) * var(--s-scale, 1));
   color: hsla(var(--s-shade-text-accent-hue, var(--s-shade-text-hue, calc(var(--s-color-accent-h)  + var(--s-shade-text-accent-spin, var(--s-shade-text-spin, 0))))), calc(var(--s-shade-text-accent-saturation, var(--s-shade-text-saturation, calc(var(--s-color-accent-s)  + var(--s-shade-text-accent-saturate, var(--s-shade-text-saturate, 0))  - var(--s-shade-text-accent-desaturate, var(--s-shade-text-desaturate, 0))))) * 1%), calc(var(--s-shade-text-accent-lightness, var(--s-shade-text-lightness, calc(var(--s-color-accent-l)  + var(--s-shade-text-accent-lighten, var(--s-shade-text-lighten, 0))  - var(--s-shade-text-accent-darken, var(--s-shade-text-darken, 0))))) * 1%), var(--s-shade-text-accent-alpha, var(--s-shade-text-alpha, var(--s-color-accent-a, 1))));
 }
 
 @media (max-width: 768px) {
   :is(.typo-h3, .typo-format h3) {
-    font-size: calc(var(--s-size-35, calc(((1) * 28 + 0) * 1px)) * var(--s-scale, 1));
+    font-size: calc(var(--s-size-35, calc(((1) * 35 + 0) * 1px)) * var(--s-scale, 1));
   }
 }
 
@@ -2579,13 +2559,13 @@ body {
 
 .typo-lead, .typo-lead > p, .typo-format .typo-lead, .typo-format .typo-lead p {
   font: var(--s-font-lead-style, normal) var(--s-font-lead-variant, normal) var(--s-font-lead-weight, normal) var(--s-font-lead-size, 1em) / var(--s-font-lead-line-height, 1.5em) var(--s-font-lead-family, sans-serif);
-  font-size: calc(var(--s-size-30, calc(((1) * 24 + 0) * 1px)) * var(--s-scale, 1));
+  font-size: calc(var(--s-size-30, calc(((1) * 30 + 0) * 1px)) * var(--s-scale, 1));
   margin-bottom: calc(var(--s-space-60, calc(((1) * 48 + 0) * 1px)) * var(--s-scale, 1)) !important;
 }
 
 @media (max-width: 768px) {
   :is(.typo-lead, .typo-lead > p, .typo-format .typo-lead, .typo-format .typo-lead p) {
-    font-size: calc(var(--s-size-26, calc(((1) * 20.8 + 0) * 1px)) * var(--s-scale, 1));
+    font-size: calc(var(--s-size-26, calc(((1) * 26 + 0) * 1px)) * var(--s-scale, 1));
     line-height: 32px;
   }
 }

@@ -1,5 +1,4 @@
 import { __camelCase } from '@lotsof/sugar/string';
-import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -10,8 +9,9 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @platform        css
  * @status          stable
  *
- * This variable allows you to register a size value that you can use in your css easily.
- * You can register as many size as you want.
+ * This variable allows you to declare the sizes values to use in your css.
+ * You can either declare a min and max size value and an easing function to be used when you
+ * ask for a size value with a number.
  *
  * @param     {String}         min                The easing value for the min size
  * @param     {String}         max                The easing value for the max size
@@ -52,9 +52,6 @@ export default function sizes(v, settings: TSugarCssSettings): any {
     value.easing = __camelCase(value.easing);
   }
 
-  // save in config
-  env.sizes = value;
-
   // custom css variables
   for (let [key, value] of Object.entries(args.ast)) {
     result.push({
@@ -68,9 +65,11 @@ export default function sizes(v, settings: TSugarCssSettings): any {
 
   if (settings.verbose) {
     console.log(
-      `Registered sizes settings: <yellow>${JSON.stringify(
-        env.sizes,
-      )}</yellow>`,
+      `Registered sizes settings: <yellow>${JSON.stringify({
+        min: value.min,
+        max: value.max,
+        easing: value.easing,
+      })}</yellow>`,
     );
   }
 

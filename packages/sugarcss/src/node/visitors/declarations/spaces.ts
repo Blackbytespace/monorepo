@@ -12,8 +12,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * This variable allows you to declare the spaces values to use in your css.
  * You can either declare a min and max space value and an easing function to be used when you
- * ask for a space value with a number, or declare some named spaces with their values.
- * You can declare as many spaces as you want.
+ * ask for a space value with a number.
  *
  * @param     {String}         min                The easing value for the min space
  * @param     {String}         max                The easing value for the max space
@@ -23,19 +22,11 @@ import __parseArgs from '../../utils/parseArgs.js';
  * :root {
  *      /* Define min, max and a easing function * /
  *      --s-spaces: 0 80px;
- *
- *      /* Define named spaces * /
- *      --s-spaces-small: 10px;
- *      --s-spaces-medium: 20px;
- *      --s-spaces-large: 40px;
  * }
  *
  * .my-element {
  *    padding: s-space(10); // 80px / 100 * 10 = 8px
  *    padding: s-space(100); // 80px / 100 * 100 = 80px
- *    padding: s-space(small); // 10px
- *    padding: s-space(medium); // 20px
- *    padding: s-space(large); // 40px
  * }
  *
  * @since           0.0.1
@@ -70,9 +61,11 @@ export default function spaces(v, settings: TSugarCssSettings): any {
 
   if (settings.verbose) {
     console.log(
-      `Registered spaces settings: <yellow>${JSON.stringify(
-        env.spaces,
-      )}</yellow>`,
+      `Registered spaces settings: <yellow>${JSON.stringify({
+        min: value.min,
+        max: value.max,
+        easing: value.easing,
+      })}</yellow>`,
     );
   }
 

@@ -8,7 +8,9 @@ import __mediaDeclaration from './visitors/declarations/media.js';
 import __radiusDeclaration from './visitors/declarations/radius.js';
 import __settingDeclaration from './visitors/declarations/setting.js';
 import __shadeDeclaration from './visitors/declarations/shade.js';
+import __sizeDeclaration from './visitors/declarations/size.js';
 import __sizesDeclaration from './visitors/declarations/sizes.js';
+import __spaceDeclaration from './visitors/declarations/space.js';
 import __spacesDeclaration from './visitors/declarations/spaces.js';
 import __transitionDeclaration from './visitors/declarations/transition.js';
 import __colorFunction from './visitors/functions/color.js';
@@ -176,8 +178,12 @@ export default function sugarcss(settings = {}) {
                         return __mediaDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-ease-`):
                         return __easeDeclaration(v, finalSettings);
+                    case v.name.startsWith(`--s-space-`):
+                        return __spaceDeclaration(v, finalSettings);
                     case v.name === '--s-spaces':
                         return __spacesDeclaration(v, finalSettings);
+                    case v.name.startsWith('--s-size-'):
+                        return __sizeDeclaration(v, finalSettings);
                     case v.name === '--s-sizes':
                         return __sizesDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-setting-`):

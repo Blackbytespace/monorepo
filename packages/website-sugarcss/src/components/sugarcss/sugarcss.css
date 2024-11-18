@@ -1,7 +1,7 @@
 @import '@lotsof/sugarcss/src/css/sugarcss.css';
 
 :root {
-  --s-setting-verbose: false;
+  --s-setting-verbose: true;
   --s-setting-mobile-first: false;
 
   --s-scrolled-classes-class: scrolled;

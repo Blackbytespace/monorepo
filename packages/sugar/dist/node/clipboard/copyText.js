@@ -18,7 +18,7 @@ import __ncp from 'copy-paste';
  *
  * @snippet         __copyText($1)
  *
- * @example       jsmar
+ * @example       js
  * import { __copyText } from '@lotsof/sugar/clipboard';
  * __copyText('Hello world');
  *

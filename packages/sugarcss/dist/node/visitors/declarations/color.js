@@ -30,8 +30,11 @@ import { __convert } from '@lotsof/sugar/color';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function color(v, settings) {
-    var _a, _b;
+    var _a, _b, _c, _d, _e;
     const name = v.name.replace(`--s-color-`, '').replace(/\-[a-z]$/, '');
+    if (((_a = v.value[0]) === null || _a === void 0 ? void 0 : _a.type) !== 'color') {
+        return;
+    }
     const result = [
         {
             property: `--s-color-${name}`,
@@ -48,7 +51,7 @@ export default function color(v, settings) {
             },
         },
     ];
-    const hslaColor = __convert((_b = (_a = v.value[0]) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : v.value[0], 'hsla');
+    const hslaColor = __convert((_c = (_b = v.value[0]) === null || _b === void 0 ? void 0 : _b.value) !== null && _c !== void 0 ? _c : v.value[0], 'hsla'), hexColor = __convert((_e = (_d = v.value[0]) === null || _d === void 0 ? void 0 : _d.value) !== null && _e !== void 0 ? _e : v.value[0], 'hex');
     ['h', 's', 'l', 'a'].forEach((key) => {
         result.push({
             property: `--s-color-${name}-${key}`,
@@ -68,7 +71,7 @@ export default function color(v, settings) {
     });
     // @TODO      do not check for color name
     if (settings.verbose && name !== 'current') {
-        console.log(`Registered color: <cyan>${name}</cyan>: <yellow>${JSON.stringify(hslaColor)}</yellow>`);
+        console.log(`Registered color: <cyan>${name}</cyan>: <magenta>${hexColor}</magenta> <yellow>${JSON.stringify(hslaColor)}</yellow>`);
     }
     return result;
 }

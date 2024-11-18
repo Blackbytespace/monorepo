@@ -7,20 +7,29 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @status          stable
  *
  * This function allows you to apply a space depending on the
- * min, max and easing function declared using the `--s-spaces` variable.
+ * min, max and easing function declared using the `--s-spaces` variable, or registered with
+ * a custom name like --s-space-small, --s-space-medium, etc...
  *
- * @param      {Number}        size         The space you want to apply between 0 and 100
+ * @param      {Number|String}        space         The space you want to apply
  * @return     {Css}                        The generated css
  *
  * @example         css
  * :root {
- *      --s-spaces: 0, 80px;
+ *      /* Define min, max and a easing function * /
+ *      --s-spaces: 0 80px;
+ *
+ *      /* Define named spaces * /
+ *      --s-spaces-small: 10px;
+ *      --s-spaces-medium: 20px;
+ *      --s-spaces-large: 40px;
  * }
  *
  * .my-element {
- *    padding: s-space(10); // 8px
- *    padding: s-space(20); // 16px
- *    padding: s-space(100); // 80px
+ *    padding: s-space(10); // 80px / 100 * 10 = 8px
+ *    padding: s-space(100); // 80px / 100 * 100 = 80px
+ *    padding: s-space(small); // 10px
+ *    padding: s-space(medium); // 20px
+ *    padding: s-space(large); // 40px
  * }
  *
  * @since           0.0.1

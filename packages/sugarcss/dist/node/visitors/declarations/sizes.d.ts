@@ -6,8 +6,9 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @platform        css
  * @status          stable
  *
- * This variable allows you to register a size value that you can use in your css easily.
- * You can register as many size as you want.
+ * This variable allows you to declare the sizes values to use in your css.
+ * You can either declare a min and max size value and an easing function to be used when you
+ * ask for a size value with a number.
  *
  * @param     {String}         min                The easing value for the min size
  * @param     {String}         max                The easing value for the max size
@@ -15,13 +16,21 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *
  * @example         css
  * :root {
- *      --s-sizes: 0px 80px;
+ *      /* Define min, max and a easing function * /
+ *      --s-sizes: 0 80px;
+ *
+ *      /* Define named sizes * /
+ *      --s-size-small: 10px;
+ *      --s-size-medium: 20px;
+ *      --s-size-large: 40px;
  * }
  *
  * .my-element {
- *    font-size: s-size(10); // 8px
- *    font-size: s-size(20); // 16px
- *    font-size: s-size(100); // 80px
+ *    padding: s-size(10); // 80px / 100 * 10 = 8px
+ *    padding: s-size(100); // 80px / 100 * 100 = 80px
+ *    padding: s-size(small); // 10px
+ *    padding: s-size(medium); // 20px
+ *    padding: s-size(large); // 40px
  * }
  *
  * @since           0.0.1

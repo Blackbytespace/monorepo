@@ -68,7 +68,7 @@ export default function fontFamily(v, settings: TSugarCssSettings): any {
   });
 
   if (settings.verbose) {
-    console.log(`Registered font family <yellow>${name}</yellow>`);
+    console.log(`Registered font family: <cyan>${name}</cyan>`);
   }
 
   return result;
