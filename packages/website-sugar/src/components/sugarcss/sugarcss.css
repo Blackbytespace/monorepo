@@ -42,7 +42,7 @@
   --s-font-family-code: 'Monaco', sans-serif;
   --s-font-family-quote: 'Palatino', serif;
 
-  --s-easing-default: cubic-bezier(0.745, 0, 0.18, 1);
+  --s-ease-default: cubic-bezier(0.745, 0, 0.18, 1);
 
   --s-transition-slow: all 0.3s cubic-bezier(0.745, 0, 0.18, 1);
   --s-transition-default: all 0.2s cubic-bezier(0.745, 0, 0.18, 1);

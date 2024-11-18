@@ -1,12 +1,13 @@
 .crt-trigger {
   position: fixed;
   z-index: 1000;
-  bottom: s-space(50);
-  right: s-space(50);
+  bottom: s-space(60);
+  right: s-space(60);
   width: 30px;
   cursor: pointer;
   opacity: 0.3;
   transition: opacity 0.1s ease-out;
+  @include lo-glow;
 
   @media mobile {
     display: none;
@@ -20,7 +21,7 @@
   }
 
   [fill] {
-    fill: s-color(accent);
+    fill: s-color(accent, --lighten 20);
   }
 
   &:after {

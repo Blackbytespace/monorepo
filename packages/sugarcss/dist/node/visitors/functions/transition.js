@@ -13,9 +13,9 @@ import __parseArgs from '../../utils/parseArgs.js';
  *
  * @example         css
  * :root {
- *    --s-transition-slow: all, 0.3s, s-easing();
- *    --s-transition-default: all, 0.2s, s-easing();
- *    --s-transition-fast: all, 0.1s, s-easing();
+ *    --s-transition-slow: all, 0.3s, s-ease();
+ *    --s-transition-default: all, 0.2s, s-ease();
+ *    --s-transition-fast: all, 0.1s, s-ease();
  * }
  *
  * .my-element {

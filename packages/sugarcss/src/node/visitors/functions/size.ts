@@ -10,20 +10,29 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @status          stable
  *
  * This function allows you to apply a size depending on the
- * min, max and easing function declared using the `--s-sizes` variable.
+ * min, max and easing function declared using the `--s-sizes` variable, or registered with
+ * a custom name like --s-size-small, --s-size-medium, etc...
  *
- * @param      {Number}        size         The size you want to apply between 0 and 100
+ * @param      {Number|String}        size         The size you want to apply
  * @return     {Css}                        The generated css
  *
  * @example         css
  * :root {
- *      --s-sizes: 0px, 80px;
+ *      /* Define min, max and a easing function * /
+ *      --s-sizes: 0 80px;
+ *
+ *      /* Define named sizes * /
+ *      --s-size-small: 10px;
+ *      --s-size-medium: 20px;
+ *      --s-size-large: 40px;
  * }
  *
  * .my-element {
- *    font-size: s-size(10); // 8px
- *    font-size: s-size(20); // 16px
- *    font-size: s-size(100); // 80px
+ *    padding: s-size(10); // 80px / 100 * 10 = 8px
+ *    padding: s-size(100); // 80px / 100 * 100 = 80px
+ *    padding: s-size(small); // 10px
+ *    padding: s-size(medium); // 20px
+ *    padding: s-size(large); // 40px
  * }
  *
  * @since           0.0.1
@@ -36,19 +45,7 @@ export default function size(value: any, settings: TSugarCssSettings): any {
   });
 
   const sizeArgs = env.sizes;
-
   let easing = sizeArgs.easing;
-
-  // check if an easing is specified
-  for (let [argName, argValue] of Object.entries(args.values)) {
-    // if is an easing specified
-    if (typeof argValue === 'string') {
-      if (env.easingFunctions[argValue]) {
-        easing = argValue;
-        continue;
-      }
-    }
-  }
 
   // prepare the easing function
   const easingFunction = env.easingFunctions[easing];
@@ -58,23 +55,23 @@ export default function size(value: any, settings: TSugarCssSettings): any {
 
   const sizes: string[] = [];
   for (let [argName, argValue] of Object.entries(args.values)) {
-    // skip easing declaration
-    if (env.easings[argName] || typeof argValue !== 'number') {
-      continue;
+    let resultCalc = '';
+
+    // easing declaration
+    if (typeof argValue === 'number') {
+      // get the requested value percentage
+      const easingFunctionStr = easingFunction.replace(
+        /t/gm,
+        `${argValue / 100}`,
+      );
+
+      resultCalc = `calc(((${easingFunctionStr}) * ${
+        (sizeDelta / 100) * argValue
+      } + ${sizeArgs.min}) * 1px)`;
     }
 
-    // get the requested value percentage
-    const easingFunctionStr = easingFunction.replace(
-      /t/gm,
-      `${argValue / 100}`,
-    );
-
-    const resultCalc = `calc(((${easingFunctionStr}) * ${
-      (sizeDelta / 100) * argValue
-    } + ${sizeArgs.min}) * 1px)`;
-
     // create the calc declaration
-    sizes.push(resultCalc);
+    sizes.push(`var(--s-size-${argValue}, ${resultCalc})`);
   }
 
   return {

@@ -33,31 +33,21 @@ export default function size(value, settings) {
     });
     const sizeArgs = env.sizes;
     let easing = sizeArgs.easing;
-    // check if an easing is specified
-    for (let [argName, argValue] of Object.entries(args.values)) {
-        // if is an easing specified
-        if (typeof argValue === 'string') {
-            if (env.easingFunctions[argValue]) {
-                easing = argValue;
-                continue;
-            }
-        }
-    }
     // prepare the easing function
     const easingFunction = env.easingFunctions[easing];
     // calculate the delta between min and max
     const sizeDelta = sizeArgs.max - sizeArgs.min;
     const sizes = [];
     for (let [argName, argValue] of Object.entries(args.values)) {
-        // skip easing declaration
-        if (env.easings[argName] || typeof argValue !== 'number') {
-            continue;
+        let resultCalc = '';
+        // easing declaration
+        if (typeof argValue === 'number') {
+            // get the requested value percentage
+            const easingFunctionStr = easingFunction.replace(/t/gm, `${argValue / 100}`);
+            resultCalc = `calc(((${easingFunctionStr}) * ${(sizeDelta / 100) * argValue} + ${sizeArgs.min}) * 1px)`;
         }
-        // get the requested value percentage
-        const easingFunctionStr = easingFunction.replace(/t/gm, `${argValue / 100}`);
-        const resultCalc = `calc(((${easingFunctionStr}) * ${(sizeDelta / 100) * argValue} + ${sizeArgs.min}) * 1px)`;
         // create the calc declaration
-        sizes.push(resultCalc);
+        sizes.push(`var(--s-size-${argValue}, ${resultCalc})`);
     }
     return {
         raw: sizes

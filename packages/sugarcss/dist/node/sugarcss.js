@@ -1,6 +1,6 @@
 import __colorDeclaration from './visitors/declarations/color.js';
 import __containerDeclaration from './visitors/declarations/container.js';
-import __easingsDeclaration from './visitors/declarations/easing.js';
+import __easeDeclaration from './visitors/declarations/ease.js';
 import __fontDeclaration from './visitors/declarations/font.js';
 import __fontFamilyDeclaration from './visitors/declarations/fontFamily.js';
 import __gridDeclaration from './visitors/declarations/grid.js';
@@ -13,6 +13,7 @@ import __spacesDeclaration from './visitors/declarations/spaces.js';
 import __transitionDeclaration from './visitors/declarations/transition.js';
 import __colorFunction from './visitors/functions/color.js';
 import __containerFunction from './visitors/functions/container.js';
+import __easeFunction from './visitors/functions/ease.js';
 import __fontFunction from './visitors/functions/font.js';
 import __fontFamilyFunction from './visitors/functions/fontFamily.js';
 import __radiusFunction from './visitors/functions/radius.js';
@@ -117,6 +118,7 @@ export default function sugarcss(settings = {}) {
     env.functions[`s-transition`] = __transitionFunction;
     env.functions[`s-radius`] = __radiusFunction;
     env.functions['s-container'] = __containerFunction;
+    env.functions['s-ease'] = __easeFunction;
     env.rules['s-scrollbar'] = __scrollbarRule;
     env.rules['s-transition'] = __transitionRule;
     env.rules['s-radius'] = __radiusRule;
@@ -155,6 +157,9 @@ export default function sugarcss(settings = {}) {
             ['s-container'](v) {
                 return __containerFunction(v, finalSettings);
             },
+            ['s-ease'](v) {
+                return __easeFunction(v, finalSettings);
+            },
         },
         Declaration: {
             custom(v) {
@@ -169,8 +174,8 @@ export default function sugarcss(settings = {}) {
                         return __shadeDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-media-`):
                         return __mediaDeclaration(v, finalSettings);
-                    case v.name.startsWith(`--s-easing-`):
-                        return __easingsDeclaration(v, finalSettings);
+                    case v.name.startsWith(`--s-ease-`):
+                        return __easeDeclaration(v, finalSettings);
                     case v.name === '--s-spaces':
                         return __spacesDeclaration(v, finalSettings);
                     case v.name === '--s-sizes':
