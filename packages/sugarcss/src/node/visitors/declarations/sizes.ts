@@ -28,8 +28,6 @@ import __parseArgs from '../../utils/parseArgs.js';
  * }
  *
  * .my-element {
- *    padding: s-size(10); // 80px / 100 * 10 = 8px
- *    padding: s-size(100); // 80px / 100 * 100 = 80px
  *    padding: s-size(small); // 10px
  *    padding: s-size(medium); // 20px
  *    padding: s-size(large); // 40px
