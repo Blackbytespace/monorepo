@@ -1,5 +1,6 @@
 import { __camelCase } from '@lotsof/sugar/string';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 /**
  * @name            s-sizes
  * @namespace       css.declaration
@@ -18,19 +19,11 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @example         css
  * :root {
  *      --s-sizes: 0 80px;
- *
- *      /* Define named sizes * /
- *      --s-size-small: 10px;
- *      --s-size-medium: 20px;
- *      --s-size-large: 40px;
  * }
  *
  * .my-element {
  *    padding: s-size(10); // 80px / 100 * 10 = 8px
  *    padding: s-size(100); // 80px / 100 * 100 = 80px
- *    padding: s-size(small); // 10px
- *    padding: s-size(medium); // 20px
- *    padding: s-size(large); // 40px
  * }
  *
  * @since           0.0.1
@@ -47,11 +40,12 @@ export default function sizes(v, settings) {
     }
     // custom css variables
     for (let [key, value] of Object.entries(args.ast)) {
+        const finalValue = __toRem(value);
         result.push({
             property: `--s-sizes-${key}`,
             value: {
                 name: `--s-sizes-${key}`,
-                value: [value],
+                value: [finalValue],
             },
         });
     }

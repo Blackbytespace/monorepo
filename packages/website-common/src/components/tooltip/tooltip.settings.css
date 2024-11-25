@@ -1,11 +1,9 @@
 .tooltip {
   --tooltip-arrow-size: 6px;
-  --tooltip-padding: s-space(10);
+  --tooltip-padding: s-space(2);
   --tooltip-background: s-color(current);
   --tooltip-color: s-color(current, foreground);
 
   &.-hotkey {
-    --tooltip-background: s-color(complementary, --darken 20);
-    --tooltip-color: s-color(complementary, foreground);
   }
 }

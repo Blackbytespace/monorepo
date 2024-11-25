@@ -44,7 +44,7 @@ export default function font(value: any, settings: TSugarCssSettings): any {
   props.push(
     `var(--s-font-${args.values.name}-size, 1em)/var(--s-font-${args.values.name}-line-height, 1.5em)`,
   );
-  props.push(`var(--s-font-${args.values.name}-family, sans-serif)`);
+  props.push(`var(--s-font-family-${args.values.name}, sans-serif)`);
 
   return {
     raw: props.join(' '),

@@ -1,0 +1,8 @@
+.color-schema {
+  position: fixed;
+  bottom: s-space(16);
+  right: s-space(16);
+}
+
+.cs-dark {
+}

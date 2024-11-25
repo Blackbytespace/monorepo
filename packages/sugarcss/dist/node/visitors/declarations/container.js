@@ -1,5 +1,6 @@
 import { __dashCase } from '@lotsof/sugar/string';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 /**
  * @name            s-container
  * @namespace       css.declaration
@@ -28,7 +29,6 @@ import __parseArgs from '../../utils/parseArgs.js';
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function container(v, settings) {
-    var _a, _b, _c;
     const name = v.name.replace(`--s-container-`, ''), args = __parseArgs(v.value, ['minWidth', 'maxWidth', 'sidePadding'], {
         separator: ['white-space', 'comma'],
     });
@@ -45,8 +45,8 @@ export default function container(v, settings) {
                     {
                         type: 'length',
                         value: {
-                            unit: (_c = (_b = (_a = args.ast[key]) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.unit) !== null && _c !== void 0 ? _c : 'px',
-                            value: value,
+                            unit: 'rem',
+                            value: __toRem(value),
                         },
                     },
                 ],

@@ -1,23 +1,21 @@
 @mixin lo-platform {
   display: flex;
   align-items: center;
-  gap: s-space(10);
-  font: s-font(code);
-  font-size: s-size(12);
-  padding: s-space(5) s-space(10);
+  gap: s-space(2);
+  padding: s-space(1) s-space(2);
   text-transform: uppercase;
   border-radius: s-radius();
 
   &.-css {
-    background: s-color(accent, --darken 30);
+    color: s-color(accent, --darken 30);
   }
   &.-js {
-    background: s-color(accent, --darken 30);
+    color: s-color(accent, --darken 30);
   }
   &.-node {
-    background: s-color(complementary, --darken 30);
+    color: s-color(complementary, --darken 30);
   }
   &.-php {
-    background: s-color(php, --darken 10);
+    color: s-color(php, --darken 10);
   }
 }

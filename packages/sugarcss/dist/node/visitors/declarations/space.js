@@ -1,4 +1,5 @@
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 /**
  * @name            s-space
  * @namespace       css.declaration
@@ -35,6 +36,23 @@ export default function space(v, settings) {
     });
     const result = [];
     let value = args.values;
+    result.push({
+        property: `--s-space-${name}`,
+        value: {
+            name: `--s-space-${name}`,
+            value: [
+                typeof value.value === 'string'
+                    ? args.ast.value
+                    : __toRem({
+                        type: 'length',
+                        value: {
+                            unit: 'px',
+                            value: value.value,
+                        },
+                    }),
+            ],
+        },
+    });
     if (settings.verbose) {
         console.log(`Registered space: <yellow>${JSON.stringify({
             name,

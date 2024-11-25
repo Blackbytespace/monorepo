@@ -4,7 +4,7 @@
   left: calc(50% + s-container(maxWidth) / 2);
   top: 300px;
   z-index: 10;
-  padding: s-space(30);
+  padding: s-space(8);
   user-select: none;
 
   @media tablet {
@@ -31,9 +31,9 @@
   ._list {
     li {
       color: s-color(accent, --lighten 40);
-      font-size: s-size(20);
+      font-size: s-size(h1);
       display: block;
-      padding: s-space(10);
+      padding: s-space(3);
       cursor: pointer;
 
       &.-active,

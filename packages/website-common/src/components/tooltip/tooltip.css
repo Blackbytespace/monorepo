@@ -10,7 +10,7 @@
 
   &.-hotkey {
     font: s-font(code);
-    font-size: s-size(14);
+    font-size: s-size(tooltip);
     letter-spacing: 0.1em;
     color: s-color(current, --lighten 50);
     text-transform: uppercase !important;

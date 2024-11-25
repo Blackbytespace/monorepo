@@ -10,6 +10,7 @@ export type TSugarCssRadius = {
 };
 
 export type TSugarCssEnv = {
+  remFactor: number;
   functions: Record<string, Function>;
   rules: Record<string, Function>;
   settings: TSugarCssSettings;

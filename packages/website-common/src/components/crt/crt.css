@@ -1,8 +1,8 @@
 .crt-trigger {
   position: fixed;
   z-index: 1000;
-  bottom: s-space(60);
-  right: s-space(60);
+  bottom: s-space(16);
+  right: s-space(16);
   width: 30px;
   cursor: pointer;
   opacity: 0.3;

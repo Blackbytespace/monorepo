@@ -1,6 +1,7 @@
 import { __dashCase } from '@lotsof/sugar/string';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 
 /**
  * @name            s-container
@@ -54,8 +55,8 @@ export default function container(v, settings: TSugarCssSettings): any {
           {
             type: 'length',
             value: {
-              unit: args.ast[key]?.value?.unit ?? 'px',
-              value: value,
+              unit: 'rem',
+              value: __toRem(value),
             },
           },
         ],

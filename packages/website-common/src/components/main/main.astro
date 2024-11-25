@@ -13,6 +13,7 @@ import Layout from '../layout/layout.astro';
 import LoHeader from '../header/header.astro';
 import LoCrt from '../crt/crt.astro';
 import LoSearch from '../search/search.astro';
+import LoColorSchema from '../colorSchema/colorSchema.astro';
 
 import './main';
 ---
@@ -38,11 +39,7 @@ import './main';
         <LoHeader title={Astro.props.title} version={Astro.props.version} />
         <LoSearch items={Astro.props.searchItems} />
       </nav>
-      <div
-        class="main_body"
-        transition:animate={fade({ duration: '0.1s' })}
-        transition:name="body"
-      >
+      <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
         <div class="main_body-inner">
           <div class="markdown typo-format typo-rhythm">
             <slot />
@@ -51,5 +48,6 @@ import './main';
       </div>
     </div>
   </main>
-  <LoCrt />
+  <LoColorSchema />
+  <!-- <LoCrt /> -->
 </Layout>

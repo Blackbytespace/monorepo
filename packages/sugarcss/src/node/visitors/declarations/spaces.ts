@@ -2,6 +2,7 @@ import { __camelCase } from '@lotsof/sugar/string';
 import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 
 /**
  * @name            s-spaces
@@ -49,11 +50,12 @@ export default function spaces(v, settings: TSugarCssSettings): any {
 
   // custom css variables
   for (let [key, value] of Object.entries(args.ast)) {
+    const finalValue = __toRem(value);
     result.push({
       property: `--s-spaces-${key}`,
       value: {
         name: `--s-spaces-${key}`,
-        value: [value],
+        value: [finalValue],
       },
     });
   }

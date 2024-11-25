@@ -1,0 +1,58 @@
+---
+interface Props {}
+
+import './colorSchema.css';
+
+const colorSchema = [
+  {
+    name: 'Light',
+    value: 'light',
+  },
+  {
+    name: 'Dark',
+    value: 'dark',
+  },
+];
+---
+
+<form id="color-schema" class="color-schema">
+  <select class="form-select" name="color-schema">
+    {
+      colorSchema.map((schema) => (
+        <option value={schema.value}>{schema.name}</option>
+      ))
+    }
+  </select>
+</form>
+
+<script>
+  import { __isDarkMode } from '@lotsof/sugar/is';
+
+  const $form = document.getElementById('color-schema') as HTMLFormElement,
+    $select = $form?.querySelector('select') as HTMLSelectElement;
+
+  let schema =
+    localStorage.getItem('color-schema') || (__isDarkMode() ? 'dark' : 'light');
+
+  $select.value = schema;
+
+  function applySchema(): void {
+    document.body.setAttribute('color-schema', schema);
+  }
+
+  applySchema();
+
+  document.addEventListener('astro:after-swap', () => {
+    applySchema();
+  });
+
+  $form.addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
+
+  $select.addEventListener('change', (e: any) => {
+    localStorage.setItem('color-schema', e.target?.value as string);
+    schema = e.target.value;
+    applySchema();
+  });
+</script>

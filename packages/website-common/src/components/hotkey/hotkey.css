@@ -2,10 +2,9 @@
 
 .hotkey {
   font: s-font(code);
-  color: s-color(accent);
-  background: s-color(main, --darken 30 --alpha 0.5);
-  padding: s-space(10) s-space(10);
+  letter-spacing: 0.2em !important;
+  padding: s-space(2) s-space(2);
   border-radius: s-radius();
-  font-size: 10px;
+  font-size: s-size(caption);
   text-transform: uppercase;
 }

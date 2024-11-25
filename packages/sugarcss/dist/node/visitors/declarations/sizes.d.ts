@@ -17,19 +17,11 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @example         css
  * :root {
  *      --s-sizes: 0 80px;
- *
- *      /* Define named sizes * /
- *      --s-size-small: 10px;
- *      --s-size-medium: 20px;
- *      --s-size-large: 40px;
  * }
  *
  * .my-element {
  *    padding: s-size(10); // 80px / 100 * 10 = 8px
  *    padding: s-size(100); // 80px / 100 * 100 = 80px
- *    padding: s-size(small); // 10px
- *    padding: s-size(medium); // 20px
- *    padding: s-size(large); // 40px
  * }
  *
  * @since           0.0.1

@@ -1,5 +1,6 @@
 import __isChrome from './isChrome.js';
 import __isCrawler from './isCrawler.js';
+import __isDarkMode from './isDarkMode.js';
 import __isEdge from './isEdge.js';
 import __isFirefox from './isFirefox.js';
 import __isFocus from './isFocus.js';
@@ -24,6 +25,7 @@ export * from '../../shared/is/_exports.js';
 export {
   __isChrome,
   __isCrawler,
+  __isDarkMode,
   __isEdge,
   __isFirefox,
   __isFocus,

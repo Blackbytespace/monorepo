@@ -45,6 +45,7 @@ import {
 import { __parseHtml } from '@lotsof/sugar/console';
 
 export const env: TSugarCssEnv = {
+  remFactor: 0.0625,
   functions: {},
   rules: {},
   settings: {
@@ -103,7 +104,7 @@ console.log = (...args): void => {
 };
 
 export function sugarize(
-  ligningcss: TransformOptions<any>,
+  ligningcss?: TransformOptions<any>,
   settings?: Partial<TSugarCssSettings>,
 ): any {
   const visitor = [sugarcss(settings)];
@@ -124,7 +125,7 @@ export function sugarize(
     },
     visitor: composeVisitors(visitor),
     targets:
-      ligningcss.targets ?? browserslistToTargets(browserslist('>= 0.25%')),
+      ligningcss?.targets ?? browserslistToTargets(browserslist('>= 0.25%')),
   };
 }
 

@@ -1,6 +1,7 @@
 import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 
 /**
  * @name            s-media
@@ -60,7 +61,7 @@ export default function media(v, settings: TSugarCssSettings): any {
       property: `--s-media-${media}-min`,
       value: {
         name: `--s-media-${media}-min`,
-        value: [args.ast.min],
+        value: [__toRem(args.ast.min)],
       },
     });
   }
@@ -70,7 +71,7 @@ export default function media(v, settings: TSugarCssSettings): any {
       property: `--s-media-${media}-max`,
       value: {
         name: `--s-media-${media}-max`,
-        value: [args.ast.max],
+        value: [__toRem(args.ast.max)],
       },
     });
   }

@@ -1,104 +1,57 @@
+/* @mixin log {
+  @container not style(--s-space-large: 100px) {
+    background: red !important;
+  }
+} */
+
 .header {
-  padding: s-space(50);
-  padding-top: s-space(40);
   position: relative;
+  margin-block-end: s-space(10);
 
   ._title {
     font: s-font(title);
-    color: s-color(current, --lighten 20);
+    letter-spacing: 0.1em;
     line-height: normal;
     text-transform: uppercase;
-    font-size: calc(319px / var(--chars) * 2.5);
-
-    @s-map-color (accent);
-    @include lo-glow;
+    font-size: s-size(6);
   }
 
   ._version {
+    display: none;
     font: s-font(title);
     color: s-color(current);
     font-size: 20px;
     line-height: normal;
     pointer-events: none;
     position: absolute;
-    right: s-space(50);
+    right: s-space(12);
     top: 100px;
     @s-transition (fast);
-
-    @s-map-color (complementary);
-    @include lo-glow;
   }
 
   svg {
-    [fill] {
-      fill: s-color(accent, text);
+    width: 100%;
+    height: auto;
+
+    [fill='black'] {
+      fill: s-color(accent);
     }
   }
 
   ._menu {
+    display: none;
     position: absolute;
     top: 0;
     right: 100%;
     background: s-color(main, background);
-    width: s-size(70);
-    height: s-size(70);
+    width: s-space(16);
+    height: s-space(16);
     border: 1px solid s-color(accent);
   }
 
   ._logo {
     display: block;
-    height: 60px;
-    position: relative;
-    margin-top: s-space(50);
-  }
-
-  .logo-lotsof-picto {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 60px;
-    opacity: 1;
-    transform: translate(0, -30%) scale(1);
-
-    [fill] {
-      fill: s-color(current, --lighten 20);
-    }
-
-    @s-map-color (accent);
-    @include lo-glow;
-  }
-
-  .logo-lotsof {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 30px;
-    opacity: 1;
-    transform: translateX(120%);
-    @s-transition();
-
-    [fill] {
-      fill: white;
-    }
-
-    .scrolled & {
-      @media mobile {
-        opacity: 0;
-      }
-    }
-  }
-
-  .picto-new-n-tasty {
-    width: 150px;
-    position: absolute;
-    top: s-space(65);
-    right: s-space(50);
-
-    [fill] {
-      fill: s-color(current, --lighten 25);
-    }
-
-    @s-map-color (ternary);
-    @include lo-glow;
+    width: 60px;
+    margin-bottom: s-space(4);
   }
 }

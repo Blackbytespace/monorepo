@@ -10,8 +10,8 @@
   ._link {
     flex-grow: 1;
     display: flex;
-    gap: s-space(10);
-    padding: s-size(15) s-size(30);
+    gap: s-space(2);
+    padding: s-space(4) s-space(8);
 
     &:hover,
     &:focus {

@@ -1,30 +1,15 @@
 .markdown {
-  padding-block: s-space(100);
-  padding-inline: s-space(50);
+  padding-block: s-space(10);
 
   .docmap-mdx {
     display: flex;
     flex-direction: column;
-    gap: s-space(50);
+    gap: s-space(12);
   }
 
   @media mobile {
-    padding-block: s-space(50);
-    padding-inline: s-space(20);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  p,
-  ul:not(._list),
-  ol:not(._list) {
-    padding-inline: s-space(40);
-  }
-  > .btn {
-    margin-inline-start: s-space(40);
+    padding-block: s-space(12);
+    padding-inline: s-space(5);
   }
 
   ._description {
@@ -32,21 +17,14 @@
 
   ._namespace {
     position: relative;
-    padding: s-space(30, 40);
-    background: s-color(main, background);
-    color: s-color(accent, text);
-    font: s-font(code);
-    border-bottom-left-radius: s-radius();
-    border-bottom-right-radius: s-radius();
+    padding: s-space(5);
+    background: s-color(main, --alpha 0.03);
+    color: s-color(accent);
   }
 
   ._metas {
-    padding: s-space(30, 40);
-    background: s-color(main, background);
     display: flex;
-    gap: s-space(20);
-    border-top-left-radius: s-radius();
-    border-top-right-radius: s-radius();
+    gap: s-space(5);
 
     @media mobile {
       flex-direction: column;
@@ -56,8 +34,7 @@
   ._type {
     display: flex;
     align-items: center;
-    gap: s-space(10);
-    font: s-font(code);
+    gap: s-space(2);
   }
   ._type-label {
     @media mobile {
@@ -65,20 +42,19 @@
     }
   }
   ._type-value {
-    color: s-color(accent, --lighten 20);
-    font-size: s-size(12);
-    background: s-color(accent, --darken 30);
-    padding: s-space(5) s-space(10);
-    text-transform: uppercase;
+    background: s-color(accent);
+    font-size: s-size(caption);
     letter-spacing: 0.1em;
+    color: s-color(accent, foreground);
+    padding: s-space(1) s-space(3);
+    text-transform: uppercase;
     @s-radius();
   }
 
   ._status {
     display: flex;
     align-items: center;
-    gap: s-space(10);
-    font: s-font(code);
+    gap: s-space(2);
   }
   ._status-label {
     @media mobile {
@@ -86,12 +62,12 @@
     }
   }
   ._status-value {
-    color: s-color(success);
-    background: s-color(success, --darken 30);
-    font-size: s-size(12);
-    padding: s-space(5) s-space(10);
-    text-transform: uppercase;
+    background: s-color(complementary);
+    font-size: s-size(caption);
     letter-spacing: 0.1em;
+    color: s-color(complementary, foreground);
+    padding: s-space(1) s-space(3);
+    text-transform: uppercase;
     @s-radius();
 
     &.-beta {
@@ -103,8 +79,7 @@
   ._since {
     display: flex;
     align-items: center;
-    gap: s-space(10);
-    font: s-font(code);
+    gap: s-space(2);
   }
   ._since-label {
     @media mobile {
@@ -112,20 +87,19 @@
     }
   }
   ._since-value {
-    color: s-color(complementary);
-    font-size: s-size(12);
-    background: s-color(complementary, --darken 30);
-    padding: s-space(5) s-space(10);
-    text-transform: uppercase;
+    background: s-color(main, --alpha 0.03);
+    font-size: s-size(caption);
     letter-spacing: 0.1em;
+    color: s-color(main, text);
+    padding: s-space(1) s-space(3);
+    text-transform: uppercase;
     @s-radius();
   }
 
   ._platform {
     display: flex;
     align-items: center;
-    gap: s-space(10);
-    font: s-font(code);
+    gap: s-space(2);
   }
   ._platform-label {
     @media mobile {
@@ -133,17 +107,23 @@
     }
   }
   ._platform-value {
-    @include lo-platform;
+    background: s-color(main, --alpha 0.03);
+    font-size: s-size(caption);
+    letter-spacing: 0.1em;
+    color: s-color(main, text);
+    padding: s-space(1) s-space(3);
+    text-transform: uppercase;
+    @s-radius();
   }
 
   ._params,
   ._settings {
     ._list {
-      margin-top: s-space(20);
+      margin-top: s-space(5);
       margin-bottom: 0 !important;
 
       @media mobile {
-        margin-top: s-space(10);
+        margin-top: s-space(2);
       }
     }
 
@@ -158,18 +138,16 @@
     }
 
     ._name {
-      font-weight: bold;
       flex-grow: 1;
-      background: s-color(main, background);
-      padding: s-space(30, 40);
-      font: s-font(code);
+      background: s-color(main, --alpha 0.03);
+      padding: s-space(5);
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
     }
 
     ._description {
       width: 100%;
-      padding: s-space(30, 40);
+      padding: s-space(5);
       margin: 0 !important;
     }
   }
@@ -177,10 +155,10 @@
   ._return {
     ._list {
       display: flex;
-      margin-top: s-space(20);
+      margin-top: s-space(5);
 
       @media mobile {
-        margin-top: s-space(10);
+        margin-top: s-space(2);
       }
     }
 
@@ -196,8 +174,8 @@
 
     ._description {
       flex-grow: 1;
-      background: s-color(main, background);
-      padding: s-space(30);
+      background: s-color(main, --alpha 0.03);
+      padding: s-space(5);
       margin-bottom: 0;
       font: s-font(default);
       border-top-left-radius: s-radius();
@@ -206,18 +184,14 @@
     }
   }
 
-  ._name {
-    font: s-font(code);
-  }
-
   ._required {
     color: s-color(error);
   }
 
   ._default {
     color: s-color(warning);
-    background: s-color(main, background);
-    padding: s-space(30);
+    background: s-color(main, --alpha 0.03);
+    padding: s-space(5);
     font: s-font(code);
   }
 
@@ -226,11 +200,9 @@
   ._return {
     ._type {
       color: s-color(complementary);
-      background: s-color(main, background);
-      padding: s-space(30);
+      background: s-color(main, --alpha 0.03);
+      padding: s-space(5);
       font: s-font(code);
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
     }
   }
 
@@ -238,13 +210,13 @@
     ._list {
       display: flex;
       flex-direction: column;
-      gap: s-space(10);
+      gap: s-space(2);
     }
     ._item {
       display: flex;
       align-items: center;
 
-      gap: s-space(20);
+      gap: s-space(5);
 
       &:before {
         display: none;
@@ -255,7 +227,7 @@
     }
     ._priority {
       order: -1;
-      padding: s-space(5) s-space(10);
+      padding: s-space(1) s-space(2);
       border-radius: s-radius();
       text-align: center;
       width: 60px;
@@ -285,16 +257,16 @@
   ._contributors {
     ._item {
       background: s-color(main, background);
-      padding: s-space(40);
+      padding: s-space(5);
       display: flex;
-      gap: s-space(30);
+      gap: s-space(5);
       font: s-font(code);
       border-radius: s-radius();
       margin: 0;
 
       @media mobile {
         flex-direction: column;
-        gap: s-space(10);
+        gap: s-space(2);
       }
 
       &::before {

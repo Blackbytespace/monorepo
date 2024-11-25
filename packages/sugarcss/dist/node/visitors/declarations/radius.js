@@ -1,4 +1,5 @@
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 import { __dashCase } from '@lotsof/sugar/string';
 /**
  * @name            s-radius
@@ -80,13 +81,13 @@ export default function radius(v, settings) {
             value: {
                 name: `--s-radius-${name}-${__dashCase(corner)}`,
                 value: [
-                    {
+                    __toRem({
                         type: 'length',
                         value: {
                             unit: 'px',
                             value: values[corner],
                         },
-                    },
+                    }),
                 ],
             },
         });

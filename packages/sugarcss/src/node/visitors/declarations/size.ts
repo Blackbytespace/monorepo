@@ -1,5 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 
 /**
  * @name            s-size
@@ -37,9 +38,27 @@ export default function size(v, settings: TSugarCssSettings): any {
     separator: ['white-space', 'comma'],
   });
 
+  let value = args.values;
+
   const result: any[] = [];
 
-  let value = args.values;
+  result.push({
+    property: `--s-size-${name}`,
+    value: {
+      name: `--s-size-${name}`,
+      value: [
+        typeof value.value === 'string'
+          ? args.ast.value
+          : __toRem({
+              type: 'length',
+              value: {
+                unit: 'px',
+                value: value.value,
+              },
+            }),
+      ],
+    },
+  });
 
   if (settings.verbose) {
     console.log(

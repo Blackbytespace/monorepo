@@ -1,6 +1,5 @@
 body {
   font: s-font(default);
-  background: s-color(main, --darken 41);
   color: s-color(main, text);
-  overflow: hidden;
+  background: s-color(main, background);
 }

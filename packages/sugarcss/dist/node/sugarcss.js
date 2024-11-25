@@ -36,6 +36,7 @@ import browserslist from 'browserslist';
 import { browserslistToTargets, composeVisitors, } from 'lightningcss';
 import { __parseHtml } from '@lotsof/sugar/console';
 export const env = {
+    remFactor: 0.0625,
     functions: {},
     rules: {},
     settings: {
@@ -105,7 +106,7 @@ export function sugarize(ligningcss, settings) {
                 prelude: '<custom-ident>',
             } }),
         visitor: composeVisitors(visitor),
-        targets: (_b = ligningcss.targets) !== null && _b !== void 0 ? _b : browserslistToTargets(browserslist('>= 0.25%')),
+        targets: (_b = ligningcss === null || ligningcss === void 0 ? void 0 : ligningcss.targets) !== null && _b !== void 0 ? _b : browserslistToTargets(browserslist('>= 0.25%')),
     };
 }
 export default function sugarcss(settings = {}) {

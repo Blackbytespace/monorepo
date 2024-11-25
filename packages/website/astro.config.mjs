@@ -12,9 +12,7 @@ export default defineConfig({
     },
     css: {
       transformer: 'lightningcss',
-      lightningcss: sugarize({
-        minify: false,
-      }),
+      lightningcss: sugarize({}),
     },
     build: {
       cssMinify: false,

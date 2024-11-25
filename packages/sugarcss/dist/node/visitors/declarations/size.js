@@ -1,4 +1,5 @@
 import __parseArgs from '../../utils/parseArgs.js';
+import __toRem from '../../utils/toRem.js';
 /**
  * @name            s-size
  * @namespace       css.declaration
@@ -33,8 +34,25 @@ export default function size(v, settings) {
     const args = __parseArgs(v.value, ['value'], {
         separator: ['white-space', 'comma'],
     });
-    const result = [];
     let value = args.values;
+    const result = [];
+    result.push({
+        property: `--s-size-${name}`,
+        value: {
+            name: `--s-size-${name}`,
+            value: [
+                typeof value.value === 'string'
+                    ? args.ast.value
+                    : __toRem({
+                        type: 'length',
+                        value: {
+                            unit: 'px',
+                            value: value.value,
+                        },
+                    }),
+            ],
+        },
+    });
     if (settings.verbose) {
         console.log(`Registered size: <cyan>${name}</cyan>: <yellow>${JSON.stringify({
             name,

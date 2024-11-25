@@ -30,12 +30,10 @@ import { sugarize } from '@lotsof/sugarcss';
 export default {
   css: {
     transformer: 'lightningcss',
-    lightningcss: sugarize({
-      minify: true,
-    }),
+    lightningcss: sugarize({}),
   },
   build: {
-    cssMinify: 'lightningcss',
+    cssMinify: true,
   },
 };
 ```

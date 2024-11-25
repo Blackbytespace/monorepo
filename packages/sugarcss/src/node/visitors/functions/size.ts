@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { env } from '../../sugarcss.js';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
@@ -51,7 +53,9 @@ export default function size(value: any, settings: TSugarCssSettings): any {
   const easingFunction = env.easingFunctions[easing];
 
   // calculate the delta between min and max
-  const sizeDelta = sizeArgs.max - sizeArgs.min;
+  const sizeDelta = `calc(
+    (var(--s-sizes-max) - var(--s-sizes-min)) * 0.01
+  )`;
 
   const sizes: string[] = [];
   for (let [argName, argValue] of Object.entries(args.values)) {
@@ -62,12 +66,10 @@ export default function size(value: any, settings: TSugarCssSettings): any {
       // get the requested value percentage
       const easingFunctionStr = easingFunction.replace(
         /t/gm,
-        `${argValue / 100}`,
+        `${argValue * 0.01}`,
       );
 
-      resultCalc = `calc(((${easingFunctionStr}) * ${
-        (sizeDelta / 100) * argValue
-      } + ${sizeArgs.min}) * 1px)`;
+      resultCalc = `(${easingFunctionStr} * ${sizeDelta} * ${argValue}) + var(--s-sizes-min)`;
     }
 
     // create the calc declaration
