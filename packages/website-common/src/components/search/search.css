@@ -17,16 +17,18 @@
   }
 
   ._input {
-    padding: s-space(4) s-space(5);
-    outline: none;
     font: s-font(code);
-    background: s-color(main, --alpha 0.03);
+  }
+
+  mark {
+    background: s-color(current);
+    color: s-color(current, foreground) !important;
   }
 
   ._expand {
     position: absolute;
-    top: 30px;
-    right: s-space(8);
+    top: 20px;
+    right: s-space(6);
     width: 1em;
     height: 1em;
     line-height: 1;
@@ -37,6 +39,10 @@
 
       [fill] {
         fill: s-color(current);
+
+        @media cs-half-life {
+          fill: s-color(current, --lightness 90);
+        }
       }
     }
 
@@ -48,7 +54,9 @@
   ._item {
     display: flex;
     gap: s-space(2);
+    align-items: center;
     width: 100%;
+    height: 40px;
   }
 
   ._title {
@@ -61,10 +69,13 @@
   ._platforms {
     display: flex;
     gap: s-space(2);
-    opacity: 0.3;
   }
 
   .-search-large & {
+    ._dropdown {
+      padding: 0 s-space(6);
+    }
+
     ._items {
       width: 100%;
       display: grid;
@@ -147,10 +158,12 @@
   .s-advanced-select_group-label {
     margin-bottom: s-space(5);
     font: s-font(title);
+    font-size: s-size(4);
     font-weight: normal;
-    color: s-color(accent);
-    opacity: 0.5;
+    color: s-color(accent, --alpha 0.6);
     text-transform: uppercase;
+    padding-block: s-space(8) s-space(4);
+    background: s-color(main, background) !important;
   }
   .s-advanced-select_group-label-inner {
   }
@@ -170,6 +183,7 @@
 
     &.-match {
       display: flex;
+      gap: 0;
     }
 
     &.-preselected {

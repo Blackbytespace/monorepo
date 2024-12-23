@@ -18,8 +18,13 @@
   ._namespace {
     position: relative;
     padding: s-space(5);
-    background: s-color(main, --alpha 0.03);
+    background: s-color(main, surface);
     color: s-color(accent);
+    user-select: all;
+
+    @media cs-half-life {
+      color: s-color(main);
+    }
   }
 
   ._metas {
@@ -45,9 +50,10 @@
     background: s-color(accent);
     font-size: s-size(caption);
     letter-spacing: 0.1em;
-    color: s-color(accent, foreground);
+    color: s-color(main, foreground);
     padding: s-space(1) s-space(3);
     text-transform: uppercase;
+    user-select: all;
     @s-radius();
   }
 
@@ -64,10 +70,11 @@
   ._status-value {
     background: s-color(complementary);
     font-size: s-size(caption);
+    color: s-color(complementary, --lightness 20);
     letter-spacing: 0.1em;
-    color: s-color(complementary, foreground);
     padding: s-space(1) s-space(3);
     text-transform: uppercase;
+    user-select: all;
     @s-radius();
 
     &.-beta {
@@ -87,12 +94,13 @@
     }
   }
   ._since-value {
-    background: s-color(main, --alpha 0.03);
+    background: s-color(main, surface);
     font-size: s-size(caption);
     letter-spacing: 0.1em;
     color: s-color(main, text);
     padding: s-space(1) s-space(3);
     text-transform: uppercase;
+    user-select: all;
     @s-radius();
   }
 
@@ -107,12 +115,13 @@
     }
   }
   ._platform-value {
-    background: s-color(main, --alpha 0.03);
+    background: s-color(main, surface);
     font-size: s-size(caption);
     letter-spacing: 0.1em;
     color: s-color(main, text);
     padding: s-space(1) s-space(3);
     text-transform: uppercase;
+    user-select: all;
     @s-radius();
   }
 
@@ -139,7 +148,7 @@
 
     ._name {
       flex-grow: 1;
-      background: s-color(main, --alpha 0.03);
+      background: s-color(main, surface);
       padding: s-space(5);
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
@@ -174,7 +183,7 @@
 
     ._description {
       flex-grow: 1;
-      background: s-color(main, --alpha 0.03);
+      background: s-color(main, surface);
       padding: s-space(5);
       margin-bottom: 0;
       font: s-font(default);
@@ -190,7 +199,7 @@
 
   ._default {
     color: s-color(warning);
-    background: s-color(main, --alpha 0.03);
+    background: s-color(main, surface);
     padding: s-space(5);
     font: s-font(code);
   }
@@ -200,7 +209,7 @@
   ._return {
     ._type {
       color: s-color(complementary);
-      background: s-color(main, --alpha 0.03);
+      background: s-color(main, surface);
       padding: s-space(5);
       font: s-font(code);
     }

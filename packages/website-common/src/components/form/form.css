@@ -6,20 +6,23 @@
 .form-input,
 .form-textarea {
   &::placeholder {
-    color: s-color(main, placeholder);
+    color: s-color(current, placeholder);
   }
 }
 
 .form-input,
 .form-select {
-  color: s-color(main, form);
+  color: s-color(main, form-text);
   font-size: s-size(18);
   line-height: s-size(18);
-  border: 1px solid transparent;
+  outline: none;
+  border: 1px solid s-color(current, form-border);
+  background: s-color(main, form-background);
+  padding: s-space(4) s-space(5);
   @s-radius;
 
   &:focus {
-    border: 1px solid s-color(accent, border);
+    border: 1px solid s-color(current, form-border-focus);
   }
 }
 

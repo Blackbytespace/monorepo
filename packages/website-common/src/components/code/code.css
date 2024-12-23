@@ -1,10 +1,5 @@
+@import './code.mixin.css';
+
 .astro-code {
-  background: s-color(accent, --alpha 0.03 --saturation 0) !important;
-  letter-spacing: 0.1em;
-
-  [style*='#31748F'] {
-    color: s-color(complementary) !important;
-  }
-
-  @s-scrollbar (2px, s-color(main, --alpha 0.2), s-color(main, --darken 40));
+  @include code;
 }

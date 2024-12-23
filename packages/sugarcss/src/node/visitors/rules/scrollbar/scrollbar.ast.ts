@@ -1,10 +1,10 @@
 import { CssColor, Length } from 'lightningcss';
 
-import { env } from '../../../sugarcss.js';
-
 export default function (size: Length, thumb: CssColor, track: CssColor): any {
-  return [
-    {
+  const result: any[] = [];
+
+  if (size) {
+    result.push({
       type: 'style',
       value: {
         selectors: [
@@ -51,8 +51,11 @@ export default function (size: Length, thumb: CssColor, track: CssColor): any {
           column: 3,
         },
       },
-    },
-    {
+    });
+  }
+
+  if (track) {
+    result.push({
       type: 'style',
       value: {
         selectors: [
@@ -88,8 +91,11 @@ export default function (size: Length, thumb: CssColor, track: CssColor): any {
           column: 3,
         },
       },
-    },
-    {
+    });
+  }
+
+  if (thumb) {
+    result.push({
       type: 'style',
       value: {
         selectors: [
@@ -125,6 +131,8 @@ export default function (size: Length, thumb: CssColor, track: CssColor): any {
           column: 3,
         },
       },
-    },
-  ];
+    });
+  }
+
+  return result;
 }

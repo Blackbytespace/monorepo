@@ -37,10 +37,14 @@ import __argsToCustomPropertiesAst from '../../utils/argsToCustomPropertiesAst.j
 
 export default function font(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-font-`, '');
-  const args = __parseArgs(v.value, ['family', 'weight', 'style', 'variant'], {
-    separator: ['white-space', 'comma'],
-    // debug: true,
-  });
+  const args = __parseArgs(
+    v.value,
+    ['family', 'weight', 'style', 'variant', 'lineHeight', 'letterSpacing'],
+    {
+      separator: ['white-space', 'comma'],
+      // debug: true,
+    },
+  );
 
   if (settings.verbose) {
     console.log(

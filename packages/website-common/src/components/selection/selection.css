@@ -1,0 +1,4 @@
+::selection {
+  color: s-color(accent, --lighten 50);
+  background: s-color(accent, --darken 10);
+}

@@ -13,6 +13,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - Define your own media queries like so: --s-media-desktop: 1024px 9999px;
  * - Use defined media queries easily
  * - Support for `dark` and `light` media queries
+ * - Support for "color schema" media queries like `cs-...` that will target elements inside the `cs-...` class
+ * - Support for "theme" media queries like `theme-...` that will target elements inside the `theme-...` class
  *
  * Support for operators like:
  *
@@ -23,6 +25,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - `e-...`: equal
  * - `dark`: dark mode
  * - `light`: light mode
+ * - `cs-...`: color schema
+ * - `theme-...`: theme
  *
  * @param      {String}        query              The query to parse
  * @return     {Css}                              The generated css
@@ -45,6 +49,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *    \@media e-tablet { ... }
  *    \@media dark { ... }
  *    \@media gt-phone { ... }
+ *    \@media cs-half-life { ... }
+ *    \@media theme-moon { ... }
  * }
  *
  * @since           0.0.1
@@ -59,6 +65,8 @@ export default function media(v: any, settings: TSugarCssSettings): any {
         possibleMedias.push(`${operator}${media}`);
       }
     });
+
+    const mediaStr = mediaQuery.condition?.value?.name ?? mediaQuery.mediaType;
 
     if (possibleMedias.includes(mediaQuery.mediaType)) {
       // parse the media
@@ -115,12 +123,42 @@ export default function media(v: any, settings: TSugarCssSettings): any {
 
       // set the new media
       mediaQuery.mediaType = query;
-    } else if (
-      ['dark', 'light'].includes(
-        mediaQuery.condition?.value?.name ?? mediaQuery.mediaType,
-      )
-    ) {
-      const theme = mediaQuery.condition?.value?.name ?? mediaQuery.mediaType;
+    } else if (mediaStr.startsWith('cs-') || mediaStr.startsWith('theme-')) {
+      return [
+        {
+          type: 'style',
+          value: {
+            selectors: [
+              [
+                {
+                  type: 'class',
+                  name: mediaStr,
+                },
+                {
+                  type: 'combinator',
+                  value: 'descendant',
+                },
+                {
+                  type: 'nesting',
+                },
+              ],
+            ],
+            declarations: {
+              importantDeclarations: [],
+              declarations: [],
+            },
+            rules: v.value.rules.map((rule) => {
+              return rule;
+            }),
+            loc: {
+              source_index: 2,
+              line: 98,
+              column: 5,
+            },
+          },
+        },
+      ];
+    } else if (['dark', 'light'].includes(mediaStr)) {
       return [
         {
           type: 'style',
@@ -133,7 +171,7 @@ export default function media(v: any, settings: TSugarCssSettings): any {
                 },
                 {
                   type: 'class',
-                  name: `-${theme}`,
+                  name: `-${mediaStr}`,
                 },
                 {
                   type: 'combinator',

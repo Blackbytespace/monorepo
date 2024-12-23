@@ -1,0 +1,46 @@
+.typo-rhythm {
+  .typo-h1,
+  &.typo-format h1,
+  .typo-h2,
+  &.typo-format h2,
+  .typo-h3,
+  &.typo-format h3,
+  .typo-h4,
+  &.typo-format h4,
+  .typo-h5,
+  &.typo-format h5,
+  .typo-h6,
+  &.typo-format h6 {
+    margin-block-end: 0.6lh;
+  }
+
+  .typo-suptitle {
+    margin-block-end: 0.2lh;
+  }
+
+  .typo-subtitle {
+    margin-block-end: 0.2lh;
+  }
+
+  > p,
+  > * > p {
+    margin-block-end: 1lh;
+  }
+
+  .typo-code,
+  &.typo-format pre {
+    margin-block-end: 1.6lh;
+  }
+
+  .typo-ul,
+  &.typo-format ul,
+  .typo-ol,
+  &.typo-format ol {
+    margin-block-end: 0.6lh;
+  }
+
+  .typo-blockquote,
+  &.typo-format blockquote {
+    margin-block-end: 0.6lh;
+  }
+}

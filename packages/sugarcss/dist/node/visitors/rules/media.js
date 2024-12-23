@@ -11,6 +11,8 @@ import { env } from '../../sugarcss.js';
  * - Define your own media queries like so: --s-media-desktop: 1024px 9999px;
  * - Use defined media queries easily
  * - Support for `dark` and `light` media queries
+ * - Support for "color schema" media queries like `cs-...` that will target elements inside the `cs-...` class
+ * - Support for "theme" media queries like `theme-...` that will target elements inside the `theme-...` class
  *
  * Support for operators like:
  *
@@ -21,6 +23,8 @@ import { env } from '../../sugarcss.js';
  * - `e-...`: equal
  * - `dark`: dark mode
  * - `light`: light mode
+ * - `cs-...`: color schema
+ * - `theme-...`: theme
  *
  * @param      {String}        query              The query to parse
  * @return     {Css}                              The generated css
@@ -43,13 +47,15 @@ import { env } from '../../sugarcss.js';
  *    \@media e-tablet { ... }
  *    \@media dark { ... }
  *    \@media gt-phone { ... }
+ *    \@media cs-half-life { ... }
+ *    \@media theme-moon { ... }
  * }
  *
  * @since           0.0.1
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 export default function media(v, settings) {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e;
     for (let mediaQuery of v.value.query.mediaQueries) {
         const possibleMedias = [];
         ['lt-', 'lte-', 'e-', 'gt-', 'gte-', ''].forEach((operator) => {
@@ -57,6 +63,7 @@ export default function media(v, settings) {
                 possibleMedias.push(`${operator}${media}`);
             }
         });
+        const mediaStr = (_c = (_b = (_a = mediaQuery.condition) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.name) !== null && _c !== void 0 ? _c : mediaQuery.mediaType;
         if (possibleMedias.includes(mediaQuery.mediaType)) {
             // parse the media
             let operator = '', media = '';
@@ -75,7 +82,7 @@ export default function media(v, settings) {
             let query = '';
             switch (operator) {
                 case 'lt':
-                    query = `(max-width: ${(_a = mediaArgs.min) !== null && _a !== void 0 ? _a : 0}px)`;
+                    query = `(max-width: ${(_d = mediaArgs.min) !== null && _d !== void 0 ? _d : 0}px)`;
                     break;
                 case 'lte':
                     query = `(max-width: ${mediaArgs.max}px)`;
@@ -84,7 +91,7 @@ export default function media(v, settings) {
                     query = `(min-width: ${mediaArgs.min}px) and (max-width: ${mediaArgs.max}px)`;
                     break;
                 case 'gt':
-                    query = `(min-width: ${(_b = mediaArgs.max) !== null && _b !== void 0 ? _b : 0}px)`;
+                    query = `(min-width: ${(_e = mediaArgs.max) !== null && _e !== void 0 ? _e : 0}px)`;
                     break;
                 case 'gte':
                     query = `(min-width: ${mediaArgs.min}px)`;
@@ -107,8 +114,43 @@ export default function media(v, settings) {
             // set the new media
             mediaQuery.mediaType = query;
         }
-        else if (['dark', 'light'].includes((_e = (_d = (_c = mediaQuery.condition) === null || _c === void 0 ? void 0 : _c.value) === null || _d === void 0 ? void 0 : _d.name) !== null && _e !== void 0 ? _e : mediaQuery.mediaType)) {
-            const theme = (_h = (_g = (_f = mediaQuery.condition) === null || _f === void 0 ? void 0 : _f.value) === null || _g === void 0 ? void 0 : _g.name) !== null && _h !== void 0 ? _h : mediaQuery.mediaType;
+        else if (mediaStr.startsWith('cs-') || mediaStr.startsWith('theme-')) {
+            return [
+                {
+                    type: 'style',
+                    value: {
+                        selectors: [
+                            [
+                                {
+                                    type: 'class',
+                                    name: mediaStr,
+                                },
+                                {
+                                    type: 'combinator',
+                                    value: 'descendant',
+                                },
+                                {
+                                    type: 'nesting',
+                                },
+                            ],
+                        ],
+                        declarations: {
+                            importantDeclarations: [],
+                            declarations: [],
+                        },
+                        rules: v.value.rules.map((rule) => {
+                            return rule;
+                        }),
+                        loc: {
+                            source_index: 2,
+                            line: 98,
+                            column: 5,
+                        },
+                    },
+                },
+            ];
+        }
+        else if (['dark', 'light'].includes(mediaStr)) {
             return [
                 {
                     type: 'style',
@@ -121,7 +163,7 @@ export default function media(v, settings) {
                                 },
                                 {
                                     type: 'class',
-                                    name: `-${theme}`,
+                                    name: `-${mediaStr}`,
                                 },
                                 {
                                     type: 'combinator',

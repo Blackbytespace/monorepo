@@ -37,7 +37,8 @@ export default function parseArgs(
 
   const resultArgs = {};
 
-  let dashedArg: string;
+  let dashedArg: string,
+    wasFunction: boolean = false;
 
   let argId = 0,
     currentProp = schema?.[argId] ?? `arg${argId}`;
@@ -67,7 +68,7 @@ export default function parseArgs(
       dashedArg = '';
       argId++;
       if (finalSettings.debug) {
-        console.log('separator', arg, argId);
+        console.log('separator');
       }
       currentProp = schema?.[argId] ?? `arg${argId}`;
       return;
@@ -103,9 +104,9 @@ export default function parseArgs(
 
           // set the resulting value
           __set(resultArgs, currentProp, arg);
-
           // update current prop
           currentProp = schema?.[argId + 1] ?? `arg${argId + 1}`;
+          argId++;
         }
 
         break;

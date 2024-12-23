@@ -35,56 +35,102 @@ import { __convert } from '@lotsof/sugar/color';
 export default function color(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-color-`, '').replace(/\-[a-z]$/, '');
 
-  if (v.value[0]?.type !== 'color') {
-    return;
-  }
+  // handle the case where the color is the s-color function
+  // that will just remap the color to a new one
+  if (
+    v.value[0]?.type === 'function' &&
+    v.value[0]?.value?.name === 's-color'
+  ) {
+    const args = v.value[0]?.value?.arguments,
+      colorName = args[0]?.value?.value;
 
-  const result: any[] = [
-    {
-      property: `--s-color-${name}`,
-      value: {
-        name: `--s-color-${name}`,
-        value: v.value,
-      },
-    },
-    {
-      property: `--s-color-${name}-o`,
-      value: {
-        name: `--s-color-${name}-o`,
-        value: v.value,
-      },
-    },
-  ];
+    if (!colorName || typeof colorName !== 'string') {
+      throw new Error(
+        `The s-color function needs a color name as first argument, passed "${colorName}"`,
+      );
+    }
 
-  const hslaColor = __convert(v.value[0]?.value ?? v.value[0], 'hsla'),
-    hexColor = __convert(v.value[0]?.value ?? v.value[0], 'hex');
-
-  ['h', 's', 'l', 'a'].forEach((key) => {
-    result.push({
-      property: `--s-color-${name}-${key}`,
-      value: {
-        name: `--s-color-${name}-${key}`,
-        value: [
-          {
-            type: 'token',
-            value: {
-              type: 'number',
-              value: hslaColor[key],
+    const result: any[] = [];
+    ['', '-o', '-h', '-s', '-l', '-a'].forEach((key) => {
+      result.push({
+        property: 'custom',
+        value: {
+          name: `--s-color-${name}${key}`,
+          value: [
+            {
+              type: 'var',
+              value: {
+                name: {
+                  ident: `--s-color-${colorName}${key}`,
+                  from: null,
+                },
+                fallback: null,
+              },
             },
-          },
-        ],
-      },
+          ],
+        },
+      });
     });
-  });
 
-  // @TODO      do not check for color name
-  if (settings.verbose && name !== 'current') {
-    console.log(
-      `Registered color: <cyan>${name}</cyan>: <magenta>${hexColor}</magenta> <yellow>${JSON.stringify(
-        hslaColor,
-      )}</yellow>`,
-    );
+    // @TODO      do not check for color name
+    if (settings.verbose && name !== 'current') {
+      console.log(
+        `Registered color: <cyan>${name}</cyan> by remaping it to the <magenta>${colorName}</magenta> one`,
+      );
+    }
+
+    return result;
   }
 
-  return result;
+  // handle the case where the color is a simple color
+  if (v.value[0]?.type === 'color') {
+    const result: any[] = [
+      {
+        property: `--s-color-${name}`,
+        value: {
+          name: `--s-color-${name}`,
+          value: v.value,
+        },
+      },
+      {
+        property: `--s-color-${name}-o`,
+        value: {
+          name: `--s-color-${name}-o`,
+          value: v.value,
+        },
+      },
+    ];
+
+    const hslaColor = __convert(v.value[0]?.value ?? v.value[0], 'hsla'),
+      hexColor = __convert(v.value[0]?.value ?? v.value[0], 'hex');
+
+    ['h', 's', 'l', 'a'].forEach((key) => {
+      result.push({
+        property: `--s-color-${name}-${key}`,
+        value: {
+          name: `--s-color-${name}-${key}`,
+          value: [
+            {
+              type: 'token',
+              value: {
+                type: 'number',
+                value: hslaColor[key],
+              },
+            },
+          ],
+        },
+      });
+    });
+
+    // @TODO      do not check for color name
+    if (settings.verbose && name !== 'current') {
+      console.log(
+        `Registered color: <cyan>${name}</cyan>: <magenta>${hexColor}</magenta> <yellow>${JSON.stringify(
+          hslaColor,
+        )}</yellow>`,
+      );
+    }
+
+    return result;
+  }
 }

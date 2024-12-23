@@ -25,6 +25,7 @@ import __spaceFunction from './visitors/functions/space.js';
 import __transitionFunction from './visitors/functions/transition.js';
 import __containerRule from './visitors/rules/container.js';
 import __fitRule from './visitors/rules/fit.js';
+import __fontRule from './visitors/rules/font.js';
 import __gridRule from './visitors/rules/grid.js';
 import __mapColorRule from './visitors/rules/mapColor.js';
 import __mediaRule from './visitors/rules/media.js';
@@ -125,6 +126,7 @@ export default function sugarcss(settings = {}) {
     env.rules['s-scrollbar'] = __scrollbarRule;
     env.rules['s-transition'] = __transitionRule;
     env.rules['s-radius'] = __radiusRule;
+    env.rules['s-font'] = __fontRule;
     env.rules['s-fit'] = __fitRule;
     env.rules['s-map-color'] = __mapColorRule;
     env.rules['s-container'] = __containerRule;
@@ -215,6 +217,8 @@ export default function sugarcss(settings = {}) {
                             return __transitionRule(rule, finalSettings);
                         case rule.name === `s-radius`:
                             return __radiusRule(rule, finalSettings);
+                        case rule.name === `s-font`:
+                            return __fontRule(rule, finalSettings);
                         case rule.name === `s-fit`:
                             return __fitRule(rule, finalSettings);
                         case rule.name === `s-container`:

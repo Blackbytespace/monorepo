@@ -12,7 +12,7 @@ export default function parseArgs(args, schema = [], settings) {
         ? finalSettings.separator
         : [finalSettings.separator];
     const resultArgs = {};
-    let dashedArg;
+    let dashedArg, wasFunction = false;
     let argId = 0, currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
     const handleArg = (arg) => {
         var _a, _b, _c;
@@ -37,7 +37,7 @@ export default function parseArgs(args, schema = [], settings) {
             dashedArg = '';
             argId++;
             if (finalSettings.debug) {
-                console.log('separator', arg, argId);
+                console.log('separator');
             }
             currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
             return;
@@ -70,6 +70,7 @@ export default function parseArgs(args, schema = [], settings) {
                     __set(resultArgs, currentProp, arg);
                     // update current prop
                     currentProp = (_c = schema === null || schema === void 0 ? void 0 : schema[argId + 1]) !== null && _c !== void 0 ? _c : `arg${argId + 1}`;
+                    argId++;
                 }
                 break;
             default:

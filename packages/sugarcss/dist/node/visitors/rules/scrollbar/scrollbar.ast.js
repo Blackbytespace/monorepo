@@ -1,6 +1,7 @@
 export default function (size, thumb, track) {
-    return [
-        {
+    const result = [];
+    if (size) {
+        result.push({
             type: 'style',
             value: {
                 selectors: [
@@ -47,8 +48,10 @@ export default function (size, thumb, track) {
                     column: 3,
                 },
             },
-        },
-        {
+        });
+    }
+    if (track) {
+        result.push({
             type: 'style',
             value: {
                 selectors: [
@@ -84,8 +87,10 @@ export default function (size, thumb, track) {
                     column: 3,
                 },
             },
-        },
-        {
+        });
+    }
+    if (thumb) {
+        result.push({
             type: 'style',
             value: {
                 selectors: [
@@ -121,7 +126,8 @@ export default function (size, thumb, track) {
                     column: 3,
                 },
             },
-        },
-    ];
+        });
+    }
+    return result;
 }
 //# sourceMappingURL=scrollbar.ast.js.map

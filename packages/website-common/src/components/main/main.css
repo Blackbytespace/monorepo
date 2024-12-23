@@ -10,9 +10,8 @@
   .main_nav {
     width: 400px;
     height: 100vh;
+    flex-shrink: 0;
     overflow-y: auto;
-    /* position: sticky; */
-    top: 0;
     padding: s-space(16);
     @include lo-scrollbar;
 
@@ -35,7 +34,7 @@
     @include lo-scrollbar;
   }
   .main_body-inner {
-    width: clamp(100px, 100%, 1160px);
+    width: clamp(100px, calc(100% - s-space(20)), 760px);
 
     @media mobile {
       width: 100%;

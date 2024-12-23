@@ -18,38 +18,66 @@ Sugarcss let you define your design tokens in a simple css way and use them ever
 
 ```css
 :root {
+  /* media stuffs (min, max) */
   --s-media-mobile: 0 768px;
   --s-media-tablet: 769px 1024px;
   --s-media-desktop: 1025px;
-  /* other media... */
 
   /* layout stuffs (min, max, side-padding) */
   --s-container-default: 320px 900px 20px;
   --s-container-wide: 320px 1440px 20px;
 
+  /* colors */
   --s-color-main: #9e9161;
   --s-color-accent: #d2b02d;
-  /* other colors... */
 
+  /* shades */
   --s-shade-text: --lighten 20;
   --s-shade-background: --darken 20;
-  /* other color shades... */
 
+  /* fonts families  */
   --s-font-family-sans: 'Roboto', sans-serif;
   --s-font-family-code: 'Monaco', sans-serif;
-  /* other fonts... */
 
+  /* fonts (family, weight, style, variant, line-height, letter-spacing) */
+  --s-font-default: s-font-family(sans) 400 normal normal 1.5;
+  --s-font-lead: s-font-family(sans) 400 normal normal 1.8;
+  --s-font-title: s-font-family(sans) 200 normal normal 1.6;
+  --s-font-code: s-font-family(code) 300 normal normal 1.4;
+
+  /* grids */
   --s-grid-special: '1 1 2 _ 3 3 3' 20px;
   --s-grid-2cols: '1 2' 20px;
-  /* other grids */
+
+  /* spaces */
+  --s-space-05: 2px;
+  --s-space-1: 4px;
+  --s-space-2: 8px;
+  --s-space-3: 12px;
+  --s-space-4: 16px;
+  /* etc... */
+
+  /* sizes */
+  --s-size-1: 4px;
+  --s-size-2: 8px;
+  --s-size-3: 12px;
+  --s-size-4: 16px;
+  /* etc... */
+
+  /* easings */
+  --s-ease-default: cubic-bezier(0.745, 0, 0.18, 1);
+
+  /* transitions */
+  --s-transition-slow: all 0.3s s-ease();
+  --s-transition-default: all 0.2s s-ease();
+  --s-transition-fast: all 0.1s s-ease();
+
+  /* radiuses */
+  --s-radius-default: 4px;
+  --s-radius-round: 999px;
 
   /**
-   * And more options to discover like:
-   * - easings
-   * - fonts
-   * - spaces
-   * - sizes
-   * - radius
+   * And more options to discover
    */
 }
 ```

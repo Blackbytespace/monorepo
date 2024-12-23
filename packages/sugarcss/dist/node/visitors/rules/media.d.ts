@@ -11,6 +11,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - Define your own media queries like so: --s-media-desktop: 1024px 9999px;
  * - Use defined media queries easily
  * - Support for `dark` and `light` media queries
+ * - Support for "color schema" media queries like `cs-...` that will target elements inside the `cs-...` class
+ * - Support for "theme" media queries like `theme-...` that will target elements inside the `theme-...` class
  *
  * Support for operators like:
  *
@@ -21,6 +23,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - `e-...`: equal
  * - `dark`: dark mode
  * - `light`: light mode
+ * - `cs-...`: color schema
+ * - `theme-...`: theme
  *
  * @param      {String}        query              The query to parse
  * @return     {Css}                              The generated css
@@ -43,6 +47,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *    \@media e-tablet { ... }
  *    \@media dark { ... }
  *    \@media gt-phone { ... }
+ *    \@media cs-half-life { ... }
+ *    \@media theme-moon { ... }
  * }
  *
  * @since           0.0.1

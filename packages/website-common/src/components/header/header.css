@@ -1,32 +1,29 @@
-/* @mixin log {
-  @container not style(--s-space-large: 100px) {
-    background: red !important;
-  }
-} */
-
 .header {
   position: relative;
   margin-block-end: s-space(10);
 
+  @media md {
+    background: red;
+  }
+
   ._title {
-    font: s-font(title);
-    letter-spacing: 0.1em;
+    @s-font (title);
     line-height: normal;
     text-transform: uppercase;
     font-size: s-size(6);
   }
 
   ._version {
-    display: none;
-    font: s-font(title);
+    font: s-font(code);
     color: s-color(current);
-    font-size: 20px;
+    font-size: s-size(3);
     line-height: normal;
     pointer-events: none;
-    position: absolute;
-    right: s-space(12);
-    top: 100px;
     @s-transition (fast);
+
+    @media cs-half-life {
+      color: s-color(accent, --lightness 70 --spin 15);
+    }
   }
 
   svg {
