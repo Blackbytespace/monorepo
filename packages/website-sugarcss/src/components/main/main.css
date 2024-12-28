@@ -25,6 +25,10 @@
       opacity: 0 !important;
     }
 
+    @media xs {
+      display: none;
+    }
+
     @media cs-half-life {
       background-image: url('/lotsof-gordon-freeman.webp');
       opacity: 1;

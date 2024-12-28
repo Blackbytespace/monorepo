@@ -7,7 +7,7 @@
     gap: s-space(12);
   }
 
-  @media mobile {
+  @media xs {
     padding-block: s-space(12);
     padding-inline: s-space(5);
   }
@@ -21,9 +21,11 @@
     background: s-color(main, surface);
     color: s-color(accent);
     user-select: all;
+    font-size: s-size(code);
+    @s-font (code);
 
     @media cs-half-life {
-      color: s-color(main);
+      color: s-color(accent);
     }
   }
 
@@ -31,7 +33,7 @@
     display: flex;
     gap: s-space(5);
 
-    @media mobile {
+    @media xs {
       flex-direction: column;
     }
   }
@@ -42,7 +44,7 @@
     gap: s-space(2);
   }
   ._type-label {
-    @media mobile {
+    @media xs {
       flex: 1;
     }
   }
@@ -63,7 +65,7 @@
     gap: s-space(2);
   }
   ._status-label {
-    @media mobile {
+    @media xs {
       flex: 1;
     }
   }
@@ -89,7 +91,7 @@
     gap: s-space(2);
   }
   ._since-label {
-    @media mobile {
+    @media xs {
       flex: 1;
     }
   }
@@ -110,7 +112,7 @@
     gap: s-space(2);
   }
   ._platform-label {
-    @media mobile {
+    @media xs {
       flex: 1;
     }
   }
@@ -131,7 +133,7 @@
       margin-top: s-space(5);
       margin-bottom: 0 !important;
 
-      @media mobile {
+      @media xs {
         margin-top: s-space(2);
       }
     }
@@ -166,7 +168,7 @@
       display: flex;
       margin-top: s-space(5);
 
-      @media mobile {
+      @media xs {
         margin-top: s-space(2);
       }
     }
@@ -212,6 +214,10 @@
       background: s-color(main, surface);
       padding: s-space(5);
       font: s-font(code);
+
+      @media cs-half-life {
+        color: s-color(accent);
+      }
     }
   }
 
@@ -273,7 +279,7 @@
       border-radius: s-radius();
       margin: 0;
 
-      @media mobile {
+      @media xs {
         flex-direction: column;
         gap: s-space(2);
       }

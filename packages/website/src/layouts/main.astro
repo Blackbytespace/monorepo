@@ -2,14 +2,11 @@
 import Layout from '@lotsof/website-common/src/components/layout/layout.astro';
 import '../components/index.css';
 
-import __logoLotsofPicto from '@lotsof/website-common/src/img/logo-lotsof-picto.svg?raw';
-import __logoLotsof from '@lotsof/website-common/src/img/logo-lotsof.svg?raw';
+import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo.svg?raw';
 import __pictoNewNasty from '@lotsof/website-common/src/img/picto-new-n-tasty.svg?raw';
 
 import __packageJson from '../../package.json';
 import faviconSvgSrc from '../img/favicon.svg';
-
-import LoCrt from '@lotsof/website-common/src/components/crt/crt.astro';
 
 const title = 'Lotsof';
 ---
@@ -24,34 +21,32 @@ const title = 'Lotsof';
   ogImageUrl="https://cdn.lotsof.dev/img/lotsof-og.png"
 >
   <main class="main">
-    <header class="header">
-      <a class="_logo" href="/" title={title}>
-        <Fragment set:html={__logoLotsofPicto} />
-        <Fragment set:html={__logoLotsof} />
-      </a>
-      <a href="/" title={title} style={`--chars: ${title.length};`}>
-        <h4 class="_version">v{__packageJson.version}</h4>
-        <Fragment set:html={__pictoNewNasty} />
-      </a>
-    </header>
     <div class="main_inner">
       <div class="container">
+        <header class="header">
+          <a class="header_logo" href="/" title={title}>
+            <Fragment set:html={__logoLotsof} />
+          </a>
+          <div class="header_metas">
+            <a
+              href="https://github.com/lotsofdev/monorepo/blob/master/LICENSE"
+              target="_blank"
+              title="MIT License"
+            >
+              <h1 class="header_license">MIT</h1>
+            </a>
+            <a href="/" title={title}>
+              <h4 class="header_version">v{__packageJson.version}</h4>
+            </a>
+          </div>
+        </header>
         <ol class="websites">
-          <li class="_website -sugarcss">
+          <li class="websites_website -sugarcss">
             <a href="https://sugarcss.lotsof.dev" title="Sugarcss">
-              <p class="_title" style="--chars: 8;">Sugarcss</p>
-              <p class="_text typo-p">
+              <p class="websites_title" style="--chars: 8;">Sugarcss</p>
+              <p class="websites_text typo-p">
                 Add a sugar in your css with nice features like live update and
                 more
-              </p>
-            </a>
-          </li>
-          <li class="_website -sugar">
-            <a href="https://sugar.lotsof.dev" title="Sugarcss">
-              <p class="_title" style="--chars: 5;">Sugar</p>
-              <p class="_text typo-p">
-                A toolkit that gives you access to "lots of" cool and useful
-                Node/Js/Php stuffs
               </p>
             </a>
           </li>
@@ -60,4 +55,3 @@ const title = 'Lotsof';
     </div>
   </main>
 </Layout>
-<LoCrt />

@@ -1,9 +1,14 @@
 .color-schema {
   position: fixed;
+  z-index: 999;
   bottom: s-space(16);
   right: s-space(16);
   display: flex;
   flex-direction: column;
+
+  @media xs {
+    display: none;
+  }
 
   ._schema {
     display: flex;

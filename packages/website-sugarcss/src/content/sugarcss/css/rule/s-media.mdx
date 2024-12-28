@@ -22,6 +22,8 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <li>Define your own media queries like so: --s-media-desktop: 1024px 9999px;</li>
 <li>Use defined media queries easily</li>
 <li>Support for <code>dark</code> and <code>light</code> media queries</li>
+<li>Support for &quot;color schema&quot; media queries like <code>cs-...</code> that will target elements inside the <code>cs-...</code> class</li>
+<li>Support for &quot;theme&quot; media queries like <code>theme-...</code> that will target elements inside the <code>theme-...</code> class</li>
 </ul>
 <p>Support for operators like:</p>
 <ul>
@@ -32,6 +34,8 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <li><code>e-...</code>: equal</li>
 <li><code>dark</code>: dark mode</li>
 <li><code>light</code>: light mode</li>
+<li><code>cs-...</code>: color schema</li>
+<li><code>theme-...</code>: theme</li>
 </ul>
 
 </div>
@@ -67,6 +71,8 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
    @media e-tablet { ... }
    @media dark { ... }
    @media gt-phone { ... }
+   @media cs-half-life { ... }
+   @media theme-moon { ... }
 }
 ```
 </div>

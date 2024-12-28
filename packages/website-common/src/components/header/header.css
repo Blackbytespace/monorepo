@@ -2,10 +2,6 @@
   position: relative;
   margin-block-end: s-space(10);
 
-  @media md {
-    background: red;
-  }
-
   ._title {
     @s-font (title);
     line-height: normal;

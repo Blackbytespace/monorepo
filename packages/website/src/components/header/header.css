@@ -1,11 +1,19 @@
 .header {
-  width: 400px;
-  margin: 0 auto;
-  margin-top: s-space(100);
-  position: relative;
-  z-index: 999;
+  .header_logo {
+    display: block;
+    width: 200px;
+  }
 
-  @media mobile {
-    margin-top: 0;
+  .header_metas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: s-space(2);
+  }
+
+  .header_version {
+    @s-font (code);
+    color: s-color(main, text);
+    text-align: right;
   }
 }

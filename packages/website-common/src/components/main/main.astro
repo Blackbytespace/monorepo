@@ -36,6 +36,9 @@ import './main';
   <main class="main">
     <div class="main_inner">
       <nav class="main_nav" transition:persist>
+        <button tabindex="1" class="main_nav-toggle">
+          <div class="main_nav-toggle-inner"></div>
+        </button>
         <LoHeader title={Astro.props.title} version={Astro.props.version} />
         <LoSearch items={Astro.props.searchItems} />
       </nav>

@@ -6,6 +6,9 @@ import __shikiLotsofTheme from './src/shikijs/lotsof.theme.json';
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     resolve: {
       // preserveSymlinks: true,

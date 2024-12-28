@@ -11,6 +11,10 @@
     flex-direction: column;
     gap: s-space(2);
     padding: s-space(10);
+
+    @media xs {
+      padding: s-space(5);
+    }
   }
 
   .line:last-child:empty {

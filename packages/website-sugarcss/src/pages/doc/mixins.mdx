@@ -18,7 +18,7 @@ date: '22 April 2024'
 To declare a mixin, you simply have to define it with the `@mixin` directive like so:
 
 ```css
-@mixin myMixin {
+@mixin my-mixin {
   color: red;
 }
 ```
@@ -29,7 +29,7 @@ To use a mixin, you simply have to include it in your styles with the `@include`
 
 ```css
 .my-element {
-  @include myMixin;
+  @include my-mixin;
 }
 ```
 
@@ -39,3 +39,5 @@ Some mixins are included by default in **Sugarcss** to help you in your daily.
 Here's the list of included mixins:
 
 - `s-destyle`: Apply the famous [destyle.css](https://nicolas-cusan.github.io/destyle.css/) reset.
+- `s-reset`: Apply the famous [reset.css](https://meyerweb.com/eric/tools/css/reset/) reset with some additional things like reset the `mark` tag.
+- `s-menu`: Create a simple menu icon that you can make `active` with the `s-menu-active` mixin.
