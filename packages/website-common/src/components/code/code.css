@@ -2,4 +2,6 @@
 
 .astro-code {
   @include code;
+  @s-radius;
+  @include lo-scrollbar;
 }

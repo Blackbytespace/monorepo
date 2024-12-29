@@ -1,3 +1,5 @@
+@import './main.settings.css';
+
 .main {
   width: 100vw;
   height: 100vh;
@@ -28,13 +30,20 @@
     background: s-color(main, background);
     position: relative;
     z-index: 100;
-    width: 400px;
+    width: var(--main-nav-width);
     height: 100vh;
     flex-shrink: 0;
     overflow-y: auto;
     padding: s-space(16);
     @s-transition();
     @include lo-scrollbar;
+
+    body.-search-large & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
 
     @media xs {
       overflow-y: visible;
@@ -75,9 +84,12 @@
   }
 
   .main_body {
-    position: relative;
+    position: absolute;
     z-index: 50;
     flex-grow: 1;
+    top: 0;
+    left: var(--main-nav-width);
+    right: 0;
     padding: s-space(16);
     height: 100vh;
     overflow-y: auto;

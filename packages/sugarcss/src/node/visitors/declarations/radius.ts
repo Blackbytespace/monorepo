@@ -104,24 +104,21 @@ export default function radius(v, settings: TSugarCssSettings): any {
     });
   });
 
-  // const corners = ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'].map(
-  //   (corner) => {
-  //     return {
-  //       type: 'length',
-  //       value: {
-  //         unit: 'px',
-  //         value: values[corner],
-  //       },
-  //     };
-  //   },
-  // );
-  // result.push({
-  //   property: `--s-radius-${name}`,
-  //   value: {
-  //     name: `--s-radius-${name}`,
-  //     value: corners,
-  //   },
-  // });
+  result.push({
+    property: `--s-radius-${name}`,
+    value: {
+      name: `--s-radius-${name}`,
+      value: [
+        __toRem({
+          type: 'length',
+          value: {
+            unit: 'px',
+            value: values.topLeft,
+          },
+        }),
+      ],
+    },
+  });
 
   const displayValues = {
     ...values,

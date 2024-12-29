@@ -3,8 +3,6 @@
   font-size: s-size(code);
   background: s-color(main, surface) !important;
   letter-spacing: 0.1em;
-  @include lo-scrollbar;
-  @s-radius;
 
   & > code {
     display: flex;

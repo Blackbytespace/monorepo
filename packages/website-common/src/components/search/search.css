@@ -5,7 +5,7 @@
   flex-shrink: 1;
   font-size: s-size(search);
 
-  .-search-large & {
+  /* .-search-large & {
     background: s-color(main, background);
     position: absolute;
     top: 0;
@@ -14,7 +14,7 @@
     height: 100%;
     z-index: 9999;
     padding: s-space(16);
-  }
+  } */
 
   ._input {
     font: s-font(code);
@@ -206,7 +206,7 @@
   .s-advanced-select_loading {
   }
   .s-advanced-select_empty {
-    padding: s-space(8, 12);
+    padding-block: s-space(8);
   }
 
   .s-advanced-select_no-item {

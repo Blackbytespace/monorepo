@@ -138,12 +138,14 @@
   }
 
   .cs-dark {
+    --s-color-main: #4b423c;
     --s-color-accent: #ff862c;
-    --s-color-background: #282827;
-    --s-color-surface: #20201f;
+    --s-color-complementary: #00ffcc;
+    --s-color-current: #ff862c;
 
     --s-shade-text: --lightness 80;
     --s-shade-text-accent: --lightness 50;
+    --s-shade-foreground-accent: --lightness 20;
     --s-shade-background: --lightness 17;
     --s-shade-surface: --lightness 19;
     --s-shade-platform: --lightness 50;

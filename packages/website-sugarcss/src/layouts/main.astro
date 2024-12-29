@@ -5,6 +5,21 @@ import '../components/index.css';
 import __packageJson from '../../package.json';
 import faviconSvgSrc from '../img/favicon.svg';
 
+const colorSchemas = [
+  {
+    name: 'Light',
+    value: 'light',
+  },
+  {
+    name: 'Dark',
+    value: 'dark',
+  },
+  {
+    name: 'Half Life',
+    value: 'half-life',
+  },
+];
+
 const searchItems = {
   type: 'group',
   label: 'Documentation',
@@ -55,6 +70,7 @@ const searchItems = {
 <MainLayout
   faviconSvg={faviconSvgSrc}
   searchItems={searchItems}
+  colorSchemas={colorSchemas}
   version={__packageJson.version}
   ogImageUrl="https://cdn.lotsof.dev/img/lotsof-sugarcss-og.png"
   title="Sugarcss"

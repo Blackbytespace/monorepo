@@ -1,39 +1,39 @@
 ---
-interface Props {}
+interface Props {
+  schemas: {
+    name: string;
+    value: string;
+  }[];
+}
 
 import './colorSchema.css';
 
-const colorSchema = [
-  {
-    name: 'Light',
-    value: 'light',
-  },
-  {
-    name: 'Dark',
-    value: 'dark',
-  },
-  {
-    name: 'Half life',
-    value: 'half-life',
-  },
-];
+const colorSchema = Astro.props.schemas;
 ---
 
 <div id="color-schema" class="color-schema" transition:persist>
   <div class="_select" tabindex="0">
     {
-      colorSchema.map((schema) => (
+      colorSchema?.map((schema) => (
         <div data-schema={schema.value} class={`_schema cs-${schema.value}`}>
           <div class="_default">
             <p class="_label">
-              <span class="_main">{schema.name}</span>
-              <span class="_accent">{schema.name}</span>
+              <>
+                <span class="_main">{schema.name.split(' ')[0]}</span>
+                <span class="_accent">
+                  {schema.name.split(' ')[1] ?? schema.name}
+                </span>
+              </>
             </p>
           </div>
           <div class="_foreground">
             <p class="_label">
-              <span class="_main">{schema.name}</span>
-              <span class="_accent">{schema.name}</span>
+              <>
+                <span class="_main">{schema.name.split(' ')[0]}</span>
+                <span class="_accent">
+                  {schema.name.split(' ')[1] ?? schema.name}
+                </span>
+              </>
             </p>
           </div>
         </div>

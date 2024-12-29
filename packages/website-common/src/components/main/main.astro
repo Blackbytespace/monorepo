@@ -5,13 +5,16 @@ interface Props {
   ogImageUrl: string;
   searchItems: any;
   faviconSvg: any;
+  colorSchemas: {
+    name: string;
+    value: string;
+  }[];
 }
 
 import { fade } from 'astro:transitions';
 
 import Layout from '../layout/layout.astro';
 import LoHeader from '../header/header.astro';
-import LoCrt from '../crt/crt.astro';
 import LoSearch from '../search/search.astro';
 import LoColorSchema from '../colorSchema/colorSchema.astro';
 
@@ -52,6 +55,6 @@ import './main';
       <div class="main_illustration"></div>
     </div>
   </main>
-  <LoColorSchema />
+  <LoColorSchema schemas={Astro.props.colorSchemas} />
   <!-- <LoCrt /> -->
 </Layout>
