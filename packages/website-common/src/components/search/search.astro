@@ -108,11 +108,13 @@ const items = Astro.props;
     document.body.classList.add('-search-large');
   });
 
-  __hotkey('cmd+shift+p', () => {
-    document.body.classList.add('-search-large');
-  });
-  __hotkey('escape', () => {
-    document.body.classList.remove('-search-large');
+  document.addEventListener('astro:page-load', () => {
+    __hotkey('cmd+shift+p', () => {
+      document.body.classList.add('-search-large');
+    });
+    __hotkey('escape', () => {
+      document.body.classList.remove('-search-large');
+    });
   });
 </script>
 

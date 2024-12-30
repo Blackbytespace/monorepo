@@ -1,15 +1,15 @@
 .markdown {
   padding-block: s-space(10);
 
+  @media sm {
+    padding-block: s-space(16);
+    padding-inline: s-space(5);
+  }
+
   .docmap-mdx {
     display: flex;
     flex-direction: column;
-    gap: s-space(12);
-  }
-
-  @media xs {
-    padding-block: s-space(12);
-    padding-inline: s-space(5);
+    gap: s-space(10);
   }
 
   ._description {
@@ -135,6 +135,7 @@
   }
 
   ._params,
+  ._return,
   ._settings {
     ._list {
       margin-top: s-space(5);
@@ -150,8 +151,16 @@
       flex-wrap: wrap;
       padding: 0;
 
-      &::before {
+      &:before {
         display: none;
+      }
+
+      > *:empty {
+        display: none;
+      }
+
+      @media xs {
+        flex-direction: column;
       }
     }
 
@@ -161,6 +170,20 @@
       padding: s-space(5);
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
+
+      @media xs {
+        border-top-left-radius: s-radius();
+        border-top-right-radius: s-radius();
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+
+        &:before {
+          content: 'Name';
+          @s-font (default);
+          flex-grow: 1;
+        }
+      }
     }
 
     ._description {
@@ -171,34 +194,24 @@
   }
 
   ._return {
-    ._list {
-      display: flex;
-      margin-top: s-space(5);
-
-      @media xs {
-        margin-top: s-space(2);
-      }
-    }
-
-    ._item {
-      display: flex;
-      flex: 1;
-      padding: 0;
-
-      &::before {
-        display: none;
-      }
-    }
-
-    ._description {
+    ._item:before {
+      content: '';
+      display: block;
       flex-grow: 1;
-      background: s-color(main, surface);
-      padding: s-space(5);
-      margin-bottom: 0;
-      font: s-font(default);
+    }
+
+    ._default {
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
-      margin: 0 !important;
+      display: flex !important;
+      flex-grow: 1;
+
+      @media xs {
+        border-top-left-radius: s-radius();
+        border-top-right-radius: s-radius();
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
@@ -211,6 +224,17 @@
     background: s-color(main, surface);
     padding: s-space(5);
     font: s-font(code);
+
+    @media xs {
+      display: flex;
+
+      &:before {
+        color: s-color(main, text);
+        content: 'Default';
+        @s-font (default);
+        flex-grow: 1;
+      }
+    }
   }
 
   ._settings,
@@ -223,6 +247,21 @@
       font: s-font(code);
       border-top-right-radius: s-radius();
       border-bottom-right-radius: s-radius();
+
+      @media xs {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: s-radius();
+        border-bottom-right-radius: s-radius();
+        display: flex;
+
+        &:before {
+          color: s-color(main, text);
+          content: 'Type';
+          @s-font (default);
+          flex-grow: 1;
+        }
+      }
 
       @media cs-half-life {
         color: s-color(accent);
@@ -267,11 +306,11 @@
       }
       &.-normal {
         background: s-color(accent);
-        color: s-color(success, foreground);
+        color: s-color(accent, foreground);
       }
       &.-high {
         background: s-color(error);
-        color: s-color(success, foreground);
+        color: s-color(error, foreground);
       }
     }
   }

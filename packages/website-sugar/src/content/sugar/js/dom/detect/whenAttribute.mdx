@@ -20,15 +20,15 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">elm<span class="_required">*</span></span><span class="_default"></span> <span class="_type">HTMLElement</span>
+<span class="_name">elm<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">HTMLElement</span>
 <p class="_description">The HTMLElement on which to monitor the property</p>
 </li>
 <li class="_item">
-<span class="_name">attribute<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">attribute<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">The attribute to monitor</p>
 </li>
 <li class="_item">
-<span class="_name">checkFn</span><span class="_default"></span> <span class="_type">Function</span>
+<span class="_name">checkFn</span><span class="_default">-</span> <span class="_type">Function</span>
 <p class="_description">An optional function to check the attribute&period; The promise is resolved when this function return true</p>
 </li>
 </ol>
@@ -37,7 +37,8 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)</span><span class="_default"></span><span class="_type">&lpar;Promise&rpar;</span>
+<span class="_default">-</span><span class="_type">&lpar;Promise&rpar;</span>
+<p class="_description">The promise that will be resolved when the attribute exist on the element &lpar;and that it passes the checkFn&rpar;</p>
 </li>
 </ol>
 </div>

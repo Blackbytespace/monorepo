@@ -1,0 +1,25 @@
+{
+  "title": "Sugarcss",
+  "description": "Add a sugar in your css with nice features like live update and more",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugarcss/LICENSE"
+  },
+  "og": {
+    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugarcss-og.png"
+  },
+  "colorSchemas": [
+    {
+      "name": "Light",
+      "value": "light"
+    },
+    {
+      "name": "Dark",
+      "value": "dark"
+    },
+    {
+      "name": "Half Life",
+      "value": "half-life"
+    }
+  ]
+}

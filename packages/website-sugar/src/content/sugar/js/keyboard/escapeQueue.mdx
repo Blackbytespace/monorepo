@@ -16,7 +16,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.keyboard</div>
-<div class="_description">
+<div class="_description typo-format typo-rhythm">
 This funciton allows you to register actions to execute when user press the escape key.
 It will take care of executing the last registered action first, then the others...
 This function returns a SPromise instance on which you can call the `cancel` method to unregister your
@@ -26,7 +26,7 @@ action in the queue.
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">callback</span><span class="_default"></span> <span class="_type">Function</span>
+<span class="_name">callback</span><span class="_default">-</span> <span class="_type">Function</span>
 <p class="_description">The callback to call on pressing escape</p>
 </li>
 <li class="_item">
@@ -39,7 +39,8 @@ action in the queue.
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">An SPromise instance that will be resolved when the user has pressed the escape key and that it's yout turn in the queue</span><span class="_default"></span><span class="_type">SPromise</span>
+<span class="_default">-</span><span class="_type">SPromise</span>
+<p class="_description">An SPromise instance that will be resolved when the user has pressed the escape key and that it&apos;s yout turn in the queue</p>
 </li>
 </ol>
 </div>
@@ -64,7 +65,7 @@ promise.cancel();
 <p class="_description">Specify where to add the listener</p>
 </li>
 <li class="_item">
-<span class="_name">id</span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">id</span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">Specify an id. If specified, will before unqueue the previous item with the same id and add it again</p>
 </li>
 </ol>

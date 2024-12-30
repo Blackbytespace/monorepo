@@ -163,7 +163,6 @@
     color: s-color(accent, --alpha 0.6);
     text-transform: uppercase;
     padding-block: s-space(8) s-space(4);
-    background: s-color(main, background) !important;
   }
   .s-advanced-select_group-label-inner {
   }

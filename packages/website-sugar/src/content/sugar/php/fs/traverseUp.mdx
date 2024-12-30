@@ -16,18 +16,18 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -php">php</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.php.fs</div>
-<div class="_description">
+<div class="_description typo-format typo-rhythm">
 Go up through the filesystem from a specified folder until the closure returns truc and returns the path
 </div>
 <div class="_params">
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">from<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">from<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">Specify the folder path from which to start</p>
 </li>
 <li class="_item">
-<span class="_name">callback<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Function&vert;null</span>
+<span class="_name">callback<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Function&vert;null</span>
 <p class="_description">The callback function to call on each folder path&period; It this returns true&comma; the process stops and the current folder path is returned</p>
 </li>
 </ol>
@@ -36,7 +36,8 @@ Go up through the filesystem from a specified folder until the closure returns t
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">The folder path on which the callback has returned true, or null if not</span><span class="_default"></span><span class="_type">String</span>
+<span class="_default">-</span><span class="_type">String</span>
+<p class="_description">The folder path on which the callback has returned true&comma; or null if not</p>
 </li>
 </ol>
 </div>

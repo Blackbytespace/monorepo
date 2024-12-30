@@ -1,0 +1,25 @@
+{
+  "title": "Sugar",
+  "description": "High quality toolkit for web development",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugar/LICENSE.txt"
+  },
+  "og": {
+    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugar-og.png"
+  },
+  "colorSchemas": [
+    {
+      "name": "Light",
+      "value": "light"
+    },
+    {
+      "name": "Dark",
+      "value": "dark"
+    },
+    {
+      "name": "Odd World",
+      "value": "oddworld"
+    }
+  ]
+}

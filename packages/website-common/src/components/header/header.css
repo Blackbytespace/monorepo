@@ -2,14 +2,14 @@
   position: relative;
   margin-block-end: s-space(10);
 
-  ._title {
+  .header_title {
     @s-font (title);
     line-height: normal;
     text-transform: uppercase;
     font-size: s-size(6);
   }
 
-  ._version {
+  .header_version {
     font: s-font(code);
     color: s-color(current);
     font-size: s-size(3);
@@ -31,7 +31,13 @@
     }
   }
 
-  ._menu {
+  .header_license {
+    opacity: 0.8;
+    display: inline-block;
+    margin-block-start: s-space(1);
+  }
+
+  .header_menu {
     display: none;
     position: absolute;
     top: 0;
@@ -42,7 +48,7 @@
     border: 1px solid s-color(accent);
   }
 
-  ._logo {
+  .header_logo {
     display: block;
     width: 60px;
     margin-bottom: s-space(4);

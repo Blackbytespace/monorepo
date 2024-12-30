@@ -629,7 +629,7 @@ class Docmap {
         }));
     }
     toMdx(docmapObj) {
-        var _a, _b, _c, _d, _e, _f;
+        var _a, _b, _c, _d, _e, _f, _g;
         const result = [];
         function encodeEntities(str) {
             if (typeof str !== 'string') {
@@ -688,7 +688,7 @@ class Docmap {
         }
         result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
         if (docmapObj.description) {
-            result.push('<div class="_description">');
+            result.push('<div class="_description typo-format typo-rhythm">');
             result.push(docmapObj.description);
             result.push('</div>');
         }
@@ -701,7 +701,7 @@ class Docmap {
                 result.push('<li class="_item">');
                 result.push(`<span class="_name">${paramObj.name}${paramObj.default === undefined
                     ? '<span class="_required">*</span>'
-                    : ''}</span><span class="_default">${encodeEntities((_a = paramObj.default) !== null && _a !== void 0 ? _a : '')}</span> <span class="_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                    : ''}</span><span class="_default">${encodeEntities((_a = paramObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
                 result.push(`<p class="_description">${encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
                 result.push('</li>');
             });
@@ -713,12 +713,13 @@ class Docmap {
             result.push(`## Return`);
             result.push('<ol class="_list">');
             result.push('<li class="_item">');
-            result.push(`<span class="_description">${docmapObj.return.description}</span><span class="_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : ''}</span><span class="_type">${encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
+            result.push(`<span class="_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : '-'}</span><span class="_type">${encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
+            result.push(`<p class="_description">${encodeEntities((_f = docmapObj.return.description) !== null && _f !== void 0 ? _f : '')}</p>`);
             result.push('</li>');
             result.push('</ol>');
             result.push('</div>');
         }
-        if ((_f = docmapObj.example) === null || _f === void 0 ? void 0 : _f.length) {
+        if ((_g = docmapObj.example) === null || _g === void 0 ? void 0 : _g.length) {
             result.push('<div class="_examples">');
             result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
             docmapObj.example.forEach((exampleObj) => {
@@ -737,7 +738,7 @@ ${exampleObj.code}
                 result.push('<li class="_item">');
                 result.push(`<span class="_name">${settingObj.name}${settingObj.default === undefined
                     ? '<span class="_required">*</span>'
-                    : ''}</span><span class="_default">${encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '')}</span> <span class="_type">${encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                    : ''}</span><span class="_default">${encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="_type">${encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
                 result.push(`<p class="_description">${settingObj.description}</p>`);
                 result.push('</li>');
             });

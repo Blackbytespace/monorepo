@@ -2,4 +2,5 @@ body {
   font: s-font(default);
   color: s-color(main, text);
   background: s-color(main, background);
+  @s-transition();
 }

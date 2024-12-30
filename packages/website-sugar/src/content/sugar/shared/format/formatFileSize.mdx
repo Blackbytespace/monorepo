@@ -16,7 +16,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.shared.format</div>
-<div class="_description">
+<div class="_description typo-format typo-rhythm">
 Transform into human readable string a file size from a number (float or integer) or string.
 This function use the wonderfull &quot;filesize&quot; npm package under the houd.
 </div>
@@ -24,7 +24,7 @@ This function use the wonderfull &quot;filesize&quot; npm package under the houd
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">size<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Number&vert;String</span>
+<span class="_name">size<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Number&vert;String</span>
 <p class="_description">The size to transform in bytes</p>
 </li>
 <li class="_item">
@@ -37,7 +37,8 @@ This function use the wonderfull &quot;filesize&quot; npm package under the houd
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">The human readable version of the passed size</span><span class="_default"></span><span class="_type">String</span>
+<span class="_default">-</span><span class="_type">String</span>
+<p class="_description">The human readable version of the passed size</p>
 </li>
 </ol>
 </div>
@@ -68,7 +69,7 @@ __formatFilesize(163931); // => 326.86 KB
 <p class="_description">(boolean) Enables full form of unit of measure, default is false</p>
 </li>
 <li class="_item">
-<span class="_name">[fullforms]<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Array</span>
+<span class="_name">[fullforms]<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Array</span>
 <p class="_description">(array) Array of full form overrides, default is []</p>
 </li>
 <li class="_item">

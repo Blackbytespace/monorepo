@@ -6,7 +6,7 @@
 .form-input,
 .form-textarea {
   &::placeholder {
-    color: s-color(current, placeholder);
+    color: s-color(current, form-placeholder);
   }
 }
 

@@ -2,23 +2,9 @@
 import MainLayout from '@lotsof/website-common/src/components/main/main.astro';
 import '../components/index.css';
 
+import __websiteConfig from '../../website-sugar.config.json';
 import __packageJson from '../../package.json';
 import faviconSvgSrc from '../img/favicon.svg';
-
-const colorSchemas = [
-  {
-    name: 'Light',
-    value: 'light',
-  },
-  {
-    name: 'Dark',
-    value: 'dark',
-  },
-  {
-    name: 'Odd World',
-    value: 'oddworld',
-  },
-];
 
 const searchItems = {
   type: 'group',
@@ -42,10 +28,12 @@ const searchItems = {
 <MainLayout
   faviconSvg={faviconSvgSrc}
   searchItems={searchItems}
-  colorSchemas={colorSchemas}
+  colorSchemas={__websiteConfig.colorSchemas}
   version={__packageJson.version}
-  ogImageUrl="https://cdn.lotsof.dev/img/lotsof-sugar-og.png"
-  title="Sugar"
+  og={__websiteConfig.og}
+  license={__websiteConfig.license}
+  title={__websiteConfig.title}
+  description={__websiteConfig.description}
 >
   <slot />
 </MainLayout>

@@ -24,7 +24,6 @@ import { env } from '../../sugarcss.js';
  * - `dark`: dark mode
  * - `light`: light mode
  * - `cs-...`: color schema
- * - `theme-...`: theme
  *
  * @param      {String}        query              The query to parse
  * @return     {Css}                              The generated css

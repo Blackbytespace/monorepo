@@ -2,21 +2,32 @@
 interface Props {
   title: string;
   version: string;
+  license: {
+    name: string;
+    url: string;
+  };
 }
 
-// import __logoLotsof from '@lotsof/website-common/src/img/logo-lotsof.svg?raw';
 import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo-picto.svg?raw';
 
-const { title, version } = Astro.props;
+const { title, version, license } = Astro.props;
 ---
 
 <header class="header">
-  <a class="_logo" href="/" title={title}>
-    <Fragment set:html={__logoLotsof} />
+  <a href="/" title={title}>
+    <div class="header_logo">
+      <Fragment set:html={__logoLotsof} />
+    </div>
+    <h1 class="header_title">{title}</h1>
   </a>
-  <a href="/" title={title} style={`--chars: ${title.length};`}>
-    <h1 class="_title">{title}</h1>
-    <h4 class="_version">v{version}</h4>
+  <h4 class="header_version">v{version}</h4>
+  <a
+    class="header_license"
+    href={license.url}
+    target="_blank"
+    title={license.name}
+  >
+    {license.name}
   </a>
-  <button class="_menu"></button>
+  <button class="header_menu"></button>
 </header>

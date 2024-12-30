@@ -2,9 +2,16 @@
 interface Props {
   version: string;
   title: string;
-  ogImageUrl: string;
+  description: string;
   searchItems: any;
   faviconSvg: any;
+  og: {
+    imageUrl: string;
+  };
+  license: {
+    name: string;
+    url: string;
+  };
   colorSchemas: {
     name: string;
     value: string;
@@ -34,7 +41,9 @@ import './main';
 <Layout
   faviconSvg={Astro.props.faviconSvg}
   title={Astro.props.title}
-  ogImageUrl={Astro.props.ogImageUrl}
+  description={Astro.props.description}
+  license={Astro.props.license}
+  og={Astro.props.og}
 >
   <main class="main">
     <div class="main_inner">
@@ -42,7 +51,11 @@ import './main';
         <button tabindex="1" class="main_nav-toggle">
           <div class="main_nav-toggle-inner"></div>
         </button>
-        <LoHeader title={Astro.props.title} version={Astro.props.version} />
+        <LoHeader
+          title={Astro.props.title}
+          version={Astro.props.version}
+          license={Astro.props.license}
+        />
         <LoSearch items={Astro.props.searchItems} />
       </nav>
       <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
@@ -56,5 +69,4 @@ import './main';
     </div>
   </main>
   <LoColorSchema schemas={Astro.props.colorSchemas} />
-  <!-- <LoCrt /> -->
 </Layout>

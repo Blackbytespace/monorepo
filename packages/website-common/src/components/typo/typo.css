@@ -12,6 +12,7 @@
 .typo-format h5 {
   font: s-font(title);
   line-height: 1.4em;
+  word-break: break-all;
 }
 
 .typo-h1,

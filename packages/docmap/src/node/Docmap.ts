@@ -986,7 +986,7 @@ class Docmap implements TDocmap {
     result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
 
     if (docmapObj.description) {
-      result.push('<div class="_description">');
+      result.push('<div class="_description typo-format typo-rhythm">');
       result.push(docmapObj.description);
       result.push('</div>');
     }
@@ -1004,7 +1004,7 @@ class Docmap implements TDocmap {
               ? '<span class="_required">*</span>'
               : ''
           }</span><span class="_default">${encodeEntities(
-            paramObj.default ?? '',
+            paramObj.default ?? '-',
           )}</span> <span class="_type">${encodeEntities(
             paramObj.type.raw ?? '',
           )}</span>`,
@@ -1029,14 +1029,18 @@ class Docmap implements TDocmap {
       result.push('<ol class="_list">');
       result.push('<li class="_item">');
       result.push(
-        `<span class="_description">${
-          docmapObj.return.description
-        }</span><span class="_default">${
-          docmapObj.return.default ?? ''
+        `<span class="_default">${
+          docmapObj.return.default ?? '-'
         }</span><span class="_type">${encodeEntities(
           docmapObj.return.type.raw ?? '',
         )}</span>`,
       );
+      result.push(
+        `<p class="_description">${encodeEntities(
+          docmapObj.return.description ?? '',
+        )}</p>`,
+      );
+
       result.push('</li>');
       result.push('</ol>');
 
@@ -1069,7 +1073,7 @@ ${exampleObj.code}
               ? '<span class="_required">*</span>'
               : ''
           }</span><span class="_default">${encodeEntities(
-            settingObj.default ?? '',
+            settingObj.default ?? '-',
           )}</span> <span class="_type">${encodeEntities(
             settingObj.type.raw ?? '',
           )}</span>`,

@@ -16,7 +16,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -node">node</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.node.fs</div>
-<div class="_description">
+<div class="_description typo-format typo-rhythm">
 Create a temporary file on the disk with the passed content and returns the path
 to it.
 </div>
@@ -24,7 +24,7 @@ to it.
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">data<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Any</span>
+<span class="_name">data<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Any</span>
 <p class="_description">The data to write in the file</p>
 </li>
 <li class="_item">
@@ -37,7 +37,8 @@ to it.
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">A promise that will be resolved when the writeTmpFile is completed with the path to it</span><span class="_default"></span><span class="_type">Promise&lt;String&gt;</span>
+<span class="_default">-</span><span class="_type">Promise&lt;String&gt;</span>
+<p class="_description">A promise that will be resolved when the writeTmpFile is completed with the path to it</p>
 </li>
 </ol>
 </div>
@@ -54,7 +55,7 @@ __writeTmpFile('Hello World').then((path) => {
 ## Settings
 <ol class="_list">
 <li class="_item">
-<span class="_name">path</span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">path</span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">A path relative to the temp folder to store your file</p>
 </li>
 </ol>

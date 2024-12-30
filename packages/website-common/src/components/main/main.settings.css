@@ -1,3 +1,13 @@
 .main {
   --main-nav-width: 400px;
+  --main-nav-padding: s-space(16);
+
+  @media xl {
+    --main-nav-width: 400px;
+  }
+
+  @media lg {
+    --main-nav-width: 300px;
+    --main-nav-padding: s-space(8);
+  }
 }

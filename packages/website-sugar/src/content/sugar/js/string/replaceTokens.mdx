@@ -16,7 +16,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.string</div>
-<div class="_description">
+<div class="_description typo-format typo-rhythm">
 This function takes as parameter a tokened string like &quot;something [cool]&quot;, an object
 of arguments/values and return the processed string with the tokens replaced by the arguments values.
 </div>
@@ -24,11 +24,11 @@ of arguments/values and return the processed string with the tokens replaced by 
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">string<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">string<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">The string to process</p>
 </li>
 <li class="_item">
-<span class="_name">tokensObj<span class="_required">*</span></span><span class="_default"></span> <span class="_type">Object</span>
+<span class="_name">tokensObj<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Object</span>
 <p class="_description">The arguments&sol;value object</p>
 </li>
 <li class="_item">
@@ -41,7 +41,8 @@ of arguments/values and return the processed string with the tokens replaced by 
 ## Return
 <ol class="_list">
 <li class="_item">
-<span class="_description">The processed string</span><span class="_default"></span><span class="_type">String</span>
+<span class="_default">-</span><span class="_type">String</span>
+<p class="_description">The processed string</p>
 </li>
 </ol>
 </div>
@@ -56,7 +57,7 @@ __replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
 ## Settings
 <ol class="_list">
 <li class="_item">
-<span class="_name">[regexp=\[([a-zA-Z0-9-_]+)\] The regexp to use to match the tokens<span class="_required">*</span></span><span class="_default"></span> <span class="_type">String</span>
+<span class="_name">[regexp=\[([a-zA-Z0-9-_]+)\] The regexp to use to match the tokens<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">String</span>
 <p class="_description">null</p>
 </li>
 <li class="_item">
