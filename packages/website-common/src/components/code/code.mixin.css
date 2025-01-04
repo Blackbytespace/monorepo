@@ -1,8 +1,6 @@
 @mixin code {
-  font: s-font(code);
-  font-size: s-size(code);
   background: s-color(main, surface) !important;
-  letter-spacing: 0.1em;
+  @s-typo (code);
 
   & > code {
     display: flex;

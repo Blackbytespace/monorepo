@@ -45,10 +45,13 @@
       width: 100%;
     }
 
+    @media xl {
+      padding: s-space(8);
+    }
+
     @media sm {
       overflow-y: visible;
       overflow-x: visible;
-      padding: s-space(8);
 
       &:focus-within {
         overflow-x: hidden;
@@ -94,6 +97,10 @@
     height: 100vh;
     overflow-y: auto;
     @include lo-scrollbar;
+
+    @media xl {
+      padding: s-space(8);
+    }
 
     @media sm {
       left: 0;

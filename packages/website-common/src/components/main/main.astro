@@ -46,27 +46,25 @@ import './main';
   og={Astro.props.og}
 >
   <main class="main">
-    <div class="main_inner">
-      <nav class="main_nav" transition:persist>
-        <button tabindex="1" class="main_nav-toggle">
-          <div class="main_nav-toggle-inner"></div>
-        </button>
-        <LoHeader
-          title={Astro.props.title}
-          version={Astro.props.version}
-          license={Astro.props.license}
-        />
-        <LoSearch items={Astro.props.searchItems} />
-      </nav>
-      <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
-        <div class="main_body-inner">
-          <div class="markdown typo-format typo-rhythm">
-            <slot />
-          </div>
+    <nav class="main_nav" transition:persist>
+      <button tabindex="1" class="main_nav-toggle">
+        <div class="main_nav-toggle-inner"></div>
+      </button>
+      <LoHeader
+        title={Astro.props.title}
+        version={Astro.props.version}
+        license={Astro.props.license}
+      />
+      <LoSearch items={Astro.props.searchItems} />
+    </nav>
+    <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
+      <div class="main_body-inner">
+        <div class="markdown typo-format typo-rhythm">
+          <slot />
         </div>
       </div>
-      <div class="main_illustration"></div>
     </div>
+    <div class="main_illustration"></div>
   </main>
   <LoColorSchema schemas={Astro.props.colorSchemas} />
 </Layout>

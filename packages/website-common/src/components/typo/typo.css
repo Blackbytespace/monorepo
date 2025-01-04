@@ -10,33 +10,29 @@
 .typo-format h3,
 .typo-format h4,
 .typo-format h5 {
-  font: s-font(title);
-  line-height: 1.4em;
   word-break: break-all;
 }
 
 .typo-h1,
 .typo-format h1 {
-  font-size: s-size(h1);
   font-weight: 100 !important;
+  @s-typo (h1);
 }
 
 .typo-h2,
 .typo-format h2 {
-  font-size: s-size(h2);
+  @s-typo (h2);
 }
 
 .typo-h3,
 .typo-format h3 {
-  font-size: s-size(h3);
   color: s-color(accent);
+  @s-typo (h3);
 }
 
 .typo-p,
 .typo-format p {
-  font: s-font(default);
-  font-size: s-size(body);
-  letter-spacing: 0.05em;
+  @s-typo (p);
 
   &:empty {
     display: none;
@@ -47,8 +43,7 @@
 .typo-lead > p,
 .typo-format .typo-lead,
 .typo-format .typo-lead p {
-  font: s-font(lead);
-  font-size: s-size(lead);
+  @s-typo (lead);
 }
 
 .typo-code,
@@ -106,10 +101,6 @@
       counter-increment: item;
     }
   }
-}
-
-.typo-code,
-.typo-format code {
 }
 
 .typo-blockquote,

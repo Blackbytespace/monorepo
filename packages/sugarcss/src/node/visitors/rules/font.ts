@@ -141,27 +141,6 @@ export default function font(v: any, settings: TSugarCssSettings): any {
                 ],
               },
             },
-            {
-              property: 'unparsed',
-              value: {
-                propertyId: {
-                  property: `letter-spacing`,
-                  vendor_prefix: [],
-                },
-                value: [
-                  {
-                    type: 'var',
-                    value: {
-                      name: {
-                        ident: `--s-font-${args.values.name}-letter-spacing`,
-                        from: null,
-                      },
-                      fallback: null,
-                    },
-                  },
-                ],
-              },
-            },
           ],
         },
         rules: [],

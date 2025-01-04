@@ -35,6 +35,10 @@
     }
   }
 
+  ._schema {
+    font-family: s-font-family(title);
+  }
+
   ._default,
   ._foreground {
     flex-grow: 1;

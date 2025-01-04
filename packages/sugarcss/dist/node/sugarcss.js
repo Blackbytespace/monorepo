@@ -13,6 +13,7 @@ import __sizesDeclaration from './visitors/declarations/sizes.js';
 import __spaceDeclaration from './visitors/declarations/space.js';
 import __spacesDeclaration from './visitors/declarations/spaces.js';
 import __transitionDeclaration from './visitors/declarations/transition.js';
+import __typoDeclaration from './visitors/declarations/typo.js';
 import __colorFunction from './visitors/functions/color.js';
 import __containerFunction from './visitors/functions/container.js';
 import __easeFunction from './visitors/functions/ease.js';
@@ -33,6 +34,7 @@ import __radiusRule from './visitors/rules/radius.js';
 import __scaleRule from './visitors/rules/scale.js';
 import __scrollbarRule from './visitors/rules/scrollbar.js';
 import __transitionRule from './visitors/rules/transition.js';
+import __typoRule from './visitors/rules/typo.js';
 import browserslist from 'browserslist';
 import { browserslistToTargets, composeVisitors, } from 'lightningcss';
 import { __parseHtml } from '@lotsof/sugar/console';
@@ -127,6 +129,7 @@ export default function sugarcss(settings = {}) {
     env.rules['s-transition'] = __transitionRule;
     env.rules['s-radius'] = __radiusRule;
     env.rules['s-font'] = __fontRule;
+    env.rules['s-typo'] = __typoRule;
     env.rules['s-fit'] = __fitRule;
     env.rules['s-map-color'] = __mapColorRule;
     env.rules['s-container'] = __containerRule;
@@ -191,6 +194,8 @@ export default function sugarcss(settings = {}) {
                         return __sizesDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-setting-`):
                         return __settingDeclaration(v, finalSettings);
+                    case v.name.startsWith(`--s-typo-`):
+                        return __typoDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-font-`) &&
                         !v.name.startsWith(`--s-font-family-`):
                         return __fontDeclaration(v, finalSettings);
@@ -217,6 +222,8 @@ export default function sugarcss(settings = {}) {
                             return __transitionRule(rule, finalSettings);
                         case rule.name === `s-radius`:
                             return __radiusRule(rule, finalSettings);
+                        case rule.name === `s-typo`:
+                            return __typoRule(rule, finalSettings);
                         case rule.name === `s-font`:
                             return __fontRule(rule, finalSettings);
                         case rule.name === `s-fit`:
