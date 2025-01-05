@@ -1,24 +1,13 @@
 ---
+interface Props {
+  pageTitle: string;
+}
+
 import MainLayout from '@lotsof/website-common/src/components/main/main.astro';
 import '../components/index.css';
 
 import __websiteConfig from '../../website-sugar.config.json';
 import __packageJson from '../../package.json';
-import faviconSvgSrc from '../img/favicon.svg';
-
-const searchItems = {
-  type: 'group',
-  label: 'Documentation',
-  items: [
-    {
-      id: 'install',
-      label: 'Get started',
-      value: 'install',
-      slug: '/',
-      preventSet: true,
-    },
-  ],
-};
 ---
 
 <script>
@@ -26,13 +15,13 @@ const searchItems = {
 </script>
 
 <MainLayout
-  faviconSvg={faviconSvgSrc}
-  searchItems={searchItems}
-  colorSchemas={__websiteConfig.colorSchemas}
+  menu={__websiteConfig.menu}
+  themes={__websiteConfig.themes}
   version={__packageJson.version}
   og={__websiteConfig.og}
   license={__websiteConfig.license}
   title={__websiteConfig.title}
+  pageTitle={Astro.props.pageTitle}
   description={__websiteConfig.description}
 >
   <slot />

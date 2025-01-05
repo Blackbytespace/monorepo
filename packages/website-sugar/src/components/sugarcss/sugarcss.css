@@ -1,6 +1,6 @@
 @import '@lotsof/website-common/src/components/sugarcss/sugarcss.css';
 
-.cs-light {
+.theme-light {
   --s-color-main: #3c444b;
   --s-color-accent: #2ca0ff;
   --s-color-complementary: #00ffcc;
@@ -36,7 +36,7 @@
   --s-font-family-title: 'Poppins', sans-serif;
 }
 
-.cs-dark {
+.theme-dark {
   --s-color-main: #3c444b;
   --s-color-accent: #2ca0ff;
   --s-color-complementary: #00ffcc;
@@ -62,7 +62,7 @@
   --s-font-family-title: 'Poppins', sans-serif;
 }
 
-.cs-oddworld {
+.theme-oddworld {
   --s-color-main: #523f3a;
   --s-color-accent: #d1ae5c;
   --s-color-complementary: #41ed8f;

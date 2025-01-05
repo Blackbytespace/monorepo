@@ -33,6 +33,6 @@ for (let [i, docObj] of allDoc.entries()) {
 }
 ---
 
-<Layout title={`Lotsof | Sugar | ${DocItem.remarkPluginFrontmatter.title}`}>
+<Layout pageTitle={DocItem.remarkPluginFrontmatter.title}>
   <DocItem.Content />
 </Layout>

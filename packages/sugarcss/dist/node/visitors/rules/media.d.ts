@@ -23,6 +23,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - `e-...`: equal
  * - `dark`: dark mode
  * - `light`: light mode
+ * - 'theme-...': theme
  * - `cs-...`: color schema
  *
  * @param      {String}        query              The query to parse
@@ -46,7 +47,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  *    \@media e-tablet { ... }
  *    \@media dark { ... }
  *    \@media gt-phone { ... }
- *    \@media cs-half-life { ... }
+ *    \@media theme-half-life { ... }
  *    \@media theme-moon { ... }
  * }
  *

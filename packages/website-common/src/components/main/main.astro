@@ -2,9 +2,9 @@
 interface Props {
   version: string;
   title: string;
+  pageTitle: string;
   description: string;
-  searchItems: any;
-  faviconSvg: any;
+  menu: any;
   og: {
     imageUrl: string;
   };
@@ -12,7 +12,7 @@ interface Props {
     name: string;
     url: string;
   };
-  colorSchemas: {
+  themes: {
     name: string;
     value: string;
   }[];
@@ -23,7 +23,7 @@ import { fade } from 'astro:transitions';
 import Layout from '../layout/layout.astro';
 import LoHeader from '../header/header.astro';
 import LoSearch from '../search/search.astro';
-import LoColorSchema from '../colorSchema/colorSchema.astro';
+import LoTheme from '../theme/theme.astro';
 
 import './main';
 ---
@@ -39,8 +39,8 @@ import './main';
 </script>
 
 <Layout
-  faviconSvg={Astro.props.faviconSvg}
   title={Astro.props.title}
+  pageTitle={Astro.props.pageTitle}
   description={Astro.props.description}
   license={Astro.props.license}
   og={Astro.props.og}
@@ -55,7 +55,7 @@ import './main';
         version={Astro.props.version}
         license={Astro.props.license}
       />
-      <LoSearch items={Astro.props.searchItems} />
+      <LoSearch items={Astro.props.menu} />
     </nav>
     <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
       <div class="main_body-inner">
@@ -66,5 +66,5 @@ import './main';
     </div>
     <div class="main_illustration"></div>
   </main>
-  <LoColorSchema schemas={Astro.props.colorSchemas} />
+  <LoTheme themes={Astro.props.themes} />
 </Layout>

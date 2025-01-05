@@ -1,6 +1,6 @@
 ---
 interface Props {
-  items: any;
+  items: any[];
 }
 
 const items = Astro.props;
@@ -30,7 +30,9 @@ const items = Astro.props;
     );
     setTimeout(
       () => {
-        if (item.slug) {
+        if (item.url) {
+          window.open(item.url, '_blank')?.focus();
+        } else if (item.slug) {
           navigate(item.slug);
         } else {
           navigate(`/doc/${__toSlug(item.value)}`);
@@ -96,7 +98,7 @@ const items = Astro.props;
 
       cachedItems = [...Object.values(sections)];
       if ((window as any).searchItems) {
-        cachedItems = [(window as any).searchItems, ...cachedItems];
+        cachedItems = [...(window as any).searchItems, ...cachedItems];
       }
       return cachedItems;
     },

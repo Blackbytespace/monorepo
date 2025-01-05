@@ -4,7 +4,7 @@
   --tooltip-background: s-color(current);
   --tooltip-color: s-color(current, foreground);
 
-  @media cs-half-life {
+  @media theme-half-life {
     --tooltip-background: s-color(current, --lightness 20);
   }
 

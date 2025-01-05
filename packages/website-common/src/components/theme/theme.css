@@ -1,4 +1,4 @@
-.color-schema {
+.theme {
   position: fixed;
   z-index: 999;
   bottom: s-space(16);
@@ -10,7 +10,7 @@
     display: none;
   }
 
-  ._schema {
+  ._theme {
     display: flex;
     width: 30px;
     user-select: none;
@@ -29,13 +29,13 @@
   }
   &:hover,
   &:focus-within {
-    ._schema {
+    ._theme {
       width: 300px;
       transition-delay: 0s !important;
     }
   }
 
-  ._schema {
+  ._theme {
     font-family: s-font-family(title);
   }
 

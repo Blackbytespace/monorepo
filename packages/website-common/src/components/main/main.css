@@ -141,12 +141,12 @@
       display: none;
     }
 
-    @media cs-oddworld {
+    @media theme-oddworld {
       background-image: url('/lotsof-oddworld-abe.webp');
       opacity: 1;
       translate: 0;
     }
-    @media cs-half-life {
+    @media theme-half-life {
       background-image: url('/lotsof-gordon-freeman.webp');
       opacity: 1;
       translate: 0;

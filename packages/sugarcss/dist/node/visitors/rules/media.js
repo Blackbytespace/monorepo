@@ -23,6 +23,7 @@ import { env } from '../../sugarcss.js';
  * - `e-...`: equal
  * - `dark`: dark mode
  * - `light`: light mode
+ * - 'theme-...': theme
  * - `cs-...`: color schema
  *
  * @param      {String}        query              The query to parse
@@ -46,7 +47,7 @@ import { env } from '../../sugarcss.js';
  *    \@media e-tablet { ... }
  *    \@media dark { ... }
  *    \@media gt-phone { ... }
- *    \@media cs-half-life { ... }
+ *    \@media theme-half-life { ... }
  *    \@media theme-moon { ... }
  * }
  *
@@ -112,6 +113,42 @@ export default function media(v, settings) {
             }
             // set the new media
             mediaQuery.mediaType = query;
+        }
+        else if (mediaStr.startsWith('theme-') || mediaStr.startsWith('theme-')) {
+            return [
+                {
+                    type: 'style',
+                    value: {
+                        selectors: [
+                            [
+                                {
+                                    type: 'class',
+                                    name: mediaStr,
+                                },
+                                {
+                                    type: 'combinator',
+                                    value: 'descendant',
+                                },
+                                {
+                                    type: 'nesting',
+                                },
+                            ],
+                        ],
+                        declarations: {
+                            importantDeclarations: [],
+                            declarations: [],
+                        },
+                        rules: v.value.rules.map((rule) => {
+                            return rule;
+                        }),
+                        loc: {
+                            source_index: 2,
+                            line: 98,
+                            column: 5,
+                        },
+                    },
+                },
+            ];
         }
         else if (mediaStr.startsWith('cs-') || mediaStr.startsWith('theme-')) {
             return [

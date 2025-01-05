@@ -40,7 +40,7 @@
       [fill] {
         fill: s-color(current);
 
-        @media cs-half-life {
+        @media theme-half-life {
           fill: s-color(current, --lightness 90);
         }
       }

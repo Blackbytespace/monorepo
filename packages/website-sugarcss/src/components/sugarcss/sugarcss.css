@@ -1,6 +1,6 @@
 @import '@lotsof/website-common/src/components/sugarcss/sugarcss.css';
 
-.cs-light {
+.theme-light {
   --s-color-main: #4b423c;
   --s-color-accent: #ff862c;
   --s-color-complementary: #00ffcc;
@@ -34,7 +34,7 @@
   --s-shade-platform: --lightness 70;
 }
 
-.cs-dark {
+.theme-dark {
   --s-color-main: #4b423c;
   --s-color-accent: #ff862c;
   --s-color-complementary: #00ffcc;
@@ -57,7 +57,7 @@
   --s-shade-platform: --lightness 50;
 }
 
-.cs-half-life {
+.theme-half-life {
   --s-color-main: #ff862c;
   --s-color-accent: #562805;
   --s-color-complementary: #ff862c;

@@ -1,0 +1,80 @@
+---
+interface Props {
+  themes: {
+    name: string;
+    value: string;
+  }[];
+}
+
+import './theme.css';
+
+const themes = Astro.props.themes;
+---
+
+<div id="theme" class="theme" transition:persist>
+  <div class="_select" tabindex="0">
+    {
+      themes?.map((theme) => (
+        <div data-theme={theme.value} class={`_theme theme-${theme.value}`}>
+          <div class="_default">
+            <p class="_label">
+              <>
+                <span class="_main">{theme.name.split(' ')[0]}</span>
+                <span class="_accent">
+                  {theme.name.split(' ')[1] ?? theme.name}
+                </span>
+              </>
+            </p>
+          </div>
+          <div class="_foreground">
+            <p class="_label">
+              <>
+                <span class="_main">{theme.name.split(' ')[0]}</span>
+                <span class="_accent">
+                  {theme.name.split(' ')[1] ?? theme.name}
+                </span>
+              </>
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  let theme = localStorage.getItem('theme') || 'dark';
+
+  const $colorSchema = document.getElementById('theme'),
+    $themes = $colorSchema?.querySelectorAll('._theme');
+
+  for (let [i, $theme] of $themes?.entries() ?? []) {
+    $theme.addEventListener('click', () => {
+      const themeTheme = $theme.dataset.theme;
+      localStorage.setItem('theme', themeTheme);
+      theme = themeTheme;
+      applySchema();
+    });
+  }
+
+  function applySchema(): void {
+    document.body.classList.forEach((c) => {
+      if (c.startsWith('theme-')) {
+        document.body.classList.remove(c);
+      }
+    });
+
+    document.body.classList.add(`theme-${theme}`);
+  }
+
+  document.addEventListener('astro:after-swap', () => {
+    applySchema();
+  });
+  applySchema();
+
+  // $select.addEventListener('change', (e: any) => {
+  //   localStorage.setItem('theme', e.target?.value as string);
+  //   schema = e.target.value;
+  //   applySchema();
+  // });
+</script>

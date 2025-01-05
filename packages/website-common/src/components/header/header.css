@@ -17,7 +17,7 @@
     pointer-events: none;
     @s-transition (fast);
 
-    @media cs-half-life {
+    @media theme-half-life {
       color: s-color(accent, --lightness 70 --spin 15);
     }
   }

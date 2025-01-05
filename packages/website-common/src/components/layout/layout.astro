@@ -1,12 +1,12 @@
 ---
 interface Props {
   title: string;
+  pageTitle: string;
   description: string;
   license: {
     name: string;
     url: string;
   };
-  faviconSvg: any;
   og: {
     imageUrl: string;
   };
@@ -16,17 +16,10 @@ import { ViewTransitions } from 'astro:transitions';
 import '../fonts/fonts';
 import './layout.css';
 
-import { getImage } from 'astro:assets';
-
-const faviconSvg = await getImage({
-  src: Astro.props.faviconSvg,
-  format: 'svg',
-});
-
 import '../fonts/fonts.css';
 
 // @ts-ignore
-const { frontmatter, title, description, og } = Astro.props;
+const { frontmatter, title, pageTitle, description, og } = Astro.props;
 ---
 
 <html lang="en">
@@ -47,8 +40,25 @@ const { frontmatter, title, description, og } = Astro.props;
     <meta property="og:title" content={frontmatter?.title ?? title} />
     <meta property="og:type" content="article" />
     <meta property="og:image" content={og.imageUrl} />
-    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
-    <title>Lotsof - {frontmatter?.title ?? title}</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <title>Lotsof - {`${title}${pageTitle ? `- ${pageTitle}` : ''}`}</title>
     <ViewTransitions />
   </head>
   <body>

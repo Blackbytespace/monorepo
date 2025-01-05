@@ -8,7 +8,36 @@
   "og": {
     "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugar-og.png"
   },
-  "colorSchemas": [
+  "menu": [
+    {
+      "type": "group",
+      "label": "Documentation",
+      "items": [
+        {
+          "id": "install",
+          "label": "Get started",
+          "value": "install",
+          "slug": "/",
+          "preventSet": true
+        },
+        {
+          "id": "issues",
+          "label": "Declare an issue",
+          "value": "issue",
+          "url": "https://github.com/lotsofdev/monorepo/issues",
+          "preventSet": true
+        },
+        {
+          "id": "license",
+          "label": "License",
+          "value": "license",
+          "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/website-sugar/LICENSE.md",
+          "preventSet": true
+        }
+      ]
+    }
+  ],
+  "themes": [
     {
       "name": "Light",
       "value": "light"

@@ -25,10 +25,10 @@
     @s-font (code);
     @s-radius;
 
-    @media cs-half-life {
+    @media theme-half-life {
       color: s-color(accent);
     }
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(accent);
     }
   }
@@ -88,7 +88,7 @@
       background: s-color(error, --darken 20);
     }
 
-    @media cs-oddworld {
+    @media theme-oddworld {
     }
   }
 
@@ -263,10 +263,10 @@
         }
       }
 
-      @media cs-half-life {
+      @media theme-half-life {
         color: s-color(accent);
       }
-      @media cs-oddworld {
+      @media theme-oddworld {
         color: s-color(accent);
       }
     }

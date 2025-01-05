@@ -1,31 +1,31 @@
 .astro-code {
   /* selectors (class) */
   [style*='#B392F0'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(main, --lightness 80) !important;
     }
   }
 
   /* selectors (tag) */
   [style*='#85E89D'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(main, --lightness 80) !important;
     }
   }
 
   /* variables */
   [style*='#FFAB70'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(accent) !important;
     }
   }
 
   /* comments */
   [style*='#6A737D'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(main, --lightness 100 --alpha 0.6) !important;
     }
-    @media cs-dark {
+    @media theme-dark {
       color: s-color(main, --lightness 60) !important;
     }
   }
@@ -34,42 +34,42 @@
   [style*='#E1E4E8'] {
     color: s-color(main) !important;
 
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(accent) !important;
     }
   }
 
   /* @ */
   [style*='#E1E4E8'] {
-    @media cs-dark {
+    @media theme-dark {
       color: s-color(complementary, --lightness 45) !important;
     }
   }
 
   /* numbers / mixins */
   [style*='#79B8FF'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(complementary, --lightness 40) !important;
     }
   }
 
   /* values */
   [style*='#9ECBFF'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(complementary, --lightness 60) !important;
     }
   }
 
   /* strings */
   [style*='#FDAEB7'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(main, --lightness 30) !important;
     }
   }
 
   /* units / @media */
   [style*='#F97583'] {
-    @media cs-oddworld {
+    @media theme-oddworld {
       color: s-color(complementary, --lightness 45) !important;
     }
   }
