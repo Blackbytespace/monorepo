@@ -144,6 +144,10 @@
       "node": "./dist/node/string/_exports.js",
       "default": "./dist/js/string/_exports.js"
     },
+    "./theme": {
+      "types": "./dist/js/theme/_exports.d.ts",
+      "default": "./dist/js/theme/_exports.js"
+    },
     "./type": {
       "types": "./dist/node/type/_exports.d.ts",
       "node": "./dist/node/type/_exports.js"

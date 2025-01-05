@@ -1,5 +1,5 @@
 export default function __setCookie(name, value, settings = {}) {
-    settings = Object.assign({ path: '/' }, settings);
+    settings = Object.assign({ path: '/', expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365 * 1000).toUTCString(), secure: document.location.protocol === 'https:' }, settings);
     try {
         value = JSON.stringify(value);
     }
@@ -10,8 +10,11 @@ export default function __setCookie(name, value, settings = {}) {
     }
     let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
     for (let optionKey in settings) {
-        updatedCookie += '; ' + optionKey;
         let optionValue = settings[optionKey];
+        if (optionValue === false) {
+            continue;
+        }
+        updatedCookie += '; ' + optionKey;
         if (optionValue !== true) {
             updatedCookie += '=' + optionValue;
         }

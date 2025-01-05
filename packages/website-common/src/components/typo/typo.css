@@ -76,6 +76,7 @@
     position: relative;
     padding-left: s-space(8);
     margin-bottom: s-space(5);
+    line-height: 1.5;
 
     &:before {
       position: absolute;

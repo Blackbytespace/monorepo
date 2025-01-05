@@ -12,7 +12,7 @@ export default function parseArgs(args, schema = [], settings) {
         ? finalSettings.separator
         : [finalSettings.separator];
     const resultArgs = {};
-    let dashedArg, wasFunction = false;
+    let dashedArg;
     let argId = 0, currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
     const handleArg = (arg) => {
         var _a, _b, _c;
@@ -34,7 +34,6 @@ export default function parseArgs(args, schema = [], settings) {
             return;
         }
         if (separators.includes(arg.value.type)) {
-            dashedArg = '';
             argId++;
             if (finalSettings.debug) {
                 console.log('separator');
@@ -53,6 +52,9 @@ export default function parseArgs(args, schema = [], settings) {
                     resultArgs[dashedArg] = {};
                 }
                 currentProp = `${dashedArg}.${arg.value.replace(/-{1,2}/g, '')}`;
+                if (finalSettings.debug) {
+                    console.log('dashed', currentProp);
+                }
                 break;
             case 'function':
                 if (arg.value.name === 'cubic-bezier') {

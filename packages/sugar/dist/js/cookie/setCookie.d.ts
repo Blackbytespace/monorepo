@@ -13,10 +13,10 @@
  *
  * @setting         {String}        [path="/"]            The path of the cookie to store
  * @setting         {String}        [domain=null]           The domain on which to store the cookie
- * @setting         {String}        [expires=null]          The date when the cookie expires
+ * @setting         {String}        [expires=null]          The date when the cookie expires. If null, mean never expires
  * @setting         {Number}        [max-age=null]          The number of seconds until the cookie expires
- * @setting         {Boolean}       [secure=null]           Specify if the cookie is available only on HTTPS or not
- * @setting         {Boolean | 'strict' | 'lax'}        [samesite=null]         Controls whether or not a cookie is sent with cross-site requests, providing some protection against cross-site request forgery attacks (CSRF)
+ * @setting         {Boolean}       [secure=null]           Specify if the cookie is available only on HTTPS or not. true if page loaded on https, false if not
+ * @setting         {Boolean|'strict'|'lax'}        [samesite=null]         Controls whether or not a cookie is sent with cross-site requests, providing some protection against cross-site request forgery attacks (CSRF)
  * @setting         {Boolean}       [httpOnly=null]         Forbids JavaScript from accessing the cookie, for example, through the Document.cookie property.
  *
  * @snippet         __setCookie($1, $2)

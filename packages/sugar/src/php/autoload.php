@@ -11,4 +11,5 @@ require_once __DIR__ . '/network/_requires.php';
 require_once __DIR__ . '/object/_requires.php';
 require_once __DIR__ . '/package/_requires.php';
 require_once __DIR__ . '/string/_requires.php';
+require_once __DIR__ . '/theme/_requires.php';
 require_once __DIR__ . '/url/_requires.php';

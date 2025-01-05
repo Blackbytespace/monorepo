@@ -37,8 +37,7 @@ export default function parseArgs(
 
   const resultArgs = {};
 
-  let dashedArg: string,
-    wasFunction: boolean = false;
+  let dashedArg: string;
 
   let argId = 0,
     currentProp = schema?.[argId] ?? `arg${argId}`;
@@ -65,11 +64,11 @@ export default function parseArgs(
     }
 
     if (separators.includes(arg.value.type)) {
-      dashedArg = '';
       argId++;
       if (finalSettings.debug) {
         console.log('separator');
       }
+
       currentProp = schema?.[argId] ?? `arg${argId}`;
       return;
     }
@@ -86,6 +85,9 @@ export default function parseArgs(
           resultArgs[dashedArg] = {};
         }
         currentProp = `${dashedArg}.${arg.value.replace(/-{1,2}/g, '')}`;
+        if (finalSettings.debug) {
+          console.log('dashed', currentProp);
+        }
 
         break;
       case 'function':

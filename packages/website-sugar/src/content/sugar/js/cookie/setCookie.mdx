@@ -56,7 +56,7 @@ __setCookie('myCookie', 'hello world');
 </li>
 <li class="_item">
 <span class="_name">expires</span><span class="_default">-</span> <span class="_type">String</span>
-<p class="_description">The date when the cookie expires</p>
+<p class="_description">The date when the cookie expires. If null, mean never expires</p>
 </li>
 <li class="_item">
 <span class="_name">max-age</span><span class="_default">-</span> <span class="_type">Number</span>
@@ -64,10 +64,10 @@ __setCookie('myCookie', 'hello world');
 </li>
 <li class="_item">
 <span class="_name">secure</span><span class="_default">-</span> <span class="_type">Boolean</span>
-<p class="_description">Specify if the cookie is available only on HTTPS or not</p>
+<p class="_description">Specify if the cookie is available only on HTTPS or not. true if page loaded on https, false if not</p>
 </li>
 <li class="_item">
-<span class="_name">samesite</span><span class="_default">-</span> <span class="_type">Boolean &vert; &apos;strict&apos; &vert; &apos;lax&apos;</span>
+<span class="_name">samesite</span><span class="_default">-</span> <span class="_type">Boolean&vert;&apos;strict&apos;&vert;&apos;lax&apos;</span>
 <p class="_description">Controls whether or not a cookie is sent with cross-site requests, providing some protection against cross-site request forgery attacks (CSRF)</p>
 </li>
 <li class="_item">
