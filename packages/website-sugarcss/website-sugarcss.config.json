@@ -59,7 +59,7 @@
           "id": "license",
           "label": "License",
           "value": "license",
-          "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/website-sugarcss/LICENSE.md",
+          "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugarcss/LICENSE.md",
           "preventSet": true
         }
       ]
