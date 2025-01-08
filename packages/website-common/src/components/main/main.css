@@ -1,5 +1,9 @@
 @import './main.settings.css';
 
+/* @mixin log {
+  gap: s-space(3) s-space(4);
+} */
+
 .main {
   width: 100vw;
   height: 100vh;

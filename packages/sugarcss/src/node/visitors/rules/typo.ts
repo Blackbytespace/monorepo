@@ -13,6 +13,8 @@ import __parseArgs from '../../utils/parseArgs.js';
  * - `size`: The font size to use
  * - `line-height`: The line height to use
  * - `letter-spacing`: The letter spacing to use
+ * - `text-transform`: The text transform to use
+ * - `text-decoration`: The text decoration to use
  *
  * @param      {String}        name                 The typo name you want to apply
  * @return     {Css}                                The generated css
@@ -159,6 +161,48 @@ export default function typo(v: any, settings: TSugarCssSettings): any {
                           },
                         },
                       ],
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              property: 'unparsed',
+              value: {
+                propertyId: {
+                  property: `text-transform`,
+                  vendor_prefix: [],
+                },
+                value: [
+                  {
+                    type: 'var',
+                    value: {
+                      name: {
+                        ident: `--s-typo-${args.values.name}-text-transform`,
+                        from: null,
+                      },
+                      fallback: null,
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              property: 'unparsed',
+              value: {
+                propertyId: {
+                  property: `text-decoration`,
+                  vendor_prefix: [],
+                },
+                value: [
+                  {
+                    type: 'var',
+                    value: {
+                      name: {
+                        ident: `--s-typo-${args.values.name}-text-decoration`,
+                        from: null,
+                      },
+                      fallback: null,
                     },
                   },
                 ],

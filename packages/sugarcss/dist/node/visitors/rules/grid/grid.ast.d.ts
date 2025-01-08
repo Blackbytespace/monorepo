@@ -26,8 +26,6 @@ export default function gridAst(gridArgs: TSugarCssGridAstArgs): {
                     isListItem: boolean;
                     lineNames?: undefined;
                     items?: undefined;
-                    row?: undefined;
-                    column?: undefined;
                 };
             } | {
                 property: string;
@@ -47,8 +45,6 @@ export default function gridAst(gridArgs: TSugarCssGridAstArgs): {
                     outside?: undefined;
                     inside?: undefined;
                     isListItem?: undefined;
-                    row?: undefined;
-                    column?: undefined;
                 };
             } | {
                 property: string;
@@ -67,38 +63,6 @@ export default function gridAst(gridArgs: TSugarCssGridAstArgs): {
                     outside?: undefined;
                     inside?: undefined;
                     isListItem?: undefined;
-                    row?: undefined;
-                    column?: undefined;
-                };
-            } | {
-                property: string;
-                value: {
-                    row: {
-                        type: string;
-                        value: {
-                            type: string;
-                            value: {
-                                unit: string;
-                                value: any;
-                            };
-                        };
-                    };
-                    column: {
-                        type: string;
-                        value: {
-                            type: string;
-                            value: {
-                                unit: string;
-                                value: any;
-                            };
-                        };
-                    };
-                    type?: undefined;
-                    outside?: undefined;
-                    inside?: undefined;
-                    isListItem?: undefined;
-                    lineNames?: undefined;
-                    items?: undefined;
                 };
             })[];
         };

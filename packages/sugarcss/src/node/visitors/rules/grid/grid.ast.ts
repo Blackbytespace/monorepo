@@ -75,31 +75,6 @@ export default function gridAst(gridArgs: TSugarCssGridAstArgs) {
               ],
             },
           },
-          {
-            property: 'gap',
-            value: {
-              row: {
-                type: 'length-percentage',
-                value: {
-                  type: 'dimension',
-                  value: {
-                    unit: 'px',
-                    value: gridArgs.gap ?? 0,
-                  },
-                },
-              },
-              column: {
-                type: 'length-percentage',
-                value: {
-                  type: 'dimension',
-                  value: {
-                    unit: 'px',
-                    value: gridArgs.gap ?? 0,
-                  },
-                },
-              },
-            },
-          },
         ],
       },
       rules: gridArgs.areas.map((areaId) => {
@@ -195,6 +170,19 @@ export default function gridAst(gridArgs: TSugarCssGridAstArgs) {
       },
     },
   };
+
+  if (gridArgs.gap) {
+    a.value.declarations.declarations.push({
+      property: 'unparsed',
+      value: {
+        // @ts-ignore
+        propertyId: {
+          property: 'gap',
+        },
+        value: [gridArgs.gap],
+      },
+    });
+  }
 
   return a;
 }

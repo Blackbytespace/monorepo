@@ -5,10 +5,19 @@
  * @platform        js
  * @status          stable
  *
- * This feature allows you to have `scrolled`, `scrolled-x` and `scrolled-y` classes added and removed from
+ * This feature allows you to have `-scrolled`, `-scrolled-x`, `-scrolled-y`, `-scrolled-up` and `-scrolled-down` classes added and removed from
  * the body depending on an scroll offset that can be set by:
- * 1. Passing some offsets through the settings
- * 2. Setting the `--s-scrolled-classes-{setting}` css variable in your style
+ * 1. `-scrolled`: Added when passed the `offset` set in the settings
+ * 2. `-scrolled-x`: Added when passed the `offsetX` set in the settings
+ * 3. `-scrolled-y`: Added when passed the `offsetY` set in the settings
+ * 4. `-scrolled-up`: Added when the user scrolls up (no offset)
+ * 5. `-scrolled-down`: Added when the user scrolls down (no offset)
+ *
+ * Note that you can specify these settings in the CSS with the following variables:
+ * - `--s-scrolled-classes-offset`: The offset you want before adding the classes
+ * - `--s-scrolled-classes-offset-x`: The offset x you want before adding the classes
+ * - `--s-scrolled-classes-offset-y`: The offset y you want before adding the classes
+ * - `--s-scrolled-classes-class`: The class name you want. Will be used also in the %cls-x and %cls-y classes
  *
  * @param           {TScrolledClassesSettings}          [settings={}]           The settings you want to override
  *

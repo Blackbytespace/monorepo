@@ -5,10 +5,19 @@
  * @platform        js
  * @status          stable
  *
- * This feature allows you to have `scrolled`, `scrolled-x` and `scrolled-y` classes added and removed from
+ * This feature allows you to have `-scrolled`, `-scrolled-x`, `-scrolled-y`, `-scrolled-up` and `-scrolled-down` classes added and removed from
  * the body depending on an scroll offset that can be set by:
- * 1. Passing some offsets through the settings
- * 2. Setting the `--s-scrolled-classes-{setting}` css variable in your style
+ * 1. `-scrolled`: Added when passed the `offset` set in the settings
+ * 2. `-scrolled-x`: Added when passed the `offsetX` set in the settings
+ * 3. `-scrolled-y`: Added when passed the `offsetY` set in the settings
+ * 4. `-scrolled-up`: Added when the user scrolls up (no offset)
+ * 5. `-scrolled-down`: Added when the user scrolls down (no offset)
+ *
+ * Note that you can specify these settings in the CSS with the following variables:
+ * - `--s-scrolled-classes-offset`: The offset you want before adding the classes
+ * - `--s-scrolled-classes-offset-x`: The offset x you want before adding the classes
+ * - `--s-scrolled-classes-offset-y`: The offset y you want before adding the classes
+ * - `--s-scrolled-classes-class`: The class name you want. Will be used also in the %cls-x and %cls-y classes
  *
  * @param           {TScrolledClassesSettings}          [settings={}]           The settings you want to override
  *
@@ -33,6 +42,7 @@ export default function __scrolledClasses(settings) {
     const style = window.getComputedStyle(document.body);
     const finalSettings = Object.assign({ offset: parseInt(style.getPropertyValue('--s-scrolled-classes-offset') || '0') ||
             100, offsetX: parseInt(style.getPropertyValue('--s-scrolled-classes-offset-x') || '0'), offsetY: parseInt(style.getPropertyValue('--s-scrolled-classes-offset-y') || '0'), class: style.getPropertyValue('--s-scrolled-classes-class') || 'scrolled' }, (settings !== null && settings !== void 0 ? settings : {}));
+    let currentX = window.scrollX, currentY = window.scrollY;
     const offsetX = finalSettings.offsetX !== 0
         ? finalSettings.offsetX
         : finalSettings.offset, offsetY = finalSettings.offsetY !== 0
@@ -40,6 +50,19 @@ export default function __scrolledClasses(settings) {
         : finalSettings.offset;
     function handleScroll() {
         let isScrolled = false;
+        // scrolled up/down class
+        if (window.scrollY > currentY) {
+            document.body.classList.remove(`${finalSettings.class}-up`);
+            if (!document.body.classList.contains(`${finalSettings.class}-down`)) {
+                document.body.classList.add(`${finalSettings.class}-down`);
+            }
+        }
+        else if (window.scrollY < currentY) {
+            document.body.classList.remove(`${finalSettings.class}-down`);
+            if (!document.body.classList.contains(`${finalSettings.class}-up`)) {
+                document.body.classList.add(`${finalSettings.class}-up`);
+            }
+        }
         if (window.scrollY >= offsetY) {
             if (!document.body.classList.contains(`${finalSettings.class}-y`)) {
                 document.body.classList.add(`${finalSettings.class}-y`);
@@ -72,6 +95,8 @@ export default function __scrolledClasses(settings) {
                 document.body.classList.remove(finalSettings.class);
             }
         }
+        currentX = window.scrollX;
+        currentY = window.scrollY;
         requestAnimationFrame(handleScroll);
     }
     requestAnimationFrame(handleScroll);

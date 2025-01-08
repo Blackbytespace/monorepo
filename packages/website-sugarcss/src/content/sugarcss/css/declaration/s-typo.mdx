@@ -37,8 +37,16 @@ You can declare as many typos as you want.</p>
 <p class="_description">The line height to use</p>
 </li>
 <li class="_item">
-<span class="_name">letterSpacing</span><span class="_default">0</span> <span class="_type">Number</span>
+<span class="_name">letter-spacing</span><span class="_default">0</span> <span class="_type">Number</span>
 <p class="_description">The letter spacing to use</p>
+</li>
+<li class="_item">
+<span class="_name">text-transform</span><span class="_default">none</span> <span class="_type">String</span>
+<p class="_description">The text transform to use</p>
+</li>
+<li class="_item">
+<span class="_name">text-decoration</span><span class="_default">none</span> <span class="_type">String</span>
+<p class="_description">The text decoration to use</p>
 </li>
 </ol>
 </div>
@@ -47,8 +55,8 @@ You can declare as many typos as you want.</p>
 ```css
 :root {
   --s-typo-h1: s-font(title) s-size(h1) 1.4 0;
-  --s-typo-h2: s-font(title) s-size(h2) 1.2 0;
-  --s-typo-p: s-font(default) s-size(p) 1.4 0;
+  --s-typo-h2: s-font(title) s-size(h2) 1.2 0 uppercase;
+  --s-typo-p: s-font(default) s-size(p) 1.4 0 lowercase underline;
 }
 
 .my-element {

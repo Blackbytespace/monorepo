@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/website-sugar",
   "type": "module",
-  "version": "1.0.0-alpha.55",
+  "version": "1.0.0-alpha.63",
   "private": true,
   "scripts": {
     "dev": "astro dev --host",
@@ -13,10 +13,10 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/mdx": "^2.3.1",
-    "@lotsof/sugar": "^1.0.0-alpha.55",
-    "@lotsof/sugarcss": "^1.0.0-alpha.55",
-    "@lotsof/types": "^1.0.0-alpha.55",
-    "@lotsof/website-common": "^1.0.0-alpha.55",
+    "@lotsof/sugar": "^1.0.0-alpha.63",
+    "@lotsof/sugarcss": "^1.0.0-alpha.63",
+    "@lotsof/types": "^1.0.0-alpha.63",
+    "@lotsof/website-common": "^1.0.0-alpha.63",
     "astro": "^4.6.3",
     "typescript": "^5.4.5"
   },

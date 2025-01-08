@@ -118,7 +118,7 @@ export default function grid(v, settings) {
         colsEndByArea,
         rowsStartByArea,
         rowsEndByArea,
-        gap: grid.gap,
+        gap: args.ast.gap,
     };
     return __gridAst(gridArgs);
 }

@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/components",
-  "version": "1.0.0-alpha.55",
+  "version": "1.0.0-alpha.63",
   "description": "Components system to share components libraries easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -13,12 +13,12 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/carpenter": "^1.0.0-alpha.55",
+    "@lotsof/carpenter": "^1.0.0-alpha.63",
     "@lotsof/components": "^1.0.0-alpha",
-    "@lotsof/config": "^1.0.0-alpha.55",
-    "@lotsof/sugar": "^1.0.0-alpha.55",
-    "@lotsof/sugarcss": "^1.0.0-alpha.55",
-    "@lotsof/types": "^1.0.0-alpha.55",
+    "@lotsof/config": "^1.0.0-alpha.63",
+    "@lotsof/sugar": "^1.0.0-alpha.63",
+    "@lotsof/sugarcss": "^1.0.0-alpha.63",
+    "@lotsof/types": "^1.0.0-alpha.63",
     "glob": "^10.4.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.4.5"

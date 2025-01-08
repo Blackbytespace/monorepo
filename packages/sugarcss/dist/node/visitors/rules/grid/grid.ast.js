@@ -1,5 +1,4 @@
 export default function gridAst(gridArgs) {
-    var _a, _b;
     const a = {
         type: 'style',
         value: {
@@ -64,31 +63,6 @@ export default function gridAst(gridArgs) {
                                     },
                                 },
                             ],
-                        },
-                    },
-                    {
-                        property: 'gap',
-                        value: {
-                            row: {
-                                type: 'length-percentage',
-                                value: {
-                                    type: 'dimension',
-                                    value: {
-                                        unit: 'px',
-                                        value: (_a = gridArgs.gap) !== null && _a !== void 0 ? _a : 0,
-                                    },
-                                },
-                            },
-                            column: {
-                                type: 'length-percentage',
-                                value: {
-                                    type: 'dimension',
-                                    value: {
-                                        unit: 'px',
-                                        value: (_b = gridArgs.gap) !== null && _b !== void 0 ? _b : 0,
-                                    },
-                                },
-                            },
                         },
                     },
                 ],
@@ -185,6 +159,18 @@ export default function gridAst(gridArgs) {
             },
         },
     };
+    if (gridArgs.gap) {
+        a.value.declarations.declarations.push({
+            property: 'unparsed',
+            value: {
+                // @ts-ignore
+                propertyId: {
+                    property: 'gap',
+                },
+                value: [gridArgs.gap],
+            },
+        });
+    }
     return a;
 }
 //# sourceMappingURL=grid.ast.js.map

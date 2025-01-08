@@ -153,7 +153,7 @@ export default function grid(v: any, settings: TSugarCssSettings): any {
     colsEndByArea,
     rowsStartByArea,
     rowsEndByArea,
-    gap: grid.gap,
+    gap: args.ast.gap,
   };
 
   return __gridAst(gridArgs);

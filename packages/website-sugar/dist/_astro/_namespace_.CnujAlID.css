@@ -451,6 +451,8 @@ body {
   --s-typo-h2-font: var(--s-font-title-style, normal) var(--s-font-title-variant, normal) var(--s-font-title-weight, normal) var(--s-font-title-size, 1em) / var(--s-font-title-line-height, 1) var(--s-font-title-family, sans-serif);
   --s-typo-h2-size: calc(var(--s-size-h2, ) * var(--s-scale, 1));
   --s-typo-h2-line-height: 1.4;
+  --s-typo-h2-letter-spacing: 0;
+  --s-typo-h2-text-transform: uppercase;
   --s-typo-h3-font: var(--s-font-title-style, normal) var(--s-font-title-variant, normal) var(--s-font-title-weight, normal) var(--s-font-title-size, 1em) / var(--s-font-title-line-height, 1) var(--s-font-title-family, sans-serif);
   --s-typo-h3-size: calc(var(--s-size-h3, ) * var(--s-scale, 1));
   --s-typo-h3-line-height: 1.4;
@@ -1156,6 +1158,9 @@ mark {
   font-size: var(--s-typo-code-size, 1em);
   line-height: var(--s-typo-code-line-height, 1);
   letter-spacing: var(--s-typo-code-letter-spacing, 0);
+  text-transform: var(--s-typo-code-text-transform);
+  -webkit-text-decoration: var(--s-typo-code-text-decoration);
+  text-decoration: var(--s-typo-code-text-decoration);
 }
 
 .astro-code > code {
@@ -3462,6 +3467,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-h1-size, 1em);
   line-height: var(--s-typo-h1-line-height, 1);
   letter-spacing: var(--s-typo-h1-letter-spacing, 0);
+  text-transform: var(--s-typo-h1-text-transform);
+  -webkit-text-decoration: var(--s-typo-h1-text-decoration);
+  text-decoration: var(--s-typo-h1-text-decoration);
 }
 
 :is(.typo-h2, .typo-format h2) {
@@ -3469,6 +3477,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-h2-size, 1em);
   line-height: var(--s-typo-h2-line-height, 1);
   letter-spacing: var(--s-typo-h2-letter-spacing, 0);
+  text-transform: var(--s-typo-h2-text-transform);
+  -webkit-text-decoration: var(--s-typo-h2-text-decoration);
+  text-decoration: var(--s-typo-h2-text-decoration);
 }
 
 .typo-h3, .typo-format h3 {
@@ -3480,6 +3491,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-h3-size, 1em);
   line-height: var(--s-typo-h3-line-height, 1);
   letter-spacing: var(--s-typo-h3-letter-spacing, 0);
+  text-transform: var(--s-typo-h3-text-transform);
+  -webkit-text-decoration: var(--s-typo-h3-text-decoration);
+  text-decoration: var(--s-typo-h3-text-decoration);
 }
 
 :is(.typo-p, .typo-format p) {
@@ -3487,6 +3501,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-p-size, 1em);
   line-height: var(--s-typo-p-line-height, 1);
   letter-spacing: var(--s-typo-p-letter-spacing, 0);
+  text-transform: var(--s-typo-p-text-transform);
+  -webkit-text-decoration: var(--s-typo-p-text-decoration);
+  text-decoration: var(--s-typo-p-text-decoration);
 }
 
 :is(.typo-p, .typo-format p):empty {
@@ -3498,6 +3515,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-lead-size, 1em);
   line-height: var(--s-typo-lead-line-height, 1);
   letter-spacing: var(--s-typo-lead-letter-spacing, 0);
+  text-transform: var(--s-typo-lead-text-transform);
+  -webkit-text-decoration: var(--s-typo-lead-text-decoration);
+  text-decoration: var(--s-typo-lead-text-decoration);
 }
 
 :is(.typo-code, .typo-format code) {
@@ -3509,6 +3529,9 @@ body.-search-large :is(.main .main_nav) {
   font-size: var(--s-typo-code-size, 1em);
   line-height: var(--s-typo-code-line-height, 1);
   letter-spacing: var(--s-typo-code-letter-spacing, 0);
+  text-transform: var(--s-typo-code-text-transform);
+  -webkit-text-decoration: var(--s-typo-code-text-decoration);
+  text-decoration: var(--s-typo-code-text-decoration);
 }
 
 :is(.typo-code, .typo-format code) > code {

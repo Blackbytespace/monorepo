@@ -11,6 +11,8 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * - `size`: The font size to use
  * - `line-height`: The line height to use
  * - `letter-spacing`: The letter spacing to use
+ * - `text-transform`: The text transform to use
+ * - `text-decoration`: The text decoration to use
  *
  * @param      {String}        name                 The typo name you want to apply
  * @return     {Css}                                The generated css
