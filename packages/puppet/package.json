@@ -23,9 +23,9 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/theme": "^1.0.0-alpha.63",
     "@lotsof/config": "^1.0.0-alpha.63",
     "@lotsof/sugar": "^1.0.0-alpha.63",
+    "@lotsof/theme": "^1.0.0-alpha.63",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },
