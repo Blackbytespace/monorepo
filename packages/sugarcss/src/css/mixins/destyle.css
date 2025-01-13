@@ -13,7 +13,7 @@
  * \@include s-destyle;
  *
  * @see         https://nicolas-cusan.github.io/destyle.css/
- * @since       0.0.1
+ * @since       1.0.0
  * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
  */
 @mixin s-destyle {

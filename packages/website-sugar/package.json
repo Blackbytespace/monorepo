@@ -8,7 +8,9 @@
     "start": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "doc.build": "(cd ../sugar && npm run doc.build)",
+    "deploy": "npm run doc.build && npm run build && rsync -azP --delete ./dist/ fe0mt_lotsof@fe0mt.ftp.infomaniak.com:sites/sugar.lotsof.dev/"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",

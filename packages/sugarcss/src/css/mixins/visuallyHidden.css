@@ -1,0 +1,27 @@
+/**
+ * @name          s-visually-hidden
+ * @namespace     css.mixins
+ * @type          Mixin 
+ * @platform      css
+ * @status       stable
+ * 
+ * This mixin allows you to create a visually hidden element
+ *
+ * @return        {Css}                The generated css
+ * 
+ * @example         css
+ * \@include s-visually-hidden;
+ *
+ * @see         https://www.a11yproject.com/posts/how-to-hide-content/
+ * @since       1.0.0
+ * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ */
+@mixin s-visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
