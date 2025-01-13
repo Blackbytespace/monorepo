@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/sugarcss",
   "description": "Add a sugar in your css with nice features like live update and more",
-  "version": "1.0.0-alpha.63",
+  "version": "1.0.0-alpha.64",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -24,8 +24,8 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.63",
-    "@lotsof/sugar": "^1.0.0-alpha.63",
+    "@lotsof/config": "^1.0.0-alpha.64",
+    "@lotsof/sugar": "^1.0.0-alpha.64",
     "browserslist": "^4.23.0",
     "lightningcss": "^1.28.2"
   },

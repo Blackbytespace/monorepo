@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/theme",
   "description": "Useful theme related stuffs",
-  "version": "1.0.0-alpha.63",
+  "version": "1.0.0-alpha.64",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -27,8 +27,8 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.63",
-    "@lotsof/sugar": "^1.0.0-alpha.63",
+    "@lotsof/config": "^1.0.0-alpha.64",
+    "@lotsof/sugar": "^1.0.0-alpha.64",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

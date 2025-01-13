@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/factory",
-  "version": "1.0.0-alpha.63",
+  "version": "1.0.0-alpha.64",
   "description": "Useful components factory UI that allows you to build and test your own components easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -13,13 +13,13 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/advanced-select-element": "^1.0.0-alpha.63",
-    "@lotsof/components": "^1.0.0-alpha.63",
-    "@lotsof/i18n": "^1.0.0-alpha.63",
-    "@lotsof/json-schema-form": "^1.0.0-alpha.63",
-    "@lotsof/lit-element": "^1.0.0-alpha.63",
-    "@lotsof/sugar": "^1.0.0-alpha.63",
-    "@lotsof/sugarcss": "^1.0.0-alpha.63",
+    "@lotsof/advanced-select-element": "^1.0.0-alpha.64",
+    "@lotsof/components": "^1.0.0-alpha.64",
+    "@lotsof/i18n": "^1.0.0-alpha.64",
+    "@lotsof/json-schema-form": "^1.0.0-alpha.64",
+    "@lotsof/lit-element": "^1.0.0-alpha.64",
+    "@lotsof/sugar": "^1.0.0-alpha.64",
+    "@lotsof/sugarcss": "^1.0.0-alpha.64",
     "@types/json-schema": "^7.0.15",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
