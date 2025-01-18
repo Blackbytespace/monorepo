@@ -2,6 +2,7 @@
   width: 200px;
 
   .websites_website {
+    margin-block-end: s-space(4);
     > a {
       display: block;
       border: 1px solid s-color(accent);

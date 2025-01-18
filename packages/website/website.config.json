@@ -1,0 +1,13 @@
+{
+  "title": "Lotsof",
+  "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/lotsofdev/monorepo/blob/master/LICENSE"
+  },
+  "og": {
+    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-og.png"
+  },
+  "menu": [],
+  "themes": []
+}

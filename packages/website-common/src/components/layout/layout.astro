@@ -14,12 +14,13 @@ interface Props {
 
 import { ViewTransitions } from 'astro:transitions';
 import '../fonts/fonts';
+import Posthog from '../posthog/posthog.astro';
 import './layout.css';
 
 import '../fonts/fonts.css';
 
 // @ts-ignore
-const { frontmatter, title, pageTitle, description, og } = Astro.props;
+const { title, pageTitle, description, og } = Astro.props;
 ---
 
 <html lang="en">
@@ -29,15 +30,12 @@ const { frontmatter, title, pageTitle, description, og } = Astro.props;
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <meta
-      property="og:site_name"
-      content={`Lotsof - ${frontmatter?.title ?? title}`}
-    />
+    <meta property="og:site_name" content={`Lotsof - ${title}`} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content={frontmatter?.title ?? title} />
+    <meta property="og:title" content={title} />
     <meta property="og:type" content="article" />
     <meta property="og:image" content={og.imageUrl} />
     <link
@@ -58,8 +56,9 @@ const { frontmatter, title, pageTitle, description, og } = Astro.props;
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <title>Lotsof - {`${title}${pageTitle ? `- ${pageTitle}` : ''}`}</title>
+    <title>Lotsof {`${pageTitle ? `- ${pageTitle}` : ''}`}</title>
     <ViewTransitions />
+    <Posthog />
   </head>
   <body>
     <slot />

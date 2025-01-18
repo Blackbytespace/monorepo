@@ -3,12 +3,9 @@ import Layout from '@lotsof/website-common/src/components/layout/layout.astro';
 import '../components/index.css';
 
 import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo.svg?raw';
-import __pictoNewNasty from '@lotsof/website-common/src/img/picto-new-n-tasty.svg?raw';
 
+import __websiteConfig from '../../website.config.json';
 import __packageJson from '../../package.json';
-import faviconSvgSrc from '../img/favicon.svg';
-
-const title = 'Lotsof';
 ---
 
 <script>
@@ -16,15 +13,17 @@ const title = 'Lotsof';
 </script>
 
 <Layout
-  faviconSvg={faviconSvgSrc}
-  title={title}
-  ogImageUrl="https://cdn.lotsof.dev/img/lotsof-og.png"
+  title={__websiteConfig.title}
+  og={__websiteConfig.og}
+  license={__websiteConfig.license}
+  pageTitle=""
+  description={__websiteConfig.description}
 >
   <main class="main">
     <div class="main_inner">
       <div class="container">
         <header class="header">
-          <a class="header_logo" href="/" title={title}>
+          <a class="header_logo" href="/" title={__websiteConfig.title}>
             <Fragment set:html={__logoLotsof} />
           </a>
           <div class="header_metas">
@@ -35,7 +34,7 @@ const title = 'Lotsof';
             >
               <h1 class="header_license">MIT</h1>
             </a>
-            <a href="/" title={title}>
+            <a href="/" title={__websiteConfig.title}>
               <h4 class="header_version">v{__packageJson.version}</h4>
             </a>
           </div>
@@ -47,6 +46,16 @@ const title = 'Lotsof';
               <p class="websites_text typo-p">
                 Add a sugar in your css with nice features like live update and
                 more
+              </p>
+            </a>
+          </li>
+          <li class="websites_website -sugarcss">
+            <a href="https://sugar.lotsof.dev" title="Sugar">
+              <p class="websites_title" style="--chars: 6;">Sugar</p>
+              <p class="websites_text typo-p">
+                A toolkit that gives you access to "lots of" of cool and useful
+                Node/Js/Php functions/classes like "querySelectorLive",
+                "getFreePort", etc...
               </p>
             </a>
           </li>
