@@ -13,8 +13,9 @@
     "deploy": "npm run doc.build && npm run build && rsync -azP --delete ./dist/ fe0mt_lotsof@fe0mt.ftp.infomaniak.com:sites/sugarcss.lotsof.dev/"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.6",
+    "@astrojs/sitemap": "^3.2.1",
     "@fontsource-variable/sixtyfour": "^5.0.2",
     "@fontsource/sixtyfour": "^5.0.2",
     "@fontsource/vt323": "^5.0.13",
@@ -25,7 +26,8 @@
     "@lotsof/sugarcss": "^1.0.0-alpha.64",
     "@lotsof/website-common": "^1.0.0-alpha.64",
     "@pixi/filter-crt": "^5.1.1",
-    "astro": "^4.6.3",
+    "astro": "^5.1.7",
+    "astro-compress": "^2.3.6",
     "i": "^0.3.7",
     "npm": "^10.5.4",
     "pixi.js": "^8.1.0",

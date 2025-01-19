@@ -253,14 +253,14 @@ export default class AdvancedSelectElement extends __LitElement {
           `;
           break;
         case 'group':
-          return html` <h4 class="${this.cls('_group-label')}">
+          return html` <div class="${this.cls('_group-label')}">
               <span class="${this.cls('_group-label-inner')}">
                 ${__i18n(item.label)}
               <span>
-            </h4>
-            <ul class="${this.cls('_group-items')}">
-              <div class="${this.cls('_group-items-inner')}">${$items}</div>
-            </ul>`;
+            </div>
+            <div class="${this.cls('_group-items')}">
+              <ul class="${this.cls('_group-items-inner')}">${$items}</ul>
+          </div>`;
           break;
         case 'empty':
           return html` <div>${__i18n(this.emptyText)}</div> `;

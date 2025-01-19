@@ -13,13 +13,17 @@
     "deploy": "npm run doc.build && npm run build && rsync -azP --delete ./dist/ fe0mt_lotsof@fe0mt.ftp.infomaniak.com:sites/sugar.lotsof.dev/"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.6",
+    "@astrojs/sitemap": "^3.2.1",
     "@lotsof/sugar": "^1.0.0-alpha.64",
     "@lotsof/sugarcss": "^1.0.0-alpha.64",
     "@lotsof/types": "^1.0.0-alpha.64",
     "@lotsof/website-common": "^1.0.0-alpha.64",
-    "astro": "^4.6.3",
+    "astro": "^5.1.7",
+    "astro-compress": "^2.3.6",
+    "astro-purgecss": "^5.1.0",
+    "purgecss": "^7.0.2",
     "typescript": "^5.4.5"
   },
   "devDependencies": {

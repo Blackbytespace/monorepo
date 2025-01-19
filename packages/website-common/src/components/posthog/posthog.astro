@@ -56,7 +56,6 @@
   });
 
   document.addEventListener('astro:page-load', () => {
-    console.log('document.location.href', document.location.href);
     posthog.capture('$pageview', {
       $current_url: document.location.href,
     });
