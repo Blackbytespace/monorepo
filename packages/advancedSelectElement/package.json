@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/advanced-select-element",
-  "version": "1.0.0-alpha.64",
+  "version": "1.0.0-alpha.65",
   "description": "Simple class that extends the features of the wonderful lit-element package",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",

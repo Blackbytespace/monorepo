@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/cli",
   "description": "An easy to use cli that allows you to import reusable components and more.",
-  "version": "1.0.0-alpha.64",
+  "version": "1.0.0-alpha.65",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -35,11 +35,11 @@
     "vitest": "^1.3.1"
   },
   "dependencies": {
-    "@lotsof/components": "^1.0.0-alpha.64",
-    "@lotsof/config": "^1.0.0-alpha.64",
-    "@lotsof/docmap": "^1.0.0-alpha.64",
-    "@lotsof/factory": "^1.0.0-alpha.64",
-    "@lotsof/puppet": "^1.0.0-alpha.64",
+    "@lotsof/components": "^1.0.0-alpha.65",
+    "@lotsof/config": "^1.0.0-alpha.65",
+    "@lotsof/docmap": "^1.0.0-alpha.65",
+    "@lotsof/factory": "^1.0.0-alpha.65",
+    "@lotsof/puppet": "^1.0.0-alpha.65",
     "@lotsof/sugar": "^1.0.0-alpha.64",
     "commander": "^12.0.0",
     "figlet": "^1.7.0",
