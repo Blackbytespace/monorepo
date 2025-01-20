@@ -12,9 +12,9 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/i18n": "^1.0.0-alpha.64",
-    "@lotsof/lit-element": "^1.0.0-alpha.64",
-    "@lotsof/sugar": "^1.0.0-alpha.64",
+    "@lotsof/i18n": "^1.0.0-alpha.65",
+    "@lotsof/lit-element": "^1.0.0-alpha.65",
+    "@lotsof/sugar": "^1.0.0-alpha.65",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
   },
@@ -22,5 +22,5 @@
   "module": "dist/js/_exports.js",
   "types": "src/js/_exports.ts",
   "homepage": "https://lotsof.dev",
-  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
+  "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

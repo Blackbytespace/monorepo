@@ -28,11 +28,12 @@
   "globalDependencies": {},
   "dependencies": {
     "@lotsof/config": "^1.0.0-alpha.65",
-    "@lotsof/sugar": "^1.0.0-alpha.64",
+    "@lotsof/sugar": "^1.0.0-alpha.65",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },
   "devDependencies": {
     "typescript": "^5.4.4"
-  }
+  },
+  "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

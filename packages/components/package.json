@@ -13,12 +13,12 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/carpenter": "^1.0.0-alpha.64",
+    "@lotsof/carpenter": "^1.0.0-alpha.65",
     "@lotsof/components": "^1.0.0-alpha",
     "@lotsof/config": "^1.0.0-alpha.65",
-    "@lotsof/sugar": "^1.0.0-alpha.64",
+    "@lotsof/sugar": "^1.0.0-alpha.65",
     "@lotsof/sugarcss": "^1.0.0-alpha.65",
-    "@lotsof/types": "^1.0.0-alpha.64",
+    "@lotsof/types": "^1.0.0-alpha.65",
     "glob": "^10.4.1",
     "inquirer": "^12.3.2",
     "react-dom": "^18.3.1",
@@ -36,5 +36,5 @@
   },
   "types": "src/node/_exports.ts",
   "homepage": "https://lotsof.dev",
-  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
+  "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }
