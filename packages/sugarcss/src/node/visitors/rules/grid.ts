@@ -156,5 +156,7 @@ export default function grid(v: any, settings: TSugarCssSettings): any {
     gap: args.ast.gap,
   };
 
+  console.log('frrr', gridArgs);
+
   return __gridAst(gridArgs);
 }

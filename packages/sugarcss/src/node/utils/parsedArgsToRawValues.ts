@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { __isPlainObject } from '@lotsof/sugar/is';
+import { __parse } from '@lotsof/sugar/string';
 
 export default function parsedArgsToRawValues(args: any): any {
   const rawValues: any = {};
@@ -8,7 +9,7 @@ export default function parsedArgsToRawValues(args: any): any {
   for (let [key, value] of Object.entries(args)) {
     if (__isPlainObject(value)) {
       if (value.rawValue !== undefined) {
-        rawValues[key] = value.rawValue;
+        rawValues[key] = __parse(value.rawValue);
         delete value.rawValue;
         if (__isPlainObject(rawValues[key])) {
           rawValues[key] = parsedArgsToRawValues(rawValues[key]);

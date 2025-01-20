@@ -11,7 +11,8 @@ import __parseArgs from '../../utils/parseArgs.js';
  * min, max and easing function declared using the `--s-spaces` variable, or registered with
  * a custom name like --s-space-small, --s-space-medium, etc...
  *
- * @param      {Number|String}        space         The space you want to apply
+ * @param      {Number|String}        ...space         The space(s) you want to apply
+ * @param      {Boolean}              [scalable=true]     Specify if you want the space(s) to be scalable or not
  * @return     {Css}                        The generated css
  *
  * @example         css
@@ -31,6 +32,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  *    padding: s-space(small); // 10px
  *    padding: s-space(medium); // 20px
  *    padding: s-space(large); // 40px
+ *    padding: s-space(10 false); // not scalable
  * }
  *
  * @since           0.0.1
@@ -48,9 +50,14 @@ export default function space(value, settings) {
     const spaceDelta = `calc(
       (var(--s-spaces-max) - var(--s-spaces-min)) * 0.01
     )`;
+    let isScalable = true;
     const spaces = [];
     for (let [argName, argValue] of Object.entries(args.values)) {
         let resultCalc = '';
+        if (argValue === false) {
+            isScalable = false;
+            continue;
+        }
         // skip easing declaration
         if (typeof argValue === 'number') {
             // get the requested value percentage
@@ -59,6 +66,12 @@ export default function space(value, settings) {
         }
         // create the calc declaration
         spaces.push(`var(--s-space-${argValue}, ${resultCalc})`);
+    }
+    // if not scalable, return the raw sizes
+    if (!isScalable) {
+        return {
+            raw: apaces.map((s) => s).join(' '),
+        };
     }
     return {
         raw: spaces
