@@ -1,4 +1,3 @@
-import { BinaryToTextEncoding } from 'crypto';
 /**
  * @name            fileHashSync
  * @namespace       node.fs
@@ -28,12 +27,8 @@ import { BinaryToTextEncoding } from 'crypto';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export type TFileHashIncludeSettings = {
-    ctime: boolean;
-};
 export type TFileHashSettings = {
-    algo: string;
-    digest: BinaryToTextEncoding;
-    include: Partial<TFileHashIncludeSettings>;
+    algo: 'md5' | 'sha1' | 'sha256' | 'sha512';
+    encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
 export default function __fileHashSync(filePath: string, settings?: Partial<TFileHashSettings>): string;

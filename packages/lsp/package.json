@@ -1,0 +1,39 @@
+{
+  "name": "@lotsof/lsp",
+  "description": "LSP server for the Lotsof ecosystem",
+  "version": "1.0.0-alpha.82",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "lotsof-lsp": "./dist/node/index.cli.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "build": "tsc",
+    "test": "vitest",
+    "publish": "npm publish --access public"
+  },
+  "main": "dist/node/index.js",
+  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
+  "license": "MIT",
+  "globalDependencies": {},
+  "dependencies": {
+    "@lotsof/sugar": "^1.0.0-alpha.82",
+    "vscode-css-languageservice": "^4.1.1",
+    "vscode-html-languageservice": "^3.0.3",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.4"
+  },
+  "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
+}

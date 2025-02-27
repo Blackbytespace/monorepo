@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/monorepo",
-  "version": "1.0.0-alpha.63",
+  "version": "1.0.0-alpha.82",
   "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
   "type": "module",
   "workspaces": [

@@ -26,8 +26,12 @@ a custom name like --s-space-small, --s-space-medium, etc...</p>
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">space<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Number&vert;String</span>
-<p class="_description">The space you want to apply</p>
+<span class="_name">...space<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Number&vert;String</span>
+<p class="_description">The space&lpar;s&rpar; you want to apply</p>
+</li>
+<li class="_item">
+<span class="_name">scalable</span><span class="_default">true</span> <span class="_type">Boolean</span>
+<p class="_description">Specify if you want the space&lpar;s&rpar; to be scalable or not</p>
 </li>
 </ol>
 </div>
@@ -63,6 +67,7 @@ a custom name like --s-space-small, --s-space-medium, etc...</p>
    padding: s-space(small); // 10px
    padding: s-space(medium); // 20px
    padding: s-space(large); // 40px
+   padding: s-space(10 false); // not scalable
 }
 ```
 </div>

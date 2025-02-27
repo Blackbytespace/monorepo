@@ -1,4 +1,3 @@
-import { BinaryToTextEncoding } from 'crypto';
 /**
  * @name            folderHashSync
  * @namespace       node.fs
@@ -27,13 +26,9 @@ import { BinaryToTextEncoding } from 'crypto';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export type TFolderHashIncludeSettings = {
-    ctime: boolean;
-};
 export type TFolderHashSettings = {
     recursive: boolean;
-    algo: string;
-    digest: BinaryToTextEncoding;
-    include: Partial<TFolderHashIncludeSettings>;
+    algo: 'md5' | 'sha1' | 'sha256' | 'sha512';
+    encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
 export default function __folderHashSync(folderPath: string, settings?: Partial<TFolderHashSettings>): string;

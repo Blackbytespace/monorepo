@@ -1,6 +1,17 @@
+/* .grid-test {
+  background: red;
+
+  @s-grid (". 1 1 1 1 .");
+
+  > div {
+    background: blue;
+  }
+} */
+
 .header {
   position: relative;
   margin-block-end: s-space(10);
+  @s-weight (bolder);
 
   .header_title {
     @s-font (title);

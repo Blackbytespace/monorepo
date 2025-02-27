@@ -8,7 +8,7 @@ import __matches from './matches.js';
  *
  * Go up the dom three to find the first element that matches the passed selector
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
+ * @param 		{HTMLElement} 					$from  		The element to start from
  * @param 		{String|Function} 				selector 	A css selector to search for or a check function that will be used
  * @return 		{HTMLElement} 								The element found or null
  *
@@ -30,16 +30,16 @@ import __matches from './matches.js';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export default function __querySelectorUp($elm, selector) {
-    const originalElm = $elm;
-    let $parent = $elm.parentElement;
+export default function __querySelectorUp($from, selector) {
+    const originalElm = $from;
+    let $parent = $from.parentElement;
     while ($parent && $parent != originalElm.ownerDocument) {
         if (typeof selector === 'function') {
-            if (selector($elm))
-                return $elm;
+            if (selector($parent))
+                return $parent;
         }
-        else if (typeof selector === 'string' && __matches($elm, selector)) {
-            return $elm;
+        else if (typeof selector === 'string' && __matches($parent, selector)) {
+            return $parent;
         }
         $parent = $parent.parentNode;
     }

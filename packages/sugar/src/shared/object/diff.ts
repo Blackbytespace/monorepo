@@ -1,4 +1,3 @@
-import __isEqual from 'is-equal';
 import __isPlainObject from '../is/isPlainObject.js';
 
 /**
@@ -106,7 +105,7 @@ export default function __diff(
     }
 
     if (settings.equals) {
-      if (__isEqual(object1[_prop], object2[_prop])) {
+      if (JSON.stringify(object1[_prop]) === JSON.stringify(object2[_prop])) {
         finalObj[_prop] = object2[_prop];
         continue;
       }
@@ -126,7 +125,8 @@ export default function __diff(
       if (object1[_prop] === undefined || object2[_prop] === undefined) {
         continue;
       }
-      if (!__isEqual(object1[_prop], object2[_prop])) {
+
+      if (JSON.stringify(object1[_prop]) !== JSON.stringify(object2[_prop])) {
         finalObj[_prop] = object2[_prop];
         continue;
       }

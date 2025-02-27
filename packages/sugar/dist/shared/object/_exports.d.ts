@@ -27,4 +27,4 @@ import __sortDeep from './sortDeep.js';
 import __toJson from './toJson.js';
 import __toPlainObject from './toPlainObject.js';
 import __toQueryString from './toQueryString.js';
-export { __camelCaseProps, __clone, __decycle, __deepClean, __deepFilter, __deepMap, __deepMerge, __deepProxy, __deepSearch, __deepize, __delete, __deleteProperty, __diff, __ensurePropertyExists, __filterObject, __flatten, __get, __getGlob, __getKeyByValue, __map, __merge, __objectHash, __propertyProxy, __set, __sort, __sortDeep, __toJson, __toPlainObject, __toQueryString, };
+export { __camelCaseProps, __clone, __decycle, __deepClean, __deepFilter, __deepize, __deepMap, __deepMerge, __deepProxy, __deepSearch, __delete, __deleteProperty, __diff, __ensurePropertyExists, __filterObject, __flatten, __get, __getGlob, __getKeyByValue, __map, __merge, __objectHash, __propertyProxy, __set, __sort, __sortDeep, __toJson, __toPlainObject, __toQueryString, };

@@ -70,7 +70,7 @@ export default function space(value, settings) {
     // if not scalable, return the raw sizes
     if (!isScalable) {
         return {
-            raw: apaces.map((s) => s).join(' '),
+            raw: spaces.map((s) => s).join(' '),
         };
     }
     return {

@@ -1,4 +1,3 @@
-import __isEqual from 'is-equal';
 import __isPlainObject from '../is/isPlainObject.js';
 export default function __diff(object1, object2, settings = {}) {
     settings = Object.assign({ deep: true, added: true, deleted: false, equals: false, emptyObject: false, updated: true }, settings);
@@ -28,7 +27,7 @@ export default function __diff(object1, object2, settings = {}) {
             }
         }
         if (settings.equals) {
-            if (__isEqual(object1[_prop], object2[_prop])) {
+            if (JSON.stringify(object1[_prop]) === JSON.stringify(object2[_prop])) {
                 finalObj[_prop] = object2[_prop];
                 continue;
             }
@@ -44,7 +43,7 @@ export default function __diff(object1, object2, settings = {}) {
             if (object1[_prop] === undefined || object2[_prop] === undefined) {
                 continue;
             }
-            if (!__isEqual(object1[_prop], object2[_prop])) {
+            if (JSON.stringify(object1[_prop]) !== JSON.stringify(object2[_prop])) {
                 finalObj[_prop] = object2[_prop];
                 continue;
             }

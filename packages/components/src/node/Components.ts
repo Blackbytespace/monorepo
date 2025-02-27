@@ -2,10 +2,10 @@ import __fs from 'fs';
 import * as __glob from 'glob';
 import __inquier from 'inquirer';
 
-import __componentsGenericConfig from './configFiles/generic.json' assert { type: 'json' };
-import __componentsLaravelConfig from './configFiles/laravel.json' assert { type: 'json' };
-import __componentsNextConfig from './configFiles/next.json' assert { type: 'json' };
-import __componentsNuxtConfig from './configFiles/nuxt.json' assert { type: 'json' };
+import __componentsGenericConfig from './configFiles/generic.json' with { type: 'json' };
+import __componentsLaravelConfig from './configFiles/laravel.json' with { type: 'json' };
+import __componentsNextConfig from './configFiles/next.json' with { type: 'json' };
+import __componentsNuxtConfig from './configFiles/nuxt.json' with { type: 'json' };
 
 import { __isCommandExists } from '@lotsof/sugar/is';
 

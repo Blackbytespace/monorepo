@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
-  "version": "1.0.0-alpha.65",
+  "version": "1.0.0-alpha.82",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -43,7 +43,8 @@
     },
     "./console": {
       "types": "./dist/node/console/_exports.d.ts",
-      "node": "./dist/node/console/_exports.js"
+      "node": "./dist/node/console/_exports.js",
+      "default": "./dist/js/console/_exports.js"
     },
     "./convert": {
       "types": "./dist/js/convert/_exports.d.ts",
@@ -112,7 +113,6 @@
     },
     "./keyboard": {
       "types": "./src/js/keyboard/_exports.ts",
-      "node": "./dist/node/keyboard/_exports.js",
       "default": "./dist/js/keyboard/_exports.js"
     },
     "./math": {
@@ -152,6 +152,10 @@
       "types": "./dist/js/theme/_exports.d.ts",
       "default": "./dist/js/theme/_exports.js"
     },
+    "./tracking": {
+      "types": "./dist/js/tracking/_exports.d.ts",
+      "default": "./dist/js/tracking/_exports.js"
+    },
     "./type": {
       "types": "./dist/node/type/_exports.d.ts",
       "node": "./dist/node/type/_exports.js"
@@ -182,7 +186,6 @@
     "clipboardy": "^4.0.0",
     "clone-class": "1.0.3",
     "copy-paste": "^1.5.3",
-    "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "escape-html": "^1.0.3",
     "fast-folder-size": "^2.2.0",
@@ -193,6 +196,7 @@
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
     "hash-sum": "^2.0.0",
+    "hasha": "^6.0.0",
     "html-entities": "^2.5.2",
     "is-class": "^0.0.9",
     "is-equal": "^1.7.0",
@@ -208,7 +212,6 @@
     "memoizee": "^0.4.15",
     "micromatch": "^4.0.5",
     "minimatch": "^9.0.3",
-    "object-encode": "^1.0.3",
     "param-case": "^4.0.0",
     "rematrix": "^0.7.2",
     "semver": "^7.6.2",

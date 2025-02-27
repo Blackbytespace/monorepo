@@ -86,7 +86,7 @@ export default function space(value: any, settings: TSugarCssSettings): any {
   // if not scalable, return the raw sizes
   if (!isScalable) {
     return {
-      raw: apaces.map((s) => s).join(' '),
+      raw: spaces.map((s) => s).join(' '),
     };
   }
 

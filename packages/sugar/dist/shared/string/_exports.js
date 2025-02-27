@@ -37,9 +37,10 @@ import __stripSourcemap from './stripSourcemap.js';
 import __toString from './toString.js';
 import __trainCase from './trainCase.js';
 import __trimLines from './trimLines.js';
+import __truncate from './truncate.js';
 import __uncamelize from './uncamelize.js';
 import __unquote from './unquote.js';
 import __upperFirst from './upperFirst.js';
 import __urlCompliant from './urlCompliant.js';
-export { __camelCase, __camelize, __capitalCase, __constantCase, __countLineChars, __crop, __dashCase, __dotCase, __escapeRegexChars, __extractSame, __format, __highlightText, __idCompliant, __kebabCase, __lowerFirst, __ltrim, __namespaceCompliant, __noCase, __paramCase, __parse, __pascalCase, __pascalSnakeCase, __pathCase, __printf, __replaceChunks, __replaceTokens, __rtrim, __sentenceCase, __simplify, __simplifySpecialChars, __snakeCase, __splitEvery, __sprintf, __stripAnsi, __stripDocblocks, __stripSourcemap, __toString, __trainCase, __trimLines, __uncamelize, __unquote, __upperFirst, __urlCompliant, };
+export { __camelCase, __camelize, __capitalCase, __constantCase, __countLineChars, __crop, __dashCase, __dotCase, __escapeRegexChars, __extractSame, __format, __highlightText, __idCompliant, __kebabCase, __lowerFirst, __ltrim, __namespaceCompliant, __noCase, __paramCase, __parse, __pascalCase, __pascalSnakeCase, __pathCase, __printf, __replaceChunks, __replaceTokens, __rtrim, __sentenceCase, __simplify, __simplifySpecialChars, __snakeCase, __splitEvery, __sprintf, __stripAnsi, __stripDocblocks, __stripSourcemap, __toString, __trainCase, __trimLines, __truncate, __uncamelize, __unquote, __upperFirst, __urlCompliant, };
 //# sourceMappingURL=_exports.js.map

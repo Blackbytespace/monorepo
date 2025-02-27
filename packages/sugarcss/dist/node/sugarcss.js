@@ -20,10 +20,13 @@ import __easeFunction from './visitors/functions/ease.js';
 import __fontFunction from './visitors/functions/font.js';
 import __fontFamilyFunction from './visitors/functions/fontFamily.js';
 import __radiusFunction from './visitors/functions/radius.js';
+import __remFunction from './visitors/functions/rem.js';
 import __scalableFunction from './visitors/functions/scalable.js';
 import __sizeFunction from './visitors/functions/size.js';
 import __spaceFunction from './visitors/functions/space.js';
 import __transitionFunction from './visitors/functions/transition.js';
+import __weight from './visitors/functions/weight.js';
+import __zindexFunction from './visitors/functions/zindex.js';
 import __containerRule from './visitors/rules/container.js';
 import __fitRule from './visitors/rules/fit.js';
 import __fontRule from './visitors/rules/font.js';
@@ -35,6 +38,8 @@ import __scaleRule from './visitors/rules/scale.js';
 import __scrollbarRule from './visitors/rules/scrollbar.js';
 import __transitionRule from './visitors/rules/transition.js';
 import __typoRule from './visitors/rules/typo.js';
+import __weightRule from './visitors/rules/weight.js';
+import __zindexRule from './visitors/rules/zindex.js';
 import browserslist from 'browserslist';
 import { browserslistToTargets, composeVisitors, } from 'lightningcss';
 import { __parseHtml } from '@lotsof/sugar/console';
@@ -125,6 +130,9 @@ export default function sugarcss(settings = {}) {
     env.functions[`s-radius`] = __radiusFunction;
     env.functions['s-container'] = __containerFunction;
     env.functions['s-ease'] = __easeFunction;
+    env.functions['s-rem'] = __remFunction;
+    env.functions['s-zindex'] = __zindexFunction;
+    env.functions['s-weight'] = __weight;
     env.rules['s-scrollbar'] = __scrollbarRule;
     env.rules['s-transition'] = __transitionRule;
     env.rules['s-radius'] = __radiusRule;
@@ -135,6 +143,8 @@ export default function sugarcss(settings = {}) {
     env.rules['s-container'] = __containerRule;
     env.rules['s-grid'] = __gridRule;
     env.rules['s-scale'] = __scaleRule;
+    env.rules['s-zindex'] = __zindexRule;
+    env.rules['s-weight'] = __weightRule;
     let mixins = new Map();
     const visitors = {
         Function: {
@@ -167,6 +177,15 @@ export default function sugarcss(settings = {}) {
             },
             ['s-ease'](v) {
                 return __easeFunction(v, finalSettings);
+            },
+            ['s-rem'](v) {
+                return __remFunction(v, finalSettings);
+            },
+            ['s-zindex'](v) {
+                return __zindexFunction(v, finalSettings);
+            },
+            ['s-weight'](v) {
+                return __weight(v, finalSettings);
             },
         },
         Declaration: {
@@ -236,6 +255,10 @@ export default function sugarcss(settings = {}) {
                             return __gridRule(rule, finalSettings);
                         case rule.name === 's-scale':
                             return __scaleRule(rule, finalSettings);
+                        case rule.name === 's-zindex':
+                            return __zindexRule(rule, finalSettings);
+                        case rule.name === 's-weight':
+                            return __weightRule(rule, finalSettings);
                     }
                 }
                 catch (e) {

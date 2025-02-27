@@ -1,8 +1,6 @@
-import __deepMerge from '../../shared/object/deepMerge.js';
 import __isDirectory from '../is/isDirectory.js';
 import __fileHashSync from './fileHashSync.js';
 
-import { BinaryToTextEncoding } from 'crypto';
 import * as __fs from 'fs';
 import __sha256 from '../../shared/crypto/sha256.js';
 
@@ -35,37 +33,28 @@ import __sha256 from '../../shared/crypto/sha256.js';
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
 
-export type TFolderHashIncludeSettings = {
-  ctime: boolean;
-};
 export type TFolderHashSettings = {
   recursive: boolean;
-  algo: string;
-  digest: BinaryToTextEncoding;
-  include: Partial<TFolderHashIncludeSettings>;
+  algo: 'md5' | 'sha1' | 'sha256' | 'sha512';
+  encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
 
 export default function __folderHashSync(
   folderPath: string,
   settings: Partial<TFolderHashSettings> = {},
 ): string {
-  settings = __deepMerge(
-    {
-      recursive: true,
-      algo: 'sha256',
-      digest: 'base64',
-      include: {
-        ctime: false,
-      },
-    },
-    settings ?? {},
-  );
+  const finalSettings: TFolderHashSettings = {
+    recursive: true,
+    algo: 'sha256',
+    encoding: 'base64',
+    ...(settings ?? {}),
+  };
   const paths: string[] = [];
 
   function readDir(dir) {
     const files = __fs.readdirSync(dir);
     files.forEach((filePath) => {
-      if (settings.recursive && __isDirectory(`${dir}/${filePath}`)) {
+      if (finalSettings.recursive && __isDirectory(`${dir}/${filePath}`)) {
         return readDir(`${dir}/${filePath}`);
       }
       paths.push(`${dir}/${filePath}`);
@@ -78,7 +67,12 @@ export default function __folderHashSync(
 
   paths.forEach((path) => {
     if (__isDirectory(path)) return;
-    filesHashes.push(__fileHashSync(path, settings));
+    filesHashes.push(
+      __fileHashSync(path, {
+        algo: finalSettings.algo,
+        encoding: finalSettings.encoding,
+      }),
+    );
   });
 
   return __sha256.encrypt(filesHashes.join('-'));

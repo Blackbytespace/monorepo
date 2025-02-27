@@ -11,6 +11,9 @@ import __parseArgs from '../../utils/parseArgs.js';
  * This rule allows you to apply a grid layout easily.
  * You can either apply a registered grid, or directly
  * pass the grid layout you want to apply.
+ * Here's the "special" characters you can use in your grid layout:
+ * - "_" mean a new line in the grid layout.
+ * - "." mean an empty cell in the grid layout.
  *
  * @param       {String}        nameOrLayout            The grid name you want to apply or directly the grid layout like `1 1 2 _ 3 3 3`
  * @param       {Number}        [gap=0]                 The gap you want to apply between each grid cell
@@ -54,8 +57,9 @@ export default function grid(v, settings) {
             .split(' ')
             .map((l) => l.trim())
             .filter((l) => l);
-        if (rowCols.length > colsCount)
+        if (rowCols.length > colsCount) {
             colsCount = rowCols.length;
+        }
     });
     let currentCol = 0, currentRow = 0;
     rows.forEach((row) => {
@@ -68,6 +72,9 @@ export default function grid(v, settings) {
         rowCols.forEach((areaId) => {
             var _a, _b;
             currentCol++;
+            if (areaId === '.') {
+                return;
+            }
             if (areas.indexOf(areaId) === -1) {
                 areas.push(areaId);
             }

@@ -1,12 +1,11 @@
 #!/usr/bin/env -S node --experimental-json-modules --trace-warnings --trace-uncaught --no-warnings --es-module-specifier-resolution=node
 
+import { __parseHtml } from '@lotsof/sugar/console';
 import { Command as __Command } from 'commander';
 import __figlet from 'figlet';
 
-import { __parseHtml } from '@lotsof/sugar/console';
-
 // @ts-ignore
-import __packageJson from '../../package.json' assert { type: 'json' };
+import __packageJson from '../../package.json' with { type: 'json' };
 
 import { __loadConfig } from '@lotsof/config';
 import __registerComponentsCommands from './modules/components/Components.api.js';

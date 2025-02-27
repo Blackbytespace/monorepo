@@ -2,6 +2,7 @@ export * from './css/_exports.js';
 export * from './distance/_exports.js';
 export * from './event/_exports.js';
 export * from './form/_exports.js';
+export * from './generate/_exports.js';
 export * from './iframe/_exports.js';
 export * from './inject/_exports.js';
 export * from './input/_exports.js';

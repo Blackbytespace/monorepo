@@ -9,6 +9,9 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * This rule allows you to apply a grid layout easily.
  * You can either apply a registered grid, or directly
  * pass the grid layout you want to apply.
+ * Here's the "special" characters you can use in your grid layout:
+ * - "_" mean a new line in the grid layout.
+ * - "." mean an empty cell in the grid layout.
  *
  * @param       {String}        nameOrLayout            The grid name you want to apply or directly the grid layout like `1 1 2 _ 3 3 3`
  * @param       {Number}        [gap=0]                 The gap you want to apply between each grid cell

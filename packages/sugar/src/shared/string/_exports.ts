@@ -37,6 +37,7 @@ import __stripSourcemap from './stripSourcemap.js';
 import __toString from './toString.js';
 import __trainCase from './trainCase.js';
 import __trimLines from './trimLines.js';
+import __truncate from './truncate.js';
 import __uncamelize from './uncamelize.js';
 import __unquote from './unquote.js';
 import __upperFirst from './upperFirst.js';
@@ -82,6 +83,7 @@ export {
   __toString,
   __trainCase,
   __trimLines,
+  __truncate,
   __uncamelize,
   __unquote,
   __upperFirst,

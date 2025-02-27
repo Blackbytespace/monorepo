@@ -24,7 +24,7 @@ import { __upperFirst } from '@lotsof/sugar/string';
 import { __getFormValues, __iframeAutoSize, __injectHtml, } from '@lotsof/sugar/dom';
 import '@lotsof/json-schema-form';
 import __logos from './logos.js';
-import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' assert { type: 'json' };
+import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' with { type: 'json' };
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { __hotkey } from '@lotsof/sugar/keyboard';

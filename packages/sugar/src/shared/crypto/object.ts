@@ -1,4 +1,4 @@
-import __encodeObject from 'object-encode';
+import __base64 from './base64.js';
 
 /**
  * @name                object
@@ -35,7 +35,7 @@ export default {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
    */
   encrypt: function (object, salt = 'lotsof.sugar.crypto.object') {
-    return __encodeObject.encode_object(object, 'base64', salt);
+    return __base64.encrypt(`${JSON.stringify(object)}-${salt}`);
   },
 
   /**
@@ -51,7 +51,7 @@ export default {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
    */
   decrypt: function (encodedObject, salt = 'lotsof.sugar.crypto.object') {
-    return __encodeObject.decode_object(encodedObject, 'base64', salt);
+    return JSON.parse(__base64.decrypt(encodedObject).replace(`-${salt}`, ''));
   },
 } as {
   encrypt: (object: any, salt?: string) => string;

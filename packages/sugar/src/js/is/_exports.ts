@@ -5,6 +5,7 @@ import __isEdge from './isEdge.js';
 import __isFirefox from './isFirefox.js';
 import __isFocus from './isFocus.js';
 import __isFocusWithin from './isFocusWithin.js';
+import __isHlsSupported from './isHlsSupported.js';
 import __isHover from './isHover.js';
 import __isIe from './isIe.js';
 import __isInIframe from './isInIframe.js';
@@ -30,6 +31,7 @@ export {
   __isFirefox,
   __isFocus,
   __isFocusWithin,
+  __isHlsSupported,
   __isHover,
   __isIe,
   __isInIframe,

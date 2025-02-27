@@ -7,7 +7,7 @@
  *
  * Go up the dom three to find the first element that matches the passed selector
  *
- * @param 		{HTMLElement} 					$elm  		The element to start on
+ * @param 		{HTMLElement} 					$from  		The element to start from
  * @param 		{String|Function} 				selector 	A css selector to search for or a check function that will be used
  * @return 		{HTMLElement} 								The element found or null
  *
@@ -29,4 +29,4 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export default function __querySelectorUp($elm: HTMLElement, selector: string | Function): HTMLElement | undefined;
+export default function __querySelectorUp($from: HTMLElement, selector: string | Function): HTMLElement | undefined;

@@ -26,8 +26,12 @@ a custom name like --s-size-small, --s-size-medium, etc...</p>
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">size<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Number&vert;String</span>
-<p class="_description">The size you want to apply</p>
+<span class="_name">...size<span class="_required">*</span></span><span class="_default">-</span> <span class="_type">Number&vert;String</span>
+<p class="_description">The size&lpar;s&rpar; you want to apply</p>
+</li>
+<li class="_item">
+<span class="_name">scalable</span><span class="_default">true</span> <span class="_type">Boolean</span>
+<p class="_description">Specify if you want the size&lpar;s&rpar; to be scalable or not</p>
 </li>
 </ol>
 </div>
@@ -63,6 +67,7 @@ a custom name like --s-size-small, --s-size-medium, etc...</p>
    padding: s-size(small); // 10px
    padding: s-size(medium); // 20px
    padding: s-size(large); // 40px
+   padding: s-space(10 false); // not scalable
 }
 ```
 </div>
