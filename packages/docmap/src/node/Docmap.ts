@@ -41,6 +41,7 @@ function __toLowerCase(l = '') {
   return l.toLowerCase();
 }
 
+import { __isPlainObject } from '@lotsof/sugar/is';
 import type {
   TDocmap,
   TDocmapBuildParams,
@@ -154,11 +155,11 @@ class Docmap implements TDocmap {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
    */
   constructor(settings?: Partial<TDocmapSettings>) {
-    this.settings = __deepMerge(
+    this.settings = __deepMerge([
       __defaults.settings,
       __getConfig('docmap.settings') ?? {},
       settings ?? {},
-    );
+    ]);
     // @ts-ignore
     this.settings.tagsProxy = {
       // @ts-ignore
@@ -186,11 +187,11 @@ class Docmap implements TDocmap {
    */
   read(params?: Partial<TDocmapReadParams>): Promise<TDocmapObj> {
     return new Promise(async (resolve) => {
-      const finalParams: TDocmapReadParams = __deepMerge(
+      const finalParams: TDocmapReadParams = __deepMerge([
         __defaults.read,
         __getConfig('docmap.read') ?? {},
         params ?? {},
-      );
+      ]);
 
       let docmapVersion = 'current';
 
@@ -407,11 +408,11 @@ class Docmap implements TDocmap {
    */
   search(params?: Partial<TDocmapSearchParams>): Promise<TDocmapSearchResult> {
     return new Promise(async (resolve) => {
-      const finalParams: TDocmapSearchParams = __deepMerge(
+      const finalParams: TDocmapSearchParams = __deepMerge([
         __defaults.search,
         __getConfig('docmap.search') ?? {},
         params ?? {},
-      );
+      ]);
 
       const docmapJson = await this.read(finalParams);
 
@@ -557,20 +558,20 @@ class Docmap implements TDocmap {
           // @ts-ignore
           this.settings.customMenu[menuName],
         );
-        finalMenu.custom[menuName].tree = __deepMerge(
+        finalMenu.custom[menuName].tree = __deepMerge([
           finalMenu.custom[menuName].tree,
           packageFilteredTree,
-        );
+        ]);
         // @ts-ignore
         const packageFilteredSlug = __deepFilter(
           packageObj.slug,
           // @ts-ignore
           this.settings.customMenu[menuName],
         );
-        finalMenu.custom[menuName].slug = __deepMerge(
+        finalMenu.custom[menuName].slug = __deepMerge([
           finalMenu.custom[menuName].slug,
           packageFilteredSlug,
-        );
+        ]);
       });
     });
 
@@ -645,13 +646,11 @@ class Docmap implements TDocmap {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
    */
   build(params?: Partial<TDocmapBuildParams>): Promise<any> {
-    const finalParams: TDocmapBuildParams = __deepMerge(
+    const finalParams: TDocmapBuildParams = __deepMerge([
       __defaults.build,
       __getConfig('docmap.build') ?? {},
       params ?? {},
-    );
-
-    console.log(finalParams);
+    ]);
 
     return new Promise(async (resolve) => {
       let docmapJson = {
@@ -913,11 +912,11 @@ class Docmap implements TDocmap {
     result.push('---');
     result.push(`title: '${docmapObj.name}'`);
     result.push(`namespace: '${docmapObj.namespace}'`);
-    // if (docmapObj.description) {
-    //   result.push(
-    //     `description: '${docmapObj.description.split('\n').join(' ')}'`,
-    //   );
-    // }
+    if (docmapObj.description) {
+      result.push(
+        `description: '${docmapObj.description.split('\n').join(' ')}'`,
+      );
+    }
     if (docmapObj.type) {
       result.push(`type: '${encodeEntities(docmapObj.type.raw ?? '')}'`);
     }
@@ -949,6 +948,12 @@ class Docmap implements TDocmap {
     result.push('<div class="docmap-mdx">');
 
     result.push(`# ${docmapObj.name}`);
+
+    if (docmapObj.description) {
+      result.push('<div class="_description typo-lead typo-format">');
+      result.push(docmapObj.description);
+      result.push('</div>');
+    }
 
     if (docmapObj.status || docmapObj.since || docmapObj.platform) {
       result.push('<div class="_metas">');
@@ -985,18 +990,18 @@ class Docmap implements TDocmap {
 
     result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
 
-    if (docmapObj.description) {
-      result.push('<div class="_description typo-format typo-rhythm">');
-      result.push(docmapObj.description);
-      result.push('</div>');
-    }
-
     if (docmapObj.param) {
       result.push('<div class="_params">');
       result.push('## Params');
 
       result.push(`<ol class="_list">`);
       Object.entries(docmapObj.param).forEach(([id, paramObj], i) => {
+        // handle default value
+        let defaultStr = paramObj.default ?? '-';
+        if (__isPlainObject(paramObj)) {
+          defaultStr = JSON.stringify(paramObj.default, null, 4);
+        }
+
         result.push('<li class="_item">');
         result.push(
           `<span class="_name">${paramObj.name}${
@@ -1004,7 +1009,7 @@ class Docmap implements TDocmap {
               ? '<span class="_required">*</span>'
               : ''
           }</span><span class="_default">${encodeEntities(
-            paramObj.default ?? '-',
+            defaultStr ?? '-',
           )}</span> <span class="_type">${encodeEntities(
             paramObj.type.raw ?? '',
           )}</span>`,

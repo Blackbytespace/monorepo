@@ -9,7 +9,6 @@
   .docmap-mdx {
     display: flex;
     flex-direction: column;
-    gap: s-space(10);
   }
 
   ._description {
@@ -17,13 +16,23 @@
 
   ._namespace {
     position: relative;
+    display: flex;
     padding: s-space(5);
     background: s-color(main, surface);
+    margin-block-end: s-space(10);
     color: s-color(accent);
+    letter-spacing: 0.05em;
     user-select: all;
-    font-size: s-size(code);
     @s-font (code);
     @s-radius;
+
+    &:before {
+      content: 'Namespace';
+      color: s-color(main, text);
+      user-select: none;
+      flex-grow: 1;
+      @s-font (default);
+    }
 
     @media theme-half-life {
       color: s-color(accent);
@@ -36,10 +45,15 @@
   ._metas {
     display: flex;
     gap: s-space(5);
+    margin-block-end: s-space(6);
 
     @media xs {
       flex-direction: column;
     }
+  }
+
+  .astro-code {
+    margin-block-end: s-space(10);
   }
 
   ._type {
@@ -170,6 +184,7 @@
       padding: s-space(5);
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
+      letter-spacing: 0.05em;
 
       @media xs {
         border-top-left-radius: s-radius();

@@ -1,4 +1,3 @@
-import __deepMerge from '../object/deepMerge.js';
 import __countLineChars from './countLineChars.js';
 
 /**
@@ -43,13 +42,11 @@ export default function __crop(
   length: number,
   settings: TCropSettings = {},
 ): string {
-  settings = __deepMerge(
-    {
-      chars: '...',
-      splitWords: false,
-    },
-    settings,
-  );
+  settings = {
+    chars: '...',
+    splitWords: false,
+    ...settings,
+  };
 
   text = text.replace(/\s/gm, '¯');
 

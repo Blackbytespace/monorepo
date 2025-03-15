@@ -1,6 +1,7 @@
 ---
 title: 'reloadStylesheets'
 namespace: '@lotsof.sugar.js.dom.css'
+description: 'This function just loop on each &quot;link&quot; tags that point to some css files and reload them by adding a &quot;queryString&quot; with the timestamp in it to prevent caching'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # reloadStylesheets
+<div class="_description typo-lead typo-format">
+This function just loop on each &quot;link&quot; tags that point to some css files
+and reload them by adding a &quot;queryString&quot; with the timestamp in it
+to prevent caching
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -16,16 +22,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.dom.css</div>
-<div class="_description typo-format typo-rhythm">
-This function just loop on each &quot;link&quot; tags that point to some css files
-and reload them by adding a &quot;queryString&quot; with the timestamp in it
-to prevent caching
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">$root</span><span class="_default">document</span> <span class="_type">HTMLElement</span>
+<span class="_name">$root</span><span class="_default">&quot;document&quot;</span> <span class="_type">HTMLElement</span>
 <p class="_description">The root element in which to reload the stylesheets</p>
 </li>
 </ol>

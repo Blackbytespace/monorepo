@@ -107,11 +107,11 @@ class SDocblock {
    * @author 	Olivier Bossel <olivier.bossel@gmail.com>
    */
   constructor(source: string, settings?: Partial<TDocblockSettings>) {
-    this.settings = __deepMerge(
+    this.settings = __deepMerge([
       __defaults.settings,
       __getConfig('docblock.settings') ?? {},
       settings || {},
-    );
+    ]);
 
     // check if the source is path
     if (__isPath(source)) {

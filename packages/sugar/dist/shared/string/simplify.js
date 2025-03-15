@@ -1,11 +1,5 @@
-import __deepMerge from '../object/deepMerge.js';
 export default function __simplify(string, settings = {}) {
-    settings = __deepMerge({
-        specialChars: true,
-        lowerCase: true,
-        dashSpace: true,
-        trim: true,
-    }, settings);
+    settings = Object.assign({ specialChars: true, lowerCase: true, dashSpace: true, trim: true }, settings);
     if (string == null)
         return '';
     const map = {

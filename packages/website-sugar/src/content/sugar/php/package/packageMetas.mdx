@@ -1,6 +1,7 @@
 ---
 title: 'packageMetas'
 namespace: '@lotsof.sugar.php.package'
+description: 'This function take a package root path and returns the metas informations from one of these sources: - package.json - composer.json'
 type: 'Function'
 status: 'beta'
 since: '2.0.0'
@@ -9,6 +10,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 ---
 <div class="docmap-mdx">
 # packageMetas
+<div class="_description typo-lead typo-format">
+This function take a package root path and returns the metas informations from one of these sources:
+- package.json
+- composer.json
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -beta">beta</span></div>
@@ -16,16 +22,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -php">php</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.php.package</div>
-<div class="_description typo-format typo-rhythm">
-This function take a package root path and returns the metas informations from one of these sources:
-- package.json
-- composer.json
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">path</span><span class="_default">&dollar;&lowbar;SERVER&lsqb;&apos;DOCUMENT&lowbar;ROOT&apos;&rsqb;</span> <span class="_type">String</span>
+<span class="_name">path</span><span class="_default">&quot;&dollar;&lowbar;SERVER&lsqb;&apos;DOCUMENT&lowbar;ROOT&apos;&rsqb;&quot;</span> <span class="_type">String</span>
 <p class="_description">The path of the package to search metas for</p>
 </li>
 </ol>

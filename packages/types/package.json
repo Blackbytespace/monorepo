@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/types",
-  "version": "1.0.0-alpha.82",
+  "version": "1.0.0-alpha.85",
   "description": "Types system to share types libraries easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@lotsof/sugar": "^1.0.0-alpha.82",
+    "@lotsof/sugar": "^1.0.0-alpha.85",
     "typescript": "^5.4.5"
   },
   "main": "dist/types/_exports.js",

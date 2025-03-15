@@ -3,7 +3,6 @@ import __isDomElement from '../is/isDomElement.js';
 import __isPlainObject from '../is/isPlainObject.js';
 import __clone from '../object/clone.js';
 import __deepMap from '../object/deepMap.js';
-import __deepMerge from '../object/deepMerge.js';
 /**
  * @name                            deepProxy
  * @namespace                       shared.object
@@ -54,13 +53,7 @@ import __deepMerge from '../object/deepMerge.js';
 const _loopTimeout = new WeakMap();
 export default function __deepProxy(object, handlerFn, settings = {}) {
     let isRevoked = false;
-    settings = __deepMerge({
-        deep: true,
-        handleSet: true,
-        handleGet: false,
-        handleDelete: true,
-        domElements: false,
-    }, settings);
+    settings = Object.assign({ deep: true, handleSet: true, handleGet: false, handleDelete: true, domElements: false }, settings);
     function makeHandler(path) {
         return {
             set(target, key, value) {

@@ -1,6 +1,7 @@
 ---
 title: 'fileHashSync'
 namespace: '@lotsof.sugar.node.fs'
+description: 'This function allows you to get back an integrity hash for the passed file. This mean that if a file returns the same integrity hash twice, the folder or files in it has not been updated...'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # fileHashSync
+<div class="_description typo-lead typo-format">
+This function allows you to get back an integrity hash for the passed file.
+This mean that if a file returns the same integrity hash twice, the folder or files in it
+has not been updated...
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -16,11 +22,6 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -node">node</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.node.fs</div>
-<div class="_description typo-format typo-rhythm">
-This function allows you to get back an integrity hash for the passed file.
-This mean that if a file returns the same integrity hash twice, the folder or files in it
-has not been updated...
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
@@ -29,7 +30,7 @@ has not been updated...
 <p class="_description">The folder path you want to get the hash back</p>
 </li>
 <li class="_item">
-<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TFileHashSettings</span>
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TFileHashSettings</span>
 <p class="_description">Some settings to configure your hash generation process</p>
 </li>
 </ol>

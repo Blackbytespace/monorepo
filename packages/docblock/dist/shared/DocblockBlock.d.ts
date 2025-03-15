@@ -11,6 +11,7 @@ import type { TDocblockBlockSettings, TDocblockBlockTagsMap } from './types.js';
  * - More to come...
  *
  * @feature         `author` tag support
+ * @feature         `async` tag support
  * @feature         `contributor` tag support
  * @feature         `cssClass` tag support
  * @feature         `description` tag support
@@ -25,6 +26,7 @@ import type { TDocblockBlockSettings, TDocblockBlockTagsMap } from './types.js';
  * @feature         `see` tag support
  * @feature         `snippet` tag support
  * @feature         `support` tag support
+ * @feature         `status`tag support
  * @feature         `todo` tag support
  * @feature         `type` tag support
  * @feature         All the other tags are treated like a `String` value

@@ -15,7 +15,6 @@
 
 .typo-h1,
 .typo-format h1 {
-  font-weight: 100 !important;
   @s-typo (h1);
 }
 
@@ -48,6 +47,7 @@
 
 .typo-code,
 .typo-format code {
+  color: s-color(accent);
   @include code;
 }
 

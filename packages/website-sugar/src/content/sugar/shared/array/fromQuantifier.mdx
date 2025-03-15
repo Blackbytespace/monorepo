@@ -1,6 +1,7 @@
 ---
 title: 'fromQuantifier'
 namespace: '@lotsof.sugar.shared.array'
+description: 'This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc... This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.'
 type: 'Function'
 status: 'stable'
 platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
@@ -8,17 +9,17 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # fromQuantifier
+<div class="_description typo-lead typo-format">
+This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc...
+This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the
+s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.shared.array</div>
-<div class="_description typo-format typo-rhythm">
-This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc...
-This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the
-s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
@@ -27,7 +28,7 @@ s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.
 <p class="_description">The quantifier to generate</p>
 </li>
 <li class="_item">
-<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TFromQuantifierSettings</span>
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TFromQuantifierSettings</span>
 <p class="_description">Some settings to configure your array generation</p>
 </li>
 </ol>

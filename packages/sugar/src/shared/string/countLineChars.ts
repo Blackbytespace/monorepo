@@ -1,5 +1,4 @@
 import __stripAnsi from 'strip-ansi';
-import __deepMerge from '../object/deepMerge.js';
 
 /**
  * @name                            countLineChars
@@ -45,14 +44,12 @@ export default function __countLineChars(
   line: string,
   count: TCountLineCharsSettings = {},
 ): number {
-  count = __deepMerge(
-    {
-      htmlTags: false,
-      terminalSpecialChars: false,
-      newLineChars: false,
-    },
-    count,
-  );
+  count = {
+    htmlTags: false,
+    terminalSpecialChars: false,
+    newLineChars: false,
+    ...count,
+  };
 
   let newLine = line;
   if (count.terminalSpecialChars === false) {

@@ -27,7 +27,7 @@ export default class SI18n extends __I18n {
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
     constructor(settings = {}) {
-        super(__deepMerge({}, settings));
+        super(__deepMerge([{}, settings]));
     }
     /**
      * @name            extract

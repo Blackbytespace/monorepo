@@ -171,26 +171,26 @@ export default class ComponentsComponent {
   }
 
   public extendsDependencies(dependencies: Record<string, string>): void {
-    this._componentJson.dependencies = __deepMerge(
+    this._componentJson.dependencies = __deepMerge([
       this._componentJson.dependencies ?? {},
       dependencies ?? {},
-    );
+    ]);
     this._updateDependencies();
   }
 
   public extendsComposerJson(composerJson: TComponentsComposerJson): void {
-    this._componentJson.composerJson = __deepMerge(
+    this._componentJson.composerJson = __deepMerge([
       this._componentJson.composerJson ?? {},
       composerJson ?? {},
-    );
+    ]);
     this._updateDependencies();
   }
 
   public extendsPackageJson(packageJson: TComponentsComposerJson): void {
-    this._componentJson.packageJson = __deepMerge(
+    this._componentJson.packageJson = __deepMerge([
       this._componentJson.packageJson ?? {},
       packageJson ?? {},
-    );
+    ]);
     this._updateDependencies();
   }
 

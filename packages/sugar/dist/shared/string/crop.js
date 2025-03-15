@@ -1,11 +1,7 @@
-import __deepMerge from '../object/deepMerge.js';
 import __countLineChars from './countLineChars.js';
 export default function __crop(text, length, settings = {}) {
     var _a, _b, _c, _d, _e;
-    settings = __deepMerge({
-        chars: '...',
-        splitWords: false,
-    }, settings);
+    settings = Object.assign({ chars: '...', splitWords: false }, settings);
     text = text.replace(/\s/gm, '¯');
     // split the text on spaces or every characters if the splitWords settings is to true
     const splitReg = /(<([^>]+)>|\S|\s)/gm;

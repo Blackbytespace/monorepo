@@ -51,6 +51,7 @@
   ._title {
     flex-grow: 1;
     white-space: nowrap;
+    line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -143,6 +144,10 @@
 
   .s-advanced-select_group {
     padding: s-space(2) 0;
+
+    &:not(:has(.s-advanced-select_item.-match)) {
+      display: none;
+    }
   }
   .s-advanced-select_group-label {
     margin-bottom: s-space(5);

@@ -1,11 +1,6 @@
 import __stripAnsi from 'strip-ansi';
-import __deepMerge from '../object/deepMerge.js';
 export default function __countLineChars(line, count = {}) {
-    count = __deepMerge({
-        htmlTags: false,
-        terminalSpecialChars: false,
-        newLineChars: false,
-    }, count);
+    count = Object.assign({ htmlTags: false, terminalSpecialChars: false, newLineChars: false }, count);
     let newLine = line;
     if (count.terminalSpecialChars === false) {
         newLine = __stripAnsi(newLine);

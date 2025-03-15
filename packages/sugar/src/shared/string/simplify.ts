@@ -1,5 +1,3 @@
-import __deepMerge from '../object/deepMerge.js';
-
 /**
  * @name                simply
  * @namespace           shared.string
@@ -42,15 +40,13 @@ export default function __simplify(
   string: string,
   settings: TSimplifySettings = {},
 ): string {
-  settings = __deepMerge(
-    {
-      specialChars: true,
-      lowerCase: true,
-      dashSpace: true,
-      trim: true,
-    },
-    settings,
-  );
+  settings = {
+    specialChars: true,
+    lowerCase: true,
+    dashSpace: true,
+    trim: true,
+    ...settings,
+  };
 
   if (string == null) return '';
   const map = {

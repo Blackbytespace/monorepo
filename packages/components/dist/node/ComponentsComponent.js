@@ -105,17 +105,26 @@ export default class ComponentsComponent {
     }
     extendsDependencies(dependencies) {
         var _a;
-        this._componentJson.dependencies = __deepMerge((_a = this._componentJson.dependencies) !== null && _a !== void 0 ? _a : {}, dependencies !== null && dependencies !== void 0 ? dependencies : {});
+        this._componentJson.dependencies = __deepMerge([
+            (_a = this._componentJson.dependencies) !== null && _a !== void 0 ? _a : {},
+            dependencies !== null && dependencies !== void 0 ? dependencies : {},
+        ]);
         this._updateDependencies();
     }
     extendsComposerJson(composerJson) {
         var _a;
-        this._componentJson.composerJson = __deepMerge((_a = this._componentJson.composerJson) !== null && _a !== void 0 ? _a : {}, composerJson !== null && composerJson !== void 0 ? composerJson : {});
+        this._componentJson.composerJson = __deepMerge([
+            (_a = this._componentJson.composerJson) !== null && _a !== void 0 ? _a : {},
+            composerJson !== null && composerJson !== void 0 ? composerJson : {},
+        ]);
         this._updateDependencies();
     }
     extendsPackageJson(packageJson) {
         var _a;
-        this._componentJson.packageJson = __deepMerge((_a = this._componentJson.packageJson) !== null && _a !== void 0 ? _a : {}, packageJson !== null && packageJson !== void 0 ? packageJson : {});
+        this._componentJson.packageJson = __deepMerge([
+            (_a = this._componentJson.packageJson) !== null && _a !== void 0 ? _a : {},
+            packageJson !== null && packageJson !== void 0 ? packageJson : {},
+        ]);
         this._updateDependencies();
     }
     _updateDependencies() {

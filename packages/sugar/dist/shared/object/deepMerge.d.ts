@@ -12,11 +12,11 @@
  * - Choose beetween cloning first (default) the object or keeping the first passed object as result
  * Note that by default the resulting object is a clone and do not have the same reference that the first passed object.
  *
- * @param           {Object}            args...        Pass all the objects you want to merge
- * @param           {TDeepMergeSettings}            [settings={}]       Pass as last object the settings one that can contain these properties:
- * @return          {Object}                              The merged object result
+ * @param           {any[]}                             objects             Pass all the objects you want to merge
+ * @param           {TDeepMergeSettings}                [settings={}]       Some settings to configure your merging process
+ * @return          {Object}                                                The merged object result
  *
- * @setting         {Boolean}           [array=false]      Merge or not arrays
+ * @setting         {Boolean}           [array=false]           Merge or not arrays
  * @setting         {Boolean}           [clone=true]            Specify if you want the result object to be a clone or the same first passed object
  *
  * @feature         Support array merging by passing the last parameter as the { array: true } object
@@ -28,7 +28,7 @@
  *
  * @example           js
  * import { __deepMerge } from '@lotsof/sugar/object';
- * __deepMerge({a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}});
+ * __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
  * @since       1.0.0
@@ -38,4 +38,4 @@ export type TDeepMergeSettings = {
     array?: boolean;
     clone?: boolean;
 };
-export default function __deepMerge(...args: any[]): any;
+export default function __deepMerge(objects: any[], settings?: TDeepMergeSettings): any;

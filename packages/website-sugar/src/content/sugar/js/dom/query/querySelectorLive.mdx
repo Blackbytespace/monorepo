@@ -1,6 +1,7 @@
 ---
 title: 'querySelectorLive'
 namespace: '@lotsof.sugar.js.dom.query'
+description: 'Observe the dom to get all the elements that matches a passed css selector at any point in time. Be warned that this use the mutation observer API and will monitor all the document for new nodes. Make sure to use it when you don&#39;t have the chance to use the custom elements API instead'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # querySelectorLive
+<div class="_description typo-lead typo-format">
+Observe the dom to get all the elements that matches a passed css selector at any point in time.
+Be warned that this use the mutation observer API and will monitor all the document for new nodes. Make sure to use it
+when you don&#39;t have the chance to use the custom elements API instead
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -28,7 +34,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <p class="_description">The function to call with the newly added node</p>
 </li>
 <li class="_item">
-<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">Object</span>
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TQuerySelectorLiveSettings</span>
 <p class="_description">An optional settings object to specify things like the rootNode to monitor&comma; etc&period;&period;&period;</p>
 </li>
 </ol>

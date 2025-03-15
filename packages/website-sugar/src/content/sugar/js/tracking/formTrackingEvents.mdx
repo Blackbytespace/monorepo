@@ -1,6 +1,7 @@
 ---
 title: 'formTrackingEvents'
 namespace: '@lotsof.sugar.js.tracking'
+description: 'This function allows you to automatically track some events on your forms like the start of the form filling, the form submission, etc... Each event has as data the form id &quot;formId&quot; and the language of the page &quot;lang&quot;. Here&#39;s the events dispatched thgouth the dataLayer:  - `form.started`: When the form has been started to be filled - `form.submitted`: When the form has been submitted  Some data are automatically added to the dataLayer like the form id (`formId`) and the language (`lang`) of the page.'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,17 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # formTrackingEvents
+<div class="_description typo-lead typo-format">
+This function allows you to automatically track some events on your forms like the start of the form filling,
+the form submission, etc...
+Each event has as data the form id &quot;formId&quot; and the language of the page &quot;lang&quot;.
+Here&#39;s the events dispatched thgouth the dataLayer:
+
+- `form.started`: When the form has been started to be filled
+- `form.submitted`: When the form has been submitted
+
+Some data are automatically added to the dataLayer like the form id (`formId`) and the language (`lang`) of the page.
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -16,11 +28,27 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.tracking</div>
+<div class="_params">
+## Params
+<ol class="_list">
+<li class="_item">
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TFormTrackingEventsSettings</span>
+<p class="_description">Some settings to configure your form tracking events</p>
+</li>
+</ol>
+</div>
 <div class="_examples">
 ## Example
 ```js
 import { __formTrackingEvents } from '@lotsof/sugar/tracking';
 __formTrackingEvents();
+
+// Each dispatched events are like:
+{
+   event: 'form.started',
+   formId: 'my-form-id',
+   lang: 'en'
+}
 ```
 </div>
 <div class="_settings">

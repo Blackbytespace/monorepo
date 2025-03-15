@@ -1,6 +1,6 @@
 @mixin code {
   background: s-color(main, surface) !important;
-  @s-typo (code);
+  @s-font (code);
 
   & > code {
     display: flex;

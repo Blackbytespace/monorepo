@@ -1,3 +1,4 @@
+import { __parseHtml } from '@lotsof/sugar/console';
 import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
 
 /**
@@ -10,15 +11,18 @@ import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
  *
  * This function allows you to automatically track some events on your forms like the start of the form filling,
  * the form submission, etc...
+ * Each event has as data the form id "formId" and the language of the page "lang".
  * Here's the events dispatched thgouth the dataLayer:
  *
- * - `form.{formId}.started`: When the form has been started to be filled
- * - `form.{formId}.{lang}.started`: When the form has been started to be filled in a specific language
- * - `form.{formId}.submitted`: When the form has been submitted
- * - `form.{formId}.{lang}.submitted`: When the form has been submitted in a specific language
+ * - `form.started`: When the form has been started to be filled
+ * - `form.submitted`: When the form has been submitted
  *
- * @setting           {Boolean}         [lang=true]         Specify if you want to emit the language specific events
- * @setting           {Boolean}         [debug=false]       Specify if you want to log some debug informations
+ * Some data are automatically added to the dataLayer like the form id (`formId`) and the language (`lang`) of the page.
+ *
+ * @param        {TFormTrackingEventsSettings}       [settings={}]         Some settings to configure your form tracking events
+ *
+ * @setting           {Boolean}         [lang=true]               Specify if you want to emit the language specific events
+ * @setting           {Boolean}         [debug=false]             Specify if you want to log some debug informations
  * @setting           {Boolean}         [simplifyLang=true]       Specify if you want to simplify the lang attribute to only the first part like `en` instead of `en-US`
  *
  * @todo      tests
@@ -29,6 +33,13 @@ import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
  * import { __formTrackingEvents } from '@lotsof/sugar/tracking';
  * __formTrackingEvents();
  *
+ * // Each dispatched events are like:
+ * {
+ *    event: 'form.started',
+ *    formId: 'my-form-id',
+ *    lang: 'en'
+ * }
+ *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
@@ -37,7 +48,35 @@ export type TFormTrackingEventsSettings = {
   lang?: boolean;
   simplifyLang?: boolean;
   debug?: boolean;
+  enabled?: boolean;
 };
+
+function _getFormId($form) {
+  // get from the form dataset
+  if ($form.dataset.formId) {
+    return $form.dataset.formId;
+  }
+
+  // [form_id] is a hidden input field that contains the form id
+  const $formIdControl = $form.querySelector("[name='form_id']");
+  if ($formIdControl) {
+    return $formIdControl.value;
+  }
+
+  // id from form directly
+  if ($form.id) {
+    return $form.id;
+  }
+
+  // generate form id
+  const formId = __generateIdFromForm($form);
+
+  // apply the form id on the form
+  $form.setAttribute('data-form-id', formId);
+
+  // return the newsly created form id
+  return formId;
+}
 
 export default function formTrackingEvents(
   settings?: Partial<TFormTrackingEventsSettings>,
@@ -46,25 +85,27 @@ export default function formTrackingEvents(
     lang: true,
     debug: false,
     simplifyLang: true,
+    enabled: true,
     ...(settings || {}),
   };
+
+  // if disabled, stop here
+  if (!finalSettings.enabled) {
+    return;
+  }
 
   // @ts-ignore
   const dataLayer = window.dataLayer || [];
 
   const _log = (msg: string) => {
     if (!finalSettings.debug) return;
-    console.info(`[FormTrackingEvents]: ${msg}`);
+    console.info(__parseHtml(`[FormTrackingEvents]: ${msg}`));
   };
 
   // get each forms in the page
   __querySelectorLive('form', ($form) => {
-    // check if the form have an id or not
-    // if not, create one based on the form attributes
-    if (!$form.id) {
-      const formId = __generateIdFromForm($form as HTMLFormElement);
-      $form.setAttribute('id', formId);
-    }
+    // get the form id
+    const formId = _getFormId($form);
 
     // get the language of the page
     let lang = document.documentElement.lang?.toLowerCase();
@@ -73,7 +114,7 @@ export default function formTrackingEvents(
     }
 
     // util log for SEO
-    _log(`${$form.id} found`);
+    _log(`<magenta>${formId}</magenta> discovered`);
 
     // add event listener to the form
     // to track the form submission
@@ -85,29 +126,34 @@ export default function formTrackingEvents(
         return;
       }
       $form.setAttribute('submitted', 'true');
-      dataLayer?.push({ event: `form.${$form.id}.submitted` });
-      _log(`event: form.${$form.id}.submitted`);
-      if (finalSettings.lang && lang) {
-        dataLayer?.push({ event: `form.${$form.id}.${lang}.submitted` });
-        _log(`event: form.${$form.id}.${lang}.submitted`);
-      }
+      dataLayer?.push({ event: `form.submitted`, formId, lang });
+      _log(
+        `<yellow>form.submitted</yellow> emitted for form <magenta>${formId}</magenta> in lang <cyan>${
+          lang ?? 'unknown'
+        }</cyan>`,
+      );
     });
 
     // check the form controls to track the form start
     const $formControls = $form.querySelectorAll('input, select, textarea');
+
+    // handle form start
+    function handleFormStart() {
+      if ($form.hasAttribute('started')) {
+        return;
+      }
+      $form.setAttribute('started', 'true');
+      dataLayer?.push({ event: `form.started`, formId, lang });
+      _log(
+        `[Form]: <cyan>form.started</cyan> emitted for form <magenta>${formId}</magenta> in lang <cyan>${
+          lang ?? 'unknown'
+        }</cyan>`,
+      );
+    }
+
     for (let [i, $formControl] of $formControls.entries()) {
-      $formControl.addEventListener('keypress', function () {
-        if ($form.hasAttribute('started')) {
-          return;
-        }
-        $form.setAttribute('started', 'true');
-        dataLayer?.push({ event: `form.${$form.id}.started` });
-        _log(`event: form.${$form.id}.started`);
-        if (finalSettings.lang && lang) {
-          dataLayer?.push({ event: `form.${$form.id}.${lang}.started` });
-          _log(`event: form.${$form.id}.${lang}.started`);
-        }
-      });
+      $formControl.addEventListener('keypress', handleFormStart);
+      $formControl.addEventListener('change', handleFormStart);
     }
   });
 }

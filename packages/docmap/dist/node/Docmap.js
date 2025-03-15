@@ -25,6 +25,7 @@ import __path from 'path';
 function __toLowerCase(l = '') {
     return l.toLowerCase();
 }
+import { __isPlainObject } from '@lotsof/sugar/is';
 /**
  * @name                Docmap
  * @namespace           node
@@ -95,7 +96,11 @@ class Docmap {
          * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
          */
         this._entries = {};
-        this.settings = __deepMerge(__defaults.settings, (_a = __getConfig('docmap.settings')) !== null && _a !== void 0 ? _a : {}, settings !== null && settings !== void 0 ? settings : {});
+        this.settings = __deepMerge([
+            __defaults.settings,
+            (_a = __getConfig('docmap.settings')) !== null && _a !== void 0 ? _a : {},
+            settings !== null && settings !== void 0 ? settings : {},
+        ]);
         // @ts-ignore
         this.settings.tagsProxy = Object.assign(Object.assign({}, this.constructor._registeredTagsProxy), this.settings.tagsProxy);
     }
@@ -119,7 +124,11 @@ class Docmap {
     read(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c, _d, _e;
-            const finalParams = __deepMerge(__defaults.read, (_a = __getConfig('docmap.read')) !== null && _a !== void 0 ? _a : {}, params !== null && params !== void 0 ? params : {});
+            const finalParams = __deepMerge([
+                __defaults.read,
+                (_a = __getConfig('docmap.read')) !== null && _a !== void 0 ? _a : {},
+                params !== null && params !== void 0 ? params : {},
+            ]);
             let docmapVersion = 'current';
             // @ts-ignore
             if (this.constructor._cachedDocmapJson[docmapVersion]) {
@@ -273,7 +282,11 @@ class Docmap {
     search(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c;
-            const finalParams = __deepMerge(__defaults.search, (_a = __getConfig('docmap.search')) !== null && _a !== void 0 ? _a : {}, params !== null && params !== void 0 ? params : {});
+            const finalParams = __deepMerge([
+                __defaults.search,
+                (_a = __getConfig('docmap.search')) !== null && _a !== void 0 ? _a : {},
+                params !== null && params !== void 0 ? params : {},
+            ]);
             const docmapJson = yield this.read(finalParams);
             const result = {
                 search: finalParams,
@@ -385,12 +398,18 @@ class Docmap {
                 const packageFilteredTree = __deepFilter(packageObj.tree, 
                 // @ts-ignore
                 this.settings.customMenu[menuName]);
-                finalMenu.custom[menuName].tree = __deepMerge(finalMenu.custom[menuName].tree, packageFilteredTree);
+                finalMenu.custom[menuName].tree = __deepMerge([
+                    finalMenu.custom[menuName].tree,
+                    packageFilteredTree,
+                ]);
                 // @ts-ignore
                 const packageFilteredSlug = __deepFilter(packageObj.slug, 
                 // @ts-ignore
                 this.settings.customMenu[menuName]);
-                finalMenu.custom[menuName].slug = __deepMerge(finalMenu.custom[menuName].slug, packageFilteredSlug);
+                finalMenu.custom[menuName].slug = __deepMerge([
+                    finalMenu.custom[menuName].slug,
+                    packageFilteredSlug,
+                ]);
             });
         });
         // @ts-ignore
@@ -454,8 +473,11 @@ class Docmap {
      */
     build(params) {
         var _a;
-        const finalParams = __deepMerge(__defaults.build, (_a = __getConfig('docmap.build')) !== null && _a !== void 0 ? _a : {}, params !== null && params !== void 0 ? params : {});
-        console.log(finalParams);
+        const finalParams = __deepMerge([
+            __defaults.build,
+            (_a = __getConfig('docmap.build')) !== null && _a !== void 0 ? _a : {},
+            params !== null && params !== void 0 ? params : {},
+        ]);
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c;
             let docmapJson = {
@@ -640,11 +662,9 @@ class Docmap {
         result.push('---');
         result.push(`title: '${docmapObj.name}'`);
         result.push(`namespace: '${docmapObj.namespace}'`);
-        // if (docmapObj.description) {
-        //   result.push(
-        //     `description: '${docmapObj.description.split('\n').join(' ')}'`,
-        //   );
-        // }
+        if (docmapObj.description) {
+            result.push(`description: '${docmapObj.description.split('\n').join(' ')}'`);
+        }
         if (docmapObj.type) {
             result.push(`type: '${encodeEntities((_a = docmapObj.type.raw) !== null && _a !== void 0 ? _a : '')}'`);
         }
@@ -666,6 +686,11 @@ class Docmap {
         result.push('---');
         result.push('<div class="docmap-mdx">');
         result.push(`# ${docmapObj.name}`);
+        if (docmapObj.description) {
+            result.push('<div class="_description typo-lead typo-format">');
+            result.push(docmapObj.description);
+            result.push('</div>');
+        }
         if (docmapObj.status || docmapObj.since || docmapObj.platform) {
             result.push('<div class="_metas">');
         }
@@ -687,21 +712,21 @@ class Docmap {
             result.push('</div>');
         }
         result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
-        if (docmapObj.description) {
-            result.push('<div class="_description typo-format typo-rhythm">');
-            result.push(docmapObj.description);
-            result.push('</div>');
-        }
         if (docmapObj.param) {
             result.push('<div class="_params">');
             result.push('## Params');
             result.push(`<ol class="_list">`);
             Object.entries(docmapObj.param).forEach(([id, paramObj], i) => {
                 var _a, _b, _c;
+                // handle default value
+                let defaultStr = (_a = paramObj.default) !== null && _a !== void 0 ? _a : '-';
+                if (__isPlainObject(paramObj)) {
+                    defaultStr = JSON.stringify(paramObj.default, null, 4);
+                }
                 result.push('<li class="_item">');
                 result.push(`<span class="_name">${paramObj.name}${paramObj.default === undefined
                     ? '<span class="_required">*</span>'
-                    : ''}</span><span class="_default">${encodeEntities((_a = paramObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                    : ''}</span><span class="_default">${encodeEntities(defaultStr !== null && defaultStr !== void 0 ? defaultStr : '-')}</span> <span class="_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
                 result.push(`<p class="_description">${encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
                 result.push('</li>');
             });

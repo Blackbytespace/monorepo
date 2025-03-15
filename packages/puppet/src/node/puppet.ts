@@ -6,7 +6,6 @@ import type {
 
 import { __getConfig } from '@lotsof/config';
 import { __readJsonSync } from '@lotsof/sugar/fs';
-import { __deepMerge } from '@lotsof/sugar/object';
 import * as __glob from 'glob';
 import __puppeteer from 'puppeteer';
 
@@ -85,12 +84,12 @@ export default class Puppet {
   }
 
   public async screenshot(settings?: TPuppetScreenshotSettings): Promise<void> {
-    const finalSettings: TPuppetScreenshotSettings = __deepMerge({
+    const finalSettings: TPuppetScreenshotSettings = {
       name: `screenshot-${Date.now()}`,
       vw: this.settings.vw,
       vh: this.settings.vh,
       ...(settings ?? {}),
-    });
+    };
 
     const screenshots: TPuppetScreenshotScreenshot[] = [];
 

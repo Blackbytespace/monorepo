@@ -12,6 +12,7 @@ import { __isPlainObject } from '@lotsof/sugar/is';
 import { __deepMerge } from '@lotsof/sugar/object';
 import { __namespaceCompliant } from '@lotsof/sugar/string';
 import { marked as __marked } from 'marked';
+import __asyncTag from './tags/async.js';
 import __authorTag from './tags/author.js';
 import __contributorTag from './tags/contributor.js';
 import __cssClass from './tags/cssClass.js';
@@ -28,6 +29,7 @@ import __seeTag from './tags/see.js';
 import __simpleRepeatableValue from './tags/simpleRepeatableValue.js';
 import __simpleValueTag from './tags/simpleValue.js';
 import __snippetTag from './tags/snippet.js';
+import __statusTag from './tags/status.js';
 import __supportTag from './tags/support.js';
 import __todoTag from './tags/todo.js';
 import __typeTag from './tags/type.js';
@@ -43,6 +45,7 @@ import __typeTag from './tags/type.js';
  * - More to come...
  *
  * @feature         `author` tag support
+ * @feature         `async` tag support
  * @feature         `contributor` tag support
  * @feature         `cssClass` tag support
  * @feature         `description` tag support
@@ -57,6 +60,7 @@ import __typeTag from './tags/type.js';
  * @feature         `see` tag support
  * @feature         `snippet` tag support
  * @feature         `support` tag support
+ * @feature         `status`tag support
  * @feature         `todo` tag support
  * @feature         `type` tag support
  * @feature         All the other tags are treated like a `String` value
@@ -119,14 +123,17 @@ class DocblockBlock {
      * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
      */
     constructor(source, settings) {
-        this.settings = __deepMerge({
-            filePath: null,
-            packageJson: null,
-            renderMarkdown: false,
-            renderMarkdownProps: [],
-            markedOptions: {},
-            tags: DocblockBlock.tagsMap,
-        }, settings !== null && settings !== void 0 ? settings : {});
+        this.settings = __deepMerge([
+            {
+                filePath: null,
+                packageJson: null,
+                renderMarkdown: false,
+                renderMarkdownProps: [],
+                markedOptions: {},
+                tags: DocblockBlock.tagsMap,
+            },
+            settings !== null && settings !== void 0 ? settings : {},
+        ]);
         this._source = source
             .trim()
             .replace(/\s\*\s/gm, '\n * ')
@@ -197,8 +204,9 @@ class DocblockBlock {
                     const currentValue = docblockObj[currentTag];
                     docblockObj[currentTag] = [currentValue];
                 }
-                if (!currentObj.value)
+                if (!currentObj.value) {
                     currentObj.value = true;
+                }
                 if (Array.isArray(docblockObj[currentTag])) {
                     docblockObj[currentTag].push(currentObj);
                 }
@@ -217,7 +225,7 @@ class DocblockBlock {
             lines = lines.map((l) => l.trim()).filter((l) => l !== '');
             lines.forEach((line) => {
                 // get the tag name
-                const tagNameReg = /\*[\s]?@([a-zA-Z0-9]+)(\s)+/;
+                const tagNameReg = /\*[\s]?@([a-zA-Z0-9]+)/;
                 const tagNameMatch = line.trim().match(tagNameReg);
                 if (line.replace('*', '').trim() === '') {
                     if (currentContent.length > 0) {
@@ -364,7 +372,7 @@ DocblockBlock.registerTag('author', __authorTag);
 DocblockBlock.registerTag('contributor', __contributorTag);
 DocblockBlock.registerTag('abstract', __simpleValueTag);
 DocblockBlock.registerTag('final', __simpleValueTag);
-DocblockBlock.registerTag('async', __simpleValueTag);
+DocblockBlock.registerTag('async', __asyncTag);
 DocblockBlock.registerTag('generator', __simpleValueTag);
 DocblockBlock.registerTag('global', __simpleValueTag);
 DocblockBlock.registerTag('constructor', __simpleValueTag);
@@ -441,6 +449,7 @@ DocblockBlock.registerTag('menu', __menuTag);
 DocblockBlock.registerTag('cssClass', __cssClass);
 DocblockBlock.registerTag('support', __supportTag);
 DocblockBlock.registerTag('snippet', __snippetTag);
+DocblockBlock.registerTag('status', __statusTag);
 DocblockBlock.registerTag('example', __exampleTag);
 DocblockBlock.registerTag('todo', __todoTag);
 DocblockBlock.registerTag('event', __eventTag);

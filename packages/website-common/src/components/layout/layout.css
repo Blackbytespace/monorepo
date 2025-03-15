@@ -2,5 +2,6 @@ body {
   font: s-font(default);
   color: s-color(main, text);
   background: s-color(main, background);
+  overflow: hidden;
   @s-transition();
 }

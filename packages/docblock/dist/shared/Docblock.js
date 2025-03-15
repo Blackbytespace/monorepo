@@ -102,7 +102,11 @@ class SDocblock {
          * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
          */
         this._parsed = false;
-        this.settings = __deepMerge(__defaults.settings, (_a = __getConfig('docblock.settings')) !== null && _a !== void 0 ? _a : {}, settings || {});
+        this.settings = __deepMerge([
+            __defaults.settings,
+            (_a = __getConfig('docblock.settings')) !== null && _a !== void 0 ? _a : {},
+            settings || {},
+        ]);
         // check if the source is path
         if (__isPath(source)) {
             if (!__isNode())

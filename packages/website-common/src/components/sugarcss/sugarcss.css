@@ -89,12 +89,12 @@ body {
   --s-size-h5: s-size(4);
   --s-size-h6: s-size(2);
   --s-size-tagline: s-size(10);
-  --s-size-lead: s-size(5);
-  --s-size-p: s-size(4);
+  --s-size-lead: s-rem(17px);
+  --s-size-p: s-rem(14px);
   --s-size-form: s-size(4);
   --s-size-button: s-size(4);
   --s-size-caption: s-size(3);
-  --s-size-code: s-size(3);
+  --s-size-code: s-rem(14px);
   --s-size-menu: s-size(4);
   --s-size-quote: s-size(6);
   --s-size-tooltip: s-size(4);
@@ -108,16 +108,16 @@ body {
 
   --s-font-default: s-font-family(default) 400;
   --s-font-lead: s-font-family(default) 400;
-  --s-font-title: s-font-family(title) 200;
+  --s-font-title: s-font-family(title) 300;
   --s-font-code: s-font-family(code) 300;
 
-  --s-typo-h1: s-font(title) s-size(h1) 1.4;
-  --s-typo-h2: s-font(title) s-size(h2) 1.4;
-  --s-typo-h3: s-font(title) s-size(h3) 1.4;
-  --s-typo-h4: s-font(title) s-size(h4) 1.4;
-  --s-typo-h5: s-font(title) s-size(h5) 1.4;
-  --s-typo-h6: s-font(title) s-size(h6) 1.4;
-  --s-typo-lead: s-font(lead) s-size(lead) 1.4;
-  --s-typo-p: s-font(default) s-size(p) 1.4 0.05em;
-  --s-typo-code: s-font(code) s-size(code) 1.4 0.1em;
+  --s-typo-h1: s-font(code) s-size(h1) 1.4 0.01em;
+  --s-typo-h2: s-font(code) s-size(h2) 1.4 0.05em;
+  --s-typo-h3: s-font(code) s-size(h3) 1.4 0.05em;
+  --s-typo-h4: s-font(code) s-size(h4) 1.4 0.05em;
+  --s-typo-h5: s-font(code) s-size(h5) 1.4 0.05em;
+  --s-typo-h6: s-font(code) s-size(h6) 1.4 0.05em;
+  --s-typo-lead: s-font(lead) s-size(lead) 1.6 0.05em;
+  --s-typo-p: s-font(default) s-size(p) 1.8 0.05em;
+  --s-typo-code: s-font(code) s-size(code) 1.4;
 }

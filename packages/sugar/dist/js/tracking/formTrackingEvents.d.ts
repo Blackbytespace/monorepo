@@ -8,12 +8,11 @@
  *
  * This function allows you to automatically track some events on your forms like the start of the form filling,
  * the form submission, etc...
+ * Each event has as data the form id "formId" and the language of the page "lang".
  * Here's the events dispatched thgouth the dataLayer:
  *
- * - `form.{formId}.started`: When the form has been started to be filled
- * - `form.{formId}.{lang}.started`: When the form has been started to be filled in a specific language
- * - `form.{formId}.submitted`: When the form has been submitted
- * - `form.{formId}.{lang}.submitted`: When the form has been submitted in a specific language
+ * - `form.started`: When the form has been started to be filled
+ * - `form.submitted`: When the form has been submitted
  *
  * @setting           {Boolean}         [lang=true]         Specify if you want to emit the language specific events
  * @setting           {Boolean}         [debug=false]       Specify if you want to log some debug informations
@@ -34,5 +33,6 @@ export type TFormTrackingEventsSettings = {
     lang?: boolean;
     simplifyLang?: boolean;
     debug?: boolean;
+    enabled?: boolean;
 };
 export default function formTrackingEvents(settings?: Partial<TFormTrackingEventsSettings>): void;

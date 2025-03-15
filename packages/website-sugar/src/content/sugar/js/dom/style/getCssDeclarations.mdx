@@ -1,6 +1,7 @@
 ---
 title: 'getCssDeclarations'
 namespace: '@lotsof.sugar.js.dom.style'
+description: 'Get all the CSSRules of the passed type'
 type: 'Function'
 status: 'beta'
 since: '1.0.0'
@@ -9,6 +10,9 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # getCssDeclarations
+<div class="_description typo-lead typo-format">
+Get all the CSSRules of the passed type
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -beta">beta</span></div>
@@ -16,22 +20,19 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.dom.style</div>
-<div class="_description typo-format typo-rhythm">
-Get all the CSSRules of the passed type
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
 <li class="_item">
-<span class="_name">typeName</span><span class="_default">style</span> <span class="_type">string</span>
+<span class="_name">typeName</span><span class="_default">&quot;style&quot;</span> <span class="_type">string</span>
 <p class="_description">CSSRule type to search for&comma; valid types&colon; unknown&comma; style&comma; charset&comma; import&comma; media&comma; fontface&comma; page&comma; keyframes&comma; keyframe&comma; namespace&comma; counter&comma; supports&comma; document&comma; fontfeature&comma; viewport&comma; region</p>
 </li>
 <li class="_item">
-<span class="_name">rules</span><span class="_default">&lcub;&lpar;&apos;esm&apos;&vert;&apos;cjs&apos;&rpar;&lsqb;&rsqb;&rcub;</span> <span class="_type">array</span>
+<span class="_name">rules</span><span class="_default">&lsqb;&rsqb;</span> <span class="_type">array</span>
 <p class="_description">Array of CSSRules to search</p>
 </li>
 <li class="_item">
-<span class="_name">predecate</span><span class="_default">function Boolean&lpar;&rpar; &lcub; &lsqb;native code&rsqb; &rcub;</span> <span class="_type">function</span>
+<span class="_name">predecate</span><span class="_default">-</span> <span class="_type">function</span>
 <p class="_description">Predecate function to filter matches</p>
 </li>
 </ol>

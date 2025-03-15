@@ -1,16 +1,6 @@
 import __isPlainObject from '../is/isPlainObject.js';
-export default function __deepMerge(...args) {
-    var _a;
-    let settings = {}, hasSettings = false;
-    const potentialSettings = (_a = args[args.length - 1]) !== null && _a !== void 0 ? _a : {};
-    if (potentialSettings &&
-        Object.keys(potentialSettings).length <= 2 &&
-        (potentialSettings.array !== undefined ||
-            potentialSettings.clone !== undefined)) {
-        hasSettings = true;
-        settings = potentialSettings;
-    }
-    let finalSettings = Object.assign({ array: false, clone: true }, settings);
+export default function __deepMerge(objects, settings) {
+    const finalSettings = Object.assign({ array: false, clone: true }, (settings !== null && settings !== void 0 ? settings : {}));
     function merge(firstObj, secondObj) {
         const newObj = finalSettings.clone ? {} : firstObj;
         if (!secondObj)
@@ -46,12 +36,9 @@ export default function __deepMerge(...args) {
         });
         return newObj;
     }
-    if (hasSettings) {
-        args.pop();
-    }
-    let currentObj = finalSettings.clone ? {} : args[0];
-    for (let i = 0; i < args.length; i++) {
-        const toMergeObj = args[i];
+    let currentObj = finalSettings.clone ? {} : objects[0];
+    for (let i = 0; i < objects.length; i++) {
+        const toMergeObj = objects[i];
         currentObj = merge(currentObj, toMergeObj);
     }
     return currentObj;

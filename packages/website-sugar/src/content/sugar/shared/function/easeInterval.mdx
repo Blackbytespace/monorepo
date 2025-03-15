@@ -1,6 +1,7 @@
 ---
 title: 'easeInterval'
 namespace: '@lotsof.sugar.shared.function'
+description: 'This function allows you to call a callback function exactly as the `setInterval` would do but with an easing that you can specify, as well as an `interval` setting to customize how many time your function will be called. By default this function will pass the &quot;easedPercent&quot; that represent the percentage of your passed &quot;duration&quot; with the easing applied on it. With that you can make everything you want inside your callback function.'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,12 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 ---
 <div class="docmap-mdx">
 # easeInterval
+<div class="_description typo-lead typo-format">
+This function allows you to call a callback function exactly as the `setInterval` would do but with an easing that you can specify,
+as well as an `interval` setting to customize how many time your function will be called.
+By default this function will pass the &quot;easedPercent&quot; that represent the percentage of your passed &quot;duration&quot; with the easing applied on it.
+With that you can make everything you want inside your callback function.
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -16,9 +23,6 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.shared.function</div>
-<div class="_description typo-format typo-rhythm">
-ª@todo      tests
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
@@ -27,11 +31,11 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <p class="_description">The duration of your interval process you want</p>
 </li>
 <li class="_item">
-<span class="_name">cb</span><span class="_default">-</span> <span class="_type">Function</span>
+<span class="_name">cb</span><span class="_default">null</span> <span class="_type">Function</span>
 <p class="_description">A callback function to call at each interval</p>
 </li>
 <li class="_item">
-<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TEaseIntervalSettings</span>
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TEaseIntervalSettings</span>
 <p class="_description">Some settings to customize your interval process</p>
 </li>
 </ol>

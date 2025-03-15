@@ -51,6 +51,7 @@ const themes = Astro.props.themes;
   for (let [i, $theme] of $themes?.entries() ?? []) {
     $theme.addEventListener('click', () => {
       const themeTheme = ($theme as HTMLElement).dataset.theme;
+      // __setCookie('theme', themeTheme as string);
       __setTheme(themeTheme as string);
     });
   }

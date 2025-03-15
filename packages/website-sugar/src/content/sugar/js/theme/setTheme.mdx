@@ -1,6 +1,7 @@
 ---
 title: 'setTheme'
 namespace: '@lotsof.sugar.js.theme'
+description: 'This function allows you to set a theme for your website/application. It will set the theme on the `body` tag like `theme-...` and set a cookie to remember the theme. You will be able to get the theme from your backend code (PHP) using the `\Sugar\Theme\getTheme()` function to set it in your body class attribute.'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
@@ -9,6 +10,12 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 ---
 <div class="docmap-mdx">
 # setTheme
+<div class="_description typo-lead typo-format">
+This function allows you to set a theme for your website/application.
+It will set the theme on the `body` tag like `theme-...` and set a cookie to remember the theme.
+You will be able to get the theme from your backend code (PHP) using the `\Sugar\Theme\getTheme()` function
+to set it in your body class attribute.
+</div>
 <div class="_metas">
 <div class="_type"><span class="_type-label">Type:</span><span class="_type-value">Function</span></div>
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
@@ -16,12 +23,6 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
 <div class="_namespace">@lotsof.sugar.js.theme</div>
-<div class="_description typo-format typo-rhythm">
-This function allows you to set a theme for your website/application.
-It will set the theme on the `body` tag like `theme-...` and set a cookie to remember the theme.
-You will be able to get the theme from your backend code (PHP) using the `\Sugar\Theme\getTheme()` function
-to set it in your body class attribute.
-</div>
 <div class="_params">
 ## Params
 <ol class="_list">
@@ -30,7 +31,7 @@ to set it in your body class attribute.
 <p class="_description">The theme name to set</p>
 </li>
 <li class="_item">
-<span class="_name">settings</span><span class="_default">&lsqb;object Object&rsqb;</span> <span class="_type">TSetThemeSettings</span>
+<span class="_name">settings</span><span class="_default">&lcub;&rcub;</span> <span class="_type">TSetThemeSettings</span>
 <p class="_description">Some settings to configure your theme setter</p>
 </li>
 </ol>

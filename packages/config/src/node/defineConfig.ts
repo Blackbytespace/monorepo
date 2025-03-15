@@ -8,13 +8,13 @@ export default function defineConfig(
   settings?: TConfigDefineSettings,
 ): any {
   if (settings?.defaults) {
-    process.lotsofConfigDefaults = __deepMerge(
+    process.lotsofConfigDefaults = __deepMerge([
       process.lotsofConfigDefaults ?? {},
       config,
-    );
+    ]);
     return process.lotsofConfigDefaults;
   } else {
-    process.lotsofConfig = __deepMerge(process.lotsofConfig ?? {}, config);
+    process.lotsofConfig = __deepMerge([process.lotsofConfig ?? {}, config]);
     return process.lotsofConfig;
   }
 }

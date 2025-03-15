@@ -1,6 +1,5 @@
 import __isClassInstance from '../is/isClassInstance.js';
 import __isPlainObject from '../is/isPlainObject.js';
-import __deepMerge from '../object/deepMerge.js';
 import __clone from './clone.js';
 
 /**
@@ -54,15 +53,13 @@ export default function __deepMap(
   settings?: TDeepMapSettings,
   _path = [],
 ): any {
-  settings = __deepMerge(
-    {
-      classInstances: false,
-      array: true,
-      clone: false,
-      privateProps: true,
-    },
-    settings,
-  );
+  settings = {
+    classInstances: false,
+    array: true,
+    clone: false,
+    privateProps: true,
+    ...settings,
+  };
 
   const isArray = Array.isArray(objectOrArray);
 

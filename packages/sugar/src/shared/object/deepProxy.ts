@@ -3,7 +3,6 @@ import __isDomElement from '../is/isDomElement.js';
 import __isPlainObject from '../is/isPlainObject.js';
 import __clone from '../object/clone.js';
 import __deepMap from '../object/deepMap.js';
-import __deepMerge from '../object/deepMerge.js';
 
 /**
  * @name                            deepProxy
@@ -80,16 +79,14 @@ export default function __deepProxy(
   settings: Partial<TDeepProxySettings> = {},
 ) {
   let isRevoked = false;
-  settings = __deepMerge(
-    {
-      deep: true,
-      handleSet: true,
-      handleGet: false,
-      handleDelete: true,
-      domElements: false,
-    },
-    settings,
-  );
+  settings = {
+    deep: true,
+    handleSet: true,
+    handleGet: false,
+    handleDelete: true,
+    domElements: false,
+    ...settings,
+  };
 
   function makeHandler(path) {
     return {
