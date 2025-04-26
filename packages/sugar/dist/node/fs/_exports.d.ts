@@ -1,5 +1,4 @@
 import __appendToFileSync from './appendToFileSync.js';
-import __chdir from './chdir.js';
 import __checkPathWithMultipleExtensions from './checkPathWithMultipleExtensions.js';
 import __copy from './copy.js';
 import __copySync from './copySync.js';
@@ -39,4 +38,4 @@ import __writeJson from './writeJson.js';
 import __writeJsonSync from './writeJsonSync.js';
 import __writeTmpFile from './writeTmpFile.js';
 import __writeTmpFileSync from './writeTmpFileSync.js';
-export { __appendToFileSync, __chdir, __checkPathWithMultipleExtensions, __copy, __copySync, __dirname, __emptyDir, __emptyDirSync, __ensureDir, __ensureDirSync, __ensureFile, __ensureFileSync, __exists, __existsSync, __extension, __fileHashSync, __filename as __fileName, __filename, __findUp, __folderHashSync, __folderPath, __folderSize, __grabFirstExistingSync, __isPath, __move, __moveSync, __pickOneSync, __prependToFileSync, __readJson, __readJsonSync, __readXmlSync, __remove, __removeSync, __renameSync, __unlink, __unlinkSync, __writeFile, __writeFileSync, __writeJson, __writeJsonSync, __writeTmpFile, __writeTmpFileSync, };
+export { __appendToFileSync, __checkPathWithMultipleExtensions, __copy, __copySync, __dirname, __emptyDir, __emptyDirSync, __ensureDir, __ensureDirSync, __ensureFile, __ensureFileSync, __exists, __existsSync, __extension, __fileHashSync, __filename as __fileName, __filename, __findUp, __folderHashSync, __folderPath, __folderSize, __grabFirstExistingSync, __isPath, __move, __moveSync, __pickOneSync, __prependToFileSync, __readJson, __readJsonSync, __readXmlSync, __remove, __removeSync, __renameSync, __unlink, __unlinkSync, __writeFile, __writeFileSync, __writeJson, __writeJsonSync, __writeTmpFile, __writeTmpFileSync, };

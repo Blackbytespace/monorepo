@@ -1,5 +1,4 @@
 import __appendToFileSync from './appendToFileSync.js';
-import __chdir from './chdir.js';
 import __checkPathWithMultipleExtensions from './checkPathWithMultipleExtensions.js';
 import __copy from './copy.js';
 import __copySync from './copySync.js';
@@ -42,7 +41,6 @@ import __writeTmpFileSync from './writeTmpFileSync.js';
 
 export {
   __appendToFileSync,
-  __chdir,
   __checkPathWithMultipleExtensions,
   __copy,
   __copySync,

@@ -33,7 +33,7 @@ export default function __dirname() {
         if (!line.trim().match(/^at\s/)) {
             continue;
         }
-        if (line.match(/\/dirname\.js:[0-9]+:[0-9]+\)/)) {
+        if (line.match(/\/dirname\.(js|ts):[0-9]+:[0-9]+\)/)) {
             dirnameLineFound = true;
             continue;
         }

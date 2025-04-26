@@ -1,1 +1,4 @@
-*.txt
+*.*
+
+!checkPathWithMultipleExtensions/*
+!copy/*.src
