@@ -6,7 +6,7 @@
     --main-nav-width: 400px;
   }
 
-  @media lg {
+  @media (max-width: 1400px) {
     --main-nav-width: 300px;
     --main-nav-padding: s-space(8);
   }

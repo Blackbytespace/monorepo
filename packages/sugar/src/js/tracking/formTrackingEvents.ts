@@ -19,6 +19,13 @@ import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
  *
  * Some data are automatically added to the dataLayer like the form id (`formId`) and the language (`lang`) of the page.
  *
+ * The form id is getter/generated using these rules:
+ *
+ * 1. If a `data-form-id` attribute is present on the form, this will be used as the form id
+ * 2. If an input named `form_id` is present in the form, it's value will be used as the form id
+ * 3. If an `id` attribute is present on the form, this will be used as the form id
+ * 4. If nothing is found, a form id is generated using the `__generateIdFromForm` function
+ *
  * @param        {TFormTrackingEventsSettings}       [settings={}]         Some settings to configure your form tracking events
  *
  * @setting           {Boolean}         [lang=true]               Specify if you want to emit the language specific events

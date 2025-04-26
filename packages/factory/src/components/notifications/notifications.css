@@ -4,12 +4,12 @@
   .s-factory_notifications-list {
     display: flex;
     flex-direction: column;
-    gap: s-space(20);
+    gap: s-space(md);
     user-select: none;
   }
 
   .s-factory_notifications-item {
-    padding: s-space(10) s-space(20);
+    padding: s-space(sm) s-space(md);
     box-shadow: var(--s-factory-depth);
     @s-radius;
 
@@ -32,6 +32,6 @@
   }
 
   .s-factory_notifications-message {
-    font-size: s-size(15);
+    font-size: s-size(notification);
   }
 }

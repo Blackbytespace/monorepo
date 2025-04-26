@@ -1,5 +1,5 @@
 .s-factory-json-schema-form {
-  padding: s-space(10, 20, 10, 10);
+  padding: s-space(sm) s-space(md) s-space(sm) s-space(sm);
 
   .s-json-schema-form_inner {
   }
@@ -9,7 +9,7 @@
 
   .s-json-schema-form_values-item {
     border-bottom: 1px solid s-color(main, border);
-    padding: s-space(20) 0;
+    padding: s-space(sm) 0;
 
     &:last-child {
       border-bottom: none;
@@ -17,11 +17,11 @@
   }
 
   .s-json-schema-form_values-array {
-    padding-inline-start: s-space(10);
-    padding-block: s-space(20);
+    /* padding-inline-start: s-space(sm); */
+    padding-block: s-space(sm);
 
     .s-json-schema-form_values-add {
-      margin-block-start: s-space(20);
+      margin-block-start: s-space(md);
       width: 100%;
       text-align: center;
     }
@@ -30,25 +30,24 @@
   }
   .s-json-schema-form_values-array-item-header {
     background: s-color(accent, --alpha 0.1);
-    padding: s-space(20);
+    padding: s-space(sm);
     display: flex;
     align-items: center;
     width: 100%;
   }
   .s-json-schema-form_values-array-item-index {
     flex-grow: 1;
-    font-weight: bold;
     opacity: 0.5;
+    font-size: s-size(form);
   }
   .s-json-schema-form_values-array-item-id {
-    /* font-size: s-size(15); */
     border: 1px solid s-color(accent);
     @s-radius;
-    padding: s-space(5, 15);
+    padding: s-space(xs, sm);
     align-self: center;
     justify-self: center;
     flex-grow: 0;
-    font-size: s-size(15);
+    font-size: s-size(form);
     color: s-color(accent);
     user-select: all;
   }
@@ -56,18 +55,19 @@
   .s-json-schema-form_values-object {
     display: flex;
     flex-direction: column;
-    padding-block: s-space(20);
-    padding-inline-start: s-space(10);
+    padding-block: s-space(sm);
+    padding-inline-start: s-space(sm);
   }
   .s-json-schema-form_values-object-item {
   }
   .s-json-schema-form_values-object-item-header {
     background: s-color(accent, --alpha 0.1);
-    padding: s-space(20);
+    padding: s-space(sm);
     display: flex;
     width: 100%;
   }
   .s-json-schema-form_values-object-item-title {
+    font-size: s-size(form);
   }
 
   .s-json-schema-form_values-object-item,
@@ -78,7 +78,7 @@
 
     &:hover,
     &:has(.s-json-schema-form_values-item:hover) {
-      border-left: 1px solid s-color(accent, --alpha 0.2);
+      /* border-left: 1px solid s-color(accent, --alpha 1); */
     }
   }
 
@@ -87,14 +87,13 @@
     flex-grow: 1;
     flex-wrap: wrap;
     align-items: center;
-    padding-inline: s-space(20);
+    padding-inline: s-space(sm);
   }
   .s-json-schema-form_values-prop {
-    text-transform: uppercase;
-    font-size: s-size(15);
+    font-size: s-size(form);
     opacity: 0.5;
-    @s-transition (fast);
     flex-grow: 1;
+    @s-transition (fast);
   }
 
   .s-json-schema-form_values-value {
@@ -139,21 +138,21 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: s-space(10);
+    gap: s-space(sm);
     flex-grow: 1;
     flex-shrink: 0;
     justify-content: stretch;
-    margin-block-start: s-space(10);
-    background: s-color(error, --alpha 0.1);
+    margin-block-start: s-space(sm);
+    background: s-color(error, --alpha 0.05);
     @s-radius;
   }
   .s-json-schema-form_values-error {
     display: block;
     width: 100%;
     flex-grow: 1;
-    padding: s-space(10) s-space(20);
+    padding: s-space(sm);
     color: s-color(error, --alpha 0.5);
-    font-size: s-size(15);
+    font-size: s-size(form);
     @s-radius;
   }
 }

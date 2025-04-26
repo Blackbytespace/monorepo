@@ -15,9 +15,6 @@
     },
     "image": {
       "$ref": "../image/image.schema.json"
-    },
-    "video": {
-      "$ref": "../video/video.schema.json"
     }
   }
 }

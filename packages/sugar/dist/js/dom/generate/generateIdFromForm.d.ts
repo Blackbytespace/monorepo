@@ -1,14 +1,16 @@
 /**
- * @name            generateIfFromForm
+ * @name            generateIdFromForm
  * @namespace       js.dom.generate
  * @type            Function
  * @platform        js
  * @status          stable
  * @async
  *
- * This function generate a uniqid based on the form element passed.
- * If the form has an action attribute, this will be used to generate the uniqid.
- * If not, the function will generate a uniqid based on the form attributes and named controls.
+ * This function generate a uniqid based on the form element passed using these rules:
+ *
+ * 1. If the form has an action attribute, this will be used to generate the uniqid.
+ * 2. If not, the function will generate a uniqid based on the form attributes and named controls.
+ *
  * Note that the named controlls will be sorted before generating the uniqid.
  *
  * @param           {HTMLFormElement}          $form           The form element to generate the uniqid from
@@ -25,4 +27,4 @@
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export default function generateIfFromForm($form: HTMLFormElement): string;
+export default function generateIdFromForm($form: HTMLFormElement): string;

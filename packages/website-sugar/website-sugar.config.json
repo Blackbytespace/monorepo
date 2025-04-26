@@ -3,7 +3,7 @@
   "description": "High quality toolkit for web development",
   "license": {
     "name": "MIT",
-    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugar/LICENSE.txt"
+    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugar/LICENSE.md"
   },
   "og": {
     "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugar-og.png"

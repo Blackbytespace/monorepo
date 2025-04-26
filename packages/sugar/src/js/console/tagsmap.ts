@@ -68,6 +68,7 @@ const tagsMap = {
   seconds: (tag, content) =>
     new Date().getSeconds().toString().padStart('0', 2),
 
+  hr: (tag, content) => '-'.repeat(20),
   br: (tag, content) => '\n',
 };
 export default tagsMap;

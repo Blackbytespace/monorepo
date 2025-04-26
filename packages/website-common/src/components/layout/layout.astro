@@ -76,6 +76,8 @@ const { title, pageTitle, description, og } = Astro.props;
       const theme = getCookie('theme');
       if (theme) {
         document.body.classList.add(`theme-${theme}`);
+      } else {
+        document.body.classList.add('theme-dark');
       }
     </script>
     <slot />

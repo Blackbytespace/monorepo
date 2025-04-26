@@ -175,6 +175,17 @@ class LitElement extends __LitElement {
         this._isInViewport = false;
         this._listenersMap = new Map();
         this._state = {};
+        /**
+         * @name      isMounted
+         * @type      Function
+         *
+         * This method returns true if the component is mounted, false if not
+         *
+         * @return    {Boolean}       true if is mounted, false if not
+         *
+         * @since     1.0.0
+         */
+        this._LitElementMounted = false;
         if (internalName) {
             this._internalName = internalName;
         }
@@ -297,22 +308,26 @@ class LitElement extends __LitElement {
         }
         return $elm;
     }
-    /**
-     * @name           addEventListener
-     * @type            Function
-     *
-     * This method allows you to add an event listener on the component itself.
-     * It will automatically remove the listener when the component is disconnected and added again when connected.
-     *
-     * @param           {String}            type            The event type to listen for
-     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
-     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
-     *
-     * @since           1.0.0
-     */
-    addEventListener(type, listener, options) {
-        this.addEventListenerOn(this, type, listener, options);
-    }
+    // /**
+    //  * @name           addEventListener
+    //  * @type            Function
+    //  *
+    //  * This method allows you to add an event listener on the component itself.
+    //  * It will automatically remove the listener when the component is disconnected and added again when connected.
+    //  *
+    //  * @param           {String}            type            The event type to listen for
+    //  * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+    //  * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+    //  *
+    //  * @since           1.0.0
+    //  */
+    // addEventListener(
+    //   type: string,
+    //   listener: EventListenerOrEventListenerObject,
+    //   options?: boolean | AddEventListenerOptions,
+    // ): void {
+    //   this.addEventListenerOn(this as HTMLElement, type, listener, options);
+    // }
     /**
      * @name           addEventListenerOn
      * @type            Function
@@ -341,7 +356,9 @@ class LitElement extends __LitElement {
             type,
         });
         // register the event listener on the element
-        $elm.addEventListener(type, listener, options);
+        if ($elm !== this) {
+            $elm.addEventListener(type, listener, options);
+        }
         // set the listeners stack into the map
         this._listenersMap.set($elm, stack);
     }
@@ -523,16 +540,6 @@ class LitElement extends __LitElement {
         }
         return true;
     }
-    /**
-     * @name      isMounted
-     * @type      Function
-     *
-     * This method returns true if the component is mounted, false if not
-     *
-     * @return    {Boolean}       true if is mounted, false if not
-     *
-     * @since     1.0.0
-     */
     isMounted() {
         return this._LitElementMounted || this.hasAttribute('mounted');
     }

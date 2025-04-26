@@ -15,8 +15,8 @@
 .form-select {
   border: solid 1px s-color(main, border);
   color: s-color(main, form);
-  font-size: s-size(18);
-  line-height: s-size(18);
+  font-size: s-size(form);
+  line-height: s-size(form);
   @s-radius;
 
   &:focus {

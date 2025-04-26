@@ -50,6 +50,7 @@ declare const tagsMap: {
     minutes: (tag: any, content: any) => string;
     second: (tag: any, content: any) => string;
     seconds: (tag: any, content: any) => string;
+    hr: (tag: any, content: any) => string;
     br: (tag: any, content: any) => string;
 };
 export default tagsMap;

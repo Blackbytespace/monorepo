@@ -75,6 +75,34 @@ const tagsMap = {
   seconds: (tag, content) =>
     new Date().getSeconds().toString().padStart(2, '0'),
 
+  hr: (tag, content) => '-'.repeat(process.stdout.columns - 4),
   br: (tag, content) => '\n',
 };
+
+[
+  'date',
+  'time',
+  'day',
+  'days',
+  'month',
+  'months',
+  'year',
+  'years',
+  'hour',
+  'hours',
+  'minute',
+  'minutes',
+  'second',
+  'seconds',
+  'hr',
+  'br',
+].forEach((tag) => {
+  Object.defineProperty(tagsMap[tag], 'tagType', {
+    enumerable: false,
+    configurable: false,
+    writable: false,
+    value: 'single',
+  });
+});
+
 export default tagsMap;

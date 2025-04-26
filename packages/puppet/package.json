@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/puppet",
   "description": "Useful puppeteer utilities to help you in your daily tasks",
-  "version": "1.0.0-alpha.85",
+  "version": "1.0.0-alpha.89",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -23,9 +23,9 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.85",
-    "@lotsof/sugar": "^1.0.0-alpha.85",
-    "@lotsof/theme": "^1.0.0-alpha.85",
+    "@lotsof/config": "^1.0.0-alpha.89",
+    "@lotsof/sugar": "^1.0.0-alpha.89",
+    "@lotsof/theme": "^1.0.0-alpha.89",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

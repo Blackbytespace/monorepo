@@ -13,22 +13,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __LitElement from '@lotsof/lit-element';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import __AdvancedSelectElement from '@lotsof/advanced-select-element';
 import { __i18n } from '@lotsof/i18n';
-import __logoFactory from './assets/logoFactory.js';
+import '@lotsof/json-schema-form';
+import __LitElement from '@lotsof/lit-element';
+import { __getFormValues, __iframeAutoSize, __injectHtml, } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
+import { __hotkey } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
 import { __upperFirst } from '@lotsof/sugar/string';
-import { __getFormValues, __iframeAutoSize, __injectHtml, } from '@lotsof/sugar/dom';
-import '@lotsof/json-schema-form';
-import __logos from './logos.js';
-import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' with { type: 'json' };
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { __hotkey } from '@lotsof/sugar/keyboard';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import '../../src/css/FactoryElement.css';
+import '../../src/css/index.css';
+import __logoFactory from './assets/logoFactory.js';
+import __logos from './logos.js';
+import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' with { type: 'json' };
 export default class FactoryElement extends __LitElement {
     constructor() {
         super('s-factory');

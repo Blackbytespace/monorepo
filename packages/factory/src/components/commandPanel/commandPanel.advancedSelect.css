@@ -24,14 +24,14 @@
   .s-advanced-select_input {
     outline: none;
     display: block;
-    font-size: s-size(20);
+    font-size: s-size(form);
     width: 100%;
   }
 
   .s-advanced-select_prefix {
     font-family: monospace;
     opacity: 0.3;
-    margin-inline-end: s-space(10);
+    margin-inline-end: s-space(sm);
   }
 
   .s-advanced-select_dropdown {
@@ -46,12 +46,12 @@
   }
 
   .s-advanced-select_items {
-    padding: s-space(10);
+    padding: s-space(sm);
     @s-scrollbar (2px, s-color(accent), s-color(accent, --alpha 0.02));
   }
   .s-advanced-select_item {
-    padding: s-space(10) s-space(20);
-    font-size: s-size(20);
+    padding: s-space(sm) s-space(md);
+    font-size: s-size(form);
     white-space: nowrap;
     border-bottom: solid 1px s-color(main, border);
     @s-radius;

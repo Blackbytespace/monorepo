@@ -949,12 +949,7 @@ class Docmap implements TDocmap {
 
     result.push(`# ${docmapObj.name}`);
 
-    if (docmapObj.description) {
-      result.push('<div class="_description typo-lead typo-format">');
-      result.push(docmapObj.description);
-      result.push('</div>');
-    }
-
+    // metas (type, status, since, platform)
     if (docmapObj.status || docmapObj.since || docmapObj.platform) {
       result.push('<div class="_metas">');
     }
@@ -988,8 +983,17 @@ class Docmap implements TDocmap {
       result.push('</div>');
     }
 
+    // namespace
     result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
 
+    // description
+    if (docmapObj.description) {
+      result.push('<div class="_description typo-lead typo-format">');
+      result.push(docmapObj.description);
+      result.push('</div>');
+    }
+
+    // params
     if (docmapObj.param) {
       result.push('<div class="_params">');
       result.push('## Params');
@@ -1026,6 +1030,7 @@ class Docmap implements TDocmap {
       result.push('</div>');
     }
 
+    // return
     if (docmapObj.return) {
       result.push('<div class="_return">');
 
@@ -1052,6 +1057,7 @@ class Docmap implements TDocmap {
       result.push('</div>');
     }
 
+    // examples
     if (docmapObj.example?.length) {
       result.push('<div class="_examples">');
 
@@ -1065,6 +1071,7 @@ ${exampleObj.code}
       result.push('</div>');
     }
 
+    // settings
     if (docmapObj.setting) {
       result.push('<div class="_settings">');
       result.push('## Settings');
@@ -1091,6 +1098,7 @@ ${exampleObj.code}
       result.push('</div>');
     }
 
+    // todo
     if (docmapObj.todo) {
       result.push('<div class="_todo">');
 
@@ -1112,6 +1120,7 @@ ${exampleObj.code}
       result.push('</div>');
     }
 
+    // author
     if (docmapObj.author) {
       result.push('<div class="_author">');
 
@@ -1134,6 +1143,7 @@ ${exampleObj.code}
       result.push('</div>');
     }
 
+    // contributor
     if (docmapObj.contributor) {
       result.push('<div class="_contributors">');
 

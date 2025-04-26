@@ -686,11 +686,7 @@ class Docmap {
         result.push('---');
         result.push('<div class="docmap-mdx">');
         result.push(`# ${docmapObj.name}`);
-        if (docmapObj.description) {
-            result.push('<div class="_description typo-lead typo-format">');
-            result.push(docmapObj.description);
-            result.push('</div>');
-        }
+        // metas (type, status, since, platform)
         if (docmapObj.status || docmapObj.since || docmapObj.platform) {
             result.push('<div class="_metas">');
         }
@@ -711,7 +707,15 @@ class Docmap {
         if (docmapObj.status || docmapObj.since || docmapObj.platform) {
             result.push('</div>');
         }
+        // namespace
         result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
+        // description
+        if (docmapObj.description) {
+            result.push('<div class="_description typo-lead typo-format">');
+            result.push(docmapObj.description);
+            result.push('</div>');
+        }
+        // params
         if (docmapObj.param) {
             result.push('<div class="_params">');
             result.push('## Params');
@@ -733,6 +737,7 @@ class Docmap {
             result.push('</ol>');
             result.push('</div>');
         }
+        // return
         if (docmapObj.return) {
             result.push('<div class="_return">');
             result.push(`## Return`);
@@ -744,6 +749,7 @@ class Docmap {
             result.push('</ol>');
             result.push('</div>');
         }
+        // examples
         if ((_g = docmapObj.example) === null || _g === void 0 ? void 0 : _g.length) {
             result.push('<div class="_examples">');
             result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
@@ -754,6 +760,7 @@ ${exampleObj.code}
             });
             result.push('</div>');
         }
+        // settings
         if (docmapObj.setting) {
             result.push('<div class="_settings">');
             result.push('## Settings');
@@ -770,6 +777,7 @@ ${exampleObj.code}
             result.push('</ol>');
             result.push('</div>');
         }
+        // todo
         if (docmapObj.todo) {
             result.push('<div class="_todo">');
             result.push(`## Todo`);
@@ -785,6 +793,7 @@ ${exampleObj.code}
             result.push('</ul>');
             result.push('</div>');
         }
+        // author
         if (docmapObj.author) {
             result.push('<div class="_author">');
             result.push('## Author');
@@ -801,6 +810,7 @@ ${exampleObj.code}
             result.push('</ul>');
             result.push('</div>');
         }
+        // contributor
         if (docmapObj.contributor) {
             result.push('<div class="_contributors">');
             result.push(`## Contributor${docmapObj.contributor.length > 1 ? 's' : ''}`);

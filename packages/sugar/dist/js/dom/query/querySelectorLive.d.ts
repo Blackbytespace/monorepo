@@ -16,10 +16,10 @@ import type { TWhenTrigger } from '../when/when.js';
  * @feature         Callback support
  * @feature         Monitor added nodes and existing nodes that have class and id attributes updated
  *
- * @param	    {String} 		selector 		The css selector that we are interested in
- * @param 	    {Function} 		cb 				The function to call with the newly added node
- * @param 	    {Object} 		[settings={}] 	An optional settings object to specify things like the rootNode to monitor, etc...
- * @return      {SPromise<HTMLElement>}         An SPromise instance on which to listen for nodes using the "node" event
+ * @param	      {String} 		                    selector 		      The css selector that we are interested in
+ * @param 	    {Function} 		                  cb 				        The function to call with the newly added node
+ * @param 	    {TQuerySelectorLiveSettings} 		[settings={}] 	  An optional settings object to specify things like the rootNode to monitor, etc...
+ * @return      {SPromise<HTMLElement>}                           An SPromise instance on which to listen for nodes using the "node" event
  *
  * @setting         {HTMLElement}           [rootNode=document]         The root node from where to observe childs
  * @setting         {Boolean}              [once=true]                If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom

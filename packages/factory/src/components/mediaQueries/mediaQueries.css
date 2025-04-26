@@ -2,7 +2,7 @@
 
 .s-factory_media-queries {
   .s-factory_media-queries-list {
-    gap: s-space(10);
+    gap: s-space(sm);
   }
   .s-factory_media-queries-list-item {
     background: s-color(accent, --alpha 0.1);
@@ -24,7 +24,7 @@
   }
   .s-factory_media-queries-list-item-name {
     text-transform: uppercase;
-    font-size: s-size(10);
+    font-size: s-size(menu);
     letter-spacing: 0.05em;
   }
 }

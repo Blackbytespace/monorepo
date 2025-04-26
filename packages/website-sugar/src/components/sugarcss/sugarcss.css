@@ -1,16 +1,18 @@
 @import '@lotsof/website-common/src/components/sugarcss/sugarcss.css';
 
-.theme-light {
-  --s-color-main: #3c444b;
-  --s-color-accent: #2ca0ff;
-  --s-color-complementary: #00ffcc;
-  --s-color-current: #2ca0ff;
-
+:root {
   --s-color-success: #91ff00;
   --s-color-warning: #ffd500;
   --s-color-error: #ff003b;
   --s-color-info: #00ffff;
   --s-color-php: #777cb5;
+}
+
+.theme-light {
+  --s-color-main: #3c444b;
+  --s-color-accent: #2ca0ff;
+  --s-color-complementary: #00ffcc;
+  --s-color-current: #2ca0ff;
 
   --s-shade-text: --lightness 50;
 

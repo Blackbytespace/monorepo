@@ -5,7 +5,7 @@
   border-radius: s-radius();
   border: 1px solid s-color(current);
   color: s-color(current, --lighten 50);
-  font-size: s-size(16);
+  font-size: s-size(button);
   @s-transition (fast);
   @s-radius;
 

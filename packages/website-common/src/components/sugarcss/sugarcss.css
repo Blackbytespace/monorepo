@@ -1,6 +1,6 @@
 @import '@lotsof/sugarcss/src/css/sugarcss.css';
 
-body {
+:root {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
 

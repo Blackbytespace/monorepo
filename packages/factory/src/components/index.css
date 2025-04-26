@@ -1,5 +1,5 @@
-@import './sugarcss/sugarcss.css';
-@import './config/config.css';
+@import './settings/sugarcss.css';
+@import './settings/settings.css';
 
 @import './bottombar/bottombar.css';
 @import './button/button.css';

@@ -19,7 +19,7 @@
 
   .s-factory_components-list-item-engine {
     svg {
-      font-size: 20px;
+      font-size: s-size(menu);
       width: 1em;
       height: 1em;
     }

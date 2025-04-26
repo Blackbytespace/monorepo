@@ -1,21 +1,20 @@
-export default interface IImage {
-    src: string;
-    sizes?: Record<string, string>;
-    title?: string;
+import type { TImgix } from '../imgix/imgix.type.js';
+export type TImage = {
+    src?: string;
     alt?: string;
-    lazy?: boolean;
-    class?: string;
-    attrs?: Record<string, string>;
-}
-export default class Image implements IImage {
-    src: string;
     title?: string;
-    alt?: string;
+    srcset?: string | string[];
+    sizes?: string | string[];
     lazy?: boolean;
+    width?: number;
+    height?: number;
+    priority?: 'low' | 'auto' | 'high';
+    imgix?: TImgix;
+    focalPoint?: {
+        x?: number;
+        y?: number;
+    };
+    id?: string;
     class?: string;
-    attrs?: Record<string, string>;
-    constructor(image?: IImage);
-    toElement(): HTMLImageElement;
-    toHtml(): string;
-    toJsx(): JSX.Element;
-}
+    attrs?: Record<string, any>;
+};

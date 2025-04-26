@@ -2,9 +2,9 @@
 
 .s-factory_bottombar {
   background: s-color(main, background);
-  padding: s-space(10);
+  padding: s-space(sm);
   box-shadow: var(--s-factory-depth);
-  gap: s-space(20);
+  gap: s-space(md);
   @s-radius;
   @s-transition();
 

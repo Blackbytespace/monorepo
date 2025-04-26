@@ -4,30 +4,41 @@ namespace Lotsof\Types;
 
 class LinkType extends BaseType
 {
-    public static function mock(string $href = null, string $text = null, string $title = null, string $target = null, string $class = '_link', bool $noopener = null, bool $noreferrer = null, string $ariaLabel = null): LinkType
-    {
+    public static function mock(
+        ?string $href = null,
+        ?string $text = null,
+        ?string $title = null,
+        ?string $target = null,
+        ?string $rel = null,
+        ?string $ariaLabel = null,
+        ?string $id = null,
+        ?string $class = null,
+    ): LinkType {
         $faker = \Faker\Factory::create();
 
         if ($href === null) {
-            $href = $faker->url;
+            $href = $faker->url();
         }
         if ($text === null) {
-            $text = $faker->words(random_int(1, 3), true);
+            $text = $faker->sentence();
         }
-        if ($title === null && $faker->boolean()) {
+        if ($title === null) {
             $title = $faker->sentence();
         }
         if ($target === null) {
-            $target = \Sugar\Array\pickRandom(['_self', '_blank']);
+            $target = $faker->randomElement(['_self', '_blank', '_parent', '_top']);
         }
-        if ($noopener === null && $faker->boolean()) {
-            $noopener = $faker->boolean();
+        if ($rel === null) {
+            $rel = $faker->randomElement(['noopener', 'noreferrer', 'noopener noreferrer']);
         }
-        if ($noreferrer === null && $faker->boolean()) {
-            $noreferrer = $faker->boolean();
-        }
-        if ($ariaLabel === null && $faker->boolean()) {
+        if ($ariaLabel === null) {
             $ariaLabel = $faker->sentence();
+        }
+        if ($id === null) {
+            $id = $faker->uuid();
+        }
+        if ($class === null) {
+            $class = $faker->word();
         }
 
         $link = new static(
@@ -35,10 +46,10 @@ class LinkType extends BaseType
             text: $text,
             title: $title,
             target: $target,
-            class: $class,
-            noopener: $noopener,
-            noreferrer: $noreferrer,
-            ariaLabel: $ariaLabel
+            rel: $rel,
+            ariaLabel: $ariaLabel,
+            id: $id,
+            class: $class
         );
         return $link;
     }
@@ -47,46 +58,36 @@ class LinkType extends BaseType
     protected ?string $text;
     protected ?string $title;
     protected ?string $target;
+    protected ?string $rel;
+    protected ?string $ariaLabel;
+    protected ?string $id;
     protected ?string $class;
-    protected ?bool $noopener = null;
-    protected ?bool $noreferrer = null;
-    protected ?string $ariaLabel = null;
 
-    public function __construct(string $href = null, string $text = null, string $title = null, string $target = null, string $class = '_link', bool $noopener = null, bool $noreferrer = null, string $ariaLabel = null)
-    {
+    public function __construct(
+        ?string $href = null,
+        ?string $text = null,
+        ?string $title = null,
+        ?string $target = null,
+        ?string $rel = 'noopener noreferrer',
+        ?string $ariaLabel = null,
+        ?string $id = null,
+        ?string $class = null,
+    ) {
+        parent::__construct();
         $this->href = $href;
         $this->text = $text;
         $this->title = $title;
         $this->target = $target;
+        $this->rel = $rel;
+        $this->ariaLabel = $ariaLabel;
+        $this->id = $id;
         $this->class = $class;
 
         if ($this->title === null && $this->text !== null) {
             $this->title = $this->text;
         }
-        if ($this->noopener === null && $this->target === '_blank') {
-            $this->noopener = true;
-        }
-        if ($this->noreferrer === null && $this->target === '_blank') {
-            $this->noreferrer = true;
-        }
         if ($this->ariaLabel === null && $this->title !== null) {
             $this->ariaLabel = $this->title;
         }
     }
-
-    public function rel(): string
-    {
-        return trim($this->noopener() . ' ' . $this->noreferrer());
-    }
-
-    public function noreferrer(): string
-    {
-        return $this->noreferrer ? 'noreferrer' : '';
-    }
-
-    public function noopener(): string
-    {
-        return $this->noopener ? 'noopener' : '';
-    }
-
 }

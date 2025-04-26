@@ -9,7 +9,7 @@
 
 .form-input,
 .form-select {
-  padding: s-space(10) s-space(20);
+  padding: s-space(sm) s-space(md);
   width: 100%;
 }
 
@@ -20,7 +20,7 @@
   }
   --thumb-position: 0%;
 
-  font-size: 1rem;
+  font-size: s-size(form);
   margin-block: 0.7em 0.9em;
   padding: var(--track-padding);
   inline-size: var(--track-size);

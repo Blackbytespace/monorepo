@@ -3,8 +3,8 @@
 @import './commandPanel.component.css';
 
 .s-factory_command-panel {
-  gap: s-space(20);
-  padding: s-space(10);
+  gap: s-space(md);
+  padding: s-space(sm);
   background: s-color(main, background);
   box-shadow: var(--s-factory-depth);
   width: clamp(250px, 25%, 400px);
@@ -12,6 +12,6 @@
   @s-radius;
 
   * {
-    font-size: s-size(16) !important;
+    font-size: s-size(form) !important;
   }
 }

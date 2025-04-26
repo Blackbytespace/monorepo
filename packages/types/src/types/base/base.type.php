@@ -5,20 +5,16 @@ namespace Lotsof\Types;
 class BaseType implements \ArrayAccess
 {
 
-    protected string $id = '';
+    protected string $_id = '';
     private $_container = [];
 
-    public function __construct(?string $id = null)
+    public function __construct()
     {
-        if ($id === null) {
-            $classInfo = new \ReflectionClass($this);
-            $classFullName = $classInfo->getName();
-            $classNameParts = explode('\\', $classFullName);
-            $className = end($classNameParts);
-            $this->id = strtolower($className) . '-' . uniqid();
-        } else {
-            $this->id = $id;
-        }
+        $classInfo = new \ReflectionClass($this);
+        $classFullName = $classInfo->getName();
+        $classNameParts = explode('\\', $classFullName);
+        $className = end($classNameParts);
+        $this->_id = strtolower($className) . '-' . uniqid();
     }
 
     public function validate(): array
@@ -117,6 +113,13 @@ class BaseType implements \ArrayAccess
     {
         $vars = get_object_vars($this);
         foreach ($vars as $key => $value) {
+
+            // remove nullish values
+            if ($value === null || $value === '') {
+                unset($vars[$key]);
+                continue;
+            }
+
             // private _ properties
             if (str_starts_with($key, '_')) {
                 unset($vars[$key]);

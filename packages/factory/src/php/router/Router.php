@@ -58,6 +58,6 @@ class Router
                 }
             }
         }
-        throw new \Exception('Route not found');
+        throw new \Exception('Route "' . $url . '" not found');
     }
 }

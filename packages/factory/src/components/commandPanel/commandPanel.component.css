@@ -1,6 +1,6 @@
 .s-factory_command-panel-component {
   display: flex;
-  gap: s-space(20);
+  gap: s-space(md);
   align-items: center;
 
   .s-factory_command-panel-component-name {

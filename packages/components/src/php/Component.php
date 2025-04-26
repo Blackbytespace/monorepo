@@ -163,6 +163,36 @@ class Component
         return $supportedEngines;
     }
 
+    public function getPhpCompatibleMockPath(string $engine): string
+    {
+        $mocks = $this->getMocks();
+        if (isset($mocks[$engine])) {
+            foreach ($mocks[$engine] as $mockPath) {
+                $mockExt = pathinfo($mockPath, PATHINFO_EXTENSION);
+                if (!in_array($mockExt, ['json', 'php'])) {
+                    continue;
+                }
+                return $mockPath;
+            }
+        }
+        return '';
+    }
+
+    public function getJsCompatibleMockPath(string $engine): string
+    {
+        $mocks = $this->getMocks();
+        if (isset($mocks[$engine])) {
+            foreach ($mocks[$engine] as $mockPath) {
+                $mockExt = pathinfo($mockPath, PATHINFO_EXTENSION);
+                if (!in_array($mockExt, ['json', 'js', 'ts'])) {
+                    continue;
+                }
+                return $mockPath;
+            }
+        }
+        return '';
+    }
+
     public function getMocks(): array
     {
         // build a list of supported engines extensions for glob
@@ -179,7 +209,12 @@ class Component
         foreach ($files as $filePath) {
             foreach (FACTORY_SUPPORTED_MOCKS_BY_ENGINES as $engine => $extensions) {
                 if (preg_match('/(' . implode('|', $extensions) . ')$/', $filePath)) {
-                    $supportedEngines[$engine] = $filePath;
+                    if (!isset($supportedEngines[$engine])) {
+                        $supportedEngines[$engine] = [];
+                    }
+                    if (!in_array($filePath, $supportedEngines[$engine])) {
+                        $supportedEngines[$engine][] = $filePath;
+                    }
                 }
             }
         }

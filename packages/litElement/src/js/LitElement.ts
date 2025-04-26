@@ -420,26 +420,26 @@ export default class LitElement extends __LitElement {
     return $elm;
   }
 
-  /**
-   * @name           addEventListener
-   * @type            Function
-   *
-   * This method allows you to add an event listener on the component itself.
-   * It will automatically remove the listener when the component is disconnected and added again when connected.
-   *
-   * @param           {String}            type            The event type to listen for
-   * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
-   * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
-   *
-   * @since           1.0.0
-   */
-  addEventListener(
-    type: string,
-    listener: EventListenerOrEventListenerObject,
-    options?: boolean | AddEventListenerOptions,
-  ): void {
-    this.addEventListenerOn(this as HTMLElement, type, listener, options);
-  }
+  // /**
+  //  * @name           addEventListener
+  //  * @type            Function
+  //  *
+  //  * This method allows you to add an event listener on the component itself.
+  //  * It will automatically remove the listener when the component is disconnected and added again when connected.
+  //  *
+  //  * @param           {String}            type            The event type to listen for
+  //  * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
+  //  * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
+  //  *
+  //  * @since           1.0.0
+  //  */
+  // addEventListener(
+  //   type: string,
+  //   listener: EventListenerOrEventListenerObject,
+  //   options?: boolean | AddEventListenerOptions,
+  // ): void {
+  //   this.addEventListenerOn(this as HTMLElement, type, listener, options);
+  // }
 
   /**
    * @name           addEventListenerOn
@@ -477,7 +477,9 @@ export default class LitElement extends __LitElement {
     });
 
     // register the event listener on the element
-    $elm.addEventListener(type, listener, options);
+    if ($elm !== this) {
+      $elm.addEventListener(type, listener, options);
+    }
 
     // set the listeners stack into the map
     this._listenersMap.set($elm, stack);
@@ -689,7 +691,7 @@ export default class LitElement extends __LitElement {
 
       // wait
       if (!when.includes('direct')) {
-        await __when(this, when);
+        await __when(this as HTMLElement, when);
       } else {
         await __wait();
       }
@@ -725,6 +727,7 @@ export default class LitElement extends __LitElement {
    *
    * @since     1.0.0
    */
+  _LitElementMounted = false;
   isMounted() {
     return this._LitElementMounted || this.hasAttribute('mounted');
   }

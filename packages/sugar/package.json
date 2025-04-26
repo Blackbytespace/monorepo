@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
-  "version": "1.0.0-alpha.85",
+  "version": "1.0.0-alpha.89",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -195,6 +195,7 @@
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
+    "has-ansi": "^6.0.0",
     "hash-sum": "^2.0.0",
     "hasha": "^6.0.0",
     "html-entities": "^2.5.2",

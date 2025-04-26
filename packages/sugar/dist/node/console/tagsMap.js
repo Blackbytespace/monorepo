@@ -64,6 +64,7 @@ const tagsMap = {
     minutes: (tag, content) => new Date().getMinutes().toString().padStart(2, '0'),
     second: (tag, content) => new Date().getSeconds().toString().padStart(2, '0'),
     seconds: (tag, content) => new Date().getSeconds().toString().padStart(2, '0'),
+    hr: (tag, content) => '-'.repeat(process.stdout.columns - 4),
     br: (tag, content) => '\n',
 };
 export default tagsMap;

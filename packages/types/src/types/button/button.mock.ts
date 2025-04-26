@@ -1,14 +1,17 @@
-import type { TButton } from './button.type.js';
-import __ButtonType from './button.type.js';
-
-import __linkMock from '../link/link.mock.js';
-
+import { faker } from '@faker-js/faker';
 import { __pickRandom } from '@lotsof/sugar/array';
+import { __deepMerge } from '@lotsof/sugar/object';
+import __linkMock from '../link/link.mock.js';
+import type { TButton } from './button.type.js';
 
-export default function __buttonMock(props: TButton = {}): __ButtonType {
-  return new __ButtonType({
-    style: __pickRandom(['solid', 'outline', 'text']),
-    link: __linkMock(),
-    ...props,
-  });
+export default function __buttonMock(props: Partial<TButton> = {}): TButton {
+  return __deepMerge([
+    {
+      style: __pickRandom(['solid', 'outline', 'text']),
+      link: __linkMock(),
+      id: faker.lorem.slug(),
+      class: faker.lorem.slug(),
+    },
+    props,
+  ]);
 }

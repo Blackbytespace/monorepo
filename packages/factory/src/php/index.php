@@ -78,20 +78,10 @@ $router->addRoute('POST', '/api/render/:id/:engine', function (string $id, ?stri
 
     // preparing mock data
     if (!$component->hasValues()) {
-        switch ($engine) {
-            case 'blade':
-            case 'twig':
-            case 'component':
-                if (isset($mocks[$engine])) {
-                    $values = require $mocks[$engine];
-                    $component->setValues($values);
-                } else {
-                    throw new \Exception('No mock data found for the engine "' . $engine . '" on the component "' . $id . '".');
-                }
-                break;
-            case 'react':
-                // $data = [];
-                break;
+        $mockPath = $component->getPhpCompatibleMockPath($engine);
+        if ($mockPath) {
+            $mockData = require $mockPath;
+            $component->setValues($mockData);
         }
     }
 
@@ -106,6 +96,9 @@ $router->addRoute('POST', '/api/render/:id/:engine', function (string $id, ?stri
             break;
         case 'react':
             $html = \Factory\Renderers\react($component, $config);
+            break;
+        case 'vue':
+            $html = \Factory\Renderers\vue($component, $config);
             break;
     }
 

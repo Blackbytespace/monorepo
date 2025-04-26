@@ -96,6 +96,8 @@
 }
 .typo-ol,
 .typo-format ol {
+  counter-reset: item;
+
   > li {
     &:before {
       content: counter(item) '.';

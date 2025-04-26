@@ -1,15 +1,9 @@
 import __LitElement from '@lotsof/lit-element';
-
+import { __deepMap, __get, __set } from '@lotsof/sugar/object';
 import { Draft, Draft2019, JsonError } from 'json-schema-library';
-
-// import '../components/wysiwygWidget/wysiwygWidget.js';
-
 import { html, nothing, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-
-import { __deepMap, __get, __set } from '@lotsof/sugar/object';
-
 import '../../src/css/JsonSchemaFormElement.bare.css';
 import {
   TJsonSchemaFormUpdateObject,
@@ -367,7 +361,7 @@ export default class JsonSchemaFormElement extends __LitElement {
         return html`
           <ul class=${this.cls('_values-object')}>
             ${Object.entries(schema.properties).map(([key, value]) => {
-              if (value.type === 'object') {
+              if ((<any>value).type === 'object') {
                 return html`
                   <li class=${this.cls('_values-object-item')}>
                     <header class="${this.cls('_values-object-item-header')}">

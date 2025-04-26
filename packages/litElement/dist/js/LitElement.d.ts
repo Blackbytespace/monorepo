@@ -158,20 +158,6 @@ export default class LitElement extends __LitElement {
     log(...args: any[]): void;
     _getDocumentFromElement($elm: any): any;
     /**
-     * @name           addEventListener
-     * @type            Function
-     *
-     * This method allows you to add an event listener on the component itself.
-     * It will automatically remove the listener when the component is disconnected and added again when connected.
-     *
-     * @param           {String}            type            The event type to listen for
-     * @param           {EventListenerOrEventListenerObject}          listener        The listener to call when the event is triggered
-     * @param           {boolean|AddEventListenerOptions}          [options]       Some options to pass to the addEventListener method
-     *
-     * @since           1.0.0
-     */
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    /**
      * @name           addEventListenerOn
      * @type            Function
      *
@@ -262,7 +248,8 @@ export default class LitElement extends __LitElement {
      *
      * @since     1.0.0
      */
-    isMounted(): any;
+    _LitElementMounted: boolean;
+    isMounted(): boolean;
     /**
      * @name            isInViewport
      * @type            Function

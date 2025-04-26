@@ -19,13 +19,14 @@ interface Props {
 }
 
 import { fade } from 'astro:transitions';
-
 import Layout from '../layout/layout.astro';
 import LoHeader from '../header/header.astro';
 import LoSearch from '../search/search.astro';
 import LoTheme from '../theme/theme.astro';
-
 import './main';
+import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo-picto.svg?raw';
+
+const { title, version, license } = Astro.props;
 ---
 
 <script>
@@ -62,6 +63,27 @@ import './main';
         <div class="markdown typo-format typo-rhythm">
           <slot />
         </div>
+        <footer class="main_footer">
+          <div class="main_footer-brand">
+            <a href="/" title={title}>
+              <div class="main_footer-logo">
+                <Fragment set:html={__logoLotsof} />
+              </div>
+              <h1 class="main_footer-title">{title}</h1>
+            </a>
+          </div>
+          <div class="main_footer-content">
+            <p class="main_footer-version">v{version}</p>
+            <a
+              class="main_footer-license"
+              href={license.url}
+              target="_blank"
+              title={license.name}
+            >
+              {license.name}
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
     <div class="main_illustration"></div>

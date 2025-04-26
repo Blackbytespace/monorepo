@@ -4,7 +4,7 @@
   width: clamp(200px, 50%, 400px);
   background: s-color(main, background);
   box-shadow: var(--s-factory-depth);
-  padding: s-space(20);
+  padding: s-space(md);
   @s-radius;
 
   &:before {
