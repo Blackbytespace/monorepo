@@ -6,8 +6,7 @@ import { __isInIframe } from '@lotsof/sugar/is';
 import { __hotkey, type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import '../../src/css/FactoryElement.css';
-import '../../src/css/index.css';
+import '../../src/css/CarpenterElement.css';
 import {
   TCarpenterComponent,
   TCarpenterMediaQuery,
@@ -39,6 +38,9 @@ export default class CarpenterElement extends __LitElement {
 
   @property({ type: String })
   public mediaQuery: string = 'desktop';
+
+  @property({ type: Object })
+  public component?: TCarpenterComponent;
 
   @property({ type: String })
   public darkModeClass: string = '-dark';
@@ -141,9 +143,6 @@ export default class CarpenterElement extends __LitElement {
       return;
     }
 
-    // fetch the specs
-    // await this._fetchSpecs();
-
     // load the environment by
     // creating the iframe etc...
     await this._initEnvironment();
@@ -151,42 +150,9 @@ export default class CarpenterElement extends __LitElement {
     // init the listeners like escape key, etc...
     this._initListeners(document);
     this._initListeners(this.$iframeDocument as Document);
-
-    // // render component if the current component is set
-    // if (this.currentComponentId) {
-    //   this._updateComponent(this.currentComponentId, this.currentEngine);
-    // }
-
-    // restore the ui mode (light/dark)
-    this._restoreUiMode();
   }
 
   private _initListeners(context: Document): void {
-    // popstate
-    window.addEventListener('popstate', (e) => {
-      if (e.state.id) {
-        this._currentComponentId = e.state.id;
-      }
-    });
-
-    // show/hide UI
-    context.addEventListener('keydown', (e) => {
-      switch (true) {
-        case e.key === '§':
-          this.classList.add('-show-ui');
-          break;
-      }
-    });
-    context.addEventListener('keyup', (e) => {
-      switch (true) {
-        case e.key === '§':
-          this.classList.remove('-show-ui');
-          e.preventDefault();
-          (<any>document.activeElement)?.blur();
-          break;
-      }
-    });
-
     const hotkeySettings: Partial<THotkeySettings> = {
       ctx: context,
     };
@@ -204,26 +170,12 @@ export default class CarpenterElement extends __LitElement {
       },
       hotkeySettings,
     );
-    // __hotkey(
-    //   'cmd+r',
-    //   (e) => {
-    //     this.randomizeComponentValues(this.currentComponentId as string);
-    //   },
-    //   hotkeySettings,
-    // );
-    __hotkey(
-      'cmd+m',
-      (e) => {
-        this.toggleUiMode();
-      },
-      hotkeySettings,
-    );
   }
 
   private _initEnvironment(): void {
     this.log(`Init the carpenter environment...`);
     // move the component into the body
-    document.body.appendChild(this);
+    // document.body.appendChild(this);
 
     // create the canvas
     const $canvas = document.createElement('div');
@@ -292,9 +244,9 @@ export default class CarpenterElement extends __LitElement {
     // empty page
     document
       .querySelectorAll(
-        `body > *:not(${this.tagName}):not(script):not(.${this.cls(
-          '_canvas',
-        )})`,
+        `body > *:not(${
+          this.tagName
+        }):not(s-factory):not(script):not(.${this.cls('_canvas')})`,
       )
       .forEach(($el) => {
         $el.remove();
@@ -322,120 +274,6 @@ export default class CarpenterElement extends __LitElement {
     );
   }
 
-  // private async _updateComponent(id: string, engine?: string): Promise<void> {
-  //   const component: TCarpenterComponent = this.specs.components[id];
-  //   if (!component) {
-  //     return;
-  //   }
-
-  //   let url = `/api/render/${id}`;
-  //   if (engine) {
-  //     url += `/${engine}`;
-  //   }
-  //   const request = await fetch(url, {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         values: this.currentComponent?.values ?? {},
-  //       }),
-  //     }),
-  //     json = await request.json();
-  //   component.values = json.values;
-
-  //   this._setIframeContent(json.html);
-
-  //   this.requestUpdate();
-  // }
-
-  // public getComponentById(id: string): TCarpenterComponent | undefined {
-  //   return this.specs.components[id];
-  // }
-
-  // public selectComponent(id: string, engine?: string): void {
-  //   // compose the url
-  //   let url = `/component/${id}`;
-  //   if (engine) {
-  //     url += `/${engine}`;
-  //   }
-  //   // maintain the history
-  //   history.pushState({ id, engine }, '', url);
-  //   // set the current component
-  //   this._currentComponentId = id;
-  //   // render the new component
-  //   this._updateComponent(id, engine);
-  // }
-
-  // public setComponentValues(id: string, values: any): void {
-  //   const component = this.getComponentById(id);
-  //   if (!component) {
-  //     return;
-  //   }
-  //   component.values = values;
-  //   this._updateComponent(component.name, this.currentEngine);
-  // }
-
-  public toggleUiMode(): void {
-    this.setUiMode(this.state.mode === 'dark' ? 'light' : 'dark');
-  }
-
-  private _restoreUiMode(): void {
-    if (this.state.mode) {
-      this.setUiMode(this.state.mode);
-    }
-  }
-
-  public setUiMode(mode: 'light' | 'dark'): void {
-    this.setState({ mode });
-    if (mode === 'light') {
-      document.body.classList.remove('-dark');
-    } else {
-      document.body.classList.add('-dark');
-    }
-  }
-
-  // public randomizeComponentValues(id: string): void {
-  //   const component = this.getComponentById(id);
-  //   if (!component) {
-  //     return;
-  //   }
-  //   // update the component with empty values
-  //   component.values = {};
-  //   this._updateComponent(component.name, this.currentEngine);
-  // }
-
-  // private async _saveComponentValues(
-  //   component: TCarpenterComponent,
-  //   name: String,
-  // ): Promise<void> {
-  //   // post the new values to the server
-  //   const request = await fetch(`/api/saveValues/${component.name}`, {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         name,
-  //         values: component.values,
-  //       }),
-  //     }),
-  //     json = await request.json();
-
-  //   if (json.errors) {
-  //     console.error(json.errors);
-  //     return;
-  //   }
-
-  //   // update specs
-  //   await this._fetchSpecs();
-
-  //   // remove the popin
-  //   this._currentAction = null;
-
-  //   // @TODO   send a notification
-  //   this._sendNotification({
-  //     id: 'valuesSaved',
-  //     message: `Values saved as ${name}`,
-  //     type: 'success',
-  //     timeout: 2000,
-  //   });
-  // }
-
   public selectMediaQuery(name: string): void {
     this._currentMediaQuery = name;
   }
@@ -450,19 +288,6 @@ export default class CarpenterElement extends __LitElement {
   //     this.currentEngine,
   //   );
   // }
-
-  private async _sendNotification(
-    notification: TCarpenterNotification,
-  ): Promise<void> {
-    this._notifications.push(notification);
-    if (notification.timeout) {
-      setTimeout(() => {
-        this._notifications = this._notifications.filter(
-          (n) => n !== notification,
-        );
-      }, notification.timeout);
-    }
-  }
 
   private _renderMediaQueries(): any {
     return html`<nav class="${this.cls('_media-queries')}">
@@ -488,29 +313,9 @@ export default class CarpenterElement extends __LitElement {
     </nav>`;
   }
 
-  private _renderMode(): any {
-    return html`
-      <button
-        class="${this.cls('_bottombar-mode')} ${this.state.mode === 'dark'
-          ? '-active'
-          : ''}"
-        @pointerup=${() => {
-          this.toggleUiMode();
-        }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-          <path
-            d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
-          />
-        </svg>
-      </button>
-    `;
-  }
-
   private _renderBottombar(): any {
     return html`<nav class="${this.cls('_bottombar')}">
-      ${this._renderMediaQueries()} ${this._renderMode()}
+      ${this._renderMediaQueries()}
     </nav>`;
   }
 
@@ -540,31 +345,37 @@ export default class CarpenterElement extends __LitElement {
   }
 
   private _renderEditor(): any {
-    // .schema=${this.currentComponent?.schema}
-    // .values=${this.currentComponent?.values ?? {}}
+    if (!this.component) {
+      return;
+    }
 
     return html`<div class="${this.cls('_editor')}">
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
-          id="s-factory-json-schema-form"
+          id="s-carpenter-json-schema-form"
           @sJsonSchemaForm.update=${(e: CustomEvent) => {
             // this._applyUpdate({
             //   ...e.detail.update,
             //   component: this._currentComponent,
             // });
           }}
-          id="s-factory-json-schema-form"
-          name="s-factory-json-schema-form"
+          id="s-carpenter-json-schema-form"
+          name="s-carpenter-json-schema-form"
           .buttonClasses=${true}
           .formClasses=${true}
           .verbose=${this.verbose}
+          .schema=${this.component.schema}
+          .values=${this.component.values ?? {}}
         ></s-json-schema-form>
       </div>
     </div>`;
   }
 
   public render() {
-    return html` ${this._renderBottombar()} ${this._renderNotifications()} `;
+    return html`
+      ${this._renderEditor()} ${this._renderBottombar()}
+      ${this._renderNotifications()}
+    `;
   }
 }
 

@@ -24,12 +24,16 @@ export type TCarpenterNotification = {
     type: 'success' | 'info' | 'warning' | 'error';
     timeout: number;
 };
+export type TCarpenterComponentAsset = {
+    url: string;
+};
 export type TCarpenterComponent = {
     id: string;
     name: string;
     description?: string;
     schema: JSONSchema7;
     values: any;
+    assets?: TCarpenterComponentAsset[];
     savedValues: any;
     $component: Element;
 };

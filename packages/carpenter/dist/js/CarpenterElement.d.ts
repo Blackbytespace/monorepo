@@ -1,12 +1,12 @@
 import '@fontsource/poppins';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import '../../src/css/FactoryElement.css';
-import '../../src/css/index.css';
+import '../../src/css/CarpenterElement.css';
 import { TCarpenterComponent, TCarpenterMediaQuery, TCarpenterNotification, TCarpenterState } from '../shared/carpenter.types.js';
 export default class CarpenterElement extends __LitElement {
     mediaQueries: Record<string, TCarpenterMediaQuery>;
     mediaQuery: string;
+    component?: TCarpenterComponent;
     darkModeClass: string;
     _notifications: TCarpenterNotification[];
     _currentComponent: TCarpenterComponent | null;
@@ -26,13 +26,8 @@ export default class CarpenterElement extends __LitElement {
     private _initEnvironment;
     private _setIframeContent;
     private _updateIframeSize;
-    toggleUiMode(): void;
-    private _restoreUiMode;
-    setUiMode(mode: 'light' | 'dark'): void;
     selectMediaQuery(name: string): void;
-    private _sendNotification;
     private _renderMediaQueries;
-    private _renderMode;
     private _renderBottombar;
     private _renderNotifications;
     private _renderEditor;

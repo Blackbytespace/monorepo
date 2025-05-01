@@ -7,7 +7,11 @@ import '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import { __getFormValues } from '@lotsof/sugar/dom';
+import {
+  __getFormValues,
+  __iframeAutoSize,
+  __injectHtml,
+} from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __hotkey, type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
@@ -20,6 +24,7 @@ import '../../src/css/index.css';
 import {
   TFactoryComponent,
   TFactoryComponentJson,
+  TFactoryMediaQuery,
   TFactoryNotification,
   TFactorySpecs,
   TFactoryState,
@@ -70,10 +75,16 @@ export default class FactoryElement extends __LitElement {
   public _currentComponentId: string = '';
 
   @state()
+  public _currentMediaQuery: string = '';
+
+  @state()
   public _currentAction: 'saveValues' | null = null;
 
   @state()
   protected _state: TFactoryState = {};
+
+  private _$iframe?: HTMLIFrameElement;
+  private _$canvas?: HTMLDivElement;
 
   constructor() {
     super('s-factory');
@@ -103,7 +114,7 @@ export default class FactoryElement extends __LitElement {
   }
 
   public get currentComponent(): TFactoryComponentJson | undefined {
-    return this.specs?.components?.[this.currentComponentId as string];
+    return this.specs.components[this.currentComponentId as string];
   }
 
   public get currentComponentId(): string | undefined {
@@ -111,32 +122,76 @@ export default class FactoryElement extends __LitElement {
     return matches?.[1];
   }
 
-  // public update(changedProperties: any): void {
-  //   super.update(changedProperties);
+  public get currentMediaQuery(): TFactoryMediaQuery | undefined {
+    return this.mediaQueries[this._currentMediaQuery];
+  }
 
-  //   // // update the media query
-  //   // if (changedProperties.has('_currentMediaQuery')) {
-  //   //   if (this.currentMediaQuery?.max !== -1) {
-  //   //     this._$canvas?.style.setProperty(
-  //   //       '--s-factory-canvas-width',
-  //   //       this.currentMediaQuery?.max + 'px',
-  //   //     );
-  //   //   } else {
-  //   //     this._$canvas?.style.removeProperty('--s-factory-canvas-width');
-  //   //   }
-  //   //   setTimeout(() => {
-  //   //     this._updateIframeSize();
-  //   //   }, 300);
-  //   // }
-  // }
+  public update(changedProperties: any): void {
+    super.update(changedProperties);
+
+    // // update the media query
+    // if (changedProperties.has('_currentMediaQuery')) {
+    //   if (this.currentMediaQuery?.max !== -1) {
+    //     this._$canvas?.style.setProperty(
+    //       '--s-factory-canvas-width',
+    //       this.currentMediaQuery?.max + 'px',
+    //     );
+    //   } else {
+    //     this._$canvas?.style.removeProperty('--s-factory-canvas-width');
+    //   }
+    //   setTimeout(() => {
+    //     this._updateIframeSize();
+    //   }, 300);
+    // }
+  }
+
+  private _updateMediaQueries(): void {
+    // get the computed style of the document (iframe)
+    const style = this._$iframe?.contentWindow?.getComputedStyle(
+      this.$iframeDocument?.body as Element,
+    );
+
+    // try to get the media queries from the css variables (sugarcss)
+    ['mobile', 'tablet', 'desktop', 'wide'].forEach((media) => {
+      const min = parseInt(
+          style?.getPropertyValue(`--s-media-${media}-min`) ?? '0',
+        ),
+        max = parseInt(
+          style?.getPropertyValue(`--s-media-${media}-max`) ?? '0',
+        );
+
+      if (min || max) {
+        const query: TFactoryMediaQuery = {
+          name: media,
+          min: min ? min : -1,
+          max: max ? max : -1,
+        };
+        this.mediaQueries[media] = query;
+      }
+    });
+
+    // init the media query if not set
+    if (
+      !this._currentMediaQuery &&
+      Object.keys(this.mediaQueries ?? {}).length
+    ) {
+      this._currentMediaQuery = Object.keys(this.mediaQueries)[0];
+    }
+
+    // make sure we update the UI
+    this.requestUpdate();
+  }
 
   private async _fetchSpecs(): Promise<void> {
     // fetch the specs from the server
     const request = await fetch(this.src),
       json = await request.json();
     // set the specs
-    console.log('SET', json);
     this.specs = json;
+  }
+
+  public get $iframeDocument(): Document | null | undefined {
+    return this._$iframe?.contentDocument;
   }
 
   async mount() {
@@ -156,7 +211,7 @@ export default class FactoryElement extends __LitElement {
 
     // init the listeners like escape key, etc...
     this._initListeners(document);
-    // this._initListeners(this.$iframeDocument as Document);
+    this._initListeners(this.$iframeDocument as Document);
 
     // render component if the current component is set
     if (this.currentComponentId) {
@@ -201,19 +256,19 @@ export default class FactoryElement extends __LitElement {
 
             return items;
             break;
-          // case api.search?.startsWith('@'):
-          //   return Object.entries(this.mediaQueries).map(([name, query]) => {
-          //     return {
-          //       id: `@${name}`,
-          //       value: `@${name}`,
-          //       preventSet: true,
-          //       label: `${__upperFirst(query.name)} - ${query.min}px - ${
-          //         query.max
-          //       }px`,
-          //     };
-          //   });
+          case api.search?.startsWith('@'):
+            return Object.entries(this.mediaQueries).map(([name, query]) => {
+              return {
+                id: `@${name}`,
+                value: `@${name}`,
+                preventSet: true,
+                label: `${__upperFirst(query.name)} - ${query.min}px - ${
+                  query.max
+                }px`,
+              };
+            });
 
-          //   break;
+            break;
           case api.search?.startsWith('!'):
             return Object.entries(this.currentComponent.engines).map(
               ([idx, name]) => {
@@ -395,7 +450,103 @@ export default class FactoryElement extends __LitElement {
   private _initEnvironment(): void {
     this.log(`Init the factory environment...`);
     // move the component into the body
-    // document.body.appendChild(this);
+    document.body.appendChild(this);
+
+    // create the canvas
+    const $canvas = document.createElement('div');
+    $canvas.classList.add(...this.cls('_canvas'));
+    this.appendChild($canvas);
+
+    // create the iframe
+    const $iframe = document.createElement('iframe');
+    $iframe.classList.add(...this.cls('_iframe'));
+    __iframeAutoSize($iframe, { width: false, height: true });
+    this._$iframe = $iframe;
+
+    // listen for the iframe to be loaded
+    $iframe.addEventListener('load', () => {
+      this._updateMediaQueries();
+    });
+
+    // append the iframe to the body
+    $canvas.appendChild($iframe);
+
+    // copy the document into the iframe
+    $iframe?.contentWindow?.document.open();
+    $iframe?.contentWindow?.document.write(document.documentElement.outerHTML);
+    $iframe?.contentWindow?.document.close();
+
+    this.$iframeDocument?.querySelector(`.${this.cls('_iframe')}`)?.remove();
+    this.$iframeDocument?.querySelector(this.tagName)?.remove();
+
+    // center the content in the iframe
+    const $centerStyle = this._$iframe?.contentDocument?.createElement(
+      'style',
+    ) as HTMLStyleElement;
+    $centerStyle.innerHTML = `
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    `;
+    $iframe.contentWindow?.document.head.appendChild($centerStyle);
+
+    // inject the actual website assets into the iframe
+    for (let [key, value] of Object.entries(
+      this.specs?.config?.project?.assets ?? {},
+    )) {
+      switch (true) {
+        case value.includes('.js') || value.includes('.ts'):
+          const $script = this._$iframe?.contentDocument?.createElement(
+            'script',
+          ) as HTMLScriptElement;
+          $script.src = value;
+          $script?.setAttribute('type', 'module');
+          this._$iframe?.contentDocument?.head.appendChild($script);
+          break;
+        case value.includes('.css'):
+          const $link = this._$iframe?.contentDocument?.createElement(
+            'link',
+          ) as HTMLLinkElement;
+          $link.href = value;
+          $link.rel = 'stylesheet';
+          this._$iframe?.contentDocument?.head.appendChild($link);
+          break;
+      }
+    }
+
+    // empty page
+    document
+      .querySelectorAll(
+        `body > *:not(${this.tagName}):not(script):not(.${this.cls(
+          '_canvas',
+        )})`,
+      )
+      .forEach(($el) => {
+        $el.remove();
+      });
+  }
+
+  private _setIframeContent(html: string): void {
+    if (!this._$iframe?.contentDocument) {
+      return;
+    }
+    __injectHtml(this._$iframe.contentDocument.body, html);
+
+    // @TODO    find a better way to resize the iframe correctly
+    setTimeout(this._updateIframeSize.bind(this), 50);
+    setTimeout(this._updateIframeSize.bind(this), 100);
+    setTimeout(this._updateIframeSize.bind(this), 200);
+  }
+
+  private _updateIframeSize(): void {
+    this._$iframe?.dispatchEvent(
+      new CustomEvent('load', {
+        bubbles: true,
+        cancelable: false,
+      }),
+    );
   }
 
   private async _updateComponent(id: string, engine?: string): Promise<void> {
@@ -417,7 +568,7 @@ export default class FactoryElement extends __LitElement {
       json = await request.json();
     component.values = json.values;
 
-    // @TODO  update the component in iframe
+    this._setIframeContent(json.html);
 
     this.requestUpdate();
   }
@@ -512,6 +663,10 @@ export default class FactoryElement extends __LitElement {
     });
   }
 
+  public selectMediaQuery(name: string): void {
+    this._currentMediaQuery = name;
+  }
+
   private async _applyUpdate(update: TFactoryUpdateObject): Promise<void> {
     // set the value into the component
     __set(this.currentComponent?.values, update.path, update.value);
@@ -534,8 +689,7 @@ export default class FactoryElement extends __LitElement {
         break;
       case item.value.startsWith('@'):
         const mediaQuery = item.value.slice(1);
-
-        // this.selectMediaQuery(mediaQuery);
+        this.selectMediaQuery(mediaQuery);
         break;
       case item.value.startsWith('>'):
         this._currentAction = 'saveValues';
@@ -620,6 +774,30 @@ export default class FactoryElement extends __LitElement {
     </nav>`;
   }
 
+  private _renderMediaQueries(): any {
+    return html`<nav class="${this.cls('_media-queries')}">
+      <ol class="${this.cls('_media-queries-list')}">
+        ${Object.entries(this.mediaQueries).map(
+          ([name, query]) => html`
+            <li
+              class="${this.cls('_media-queries-list-item')} ${this
+                ._currentMediaQuery === name
+                ? '-active'
+                : ''}"
+              @pointerup=${() => {
+                this._currentMediaQuery = name;
+              }}
+            >
+              <span class="${this.cls('_media-queries-list-item-name')}"
+                >${query.name}</span
+              >
+            </li>
+          `,
+        )}
+      </ol>
+    </nav>`;
+  }
+
   private _renderTopbar(): any {
     return html`<nav class="${this.cls('_topbar')}">
       <h1 class="${this.cls('_topbar-title')}">${__logoFactory}</h1>
@@ -660,6 +838,12 @@ export default class FactoryElement extends __LitElement {
         </svg>
       </button>
     `;
+  }
+
+  private _renderBottombar(): any {
+    return html`<nav class="${this.cls('_bottombar')}">
+      ${this._renderMediaQueries()} ${this._renderMode()}
+    </nav>`;
   }
 
   private _renderCommandPanel(): any {
@@ -745,44 +929,33 @@ export default class FactoryElement extends __LitElement {
   }
 
   private _renderEditor(): any {
-    if (!this.currentComponent) {
-      return;
-    }
-
-    return html`
-      <div class="${this.cls('_editor')}">
-        <div class="${this.cls('_editor-inner')}">
-          <s-carpenter .component=${this.currentComponent} />
-        </div>
+    return html`<div class="${this.cls('_editor')}">
+      <div class="${this.cls('_editor-inner')}">
+        <s-json-schema-form
+          id="s-factory-json-schema-form"
+          @sJsonSchemaForm.update=${(e: CustomEvent) => {
+            this._applyUpdate({
+              ...e.detail.update,
+              component: this._currentComponent,
+            });
+          }}
+          id="s-factory-json-schema-form"
+          name="s-factory-json-schema-form"
+          .buttonClasses=${true}
+          .formClasses=${true}
+          .verbose=${this.verbose}
+          .schema=${this.currentComponent?.schema}
+          .values=${this.currentComponent?.values ?? {}}
+        ></s-json-schema-form>
       </div>
-    `;
-
-    // return html`<div class="${this.cls('_editor')}">
-    //   <div class="${this.cls('_editor-inner')}">
-    //     <s-json-schema-form
-    //       id="s-factory-json-schema-form"
-    //       @sJsonSchemaForm.update=${(e: CustomEvent) => {
-    //         this._applyUpdate({
-    //           ...e.detail.update,
-    //           component: this._currentComponent,
-    //         });
-    //       }}
-    //       id="s-factory-json-schema-form"
-    //       name="s-factory-json-schema-form"
-    //       .buttonClasses=${true}
-    //       .formClasses=${true}
-    //       .verbose=${this.verbose}
-    //       .schema=${this.currentComponent?.schema}
-    //       .values=${this.currentComponent?.values ?? {}}
-    //     ></s-json-schema-form>
-    //   </div>
-    // </div>`;
+    </div>`;
   }
 
   public render() {
     return html`
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderSidebar()} ${this._renderEditor()}
+      ${this._renderBottombar()}
       ${this._currentAction === 'saveValues'
         ? this._renderSaveValuesForm()
         : ''}

@@ -19,7 +19,7 @@ import '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import { __getFormValues } from '@lotsof/sugar/dom';
+import { __getFormValues, __iframeAutoSize, __injectHtml, } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __hotkey } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
@@ -58,6 +58,7 @@ export default class FactoryElement extends __LitElement {
         this._notifications = [];
         this._currentComponent = null;
         this._currentComponentId = '';
+        this._currentMediaQuery = '';
         this._currentAction = null;
         this._state = {};
         this.saveState = true;
@@ -77,38 +78,68 @@ export default class FactoryElement extends __LitElement {
         return this.querySelector('#s-factory-command-panel');
     }
     get currentComponent() {
-        var _a, _b;
-        return (_b = (_a = this.specs) === null || _a === void 0 ? void 0 : _a.components) === null || _b === void 0 ? void 0 : _b[this.currentComponentId];
+        return this.specs.components[this.currentComponentId];
     }
     get currentComponentId() {
         const matches = document.location.pathname.match(/^\/component\/([^\/]+)/);
         return matches === null || matches === void 0 ? void 0 : matches[1];
     }
-    // public update(changedProperties: any): void {
-    //   super.update(changedProperties);
-    //   // // update the media query
-    //   // if (changedProperties.has('_currentMediaQuery')) {
-    //   //   if (this.currentMediaQuery?.max !== -1) {
-    //   //     this._$canvas?.style.setProperty(
-    //   //       '--s-factory-canvas-width',
-    //   //       this.currentMediaQuery?.max + 'px',
-    //   //     );
-    //   //   } else {
-    //   //     this._$canvas?.style.removeProperty('--s-factory-canvas-width');
-    //   //   }
-    //   //   setTimeout(() => {
-    //   //     this._updateIframeSize();
-    //   //   }, 300);
-    //   // }
-    // }
+    get currentMediaQuery() {
+        return this.mediaQueries[this._currentMediaQuery];
+    }
+    update(changedProperties) {
+        super.update(changedProperties);
+        // // update the media query
+        // if (changedProperties.has('_currentMediaQuery')) {
+        //   if (this.currentMediaQuery?.max !== -1) {
+        //     this._$canvas?.style.setProperty(
+        //       '--s-factory-canvas-width',
+        //       this.currentMediaQuery?.max + 'px',
+        //     );
+        //   } else {
+        //     this._$canvas?.style.removeProperty('--s-factory-canvas-width');
+        //   }
+        //   setTimeout(() => {
+        //     this._updateIframeSize();
+        //   }, 300);
+        // }
+    }
+    _updateMediaQueries() {
+        var _a, _b, _c, _d;
+        // get the computed style of the document (iframe)
+        const style = (_b = (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentWindow) === null || _b === void 0 ? void 0 : _b.getComputedStyle((_c = this.$iframeDocument) === null || _c === void 0 ? void 0 : _c.body);
+        // try to get the media queries from the css variables (sugarcss)
+        ['mobile', 'tablet', 'desktop', 'wide'].forEach((media) => {
+            var _a, _b;
+            const min = parseInt((_a = style === null || style === void 0 ? void 0 : style.getPropertyValue(`--s-media-${media}-min`)) !== null && _a !== void 0 ? _a : '0'), max = parseInt((_b = style === null || style === void 0 ? void 0 : style.getPropertyValue(`--s-media-${media}-max`)) !== null && _b !== void 0 ? _b : '0');
+            if (min || max) {
+                const query = {
+                    name: media,
+                    min: min ? min : -1,
+                    max: max ? max : -1,
+                };
+                this.mediaQueries[media] = query;
+            }
+        });
+        // init the media query if not set
+        if (!this._currentMediaQuery &&
+            Object.keys((_d = this.mediaQueries) !== null && _d !== void 0 ? _d : {}).length) {
+            this._currentMediaQuery = Object.keys(this.mediaQueries)[0];
+        }
+        // make sure we update the UI
+        this.requestUpdate();
+    }
     _fetchSpecs() {
         return __awaiter(this, void 0, void 0, function* () {
             // fetch the specs from the server
             const request = yield fetch(this.src), json = yield request.json();
             // set the specs
-            console.log('SET', json);
             this.specs = json;
         });
+    }
+    get $iframeDocument() {
+        var _a;
+        return (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument;
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -125,7 +156,7 @@ export default class FactoryElement extends __LitElement {
             yield this._initEnvironment();
             // init the listeners like escape key, etc...
             this._initListeners(document);
-            // this._initListeners(this.$iframeDocument as Document);
+            this._initListeners(this.$iframeDocument);
             // render component if the current component is set
             if (this.currentComponentId) {
                 this._updateComponent(this.currentComponentId, this.currentEngine);
@@ -139,7 +170,7 @@ export default class FactoryElement extends __LitElement {
     _initCommandPanel() {
         __AdvancedSelectElement.define('s-factory-command-panel-select', {
             items: (api) => {
-                var _a, _b, _c;
+                var _a, _b, _c, _d;
                 switch (true) {
                     case (_a = api.search) === null || _a === void 0 ? void 0 : _a.startsWith('/'):
                         const items = [];
@@ -160,19 +191,17 @@ export default class FactoryElement extends __LitElement {
                         }
                         return items;
                         break;
-                    // case api.search?.startsWith('@'):
-                    //   return Object.entries(this.mediaQueries).map(([name, query]) => {
-                    //     return {
-                    //       id: `@${name}`,
-                    //       value: `@${name}`,
-                    //       preventSet: true,
-                    //       label: `${__upperFirst(query.name)} - ${query.min}px - ${
-                    //         query.max
-                    //       }px`,
-                    //     };
-                    //   });
-                    //   break;
-                    case (_b = api.search) === null || _b === void 0 ? void 0 : _b.startsWith('!'):
+                    case (_b = api.search) === null || _b === void 0 ? void 0 : _b.startsWith('@'):
+                        return Object.entries(this.mediaQueries).map(([name, query]) => {
+                            return {
+                                id: `@${name}`,
+                                value: `@${name}`,
+                                preventSet: true,
+                                label: `${__upperFirst(query.name)} - ${query.min}px - ${query.max}px`,
+                            };
+                        });
+                        break;
+                    case (_c = api.search) === null || _c === void 0 ? void 0 : _c.startsWith('!'):
                         return Object.entries(this.currentComponent.engines).map(([idx, name]) => {
                             return {
                                 id: `!${this.currentComponent.name}/${name}`,
@@ -182,7 +211,7 @@ export default class FactoryElement extends __LitElement {
                             };
                         });
                         break;
-                    case (_c = api.search) === null || _c === void 0 ? void 0 : _c.startsWith('<'):
+                    case (_d = api.search) === null || _d === void 0 ? void 0 : _d.startsWith('<'):
                         return Object.entries(this.currentComponent.savedValues).map(([key, savedData]) => {
                             return {
                                 id: `<${key}`,
@@ -310,9 +339,82 @@ export default class FactoryElement extends __LitElement {
         }, hotkeySettings);
     }
     _initEnvironment() {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x;
         this.log(`Init the factory environment...`);
         // move the component into the body
-        // document.body.appendChild(this);
+        document.body.appendChild(this);
+        // create the canvas
+        const $canvas = document.createElement('div');
+        $canvas.classList.add(...this.cls('_canvas'));
+        this.appendChild($canvas);
+        // create the iframe
+        const $iframe = document.createElement('iframe');
+        $iframe.classList.add(...this.cls('_iframe'));
+        __iframeAutoSize($iframe, { width: false, height: true });
+        this._$iframe = $iframe;
+        // listen for the iframe to be loaded
+        $iframe.addEventListener('load', () => {
+            this._updateMediaQueries();
+        });
+        // append the iframe to the body
+        $canvas.appendChild($iframe);
+        // copy the document into the iframe
+        (_a = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.open();
+        (_b = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _b === void 0 ? void 0 : _b.document.write(document.documentElement.outerHTML);
+        (_c = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _c === void 0 ? void 0 : _c.document.close();
+        (_e = (_d = this.$iframeDocument) === null || _d === void 0 ? void 0 : _d.querySelector(`.${this.cls('_iframe')}`)) === null || _e === void 0 ? void 0 : _e.remove();
+        (_g = (_f = this.$iframeDocument) === null || _f === void 0 ? void 0 : _f.querySelector(this.tagName)) === null || _g === void 0 ? void 0 : _g.remove();
+        // center the content in the iframe
+        const $centerStyle = (_j = (_h = this._$iframe) === null || _h === void 0 ? void 0 : _h.contentDocument) === null || _j === void 0 ? void 0 : _j.createElement('style');
+        $centerStyle.innerHTML = `
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    `;
+        (_k = $iframe.contentWindow) === null || _k === void 0 ? void 0 : _k.document.head.appendChild($centerStyle);
+        // inject the actual website assets into the iframe
+        for (let [key, value] of Object.entries((_p = (_o = (_m = (_l = this.specs) === null || _l === void 0 ? void 0 : _l.config) === null || _m === void 0 ? void 0 : _m.project) === null || _o === void 0 ? void 0 : _o.assets) !== null && _p !== void 0 ? _p : {})) {
+            switch (true) {
+                case value.includes('.js') || value.includes('.ts'):
+                    const $script = (_r = (_q = this._$iframe) === null || _q === void 0 ? void 0 : _q.contentDocument) === null || _r === void 0 ? void 0 : _r.createElement('script');
+                    $script.src = value;
+                    $script === null || $script === void 0 ? void 0 : $script.setAttribute('type', 'module');
+                    (_t = (_s = this._$iframe) === null || _s === void 0 ? void 0 : _s.contentDocument) === null || _t === void 0 ? void 0 : _t.head.appendChild($script);
+                    break;
+                case value.includes('.css'):
+                    const $link = (_v = (_u = this._$iframe) === null || _u === void 0 ? void 0 : _u.contentDocument) === null || _v === void 0 ? void 0 : _v.createElement('link');
+                    $link.href = value;
+                    $link.rel = 'stylesheet';
+                    (_x = (_w = this._$iframe) === null || _w === void 0 ? void 0 : _w.contentDocument) === null || _x === void 0 ? void 0 : _x.head.appendChild($link);
+                    break;
+            }
+        }
+        // empty page
+        document
+            .querySelectorAll(`body > *:not(${this.tagName}):not(script):not(.${this.cls('_canvas')})`)
+            .forEach(($el) => {
+            $el.remove();
+        });
+    }
+    _setIframeContent(html) {
+        var _a;
+        if (!((_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument)) {
+            return;
+        }
+        __injectHtml(this._$iframe.contentDocument.body, html);
+        // @TODO    find a better way to resize the iframe correctly
+        setTimeout(this._updateIframeSize.bind(this), 50);
+        setTimeout(this._updateIframeSize.bind(this), 100);
+        setTimeout(this._updateIframeSize.bind(this), 200);
+    }
+    _updateIframeSize() {
+        var _a;
+        (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.dispatchEvent(new CustomEvent('load', {
+            bubbles: true,
+            cancelable: false,
+        }));
     }
     _updateComponent(id, engine) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -332,7 +434,7 @@ export default class FactoryElement extends __LitElement {
                 }),
             }), json = yield request.json();
             component.values = json.values;
-            // @TODO  update the component in iframe
+            this._setIframeContent(json.html);
             this.requestUpdate();
         });
     }
@@ -413,6 +515,9 @@ export default class FactoryElement extends __LitElement {
             });
         });
     }
+    selectMediaQuery(name) {
+        this._currentMediaQuery = name;
+    }
     _applyUpdate(update) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a;
@@ -433,7 +538,7 @@ export default class FactoryElement extends __LitElement {
                 break;
             case item.value.startsWith('@'):
                 const mediaQuery = item.value.slice(1);
-                // this.selectMediaQuery(mediaQuery);
+                this.selectMediaQuery(mediaQuery);
                 break;
             case item.value.startsWith('>'):
                 this._currentAction = 'saveValues';
@@ -503,6 +608,27 @@ export default class FactoryElement extends __LitElement {
       </div>
     </nav>`;
     }
+    _renderMediaQueries() {
+        return html `<nav class="${this.cls('_media-queries')}">
+      <ol class="${this.cls('_media-queries-list')}">
+        ${Object.entries(this.mediaQueries).map(([name, query]) => html `
+            <li
+              class="${this.cls('_media-queries-list-item')} ${this
+            ._currentMediaQuery === name
+            ? '-active'
+            : ''}"
+              @pointerup=${() => {
+            this._currentMediaQuery = name;
+        }}
+            >
+              <span class="${this.cls('_media-queries-list-item-name')}"
+                >${query.name}</span
+              >
+            </li>
+          `)}
+      </ol>
+    </nav>`;
+    }
     _renderTopbar() {
         return html `<nav class="${this.cls('_topbar')}">
       <h1 class="${this.cls('_topbar-title')}">${__logoFactory}</h1>
@@ -540,6 +666,11 @@ export default class FactoryElement extends __LitElement {
         </svg>
       </button>
     `;
+    }
+    _renderBottombar() {
+        return html `<nav class="${this.cls('_bottombar')}">
+      ${this._renderMediaQueries()} ${this._renderMode()}
+    </nav>`;
     }
     _renderCommandPanel() {
         return html `<nav class="${this.cls('_command-panel')}">
@@ -617,41 +748,30 @@ export default class FactoryElement extends __LitElement {
     `;
     }
     _renderEditor() {
-        if (!this.currentComponent) {
-            return;
-        }
-        return html `
-      <div class="${this.cls('_editor')}">
-        <div class="${this.cls('_editor-inner')}">
-          <s-carpenter .component=${this.currentComponent} />
-        </div>
+        var _a, _b, _c;
+        return html `<div class="${this.cls('_editor')}">
+      <div class="${this.cls('_editor-inner')}">
+        <s-json-schema-form
+          id="s-factory-json-schema-form"
+          @sJsonSchemaForm.update=${(e) => {
+            this._applyUpdate(Object.assign(Object.assign({}, e.detail.update), { component: this._currentComponent }));
+        }}
+          id="s-factory-json-schema-form"
+          name="s-factory-json-schema-form"
+          .buttonClasses=${true}
+          .formClasses=${true}
+          .verbose=${this.verbose}
+          .schema=${(_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.schema}
+          .values=${(_c = (_b = this.currentComponent) === null || _b === void 0 ? void 0 : _b.values) !== null && _c !== void 0 ? _c : {}}
+        ></s-json-schema-form>
       </div>
-    `;
-        // return html`<div class="${this.cls('_editor')}">
-        //   <div class="${this.cls('_editor-inner')}">
-        //     <s-json-schema-form
-        //       id="s-factory-json-schema-form"
-        //       @sJsonSchemaForm.update=${(e: CustomEvent) => {
-        //         this._applyUpdate({
-        //           ...e.detail.update,
-        //           component: this._currentComponent,
-        //         });
-        //       }}
-        //       id="s-factory-json-schema-form"
-        //       name="s-factory-json-schema-form"
-        //       .buttonClasses=${true}
-        //       .formClasses=${true}
-        //       .verbose=${this.verbose}
-        //       .schema=${this.currentComponent?.schema}
-        //       .values=${this.currentComponent?.values ?? {}}
-        //     ></s-json-schema-form>
-        //   </div>
-        // </div>`;
+    </div>`;
     }
     render() {
         return html `
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderSidebar()} ${this._renderEditor()}
+      ${this._renderBottombar()}
       ${this._currentAction === 'saveValues'
             ? this._renderSaveValuesForm()
             : ''}
@@ -683,9 +803,12 @@ __decorate([
 ], FactoryElement.prototype, "_currentComponentId", void 0);
 __decorate([
     state()
+], FactoryElement.prototype, "_currentMediaQuery", void 0);
+__decorate([
+    state()
 ], FactoryElement.prototype, "_currentAction", void 0);
 __decorate([
     state()
 ], FactoryElement.prototype, "_state", void 0);
 FactoryElement.define('s-factory');
-//# sourceMappingURL=FactoryElement.js.map
+//# sourceMappingURL=FactoryElement%20copy.js.map
