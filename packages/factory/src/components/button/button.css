@@ -1,31 +1,48 @@
 @import './button.bare.css';
 
 .button {
-  background: s-color(current);
   border-radius: s-radius();
-  border: 1px solid s-color(current);
-  color: s-color(current, --lighten 50);
+  text-align: center;
   font-size: s-size(button);
-  @s-transition (fast);
+  font-weight: bold;
+  transition: s-transition(fast);
   @s-radius;
 
-  &:hover {
-    background: s-color(current, --lighten 20);
-    border: 1px solid s-color(current, --lighten 20);
-  }
+  &:not(.-outline, .-text) {
+    background: s-color(current);
+    color: s-color(current, foreground);
+    border: 1px solid s-color(current, border);
 
-  &.-full {
-    width: 100%;
-    text-align: center;
+    &:hover {
+      background: s-color(current, --lighten 10);
+      border: 1px solid s-color(current, --lighten 10);
+    }
+    &:active {
+      background: s-color(current, --darken 10);
+      border: 1px solid s-color(current, --darken 10);
+      color: s-color(current, foreground);
+    }
   }
 
   &.-outline {
-    color: s-color(accent);
-    background: transparent;
+    color: s-color(current);
+    background: s-color(current, --alpha 0.04);
+    border: 1px solid s-color(current, --alpha 0.4);
 
     &:hover {
-      background: s-color(accent, --alpha 0.1);
-      border: 1px solid s-color(current, --lighten 20);
+      background: s-color(current);
+      color: s-color(current, foreground);
     }
+    &:active {
+      background: s-color(current, --darken 10);
+      border: 1px solid s-color(current, --darken 10);
+      color: s-color(current, foreground);
+    }
+  }
+
+  &.-text {
+    background: transparent !important;
+    border: none !important;
+    color: s-color(current);
   }
 }

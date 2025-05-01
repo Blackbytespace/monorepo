@@ -8,6 +8,7 @@
  * This mixin allows you to apply the destyle css with some additional
  * reset rules like:
  * - Reset `mark` background color
+ * - Font smoothing to "antialiased" for --webkit browsers
  *
  * @return        {Css}                The generated css
  * 
@@ -34,6 +35,7 @@
   }
   body {
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
   main {
     display: block;

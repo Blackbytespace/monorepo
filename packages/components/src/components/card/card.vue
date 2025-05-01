@@ -1,5 +1,5 @@
 <template>
-  <article class="card" id="{{ id }}">
+  <article class="card" :id="id">
     <figure v-if="image" class="_figure">
       <Image v-bind="image" />
     </figure>

@@ -15,11 +15,11 @@ describe('sugar.node.fs.copySync', () => {
       );
       setTimeout(() => {
         resolve(true);
-      });
+      }, 100);
     });
 
     const file = fs.readFileSync(
-      `${__dirname}/data/copy/copySyncDest.dest`,
+      `${__dirname}/data/copy/copySync.dest`,
       'utf-8',
     );
 

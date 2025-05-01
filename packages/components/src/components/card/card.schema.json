@@ -4,17 +4,32 @@
   "title": "Card",
   "description": "Card component",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "Unique identifier"
+  "groups": [
+    {
+      "id": "default",
+      "title": "Default",
+      "description": "Default options"
     },
+    {
+      "id": "advanced",
+      "title": "Advanced",
+      "description": "Advanced options",
+      "type": "stack",
+      "buttonText": "Edit advanced card options"
+    }
+  ],
+  "properties": {
     "body": {
       "$ref": "../body/body.schema.json"
     },
     "image": {
       "$ref": "../image/image.schema.json"
+    },
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "description": "Unique identifier",
+      "group": "advanced"
     }
   }
 }

@@ -1,3 +1,4 @@
+import '@fontsource/poppins';
 import __AdvancedSelectElement, {
   TAdvancedSelectElementItem,
   TAdvancedSelectElementItemsFunctionApi,
@@ -30,7 +31,24 @@ import {
 } from '../shared/factory.types.js';
 import __logoFactory from './assets/logoFactory.js';
 import __logos from './logos.js';
-import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' with { type: 'json' };
+
+const __saveComponentValuesSchema = {
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  $id: 'saveValues',
+  title: 'Save values',
+  description: 'Simply save the actual component values to use them later',
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+      title: 'Name',
+      description: 'Unique name to identify the saved values',
+      minLength: 5,
+      placeholder: 'Complete with video and slider',
+      autofocus: true,
+    },
+  },
+};
 
 export default class FactoryElement extends __LitElement {
   @property({ type: String })
@@ -798,7 +816,9 @@ export default class FactoryElement extends __LitElement {
             </p>
             <p class="${this.cls('_topbar-component-engine')}">
               ${__upperFirst(this.currentEngine as string)}
-              ${unsafeHTML(__logos[this.currentEngine as string] || this.currentEngine)}
+              ${unsafeHTML(
+                __logos[this.currentEngine as string] || this.currentEngine,
+              )}
             </p>
           </div>`
         : ''}

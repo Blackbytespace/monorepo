@@ -1,24 +1,22 @@
 @import './body.bare.css';
 
 .body {
-  @s-container;
-
-  ._suptitle {
+  .body_suptitle {
   }
 
-  ._title {
+  .body_title {
   }
 
-  ._subtitle {
+  .body_subtitle {
   }
 
-  ._lead {
+  .body_lead {
   }
 
-  ._text {
+  .body_text {
   }
 
-  ._buttons {
-    gap: s-space(20);
+  .body_buttons {
+    gap: s-space(2);
   }
 }

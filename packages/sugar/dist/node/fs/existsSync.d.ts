@@ -12,11 +12,9 @@
  * @param       {TExistsSettings}       [settings={}]       Some settings for what you want to take care of
  * @return      {Boolean}                       true if exists, false if not
  *
- * @setting       {Boolean}       [directory=true]      Specify if you want to take care of directories
+ * @setting         {Boolean}       [directory=true]      Specify if you want to take care of directories
  * @setting         {Boolean}       [file=true]         Specify if you want to take care of files
  * @setting         {Boolean}       [symlink=true]      Specify if you want to take care of symlinks
- *
- * @todo        tests
  *
  * @snippet         __existsSync($1)
  *

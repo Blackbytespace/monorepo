@@ -7,8 +7,9 @@ import '../../src/css/CarpenterDaemonElement.css';
 import {
   TCarpenterComponent,
   TCarpenterCustomEvent,
-} from '../shared/Carpenter.types.js';
+} from '../shared/carpenter.types.js';
 
+// @ts-ignore
 @customElement('s-carpenterd')
 export default class CarpenterDaemonElement extends __LitElement {
   private _domElementsToComponentObjectMap: WeakMap<

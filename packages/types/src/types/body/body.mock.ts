@@ -39,6 +39,7 @@ export default function __bodyMock(props: Partial<TBody> = {}): TBody {
       buttons: props.buttons ?? buttons,
       format: faker.datatype.boolean(),
       rhythm: faker.datatype.boolean(),
+      typoClasses: faker.datatype.boolean(),
       id: faker.lorem.slug(),
       class: faker.lorem.slug(),
     },

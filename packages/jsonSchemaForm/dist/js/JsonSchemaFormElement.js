@@ -26,16 +26,22 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
 import __LitElement from '@lotsof/lit-element';
+import { __copyText } from '@lotsof/sugar/clipboard';
+import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
+import { spread } from '@open-wc/lit-helpers';
 import { Draft2019 } from 'json-schema-library';
-// import '../components/wysiwygWidget/wysiwygWidget.js';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import { __deepMap, __get, __set } from '@lotsof/sugar/object';
 import '../../src/css/JsonSchemaFormElement.bare.css';
+import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/stackGroupRenderer/stackGroupRenderer.js';
 class JsonSchemaFormElement extends __LitElement {
     static registerWidget(widget) {
         this.widgets[widget.id] = widget;
+    }
+    static registerGroupRenderer(groupRenderer) {
+        this.groupRenderers[groupRenderer.id] = groupRenderer;
     }
     get schema() { return __classPrivateFieldGet(this, _JsonSchemaFormElement_schema_accessor_storage, "f"); }
     set schema(value) { __classPrivateFieldSet(this, _JsonSchemaFormElement_schema_accessor_storage, value, "f"); }
@@ -308,17 +314,17 @@ class JsonSchemaFormElement extends __LitElement {
                             break;
                     }
                 }
-                __set(newValues, finalPath, newValue);
+                newValues[finalPath.join('.')] = newValue;
             }
             return value;
         });
-        return newValues;
+        return __deepize(newValues);
     }
     getIdFromPath(path) {
         return `${this.tagName.toLowerCase()}-value-${path.join('-')}`;
     }
     _renderComponentValuesPreview(schema, path = []) {
-        var _a, _b;
+        var _a, _b, _c;
         // get the values for the current path
         const values = __get(this.values, path);
         // check if we have a widget specified and that it is available
@@ -337,86 +343,180 @@ class JsonSchemaFormElement extends __LitElement {
             }}></${tag}>
       `;
         }
+        // handle group display
+        if ((_a = schema.groups) === null || _a === void 0 ? void 0 : _a.length) {
+            return html `
+        <ul class=${this.cls('_groups')}>
+          ${schema.groups.map((group) => {
+                var _a, _b;
+                // make sure the group has a type
+                if (!group.type) {
+                    group.type = 'default';
+                }
+                // generate new schema that contains only the properties
+                // of the current group
+                const groupProperties = {};
+                for (let [properyName, propertyValue] of Object.entries(schema.properties)) {
+                    // @ts-ignore
+                    if (propertyValue.group === group.id) {
+                        groupProperties[properyName] = propertyValue;
+                    }
+                    else if (!propertyValue.group) {
+                        propertyValue.group = 'default';
+                        groupProperties[properyName];
+                    }
+                }
+                // create the new group based schema
+                const groupSchema = Object.assign(Object.assign({}, schema), { title: group.title, description: group.description, properties: groupProperties, isGroup: group.id !== 'default' });
+                // Object.defineProperty(groupSchema, 'isGroup', {
+                //   value: true,
+                //   enumerable: false,
+                // });
+                // remove the groups from the schema
+                // this is to avoid infinite loop
+                // when rendering the groups
+                delete groupSchema.groups;
+                const tag = literal `${unsafeStatic((_a = JsonSchemaFormElement.groupRenderers[group.type]) === null || _a === void 0 ? void 0 : _a.tag)}`;
+                const renderedProps = this._renderComponentValuesPreview(groupSchema, path);
+                // render the group as a normal
+                // schema
+                return html `
+              <li class=${this.cls(`_group -${(_b = group.type) !== null && _b !== void 0 ? _b : 'default'}`)}>
+                <div class="${this.cls('_group-body')}">
+                  ${staticHtml `
+                    <${tag} .renderedProps=${renderedProps} ${spread(group)}>        
+                    ${renderedProps}
+                    </${tag}>
+                `}
+                </div>
+              </li>
+            `;
+            })}
+        </ul>
+      `;
+        }
         switch (true) {
             case schema.type === 'object' && schema.properties !== undefined:
                 return html `
-          <ul class=${this.cls('_values-object')}>
-            ${Object.entries(schema.properties).map(([key, value]) => {
+          <div class="${this.cls('_values-object')}">
+            <div class=${this.cls('_values-object-inner')}>
+              ${schema.isGroup
+                    ? html `
+                    <header class=${this.cls('_group-header')}>
+                      <h3 class=${this.cls('_group-title')}>${schema.title}</h3>
+                      <p class=${this.cls('_group-description')}>
+                        ${schema.description}
+                      </p>
+                    </header>
+                  `
+                    : ''}
+              <ul class=${this.cls('_values-object-items')}>
+                ${Object.entries(schema.properties).map(([key, value]) => {
                     var _a, _b;
                     if (value.type === 'object') {
                         return html `
-                  <li class=${this.cls('_values-object-item')}>
-                    <header class="${this.cls('_values-object-item-header')}">
-                      <h3 class="${this.cls('_values-object-item-title')}">
-                        ${(_a = value.title) !== null && _a !== void 0 ? _a : key}
-                      </h3>
-                    </header>
-                    ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
-                    ${this._renderComponentValueErrors([...path, key])}
-                  </li>
-                `;
+                      <li class=${this.cls('_values-object-item')}>
+                        <header
+                          class="${this.cls('_values-object-item-header')}"
+                        >
+                          <h3 class="${this.cls('_values-object-item-title')}">
+                            ${(_a = value.title) !== null && _a !== void 0 ? _a : key}
+                          </h3>
+                        </header>
+                        ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
+                        ${this._renderComponentValueErrors([...path, key])}
+                      </li>
+                    `;
                     }
                     else {
                         return html `
-                  <li class=${this.cls('_values-item _values-item-object')}>
-                    <label
-                      for="${this.getIdFromPath([...path, key])}"
-                      class="${this.cls('_values-label')} ${this.formClasses
+                      <li class=${this.cls('_values-item _values-item-object')}>
+                        <label
+                          for="${this.getIdFromPath([...path, key])}"
+                          class="${this.cls('_values-label')} ${this.formClasses
                             ? 'form-label'
                             : ''}"
-                    >
-                      <div
-                        class=${this.cls('_values-prop')}
-                        style="--prop-length: ${key.length}"
-                      >
-                        ${(_b = value.title) !== null && _b !== void 0 ? _b : key}
-                      </div>
-                    </label>
-                    ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
-                    ${this._renderComponentValueErrors([...path, key])}
-                  </li>
-                `;
+                        >
+                          <div
+                            class=${this.cls('_values-prop')}
+                            style="--prop-length: ${key.length}"
+                          >
+                            ${(_b = value.title) !== null && _b !== void 0 ? _b : key}
+                          </div>
+                        </label>
+                        ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
+                        ${this._renderComponentValueErrors([...path, key])}
+                      </li>
+                    `;
                     }
                 })}
-          </ul>
+              </ul>
+            </div>
+          </div>
         `;
-                break;
             case schema.type === 'array' && schema.items !== undefined:
                 return html `
-          <ul class=${this.cls('_values-array')}>
-            ${(values === null || values === void 0 ? void 0 : values.length) &&
-                    values.map((value, i) => html `
-                <li class=${this.cls('_values-array-item')}>
-                  <div class=${this.cls('_values-array-item-header')}>
-                    ${value.id
+          <div class=${this.cls('_values-array')}>
+            ${schema.isGroup
+                    ? html `
+                  <header class=${this.cls('_group-header')}>
+                    <h3 class=${this.cls('_group-title')}>${schema.title}</h3>
+                    <p class=${this.cls('_group-description')}>
+                      ${schema.description}
+                    </p>
+                  </header>
+                `
+                    : ''}
+            <ul class=${this.cls('_values-array-items')}>
+              ${(values === null || values === void 0 ? void 0 : values.length)
+                    ? html `
+                    ${values.map((value, i) => html `
+                        <li class=${this.cls('_values-array-item')}>
+                          <div class=${this.cls('_values-array-item-header')}>
+                            <p class="${this.cls('_values-array-item-index')}">
+                              ${schema.title.replace(/s$/, '')} #${i}
+                            </p>
+                            ${value.id
                         ? html `
-                          <h3 class="${this.cls('_values-array-item-index')}">
-                            ${i}
-                          </h3>
-                          <h4 class="${this.cls('_values-array-item-id')}">
-                            ${value.id}
-                          </h4>
-                        `
-                        : html `
-                          <span class="${this.cls('_values-array-item-index')}"
-                            >${i}</span
-                          >
-                        `}
-                  </div>
-                  ${this._renderComponentValuesPreview(schema.items, [
+                                  <button
+                                    class="${this.cls('_values-array-item-id')} button -outline"
+                                    @click=${() => {
+                            __copyText(value.id);
+                        }}
+                                  >
+                                    ID: #${value.id}
+                                  </button>
+                                `
+                        : ''}
+                            <button
+                              class="${this.cls('_values-array-item-remove')} button -outline"
+                              @click=${() => {
+                        values.splice(i, 1);
+                        this._emitUpdate({
+                            value: values,
+                            path,
+                        });
+                    }}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                          ${this._renderComponentValuesPreview(schema.items, [
                         ...path,
                         `${i}`,
                     ])}
-                  ${this._renderComponentValueErrors([...path, `${i}`])}
-                </li>
-              `)}
-            <button
-              class=${`${this.cls('_values-add')} ${this.buttonClasses === true
-                    ? 'button -outline'
+                          ${this._renderComponentValueErrors([...path, `${i}`])}
+                        </li>
+                      `)}
+                  `
+                    : ''}
+              <button
+                class=${`${this.cls('_values-add')} ${this.buttonClasses === true
+                    ? 'button'
                     : typeof this.buttonClasses === 'string'
                         ? this.buttonClasses
                         : ''}`}
-              @click=${() => {
+                @click=${() => {
                     const newValues = this._createComponentDefaultValuesFromSchema(schema.items);
                     if (!values) {
                         __set(this.values, path, [newValues]);
@@ -424,27 +524,46 @@ class JsonSchemaFormElement extends __LitElement {
                     else {
                         values.push(newValues);
                     }
+                    this._emitUpdate({
+                        value: values,
+                        path,
+                    });
                     this.requestUpdate();
                 }}
-            >
-              Add a ${(_b = (_a = schema.items.title) === null || _a === void 0 ? void 0 : _a.toLowerCase()) !== null && _b !== void 0 ? _b : 'new item'}
-            </button>
-          </ul>
+              >
+                Add a ${(_c = (_b = schema.items.title) === null || _b === void 0 ? void 0 : _b.toLowerCase()) !== null && _c !== void 0 ? _c : 'new item'}
+              </button>
+            </ul>
+          </div>
         `;
-                break;
             default:
                 return html `
           <div class=${this.cls('_values-value')}>
             ${this._renderComponentValueEditWidget(values, path)}
           </div>
         `;
-                break;
         }
     }
     render() {
+        var _a;
         if (this.schema) {
             return html `
         <div class=${this.cls('_inner')}>
+          <header class=${this.cls('_header')}>
+            <h2 class=${this.cls('_title')}>
+              ${this.schema.title}
+              ${((_a = this.values) === null || _a === void 0 ? void 0 : _a.id)
+                ? html `<span
+                    class="${this.cls('_title-id')} button -outline"
+                    @click=${() => {
+                    __copyText(this.values.id);
+                }}
+                    >ID: #${this.values.id}</span
+                  >`
+                : ''}
+            </h2>
+            <p class=${this.cls('_description')}>${this.schema.description}</p>
+          </header>
           <div class=${this.cls('_values')}>
             ${this._renderComponentValuesPreview(this.schema)}
           </div>
@@ -455,6 +574,7 @@ class JsonSchemaFormElement extends __LitElement {
 }
 _JsonSchemaFormElement_schema_accessor_storage = new WeakMap(), _JsonSchemaFormElement_values_accessor_storage = new WeakMap(), _JsonSchemaFormElement_formClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_buttonClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_widgets_accessor_storage = new WeakMap();
 JsonSchemaFormElement.widgets = {};
+JsonSchemaFormElement.groupRenderers = {};
 export default JsonSchemaFormElement;
 __decorate([
     property({ type: Object })
@@ -471,5 +591,13 @@ __decorate([
 __decorate([
     property({ type: Object })
 ], JsonSchemaFormElement.prototype, "widgets", null);
+JsonSchemaFormElement.registerGroupRenderer({
+    id: 'default',
+    tag: 's-json-schema-form-default-group-renderer',
+});
+JsonSchemaFormElement.registerGroupRenderer({
+    id: 'stack',
+    tag: 's-json-schema-form-stack-group-renderer',
+});
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});
 //# sourceMappingURL=JsonSchemaFormElement.js.map

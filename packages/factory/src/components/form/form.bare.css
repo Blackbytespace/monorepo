@@ -9,7 +9,6 @@
 
 .form-input,
 .form-select {
-  padding: s-space(sm) s-space(md);
   width: 100%;
 }
 

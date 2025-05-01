@@ -1,75 +1,171 @@
 @import '@lotsof/sugarcss/src/css/sugarcss.css';
 
-body {
+@include s-reset;
+
+:root {
   --s-setting-verbose: false;
-  --s-setting-mobile-first: false;
+  --s-setting-mobile-first: true;
 
-  --s-scrolled-classes-class: scrolled;
-  --s-scrolled-classes-offset: 50;
+  --s-scrolled-classes-class: -scrolled;
+  --s-scrolled-classes-offset: 100;
 
-  --s-media-mobile: 0, 768px;
-  --s-media-tablet: 769px, 1024px;
-  --s-media-desktop: 1025px;
-  --s-media-wide: 1440px;
+  --s-media-xs: 0 474px;
+  --s-media-sm: 475 639px;
+  --s-media-md: 640px 767px;
+  --s-media-lg: 768px 1023px;
+  --s-media-xl: 1024px 1279px;
+  --s-media-xxl: 1280px;
 
-  --s-container-default: 320px, 900px, 20px;
+  --s-container-default: 320px 1280px 20px;
 
-  --s-grid-default: '1 1 2 _ 3 4 4 _ 3 5 5', 20px;
+  --s-shadow-default: 0px 0.7px 2.2px rgba(0, 0, 0, 0.011),
+    0px 1.7px 5.3px rgba(0, 0, 0, 0.016), 0px 3.1px 10px rgba(0, 0, 0, 0.02),
+    0px 5.6px 17.9px rgba(0, 0, 0, 0.024),
+    0px 10.4px 33.4px rgba(0, 0, 0, 0.029), 0px 25px 80px rgba(0, 0, 0, 0.04);
 
-  --s-color-main: #9e9161;
-  --s-color-accent: #d2b02d;
-  --s-color-complementary: #00f0ff;
-  --s-color-ternary: #9ec468;
-  --s-color-current: #d2b02d;
-  --s-color-success: #91ff00;
-  --s-color-warning: #ffd500;
-  --s-color-error: #ff003b;
-  --s-color-info: #00ffff;
-  --s-color-php: #777cb5;
+  /* --s-grid-default: '1 1 2 _ 3 4 4 _ 3 5 5' 20px; */
 
-  --s-shade-text: --darken 20;
-  --s-shade-text-main: --darken 35;
-  --s-shade-placeholder: --alpha 0.4;
-  --s-shade-foreground: --lighten 50;
-  --s-shade-background: --darken 40;
-  --s-shade-surface: --darken 40;
+  --s-ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --s-ease-power3-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --s-ease-power3-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --s-ease-power3-inout: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --s-ease-sine-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+  --s-ease-sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --s-ease-sine-inout: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  --s-transition-slow: all 0.8s var(--s-ease-default);
+  --s-transition-default: all 0.3s var(--s-ease-default);
+  --s-transition-fast: all 0.1s var(--s-ease-default);
+
+  --s-sizes: 0 100px linear;
+  --s-spaces: 0 100px linear;
+
+  --s-font-family-sans: 'EuclidCircularB', sans-serif;
+  --s-font-family-code: 'Monaco', sans-serif;
+
+  --s-font-serif: s-font-family(serif) 300;
+  --s-font-body: s-font-family(sans) 300;
+  --s-font-lead: s-font-family(sans) 300;
+  --s-font-title: s-font-family(sans) 400;
+  --s-font-suptitle: s-font-family(sans) 300;
+  --s-font-subtitle: s-font-family(sans) 300;
+  --s-font-p: s-font-family(sans) 300;
+  --s-font-tagline: s-font-family(sans) 300;
+  --s-font-code: s-font-family(code);
+  --s-font-quote: s-font-family(sans) 300;
+
+  --s-typo-body: s-font(body) s-size(body) 1.3;
+  --s-typo-h1: s-font(title) s-size(h1) 1.1;
+  --s-typo-h2: s-font(title) s-size(h2) 1.2;
+  --s-typo-h3: s-font(title) s-size(h3) 1.1;
+  --s-typo-h4: s-font(title) s-size(h4) 1.2;
+  --s-typo-h5: s-font(title) s-size(h5) 1.1;
+  --s-typo-h6: s-font(title) s-size(h6) 1.1;
+  --s-typo-suptitle: s-font(suptitle) s-size(suptitle) 1.2 0 uppercase;
+  --s-typo-subtitle: s-font(subtitle) s-size(subtitle) 1.2 0 uppercase;
+  --s-typo-lead: s-font(lead) s-size(lead) 1.2;
+  --s-typo-p: s-font(p) s-size(p) 1.65;
+  --s-typo-tagline: s-font(tagline) s-size(tagline) 1.8 0 uppercase;
+  --s-typo-quote: s-font(quote) s-size(quote) 1.3;
+  --s-typo-code: s-font(code) s-size(code);
+  --s-typo-button: s-font(body) s-size(button) 1.65;
+  --s-typo-menu: s-font(body) s-size(menu) 1.2;
+
+  --s-radius-default: 0;
+
+  --s-space-05: 2px;
+  --s-space-1: 4px;
+  --s-space-2: 8px;
+  --s-space-3: 12px;
+  --s-space-4: 16px;
+  --s-space-5: 20px;
+  --s-space-6: 24px;
+  --s-space-7: 28px;
+  --s-space-8: 32px;
+  --s-space-10: 40px;
+  --s-space-12: 48px;
+  --s-space-16: 64px;
+  --s-space-20: 80px;
+  --s-space-24: 96px;
+  --s-space-28: 112px;
+  --s-space-32: 128px;
+  --s-space-40: 160px;
+  --s-space-48: 192px;
+  --s-space-56: 224px;
+  --s-space-64: 256px;
+  --s-space-72: 288px;
+  --s-space-80: 320px;
+  --s-space-88: 352px;
+  --s-space-96: 384px;
+
+  --s-size-body: 16px;
+  --s-size-h1: 40px;
+  --s-size-h2: 30px;
+  --s-size-h3: 25px;
+  --s-size-h4: 20px;
+  --s-size-h4: 18px;
+  --s-size-h6: 14px;
+  --s-size-suptitle: 16px;
+  --s-size-subtitle: 16px;
+  --s-size-tagline: 16px;
+  --s-size-lead: 20px;
+  --s-size-p: 16px;
+  --s-size-form: 14px;
+  --s-size-button: 16px;
+  --s-size-button-icon: 24px;
+  --s-size-caption: 12px;
+  --s-size-code: 16px;
+  --s-size-menu: 25px;
+  --s-size-quote: 25px;
+  --s-size-tooltip: 16px;
+  --s-size-accordion: 20px;
+  --s-size-small: 12px;
+  --s-size-large: 20px;
+
+  @media lg {
+    --s-size-h1: 100px;
+    --s-size-h2: 50px;
+    --s-size-h3: 40px;
+    --s-size-h4: 25px;
+    --s-size-h5: 20px;
+    --s-size-h6: 18px;
+    --s-size-quote: 40px;
+    --s-size-tagline: 18px;
+    --s-size-menu: 14px;
+  }
+
+  --s-zindex-header: 200;
+
+  --s-color-black: #000000;
+  --s-color-white: #ffffff;
+  --s-color-light-gray: #c0c0c0;
+  --s-color-deep-gray: #303030;
+  --s-color-brand: #de0004;
+
+  --s-color-main: s-color(deep-gray);
+  --s-color-accent: s-color(brand);
+  --s-color-background: s-color(white);
+  --s-color-overlay: s-color(brand);
+  --s-color-current: s-color(accent);
+  --s-color-foreground: s-color(white);
+  --s-color-success: s-color(white);
+  --s-color-error: #ff7676;
+
+  --s-shade-placeholder: --alpha 0.2;
+  --s-shade-foreground: --lightness 100;
+  --s-shade-background: --darken 0;
+  --s-shade-surface: --lightness 98;
   --s-shade-border: --alpha 0.2;
   --s-shade-hover: --lighten 40;
   --s-shade-active: --darken 10;
-
-  --s-font-family-sans: 'Roboto', sans-serif;
-  --s-font-family-serif: 'Merriweather', serif;
-  --s-font-family-code: 'Monaco', sans-serif;
-  --s-font-family-quote: 'Palatino', serif;
-
-  --s-ease-default: cubic-bezier(0.745, 0, 0.18, 1);
-
-  --s-transition-slow: all 0.3s cubic-bezier(0.745, 0, 0.18, 1);
-  --s-transition-default: all 0.2s cubic-bezier(0.745, 0, 0.18, 1);
-  --s-transition-fast: all 0.1s cubic-bezier(0.745, 0, 0.18, 1);
-
-  --s-sizes: 0, 80px, linear;
-  --s-spaces: 0, 80px, linear;
-
-  --s-font-default: s-font-family(sans), 16px, 1.6em;
-  --s-font-lead: s-font-family(sans), 18px, 1.3em;
-  --s-font-title: s-font-family(sans), s-size(100), 1em;
-  --s-font-code: s-font-family(code), 16px, 1.6em;
-
-  --s-radius-default: 6px;
-  --s-radius-special: 20px, 12px, 20px, 4px;
 }
 
 ::selection {
-  color: s-color(accent, --lighten 50);
   background: s-color(accent, --darken 10);
+  color: s-color(accent, --lighten 50);
 }
 
-@include s-destyle;
-
 body {
-  font: s-font(default);
   color: s-color(main, text);
-
-  --my-variable: 'hello';
+  @s-typo (body);
 }

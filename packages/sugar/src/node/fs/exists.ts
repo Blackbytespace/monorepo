@@ -19,8 +19,6 @@ import * as __fs from 'fs';
  * @setting         {Boolean}       [file=true]         Specify if you want to take care of files
  * @setting         {Boolean}       [symlink=true]      Specify if you want to take care of symlinks
  *
- * @todo        tests
- *
  * @snippet         __exists($1)
  * await __exists($1)
  *
@@ -53,7 +51,9 @@ export default async function __exists(
   try {
     stats = __fs.statSync(path);
     if (!stats) return false;
-    isSymlink = stats.isSymbolicLink();
+
+    const realPath = __fs.realpathSync(path);
+    isSymlink = path !== realPath;
   } catch (e) {}
 
   if (isSymlink && !set.symlink) return false;

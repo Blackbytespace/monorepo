@@ -11,8 +11,6 @@ import __extension from './extension.js';
  * exists with one of these particular extensions.
  * If a file exists, the function return the path with the first extensions that matches
  *
- * @todo        tests
- *
  * @param       {String}            path            The file path you want to check. With or without an extension
  * @param       {Array<String>}     extensions      The extensions (without the dot) you want to check
  * @return      {String|undefined}                  The first valid path founded, or undefined

@@ -9,8 +9,6 @@ import * as __fs from 'fs';
  *
  * This function allows you to simply append a string to a file.
  *
- * @todo        tests
- *
  * @param       {String}            path            The file path you want to check. With or without an extension
  * @param       {String}            content             The content to add to the file
  *

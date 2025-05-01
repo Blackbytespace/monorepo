@@ -16,3 +16,8 @@ export type TJsonSchemaFormWidget = {
   id: string;
   tag: string;
 };
+
+export type TJsonSchemaGroupRenderer = {
+  id: string;
+  tag: string;
+};

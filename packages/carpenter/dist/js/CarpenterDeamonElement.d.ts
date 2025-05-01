@@ -1,6 +1,6 @@
 import __LitElement from '@lotsof/lit-element';
 import '../../src/css/CarpenterDaemonElement.css';
-import { TCarpenterComponent } from '../shared/Carpenter.types.js';
+import { TCarpenterComponent } from '../shared/carpenter.types.js';
 export default class CarpenterDaemonElement extends __LitElement {
     private _domElementsToComponentObjectMap;
     private _componentObjectToDomElements;

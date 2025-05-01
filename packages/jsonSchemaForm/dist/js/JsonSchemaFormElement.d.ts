@@ -1,10 +1,14 @@
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/JsonSchemaFormElement.bare.css';
-import { TJsonSchemaFormWidget } from '../shared/JsonSchemaForm.types.js';
+import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/stackGroupRenderer/stackGroupRenderer.js';
+import { TJsonSchemaFormWidget, TJsonSchemaGroupRenderer } from '../shared/JsonSchemaForm.types.js';
 export default class JsonSchemaFormElement extends __LitElement {
     static widgets: Record<string, TJsonSchemaFormWidget>;
     static registerWidget(widget: TJsonSchemaFormWidget): void;
+    static groupRenderers: Record<string, TJsonSchemaGroupRenderer>;
+    static registerGroupRenderer(groupRenderer: TJsonSchemaGroupRenderer): void;
     accessor schema: any;
     accessor values: any;
     accessor formClasses: boolean;

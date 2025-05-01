@@ -1,7 +1,7 @@
 import type { TLink } from '../link/link.type.js';
 
 export type TButton = {
-  style?: 'solid' | 'outline' | 'text';
+  type?: 'solid' | 'outline' | 'text';
   link?: TLink;
   id?: string;
   class?: string;

@@ -4,27 +4,45 @@
   "title": "Image",
   "description": "Simple image component",
   "type": "object",
+  "groups": [
+    {
+      "id": "default",
+      "title": "Default",
+      "description": "Default options"
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced",
+      "description": "Advanced options",
+      "buttonText": "Edit advanced image options",
+      "type": "stack"
+    }
+  ],
   "properties": {
     "id": {
       "type": "string",
       "title": "ID",
-      "description": "Unique identifier"
+      "description": "Unique identifier",
+      "group": "advanced"
     },
     "src": {
       "type": "string",
       "title": "Source",
       "description": "Image source",
-      "format": "uri"
+      "format": "uri",
+      "group": "default"
     },
     "alt": {
       "type": "string",
       "title": "Alt",
-      "description": "Image alt text"
+      "description": "Image alt text",
+      "group": "default"
     },
     "title": {
       "type": "string",
       "title": "Title",
-      "description": "Image title"
+      "description": "Image title",
+      "group": "default"
     }
   }
 }

@@ -18,5 +18,6 @@ export type TBody = {
   rhythm?: boolean;
   id?: string;
   class?: string;
+  typoClasses?: boolean;
   attrs?: Record<string, any>;
 };

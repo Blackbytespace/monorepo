@@ -13,8 +13,6 @@
  *
  * @snippet         __dirname()
  *
- * @todo        tests
- *
  * @example             js
  * import { __dirname } from '@lotsof/sugar/fs';
  * __dirname();

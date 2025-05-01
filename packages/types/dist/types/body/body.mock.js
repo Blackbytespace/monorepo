@@ -33,6 +33,7 @@ export default function __bodyMock(props = {}) {
             buttons: (_a = props.buttons) !== null && _a !== void 0 ? _a : buttons,
             format: faker.datatype.boolean(),
             rhythm: faker.datatype.boolean(),
+            typoClasses: faker.datatype.boolean(),
             id: faker.lorem.slug(),
             class: faker.lorem.slug(),
         },

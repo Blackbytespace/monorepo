@@ -13,6 +13,7 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.2.5",
     "@lotsof/advanced-select-element": "^1.0.0-alpha.89",
     "@lotsof/components": "^1.0.0-alpha.89",
     "@lotsof/i18n": "^1.0.0-alpha.89",

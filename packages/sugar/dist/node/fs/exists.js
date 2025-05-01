@@ -16,7 +16,8 @@ export default function __exists(path, settings) {
             stats = __fs.statSync(path);
             if (!stats)
                 return false;
-            isSymlink = stats.isSymbolicLink();
+            const realPath = __fs.realpathSync(path);
+            isSymlink = path !== realPath;
         }
         catch (e) { }
         if (isSymlink && !set.symlink)

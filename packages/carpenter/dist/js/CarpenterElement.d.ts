@@ -1,37 +1,40 @@
-import __LitElement from '@lotsof/lit-element';
+import '@fontsource/poppins';
 import '@lotsof/json-schema-form';
-import __CarpenterFetchAdapter from '../components/fetchAdapter/fetchAdapter.js';
-import '../../src/css/CarpenterElement.css';
-import { TCarpenterComponent, TCarpenterWidget } from '../shared/Carpenter.types.js';
+import __LitElement from '@lotsof/lit-element';
+import '../../src/css/FactoryElement.css';
+import '../../src/css/index.css';
+import { TCarpenterComponent, TCarpenterMediaQuery, TCarpenterNotification, TCarpenterState } from '../shared/carpenter.types.js';
 export default class CarpenterElement extends __LitElement {
-    static widgets: Record<string, TCarpenterWidget>;
-    static registerWidget(widget: TCarpenterWidget): void;
-    accessor src: string;
-    accessor adapter: __CarpenterFetchAdapter | null;
-    accessor widgets: Record<string, TCarpenterWidget>;
-    accessor _currentComponent: TCarpenterComponent | null;
-    accessor _currentComponentId: string;
-    private _registeredWidgets;
-    private _specs;
+    mediaQueries: Record<string, TCarpenterMediaQuery>;
+    mediaQuery: string;
+    darkModeClass: string;
+    _notifications: TCarpenterNotification[];
+    _currentComponent: TCarpenterComponent | null;
+    _currentComponentId: string;
+    _currentMediaQuery: string;
+    _currentAction: 'saveValues' | null;
+    protected _state: TCarpenterState;
     private _$iframe?;
+    private _$canvas?;
     constructor();
-    /**
-     * @name      isDaemon
-     * @type      Boolean
-     * @get
-     *
-     * Return true if the component runs into the iframe (in deamon mode)
-     *
-     * @since     1.0.0
-     */
-    get isDaemon(): boolean;
+    get currentMediaQuery(): TCarpenterMediaQuery | undefined;
+    update(changedProperties: any): void;
+    private _updateMediaQueries;
     get $iframeDocument(): Document | null | undefined;
     mount(): Promise<void>;
     private _initListeners;
-    registerComponent(component: TCarpenterComponent): void;
     private _initEnvironment;
-    private _injectCarpenterDeamon;
-    private _findInSchema;
-    private _applyUpdate;
-    render(): import("lit-html").TemplateResult<1> | undefined;
+    private _setIframeContent;
+    private _updateIframeSize;
+    toggleUiMode(): void;
+    private _restoreUiMode;
+    setUiMode(mode: 'light' | 'dark'): void;
+    selectMediaQuery(name: string): void;
+    private _sendNotification;
+    private _renderMediaQueries;
+    private _renderMode;
+    private _renderBottombar;
+    private _renderNotifications;
+    private _renderEditor;
+    render(): import("lit-html").TemplateResult<1>;
 }

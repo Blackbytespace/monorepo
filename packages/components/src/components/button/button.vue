@@ -1,7 +1,7 @@
 <template>
   <a
     :id="id"
-    :class="`button -${style} ${props.class}`"
+    :class="`button -${props.type} ${props.class ?? ''}`"
     :href="link?.href"
     :title="link?.title"
     :target="link?.target"
@@ -16,7 +16,7 @@ import { TButton } from '@lotsof/types';
 import './button.css';
 
 const props = withDefaults(defineProps<TButton>(), {
-  style: 'solid',
+  type: 'solid',
   target: '_self',
   rel: 'noopener noreferrer',
 });

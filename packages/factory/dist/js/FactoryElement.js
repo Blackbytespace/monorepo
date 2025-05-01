@@ -13,6 +13,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import '@fontsource/poppins';
 import __AdvancedSelectElement from '@lotsof/advanced-select-element';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
@@ -29,7 +30,23 @@ import '../../src/css/FactoryElement.css';
 import '../../src/css/index.css';
 import __logoFactory from './assets/logoFactory.js';
 import __logos from './logos.js';
-import __saveComponentValuesSchema from './saveValues/saveValues.schema.json' with { type: 'json' };
+const __saveComponentValuesSchema = {
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    $id: 'saveValues',
+    title: 'Save values',
+    description: 'Simply save the actual component values to use them later',
+    type: 'object',
+    properties: {
+        name: {
+            type: 'string',
+            title: 'Name',
+            description: 'Unique name to identify the saved values',
+            minLength: 5,
+            placeholder: 'Complete with video and slider',
+            autofocus: true,
+        },
+    },
+};
 export default class FactoryElement extends __LitElement {
     constructor() {
         super('s-factory');

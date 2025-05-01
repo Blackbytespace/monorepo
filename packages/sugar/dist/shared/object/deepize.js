@@ -41,7 +41,12 @@ import __set from './set.js';
  */
 export default function __deepize(object) {
     const finalObject = {};
+    console.log('object', object);
     for (const key in object) {
+        if (!key) {
+            continue;
+        }
+        console.log('key', key);
         __set(finalObject, key, object[key]);
     }
     return finalObject;

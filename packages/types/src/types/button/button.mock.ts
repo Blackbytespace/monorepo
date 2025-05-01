@@ -7,7 +7,7 @@ import type { TButton } from './button.type.js';
 export default function __buttonMock(props: Partial<TButton> = {}): TButton {
   return __deepMerge([
     {
-      style: __pickRandom(['solid', 'outline', 'text']),
+      type: __pickRandom(['solid', 'outline', 'text']),
       link: __linkMock(),
       id: faker.lorem.slug(),
       class: faker.lorem.slug(),

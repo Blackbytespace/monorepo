@@ -1,11 +1,28 @@
 import { JSONSchema7 } from 'json-schema';
-import type { TJsonSchemaFormUpdateObject, TJsonSchemaFormWidget } from '@lotsof/json-schema-form';
-import __CarpenterFetchAdapter from '../components/fetchAdapter/fetchAdapter.js';
-export type TCarpenterSettings = {
-    adapter: typeof __CarpenterFetchAdapter;
+import { TComponentsComponentJson } from '@lotsof/components';
+import { TJsonSchemaFormWidget } from '@lotsof/json-schema-form/src/shared/JsonSchemaForm.types.js';
+export type TCarpenterState = {
+    mode?: 'light' | 'dark';
+    media?: string;
 };
-export type TCarpenterSpecs = {
-    components: Record<string, TCarpenterComponent>;
+export type TCarpenterMediaQuery = {
+    name: string;
+    min: number;
+    max: number;
+};
+export type TCarpenterComponentJson = TComponentsComponentJson & {
+    path: string;
+    engines: string[];
+    mocks: Record<string, string>;
+    files: string[];
+    values: any;
+    schema: any;
+};
+export type TCarpenterNotification = {
+    id: string;
+    message: string;
+    type: 'success' | 'info' | 'warning' | 'error';
+    timeout: number;
 };
 export type TCarpenterComponent = {
     id: string;
@@ -13,16 +30,8 @@ export type TCarpenterComponent = {
     description?: string;
     schema: JSONSchema7;
     values: any;
+    savedValues: any;
     $component: Element;
-};
-export type TCarpenterUpdateObject = TJsonSchemaFormUpdateObject & {
-    component: TCarpenterComponent;
-};
-export type TCarpenterUpdateResult = {
-    component: TCarpenterComponent;
-    path: string[];
-    value: any;
-    html?: string;
 };
 export type TCarpenterCustomEvent = CustomEvent & {
     detail: TCarpenterComponent;

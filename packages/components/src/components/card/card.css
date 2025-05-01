@@ -22,10 +22,7 @@
     }
   }
 
-  ._area-figure {
-  }
-
   ._body {
-    padding: s-space(30);
+    padding: s-space(5);
   }
 }

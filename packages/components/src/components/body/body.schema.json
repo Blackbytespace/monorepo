@@ -4,39 +4,59 @@
   "title": "Body",
   "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "Unique identifier",
-      "placeholder": "body-1"
+  "groups": [
+    {
+      "id": "default",
+      "title": "Default",
+      "description": "Default options"
     },
+    {
+      "id": "buttons",
+      "title": "Buttons",
+      "description": "Add/remove buttons",
+      "type": "stack",
+      "buttonText": "Edit buttons"
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced",
+      "description": "Advanced options",
+      "type": "stack",
+      "buttonText": "Edit advanced options"
+    }
+  ],
+  "properties": {
     "suptitle": {
       "type": "string",
       "title": "Suptitle",
-      "description": "Suptitle of the body"
+      "description": "Suptitle of the body",
+      "group": "advanced"
     },
     "title": {
       "type": "string",
       "title": "Title",
       "description": "Title of the body",
-      "minLength": 100000
+      "minLength": 100000,
+      "group": "default"
     },
     "subtitle": {
       "type": "string",
       "title": "Subtitle",
       "description": "Subtitle of the body",
-      "placeholder": "Hello world"
+      "placeholder": "Hello world",
+      "group": "texts"
     },
     "lead": {
       "type": "string",
       "title": "Lead",
-      "description": "Lead of the body"
+      "description": "Lead of the body",
+      "group": "default"
     },
     "text": {
       "type": "string",
       "title": "Text",
-      "description": "Text of the body"
+      "description": "Text of the body",
+      "group": "default"
     },
     "buttons": {
       "type": "array",
@@ -44,33 +64,29 @@
       "description": "Buttons of the body",
       "items": {
         "$ref": "../button/button.schema.json"
-      }
-    },
-    "suptitleLevel": {
-      "type": "number",
-      "title": "Suptitle level",
-      "description": "Suptitle level (1-6)",
-      "minimum": 1,
-      "maximum": 6
+      },
+      "group": "buttons"
     },
     "titleLevel": {
       "type": "number",
       "title": "Title level",
       "description": "Title level (1-6)",
       "minimum": 1,
-      "maximum": 6
-    },
-    "subtitleLevel": {
-      "type": "number",
-      "title": "Subtitle level",
-      "description": "Subtitle level (1-6)",
-      "minimum": 1,
-      "maximum": 6
+      "maximum": 6,
+      "group": "advanced"
     },
     "typoClasses": {
       "type": "boolean",
       "title": "Typo classes",
-      "description": "Use typography classes or not"
+      "description": "Use typography classes or not",
+      "group": "advanced"
+    },
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "description": "Unique identifier",
+      "placeholder": "body-1",
+      "group": "advanced"
     }
   }
 }

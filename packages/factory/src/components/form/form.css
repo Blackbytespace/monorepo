@@ -5,7 +5,11 @@
 }
 
 .form-input,
-.form-textarea {
+.form-textarea,
+.form-select {
+  padding: s-space(sm) s-space(sm);
+  @s-transition (fast);
+
   &::placeholder {
     color: s-color(main, placeholder);
   }
@@ -15,8 +19,10 @@
 .form-select {
   border: solid 1px s-color(main, border);
   color: s-color(main, form);
+  background: s-color(main, form-background);
   font-size: s-size(form);
   line-height: s-size(form);
+  box-shadow: var(--s-shadow-form);
   @s-radius;
 
   &:focus {
@@ -37,7 +43,7 @@
   --track-size: calc(var(--thumb-size) * 2);
   --track-padding: 0.2em;
   --track-color-active: s-color(current, --alpha 0.1);
-  --track-color-inactive: s-color(current, --alpha 0);
+  --track-color-inactive: s-color(current, --alpha 0.05);
   --track-radius: 999px;
 }
 

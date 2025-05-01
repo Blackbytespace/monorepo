@@ -2,27 +2,35 @@
   <div
     :id="id"
     :class="`body ${format ? 'typo-format' : ''} ${
-      rhythm ? 'typo-rhyth' : ''
-    } ${props.class}`"
+      rhythm ? 'typo-rhythm' : ''
+    } ${props.class ?? ''}`"
   >
     <div
       v-if="finalSuptitle"
-      class="body_suptitle typo-suptitle"
+      :class="`body_suptitle ${typoClasses ? 'typo-suptitle' : ''}`"
       v-html="finalSuptitle"
     ></div>
     <component
       :is="`h${headingLevel.tag}`"
-      :class="`body_title typo-h${headingLevel.display ?? headingLevel.tag}`"
+      :class="`body_title ${
+        typoClasses ? `typo-h${headingLevel.display}` : ''
+      }`"
       v-html="finalTitle"
     />
     <div
       v-if="finalSubtitle"
-      class="body_subtitle typo-subtitle"
+      :class="`body_subtitle ${typoClasses ? 'typo-subtitle' : ''}`"
       v-html="finalSubtitle"
     ></div>
 
-    <div :class="`body_lead`" v-html="finalLead"></div>
-    <div :class="`body_text`" v-html="finalText"></div>
+    <div
+      :class="`body_lead ${typoClasses ? 'typo-lead' : ''}`"
+      v-html="finalLead"
+    ></div>
+    <div
+      :class="`body_text ${typoClasses ? 'typo-p' : ''}`"
+      v-html="finalText"
+    ></div>
 
     <nav class="body_buttons" v-if="buttons?.length">
       <Button v-for="(button, i) in buttons" v-bind="button" :key="i" />

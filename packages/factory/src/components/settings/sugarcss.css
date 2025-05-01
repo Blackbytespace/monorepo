@@ -1,5 +1,7 @@
 @import '@lotsof/sugarcss/src/css/sugarcss.css';
 
+@include s-reset;
+
 :root {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
@@ -21,9 +23,9 @@
     0px 5.6px 17.9px rgba(0, 0, 0, 0.024),
     0px 10.4px 33.4px rgba(0, 0, 0, 0.029), 0px 25px 80px rgba(0, 0, 0, 0.04);
 
-  --s-color-main: #9e9161;
+  --s-color-main: #878787;
   --s-color-accent: #40a1bf;
-  --s-color-complementary: #00f0ff;
+  --s-color-complementary: #9ec468;
   --s-color-ternary: #9ec468;
   --s-color-current: #40a1bf;
   --s-color-success: #91ff00;
@@ -33,18 +35,19 @@
   --s-color-php: #777cb5;
 
   --s-shade-text: --desaturate 50 --darken 20;
-  --s-shade-form: --desaturate 50 --alpha 0.8;
+  --s-shade-form: --desaturate 50 --alpha 1;
+  --s-shade-form-background: --lightness 100;
   --s-shade-text-main: --darken 35;
   --s-shade-placeholder: --alpha 0.4;
-  --s-shade-foreground: --lighten 50;
-  --s-shade-background: --lighten 50;
+  --s-shade-foreground: --lightness 94;
+  --s-shade-background: --lightness 100;
   --s-shade-icon: --alpha 0.7;
-  --s-shade-surface: --darken 40;
-  --s-shade-border: --alpha 0.1;
+  --s-shade-surface: --lightness 94;
+  --s-shade-border: --lightness 94;
   --s-shade-hover: --lighten 40;
   --s-shade-active: --darken 10;
 
-  --s-font-family-sans: 'Roboto', sans-serif;
+  --s-font-family-sans: 'Poppins', sans-serif;
   --s-font-family-serif: 'Merriweather', serif;
   --s-font-family-code: 'Monaco', sans-serif;
   --s-font-family-quote: 'Palatino', serif;
@@ -73,7 +76,9 @@
   --s-typo-p: s-font(p) s-size(p) var(--s-lineheight-p);
   --s-typo-tagline: s-font(tagline) s-size(tagline) 1.8 0 uppercase;
   --s-typo-quote: s-font(quote) s-size(quote) 1.3;
+  --s-typo-id: s-font(code) s-size(id);
   --s-typo-code: s-font(code) s-size(code);
+  --s-typo-label: s-font(p) s-size(label);
   --s-typo-button: s-font(body) s-size(button) var(--s-lineheight-p);
   --s-typo-menu: s-font(body) s-size(menu) 1.2;
 
@@ -127,13 +132,15 @@
   --s-size-tagline: 16px;
   --s-size-lead: 20px;
   --s-size-p: 16px;
-  --s-size-form: 12px;
+  --s-size-form: 14px;
   --s-size-button: 14px;
+  --s-size-label: 14px;
   --s-size-caption: 12px;
   --s-size-code: 16px;
   --s-size-menu: 14px;
   --s-size-quote: 25px;
   --s-size-tooltip: 16px;
+  --s-size-id: 14px;
   --s-size-notification: 14px;
   --s-size-error: 12px;
   --s-size-small: 12px;
@@ -143,38 +150,22 @@
 }
 
 body.-dark {
-  --s-radius-default: 20px;
-
   --s-color-main: hsl(47, 0%, 50%);
-  --s-color-accent: #40a1bf;
-  --s-color-complementary: #00f0ff;
-  --s-color-ternary: #9ec468;
-  --s-color-current: #40a1bf;
-  --s-color-success: #91ff00;
-  --s-color-warning: #ffd500;
-  --s-color-error: #ff003b;
-  --s-color-info: #00ffff;
-  --s-color-php: #777cb5;
+  --s-color-error: #ff7b9a;
 
-  --s-shade-text: --desaturate 50 --lighten 40;
-  --s-shade-form: --desaturate 50 --alpha 0.8;
-  --s-shade-text-main: --lighten 50;
-  --s-shade-placeholder: --alpha 0.4 --lighten 10;
-  --s-shade-foreground: --lighten 50;
-  --s-shade-background: --desaturate 50 --darken 38;
-  --s-shade-icon: --alpha 0.7;
-  --s-shade-surface: --darken 40;
-  --s-shade-border: --alpha 0.05;
-  --s-shade-hover: --lighten 40;
-  --s-shade-active: --darken 10;
+  --s-shade-text: --desaturate 50 --lightness 100;
+  --s-shade-form: --alpha 1 --lightness 100;
+  --s-shade-form-background: --lightness 24;
+  --s-shade-text-main: --ligtnedd 90;
+  --s-shade-background: --lightness 16;
+  --s-shade-surface: --lightness 94;
+  --s-shade-border: --lightness 26;
 }
 
 ::selection {
   background: s-color(accent, --darken 10);
   color: s-color(accent, --lighten 50);
 }
-
-@include s-destyle;
 
 body {
   @s-typo (body);

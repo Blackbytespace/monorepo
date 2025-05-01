@@ -14,11 +14,9 @@ import * as __fs from 'fs';
  * @param       {TExistsSettings}       [settings={}]       Some settings for what you want to take care of
  * @return      {Boolean}                       true if exists, false if not
  *
- * @setting       {Boolean}       [directory=true]      Specify if you want to take care of directories
+ * @setting         {Boolean}       [directory=true]      Specify if you want to take care of directories
  * @setting         {Boolean}       [file=true]         Specify if you want to take care of files
  * @setting         {Boolean}       [symlink=true]      Specify if you want to take care of symlinks
- *
- * @todo        tests
  *
  * @snippet         __existsSync($1)
  *
@@ -51,7 +49,8 @@ export default function __existsSync(
   try {
     stats = __fs.statSync(path);
     if (!stats) return false;
-    isSymlink = stats.isSymbolicLink();
+    const realPath = __fs.realpathSync(path);
+    isSymlink = path !== realPath;
   } catch (e) {
     return false;
   }

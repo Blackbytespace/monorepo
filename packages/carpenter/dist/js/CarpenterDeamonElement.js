@@ -17,6 +17,7 @@ import __LitElement from '@lotsof/lit-element';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import '../../src/css/CarpenterDaemonElement.css';
+// @ts-ignore
 let CarpenterDaemonElement = class CarpenterDaemonElement extends __LitElement {
     constructor() {
         super('s-carpenterd');

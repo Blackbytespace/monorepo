@@ -1,0 +1,251 @@
+@import './typo.rhythm.css';
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.typo-h1,
+.typo-h2,
+.typo-h3,
+.typo-h4,
+.typo-h5,
+.typo-h6,
+.typo-format h1,
+.typo-format h2,
+.typo-format h3,
+.typo-format h4,
+.typo-format h5,
+.typo-format h6 {
+  font: s-font(title);
+  line-height: 1em;
+  white-space: pre-line;
+  /*text-wrap: balance;*/
+
+  &:empty {
+    display: none;
+  }
+}
+
+.typo-h1,
+.typo-format h1 {
+  @s-typo (h1);
+}
+
+.typo-h2,
+.typo-format h2 {
+  @s-typo (h2);
+}
+
+.typo-h3,
+.typo-format h3 {
+  @s-typo (h3);
+}
+
+.typo-h4,
+.typo-format h4 {
+  @s-typo (h4);
+}
+
+.typo-h5,
+.typo-format h5 {
+  @s-typo (h5);
+}
+
+.typo-h6,
+.typo-format h6 {
+  @s-typo (h6);
+}
+
+.typo-suptitle {
+  @s-typo (suptitle);
+  color: s-color(accent);
+}
+
+.typo-subtitle {
+  @s-typo (subtitle);
+}
+
+.typo-p,
+.typo-format p {
+  @s-typo (p);
+  white-space: pre-line;
+
+  &:empty {
+    display: none;
+  }
+
+  &.-big {
+    @s-typo (quote);
+  }
+  &.-ghost {
+    opacity: 0.4;
+    font-size: s-size(tagline);
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.typo-lead,
+.typo-lead > p,
+.typo-format .typo-lead,
+.typo-format .typo-lead p {
+  @s-typo (lead);
+  white-space: pre-line;
+  /*text-wrap: balance;*/
+
+  &:empty {
+    display: none;
+  }
+}
+
+.typo-code,
+.typo-format code {
+  border-radius: s-radius();
+  background: s-color(main, background, --alpha 0.1);
+  color: s-color(main, text);
+  @s-typo (code);
+}
+
+.typo-a,
+.typo-format a:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+
+  &:hover {
+    color: s-color(accent);
+  }
+}
+
+.typo-strong,
+.typo-format strong,
+.typo-b,
+.typo-format b {
+  font-weight: 600;
+}
+
+.typo-em,
+.typo-format em {
+  font-weight: normal;
+}
+
+.typo-u,
+.typo-format u {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.typo-sub,
+.typo-format sub {
+  position: relative;
+  top: 0.3em;
+}
+
+.typo-sup,
+.typo-format sup {
+  position: relative;
+  top: -0.5em;
+}
+
+.typo-small,
+.typo-format small {
+  font-size: 0.7em;
+}
+
+.typo-ul,
+.typo-format ul,
+.typo-ol,
+.typo-format ol {
+  display: flex;
+  flex-direction: column;
+  gap: s-rem(10px);
+
+  ol,
+  ul {
+    margin-block-start: s-space(1);
+  }
+
+  > li {
+    position: relative;
+    padding-left: s-space(4);
+
+    p {
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: s-color(current);
+      line-height: 1.3lh;
+    }
+  }
+}
+
+.typo-ul,
+.typo-format ul {
+  > li {
+    &:before {
+      display: block;
+      top: 0.7em;
+      background: s-color(current);
+      width: s-rem(4px);
+      height: s-rem(4px);
+      border-radius: 100%;
+      content: '';
+    }
+  }
+}
+
+.typo-ol,
+.typo-format ol {
+  counter-reset: item;
+
+  > li {
+    padding-left: s-space(5);
+
+    &:before {
+      counter-increment: item;
+      content: counter(item) '.';
+    }
+  }
+}
+
+.typo-dl,
+.typo-format dl {
+  > dt > dl dt,
+  > dd > dl dd {
+    position: relative;
+    padding-left: s-space(1);
+  }
+
+  > dt {
+    margin-top: s-space(1);
+  }
+}
+
+.typo-blockquote,
+.typo-format blockquote {
+  border-inline-start: s-space(1) solid s-color(accent, border);
+  padding-inline-start: s-space(4);
+
+  & + cite {
+    display: block;
+    color: s-color(accent);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+}
+
+.typo-mark,
+.typo-format mark {
+  color: s-color(accent);
+}
+
+.typo-hr,
+.typo-format hr {
+  display: block;
+  border: 0;
+  border-top: 1px solid s-color(accent, border);
+}

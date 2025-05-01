@@ -5,7 +5,7 @@ import __linkMock from '../link/link.mock.js';
 export default function __buttonMock(props = {}) {
     return __deepMerge([
         {
-            style: __pickRandom(['solid', 'outline', 'text']),
+            type: __pickRandom(['solid', 'outline', 'text']),
             link: __linkMock(),
             id: faker.lorem.slug(),
             class: faker.lorem.slug(),

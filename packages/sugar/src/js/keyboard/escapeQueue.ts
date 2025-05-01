@@ -58,7 +58,7 @@ export type TEscapeQueueResult = Promise<void> & {
   cancel: Function;
 };
 
-const _escapeQueue: TEscapeQueueItem[] = [];
+let _escapeQueue: TEscapeQueueItem[] = [];
 const _escapeQueueMap = new WeakMap();
 let _isEscaping = false;
 
@@ -113,7 +113,7 @@ export default function escapeQueue(
 
     setTimeout(() => {
       pro.cancel = () => {
-        _escapeQueue.splice(_escapeQueue.indexOf(queueItem, 1));
+        _escapeQueue = _escapeQueue.filter((i) => i.id !== queueItem.id);
         Promise.resolve(pro);
       };
     });

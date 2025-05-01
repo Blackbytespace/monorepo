@@ -15,6 +15,7 @@ class BodyType extends BaseType
         ?array $buttons = null,
         ?bool $format = null,
         ?bool $rhythm = null,
+        ?bool $typoClasses = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = []
@@ -47,9 +48,15 @@ class BodyType extends BaseType
         }
         if ($format === null) {
             $format = $faker->boolean();
+            $format = true;
         }
         if ($rhythm === null) {
             $rhythm = $faker->boolean();
+            $rhythm = true;
+        }
+        if ($typoClasses === null) {
+            $typoClasses = $faker->boolean();
+            $typoClasses = true;
         }
 
         $body = new static(
@@ -63,6 +70,7 @@ class BodyType extends BaseType
             buttons: $buttons,
             format: $format,
             rhythm: $rhythm,
+            typoClasses: $typoClasses,
             id: $id,
             class: $class,
             attrs: $attrs
@@ -80,6 +88,7 @@ class BodyType extends BaseType
     protected ?array $buttons = [];
     protected ?bool $format = true;
     protected ?bool $rhythm = true;
+    protected ?bool $typoClasses = true;
     protected ?string $id = null;
     protected ?string $class = null;
     protected ?array $attrs = [];
@@ -99,11 +108,12 @@ class BodyType extends BaseType
         ?array $buttons = null,
         ?bool $format = true,
         ?bool $rhythm = true,
+        ?bool $typoClasses = true,
         ?array $attrs = [],
         ?string $id = null,
         ?string $class = null
     ) {
-        parent::__construct($id);
+        parent::__construct();
         $this->suptitle = $suptitle;
         $this->title = $title;
         $this->headingLevelTag = $headingLevelTag;
@@ -114,6 +124,7 @@ class BodyType extends BaseType
         $this->buttons = $buttons === null ? [] : $buttons;
         $this->format = $format;
         $this->rhythm = $rhythm;
+        $this->typoClasses = $typoClasses;
         $this->id = $id;
         $this->class = $class;
         $this->attrs = $attrs;

@@ -20,10 +20,10 @@ class LinkType extends BaseType
             $href = $faker->url();
         }
         if ($text === null) {
-            $text = $faker->sentence();
+            $text = $faker->words(random_int(1, 3), true);
         }
         if ($title === null) {
-            $title = $faker->sentence();
+            $title = $faker->words(random_int(1, 3), true);
         }
         if ($target === null) {
             $target = $faker->randomElement(['_self', '_blank', '_parent', '_top']);
@@ -32,13 +32,7 @@ class LinkType extends BaseType
             $rel = $faker->randomElement(['noopener', 'noreferrer', 'noopener noreferrer']);
         }
         if ($ariaLabel === null) {
-            $ariaLabel = $faker->sentence();
-        }
-        if ($id === null) {
-            $id = $faker->uuid();
-        }
-        if ($class === null) {
-            $class = $faker->word();
+            $ariaLabel = $faker->words(random_int(1, 3), true);
         }
 
         $link = new static(

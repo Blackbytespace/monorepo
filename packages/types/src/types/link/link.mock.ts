@@ -9,11 +9,11 @@ export default function __linkTypeMock(props: Partial<TLink> = {}): TLink {
       href: faker.internet.url(),
       text: faker.lorem.words({ min: 1, max: 3 }),
       title: faker.number.int(1)
-        ? faker.lorem.words({ min: 1, max: 5 })
+        ? faker.lorem.words({ min: 1, max: 3 })
         : undefined,
       target: __pickRandom(['_self', '_blank', '_parent', '_top']),
       rel: __pickRandom(['noopener', 'noreferrer', 'noopener noreferrer']),
-      ariaLabel: faker.lorem.words({ min: 1, max: 5 }),
+      ariaLabel: faker.lorem.words({ min: 1, max: 3 }),
     },
     props,
   ]);

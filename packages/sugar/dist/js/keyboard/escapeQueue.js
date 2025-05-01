@@ -1,5 +1,5 @@
 import __uniqid from '../string/uniqid.js';
-const _escapeQueue = [];
+let _escapeQueue = [];
 const _escapeQueueMap = new WeakMap();
 let _isEscaping = false;
 class CancelablePromise extends Promise {
@@ -42,7 +42,7 @@ export default function escapeQueue(callback, settings) {
         };
         setTimeout(() => {
             pro.cancel = () => {
-                _escapeQueue.splice(_escapeQueue.indexOf(queueItem, 1));
+                _escapeQueue = _escapeQueue.filter((i) => i.id !== queueItem.id);
                 Promise.resolve(pro);
             };
         });

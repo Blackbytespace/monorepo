@@ -7,7 +7,7 @@ class ButtonType extends BaseType
     public static array $styles = ['solid', 'outline', 'text'];
 
     public static function mock(
-        ?string $style = null,
+        ?string $type = null,
         ?\Lotsof\Types\LinkType $link = null,
         ?string $id = null,
         ?string $class = null,
@@ -15,21 +15,15 @@ class ButtonType extends BaseType
     ): ButtonType {
         $faker = \Faker\Factory::create();
 
-        if ($style === null) {
-            $style = $faker->randomElement(static::$styles);
+        if ($type === null) {
+            $type = $faker->randomElement(static::$styles);
         }
         if ($link === null) {
             $link = LinkType::mock();
         }
-        if ($id === null) {
-            $id = $faker->uuid();
-        }
-        if ($class === null) {
-            $class = $faker->word();
-        }
 
         $button = new static(
-            style: $style,
+            type: $type,
             link: $link,
             id: $id,
             class: $class,
@@ -38,7 +32,7 @@ class ButtonType extends BaseType
         return $button;
     }
 
-    protected string $style;
+    protected string $type;
     protected ?\Lotsof\Types\LinkType $link;
     protected ?string $id;
     protected ?string $class;
@@ -49,14 +43,14 @@ class ButtonType extends BaseType
     ];
 
     public function __construct(
-        ?string $style = 'solid',
+        ?string $type = 'solid',
         ?\Lotsof\Types\LinkType $link = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = []
     ) {
         parent::__construct();
-        $this->style = $style;
+        $this->type = $type;
         $this->link = $link;
         $this->id = $id;
         $this->class = $class;

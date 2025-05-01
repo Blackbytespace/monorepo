@@ -1,5 +1,6 @@
 .s-json-schema-form {
   display: block;
+  user-select: none;
 
   .s-json-schema-form_values {
   }
