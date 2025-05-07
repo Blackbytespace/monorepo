@@ -35,12 +35,22 @@ export type TCarpenterComponent = {
     values: any;
     assets?: TCarpenterComponentAsset[];
     savedValues: any;
+    html?: string;
     $component: Element;
 };
 export type TCarpenterCustomEvent = CustomEvent & {
     detail: TCarpenterComponent;
 };
+export type TCarpenterUpdateObject = {
+    path: string[];
+    value: any;
+    component: TCarpenterComponent;
+};
+export type TCarpenterUpdatePayload = {
+    path: string[];
+    value: any;
+};
 export type TCarpenterAdapter = {
-    applyUpdate(TCarpenterUpdateObject: any): void;
+    applyUpdate(update: TCarpenterUpdatePayload): void;
 };
 export type TCarpenterWidget = TJsonSchemaFormWidget & {};

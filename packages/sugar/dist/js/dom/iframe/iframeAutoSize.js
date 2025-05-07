@@ -32,25 +32,50 @@ export default function __iframeAutoSize($iframe, settings) {
     function _resize() {
         var _a, _b;
         if (finalSettings.width) {
-            let contentWidth = 0;
-            const $childs = (_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.children;
-            for (let [i, $child] of Object.entries($childs !== null && $childs !== void 0 ? $childs : [])) {
-                if ($child.clientWidth > contentWidth) {
-                    contentWidth += $child.clientWidth;
+            $iframe.style.width = 0 + 'px';
+            $iframe.style.width =
+                ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.documentElement.scrollWidth) + 'px';
+            setTimeout(() => {
+                var _a;
+                if ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.scrollWidth) {
+                    _resize();
                 }
-            }
-            $iframe.style.width = contentWidth + 2 + 'px';
+            }, 100);
         }
         if (finalSettings.height) {
-            let contentHeight = 0;
-            const $childs = (_b = $iframe.contentWindow) === null || _b === void 0 ? void 0 : _b.document.body.children;
-            for (let [i, $child] of Object.entries($childs !== null && $childs !== void 0 ? $childs : [])) {
-                contentHeight += $child.clientHeight;
-            }
-            $iframe.style.height = contentHeight + 2 + 'px';
+            $iframe.style.height = 0 + 'px';
+            $iframe.style.height =
+                ((_b = $iframe.contentWindow) === null || _b === void 0 ? void 0 : _b.document.documentElement.scrollHeight) + 'px';
+            setTimeout(() => {
+                var _a;
+                if ((_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.scrollHeight) {
+                    _resize();
+                }
+            }, 100);
         }
     }
-    $iframe.addEventListener('load', _resize);
+    $iframe.addEventListener('load', () => {
+        var _a, _b;
+        // resize on load
+        _resize;
+        // resize on image load
+        (_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.document.body.querySelectorAll('img').forEach(($img) => {
+            $img.addEventListener('load', () => {
+                _resize();
+            });
+        });
+        // observe for changes in the iframe content
+        const observer = new MutationObserver((mutations) => {
+            setTimeout(() => {
+                _resize();
+            });
+        });
+        observer.observe((_b = $iframe.contentWindow) === null || _b === void 0 ? void 0 : _b.document.body, {
+            attributes: true,
+            childList: true,
+            subtree: true,
+        });
+    });
     (_a = $iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.addEventListener('resize', _resize);
 }
 //# sourceMappingURL=iframeAutoSize.js.map

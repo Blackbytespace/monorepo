@@ -19,10 +19,9 @@ import '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import { __getFormValues } from '@lotsof/sugar/dom';
+import { __getFormValues, __injectHtml } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __hotkey } from '@lotsof/sugar/keyboard';
-import { __set } from '@lotsof/sugar/object';
 import { __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
@@ -106,7 +105,6 @@ export default class FactoryElement extends __LitElement {
             // fetch the specs from the server
             const request = yield fetch(this.src), json = yield request.json();
             // set the specs
-            console.log('SET', json);
             this.specs = json;
         });
     }
@@ -127,9 +125,7 @@ export default class FactoryElement extends __LitElement {
             this._initListeners(document);
             // this._initListeners(this.$iframeDocument as Document);
             // render component if the current component is set
-            if (this.currentComponentId) {
-                this._updateComponent(this.currentComponentId, this.currentEngine);
-            }
+            this._updateComponent();
             // init command panel
             this._initCommandPanel();
             // restore the ui mode (light/dark)
@@ -312,18 +308,27 @@ export default class FactoryElement extends __LitElement {
     _initEnvironment() {
         this.log(`Init the factory environment...`);
         // move the component into the body
-        // document.body.appendChild(this);
+        document.body.appendChild(this);
     }
-    _updateComponent(id, engine) {
-        return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
-            const component = this.specs.components[id];
+    _updateComponent() {
+        return __awaiter(this, arguments, void 0, function* (settings = {}) {
+            var _a, _b, _c;
+            const $carpenter = this.querySelector('s-carpenter');
+            const finalSettings = Object.assign({ id: this.currentComponentId, engine: this.currentEngine, $iframe: $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.$iframe }, settings);
+            // if we don't have an engine, we can't update the component
+            if (!finalSettings.engine || !finalSettings.id) {
+                return;
+            }
+            // if we don't have a component, we can't update it
+            const component = this.specs.components[finalSettings.id];
             if (!component) {
                 return;
             }
-            let url = `/api/render/${id}`;
-            if (engine) {
-                url += `/${engine}`;
+            // make ajax request to the server
+            // to render the component
+            let url = `/api/render/${finalSettings.id}`;
+            if (finalSettings.engine) {
+                url += `/${finalSettings.engine}`;
             }
             const request = yield fetch(url, {
                 method: 'POST',
@@ -331,8 +336,16 @@ export default class FactoryElement extends __LitElement {
                     values: (_b = (_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.values) !== null && _b !== void 0 ? _b : {},
                 }),
             }), json = yield request.json();
+            // updading the component values
             component.values = json.values;
-            // @TODO  update the component in iframe
+            component.html = json.html;
+            // update the iframe with new component html
+            console.log(finalSettings);
+            if (finalSettings.$iframe) {
+                __injectHtml((_c = finalSettings.$iframe.contentDocument) === null || _c === void 0 ? void 0 : _c.body, json.html);
+            }
+            // update Factory AND Carpenter
+            $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.requestUpdate();
             this.requestUpdate();
         });
     }
@@ -350,16 +363,16 @@ export default class FactoryElement extends __LitElement {
         // set the current component
         this._currentComponentId = id;
         // render the new component
-        this._updateComponent(id, engine);
+        this._updateComponent();
     }
-    setComponentValues(id, values) {
-        const component = this.getComponentById(id);
-        if (!component) {
-            return;
-        }
-        component.values = values;
-        this._updateComponent(component.name, this.currentEngine);
-    }
+    // public setComponentValues(id: string, values: any): void {
+    //   const component = this.getComponentById(id);
+    //   if (!component) {
+    //     return;
+    //   }
+    //   component.values = values;
+    //   this._updateComponent(component.name);
+    // }
     toggleUiMode() {
         this.setUiMode(this.state.mode === 'dark' ? 'light' : 'dark');
     }
@@ -377,14 +390,16 @@ export default class FactoryElement extends __LitElement {
             document.body.classList.add('-dark');
         }
     }
-    randomizeComponentValues(id) {
+    randomizeComponentValues(id = this.currentComponentId) {
         const component = this.getComponentById(id);
         if (!component) {
             return;
         }
         // update the component with empty values
         component.values = {};
-        this._updateComponent(component.name, this.currentEngine);
+        this._updateComponent({
+            id,
+        });
     }
     _saveComponentValues(component, name) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -413,17 +428,7 @@ export default class FactoryElement extends __LitElement {
             });
         });
     }
-    _applyUpdate(update) {
-        return __awaiter(this, void 0, void 0, function* () {
-            var _a;
-            // set the value into the component
-            __set((_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.values, update.path, update.value);
-            // update the component
-            this._updateComponent(this.currentComponentId, this.currentEngine);
-        });
-    }
     _handleCommandPanelSelect(item) {
-        var _a;
         let engine, id;
         switch (true) {
             case item.value.startsWith('/'):
@@ -439,7 +444,10 @@ export default class FactoryElement extends __LitElement {
                 this._currentAction = 'saveValues';
                 break;
             case item.value.startsWith('<'):
-                this.setComponentValues(this.currentComponent.name, (_a = this.currentComponent.savedValues[item.value.slice(1)]) === null || _a === void 0 ? void 0 : _a.values);
+                // this.setComponentValues(
+                //   this.currentComponent.name,
+                //   this.currentComponent.savedValues[item.value.slice(1)]?.values,
+                // );
                 break;
         }
     }
@@ -623,35 +631,26 @@ export default class FactoryElement extends __LitElement {
         return html `
       <div class="${this.cls('_editor')}">
         <div class="${this.cls('_editor-inner')}">
-          <s-carpenter .component=${this.currentComponent} />
+          <s-carpenter
+            .component=${this.currentComponent}
+            @s-carpenter.update=${(e) => {
+            this._updateComponent();
+        }}
+            @s-carpenter.loaded=${(e) => {
+            var _a;
+            this._initListeners((_a = e.detail.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument);
+        }}
+          />
         </div>
       </div>
     `;
-        // return html`<div class="${this.cls('_editor')}">
-        //   <div class="${this.cls('_editor-inner')}">
-        //     <s-json-schema-form
-        //       id="s-factory-json-schema-form"
-        //       @sJsonSchemaForm.update=${(e: CustomEvent) => {
-        //         this._applyUpdate({
-        //           ...e.detail.update,
-        //           component: this._currentComponent,
-        //         });
-        //       }}
-        //       id="s-factory-json-schema-form"
-        //       name="s-factory-json-schema-form"
-        //       .buttonClasses=${true}
-        //       .formClasses=${true}
-        //       .verbose=${this.verbose}
-        //       .schema=${this.currentComponent?.schema}
-        //       .values=${this.currentComponent?.values ?? {}}
-        //     ></s-json-schema-form>
-        //   </div>
-        // </div>`;
     }
     render() {
         return html `
-      ${this._renderTopbar()} ${this._renderCommandPanel()}
-      ${this._renderSidebar()} ${this._renderEditor()}
+      ${this._renderTopbar()}
+      <!-- ${this._renderCommandPanel()} -->
+      <!-- ${this._renderSidebar()}  -->
+      ${this._renderEditor()}
       ${this._currentAction === 'saveValues'
             ? this._renderSaveValuesForm()
             : ''}

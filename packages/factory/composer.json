@@ -26,6 +26,8 @@
     "php": ">=8.0",
     "lotsof/sugar": "^1.0.0@alpha",
     "eftec/bladeone": "^4.13",
-    "twig/twig": "^3.11"
+    "twig/twig": "^3.11",
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.7"
   }
 }

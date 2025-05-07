@@ -8,16 +8,43 @@ class Component
     protected object $values;
     protected string $path;
     protected object $json;
+    protected string $schemaId;
 
-    public function __construct(string $path, ?object $values = null)
+    private ?\Lotsof\Components\Components $components;
+
+
+    public function __construct(string $path, ?object $values = null, ?\Lotsof\Components\Components $components = null)
     {
+        if ($components) {
+            $this->path = $components->getComponentPath($path);
+        } else {
+            $this->path = $path;
+        }
+
+        // make sure we have a directory to write in
+        if (!file_exists($this->path)) {
+            mkdir($this->path);
+        }
+
+        // save the components instance
+        $this->components = $components;
+
+        // set the values
         if ($values) {
             $this->values = $values;
         } else {
             $this->values = (object) [];
         }
-        $this->path = $path;
+        $this->path = str_replace('/component.json', '', $path);
         $this->json = $this->getComponentJson();
+
+        // get the json schema id
+        $jsonSchema = $this->getJsonSchema(resolveRefs: false);
+        if (isset($jsonSchema->{'$id'})) {
+            $this->schemaId = $jsonSchema->{'$id'};
+        } else {
+            $this->schemaId = '';
+        }
     }
 
     public function getPath(): string
@@ -55,6 +82,11 @@ class Component
         return count((array) $this->values) > 0;
     }
 
+    public function getSchemaId(): string
+    {
+        return $this->schemaId;
+    }
+
     public function toObject(): object
     {
         return (object) [
@@ -66,7 +98,7 @@ class Component
             'files' => $this->getFiles(),
             'engines' => $this->getEngines(),
             'mocks' => $this->getMocks(),
-            'schema' => $this->getComponentSchema(),
+            'schema' => $this->getJsonSchema(),
             'values' => $this->getValues(),
             'savedValues' => $this->getSavedValues()
         ];
@@ -129,7 +161,7 @@ class Component
         return $files;
     }
 
-    public function getComponentJson(): object
+    public function getComponentJson(): ?object
     {
         $componentJsonPath = $this->path . '/component.json';
         if (!file_exists($componentJsonPath)) {
@@ -222,34 +254,53 @@ class Component
         return $supportedEngines;
     }
 
-    public function getComponentSchema(): mixed
+    public function getJsonSchema(?bool $resolveRefs = true): mixed
     {
         $componentSchemaPath = $this->path . '/' . $this->getName() . '.schema.json';
         if (!file_exists($componentSchemaPath)) {
             return null;
         }
-        $componentJson = json_decode(file_get_contents($componentSchemaPath));
+        $jsonSchema = json_decode(file_get_contents($componentSchemaPath));
 
         // resolve $ref properties
-        $componentJson = $this->_resolveSchemaRefs($componentJson, $componentSchemaPath);
+        if ($resolveRefs) {
+            $jsonSchema = $this->_resolveSchemaRefs($jsonSchema, $componentSchemaPath);
+        }
 
-        return $componentJson;
+        return $jsonSchema;
     }
 
     private function _resolveSchemaRefs(object $schema, string $schemaPath): object
     {
+
+        $currentPath = realpath($schemaPath);
+
         // resolve $ref properties
-        $schema = \Sugar\Object\deepMap($schema, function ($prop, &$value, &$object) use ($schemaPath) {
+        $schema = \Sugar\Object\deepMap($schema, function ($prop, &$value, &$object) use ($schemaPath, &$currentPath) {
             if ($prop === '$ref') {
-                $relPath = realpath(dirname($schemaPath) . '/' . $value);
-                if (!file_exists($relPath)) {
-                    throw new \Exception('Schema "' . $relPath . '" file not found referenced in "' . $schemaPath . '"');
+
+                if ($this->components) {
+                    $refComponent = $this->components->getComponentBySchemaId($value);
+                    if ($refComponent) {
+                        $jsonSchema = $refComponent->getJsonSchema(resolveRefs: false);
+                        foreach ($jsonSchema as $key => $val) {
+                            $object->$key = $val;
+                        }
+                    }
                 }
-                $schema = file_get_contents($relPath);
-                $schema = json_decode($schema);
-                foreach ($schema as $key => $val) {
-                    $object->$key = $val;
-                }
+
+                // print dirname($currentPath) . '/' . $value . " ----<br />";
+                // $relPath = realpath(dirname($currentPath) . '/' . $value);
+                // print $relPath . "<br />";
+                // if (!file_exists($relPath)) {
+                //     throw new \Exception('Schema "' . $relPath . '" file not found referenced in "' . $currentPath . '"');
+                // }
+                // $schema = file_get_contents($relPath);
+                // $schema = json_decode($schema);
+                // foreach ($schema as $key => $val) {
+                //     $object->$key = $val;
+                // }
+                // $currentPath = $relPath;
                 return -1;
             }
             return $value;

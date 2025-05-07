@@ -44,25 +44,51 @@ export default function __iframeAutoSize(
 
   function _resize(): void {
     if (finalSettings.width) {
-      let contentWidth = 0;
-      const $childs = $iframe.contentWindow?.document.body.children;
-      for (let [i, $child] of Object.entries($childs ?? [])) {
-        if ($child.clientWidth > contentWidth) {
-          contentWidth += $child.clientWidth;
+      $iframe.style.width = 0 + 'px';
+      $iframe.style.width =
+        $iframe.contentWindow?.document.documentElement.scrollWidth + 'px';
+      setTimeout(() => {
+        if ($iframe.contentWindow?.document.body.scrollWidth) {
+          _resize();
         }
-      }
-      $iframe.style.width = contentWidth + 2 + 'px';
+      }, 100);
     }
     if (finalSettings.height) {
-      let contentHeight = 0;
-      const $childs = $iframe.contentWindow?.document.body.children;
-      for (let [i, $child] of Object.entries($childs ?? [])) {
-        contentHeight += $child.clientHeight;
-      }
-      $iframe.style.height = contentHeight + 2 + 'px';
+      $iframe.style.height = 0 + 'px';
+      $iframe.style.height =
+        $iframe.contentWindow?.document.documentElement.scrollHeight + 'px';
+      setTimeout(() => {
+        if ($iframe.contentWindow?.document.body.scrollHeight) {
+          _resize();
+        }
+      }, 100);
     }
   }
 
-  $iframe.addEventListener('load', _resize);
+  $iframe.addEventListener('load', () => {
+    // resize on load
+    _resize;
+
+    // resize on image load
+    $iframe.contentWindow?.document.body
+      .querySelectorAll('img')
+      .forEach(($img) => {
+        $img.addEventListener('load', () => {
+          _resize();
+        });
+      });
+
+    // observe for changes in the iframe content
+    const observer = new MutationObserver((mutations) => {
+      setTimeout(() => {
+        _resize();
+      });
+    });
+    observer.observe($iframe.contentWindow?.document.body as HTMLElement, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  });
   $iframe.contentWindow?.addEventListener('resize', _resize);
 }

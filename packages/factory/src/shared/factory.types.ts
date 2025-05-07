@@ -56,6 +56,12 @@ export type TFactoryNotification = {
   timeout: number;
 };
 
+export type TFactoryUpdateComponentSettings = {
+  id?: string;
+  engine?: string;
+  $iframe?: HTMLIFrameElement;
+};
+
 export type TFactoryConfig = {
   components: TComponentsSettings;
   server: TFactoryServerConfig;
@@ -76,6 +82,7 @@ export type TFactoryComponent = {
   description?: string;
   schema: JSONSchema7;
   values: any;
+  html?: string;
   savedValues: any;
   $component: Element;
 };

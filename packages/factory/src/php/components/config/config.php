@@ -1,6 +1,6 @@
 <?php
 
-namespace Factory\Config;
+namespace Lotsof\Factory\Config;
 
 function get(string $path = '.'): mixed
 {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "components.link",
+  "$id": "/ui/link",
   "title": "Link",
   "description": "Link component",
   "type": "object",

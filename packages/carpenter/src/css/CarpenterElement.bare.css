@@ -1,5 +1,9 @@
 @import './components/iframe/iframe.css';
 
+body {
+  overflow: hidden;
+}
+
 .s-carpenter {
   position: relative;
   z-index: 10;
@@ -26,4 +30,12 @@
 
   .s-carpenter_values {
   }
+}
+
+.s-carpenter_canvas {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  translate: 0 -50%;
 }

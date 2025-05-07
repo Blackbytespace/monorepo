@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "components.card",
+  "$id": "/ui/card",
   "title": "Card",
   "description": "Card component",
   "type": "object",
@@ -20,10 +20,10 @@
   ],
   "properties": {
     "body": {
-      "$ref": "../body/body.schema.json"
+      "$ref": "/ui/body"
     },
     "image": {
-      "$ref": "../image/image.schema.json"
+      "$ref": "/ui/image"
     },
     "id": {
       "type": "string",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "components.image",
+  "$id": "/ui/image",
   "title": "Image",
   "description": "Simple image component",
   "type": "object",

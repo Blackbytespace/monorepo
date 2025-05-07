@@ -6,20 +6,28 @@ class Components
 {
 
     protected object $config;
+    private $components = [];
 
     public function __construct($config)
     {
         $this->config = $config;
+
+        $this->getComponentsList();
+
     }
 
     public function getComponentsList(): array
     {
         $components = [];
-        $files = glob($this->config->components->rootDir . '/*/component.json');
+        $files = array_merge(
+            glob($this->config->components->rootDir . '/*/component.json'),
+            glob($this->config->components->rootDir . '/*/*/component.json'),
+            glob($this->config->components->rootDir . '/*/*/*/component.json'),
+            glob($this->config->components->rootDir . '/*/*/*/*/component.json')
+        );
         foreach ($files as $file) {
-            $componentJson = json_decode(file_get_contents($file));
-            $componentJson->path = dirname($file);
-            $components[$componentJson->name] = $this->getComponent($componentJson->name);
+            $componentRelativePath = $this->getComponentRelativePath($file);
+            $components[dirname($componentRelativePath)] = $this->getComponent($componentRelativePath);
         }
 
         return $components;
@@ -35,25 +43,48 @@ class Components
 
     }
 
-    public function componentExists(string $name): mixed
+    public function componentExists(string $relativePath): mixed
     {
-        $componentPath = $this->config->components->rootDir . '/' . $name;
+        $componentPath = $this->getComponentPath($relativePath);
         return file_exists($componentPath);
     }
 
-    public function getComponentPath(string $name): string
+    public function getComponentRelativePath(string $path): string
     {
-        return $this->config->components->rootDir . '/' . $name;
+        $relativePath = str_replace($this->config->components->rootDir . '/', '', $path);
+        return $relativePath;
     }
 
-    public function getComponent(string $name, ?bool $details = true): mixed
+    public function getComponentPath(string $path): string
     {
-        if (!$this->componentExists($name)) {
-            throw new \Exception('Component "' . $name . '" not found');
+        if (str_contains($path, $this->config->components->rootDir)) {
+            return $path;
         }
-        $componentPath = $this->getComponentPath($name);
-        $component = new Component($componentPath);
-        return $component;
+        return $this->config->components->rootDir . '/' . $path;
+    }
+
+    public function getComponent(string $path): mixed
+    {
+        $componentPath = $this->getComponentPath($path);
+        if (isset($this->components[$componentPath])) {
+            return $this->components[$componentPath];
+        }
+        if ($this->componentExists($componentPath)) {
+            $component = new Component(path: $componentPath, components: $this);
+            $this->components[$componentPath] = $component;
+            return $component;
+        }
+        throw new \Exception('Component at path "' . $path . '" not found');
+    }
+
+    public function getComponentBySchemaId(string $id): mixed
+    {
+        foreach ($this->getComponentsList() as $component) {
+            if ($component->getSchemaId() === $id) {
+                return $component;
+            }
+        }
+        throw new \Exception('No component with the schema "$id" as "' . $id . '" found');
     }
 
 }

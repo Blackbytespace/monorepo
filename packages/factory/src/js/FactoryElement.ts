@@ -7,10 +7,9 @@ import '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import { __getFormValues } from '@lotsof/sugar/dom';
+import { __getFormValues, __injectHtml } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __hotkey, type THotkeySettings } from '@lotsof/sugar/keyboard';
-import { __set } from '@lotsof/sugar/object';
 import { __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
@@ -23,7 +22,7 @@ import {
   TFactoryNotification,
   TFactorySpecs,
   TFactoryState,
-  TFactoryUpdateObject,
+  TFactoryUpdateComponentSettings,
 } from '../shared/factory.types.js';
 import __logoFactory from './assets/logoFactory.js';
 import __logos from './logos.js';
@@ -135,7 +134,6 @@ export default class FactoryElement extends __LitElement {
     const request = await fetch(this.src),
       json = await request.json();
     // set the specs
-    console.log('SET', json);
     this.specs = json;
   }
 
@@ -156,12 +154,11 @@ export default class FactoryElement extends __LitElement {
 
     // init the listeners like escape key, etc...
     this._initListeners(document);
+
     // this._initListeners(this.$iframeDocument as Document);
 
     // render component if the current component is set
-    if (this.currentComponentId) {
-      this._updateComponent(this.currentComponentId, this.currentEngine);
-    }
+    this._updateComponent();
 
     // init command panel
     this._initCommandPanel();
@@ -395,18 +392,38 @@ export default class FactoryElement extends __LitElement {
   private _initEnvironment(): void {
     this.log(`Init the factory environment...`);
     // move the component into the body
-    // document.body.appendChild(this);
+    document.body.appendChild(this);
   }
 
-  private async _updateComponent(id: string, engine?: string): Promise<void> {
-    const component: TFactoryComponent = this.specs.components[id];
+  private async _updateComponent(
+    settings: TFactoryUpdateComponentSettings = {},
+  ): Promise<void> {
+    const $carpenter = this.querySelector('s-carpenter');
+
+    const finalSettings = {
+      id: this.currentComponentId,
+      engine: this.currentEngine,
+      $iframe: (<any>$carpenter)?.$iframe,
+      ...settings,
+    };
+
+    // if we don't have an engine, we can't update the component
+    if (!finalSettings.engine || !finalSettings.id) {
+      return;
+    }
+
+    // if we don't have a component, we can't update it
+    const component: TFactoryComponent =
+      this.specs.components[finalSettings.id];
     if (!component) {
       return;
     }
 
-    let url = `/api/render/${id}`;
-    if (engine) {
-      url += `/${engine}`;
+    // make ajax request to the server
+    // to render the component
+    let url = `/api/render/${finalSettings.id}`;
+    if (finalSettings.engine) {
+      url += `/${finalSettings.engine}`;
     }
     const request = await fetch(url, {
         method: 'POST',
@@ -415,10 +432,22 @@ export default class FactoryElement extends __LitElement {
         }),
       }),
       json = await request.json();
+
+    // updading the component values
     component.values = json.values;
+    component.html = json.html;
 
-    // @TODO  update the component in iframe
+    // update the iframe with new component html
+    console.log(finalSettings);
+    if (finalSettings.$iframe) {
+      __injectHtml(
+        finalSettings.$iframe.contentDocument?.body as HTMLElement,
+        json.html,
+      );
+    }
 
+    // update Factory AND Carpenter
+    $carpenter?.requestUpdate();
     this.requestUpdate();
   }
 
@@ -437,17 +466,17 @@ export default class FactoryElement extends __LitElement {
     // set the current component
     this._currentComponentId = id;
     // render the new component
-    this._updateComponent(id, engine);
+    this._updateComponent();
   }
 
-  public setComponentValues(id: string, values: any): void {
-    const component = this.getComponentById(id);
-    if (!component) {
-      return;
-    }
-    component.values = values;
-    this._updateComponent(component.name, this.currentEngine);
-  }
+  // public setComponentValues(id: string, values: any): void {
+  //   const component = this.getComponentById(id);
+  //   if (!component) {
+  //     return;
+  //   }
+  //   component.values = values;
+  //   this._updateComponent(component.name);
+  // }
 
   public toggleUiMode(): void {
     this.setUiMode(this.state.mode === 'dark' ? 'light' : 'dark');
@@ -468,14 +497,18 @@ export default class FactoryElement extends __LitElement {
     }
   }
 
-  public randomizeComponentValues(id: string): void {
+  public randomizeComponentValues(
+    id: string | undefined = this.currentComponentId,
+  ): void {
     const component = this.getComponentById(id);
     if (!component) {
       return;
     }
     // update the component with empty values
     component.values = {};
-    this._updateComponent(component.name, this.currentEngine);
+    this._updateComponent({
+      id,
+    });
   }
 
   private async _saveComponentValues(
@@ -512,17 +545,6 @@ export default class FactoryElement extends __LitElement {
     });
   }
 
-  private async _applyUpdate(update: TFactoryUpdateObject): Promise<void> {
-    // set the value into the component
-    __set(this.currentComponent?.values, update.path, update.value);
-
-    // update the component
-    this._updateComponent(
-      this.currentComponentId as string,
-      this.currentEngine,
-    );
-  }
-
   private _handleCommandPanelSelect(item: TAdvancedSelectElementItem): void {
     let engine: string, id: string;
 
@@ -541,10 +563,10 @@ export default class FactoryElement extends __LitElement {
         this._currentAction = 'saveValues';
         break;
       case item.value.startsWith('<'):
-        this.setComponentValues(
-          this.currentComponent.name,
-          this.currentComponent.savedValues[item.value.slice(1)]?.values,
-        );
+        // this.setComponentValues(
+        //   this.currentComponent.name,
+        //   this.currentComponent.savedValues[item.value.slice(1)]?.values,
+        // );
         break;
     }
   }
@@ -752,37 +774,28 @@ export default class FactoryElement extends __LitElement {
     return html`
       <div class="${this.cls('_editor')}">
         <div class="${this.cls('_editor-inner')}">
-          <s-carpenter .component=${this.currentComponent} />
+          <s-carpenter
+            .component=${this.currentComponent}
+            @s-carpenter.update=${(e) => {
+              this._updateComponent();
+            }}
+            @s-carpenter.loaded=${(e) => {
+              this._initListeners(
+                (<any>e.detail.$iframe)?.contentDocument as Document,
+              );
+            }}
+          />
         </div>
       </div>
     `;
-
-    // return html`<div class="${this.cls('_editor')}">
-    //   <div class="${this.cls('_editor-inner')}">
-    //     <s-json-schema-form
-    //       id="s-factory-json-schema-form"
-    //       @sJsonSchemaForm.update=${(e: CustomEvent) => {
-    //         this._applyUpdate({
-    //           ...e.detail.update,
-    //           component: this._currentComponent,
-    //         });
-    //       }}
-    //       id="s-factory-json-schema-form"
-    //       name="s-factory-json-schema-form"
-    //       .buttonClasses=${true}
-    //       .formClasses=${true}
-    //       .verbose=${this.verbose}
-    //       .schema=${this.currentComponent?.schema}
-    //       .values=${this.currentComponent?.values ?? {}}
-    //     ></s-json-schema-form>
-    //   </div>
-    // </div>`;
   }
 
   public render() {
     return html`
-      ${this._renderTopbar()} ${this._renderCommandPanel()}
-      ${this._renderSidebar()} ${this._renderEditor()}
+      ${this._renderTopbar()}
+      <!-- ${this._renderCommandPanel()} -->
+      <!-- ${this._renderSidebar()}  -->
+      ${this._renderEditor()}
       ${this._currentAction === 'saveValues'
         ? this._renderSaveValuesForm()
         : ''}

@@ -4,7 +4,7 @@
   right: var(--s-factory-side-padding);
   bottom: var(--s-factory-side-padding);
   width: var(--s-factory-editor-width);
-  /* translate: calc(100% + var(--s-factory-side-padding)); */
+  translate: calc(100% + var(--s-factory-side-padding));
 
   &:hover {
     translate: 0;

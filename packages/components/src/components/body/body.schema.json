@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "components.body",
+  "$id": "/ui/body",
   "title": "Body",
   "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
   "type": "object",
@@ -63,7 +63,7 @@
       "title": "Buttons",
       "description": "Buttons of the body",
       "items": {
-        "$ref": "../button/button.schema.json"
+        "$ref": "/ui/button"
       },
       "group": "buttons"
     },

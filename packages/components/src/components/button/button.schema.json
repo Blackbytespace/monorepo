@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "components.button",
+  "$id": "/ui/button",
   "title": "Button",
   "description": "Buttons component",
   "type": "object",
@@ -44,7 +44,7 @@
       "group": "advanced"
     },
     "link": {
-      "$ref": "../link/link.schema.json",
+      "$ref": "/ui/link",
       "group": "link"
     }
   }
