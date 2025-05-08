@@ -405,7 +405,7 @@ export default class LitElement extends __LitElement {
     if (this.verbose) {
       let logs: any[] = [];
       logs.push(`[${this.tagName.toLowerCase()}]`);
-      if (this.id !== this.tagName.toLocaleLowerCase()) {
+      if (this.id && this.id !== this.tagName.toLocaleLowerCase()) {
         logs.push(this.id);
       }
       logs = [...logs, ...args];

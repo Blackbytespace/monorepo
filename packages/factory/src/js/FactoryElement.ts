@@ -80,19 +80,16 @@ export default class FactoryElement extends __LitElement {
   }
 
   public get currentEngine(): string | undefined {
-    if (!this.currentComponentId) {
+    // getted from query string
+    if (!document.location.search) {
       return;
     }
 
-    const matches = document.location.pathname.match(
-      /^\/component\/[a-zA-Z0-9_-]+\/([^\/]+)/,
-    );
+    // get the params from the query string
+    const params = new URLSearchParams(document.location.search);
 
-    if (!matches) {
-      return this.currentComponent?.engines[0];
-    }
-
-    return matches?.[1];
+    // return the engine
+    return params.get('engine') || undefined;
   }
 
   public get $commandPanel(): __AdvancedSelectElement {
@@ -106,7 +103,7 @@ export default class FactoryElement extends __LitElement {
   }
 
   public get currentComponentId(): string | undefined {
-    const matches = document.location.pathname.match(/^\/component\/([^\/]+)/);
+    const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
     return matches?.[1];
   }
 
@@ -154,11 +151,10 @@ export default class FactoryElement extends __LitElement {
 
     // init the listeners like escape key, etc...
     this._initListeners(document);
-
     // this._initListeners(this.$iframeDocument as Document);
 
     // render component if the current component is set
-    this._updateComponent();
+    // this._updateComponent();
 
     // init command panel
     this._initCommandPanel();
@@ -301,14 +297,14 @@ export default class FactoryElement extends __LitElement {
     context.addEventListener('keydown', (e) => {
       switch (true) {
         case e.key === '§':
-          this.classList.add('-show-ui');
+          document.body.classList.add('-show-ui');
           break;
       }
     });
     context.addEventListener('keyup', (e) => {
       switch (true) {
         case e.key === '§':
-          this.classList.remove('-show-ui');
+          document.body.classList.remove('-show-ui');
           e.preventDefault();
           (<any>document.activeElement)?.blur();
           break;
@@ -423,22 +419,21 @@ export default class FactoryElement extends __LitElement {
     // to render the component
     let url = `/api/render/${finalSettings.id}`;
     if (finalSettings.engine) {
-      url += `/${finalSettings.engine}`;
+      url += `?engine=${finalSettings.engine}`;
     }
+
+    const formData = new FormData();
+    formData.append('values', JSON.stringify(component.values));
     const request = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify({
-          values: this.currentComponent?.values ?? {},
-        }),
+        body: formData,
       }),
       json = await request.json();
 
     // updading the component values
     component.values = json.values;
-    component.html = json.html;
 
     // update the iframe with new component html
-    console.log(finalSettings);
     if (finalSettings.$iframe) {
       __injectHtml(
         finalSettings.$iframe.contentDocument?.body as HTMLElement,
@@ -447,7 +442,7 @@ export default class FactoryElement extends __LitElement {
     }
 
     // update Factory AND Carpenter
-    $carpenter?.requestUpdate();
+    (<any>$carpenter)?.requestUpdate();
     this.requestUpdate();
   }
 
@@ -500,6 +495,10 @@ export default class FactoryElement extends __LitElement {
   public randomizeComponentValues(
     id: string | undefined = this.currentComponentId,
   ): void {
+    if (!id) {
+      return;
+    }
+
     const component = this.getComponentById(id);
     if (!component) {
       return;
@@ -783,6 +782,7 @@ export default class FactoryElement extends __LitElement {
               this._initListeners(
                 (<any>e.detail.$iframe)?.contentDocument as Document,
               );
+              this._updateComponent();
             }}
           />
         </div>

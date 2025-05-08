@@ -1,10 +1,4 @@
 @import './canvas.bare.css';
 
-.s-factory_canvas {
-  background: rgba(0, 0, 0, 0.01);
-  @s-transition();
-
-  @media (dark) {
-    background: s-color(main, --darken 25);
-  }
+.s-carpenter_canvas {
 }

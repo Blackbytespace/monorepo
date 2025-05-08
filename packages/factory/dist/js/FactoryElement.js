@@ -62,15 +62,14 @@ export default class FactoryElement extends __LitElement {
         this.saveState = true;
     }
     get currentEngine() {
-        var _a;
-        if (!this.currentComponentId) {
+        // getted from query string
+        if (!document.location.search) {
             return;
         }
-        const matches = document.location.pathname.match(/^\/component\/[a-zA-Z0-9_-]+\/([^\/]+)/);
-        if (!matches) {
-            return (_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.engines[0];
-        }
-        return matches === null || matches === void 0 ? void 0 : matches[1];
+        // get the params from the query string
+        const params = new URLSearchParams(document.location.search);
+        // return the engine
+        return params.get('engine') || undefined;
     }
     get $commandPanel() {
         return this.querySelector('#s-factory-command-panel');
@@ -80,7 +79,7 @@ export default class FactoryElement extends __LitElement {
         return (_b = (_a = this.specs) === null || _a === void 0 ? void 0 : _a.components) === null || _b === void 0 ? void 0 : _b[this.currentComponentId];
     }
     get currentComponentId() {
-        const matches = document.location.pathname.match(/^\/component\/([^\/]+)/);
+        const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
         return matches === null || matches === void 0 ? void 0 : matches[1];
     }
     // public update(changedProperties: any): void {
@@ -125,7 +124,7 @@ export default class FactoryElement extends __LitElement {
             this._initListeners(document);
             // this._initListeners(this.$iframeDocument as Document);
             // render component if the current component is set
-            this._updateComponent();
+            // this._updateComponent();
             // init command panel
             this._initCommandPanel();
             // restore the ui mode (light/dark)
@@ -250,7 +249,7 @@ export default class FactoryElement extends __LitElement {
         context.addEventListener('keydown', (e) => {
             switch (true) {
                 case e.key === '§':
-                    this.classList.add('-show-ui');
+                    document.body.classList.add('-show-ui');
                     break;
             }
         });
@@ -258,7 +257,7 @@ export default class FactoryElement extends __LitElement {
             var _a;
             switch (true) {
                 case e.key === '§':
-                    this.classList.remove('-show-ui');
+                    document.body.classList.remove('-show-ui');
                     e.preventDefault();
                     (_a = document.activeElement) === null || _a === void 0 ? void 0 : _a.blur();
                     break;
@@ -312,7 +311,7 @@ export default class FactoryElement extends __LitElement {
     }
     _updateComponent() {
         return __awaiter(this, arguments, void 0, function* (settings = {}) {
-            var _a, _b, _c;
+            var _a;
             const $carpenter = this.querySelector('s-carpenter');
             const finalSettings = Object.assign({ id: this.currentComponentId, engine: this.currentEngine, $iframe: $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.$iframe }, settings);
             // if we don't have an engine, we can't update the component
@@ -328,21 +327,19 @@ export default class FactoryElement extends __LitElement {
             // to render the component
             let url = `/api/render/${finalSettings.id}`;
             if (finalSettings.engine) {
-                url += `/${finalSettings.engine}`;
+                url += `?engine=${finalSettings.engine}`;
             }
+            const formData = new FormData();
+            formData.append('values', JSON.stringify(component.values));
             const request = yield fetch(url, {
                 method: 'POST',
-                body: JSON.stringify({
-                    values: (_b = (_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.values) !== null && _b !== void 0 ? _b : {},
-                }),
+                body: formData,
             }), json = yield request.json();
             // updading the component values
             component.values = json.values;
-            component.html = json.html;
             // update the iframe with new component html
-            console.log(finalSettings);
             if (finalSettings.$iframe) {
-                __injectHtml((_c = finalSettings.$iframe.contentDocument) === null || _c === void 0 ? void 0 : _c.body, json.html);
+                __injectHtml((_a = finalSettings.$iframe.contentDocument) === null || _a === void 0 ? void 0 : _a.body, json.html);
             }
             // update Factory AND Carpenter
             $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.requestUpdate();
@@ -391,6 +388,9 @@ export default class FactoryElement extends __LitElement {
         }
     }
     randomizeComponentValues(id = this.currentComponentId) {
+        if (!id) {
+            return;
+        }
         const component = this.getComponentById(id);
         if (!component) {
             return;
@@ -639,6 +639,7 @@ export default class FactoryElement extends __LitElement {
             @s-carpenter.loaded=${(e) => {
             var _a;
             this._initListeners((_a = e.detail.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument);
+            this._updateComponent();
         }}
           />
         </div>

@@ -1,6 +1,6 @@
 {
-  "name": "playground-remix",
   "private": true,
+  "name": "playground-remix",
   "sideEffects": false,
   "type": "module",
   "scripts": {

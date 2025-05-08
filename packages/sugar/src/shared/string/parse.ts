@@ -7,6 +7,13 @@
  * @status                          stable
  *
  * Parse a string and convert it into his native data type like date, number, boolean, etc...
+ * This function take care of the following types:
+ * - boolean
+ * - number
+ * - null
+ * - undefined
+ * - json
+ *
  *
  * @param             {String}                        value                                 The value to convert
  * @return            {Mixed}                                                               The converted value
@@ -48,12 +55,12 @@ export default function (value: string): any {
     return parseFloat(value);
   }
 
-  // check if is a date
-  const date = new Date(value);
-  const isDate = date.toString() !== 'Invalid Date';
-  if (isDate) {
-    return date;
-  }
+  // // check if is a date
+  // const date = new Date(value);
+  // const isDate = date.toString() !== 'Invalid Date';
+  // if (isDate) {
+  //   return date;
+  // }
 
   // check if is a json
   try {

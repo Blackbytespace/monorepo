@@ -9,11 +9,11 @@
   translate: 0;
   opacity: 1;
 
-  body:has(.s-factory_sidebar:hover) &,
+  /* body:has(.s-factory_sidebar:hover) &,
   .-show-ui & {
     opacity: 0;
     translate: 0 calc(-100% - var(--s-factory-side-padding));
-  }
+  } */
 
   .s-factory_topbar-title {
   }

@@ -1,0 +1,7 @@
+.s-carpenter_canvas {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  translate: 0 -50%;
+}

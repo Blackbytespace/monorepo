@@ -69,6 +69,84 @@ $app->get('/component[/{path:.*}]', function (Request $request, Response $respon
     return $response;
 });
 
+$app->post('/api/render[/{id:.*}]', function (Request $request, Response $response, $args) {
+
+    global $config;
+    global $components;
+
+    // get the posted data
+    $id = $args['id'];
+    $body = (object) $request->getParsedBody();
+
+    // get the component
+    $component = $components->getComponent($id);
+    $engines = $component->getEngines();
+    // $mocks = $component->getMocks();
+    $savedValues = $component->getSavedValues();
+
+    // get the engine from the url
+    $engine = $request->getQueryParams()['engine'] ?? $engines[0];
+
+    // set values if passed in the body
+    if (isset($body->values)) {
+        $component->setValues(json_decode($body->values));
+    }
+
+    // check if the engine is supported
+    if (!in_array($engine, $engines)) {
+        throw new \Exception('Engine "' . $engine . '" not supported on the component "' . $id . '". Here are the supported engines: ' . implode(', ', $engines));
+    }
+
+    // preparing mock data
+    if (!$component->hasValues()) {
+        $mockPath = $component->getPhpCompatibleMockPath($engine);
+        if ($mockPath) {
+            $mockData = require $mockPath;
+            $component->setValues($mockData);
+        }
+    }
+
+    // switch on the engines
+    $html = '';
+    switch ($engine) {
+        case 'blade':
+            $html = \Factory\Renderers\blade($component, $config);
+            break;
+        case 'twig':
+            $html = \Factory\Renderers\twig($component, $config);
+            break;
+        case 'react':
+            $html = \Factory\Renderers\react($component, $config);
+            break;
+        case 'vue':
+            $html = \Factory\Renderers\vue($component, $config);
+            break;
+    }
+
+    // add the assets from the project
+    foreach ($config->project->assets as $asset) {
+
+        // build correct url
+        $url = \Factory\Project\assetUrl($asset);
+
+        // add the asset to the html
+        if (str_contains($asset, '.css')) {
+            $html .= '<link rel="stylesheet" href="' . $url . '">';
+        } else if (str_contains($asset, '.js') || str_contains($asset, '.ts')) {
+            $html .= '<script type="module" src="' . $url . '"></script>';
+        }
+    }
+
+    $response->getBody()->write(json_encode((object) [
+        'html' => $html,
+        'values' => $component->getValues(),
+        'savedValues' => $savedValues
+    ]));
+
+    return $response
+        ->withHeader('Content-Type', 'application/json');
+});
+
 // $router->addRoute('GET', '/component/:id/:engine?', function (string $id) {
 //     global $config;
 

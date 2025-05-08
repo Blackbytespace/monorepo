@@ -67,9 +67,13 @@ class Component
         return $this->json->version;
     }
 
-    public function setValues(object $values): void
+    public function setValues(mixed $values): void
     {
-        $this->values = $values;
+        if (is_null($values)) {
+            $values = (object) [];
+        } else {
+            $this->values = $values;
+        }
     }
 
     public function getValues(): object
