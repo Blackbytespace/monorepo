@@ -28,21 +28,41 @@ export default function (value: string): any {
   if (typeof value !== 'string') return value;
 
   // true | false | null | undefined
-  if (value === 'true') return true;
-  if (value === 'false') return false;
-  if (value === 'null') return null;
-  if (value === 'undefined') return undefined;
+  if (value.toLowerCase() === 'true') return true;
+  if (value.toLowerCase() === 'false') return false;
+  if (value.toLowerCase() === 'null') return null;
+  if (value.toLowerCase() === 'undefined') return undefined;
 
   // small dirty hack
   value = value.split('⠀').join('').trim();
 
-  // try to parse the string into a native value
-  try {
-    return Function(`
-            "use strict";
-            return (${value});
-        `)();
-  } catch (e) {
-    return value;
+  // check if is a number
+  const number = Number(value);
+  const isNumber = !isNaN(number);
+  if (isNumber) {
+    // if the number is an integer
+    if (Number.isInteger(number)) {
+      return number;
+    }
+    // if the number is a float
+    return parseFloat(value);
   }
+
+  // check if is a date
+  const date = new Date(value);
+  const isDate = date.toString() !== 'Invalid Date';
+  if (isDate) {
+    return date;
+  }
+
+  // check if is a json
+  try {
+    const json = JSON.parse(value);
+    if (json) {
+      return json;
+    }
+  } catch (e) {}
+
+  // return the value as a string
+  return value;
 }
