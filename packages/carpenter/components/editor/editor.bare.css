@@ -1,0 +1,5 @@
+.s-carpenter_editor {
+  flex-grow: 1;
+  overflow-x: visible;
+  overflow-y: auto;
+}

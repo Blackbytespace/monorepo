@@ -4,20 +4,22 @@
   "title": "Link",
   "description": "Link component",
   "type": "object",
-  "groups": [
-    {
-      "id": "default",
-      "title": "Default",
-      "description": "Default options"
-    },
-    {
-      "id": "advanced",
-      "title": "Advanced",
-      "description": "Advanced options",
-      "type": "stack",
-      "buttonText": "Edit advanced link options"
-    }
-  ],
+  "editor": {
+    "groups": [
+      {
+        "id": "default",
+        "title": "Default",
+        "description": "Default options"
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced (link)",
+        "description": "Advanced link options",
+        "type": "stack",
+        "buttonText": "Edit advanced link options"
+      }
+    ]
+  },
   "properties": {
     "href": {
       "type": "string",
@@ -25,47 +27,63 @@
       "format": "uri",
       "minLength": 1,
       "default": "#",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "text": {
       "type": "string",
       "description": "The text to display",
       "minLength": 1,
       "default": "Lorem ipsum",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "title": {
       "type": "string",
       "description": "The title of the link",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "target": {
       "type": "string",
       "description": "The target of the link",
       "enum": ["_blank", "_self", "_parent", "_top"],
       "default": "_self",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "ariaLabel": {
       "type": "string",
       "description": "The aria-label attribute",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "class": {
       "type": "string",
       "description": "CSS class",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "noopener": {
       "type": "boolean",
       "description": "Whether to use rel='noopener' on the link",
       "default": false,
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "noreferrer": {
       "type": "boolean",
       "description": "Whether to use rel='noreferrer' on the link",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     }
   }
 }

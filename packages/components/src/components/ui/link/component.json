@@ -1,6 +1,7 @@
 {
+  "id": "ui-link",
   "version": "1.0.0",
-  "name": "link",
+  "name": "@lotsof/link",
   "type": "ui",
   "description": "Simple link component",
   "files": ["*"],

@@ -8,7 +8,7 @@
   background: s-color(main, background);
   box-shadow: var(--s-factory-depth);
   width: clamp(250px, 25%, 400px);
-  @s-transition();
+  @s-transition (fast);
   @s-radius;
 
   * {

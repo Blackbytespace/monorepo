@@ -1,40 +1,27 @@
-// @ts-nocheck
-
-import { __highlightText } from '@lotsof/sugar/string';
-
 import __LitElement from '@lotsof/lit-element';
+import { __highlightText } from '@lotsof/sugar/string';
 // @TODO            check why import does not work
 // @ts-ignore
-import { __isFocusWithin } from '@lotsof/sugar/is';
-import { __uniqid } from '@lotsof/sugar/string';
-import { PropertyValueMap, html } from 'lit';
-import { property, state } from 'lit/decorators.js';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-
-import { __escapeRegexChars } from '@lotsof/sugar/string';
-
 import { __i18n } from '@lotsof/i18n';
-
-import { __hotkey } from '@lotsof/sugar/keyboard';
-
-import { __nearestElement } from '@lotsof/sugar/dom';
-
-import { __escapeQueue } from '@lotsof/sugar/keyboard';
-
-import '../../src/css/AdvancedSelectElement.bare.css';
-
 import {
   __distanceFromElementTopToViewportBottom,
   __distanceFromElementTopToViewportTop,
   __getStyleProperty,
+  __nearestElement,
   __onScrollEnd,
 } from '@lotsof/sugar/dom';
-
 import { __stripTags } from '@lotsof/sugar/html';
-
+import { __isFocusWithin } from '@lotsof/sugar/is';
+import { __escapeQueue, __hotkey } from '@lotsof/sugar/keyboard';
+import { __escapeRegexChars, __uniqid } from '@lotsof/sugar/string';
+import { PropertyValueMap, html } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import '../../src/css/AdvancedSelectElement.bare.css';
 import type {
   TAdvancedSelectElementApi,
   TAdvancedSelectElementClasses,
+  TAdvancedSelectElementItem,
   TAdvancedSelectElementItemsFunctionApi,
 } from '../shared/AdvancedSelectElement.types.js';
 
@@ -181,7 +168,7 @@ export default class AdvancedSelectElement extends __LitElement {
   public filtrable: string[] = [];
 
   @property({ type: Array })
-  public highlightable: string = [];
+  public highlightable: string[] = [];
 
   @property({ type: Object })
   public templates?: (api: TAdvancedSelectElementApi) => any;
@@ -208,14 +195,14 @@ export default class AdvancedSelectElement extends __LitElement {
   private _$form?: HTMLFormElement;
   private _templatesFromHtml: Record<string, string> = {};
   private _isArrowUsed: boolean = false;
-  private _isArrowUsedTimeout?: Timeout;
+  private _isArrowUsedTimeout?: any;
   private _baseTemplates = (api: TAdvancedSelectElementApi): any => {};
 
   constructor() {
     super('s-advanced-select');
   }
 
-  private async mount() {
+  protected async mount() {
     this._displayedMaxItems = this.maxItems;
 
     // filtrable
@@ -282,7 +269,7 @@ export default class AdvancedSelectElement extends __LitElement {
     this._initListeners();
 
     // if we have the focus in
-    if (__isFocusWithin(this)) {
+    if (__isFocusWithin(this as HTMLElement)) {
       setTimeout(() => {
         this.focus();
       });
@@ -334,7 +321,7 @@ export default class AdvancedSelectElement extends __LitElement {
     this._$form = this._$input.form as HTMLFormElement;
 
     // prevent from sending form if search is opened
-    this.addEventListenerOn(this._$input, 'keydown', (e) => {
+    this.addEventListenerOn(this._$input, 'keydown', (e: any) => {
       if (e.key === 'Escape') {
         e.preventDefault();
       }
@@ -346,7 +333,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle update on key event
-    this.addEventListenerOn(this._$input, 'keyup', async (e) => {
+    this.addEventListenerOn(this._$input, 'keydown', async (e) => {
       if (!this.isActive()) {
         return;
       }
@@ -391,7 +378,7 @@ export default class AdvancedSelectElement extends __LitElement {
     }
 
     // container class
-    this._$container = this;
+    this._$container = this as HTMLElement;
     this._$container.classList.add(...this.cls());
     if (this.classes.container) {
       this._$container.classList.add(this.classes.container);
@@ -417,7 +404,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle arrows
-    this.addEventListenerOn(document, 'keyup', (e) => {
+    this.addEventListenerOn(document, 'keyup', (e: any) => {
       if (!this.isActive()) return;
       if (!this._filteredItems.length) return;
 
@@ -438,33 +425,41 @@ export default class AdvancedSelectElement extends __LitElement {
 
       const $items = this.querySelectorAll(
           `.${this.internalCls('_item')}.-match`,
-        ),
-        $from =
-          this.querySelector(`.${this.internalCls('_item')}.-preselected`) ||
+        ) as NodeListOf<HTMLElement>,
+        $from = (this.querySelector(
+          `.${this.internalCls('_item')}.-preselected`,
+        ) ||
           this.querySelector(`.${this.internalCls('_item')}.-selected`) ||
-          this.querySelectorAll(`.${this.internalCls('_item')}`)[0];
+          this.querySelectorAll(
+            `.${this.internalCls('_item')}`,
+          )[0]) as HTMLElement;
 
-      let direction;
-
-      if (!this.getPreselectedItem()) {
-        this.preselect($items[0].dataset.id, {
-          scrollIntoView: true,
-        });
+      const preselected = this.getPreselectedItem();
+      if (!preselected) {
+        const firstItemId = $items[0]?.dataset.id;
+        if (firstItemId) {
+          this.preselect(firstItemId, {
+            scrollIntoView: true,
+          });
+        }
       } else {
-        let $nearestElement: HTMLElement = __nearestElement($from, $items, {
+        let $nearestElement = __nearestElement($from, $items, {
           direction: directionsMap[e.key],
         });
         if (!$nearestElement) {
           return;
         }
-        this.preselect($nearestElement.dataset.id, {
-          scrollIntoView: true,
-        });
+        const id = $nearestElement.dataset.id;
+        if (id) {
+          this.preselect(id, {
+            scrollIntoView: true,
+          });
+        }
       }
     });
 
     // handle return key
-    this.addEventListenerOn(document, 'keyup', (e) => {
+    this.addEventListenerOn(document, 'keyup', (e: any) => {
       if (e.key !== 'Enter') {
         return;
       }
@@ -513,8 +508,9 @@ export default class AdvancedSelectElement extends __LitElement {
 
   private _renderTemplate(api: Partial<TAdvancedSelectElementApi>): any {
     const finalApi: TAdvancedSelectElementApi = {
-      type: '',
+      type: 'item',
       item: null,
+      $items: [],
       html: html,
       unsafeHTML: unsafeHTML,
       idx: 0,
@@ -555,7 +551,10 @@ export default class AdvancedSelectElement extends __LitElement {
       item = this.getItemById(item);
     }
     // reset preselected
-    this.getPreselectedItem()?.state.preselected = false;
+    const preselectedItem = this.getPreselectedItem();
+    if (preselectedItem) {
+      preselectedItem.state.preselected = false;
+    }
     // check if the component is in not selectable mode
     if (this.notSelectable) return;
     // do not preselect if not match the search
@@ -592,7 +591,9 @@ export default class AdvancedSelectElement extends __LitElement {
    * @since       1.0.0
    */
   public resetPreselected(): void {
-    this.getPreselectedItem()?.state.preselected = false;
+    const preselectedItem = this.getPreselectedItem();
+    if (!preselectedItem) return;
+    preselectedItem.state.preselected = false;
   }
 
   /**
@@ -605,7 +606,8 @@ export default class AdvancedSelectElement extends __LitElement {
    *
    * @since       1.0.0
    */
-  public async setSearch(value: string): void {
+  public async setSearch(value: string): Promise<void> {
+    console.log('setSearch', value);
     this._$input.value = value;
     this._filterValue = value;
     await this.refreshItems();
@@ -629,9 +631,15 @@ export default class AdvancedSelectElement extends __LitElement {
       item = this.getItemById(item);
     }
     // reset preselected
-    this.getPreselectedItem()?.state.preselect = false;
+    const preselectedItem = this.getPreselectedItem();
+    if (preselectedItem) {
+      preselectedItem.state.preselected = false;
+    }
     // reset selected
-    this.getSelectedItem()?.state.selected = false;
+    const selectedItem = this.getSelectedItem();
+    if (selectedItem) {
+      selectedItem.state.selected = false;
+    }
     // check if the component is in not selectable mode
     if (this.notSelectable) return;
     // do not select if not match the search
@@ -657,6 +665,7 @@ export default class AdvancedSelectElement extends __LitElement {
 
     // dispatch an event
     if (!item.preventSelect) {
+      console.log('dispatch select', item);
       this.dispatch('select', {
         detail: {
           item,
@@ -674,13 +683,15 @@ export default class AdvancedSelectElement extends __LitElement {
   }
 
   public resetSelected(): void {
-    this.getSelectedItem()?.state.selected = false;
+    const item = this.getSelectedItem();
+    if (!item) return;
+    item.state.selected = false;
   }
 
   public getItemDomElement(item: TAdvancedSelectElementItem): HTMLElement {
     return this.querySelector(
       `.${this.internalCls('_item')}[data-id="${item.id}"]`,
-    );
+    ) as HTMLElement;
   }
 
   /**
@@ -710,7 +721,9 @@ export default class AdvancedSelectElement extends __LitElement {
    * @since       1.0.0
    */
   public getItemById(id: string): TAdvancedSelectElementItem {
-    return this._filteredItems.find((item) => item.id === id);
+    return this._filteredItems.find(
+      (item) => item.id === id,
+    ) as TAdvancedSelectElementItem;
   }
 
   /**
@@ -724,7 +737,9 @@ export default class AdvancedSelectElement extends __LitElement {
    * @since       1.0.0
    */
   public getPreselectedItem(): TAdvancedSelectElementItem {
-    return this._filteredItems.find((item) => item.state.preselected);
+    return this._filteredItems.find(
+      (item) => item.state.preselected,
+    ) as TAdvancedSelectElementItem;
   }
 
   /**
@@ -738,7 +753,9 @@ export default class AdvancedSelectElement extends __LitElement {
    * @since       1.0.0
    */
   public getSelectedItem(): TAdvancedSelectElementItem {
-    return this._filteredItems.find((item) => item.state.selected);
+    return this._filteredItems.find(
+      (item) => item.state.selected,
+    ) as TAdvancedSelectElementItem;
   }
 
   /**
@@ -754,14 +771,14 @@ export default class AdvancedSelectElement extends __LitElement {
   public getMatchItems(): TAdvancedSelectElementItem[] {
     return this._filteredItems.filter((item) => item.state.match);
   }
-  public async _open(): void {
+  public async _open(): Promise<void> {
     __escapeQueue(() => {
       if (!this.isActive()) return;
       this.reset();
       this._close();
     });
-    // await this.refreshItems();
     this.dispatch('open');
+    await this.refreshItems();
   }
   public _close(): void {
     (<HTMLElement>document.activeElement)?.blur();
@@ -852,6 +869,7 @@ export default class AdvancedSelectElement extends __LitElement {
       `.${this.internalCls('_item')}.-selected`,
     );
     if ($selected) {
+      // @ts-ignore
       this.preselect($selected?.dataset.id, {
         preventFocus: true,
         scrollIntoView: true,
@@ -874,7 +892,7 @@ export default class AdvancedSelectElement extends __LitElement {
         item.items = this._initItems(item.items);
       }
       return this._initItem(item);
-    });
+    }) as TAdvancedSelectElementItem[];
   }
 
   private _initItem(
@@ -904,7 +922,7 @@ export default class AdvancedSelectElement extends __LitElement {
     const itemsOnly: any[] = [];
     this._items.forEach((item) => {
       if (item.type == 'group') {
-        item.items.forEach((item) => {
+        item.items?.forEach((item) => {
           itemsOnly.push(item);
         });
       } else {
@@ -990,7 +1008,7 @@ export default class AdvancedSelectElement extends __LitElement {
               ) {
                 let finalString: string = item._original[propName];
                 finalString = __highlightText(finalString, searchParts, {
-                  class: this.cls('_highlight'),
+                  class: this.cls('_highlight').join(' '),
                 });
                 item[propName] = finalString;
               } else {
@@ -1100,10 +1118,10 @@ export default class AdvancedSelectElement extends __LitElement {
         tabindex="-1"
         class="${this.cls('_item')} ${this.classes.item} ${inGroup
           ? this.cls('_group-item')
-          : ''} ${item.state.selected ? '-selected' : ''} ${item.state
-          .preselected
+          : ''} ${item.state?.selected ? '-selected' : ''} ${item.state
+          ?.preselected
           ? '-preselected'
-          : ''} ${this._filterValue ? '-filtered' : ''} ${item.state.match
+          : ''} ${this._filterValue ? '-filtered' : ''} ${item.state?.match
           ? '-match'
           : ''}"
       >

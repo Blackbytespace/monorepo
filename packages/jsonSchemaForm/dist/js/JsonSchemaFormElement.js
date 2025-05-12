@@ -324,7 +324,7 @@ class JsonSchemaFormElement extends __LitElement {
         return `${this.tagName.toLowerCase()}-value-${path.join('-')}`;
     }
     _renderComponentValuesPreview(schema, path = []) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         // get the values for the current path
         const values = __get(this.values, path);
         // check if we have a widget specified and that it is available
@@ -344,11 +344,11 @@ class JsonSchemaFormElement extends __LitElement {
       `;
         }
         // handle group display
-        if ((_a = schema.groups) === null || _a === void 0 ? void 0 : _a.length) {
+        if ((_b = (_a = schema.editor) === null || _a === void 0 ? void 0 : _a.groups) === null || _b === void 0 ? void 0 : _b.length) {
             return html `
         <ul class=${this.cls('_groups')}>
-          ${schema.groups.map((group) => {
-                var _a, _b;
+          ${schema.editor.groups.map((group) => {
+                var _a, _b, _c, _d;
                 // make sure the group has a type
                 if (!group.type) {
                     group.type = 'default';
@@ -358,30 +358,29 @@ class JsonSchemaFormElement extends __LitElement {
                 const groupProperties = {};
                 for (let [properyName, propertyValue] of Object.entries(schema.properties)) {
                     // @ts-ignore
-                    if (propertyValue.group === group.id) {
+                    if (((_a = propertyValue.editor) === null || _a === void 0 ? void 0 : _a.group) === group.id) {
                         groupProperties[properyName] = propertyValue;
                     }
-                    else if (!propertyValue.group) {
-                        propertyValue.group = 'default';
+                    else if (!((_b = propertyValue.editor) === null || _b === void 0 ? void 0 : _b.group)) {
+                        if (!propertyValue.editor) {
+                            propertyValue.editor = {};
+                        }
+                        propertyValue.editor.group = 'default';
                         groupProperties[properyName];
                     }
                 }
                 // create the new group based schema
                 const groupSchema = Object.assign(Object.assign({}, schema), { title: group.title, description: group.description, properties: groupProperties, isGroup: group.id !== 'default' });
-                // Object.defineProperty(groupSchema, 'isGroup', {
-                //   value: true,
-                //   enumerable: false,
-                // });
-                // remove the groups from the schema
+                // remove the "editor" property from the schema
                 // this is to avoid infinite loop
                 // when rendering the groups
-                delete groupSchema.groups;
-                const tag = literal `${unsafeStatic((_a = JsonSchemaFormElement.groupRenderers[group.type]) === null || _a === void 0 ? void 0 : _a.tag)}`;
+                delete groupSchema.editor;
+                const tag = literal `${unsafeStatic((_c = JsonSchemaFormElement.groupRenderers[group.type]) === null || _c === void 0 ? void 0 : _c.tag)}`;
                 const renderedProps = this._renderComponentValuesPreview(groupSchema, path);
                 // render the group as a normal
                 // schema
                 return html `
-              <li class=${this.cls(`_group -${(_b = group.type) !== null && _b !== void 0 ? _b : 'default'}`)}>
+              <li class=${this.cls(`_group -${(_d = group.type) !== null && _d !== void 0 ? _d : 'default'}`)}>
                 <div class="${this.cls('_group-body')}">
                   ${staticHtml `
                     <${tag} .renderedProps=${renderedProps} ${spread(group)}>        
@@ -531,7 +530,7 @@ class JsonSchemaFormElement extends __LitElement {
                     this.requestUpdate();
                 }}
               >
-                Add a ${(_c = (_b = schema.items.title) === null || _b === void 0 ? void 0 : _b.toLowerCase()) !== null && _c !== void 0 ? _c : 'new item'}
+                Add a ${(_d = (_c = schema.items.title) === null || _c === void 0 ? void 0 : _c.toLowerCase()) !== null && _d !== void 0 ? _d : 'new item'}
               </button>
             </ul>
           </div>

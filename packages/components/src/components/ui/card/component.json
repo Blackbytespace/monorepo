@@ -1,7 +1,8 @@
 {
+  "id": "ui-card",
   "version": "1.0.0",
-  "name": "card",
-  "type": "component",
+  "name": "@lotsof/card",
+  "type": "ui",
   "description": "Simple card component",
   "files": ["*.php", "*.css"],
   "composerJson": {

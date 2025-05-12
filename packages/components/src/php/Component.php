@@ -52,9 +52,42 @@ class Component
         return $this->path;
     }
 
-    public function getName(): string
+    public function getRelPath(): string
+    {
+        return str_replace($this->components->getRootDir() . '/', '', $this->path);
+    }
+
+    public function getFullName(): string
     {
         return $this->json->name;
+    }
+
+    public function getName(): string
+    {
+        $parts = explode('/', $this->json->name);
+        if (count($parts) > 1) {
+            return $parts[1];
+        }
+        return $parts[0];
+    }
+
+    public function getOrganization(): string
+    {
+        $parts = explode('/', $this->json->name);
+        if (count($parts) > 1) {
+            return $parts[0];
+        }
+        return '';
+    }
+
+    public function getId(): string
+    {
+        return $this->json->id;
+    }
+
+    public function getType(): string
+    {
+        return $this->json->type;
     }
 
     public function getDescription(): string
@@ -94,8 +127,13 @@ class Component
     public function toObject(): object
     {
         return (object) [
-            'path' => $this->path,
-            'name' => $this->json->name,
+            'id' => $this->getId(),
+            'path' => $this->getPath(),
+            'relPath' => $this->getRelPath(),
+            'fullName' => $this->getFullName(),
+            'name' => $this->getName(),
+            'organization' => $this->getOrganization(),
+            'type' => $this->getType(),
             'description' => $this->getDescription(),
             'version' => $this->getVersion(),
             'json' => $this->json,

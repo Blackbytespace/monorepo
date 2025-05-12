@@ -4,48 +4,58 @@
   "title": "Button",
   "description": "Buttons component",
   "type": "object",
-  "groups": [
-    {
-      "id": "default",
-      "title": "Default",
-      "description": "Default options"
-    },
-    {
-      "id": "link",
-      "title": "Link",
-      "description": "Link options",
-      "type": "stack",
-      "buttonText": "Edit link options"
-    },
-    {
-      "id": "advanced",
-      "title": "Advanced",
-      "description": "Advanced options",
-      "type": "stack",
-      "buttonText": "Edit advanced button options"
-    }
-  ],
+  "editor": {
+    "groups": [
+      {
+        "id": "default",
+        "title": "Default",
+        "description": "Default options"
+      },
+      {
+        "id": "link",
+        "title": "Link",
+        "description": "Link options",
+        "type": "stack",
+        "buttonText": "Edit link options"
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced (button",
+        "description": "Advanced button options",
+        "type": "stack",
+        "buttonText": "Edit advanced button options"
+      }
+    ]
+  },
   "properties": {
     "id": {
       "type": "string",
       "title": "ID",
       "description": "Unique identifier",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "type": {
       "type": "string",
       "enum": ["solid", "outline", "text"],
       "default": "solid",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "class": {
       "type": "string",
       "description": "CSS class",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "link": {
       "$ref": "/ui/link",
-      "group": "link"
+      "editor": {
+        "group": "link"
+      }
     }
   }
 }

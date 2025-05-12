@@ -1,6 +1,7 @@
 {
+  "id": "ui-button",
   "version": "1.0.0",
-  "name": "body",
+  "name": "@lotsof/body",
   "type": "ui",
   "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
   "files": ["*.css"],

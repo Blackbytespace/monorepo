@@ -1,6 +1,7 @@
 {
+  "id": "ui-button",
   "version": "1.0.0",
-  "name": "button",
+  "name": "@lotsof/button",
   "type": "ui",
   "description": "Buttons component",
   "files": ["*.php", "*.css"],

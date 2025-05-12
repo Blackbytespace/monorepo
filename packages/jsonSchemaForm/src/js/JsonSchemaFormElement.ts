@@ -365,10 +365,10 @@ export default class JsonSchemaFormElement extends __LitElement {
     }
 
     // handle group display
-    if (schema.groups?.length) {
+    if (schema.editor?.groups?.length) {
       return html`
         <ul class=${this.cls('_groups')}>
-          ${schema.groups.map((group) => {
+          ${schema.editor.groups.map((group) => {
             // make sure the group has a type
             if (!group.type) {
               group.type = 'default';
@@ -381,10 +381,13 @@ export default class JsonSchemaFormElement extends __LitElement {
               schema.properties,
             )) {
               // @ts-ignore
-              if (propertyValue.group === group.id) {
+              if (propertyValue.editor?.group === group.id) {
                 groupProperties[properyName] = propertyValue;
-              } else if (!(<any>propertyValue).group) {
-                (<any>propertyValue).group = 'default';
+              } else if (!(<any>propertyValue).editor?.group) {
+                if (!(<any>propertyValue).editor) {
+                  (<any>propertyValue).editor = {};
+                }
+                (<any>propertyValue).editor.group = 'default';
                 groupProperties[properyName];
               }
             }
@@ -397,15 +400,11 @@ export default class JsonSchemaFormElement extends __LitElement {
               properties: groupProperties,
               isGroup: group.id !== 'default',
             };
-            // Object.defineProperty(groupSchema, 'isGroup', {
-            //   value: true,
-            //   enumerable: false,
-            // });
 
-            // remove the groups from the schema
+            // remove the "editor" property from the schema
             // this is to avoid infinite loop
             // when rendering the groups
-            delete groupSchema.groups;
+            delete groupSchema.editor;
 
             const tag = literal`${unsafeStatic(
               JsonSchemaFormElement.groupRenderers[group.type]?.tag,

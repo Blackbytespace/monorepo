@@ -1,4 +1,3 @@
-// @ts-nocheck
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14,23 +13,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __highlightText } from '@lotsof/sugar/string';
 import __LitElement from '@lotsof/lit-element';
+import { __highlightText } from '@lotsof/sugar/string';
 // @TODO            check why import does not work
 // @ts-ignore
+import { __i18n } from '@lotsof/i18n';
+import { __distanceFromElementTopToViewportBottom, __distanceFromElementTopToViewportTop, __getStyleProperty, __nearestElement, __onScrollEnd, } from '@lotsof/sugar/dom';
+import { __stripTags } from '@lotsof/sugar/html';
 import { __isFocusWithin } from '@lotsof/sugar/is';
-import { __uniqid } from '@lotsof/sugar/string';
+import { __escapeQueue, __hotkey } from '@lotsof/sugar/keyboard';
+import { __escapeRegexChars, __uniqid } from '@lotsof/sugar/string';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { __escapeRegexChars } from '@lotsof/sugar/string';
-import { __i18n } from '@lotsof/i18n';
-import { __hotkey } from '@lotsof/sugar/keyboard';
-import { __nearestElement } from '@lotsof/sugar/dom';
-import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import '../../src/css/AdvancedSelectElement.bare.css';
-import { __distanceFromElementTopToViewportBottom, __distanceFromElementTopToViewportTop, __getStyleProperty, __onScrollEnd, } from '@lotsof/sugar/dom';
-import { __stripTags } from '@lotsof/sugar/html';
 /**
  * @name                AdvancedSelectElement
  * @as                  Advanced Select Input
@@ -277,7 +273,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 }
             });
             // handle update on key event
-            this.addEventListenerOn(this._$input, 'keyup', (e) => __awaiter(this, void 0, void 0, function* () {
+            this.addEventListenerOn(this._$input, 'keydown', (e) => __awaiter(this, void 0, void 0, function* () {
                 if (!this.isActive()) {
                     return;
                 }
@@ -339,6 +335,7 @@ export default class AdvancedSelectElement extends __LitElement {
             });
             // handle arrows
             this.addEventListenerOn(document, 'keyup', (e) => {
+                var _a;
                 if (!this.isActive())
                     return;
                 if (!this._filteredItems.length)
@@ -357,14 +354,17 @@ export default class AdvancedSelectElement extends __LitElement {
                 this._isArrowUsedTimeout = setTimeout(() => {
                     this._isArrowUsed = false;
                 }, 100);
-                const $items = this.querySelectorAll(`.${this.internalCls('_item')}.-match`), $from = this.querySelector(`.${this.internalCls('_item')}.-preselected`) ||
+                const $items = this.querySelectorAll(`.${this.internalCls('_item')}.-match`), $from = (this.querySelector(`.${this.internalCls('_item')}.-preselected`) ||
                     this.querySelector(`.${this.internalCls('_item')}.-selected`) ||
-                    this.querySelectorAll(`.${this.internalCls('_item')}`)[0];
-                let direction;
-                if (!this.getPreselectedItem()) {
-                    this.preselect($items[0].dataset.id, {
-                        scrollIntoView: true,
-                    });
+                    this.querySelectorAll(`.${this.internalCls('_item')}`)[0]);
+                const preselected = this.getPreselectedItem();
+                if (!preselected) {
+                    const firstItemId = (_a = $items[0]) === null || _a === void 0 ? void 0 : _a.dataset.id;
+                    if (firstItemId) {
+                        this.preselect(firstItemId, {
+                            scrollIntoView: true,
+                        });
+                    }
                 }
                 else {
                     let $nearestElement = __nearestElement($from, $items, {
@@ -373,9 +373,12 @@ export default class AdvancedSelectElement extends __LitElement {
                     if (!$nearestElement) {
                         return;
                     }
-                    this.preselect($nearestElement.dataset.id, {
-                        scrollIntoView: true,
-                    });
+                    const id = $nearestElement.dataset.id;
+                    if (id) {
+                        this.preselect(id, {
+                            scrollIntoView: true,
+                        });
+                    }
                 }
             });
             // handle return key
@@ -422,7 +425,7 @@ export default class AdvancedSelectElement extends __LitElement {
         });
     }
     _renderTemplate(api) {
-        const finalApi = Object.assign({ type: '', item: null, html: html, unsafeHTML: unsafeHTML, idx: 0 }, api);
+        const finalApi = Object.assign({ type: 'item', item: null, $items: [], html: html, unsafeHTML: unsafeHTML, idx: 0 }, api);
         if (this.templates) {
             const res = this.templates(finalApi);
             if (res)
@@ -447,12 +450,14 @@ export default class AdvancedSelectElement extends __LitElement {
      * @since       1.0.0
      */
     preselect(item, settings) {
-        var _a;
         if (typeof item === 'string') {
             item = this.getItemById(item);
         }
         // reset preselected
-        (_a = this.getPreselectedItem()) === null || _a === void 0 ? void 0 : _a.state.preselected = false;
+        const preselectedItem = this.getPreselectedItem();
+        if (preselectedItem) {
+            preselectedItem.state.preselected = false;
+        }
         // check if the component is in not selectable mode
         if (this.notSelectable)
             return;
@@ -490,8 +495,10 @@ export default class AdvancedSelectElement extends __LitElement {
      * @since       1.0.0
      */
     resetPreselected() {
-        var _a;
-        (_a = this.getPreselectedItem()) === null || _a === void 0 ? void 0 : _a.state.preselected = false;
+        const preselectedItem = this.getPreselectedItem();
+        if (!preselectedItem)
+            return;
+        preselectedItem.state.preselected = false;
     }
     /**
      * @name        setSearch
@@ -505,6 +512,7 @@ export default class AdvancedSelectElement extends __LitElement {
      */
     setSearch(value) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('setSearch', value);
             this._$input.value = value;
             this._filterValue = value;
             yield this.refreshItems();
@@ -522,14 +530,19 @@ export default class AdvancedSelectElement extends __LitElement {
      * @since       1.0.0
      */
     select(item = this.getPreselectedItem()) {
-        var _a, _b;
         if (typeof item === 'string') {
             item = this.getItemById(item);
         }
         // reset preselected
-        (_a = this.getPreselectedItem()) === null || _a === void 0 ? void 0 : _a.state.preselect = false;
+        const preselectedItem = this.getPreselectedItem();
+        if (preselectedItem) {
+            preselectedItem.state.preselected = false;
+        }
         // reset selected
-        (_b = this.getSelectedItem()) === null || _b === void 0 ? void 0 : _b.state.selected = false;
+        const selectedItem = this.getSelectedItem();
+        if (selectedItem) {
+            selectedItem.state.selected = false;
+        }
         // check if the component is in not selectable mode
         if (this.notSelectable)
             return;
@@ -557,6 +570,7 @@ export default class AdvancedSelectElement extends __LitElement {
         }
         // dispatch an event
         if (!item.preventSelect) {
+            console.log('dispatch select', item);
             this.dispatch('select', {
                 detail: {
                     item,
@@ -568,8 +582,10 @@ export default class AdvancedSelectElement extends __LitElement {
         this.requestUpdate();
     }
     resetSelected() {
-        var _a;
-        (_a = this.getSelectedItem()) === null || _a === void 0 ? void 0 : _a.state.selected = false;
+        const item = this.getSelectedItem();
+        if (!item)
+            return;
+        item.state.selected = false;
     }
     getItemDomElement(item) {
         return this.querySelector(`.${this.internalCls('_item')}[data-id="${item.id}"]`);
@@ -649,8 +665,8 @@ export default class AdvancedSelectElement extends __LitElement {
                 this.reset();
                 this._close();
             });
-            // await this.refreshItems();
             this.dispatch('open');
+            yield this.refreshItems();
         });
     }
     _close() {
@@ -732,6 +748,7 @@ export default class AdvancedSelectElement extends __LitElement {
             // restore
             const $selected = this.querySelector(`.${this.internalCls('_item')}.-selected`);
             if ($selected) {
+                // @ts-ignore
                 this.preselect($selected === null || $selected === void 0 ? void 0 : $selected.dataset.id, {
                     preventFocus: true,
                     scrollIntoView: true,
@@ -779,8 +796,9 @@ export default class AdvancedSelectElement extends __LitElement {
     _getItemsOnly() {
         const itemsOnly = [];
         this._items.forEach((item) => {
+            var _a;
             if (item.type == 'group') {
-                item.items.forEach((item) => {
+                (_a = item.items) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
                     itemsOnly.push(item);
                 });
             }
@@ -849,7 +867,7 @@ export default class AdvancedSelectElement extends __LitElement {
                                     _filterValue !== '') {
                                     let finalString = item._original[propName];
                                     finalString = __highlightText(finalString, searchParts, {
-                                        class: this.cls('_highlight'),
+                                        class: this.cls('_highlight').join(' '),
                                     });
                                     item[propName] = finalString;
                                 }
@@ -916,7 +934,7 @@ export default class AdvancedSelectElement extends __LitElement {
         })}`;
     }
     _renderItem(item, idx, inGroup = false) {
-        var _a;
+        var _a, _b, _c, _d;
         this._currentItemIdx++;
         if (!item._internalId) {
             Object.defineProperty(item, '_internalId', {
@@ -945,15 +963,14 @@ export default class AdvancedSelectElement extends __LitElement {
         tabindex="-1"
         class="${this.cls('_item')} ${this.classes.item} ${inGroup
             ? this.cls('_group-item')
-            : ''} ${item.state.selected ? '-selected' : ''} ${item.state
-            .preselected
+            : ''} ${((_a = item.state) === null || _a === void 0 ? void 0 : _a.selected) ? '-selected' : ''} ${((_b = item.state) === null || _b === void 0 ? void 0 : _b.preselected)
             ? '-preselected'
-            : ''} ${this._filterValue ? '-filtered' : ''} ${item.state.match
+            : ''} ${this._filterValue ? '-filtered' : ''} ${((_c = item.state) === null || _c === void 0 ? void 0 : _c.match)
             ? '-match'
             : ''}"
       >
         ${this._renderTemplate({
-            type: (_a = item.type) !== null && _a !== void 0 ? _a : 'item',
+            type: (_d = item.type) !== null && _d !== void 0 ? _d : 'item',
             item,
             idx,
         })}

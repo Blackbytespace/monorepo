@@ -16,9 +16,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* overflow-y: auto;
-    overflow-x: visible; */
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
     @s-scrollbar (hide);
+
+    .s-carpenter {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
   }
 
   &:before {

@@ -13,7 +13,7 @@ export type TAdvancedSelectElementItem = {
   id: string;
   type?: 'item' | 'group';
   items?: TAdvancedSelectElementItem[];
-  state?: TAdvancedSelectElementItemState;
+  state: TAdvancedSelectElementItemState;
   preventClose?: boolean;
   preventSelect?: boolean;
   preventSet?: boolean;
@@ -34,7 +34,7 @@ export type TAdvancedSelectElementClasses = {
 
 export type TAdvancedSelectElementApi = {
   type: 'item' | 'group' | 'loading' | 'before' | 'after' | 'empty' | string;
-  item: any;
+  item?: any;
   $items: any[];
   html: Function;
   unsafeHTML: Function;

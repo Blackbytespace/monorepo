@@ -1,6 +1,7 @@
 {
+  "id": "ui-card",
   "version": "1.0.0",
-  "name": "image",
+  "name": "@lotsof/image",
   "type": "ui",
   "description": "Simple image component",
   "files": ["*"],

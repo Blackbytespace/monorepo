@@ -73,8 +73,6 @@ export default class LitElement extends __LitElement {
     classesSchema: TClassesSchema;
     protected _internalName: string;
     private _shouldUpdate;
-    private _isInViewport;
-    private _whenInViewportPromise;
     private _listenersMap;
     protected _state: any;
     get state(): LitElement['_state'];
@@ -171,7 +169,7 @@ export default class LitElement extends __LitElement {
      *
      * @since           1.0.0
      */
-    addEventListenerOn($elm: HTMLElement, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    addEventListenerOn($elm: HTMLElement | Document | Window, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     /**
      * @name           dispatch
      * @type            Function

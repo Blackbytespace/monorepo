@@ -30,4 +30,4 @@
 export type TNearestElementSettings = {
     direction?: 'top' | 'right' | 'bottom' | 'left';
 };
-export default function __nearestElement($from: HTMLElement, $elements: HTMLElement[], settings?: TNearestElementSettings): HTMLElement | undefined;
+export default function __nearestElement($from: HTMLElement, $elements: HTMLElement[] | NodeListOf<HTMLElement>, settings?: TNearestElementSettings): HTMLElement | undefined;

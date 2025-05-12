@@ -4,59 +4,71 @@
   "title": "Body",
   "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
   "type": "object",
-  "groups": [
-    {
-      "id": "default",
-      "title": "Default",
-      "description": "Default options"
-    },
-    {
-      "id": "buttons",
-      "title": "Buttons",
-      "description": "Add/remove buttons",
-      "type": "stack",
-      "buttonText": "Edit buttons"
-    },
-    {
-      "id": "advanced",
-      "title": "Advanced",
-      "description": "Advanced options",
-      "type": "stack",
-      "buttonText": "Edit advanced options"
-    }
-  ],
+  "editor": {
+    "groups": [
+      {
+        "id": "default",
+        "title": "Default",
+        "description": "Default options"
+      },
+      {
+        "id": "buttons",
+        "title": "Buttons",
+        "description": "Add/remove buttons",
+        "type": "stack",
+        "buttonText": "Edit buttons"
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced (body)",
+        "description": "Advanced body options",
+        "type": "stack",
+        "buttonText": "Edit advanced body options"
+      }
+    ]
+  },
   "properties": {
     "suptitle": {
       "type": "string",
       "title": "Suptitle",
       "description": "Suptitle of the body",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "title": {
       "type": "string",
       "title": "Title",
       "description": "Title of the body",
       "minLength": 100000,
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "subtitle": {
       "type": "string",
       "title": "Subtitle",
       "description": "Subtitle of the body",
       "placeholder": "Hello world",
-      "group": "texts"
+      "editor": {
+        "group": "texts"
+      }
     },
     "lead": {
       "type": "string",
       "title": "Lead",
       "description": "Lead of the body",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "text": {
       "type": "string",
       "title": "Text",
       "description": "Text of the body",
-      "group": "default"
+      "editor": {
+        "group": "default"
+      }
     },
     "buttons": {
       "type": "array",
@@ -65,7 +77,9 @@
       "items": {
         "$ref": "/ui/button"
       },
-      "group": "buttons"
+      "editor": {
+        "group": "buttons"
+      }
     },
     "titleLevel": {
       "type": "number",
@@ -73,20 +87,26 @@
       "description": "Title level (1-6)",
       "minimum": 1,
       "maximum": 6,
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "typoClasses": {
       "type": "boolean",
       "title": "Typo classes",
       "description": "Use typography classes or not",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     },
     "id": {
       "type": "string",
       "title": "ID",
       "description": "Unique identifier",
       "placeholder": "body-1",
-      "group": "advanced"
+      "editor": {
+        "group": "advanced"
+      }
     }
   }
 }

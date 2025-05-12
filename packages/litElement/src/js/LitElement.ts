@@ -4,14 +4,13 @@ import {
   __injectStyle,
   __querySelectorLive,
   __when,
-  __whenInViewport,
 } from '@lotsof/sugar/dom';
 
 import { __unique } from '@lotsof/sugar/array';
+import { __isInViewport } from '@lotsof/sugar/is';
 import { __camelCase } from '@lotsof/sugar/string';
 import { LitElement as __LitElement, html as __html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { TWhenInViewportResult } from '../../../sugar/dist/js/dom/when/whenInViewport.js';
 
 export { __html as html };
 
@@ -134,10 +133,10 @@ export default class LitElement extends __LitElement {
   protected _internalName: string = this.tagName.toLowerCase();
 
   private _shouldUpdate = false;
-  private _isInViewport = false;
-  private _whenInViewportPromise: TWhenInViewportResult;
-  private _listenersMap: Map<HTMLElement, TLitElementEventListenerObject[]> =
-    new Map();
+  private _listenersMap: Map<
+    HTMLElement | Document | Window,
+    TLitElementEventListenerObject[]
+  > = new Map();
 
   protected _state: any = {};
   get state(): LitElement['_state'] {
@@ -272,18 +271,8 @@ export default class LitElement extends __LitElement {
       this._internalName = internalName;
     }
 
+    // set the id as property
     this.setAttribute('id', this.id ?? `s-${Math.round(Math.random() * 9999)}`);
-
-    // monitor if the component is in viewport or not
-    this._whenInViewportPromise = __whenInViewport(this as HTMLElement, {
-      once: false,
-      whenIn: () => {
-        this._isInViewport = true;
-      },
-      whenOut: () => {
-        this._isInViewport = false;
-      },
-    });
 
     // @ts-ignore
     const nodeFirstUpdated = this.firstUpdated?.bind(this);
@@ -456,7 +445,7 @@ export default class LitElement extends __LitElement {
    * @since           1.0.0
    */
   addEventListenerOn(
-    $elm: HTMLElement,
+    $elm: HTMLElement | Document | Window,
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | AddEventListenerOptions,
@@ -517,38 +506,37 @@ export default class LitElement extends __LitElement {
     };
 
     let eventsNames: string[] = [];
+    let finalEventName = eventName;
 
-    // from the "internalName" property
-    let finalEventName = __camelCase(eventName);
-    if (this.prefixEvent) {
-      finalEventName = `${__camelCase(this._internalName)}.${finalEventName}`;
-    }
-    eventsNames.push(finalEventName);
+    // use the passed eventName without touching it
+    eventsNames.push(eventName);
 
-    // from the "name" property
-    if (this.name && this.name !== this.tagName.toLowerCase()) {
-      let finalEventName = __camelCase(eventName);
-      if (this.prefixEvent) {
-        finalEventName = `${__camelCase(this.name)}.${finalEventName}`;
-      }
+    // prefix the event name with the internalName
+    // if needed only
+    if (!eventName.startsWith(`${this._internalName}.`)) {
+      finalEventName = `${this._internalName}.${eventName}`;
+      eventsNames.push(finalEventName);
+      finalEventName = `${__camelCase(this._internalName)}.${eventName}`;
       eventsNames.push(finalEventName);
     }
 
-    // from the tagName
-    if (this.tagName !== this._internalName) {
-      // %componentName.%eventName
-      finalEventName = __camelCase(eventName);
-      if (this.prefixEvent) {
-        finalEventName = `${__camelCase(this.tagName)}.${finalEventName}`;
-      }
+    // prefix with the tagName
+    // only if needed
+    if (!eventName.startsWith(`${this.tagName}.`)) {
+      finalEventName = `${this.tagName.toLowerCase()}.${eventName}`;
+      eventsNames.push(finalEventName);
+      finalEventName = `${__camelCase(
+        this.tagName.toLowerCase(),
+      )}.${eventName}`;
       eventsNames.push(finalEventName);
     }
 
+    // ensure we don't have duplicates
     eventsNames = __unique(eventsNames);
 
+    // dispatch all the events
     for (let eventName of eventsNames) {
-      this.log('Dispatching event from "name" property', eventName);
-      // %componentName.%eventName
+      this.log(`Dispatching event "${eventName}"`);
       finalSettings.$elm.dispatchEvent(
         new CustomEvent(eventName, finalSettings),
       );
@@ -711,7 +699,10 @@ export default class LitElement extends __LitElement {
    * @author 		Olivier Bossel<olivier.bossel@gmail.com>
    */
   isActive(): boolean {
-    if (this.activeWhen.includes('inViewport') && !this._isInViewport) {
+    if (
+      this.activeWhen.includes('inViewport') &&
+      !__isInViewport(this as HTMLElement)
+    ) {
       return false;
     }
     return true;
@@ -743,7 +734,7 @@ export default class LitElement extends __LitElement {
    * @since           1.0.0
    */
   isInViewport(): boolean {
-    return this._isInViewport;
+    return __isInViewport(this as HTMLElement);
   }
 
   /**
@@ -800,6 +791,5 @@ export default class LitElement extends __LitElement {
     }
 
     super.disconnectedCallback();
-    this._whenInViewportPromise.cancel?.();
   }
 }

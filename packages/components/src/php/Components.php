@@ -11,9 +11,11 @@ class Components
     public function __construct($config)
     {
         $this->config = $config;
+    }
 
-        $this->getComponentsList();
-
+    public function getRootDir(): string
+    {
+        return $this->config->components->rootDir;
     }
 
     public function getComponentsList(): array
@@ -87,4 +89,26 @@ class Components
         throw new \Exception('No component with the schema "$id" as "' . $id . '" found');
     }
 
+    public function getComponentById(string $id): mixed
+    {
+        foreach ($this->getComponentsList() as $component) {
+            if ($component->getId() === $id) {
+                return $component;
+            }
+        }
+        throw new \Exception('No component with the "id" as "' . $id . '" found');
+    }
+
+    public function getComponentByPath(string $path): mixed
+    {
+        foreach ($this->getComponentsList() as $component) {
+            if ($component->getPath() === $path) {
+                return $component;
+            }
+            if ($component->getRelPath() === $path) {
+                return $component;
+            }
+        }
+        throw new \Exception('No component with the "path" or "relPath" as "' . $path . '" found');
+    }
 }

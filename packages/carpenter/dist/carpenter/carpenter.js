@@ -49,7 +49,6 @@ class CarpenterElement extends __LitElement {
         this._currentMediaQuery = '';
         this._currentAction = null;
         this._state = {};
-        this.verbose = true;
         this.saveState = true;
     }
     static registerAdapter(id, adapter) {
@@ -167,11 +166,11 @@ class CarpenterElement extends __LitElement {
             // append the iframe to the body
             const iframeLoadedPromise = new Promise((resolve) => {
                 $iframe.addEventListener('load', () => {
-                    this.dispatchEvent(new CustomEvent('s-carpenter.loaded', {
+                    this.dispatch('loaded', {
                         bubbles: true,
                         cancelable: false,
                         detail: this,
-                    }));
+                    });
                     resolve(true);
                 });
             });
@@ -269,11 +268,11 @@ class CarpenterElement extends __LitElement {
                 this.adapter.applyUpdate(updateObject);
             }
             // dispatch an event
-            this.dispatchEvent(new CustomEvent('s-carpenter.update', {
+            this.dispatch('update', {
                 bubbles: true,
                 cancelable: false,
                 detail: updateObject,
-            }));
+            });
         });
     }
     // private _renderMediaQueries(): any {
@@ -336,7 +335,7 @@ class CarpenterElement extends __LitElement {
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
-          @sJsonSchemaForm.update=${(e) => {
+          @s-json-schema-form.update=${(e) => {
             this._applyUpdate(Object.assign({}, e.detail.update));
         }}
           id="s-carpenter-json-schema-form"

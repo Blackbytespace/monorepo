@@ -1,7 +1,7 @@
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValueMap } from 'lit';
 import '../../src/css/AdvancedSelectElement.bare.css';
-import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvancedSelectElementItemsFunctionApi } from '../shared/AdvancedSelectElement.types.js';
+import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvancedSelectElementItem, TAdvancedSelectElementItemsFunctionApi } from '../shared/AdvancedSelectElement.types.js';
 /**
  * @name                AdvancedSelectElement
  * @as                  Advanced Select Input
@@ -110,7 +110,7 @@ export default class AdvancedSelectElement extends __LitElement {
     filterItems?: Function;
     minChars: number;
     filtrable: string[];
-    highlightable: string;
+    highlightable: string[];
     templates?: (api: TAdvancedSelectElementApi) => any;
     closeTimeout: number;
     notSelectable: boolean;
@@ -127,7 +127,7 @@ export default class AdvancedSelectElement extends __LitElement {
     private _isArrowUsedTimeout?;
     private _baseTemplates;
     constructor();
-    private mount;
+    protected mount(): Promise<void>;
     _loadingTimeout: any;
     protected updated(changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
     protected firstUpdated(): Promise<void>;
@@ -168,7 +168,7 @@ export default class AdvancedSelectElement extends __LitElement {
      *
      * @since       1.0.0
      */
-    setSearch(value: string): void;
+    setSearch(value: string): Promise<void>;
     /**
      * @name       select
      * @type       Function
@@ -236,7 +236,7 @@ export default class AdvancedSelectElement extends __LitElement {
      * @since       1.0.0
      */
     getMatchItems(): TAdvancedSelectElementItem[];
-    _open(): void;
+    _open(): Promise<void>;
     _close(): void;
     /**
      * @name        focus

@@ -72,7 +72,6 @@ export default class CarpenterElement extends __LitElement {
 
   constructor() {
     super('s-carpenter');
-    this.verbose = true;
     this.saveState = true;
   }
 
@@ -208,13 +207,11 @@ export default class CarpenterElement extends __LitElement {
     // append the iframe to the body
     const iframeLoadedPromise = new Promise((resolve) => {
       $iframe.addEventListener('load', () => {
-        this.dispatchEvent(
-          new CustomEvent('s-carpenter.loaded', {
-            bubbles: true,
-            cancelable: false,
-            detail: this,
-          }),
-        );
+        this.dispatch('loaded', {
+          bubbles: true,
+          cancelable: false,
+          detail: this,
+        });
         resolve(true);
       });
     });
@@ -344,13 +341,11 @@ export default class CarpenterElement extends __LitElement {
     }
 
     // dispatch an event
-    this.dispatchEvent(
-      new CustomEvent('s-carpenter.update', {
-        bubbles: true,
-        cancelable: false,
-        detail: updateObject,
-      }),
-    );
+    this.dispatch('update', {
+      bubbles: true,
+      cancelable: false,
+      detail: updateObject,
+    });
   }
 
   // private _renderMediaQueries(): any {
@@ -417,7 +412,7 @@ export default class CarpenterElement extends __LitElement {
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
-          @sJsonSchemaForm.update=${(e: CustomEvent) => {
+          @s-json-schema-form.update=${(e: CustomEvent) => {
             this._applyUpdate({
               ...e.detail.update,
             });

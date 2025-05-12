@@ -14,8 +14,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { __wait } from '@lotsof/sugar/datetime';
-import { __adoptStyleInShadowRoot, __injectStyle, __querySelectorLive, __when, __whenInViewport, } from '@lotsof/sugar/dom';
+import { __adoptStyleInShadowRoot, __injectStyle, __querySelectorLive, __when, } from '@lotsof/sugar/dom';
 import { __unique } from '@lotsof/sugar/array';
+import { __isInViewport } from '@lotsof/sugar/is';
 import { __camelCase } from '@lotsof/sugar/string';
 import { LitElement as __LitElement, html as __html } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -172,7 +173,6 @@ class LitElement extends __LitElement {
         this.classesSchema = 'slim';
         this._internalName = this.tagName.toLowerCase();
         this._shouldUpdate = false;
-        this._isInViewport = false;
         this._listenersMap = new Map();
         this._state = {};
         /**
@@ -189,17 +189,8 @@ class LitElement extends __LitElement {
         if (internalName) {
             this._internalName = internalName;
         }
+        // set the id as property
         this.setAttribute('id', (_a = this.id) !== null && _a !== void 0 ? _a : `s-${Math.round(Math.random() * 9999)}`);
-        // monitor if the component is in viewport or not
-        this._whenInViewportPromise = __whenInViewport(this, {
-            once: false,
-            whenIn: () => {
-                this._isInViewport = true;
-            },
-            whenOut: () => {
-                this._isInViewport = false;
-            },
-        });
         // @ts-ignore
         const nodeFirstUpdated = (_b = this.firstUpdated) === null || _b === void 0 ? void 0 : _b.bind(this);
         // @ts-ignore
@@ -384,33 +375,30 @@ class LitElement extends __LitElement {
     dispatch(eventName, settings) {
         const finalSettings = Object.assign({ $elm: this, bubbles: true, cancelable: true, detail: {} }, (settings !== null && settings !== void 0 ? settings : {}));
         let eventsNames = [];
-        // from the "internalName" property
-        let finalEventName = __camelCase(eventName);
-        if (this.prefixEvent) {
-            finalEventName = `${__camelCase(this._internalName)}.${finalEventName}`;
-        }
-        eventsNames.push(finalEventName);
-        // from the "name" property
-        if (this.name && this.name !== this.tagName.toLowerCase()) {
-            let finalEventName = __camelCase(eventName);
-            if (this.prefixEvent) {
-                finalEventName = `${__camelCase(this.name)}.${finalEventName}`;
-            }
+        let finalEventName = eventName;
+        // use the passed eventName without touching it
+        eventsNames.push(eventName);
+        // prefix the event name with the internalName
+        // if needed only
+        if (!eventName.startsWith(`${this._internalName}.`)) {
+            finalEventName = `${this._internalName}.${eventName}`;
+            eventsNames.push(finalEventName);
+            finalEventName = `${__camelCase(this._internalName)}.${eventName}`;
             eventsNames.push(finalEventName);
         }
-        // from the tagName
-        if (this.tagName !== this._internalName) {
-            // %componentName.%eventName
-            finalEventName = __camelCase(eventName);
-            if (this.prefixEvent) {
-                finalEventName = `${__camelCase(this.tagName)}.${finalEventName}`;
-            }
+        // prefix with the tagName
+        // only if needed
+        if (!eventName.startsWith(`${this.tagName}.`)) {
+            finalEventName = `${this.tagName.toLowerCase()}.${eventName}`;
+            eventsNames.push(finalEventName);
+            finalEventName = `${__camelCase(this.tagName.toLowerCase())}.${eventName}`;
             eventsNames.push(finalEventName);
         }
+        // ensure we don't have duplicates
         eventsNames = __unique(eventsNames);
+        // dispatch all the events
         for (let eventName of eventsNames) {
-            this.log('Dispatching event from "name" property', eventName);
-            // %componentName.%eventName
+            this.log(`Dispatching event "${eventName}"`);
             finalSettings.$elm.dispatchEvent(new CustomEvent(eventName, finalSettings));
         }
     }
@@ -535,7 +523,8 @@ class LitElement extends __LitElement {
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
     isActive() {
-        if (this.activeWhen.includes('inViewport') && !this._isInViewport) {
+        if (this.activeWhen.includes('inViewport') &&
+            !__isInViewport(this)) {
             return false;
         }
         return true;
@@ -554,7 +543,7 @@ class LitElement extends __LitElement {
      * @since           1.0.0
      */
     isInViewport() {
-        return this._isInViewport;
+        return __isInViewport(this);
     }
     /**
      * @name            mount
@@ -596,7 +585,6 @@ class LitElement extends __LitElement {
         });
     }
     disconnectedCallback() {
-        var _a, _b;
         for (let [$elm, listenersObj] of this._listenersMap.entries()) {
             if (listenersObj.length) {
                 listenersObj.forEach((listenerObj) => {
@@ -605,7 +593,6 @@ class LitElement extends __LitElement {
             }
         }
         super.disconnectedCallback();
-        (_b = (_a = this._whenInViewportPromise).cancel) === null || _b === void 0 ? void 0 : _b.call(_a);
     }
 }
 LitElement._keepInjectedCssBeforeStylesheetLinksInited = false;

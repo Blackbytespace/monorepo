@@ -59,6 +59,7 @@ export default class FactoryElement extends __LitElement {
         this._currentComponentId = '';
         this._currentAction = null;
         this._state = {};
+        this._$commandPanelSelect = null;
         this.saveState = true;
     }
     get currentEngine() {
@@ -71,9 +72,6 @@ export default class FactoryElement extends __LitElement {
         // return the engine
         return params.get('engine') || undefined;
     }
-    get $commandPanel() {
-        return this.querySelector('#s-factory-command-panel');
-    }
     get currentComponent() {
         var _a, _b;
         return (_b = (_a = this.specs) === null || _a === void 0 ? void 0 : _a.components) === null || _b === void 0 ? void 0 : _b[this.currentComponentId];
@@ -82,23 +80,6 @@ export default class FactoryElement extends __LitElement {
         const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
         return matches === null || matches === void 0 ? void 0 : matches[1];
     }
-    // public update(changedProperties: any): void {
-    //   super.update(changedProperties);
-    //   // // update the media query
-    //   // if (changedProperties.has('_currentMediaQuery')) {
-    //   //   if (this.currentMediaQuery?.max !== -1) {
-    //   //     this._$canvas?.style.setProperty(
-    //   //       '--s-factory-canvas-width',
-    //   //       this.currentMediaQuery?.max + 'px',
-    //   //     );
-    //   //   } else {
-    //   //     this._$canvas?.style.removeProperty('--s-factory-canvas-width');
-    //   //   }
-    //   //   setTimeout(() => {
-    //   //     this._updateIframeSize();
-    //   //   }, 300);
-    //   // }
-    // }
     _fetchSpecs() {
         return __awaiter(this, void 0, void 0, function* () {
             // fetch the specs from the server
@@ -123,8 +104,6 @@ export default class FactoryElement extends __LitElement {
             // init the listeners like escape key, etc...
             this._initListeners(document);
             // this._initListeners(this.$iframeDocument as Document);
-            // render component if the current component is set
-            // this._updateComponent();
             // init command panel
             this._initCommandPanel();
             // restore the ui mode (light/dark)
@@ -133,6 +112,7 @@ export default class FactoryElement extends __LitElement {
     }
     _initCommandPanel() {
         __AdvancedSelectElement.define('s-factory-command-panel-select', {
+            activeWhen: [],
             items: (api) => {
                 var _a, _b, _c;
                 switch (true) {
@@ -169,11 +149,13 @@ export default class FactoryElement extends __LitElement {
                     //   break;
                     case (_b = api.search) === null || _b === void 0 ? void 0 : _b.startsWith('!'):
                         return Object.entries(this.currentComponent.engines).map(([idx, name]) => {
+                            console.log(this.currentComponent);
                             return {
-                                id: `!${this.currentComponent.name}/${name}`,
-                                value: `!${this.currentComponent.name}/${name}`,
+                                id: `!${this.currentComponent.id}`,
+                                value: `!${this.currentComponent.id}`,
                                 preventSet: true,
                                 label: `${__upperFirst(name)}`,
+                                engine: name,
                             };
                         });
                         break;
@@ -207,35 +189,38 @@ export default class FactoryElement extends __LitElement {
                       >!</span
                     >${__i18n('Switch engine')}`,
                             },
-                            {
-                                id: '@',
-                                value: '@',
-                                preventClose: true,
-                                preventSelect: true,
-                                label: `<span class="s-factory-command-panel_prefix"
-                      >@</span
-                    >${__i18n('Media queries')}`,
-                            },
-                            {
-                                id: '<',
-                                value: '<',
-                                preventClose: true,
-                                preventSelect: true,
-                                label: `<span class="s-factory-command-panel_prefix"
-                      >&lt;</span
-                    >${__i18n('Load values')}`,
-                            },
-                            {
-                                id: '>',
-                                value: '>',
-                                label: `<span class="s-factory-command-panel_prefix"
-                      >&gt;</span
-                    >${__i18n('Save values')}`,
-                            },
+                            // {
+                            //   id: '@',
+                            //   value: '@',
+                            //   preventClose: true,
+                            //   preventSelect: true,
+                            //   label: `<span class="s-factory-command-panel_prefix"
+                            //         >@</span
+                            //       >${__i18n('Media queries')}`,
+                            // },
+                            // {
+                            //   id: '<',
+                            //   value: '<',
+                            //   preventClose: true,
+                            //   preventSelect: true,
+                            //   label: `<span class="s-factory-command-panel_prefix"
+                            //         >&lt;</span
+                            //       >${__i18n('Load values')}`,
+                            // },
+                            // {
+                            //   id: '>',
+                            //   value: '>',
+                            //   label: `<span class="s-factory-command-panel_prefix"
+                            //         >&gt;</span
+                            //       >${__i18n('Save values')}`,
+                            // },
                         ];
                         break;
                 }
             },
+        });
+        setTimeout(() => {
+            this._$commandPanelSelect = this.querySelector('s-factory-command-panel-select');
         });
     }
     _initListeners(context) {
@@ -271,32 +256,43 @@ export default class FactoryElement extends __LitElement {
         }, hotkeySettings);
         __hotkey('cmd+shift+p', (e) => {
             var _a, _b;
-            (_a = this.$commandPanel) === null || _a === void 0 ? void 0 : _a.setSearch('');
-            (_b = this.$commandPanel) === null || _b === void 0 ? void 0 : _b.focus();
+            (_a = this._$commandPanelSelect) === null || _a === void 0 ? void 0 : _a.setSearch('');
+            (_b = this._$commandPanelSelect) === null || _b === void 0 ? void 0 : _b.focus();
         }, hotkeySettings);
         __hotkey('cmd+p', (e) => {
             var _a, _b;
-            (_a = this.$commandPanel) === null || _a === void 0 ? void 0 : _a.setSearch('/');
-            (_b = this.$commandPanel) === null || _b === void 0 ? void 0 : _b.focus();
+            console.log('cmd+p', this._$commandPanelSelect);
+            (_a = this._$commandPanelSelect) === null || _a === void 0 ? void 0 : _a.setSearch('/');
+            (_b = this._$commandPanelSelect) === null || _b === void 0 ? void 0 : _b.focus();
         }, hotkeySettings);
-        __hotkey('cmd+g', (e) => {
-            var _a, _b;
-            (_a = this.$commandPanel) === null || _a === void 0 ? void 0 : _a.setSearch('@');
-            (_b = this.$commandPanel) === null || _b === void 0 ? void 0 : _b.focus();
-        }, hotkeySettings);
+        // __hotkey(
+        //   'cmd+g',
+        //   (e) => {
+        //     this._$commandPanelSelect?.setSearch('@');
+        //     this._$commandPanelSelect?.focus();
+        //   },
+        //   hotkeySettings,
+        // );
         __hotkey('cmd+e', (e) => {
             var _a, _b;
-            (_a = this.$commandPanel) === null || _a === void 0 ? void 0 : _a.setSearch('!');
-            (_b = this.$commandPanel) === null || _b === void 0 ? void 0 : _b.focus();
+            (_a = this._$commandPanelSelect) === null || _a === void 0 ? void 0 : _a.setSearch('!');
+            (_b = this._$commandPanelSelect) === null || _b === void 0 ? void 0 : _b.focus();
         }, hotkeySettings);
-        __hotkey('cmd+l', (e) => {
-            var _a, _b;
-            (_a = this.$commandPanel) === null || _a === void 0 ? void 0 : _a.setSearch('<');
-            (_b = this.$commandPanel) === null || _b === void 0 ? void 0 : _b.focus();
-        }, hotkeySettings);
-        __hotkey('cmd+s', (e) => {
-            this._currentAction = 'saveValues';
-        }, hotkeySettings);
+        // __hotkey(
+        //   'cmd+l',
+        //   (e) => {
+        //     this._$commandPanelSelect?.setSearch('<');
+        //     this._$commandPanelSelect?.focus();
+        //   },
+        //   hotkeySettings,
+        // );
+        // __hotkey(
+        //   'cmd+s',
+        //   (e) => {
+        //     this._currentAction = 'saveValues';
+        //   },
+        //   hotkeySettings,
+        // );
         __hotkey('cmd+r', (e) => {
             this.randomizeComponentValues(this.currentComponentId);
         }, hotkeySettings);
@@ -353,8 +349,9 @@ export default class FactoryElement extends __LitElement {
         // compose the url
         let url = `/component/${id}`;
         if (engine) {
-            url += `/${engine}`;
+            url += `?engine=${engine}`;
         }
+        console.log('set', id, engine);
         // maintain the history
         history.pushState({ id, engine }, '', url);
         // set the current component
@@ -434,7 +431,8 @@ export default class FactoryElement extends __LitElement {
             case item.value.startsWith('/'):
             case item.value.startsWith('!'):
                 [id, engine] = item.value.slice(1).split('/');
-                this.selectComponent(id, engine);
+                console.log('select', item);
+                // this.selectComponent(id, engine);
                 break;
             case item.value.startsWith('@'):
                 const mediaQuery = item.value.slice(1);
@@ -556,7 +554,7 @@ export default class FactoryElement extends __LitElement {
         id="s-factory-command-panel"
         mountWhen="direct"
         hotkey=${this.commandPanelHotkey}
-        @sFactoryCommandPanel.select=${(e) => {
+        @s-factory-command-panel-select.select=${(e) => {
             this._handleCommandPanelSelect(e.detail.item);
         }}
       >
@@ -633,7 +631,8 @@ export default class FactoryElement extends __LitElement {
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
             .component=${this.currentComponent}
-            @s-carpenter.update=${(e) => {
+            .verbose=${this.verbose}
+            @s-carpenter.update=${() => {
             this._updateComponent();
         }}
             @s-carpenter.loaded=${(e) => {
@@ -648,8 +647,7 @@ export default class FactoryElement extends __LitElement {
     }
     render() {
         return html `
-      ${this._renderTopbar()}
-      <!-- ${this._renderCommandPanel()} -->
+      ${this._renderTopbar()} ${this._renderCommandPanel()}
       <!-- ${this._renderSidebar()}  -->
       ${this._renderEditor()}
       ${this._currentAction === 'saveValues'

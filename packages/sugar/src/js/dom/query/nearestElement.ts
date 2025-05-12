@@ -35,7 +35,7 @@ export type TNearestElementSettings = {
 
 export default function __nearestElement(
   $from: HTMLElement,
-  $elements: HTMLElement[],
+  $elements: HTMLElement[] | NodeListOf<HTMLElement>,
   settings?: TNearestElementSettings,
 ): HTMLElement | undefined {
   const finalParams: TNearestElementSettings = {

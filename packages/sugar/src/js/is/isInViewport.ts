@@ -57,9 +57,6 @@ export default function __isInViewport(
 
   // if at least top|bottom AND left|right
   if ((isTopIn || isBottomIn) && (isLeftIn || isRightIn)) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 1', rect, isTopIn, isRightIn, isBottomIn, isLeftIn);
-    // }
     return true;
   }
 
@@ -70,16 +67,10 @@ export default function __isInViewport(
     left <= 0 &&
     right >= containerWidth
   ) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 2');
-    // }
     return true;
   }
 
   if (top <= 0 && bottom >= containerHeight && left <= 0 && isRightIn) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 3');
-    // }
     return true;
   }
 
@@ -89,16 +80,10 @@ export default function __isInViewport(
     right >= containerWidth &&
     isLeftIn
   ) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 4');
-    // }
     return true;
   }
 
   if (left <= 0 && right >= containerWidth && top <= 0 && isBottomIn) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 5');
-    // }
     return true;
   }
 
@@ -108,44 +93,8 @@ export default function __isInViewport(
     bottom >= containerHeight &&
     isTopIn
   ) {
-    // if (elm.id === 'coco') {
-    //     console.log('IN 6');
-    // }
     return true;
   }
 
   return false;
-
-  // const observer = new IntersectionObserver(
-  //     (entries, observer) => {
-  //         if (!entries.length) return;
-
-  //         const entry = entries[0];
-
-  // const isTopIn = entry.boundingClientRect.top - entry.rootBounds.height <= 0;
-  // const isBottomIn = entry.boundingClientRect.bottom >= 0;
-  // const isLeftIn = rect.left - containerWidth - offsetRight <= 0;
-  // const isRightIn = rect.right - offsetLeft >= 0;
-
-  //         if (entry.boundingClientRect.left >= entry.rootBounds.top && entry.boundingClientRect.left <= entry.rootBounds.right)
-
-  //         if (
-  //             entry.intersectionRatio > 0 &&
-  //             (entry.intersectionRect.width ||
-  //                 entry.intersectionRect.height)
-  //         ) {
-  //             resolve(true);
-  //         } else {
-  //             resolve(false);
-  //         }
-  //         observer.disconnect();
-  //     },
-  //     {
-  //         root: null, // viewport
-  //         rootMargin: settings.offset,
-  //         threshold: 0,
-  //     },
-  // );
-
-  // observer.observe(elm);
 }

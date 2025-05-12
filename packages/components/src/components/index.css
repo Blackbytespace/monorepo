@@ -1,10 +1,9 @@
 @import './sugarcss/sugarcss.css';
 
-@import ''
-  /* @import './body/body.css';
+/* @import './body/body.css';
 @import './button/button.css';
 @import './card/card.css';
 @import './error/error.css';
 @import './image/image.css';
  */
-  @import './ui/typo/typo.css';
+@import './ui/typo/typo.css';

@@ -1,0 +1,5 @@
+@import './editor.bare.css';
+
+.s-carpenter_editor {
+  @s-scrollbar (2px, s-color(accent, --alpha 0.5), transparent);
+}
