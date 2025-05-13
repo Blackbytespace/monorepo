@@ -1,0 +1,19 @@
+@import './settings/sugarcss.css';
+@import './settings/settings.css';
+
+@import './factory/factory.css';
+@import './saveValuesForm/saveValuesForm.css';
+
+@import './generic/notifications/notifications.css';
+@import './generic/popin/popin.css';
+
+@import './layout/canvas/canvas.css';
+@import './layout/commandPanel/commandPanel.css';
+@import './layout/editor/editor.css';
+@import './layout/logo/logo.css';
+@import './layout/main/main.css';
+@import './layout/topbar/topbar.css';
+
+@import './ui/button/button.css';
+@import './ui/errors/errors.css';
+@import './ui/form/form.css';

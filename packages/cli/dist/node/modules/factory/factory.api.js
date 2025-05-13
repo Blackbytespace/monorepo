@@ -8,9 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __childProcess from 'child_process';
 import { __getConfig } from '@lotsof/config';
 import '@lotsof/factory';
+import __childProcess from 'child_process';
 let factoryConfig;
 function setup() {
     factoryConfig = __getConfig().factory;
@@ -22,6 +22,7 @@ export default function __registerCommands(program) {
     program.command('factory.start').action(() => __awaiter(this, void 0, void 0, function* () {
         console.log(`▓ Start components factory...`);
         const factoryConfigStr = JSON.stringify(factoryConfig).replace(/"/g, '\\"');
+        console.log(factoryConfig);
         const serverProcess = __childProcess.spawn(`FACTORY_CONFIG="${factoryConfigStr}" php -S ${factoryConfig.server.hostname}:${factoryConfig.server.port} ${factoryConfig.server.entrypoint}`, [], {
             shell: true,
             cwd: process.cwd(),

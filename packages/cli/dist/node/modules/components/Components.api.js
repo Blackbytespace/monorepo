@@ -64,7 +64,7 @@ export default function __registerCommands(program) {
     program
         .command('components.add')
         .argument('<componentId>', 'Specify the component id you want to add')
-        .option('--dir <path>', 'Specify the directory to install the component in', `${__packageRootDir()}/src/components`)
+        .option('--dir <path>', 'Specify the directory to install the component in', `${__packageRootDir()}/components`)
         .option('--name <name>', 'Specify a name for the component')
         .option('--engine', 'Specify the engine to use')
         .option('-y', 'Specify if you want to answer yes to all questions', false)

@@ -1,7 +1,7 @@
 {
   "name": "lotsof/types",
   "description": "Types system to share types libraries easily",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "type": "library",
   "autoload": {
     "files": [
@@ -24,7 +24,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "lotsof/sugar": "^1.0.0@alpha",
+    "lotsof/sugar": "^1.0.0",
     "fakerphp/faker": "^1.23",
     "justinrainbow/json-schema": "^6.0"
   }

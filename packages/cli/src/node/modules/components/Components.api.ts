@@ -97,7 +97,7 @@ export default function __registerCommands(program: any): void {
     .option(
       '--dir <path>',
       'Specify the directory to install the component in',
-      `${__packageRootDir()}/src/components`,
+      `${__packageRootDir()}/components`,
     )
     .option('--name <name>', 'Specify a name for the component')
     .option('--engine', 'Specify the engine to use')

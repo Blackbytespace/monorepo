@@ -205,9 +205,14 @@ export default class CarpenterElement extends __LitElement {
     this._$iframe = $iframe;
 
     // append the iframe to the body
+    let iframeLoaded = false;
     const iframeLoadedPromise = new Promise((resolve) => {
       $iframe.addEventListener('load', () => {
-        this.dispatch('loaded', {
+        if (iframeLoaded) {
+          return;
+        }
+        iframeLoaded = true;
+        this.dispatch('ready', {
           bubbles: true,
           cancelable: false,
           detail: this,
@@ -228,6 +233,7 @@ export default class CarpenterElement extends __LitElement {
     );
     doc.body.querySelector('s-factory')?.remove();
     doc.body.querySelector('s-carpenter')?.remove();
+    doc.body.querySelector('.s-carpenter_canvas')?.remove();
 
     // copy the document into the iframe
     $iframe?.contentWindow?.document.open();
@@ -261,20 +267,6 @@ export default class CarpenterElement extends __LitElement {
 
     // make sure we don't have any dark mode class
     this._$iframe?.contentDocument?.body.classList.remove('-dark');
-
-    // remove styles from FactoryElement and CarpenterElement
-    // to avoid conflicts with the iframe
-    this._$iframe.contentDocument
-      ?.querySelectorAll('style')
-      .forEach(($style) => {
-        const src = $style.getAttribute('data-vite-dev-id');
-        if (
-          src?.includes('FactoryElement') ||
-          src?.includes('CarpenterElement')
-        ) {
-          $style.remove();
-        }
-      });
 
     // empty page
     document

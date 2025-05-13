@@ -1,0 +1,13 @@
+@import './factory.bare.css';
+
+s-factory {
+  display: block;
+}
+
+body.-dark {
+  background: s-color(main, background, --lightness 10);
+  @s-transition();
+}
+
+.s-factory {
+}

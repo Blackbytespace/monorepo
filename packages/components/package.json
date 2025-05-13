@@ -31,8 +31,8 @@
   },
   "exports": {
     ".": {
-      "node": "./dist/node/_exports.js",
-      "browser": "./dist/js/_exports.js"
+      "node": "./dist/components/node/_exports.js",
+      "browser": "./dist/components/js/_exports.js"
     }
   },
   "types": "src/node/_exports.ts",

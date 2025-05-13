@@ -164,9 +164,14 @@ class CarpenterElement extends __LitElement {
             __iframeAutoSize($iframe, { width: false, height: true });
             this._$iframe = $iframe;
             // append the iframe to the body
+            let iframeLoaded = false;
             const iframeLoadedPromise = new Promise((resolve) => {
                 $iframe.addEventListener('load', () => {
-                    this.dispatch('loaded', {
+                    if (iframeLoaded) {
+                        return;
+                    }
+                    iframeLoaded = true;
+                    this.dispatch('ready', {
                         bubbles: true,
                         cancelable: false,
                         detail: this,
@@ -182,15 +187,16 @@ class CarpenterElement extends __LitElement {
             const doc = domParser.parseFromString(document.documentElement.outerHTML, 'text/html');
             (_a = doc.body.querySelector('s-factory')) === null || _a === void 0 ? void 0 : _a.remove();
             (_b = doc.body.querySelector('s-carpenter')) === null || _b === void 0 ? void 0 : _b.remove();
+            (_c = doc.body.querySelector('.s-carpenter_canvas')) === null || _c === void 0 ? void 0 : _c.remove();
             // copy the document into the iframe
-            (_c = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _c === void 0 ? void 0 : _c.document.open();
-            (_d = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _d === void 0 ? void 0 : _d.document.write(doc.documentElement.outerHTML);
-            (_e = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _e === void 0 ? void 0 : _e.document.close();
+            (_d = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _d === void 0 ? void 0 : _d.document.open();
+            (_e = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _e === void 0 ? void 0 : _e.document.write(doc.documentElement.outerHTML);
+            (_f = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _f === void 0 ? void 0 : _f.document.close();
             // clean the iframe
-            (_g = (_f = this.$iframeDocument) === null || _f === void 0 ? void 0 : _f.querySelector(`.${this.cls('_iframe')}`)) === null || _g === void 0 ? void 0 : _g.remove();
-            (_j = (_h = this.$iframeDocument) === null || _h === void 0 ? void 0 : _h.querySelector(this.tagName)) === null || _j === void 0 ? void 0 : _j.remove();
+            (_h = (_g = this.$iframeDocument) === null || _g === void 0 ? void 0 : _g.querySelector(`.${this.cls('_iframe')}`)) === null || _h === void 0 ? void 0 : _h.remove();
+            (_k = (_j = this.$iframeDocument) === null || _j === void 0 ? void 0 : _j.querySelector(this.tagName)) === null || _k === void 0 ? void 0 : _k.remove();
             // center the content in the iframe
-            const $centerStyle = (_l = (_k = this._$iframe) === null || _k === void 0 ? void 0 : _k.contentDocument) === null || _l === void 0 ? void 0 : _l.createElement('style');
+            const $centerStyle = (_m = (_l = this._$iframe) === null || _l === void 0 ? void 0 : _l.contentDocument) === null || _m === void 0 ? void 0 : _m.createElement('style');
             $centerStyle.innerHTML = `
       body {
         display: flex;
@@ -198,7 +204,7 @@ class CarpenterElement extends __LitElement {
         align-items: center;
       }
     `;
-            (_m = $iframe.contentWindow) === null || _m === void 0 ? void 0 : _m.document.head.appendChild($centerStyle);
+            (_o = $iframe.contentWindow) === null || _o === void 0 ? void 0 : _o.document.head.appendChild($centerStyle);
             // if we have some html provided in the component,
             // set it into the iframe
             setTimeout(() => {
@@ -208,16 +214,7 @@ class CarpenterElement extends __LitElement {
                 }
             }, 100);
             // make sure we don't have any dark mode class
-            (_p = (_o = this._$iframe) === null || _o === void 0 ? void 0 : _o.contentDocument) === null || _p === void 0 ? void 0 : _p.body.classList.remove('-dark');
-            // remove styles from FactoryElement and CarpenterElement
-            // to avoid conflicts with the iframe
-            (_q = this._$iframe.contentDocument) === null || _q === void 0 ? void 0 : _q.querySelectorAll('style').forEach(($style) => {
-                const src = $style.getAttribute('data-vite-dev-id');
-                if ((src === null || src === void 0 ? void 0 : src.includes('FactoryElement')) ||
-                    (src === null || src === void 0 ? void 0 : src.includes('CarpenterElement'))) {
-                    $style.remove();
-                }
-            });
+            (_q = (_p = this._$iframe) === null || _p === void 0 ? void 0 : _p.contentDocument) === null || _q === void 0 ? void 0 : _q.body.classList.remove('-dark');
             // empty page
             document
                 .querySelectorAll(`body > *:not(${this.tagName}):not(s-factory):not(.${this.cls('_canvas')}):not(script):not(${this.cls('_canvas')

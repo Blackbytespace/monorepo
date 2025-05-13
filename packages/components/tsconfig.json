@@ -1,5 +1,6 @@
 {
   "exclude": [
+    "_wip/**/*",
     "lotsof.config.ts",
     "package.json",
     "./src/**/*.test.*",
@@ -13,14 +14,12 @@
     "jsx": "react",
     "resolveJsonModule": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./components",
     "skipLibCheck": true,
     "strict": true,
     "target": "es6",
     "module": "nodenext",
     "sourceMap": true,
-    // "declaration": true,
-
     "esModuleInterop": true,
     "moduleResolution": "nodenext"
   }

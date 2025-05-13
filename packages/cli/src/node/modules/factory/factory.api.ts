@@ -20,6 +20,9 @@ export default function __registerCommands(program: any): void {
     console.log(`▓ Start components factory...`);
 
     const factoryConfigStr = JSON.stringify(factoryConfig).replace(/"/g, '\\"');
+
+    console.log(factoryConfig);
+
     const serverProcess = __childProcess.spawn(
       `FACTORY_CONFIG="${factoryConfigStr}" php -S ${factoryConfig.server.hostname}:${factoryConfig.server.port} ${factoryConfig.server.entrypoint}`,
       [],
