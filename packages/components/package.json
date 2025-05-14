@@ -31,11 +31,11 @@
   },
   "exports": {
     ".": {
-      "node": "./dist/components/node/_exports.js",
-      "browser": "./dist/components/js/_exports.js"
+      "node": "./dist/node/_exports.js",
+      "browser": "./dist/js/_exports.js"
     }
   },
-  "types": "src/node/_exports.ts",
+  "types": "src/shared/_exports.ts",
   "homepage": "https://lotsof.dev",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

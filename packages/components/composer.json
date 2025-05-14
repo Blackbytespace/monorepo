@@ -5,7 +5,7 @@
   "type": "project",
   "autoload": {
     "files": [
-      "components/components/php/_requires.php"
+      "src/php/_requires.php"
     ]
   },
   "repositories": [

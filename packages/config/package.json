@@ -17,11 +17,16 @@
     "@lotsof/factory": "^1.0.0-alpha.91",
     "@lotsof/puppet": "^1.0.0-alpha.91",
     "@lotsof/sugar": "^1.0.0-alpha.91",
+    "@lotsof/components": "^1.0.0-alpha.91",
     "typescript": "^5.4.5"
   },
-  "main": "dist/node/_exports.js",
-  "module": "dist/node/_exports.js",
-  "types": "src/node/_exports.ts",
+  "exports": {
+    ".": {
+      "node": "./dist/node/_exports.js",
+      "default": "./dist/js/_exports.js"
+    }
+  },
+  "types": "src/node/types.ts",
   "homepage": "https://lotsof.dev",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

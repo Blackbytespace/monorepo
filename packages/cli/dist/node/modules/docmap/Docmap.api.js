@@ -26,4 +26,4 @@ export default function __registerCommands(program) {
         yield docmap.build(finalParams);
     }));
 }
-//# sourceMappingURL=Docmap.api.js.map
+//# sourceMappingURL=docmap.api.js.map

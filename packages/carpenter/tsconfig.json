@@ -4,11 +4,12 @@
     "**/*.test.*",
     "dist/**/*",
     "node_modules/**/*",
-    "vendor/**/*"
+    "vendor/**/*",
+    "components/**/*"
   ],
   "compilerOptions": {
     "noImplicitAny": false,
-    "rootDir": "components",
+    "rootDir": "src",
     "outDir": "dist",
     "skipLibCheck": true,
     "strict": true,

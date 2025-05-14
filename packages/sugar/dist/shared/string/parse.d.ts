@@ -14,7 +14,6 @@
  * - undefined
  * - json
  *
- *
  * @param             {String}                        value                                 The value to convert
  * @return            {Mixed}                                                               The converted value
  *

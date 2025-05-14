@@ -1,7 +1,6 @@
 @import './settings/sugarcss.css';
 @import './settings/settings.css';
 
-@import './factory/factory.css';
 @import './saveValuesForm/saveValuesForm.css';
 
 @import './generic/notifications/notifications.css';

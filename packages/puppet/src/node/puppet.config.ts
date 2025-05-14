@@ -1,6 +1,5 @@
+import { __defineDefaultConfig } from '@lotsof/config';
 import type { TPuppetConfig } from './puppet.type.js';
-
-import { __defineConfig } from '@lotsof/config';
 
 const config: TPuppetConfig = {
   settings: {
@@ -16,12 +15,7 @@ const config: TPuppetConfig = {
   },
 };
 
-__defineConfig(
-  {
-    puppet: config,
-  },
-  {
-    defaults: true,
-  },
-);
-export default config;
+__defineDefaultConfig({
+  puppet: config,
+});
+export { config };

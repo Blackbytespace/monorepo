@@ -1,0 +1,1 @@
+{"version":3,"file":"defineDefaultConfig.js","sourceRoot":"","sources":["../../src/node/defineDefaultConfig.ts"],"names":[],"mappings":"AAAA,OAAO,cAAc,MAAM,mBAAmB,CAAC;AAE/C,MAAM,CAAC,OAAO,UAAU,mBAAmB,CAAC,MAAM;IAChD,OAAO,cAAc,CAAC,MAAM,EAAE;QAC5B,QAAQ,EAAE,IAAI;KACf,CAAC,CAAC;AACL,CAAC"}

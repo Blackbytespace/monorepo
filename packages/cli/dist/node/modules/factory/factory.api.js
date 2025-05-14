@@ -22,7 +22,6 @@ export default function __registerCommands(program) {
     program.command('factory.start').action(() => __awaiter(this, void 0, void 0, function* () {
         console.log(`▓ Start components factory...`);
         const factoryConfigStr = JSON.stringify(factoryConfig).replace(/"/g, '\\"');
-        console.log(factoryConfig);
         const serverProcess = __childProcess.spawn(`FACTORY_CONFIG="${factoryConfigStr}" php -S ${factoryConfig.server.hostname}:${factoryConfig.server.port} ${factoryConfig.server.entrypoint}`, [], {
             shell: true,
             cwd: process.cwd(),

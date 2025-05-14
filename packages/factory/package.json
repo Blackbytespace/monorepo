@@ -28,11 +28,11 @@
   },
   "exports": {
     ".": {
-      "node": "./dist/factory/node/_exports.js",
-      "browser": "./dist/factory/js/_exports.js"
+      "node": "./dist/node/_exports.js",
+      "default": "./dist/js/_exports.js"
     }
   },
-  "types": "components/factory/factory.types.ts",
+  "types": "src/shared/factory.type.ts",
   "homepage": "https://lotsof.dev",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

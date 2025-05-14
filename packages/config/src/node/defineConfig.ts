@@ -3,13 +3,16 @@
 import { __deepMerge } from '@lotsof/sugar/object';
 import type { TConfig, TConfigDefineSettings } from './types.js';
 
+process.lotsofConfigDefaults = {};
+process.lotsofConfig = {};
+
 export default function defineConfig(
   config: TConfig,
   settings?: TConfigDefineSettings,
 ): any {
   if (settings?.defaults) {
     process.lotsofConfigDefaults = __deepMerge([
-      process.lotsofConfigDefaults ?? {},
+      process.lotsofConfigDefaults,
       config,
     ]);
     return process.lotsofConfigDefaults;
