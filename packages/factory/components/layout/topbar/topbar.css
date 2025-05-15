@@ -1,6 +1,6 @@
 @import './topbar.bare.css';
 
-.s-factory_topbar {
+.s-factory.-lnf .s-factory_topbar {
   /* padding: s-space(30); */
   padding-inline: s-space(md);
   gap: s-space(md);

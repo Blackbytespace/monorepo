@@ -4,10 +4,10 @@ s-factory {
   display: block;
 }
 
-body.-dark {
+body.-dark:has(.s-factory.-lnf) {
   background: s-color(main, background, --lightness 10);
   @s-transition();
 }
 
-.s-factory {
+.s-factory.-lnf {
 }

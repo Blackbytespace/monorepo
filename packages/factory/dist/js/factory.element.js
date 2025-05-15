@@ -27,7 +27,7 @@ import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import '../css/index.css';
+import '../../src/css/output/factory.build.css';
 import __logoFactory from './assets/logoFactory.js';
 import __logos from './assets/logos.js';
 const __saveComponentValuesSchema = {
@@ -60,6 +60,7 @@ export default class FactoryElement extends __LitElement {
         this._currentAction = null;
         this._state = {};
         this._$commandPanelSelect = null;
+        this._$carpenter = null;
         this.saveState = true;
     }
     get currentEngine() {
@@ -107,7 +108,6 @@ export default class FactoryElement extends __LitElement {
             yield this._initEnvironment();
             // init the listeners like escape key, etc...
             this._initListeners(document);
-            // this._initListeners(this.$iframeDocument as Document);
             // init command panel
             this._initCommandPanel();
             // restore the ui mode (light/dark)
@@ -153,7 +153,6 @@ export default class FactoryElement extends __LitElement {
                     //   break;
                     case (_b = api.search) === null || _b === void 0 ? void 0 : _b.startsWith('!'):
                         return Object.entries(this.currentComponent.engines).map(([idx, name]) => {
-                            console.log(this.currentComponent);
                             return {
                                 id: `!${this.currentComponent.id}`,
                                 value: `!${this.currentComponent.id}`,
@@ -320,9 +319,12 @@ export default class FactoryElement extends __LitElement {
     }
     _updateComponent() {
         return __awaiter(this, arguments, void 0, function* (pathOrId = this.currentComponentId, settings = {}) {
-            var _a;
-            const $carpenter = this.querySelector('s-carpenter');
-            const finalSettings = Object.assign({ $iframe: $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.$iframe }, settings);
+            var _a, _b, _c;
+            // save the carpenter reference
+            if (!this._$carpenter) {
+                this._$carpenter = this.querySelector('s-carpenter');
+            }
+            const finalSettings = Object.assign({ $iframe: (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe }, settings);
             // get the component from the specs
             // or from the components list
             // if we have an id, we get the component from the list
@@ -358,15 +360,15 @@ export default class FactoryElement extends __LitElement {
             component.values = json.values;
             // update the iframe with new component html
             if (finalSettings.$iframe) {
-                let $componentInIframe = (_a = finalSettings.$iframe.contentDocument) === null || _a === void 0 ? void 0 : _a.querySelector(`#${component.id}-container`);
+                let $componentInIframe = (_b = finalSettings.$iframe.contentDocument) === null || _b === void 0 ? void 0 : _b.querySelector(`#${component.id}`);
                 const newComponentDom = new DOMParser().parseFromString(json.html, 'text/html');
-                const $newComponent = newComponentDom.querySelector(`#${component.id}-container`);
+                const $newComponent = newComponentDom.querySelector(`#${component.id}`);
                 if (!$componentInIframe) {
                     // add the new component in the iframe
                     finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
                     // get the component in the iframe
                     $componentInIframe =
-                        finalSettings.$iframe.contentDocument.querySelector(`#${component.id}-container`);
+                        finalSettings.$iframe.contentDocument.querySelector(`#${component.id}`);
                 }
                 else {
                     // update the component in the iframe
@@ -385,7 +387,7 @@ export default class FactoryElement extends __LitElement {
                 });
             }
             // update Factory AND Carpenter
-            $carpenter === null || $carpenter === void 0 ? void 0 : $carpenter.requestUpdate();
+            (_c = this._$carpenter) === null || _c === void 0 ? void 0 : _c.requestUpdate();
             this.requestUpdate();
         });
     }
@@ -683,15 +685,25 @@ export default class FactoryElement extends __LitElement {
       <div class="${this.cls('_editor')}">
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
+            .lnf=${this.lnf}
             .component=${this.currentComponent}
             .verbose=${this.verbose}
             @s-carpenter.update=${() => {
             this._updateComponent();
         }}
             @s-carpenter.ready=${(e) => {
-            var _a;
-            this._initListeners((_a = e.detail.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument);
+            setTimeout(() => {
+                var _a;
+                this._initListeners((_a = e.detail.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument);
+            });
             this._initComponents();
+        }}
+            @s-carpenter.edit=${(e) => {
+            var _a;
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id)) {
+                return;
+            }
+            this._currentComponentId = e.detail.id;
         }}
           />
         </div>

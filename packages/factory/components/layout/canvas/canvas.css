@@ -1,4 +1,5 @@
 @import './canvas.bare.css';
 
-.s-carpenter_canvas {
+.s-carpenter_canvas.-lnf {
+  @s-transition;
 }

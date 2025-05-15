@@ -61,6 +61,7 @@ export default class LitElement extends __LitElement {
     static _keepInjectedCssBeforeStylesheetLinksInited: boolean;
     static _defaultProps: Record<string, Record<string, any>>;
     id: string | undefined;
+    lnf: boolean;
     name: string;
     verbose: boolean;
     activeWhen: 'inViewport'[];

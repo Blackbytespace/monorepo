@@ -3,6 +3,7 @@ export default class CarpenterDaemonElement extends __LitElement {
     $currentComponent: Element | null;
     constructor();
     get $document(): Document;
+    get $window(): Window;
     adoptedCallback(): void;
     private _initComponent;
     private _setComponent;

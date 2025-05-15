@@ -2,7 +2,7 @@
 @import './commandPanel.advancedSelect.css';
 @import './commandPanel.component.css';
 
-.s-factory_command-panel {
+.s-factory.-lnf .s-factory_command-panel {
   gap: s-space(md);
   padding: s-space(sm);
   background: s-color(main, background);

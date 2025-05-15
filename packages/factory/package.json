@@ -6,7 +6,7 @@
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch & vite --host",
+    "dev": "tsc --watch & vite --host & vite build --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc & vite build",
     "install.composer": "composer install",

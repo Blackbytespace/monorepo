@@ -161,6 +161,7 @@ class LitElement extends __LitElement {
         var _a, _b, _c, _d, _e;
         super();
         this.id = undefined;
+        this.lnf = false;
         this.name = '';
         this.verbose = false;
         this.activeWhen = ['inViewport'];
@@ -563,6 +564,10 @@ class LitElement extends __LitElement {
             var _a, _b;
             // verbose
             this.log('Mounting...');
+            // "-lnf" class
+            if (this.lnf) {
+                this.classList.add(`-lnf`);
+            }
             // custom mount function
             if (this.mount && typeof this.mount === 'function') {
                 yield this.mount();
@@ -603,6 +608,9 @@ __decorate([
     property({ type: String })
     // @ts-ignore
 ], LitElement.prototype, "id", void 0);
+__decorate([
+    property({ type: Boolean })
+], LitElement.prototype, "lnf", void 0);
 __decorate([
     property({ type: String })
 ], LitElement.prototype, "name", void 0);

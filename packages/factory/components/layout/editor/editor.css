@@ -1,7 +1,7 @@
 @import './editor.bare.css';
 @import './editor.jsonSchemaForm.css';
 
-.s-factory_editor {
+.s-factory.-lnf .s-factory_editor {
   background: s-color(main, background);
   background: s-color(main, background, --lightness 98 --alpha 0.98);
   backdrop-filter: blur(5px);

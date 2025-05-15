@@ -1,8 +1,10 @@
+@import './carpenter.bare.css';
+
 body {
   overflow: hidden;
 }
 
-.s-carpenter {
+.s-carpenter.-lnf {
   display: flex;
   flex-direction: column;
   height: 100%;

@@ -1,16 +1,29 @@
-@import '../../components/daemon.css';
+@import './carpenterDaemon.bare.css';
 
-.s-carpenter-daemon {
-  border: 3px solid red;
-  position: absolute;
-  z-index: 100;
-  @s-transition (slow);
+.s-carpenter-daemon.-lnf {
+  border: 3px solid s-color(accent);
+  color: s-color(accent, foreground);
+  @s-transition (fast);
 
   .s-carpenter-daemon_tools {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    background: red;
+    background: s-color(accent);
+    font-size: s-rem(12px);
+  }
+
+  .s-carpenter-daemon_tool {
+    padding: s-space(sm);
+    gap: s-space(xs);
+    @s-transition (fast);
+
+    &:hover {
+      background: s-color(accent, hover);
+    }
+    &:active {
+      background: s-color(accent, active);
+    }
+  }
+
+  .s-carpenter-daemon_tool-label {
+    font-weight: bold;
   }
 }

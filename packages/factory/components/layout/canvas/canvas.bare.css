@@ -1,6 +1,4 @@
 .s-carpenter_canvas {
-  @s-transition;
-
   body:has(.s-factory_editor:hover) &,
   .-show-ui & {
     width: calc(100% - var(--s-factory-editor-width));

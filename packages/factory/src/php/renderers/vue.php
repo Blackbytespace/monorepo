@@ -27,13 +27,13 @@ function vue(object $component, object $config): string
 
     $componentId = $component->getId();
     $html = <<<HTML
-        <div id="{$componentId}-container" type="lotsof/component">
-            <div id="{$componentId}"></div> 
+        <div id="{$componentId}" type="lotsof/component">
+            <div id="{$componentId}-root"></div> 
             <script type="module">
                 import { createApp } from 'https://unpkg.com/vue@3.5/dist/vue.esm-browser.js'
                 import __Component from '{$componentUrl}';
                 {$valuesJs}
-                createApp(__Component, __values ?? {}).mount('#{$componentId}');
+                createApp(__Component, __values ?? {}).mount('#{$componentId}-root');
             </script>
         </div>
     HTML;

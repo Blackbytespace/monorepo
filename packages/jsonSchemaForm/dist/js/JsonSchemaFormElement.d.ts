@@ -1,6 +1,6 @@
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
-import '../../src/css/JsonSchemaFormElement.bare.css';
+import '../../src/css/JsonSchemaFormElement.css';
 import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
 import '../components/stackGroupRenderer/stackGroupRenderer.js';
 import { TJsonSchemaFormWidget, TJsonSchemaGroupRenderer } from '../shared/JsonSchemaForm.types.js';

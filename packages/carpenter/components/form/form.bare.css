@@ -1,5 +1,5 @@
 /* base style */
-.form-checkbox {
+.s-carpenter .form-checkbox {
   --isLTR: 1;
   [dir='rtl'] & {
     --isLTR: -1;

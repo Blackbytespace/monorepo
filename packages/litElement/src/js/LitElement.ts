@@ -94,6 +94,9 @@ export default class LitElement extends __LitElement {
   // @ts-ignore
   public id: string | undefined = undefined;
 
+  @property({ type: Boolean })
+  public lnf: boolean = false;
+
   @property({ type: String })
   public name: string = '';
 
@@ -754,6 +757,11 @@ export default class LitElement extends __LitElement {
 
     // verbose
     this.log('Mounting...');
+
+    // "-lnf" class
+    if (this.lnf) {
+      this.classList.add(`-lnf`);
+    }
 
     // custom mount function
     if (this.mount && typeof this.mount === 'function') {

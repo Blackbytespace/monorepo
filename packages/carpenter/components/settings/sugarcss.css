@@ -1,9 +1,5 @@
 @import '@lotsof/sugarcss/src/css/sugarcss.css';
 
-body {
-  background: yellow;
-}
-
 :root {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
@@ -104,6 +100,7 @@ body {
   --s-size-tooltip: s-size(4);
   --s-size-small: s-size(3);
   --s-size-large: s-size(8);
+  --s-size-tool: s-size(3);
 
   --s-font-family-default: 'Poppins', sans-serif;
   --s-font-family-title: 'Poppins', sans-serif;

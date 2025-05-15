@@ -1,4 +1,5 @@
 import '@fontsource/poppins';
+import __IconElement from '@lotsof/icon-element';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __injectHtml } from '@lotsof/sugar/dom';
@@ -7,7 +8,7 @@ import { type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
 import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import '../../src/css/index.css';
+import '../../src/css/output/carpenter.build.css';
 import {
   TCarpenterAdapter,
   TCarpenterComponent,
@@ -52,6 +53,7 @@ export default class CarpenterElement extends __LitElement {
 
   private _$iframe?: HTMLIFrameElement;
   private _$canvas?: HTMLDivElement;
+  private _$daemon?: __CarpenterDaemonElement;
 
   constructor() {
     super('s-carpenter');
@@ -137,8 +139,13 @@ export default class CarpenterElement extends __LitElement {
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
+    // get the daemon reference
     const $daemon = document.querySelector('s-carpenter-daemon');
     this._$iframe?.contentDocument?.body.appendChild($daemon as Node);
+    this._$daemon = $daemon as __CarpenterDaemonElement;
+
+    // init the daemon listeners
+    this._initDaemonListeners();
   }
 
   async mount() {
@@ -158,10 +165,24 @@ export default class CarpenterElement extends __LitElement {
     this._initListeners(this.$iframeDocument as Document);
   }
 
+  private _initDaemonListeners(): void {
+    // listen for edit event from the daemon
+    this._$daemon?.addEventListener(
+      's-carpenter-daemon.edit',
+      (e: CustomEvent) => {
+        this.dispatch('edit', {
+          bubbles: true,
+          detail: e.detail,
+        });
+      },
+    );
+  }
+
   private _initListeners(context: Document): void {
     const hotkeySettings: Partial<THotkeySettings> = {
       ctx: context,
     };
+
     // __hotkey(
     //   'escape',
     //   (e) => {
@@ -184,6 +205,9 @@ export default class CarpenterElement extends __LitElement {
     // create the canvas
     const $canvas = document.createElement('div');
     $canvas.classList.add(...this.cls('_canvas'));
+    if (this.lnf) {
+      $canvas.classList.add('-lnf');
+    }
     document.body.appendChild($canvas);
 
     // create the iframe
@@ -398,6 +422,7 @@ export default class CarpenterElement extends __LitElement {
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
+          .lnf=${this.lnf}
           @s-json-schema-form.update=${(e: CustomEvent) => {
             this._applyUpdate({
               ...e.detail.update,
@@ -417,10 +442,18 @@ export default class CarpenterElement extends __LitElement {
 
   public render() {
     return html`
-      <s-carpenter-daemon></s-carpenter-daemon>
+      <s-carpenter-daemon
+        .lnf=${this.lnf}
+        @s-carpenter-daemon.edit=${() => {
+          console.log('EDIT');
+        }}
+      ></s-carpenter-daemon>
       ${this._renderEditor()}
     `;
   }
 }
 
 CarpenterElement.define('s-carpenter');
+__IconElement.define('s-icon', {
+  type: 'solid',
+});

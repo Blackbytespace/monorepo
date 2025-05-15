@@ -33,7 +33,7 @@ import { Draft2019 } from 'json-schema-library';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import '../../src/css/JsonSchemaFormElement.bare.css';
+import '../../src/css/JsonSchemaFormElement.css';
 import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
 import '../components/stackGroupRenderer/stackGroupRenderer.js';
 class JsonSchemaFormElement extends __LitElement {

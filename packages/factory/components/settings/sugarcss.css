@@ -44,7 +44,7 @@
   --s-shade-icon: --alpha 0.7;
   --s-shade-surface: --lightness 94;
   --s-shade-border: --lightness 94;
-  --s-shade-hover: --lighten 40;
+  --s-shade-hover: --lighten 10;
   --s-shade-active: --darken 10;
 
   --s-font-family-sans: 'Poppins', sans-serif;

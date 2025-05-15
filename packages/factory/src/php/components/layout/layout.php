@@ -33,7 +33,7 @@ function render(\Lotsof\Components\Component $component, mixed $config): string
                 $js
             </head>
             <body>
-                <s-factory id="s-factory"></s-factory>
+                <s-factory lnf id="s-factory"></s-factory>
             </body>
         </html>
     HTML;

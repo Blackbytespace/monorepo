@@ -2,7 +2,7 @@ import '@fontsource/poppins';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
-import '../../src/css/index.css';
+import '../../src/css/output/carpenter.build.css';
 import { TCarpenterAdapter, TCarpenterComponent, TCarpenterMediaQuery, TCarpenterNotification, TCarpenterState } from '../shared/carpenter.type.js';
 export default class CarpenterElement extends __LitElement {
     mediaQueries: Record<string, TCarpenterMediaQuery>;
@@ -17,6 +17,7 @@ export default class CarpenterElement extends __LitElement {
     protected _state: TCarpenterState;
     private _$iframe?;
     private _$canvas?;
+    private _$daemon?;
     constructor();
     private static _adapters;
     static registerAdapter(id: string, adapter: TCarpenterAdapter): void;
@@ -26,6 +27,7 @@ export default class CarpenterElement extends __LitElement {
     get $iframe(): HTMLIFrameElement | undefined;
     protected firstUpdated(_changedProperties: PropertyValues): void;
     mount(): Promise<void>;
+    private _initDaemonListeners;
     private _initListeners;
     private _initEnvironment;
     private _setIframeContent;

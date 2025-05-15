@@ -6,7 +6,7 @@ import { Draft, Draft2019, JsonError } from 'json-schema-library';
 import { html, nothing, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import '../../src/css/JsonSchemaFormElement.bare.css';
+import '../../src/css/JsonSchemaFormElement.css';
 import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
 import '../components/stackGroupRenderer/stackGroupRenderer.js';
 import {

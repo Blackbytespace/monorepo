@@ -1,0 +1,10 @@
+@import './icon.element.bare.css';
+
+.s-icon {
+  [fill]:not([fill='none']) {
+    fill: currentColor;
+  }
+  [stroke] {
+    stroke: currentColor;
+  }
+}

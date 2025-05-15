@@ -4,6 +4,7 @@ import __AdvancedSelectElement, {
   TAdvancedSelectElementItemsFunctionApi,
 } from '@lotsof/advanced-select-element';
 import '@lotsof/carpenter';
+import { __CarpenterElement } from '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
@@ -15,7 +16,7 @@ import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import '../css/index.css';
+import '../../src/css/output/factory.build.css';
 import {
   TFactoryComponent,
   TFactoryNotification,
@@ -77,6 +78,7 @@ export default class FactoryElement extends __LitElement {
   protected _state: TFactoryState = {};
 
   private _$commandPanelSelect: __AdvancedSelectElement | null = null;
+  private _$carpenter: __CarpenterElement | null = null;
 
   constructor() {
     super('s-factory');
@@ -135,7 +137,6 @@ export default class FactoryElement extends __LitElement {
 
     // init the listeners like escape key, etc...
     this._initListeners(document);
-    // this._initListeners(this.$iframeDocument as Document);
 
     // init command panel
     this._initCommandPanel();
@@ -192,7 +193,6 @@ export default class FactoryElement extends __LitElement {
           case api.search?.startsWith('!'):
             return Object.entries(this.currentComponent.engines).map(
               ([idx, name]) => {
-                console.log(this.currentComponent);
                 return {
                   id: `!${this.currentComponent.id}`,
                   value: `!${this.currentComponent.id}`,
@@ -395,10 +395,13 @@ export default class FactoryElement extends __LitElement {
     pathOrId: string | undefined = this.currentComponentId,
     settings: TFactoryUpdateComponentSettings = {},
   ): Promise<void> {
-    const $carpenter = this.querySelector('s-carpenter');
+    // save the carpenter reference
+    if (!this._$carpenter) {
+      this._$carpenter = this.querySelector('s-carpenter');
+    }
 
     const finalSettings = {
-      $iframe: (<any>$carpenter)?.$iframe,
+      $iframe: this._$carpenter?.$iframe,
       ...settings,
     };
 
@@ -445,7 +448,7 @@ export default class FactoryElement extends __LitElement {
     if (finalSettings.$iframe) {
       let $componentInIframe: HTMLElement =
         finalSettings.$iframe.contentDocument?.querySelector(
-          `#${component.id}-container`,
+          `#${component.id}`,
         );
 
       const newComponentDom = new DOMParser().parseFromString(
@@ -454,7 +457,7 @@ export default class FactoryElement extends __LitElement {
       );
 
       const $newComponent = newComponentDom.querySelector(
-        `#${component.id}-container`,
+        `#${component.id}`,
       ) as HTMLElement;
 
       if (!$componentInIframe) {
@@ -464,7 +467,7 @@ export default class FactoryElement extends __LitElement {
         // get the component in the iframe
         $componentInIframe =
           finalSettings.$iframe.contentDocument.querySelector(
-            `#${component.id}-container`,
+            `#${component.id}`,
           ) as HTMLElement;
       } else {
         // update the component in the iframe
@@ -489,7 +492,7 @@ export default class FactoryElement extends __LitElement {
     }
 
     // update Factory AND Carpenter
-    (<any>$carpenter)?.requestUpdate();
+    this._$carpenter?.requestUpdate();
     this.requestUpdate();
   }
 
@@ -830,16 +833,25 @@ export default class FactoryElement extends __LitElement {
       <div class="${this.cls('_editor')}">
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
+            .lnf=${this.lnf}
             .component=${this.currentComponent}
             .verbose=${this.verbose}
             @s-carpenter.update=${() => {
               this._updateComponent();
             }}
             @s-carpenter.ready=${(e) => {
-              this._initListeners(
-                (<any>e.detail.$iframe)?.contentDocument as Document,
-              );
+              setTimeout(() => {
+                this._initListeners(
+                  (<any>e.detail.$iframe)?.contentDocument as Document,
+                );
+              });
               this._initComponents();
+            }}
+            @s-carpenter.edit=${(e) => {
+              if (!e.detail?.id) {
+                return;
+              }
+              this._currentComponentId = e.detail.id;
             }}
           />
         </div>

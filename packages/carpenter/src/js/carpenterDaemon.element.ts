@@ -15,6 +15,11 @@ export default class CarpenterDaemonElement extends __LitElement {
     return this.ownerDocument;
   }
 
+  get $window(): Window {
+    // @ts-ignore
+    return this.$document.defaultView || this.$document.parentWindow;
+  }
+
   public adoptedCallback(): void {
     // inject the stylesheet
     __injectStyle(__css, {
@@ -32,11 +37,28 @@ export default class CarpenterDaemonElement extends __LitElement {
         rootNode: this.$document,
       },
     );
+
+    // update the position of the daemon on resize
+    this.$window.addEventListener('resize', () => {
+      this._setDaemonPosition();
+    });
   }
 
   private _initComponent($component: Element): void {
+    // move the daemon on the component
     $component.addEventListener('mousemove', () => {
       this._setComponent($component);
+    });
+
+    // when doubleclick, trigger the edit event
+    $component.addEventListener('dblclick', () => {
+      this.dispatch('edit', {
+        bubbles: true,
+        detail: {
+          id: $component.getAttribute('id'),
+          $component,
+        },
+      });
     });
   }
 
@@ -57,11 +79,6 @@ export default class CarpenterDaemonElement extends __LitElement {
     const width = this.$currentComponent?.getBoundingClientRect().width;
     const height = this.$currentComponent?.getBoundingClientRect().height;
 
-    console.log('top', top);
-    console.log('left', left);
-    console.log('width', width);
-    console.log('height', height);
-
     this.style.top = `${top}px`;
     this.style.left = `${left}px`;
     this.style.width = `${width}px`;
@@ -71,7 +88,21 @@ export default class CarpenterDaemonElement extends __LitElement {
   public render() {
     return html`<div class="${this.cls('_inner')}">
       <div class="${this.cls('_tools')}">
-        <div class="${this.cls('_tool')}">Edit</div>
+        <div
+          class="${this.cls('_tool')}"
+          @click=${() => {
+            this.dispatch('edit', {
+              bubbles: true,
+              detail: {
+                id: this.$currentComponent?.getAttribute('id'),
+                $component: this.$currentComponent,
+              },
+            });
+          }}
+        >
+          <span class="${this.cls('_tool-label')}">Edit</span>
+          <s-icon name="pencil"></s-icon>
+        </div>
       </div>
     </div> `;
   }

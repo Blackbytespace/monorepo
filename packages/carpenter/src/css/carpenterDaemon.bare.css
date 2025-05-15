@@ -1,0 +1,23 @@
+.s-carpenter-daemon {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  user-select: none;
+
+  .s-carpenter-daemon_tools {
+    display: flex;
+    align-items: center;
+    pointer-events: all;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+  }
+
+  .s-carpenter-daemon_tool {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    line-height: 1;
+  }
+}
