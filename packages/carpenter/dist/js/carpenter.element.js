@@ -29,11 +29,13 @@ class CarpenterElement extends __LitElement {
         super('s-carpenter');
         this.mediaQueries = {};
         this.mediaQuery = 'desktop';
+        this.preselectedComponent = null;
         this.darkModeClass = '-dark';
         this._notifications = [];
         this._currentMediaQuery = '';
         this._currentAction = null;
         this._state = {};
+        this._components = {};
         this.saveState = true;
     }
     static registerAdapter(id, adapter) {
@@ -126,13 +128,23 @@ class CarpenterElement extends __LitElement {
         });
     }
     _initDaemonListeners() {
-        var _a;
+        var _a, _b, _c, _d;
         // listen for edit event from the daemon
-        (_a = this._$daemon) === null || _a === void 0 ? void 0 : _a.addEventListener('s-carpenter-daemon.edit', (e) => {
-            this.dispatch('edit', {
+        // @ts-ignore
+        (_a = this._$daemon) === null || _a === void 0 ? void 0 : _a.addEventListener('s-carpenter-daemon.select', (e) => {
+            this.dispatch('select', {
                 bubbles: true,
                 detail: e.detail,
             });
+        });
+        (_b = this._$daemon) === null || _b === void 0 ? void 0 : _b.addEventListener('s-carpenter-daemon.preselect', (e) => {
+            this.dispatch('preselect', {
+                bubbles: true,
+                detail: e.detail
+            });
+        });
+        (_d = (_c = this._$daemon) === null || _c === void 0 ? void 0 : _c.$currentComponent) === null || _d === void 0 ? void 0 : _d.addEventListener('s-carpenter-daemon.component.new', (e) => {
+            console.log('NEW', e.detail);
         });
     }
     _initListeners(context) {
@@ -217,8 +229,8 @@ class CarpenterElement extends __LitElement {
             // set it into the iframe
             setTimeout(() => {
                 var _a;
-                if ((_a = this.component) === null || _a === void 0 ? void 0 : _a.html) {
-                    this._setIframeContent(this.component.html);
+                if ((_a = this.selectedComponent) === null || _a === void 0 ? void 0 : _a.html) {
+                    this._setIframeContent(this.selectedComponent.html);
                 }
             }, 100);
             // make sure we don't have any dark mode class
@@ -261,13 +273,13 @@ class CarpenterElement extends __LitElement {
     _applyUpdate(update) {
         return __awaiter(this, void 0, void 0, function* () {
             // do nothing if no component is set
-            if (!this.component) {
+            if (!this.selectedComponent) {
                 return;
             }
             // set the value into the component
-            __set(this.component.values, update.path, update.value);
+            __set(this.selectedComponent.values, update.path, update.value);
             // create the update object
-            const updateObject = Object.assign(Object.assign({}, update), { component: this.component });
+            const updateObject = Object.assign(Object.assign({}, update), { component: this.selectedComponent });
             // if an adapter is set, use it to apply the update
             if (typeof this.adapter === 'string' &&
                 CarpenterElement._adapters[this.adapter]) {
@@ -337,7 +349,7 @@ class CarpenterElement extends __LitElement {
     // }
     _renderEditor() {
         var _a;
-        if (!this.component) {
+        if (!this.selectedComponent) {
             return;
         }
         return html `<div class="${this.cls('_editor')}">
@@ -353,15 +365,50 @@ class CarpenterElement extends __LitElement {
           .buttonClasses=${true}
           .formClasses=${true}
           .verbose=${this.verbose}
-          .schema=${this.component.schema}
-          .values=${(_a = this.component.values) !== null && _a !== void 0 ? _a : {}}
+          .schema=${this.selectedComponent.schema}
+          .values=${(_a = this.selectedComponent.values) !== null && _a !== void 0 ? _a : {}}
         ></s-json-schema-form>
       </div>
     </div>`;
     }
     render() {
         return html `
-      <s-carpenter-daemon .lnf=${this.lnf}></s-carpenter-daemon>
+      <s-carpenter-daemon
+        .lnf=${this.lnf}
+        .selectedComponent=${this.selectedComponent}
+        .preselectedComponent=${this.preselectedComponent}
+        @s-carpenter-daemon.component.connect=${(e) => {
+            // add the component to the list
+            this._components[e.detail.id] = e.detail;
+            // forward the event to the parent
+            this.dispatch('component.connect', {
+                bubbles: true,
+                detail: e.detail,
+            });
+        }}
+        @s-carpenter-daemon.component.disconnect=${(e) => {
+            // remove the component from the list
+            delete this._components[e.detail.id];
+            // forward the event to the parent
+            this.dispatch('component.disconnect', {
+                bubbles: true,
+                detail: e.detail,
+            });
+        }}
+        @s-carpenter-daemon.select=${(e) => {
+            this.dispatch('select', {
+                bubbles: true,
+                detail: e.detail
+            });
+        }}
+        @s-carpenter-daemon.edit=${(e) => {
+            console.log('EDIT', e.detail);
+            this.dispatch('edit', {
+                bubbles: true,
+                detail: e.detail
+            });
+        }}
+      ></s-carpenter-daemon>
       ${this._renderEditor()}
     `;
     }
@@ -379,7 +426,10 @@ __decorate([
 ], CarpenterElement.prototype, "adapter", void 0);
 __decorate([
     property({ type: Object })
-], CarpenterElement.prototype, "component", void 0);
+], CarpenterElement.prototype, "selectedComponent", void 0);
+__decorate([
+    property({ type: Object })
+], CarpenterElement.prototype, "preselectedComponent", void 0);
 __decorate([
     property({ type: String })
 ], CarpenterElement.prototype, "darkModeClass", void 0);

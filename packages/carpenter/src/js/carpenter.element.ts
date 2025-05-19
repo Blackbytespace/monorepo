@@ -31,7 +31,10 @@ export default class CarpenterElement extends __LitElement {
   public adapter?: TCarpenterAdapter | string;
 
   @property({ type: Object })
-  public component?: TCarpenterComponent;
+  public selectedComponent?: TCarpenterComponent;
+
+  @property({ type: Object })
+  public preselectedComponent?: TCarpenterComponent | null = null;
 
   @property({ type: String })
   public darkModeClass: string = '-dark';
@@ -51,6 +54,7 @@ export default class CarpenterElement extends __LitElement {
   @state()
   protected _state: TCarpenterState = {};
 
+  private _components: Record<string, TCarpenterComponent> = {};
   private _$iframe?: HTMLIFrameElement;
   private _$canvas?: HTMLDivElement;
   private _$daemon?: __CarpenterDaemonElement;
@@ -167,15 +171,30 @@ export default class CarpenterElement extends __LitElement {
 
   private _initDaemonListeners(): void {
     // listen for edit event from the daemon
+    // @ts-ignore
     this._$daemon?.addEventListener(
-      's-carpenter-daemon.edit',
+      's-carpenter-daemon.select',
       (e: CustomEvent) => {
-        this.dispatch('edit', {
+        this.dispatch('select', {
           bubbles: true,
           detail: e.detail,
         });
       },
     );
+    this._$daemon?.addEventListener(
+      's-carpenter-daemon.preselect',
+      (e: CustomEvent) => {
+        this.dispatch('preselect', {
+          bubbles: true,
+          detail: e.detail
+        });
+      },
+    );
+    this._$daemon?.$currentComponent?.addEventListener(
+      's-carpenter-daemon.component.new',
+      (e: CustomEvent) => {
+        console.log('NEW', e.detail);
+      },
   }
 
   private _initListeners(context: Document): void {
@@ -273,8 +292,8 @@ export default class CarpenterElement extends __LitElement {
     // if we have some html provided in the component,
     // set it into the iframe
     setTimeout(() => {
-      if (this.component?.html) {
-        this._setIframeContent(this.component.html);
+      if (this.selectedComponent?.html) {
+        this._setIframeContent(this.selectedComponent.html);
       }
     }, 100);
 
@@ -327,17 +346,17 @@ export default class CarpenterElement extends __LitElement {
 
   private async _applyUpdate(update: TCarpenterUpdatePayload): Promise<void> {
     // do nothing if no component is set
-    if (!this.component) {
+    if (!this.selectedComponent) {
       return;
     }
 
     // set the value into the component
-    __set(this.component.values, update.path, update.value);
+    __set(this.selectedComponent.values, update.path, update.value);
 
     // create the update object
     const updateObject: TCarpenterUpdateObject = {
       ...update,
-      component: this.component,
+      component: this.selectedComponent,
     };
 
     // if an adapter is set, use it to apply the update
@@ -414,7 +433,7 @@ export default class CarpenterElement extends __LitElement {
   // }
 
   private _renderEditor(): any {
-    if (!this.component) {
+    if (!this.selectedComponent) {
       return;
     }
 
@@ -433,8 +452,8 @@ export default class CarpenterElement extends __LitElement {
           .buttonClasses=${true}
           .formClasses=${true}
           .verbose=${this.verbose}
-          .schema=${this.component.schema}
-          .values=${this.component.values ?? {}}
+          .schema=${this.selectedComponent.schema}
+          .values=${this.selectedComponent.values ?? {}}
         ></s-json-schema-form>
       </div>
     </div>`;
@@ -444,8 +463,38 @@ export default class CarpenterElement extends __LitElement {
     return html`
       <s-carpenter-daemon
         .lnf=${this.lnf}
-        @s-carpenter-daemon.edit=${() => {
-          console.log('EDIT');
+        .selectedComponent=${this.selectedComponent}
+        .preselectedComponent=${this.preselectedComponent}
+        @s-carpenter-daemon.component.connect=${(e: CustomEvent) => {
+          // add the component to the list
+          this._components[e.detail.id] = e.detail;
+          // forward the event to the parent
+          this.dispatch('component.connect', {
+            bubbles: true,
+            detail: e.detail,
+          });
+        }}
+        @s-carpenter-daemon.component.disconnect=${(e: CustomEvent) => {
+          // remove the component from the list
+          delete this._components[e.detail.id];
+          // forward the event to the parent
+          this.dispatch('component.disconnect', {
+            bubbles: true,
+            detail: e.detail,
+          });
+        }}
+        @s-carpenter-daemon.select=${(e: CustomEvent) => {
+          this.dispatch('select', {
+            bubbles: true,
+            detail: e.detail
+          })
+        }}
+        @s-carpenter-daemon.edit=${(e: CustomEvent) => {
+          console.log('EDIT', e.detail);
+          this.dispatch('edit', {
+            bubbles: true,
+            detail: e.detail
+          })
         }}
       ></s-carpenter-daemon>
       ${this._renderEditor()}

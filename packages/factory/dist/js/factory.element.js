@@ -21,7 +21,7 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __getFormValues } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { __hotkey } from '@lotsof/sugar/keyboard';
+import { __escapeQueueLength, __hotkey, } from '@lotsof/sugar/keyboard';
 import { __clone } from '@lotsof/sugar/object';
 import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
@@ -55,9 +55,10 @@ export default class FactoryElement extends __LitElement {
         this.darkModeClass = '-dark';
         this.specs = {};
         this._notifications = [];
-        this._currentComponent = null;
+        this._selectedComponent = null;
         this._components = {};
         this._currentAction = null;
+        this._showUi = false;
         this._state = {};
         this._$commandPanelSelect = null;
         this._$carpenter = null;
@@ -73,17 +74,31 @@ export default class FactoryElement extends __LitElement {
         // return the engine
         return params.get('engine') || undefined;
     }
-    get currentComponent() {
-        return this._components[this.currentComponentId];
+    get selectedComponent() {
+        return this._components[this.selectedComponentId];
     }
-    get currentComponentId() {
-        return this._currentComponentId;
+    get selectedComponentId() {
+        return this._selectedComponentId;
+    }
+    get preselectedComponent() {
+        return this._components[this.preselectedComponentId];
+    }
+    get preselectedComponentId() {
+        return this._preselectedComponentId;
     }
     get componentsToRender() {
         var _a;
         // getted from the url
         const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
         return (_a = matches === null || matches === void 0 ? void 0 : matches[1]) === null || _a === void 0 ? void 0 : _a.split('+');
+    }
+    showUi() {
+        this._showUi = true;
+        document.body.classList.add('-show-ui');
+    }
+    hideUi() {
+        this._showUi = false;
+        document.body.classList.remove('-show-ui');
     }
     _fetchSpecs() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -152,10 +167,10 @@ export default class FactoryElement extends __LitElement {
                     //   });
                     //   break;
                     case (_b = api.search) === null || _b === void 0 ? void 0 : _b.startsWith('!'):
-                        return Object.entries(this.currentComponent.engines).map(([idx, name]) => {
+                        return Object.entries(this.selectedComponent.engines).map(([idx, name]) => {
                             return {
-                                id: `!${this.currentComponent.id}`,
-                                value: `!${this.currentComponent.id}`,
+                                id: `!${this.selectedComponent.id}`,
+                                value: `!${this.selectedComponent.id}`,
                                 preventSet: true,
                                 label: `${__upperFirst(name)}`,
                                 engine: name,
@@ -163,7 +178,7 @@ export default class FactoryElement extends __LitElement {
                         });
                         break;
                     case (_c = api.search) === null || _c === void 0 ? void 0 : _c.startsWith('<'):
-                        return Object.entries(this.currentComponent.savedValues).map(([key, savedData]) => {
+                        return Object.entries(this.selectedComponent.savedValues).map(([key, savedData]) => {
                             return {
                                 id: `<${key}`,
                                 value: `<${key}`,
@@ -230,7 +245,7 @@ export default class FactoryElement extends __LitElement {
         // // popstate
         // window.addEventListener('popstate', (e) => {
         //   if (e.state.id) {
-        //     this._currentComponentId = e.state.id;
+        //     this._selectedComponentId = e.state.id;
         //   }
         // });
         // show/hide UI
@@ -245,6 +260,11 @@ export default class FactoryElement extends __LitElement {
             var _a;
             switch (true) {
                 case e.key === '§':
+                    // do not hide ui if it was shown with the `showUi` method
+                    if (this._showUi) {
+                        return;
+                    }
+                    //
                     document.body.classList.remove('-show-ui');
                     e.preventDefault();
                     (_a = document.activeElement) === null || _a === void 0 ? void 0 : _a.blur();
@@ -256,6 +276,10 @@ export default class FactoryElement extends __LitElement {
         };
         __hotkey('escape', (e) => {
             this._currentAction = null;
+            const escapeQueueLength = __escapeQueueLength();
+            if (escapeQueueLength === 0) {
+                this.hideUi();
+            }
         }, hotkeySettings);
         __hotkey('cmd+shift+p', (e) => {
             var _a, _b;
@@ -297,7 +321,7 @@ export default class FactoryElement extends __LitElement {
         //   hotkeySettings,
         // );
         __hotkey('cmd+r', (e) => {
-            this.randomizeComponentValues(this.currentComponentId);
+            this.randomizeComponentValues(this.selectedComponentId);
         }, hotkeySettings);
         __hotkey('cmd+m', (e) => {
             this.toggleUiMode();
@@ -315,10 +339,10 @@ export default class FactoryElement extends __LitElement {
             this._updateComponent(path);
         });
         // set the current component to be the first one
-        this._currentComponentId = Object.keys(this._components)[0];
+        this._selectedComponentId = Object.keys(this._components)[0];
     }
     _updateComponent() {
-        return __awaiter(this, arguments, void 0, function* (pathOrId = this.currentComponentId, settings = {}) {
+        return __awaiter(this, arguments, void 0, function* (pathOrId = this.selectedComponentId, settings = {}) {
             var _a, _b, _c;
             // save the carpenter reference
             if (!this._$carpenter) {
@@ -412,7 +436,7 @@ export default class FactoryElement extends __LitElement {
         // maintain the history
         history.pushState({ id, engine }, '', url);
         // set the current component
-        this._currentComponentId = id;
+        this._selectedComponentId = id;
         // render the new component
         this._updateComponent();
     }
@@ -441,7 +465,7 @@ export default class FactoryElement extends __LitElement {
             document.body.classList.add('-dark');
         }
     }
-    randomizeComponentValues(id = this.currentComponentId) {
+    randomizeComponentValues(id = this.selectedComponentId) {
         if (!id) {
             return;
         }
@@ -501,8 +525,8 @@ export default class FactoryElement extends __LitElement {
                 break;
             case item.value.startsWith('<'):
                 // this.setComponentValues(
-                //   this.currentComponent.name,
-                //   this.currentComponent.savedValues[item.value.slice(1)]?.values,
+                //   this.selectedComponent.name,
+                //   this.selectedComponent.savedValues[item.value.slice(1)]?.values,
                 // );
                 break;
         }
@@ -516,7 +540,7 @@ export default class FactoryElement extends __LitElement {
                 ${Object.entries(this.specs.components).map(([id, component]) => html `
                     <li
                       class="${this.cls('_components-list-item')} ${this
-                .currentComponentId === id
+                .selectedComponentId === id
                 ? '-active'
                 : ''}"
                     >
@@ -570,13 +594,13 @@ export default class FactoryElement extends __LitElement {
     _renderTopbar() {
         return html `<nav class="${this.cls('_topbar')}">
       <h1 class="${this.cls('_topbar-title')}">${__logoFactory}</h1>
-      ${this.currentComponent
+      ${this.selectedComponent
             ? html `<div class="${this.cls('_topbar-component')}">
             <h2 class="${this.cls('_topbar-component-name')}">
-              ${__upperFirst(this.currentComponent.name)}
+              ${__upperFirst(this.selectedComponent.name)}
             </h2>
             <p class="${this.cls('_topbar-component-version')}">
-              ${this.currentComponent.version}
+              ${this.selectedComponent.version}
             </p>
             <p class="${this.cls('_topbar-component-engine')}">
               ${__upperFirst(this.currentEngine)}
@@ -659,7 +683,7 @@ export default class FactoryElement extends __LitElement {
             }
             // save the values
             const formValues = __getFormValues(e.target);
-            this._saveComponentValues(this.currentComponent, formValues.name);
+            this._saveComponentValues(this.selectedComponent, formValues.name);
         }}
         >
           <s-json-schema-form
@@ -669,7 +693,7 @@ export default class FactoryElement extends __LitElement {
             .values=${{}}
           ></s-json-schema-form>
           <code class="${this.cls('_save-values-form-code')}">
-            ${JSON.stringify((_a = this.currentComponent) === null || _a === void 0 ? void 0 : _a.values, null, 2)}
+            ${JSON.stringify((_a = this.selectedComponent) === null || _a === void 0 ? void 0 : _a.values, null, 2)}
           </code>
           <input
             type="submit"
@@ -686,7 +710,8 @@ export default class FactoryElement extends __LitElement {
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
             .lnf=${this.lnf}
-            .component=${this.currentComponent}
+            .selectedComponent=${this.selectedComponent}
+            .preselectedComponentId=${this.preselectedComponent}
             .verbose=${this.verbose}
             @s-carpenter.update=${() => {
             this._updateComponent();
@@ -698,12 +723,46 @@ export default class FactoryElement extends __LitElement {
             });
             this._initComponents();
         }}
-            @s-carpenter.edit=${(e) => {
+            @s-carpenter.component.connect=${(e) => {
             var _a;
-            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id)) {
+            if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
                 return;
             }
-            this._currentComponentId = e.detail.id;
+            // add the component to the list
+            this._components[e.detail.id] = e.detail;
+        }}
+            @s-carpenter.component.disconnect=${(e) => {
+            var _a;
+            if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
+                return;
+            }
+            // add the component to the list
+            delete this._components[e.detail.id];
+        }}
+            @s-carpenter.preselect=${(e) => {
+            var _a;
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
+                return;
+            }
+            // set the preselected component id
+            this._preselectedComponentId = e.detail.id;
+        }}
+            @s-carpenter.select=${(e) => {
+            var _a;
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
+                return;
+            }
+            // set the selected component id
+            this._selectedComponentId = e.detail.id;
+        }}
+            @s-carpenter.edit=${(e) => {
+            var _a;
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
+                return;
+            }
+            this.showUi();
+            // set the selected component id
+            this._selectedComponentId = e.detail.id;
         }}
           />
         </div>
@@ -739,16 +798,22 @@ __decorate([
 ], FactoryElement.prototype, "_notifications", void 0);
 __decorate([
     state()
-], FactoryElement.prototype, "_currentComponent", void 0);
+], FactoryElement.prototype, "_selectedComponent", void 0);
 __decorate([
     state()
-], FactoryElement.prototype, "_currentComponentId", void 0);
+], FactoryElement.prototype, "_selectedComponentId", void 0);
+__decorate([
+    state()
+], FactoryElement.prototype, "_preselectedComponentId", void 0);
 __decorate([
     state()
 ], FactoryElement.prototype, "_components", void 0);
 __decorate([
     state()
 ], FactoryElement.prototype, "_currentAction", void 0);
+__decorate([
+    state()
+], FactoryElement.prototype, "_showUi", void 0);
 __decorate([
     state()
 ], FactoryElement.prototype, "_state", void 0);

@@ -20,4 +20,14 @@
     cursor: pointer;
     line-height: 1;
   }
+
+  .s-carpenter-daemon_header {
+    display: flex;
+    align-items: center;
+    pointer-events: all;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+  }
 }

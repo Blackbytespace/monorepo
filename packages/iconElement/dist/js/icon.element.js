@@ -54,11 +54,34 @@ export default class AdvancedSelectElement extends __LitElement {
     constructor() {
         super('s-icon');
         this.type = 'outline';
+        this.provider = 'heroicons';
+        this.providers = {
+            heroicons: {
+                name: 'Heroicons',
+                url: 'https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@2.2.0/src/24/%type/%name.svg',
+            },
+            fontawesome: {
+                name: 'FontAwesome',
+                url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
+            },
+            pixelarticons: {
+                name: 'PixelArtIcons',
+                url: 'https://cdn.jsdelivr.net/gh/halfmage/pixelarticons@master/svg/%name.svg',
+            },
+        };
         this.svg = '';
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
-            const svg = yield fetch(`https://raw.githubusercontent.com/tailwindlabs/heroicons/refs/heads/master/src/24/${this.type}/${this.name}.svg`), svgText = yield svg.text();
+            // add the provider class
+            this.classList.add(`-${this.provider}`);
+            // construct the url
+            let url = this.providers[this.provider].url
+                .replace('%type', this.type)
+                .replace('%name', this.name);
+            // fetch the actual icon svg
+            const svg = yield fetch(url), svgText = yield svg.text();
+            // set the svg
             this.svg = svgText;
         });
     }
@@ -68,11 +91,18 @@ export default class AdvancedSelectElement extends __LitElement {
 }
 __decorate([
     property({ type: String })
+    // @ts-ignore
 ], AdvancedSelectElement.prototype, "name", void 0);
 __decorate([
     property({ type: String })
 ], AdvancedSelectElement.prototype, "type", void 0);
 __decorate([
-    state({ type: String })
+    property({ type: String })
+], AdvancedSelectElement.prototype, "provider", void 0);
+__decorate([
+    property({ type: Object })
+], AdvancedSelectElement.prototype, "providers", void 0);
+__decorate([
+    state()
 ], AdvancedSelectElement.prototype, "svg", void 0);
 //# sourceMappingURL=icon.element.js.map

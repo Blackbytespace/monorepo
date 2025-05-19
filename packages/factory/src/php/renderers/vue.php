@@ -25,15 +25,18 @@ function vue(object $component, object $config): string
         JS;
     }
 
+    $carpenterComponentJson = json_encode($component->toObject());
+
     $componentId = $component->getId();
     $html = <<<HTML
-        <div id="{$componentId}" type="lotsof/component">
-            <div id="{$componentId}-root"></div> 
-            <script type="module">
+        <div id="{$componentId}" type="carpenter/component">
+            <div id="{$componentId}-root"></div>
+            <script type="application/json" id="{$componentId}-data">{$carpenterComponentJson}</script>
+            <script type="module" id="{$componentId}-script">
                 import { createApp } from 'https://unpkg.com/vue@3.5/dist/vue.esm-browser.js'
                 import __Component from '{$componentUrl}';
-                {$valuesJs}
-                createApp(__Component, __values ?? {}).mount('#{$componentId}-root');
+                const componentData = JSON.parse(document.getElementById('{$componentId}-data')?.innerText?.trim() ?? '{}');       
+                createApp(__Component, componentData?.values ?? {}).mount('#{$componentId}-root');
             </script>
         </div>
     HTML;

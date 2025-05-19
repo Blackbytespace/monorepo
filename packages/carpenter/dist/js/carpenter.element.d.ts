@@ -8,13 +8,15 @@ export default class CarpenterElement extends __LitElement {
     mediaQueries: Record<string, TCarpenterMediaQuery>;
     mediaQuery: string;
     adapter?: TCarpenterAdapter | string;
-    component?: TCarpenterComponent;
+    selectedComponent?: TCarpenterComponent;
+    preselectedComponent?: TCarpenterComponent | null;
     darkModeClass: string;
     loaded?: Function;
     _notifications: TCarpenterNotification[];
     _currentMediaQuery: string;
     _currentAction: 'saveValues' | null;
     protected _state: TCarpenterState;
+    private _components;
     private _$iframe?;
     private _$canvas?;
     private _$daemon?;

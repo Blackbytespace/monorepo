@@ -9,6 +9,7 @@
  * It will take care of executing the last registered action first, then the others...
  * This function returns a SPromise instance on which you can call the `cancel` method to unregister your
  * action in the queue.
+ * Note that you can get the current queue length by calling `__escapeQueueLength()`.
  *
  * @param           {Function}          [callback=null]            The callback to call on pressing escape
  * @param         {Object}      [settings={}]    An option object to configure your hotkey. Here's the list of available settings:
@@ -51,4 +52,5 @@ export type TEscapeQueueItem = {
 export type TEscapeQueueResult = Promise<void> & {
     cancel: Function;
 };
+export declare function __escapeQueueLength(): number;
 export default function escapeQueue(callback?: Function, settings?: TEscapeQueueSettings): TEscapeQueueResult;

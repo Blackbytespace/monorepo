@@ -2,10 +2,18 @@ import __LitElement from '@lotsof/lit-element';
 import { __injectStyle, __querySelectorLive } from '@lotsof/sugar/dom';
 import { html } from 'lit';
 // @ts-ignore
+import { property } from 'lit/decorators.js';
 import __css from '../../src/css/carpenterDaemon.css?raw';
+import { TCarpenterComponent } from '../shared/carpenter.type.js';
 
 export default class CarpenterDaemonElement extends __LitElement {
-  public $currentComponent: Element | null = null;
+  @property({ type: Object })
+  public selectedComponent: TCarpenterComponent | null = null;
+
+  @property({ type: Object })
+  public preselectedComponent: TCarpenterComponent | null = null;
+
+  public $currentComponent: HTMLElement | null = null;
 
   constructor() {
     super('s-carpenter-daemon');
@@ -20,6 +28,20 @@ export default class CarpenterDaemonElement extends __LitElement {
     return this.$document.defaultView || this.$document.parentWindow;
   }
 
+  get component(): TCarpenterComponent | null {
+    return this.preselectedComponent ?? this.selectedComponent;
+  }
+
+  public getComponentJson($component: HTMLElement): TCarpenterComponent | null {
+    const componentJson = JSON.parse(
+      $component
+        .querySelector(`#${$component.getAttribute('id')}-data`)
+        ?.textContent?.trim() ?? '{}',
+    ) as TCarpenterComponent;
+
+    return componentJson;
+  }
+
   public adoptedCallback(): void {
     // inject the stylesheet
     __injectStyle(__css, {
@@ -29,11 +51,14 @@ export default class CarpenterDaemonElement extends __LitElement {
 
     // query live for all the components
     __querySelectorLive(
-      '[type="lotsof/component"]',
+      '[type="carpenter/component"]',
       ($component) => {
         this._initComponent($component);
       },
       {
+        disconnectedCallback: ($component: Element): void => {
+          this._deleteComponent($component);
+        },
         rootNode: this.$document,
       },
     );
@@ -44,25 +69,64 @@ export default class CarpenterDaemonElement extends __LitElement {
     });
   }
 
-  private _initComponent($component: Element): void {
+  private _initComponent($component: HTMLElement): void {
+    // get the component json from the dom component
+    const componentJson = this.getComponentJson($component);
+
+    // dispatch an event to notify carpenter that a new component is available
+    this.dispatch('component.connect', {
+      bubbles: true,
+      detail: componentJson,
+    });
+
     // move the daemon on the component
     $component.addEventListener('mousemove', () => {
       this._setComponent($component);
     });
 
-    // when doubleclick, trigger the edit event
+    // when doubleclick, trigger the select event
     $component.addEventListener('dblclick', () => {
-      this.dispatch('edit', {
-        bubbles: true,
-        detail: {
-          id: $component.getAttribute('id'),
-          $component,
-        },
-      });
+      this._select($component);
+      this._edit($component);
+    });
+
+    // when mouseenter, trigger the preselect event
+    $component.addEventListener('mouseenter', () => {
+      this._preselect($component);
     });
   }
 
-  private _setComponent($component: Element): void {
+  private _preselect($component: HTMLElement): void {
+    this.dispatch('preselect', {
+      bubbles: true,
+      detail: this.getComponentJson($component),
+    });
+  }
+
+  private _select($component: HTMLElement): void {
+    this.dispatch('select', {
+      bubbles: true,
+      detail: this.getComponentJson($component),
+    });
+  }
+
+  private _edit($component: HTMLElement): void {
+    this.dispatch('edit', {
+      bubbles: true,
+      detail: this.getComponentJson($component),
+    });
+  }
+
+  private _deleteComponent($component: Element): void {
+    this.dispatch('component.disconnect', {
+      bubbles: true,
+      detail: {
+        id: $component.getAttribute('id'),
+      },
+    });
+  }
+
+  private _setComponent($component: HTMLElement): void {
     // do nothing if the component is already set
     if (this.$currentComponent === $component) {
       return;
@@ -87,21 +151,28 @@ export default class CarpenterDaemonElement extends __LitElement {
 
   public render() {
     return html`<div class="${this.cls('_inner')}">
+      <div class="${this.cls('_header')}">
+        <div class="${this.cls('_title')}">${this.selectedComponent?.name}</div>
+      </div>
       <div class="${this.cls('_tools')}">
         <div
           class="${this.cls('_tool')}"
           @click=${() => {
-            this.dispatch('edit', {
-              bubbles: true,
-              detail: {
-                id: this.$currentComponent?.getAttribute('id'),
-                $component: this.$currentComponent,
-              },
-            });
+            console.log('efit');
           }}
         >
-          <span class="${this.cls('_tool-label')}">Edit</span>
-          <s-icon name="pencil"></s-icon>
+          <span
+            class="${this.cls('_tool-label')}"
+            @click=${() => {
+              if (!this.$currentComponent) {
+                return;
+              }
+              this._select(this.$currentComponent);
+              this._edit(this.$currentComponent);
+            }}
+            >Edit</span
+          >
+          <s-icon type="solid" name="pencil"></s-icon>
         </div>
       </div>
     </div> `;

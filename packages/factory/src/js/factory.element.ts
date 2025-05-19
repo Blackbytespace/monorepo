@@ -10,7 +10,11 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __getFormValues } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { __hotkey, type THotkeySettings } from '@lotsof/sugar/keyboard';
+import {
+  __escapeQueueLength,
+  __hotkey,
+  type THotkeySettings,
+} from '@lotsof/sugar/keyboard';
 import { __clone } from '@lotsof/sugar/object';
 import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
 import { html } from 'lit';
@@ -63,16 +67,22 @@ export default class FactoryElement extends __LitElement {
   public _notifications: TFactoryNotification[] = [];
 
   @state()
-  public _currentComponent: TFactoryComponent | null = null;
+  public _selectedComponent: TFactoryComponent | null = null;
 
   @state()
-  public _currentComponentId: string | undefined;
+  public _selectedComponentId: string | undefined;
+
+  @state()
+  public _preselectedComponentId: string | undefined;
 
   @state()
   public _components: Record<string, TFactoryComponent> = {};
 
   @state()
   public _currentAction: 'saveValues' | null = null;
+
+  @state()
+  public _showUi: boolean = false;
 
   @state()
   protected _state: TFactoryState = {};
@@ -98,18 +108,36 @@ export default class FactoryElement extends __LitElement {
     return params.get('engine') || undefined;
   }
 
-  public get currentComponent(): TFactoryComponent {
-    return this._components[this.currentComponentId as string];
+  public get selectedComponent(): TFactoryComponent {
+    return this._components[this.selectedComponentId as string];
   }
 
-  public get currentComponentId(): string | undefined {
-    return this._currentComponentId;
+  public get selectedComponentId(): string | undefined {
+    return this._selectedComponentId;
+  }
+
+  public get preselectedComponent(): TFactoryComponent | null {
+    return this._components[this.preselectedComponentId as string];
+  }
+
+  public get preselectedComponentId(): string | undefined {
+    return this._preselectedComponentId;
   }
 
   public get componentsToRender(): string[] | undefined {
     // getted from the url
     const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
     return matches?.[1]?.split('+');
+  }
+
+  public showUi(): void {
+    this._showUi = true;
+    document.body.classList.add('-show-ui');
+  }
+
+  public hideUi(): void {
+    this._showUi = false;
+    document.body.classList.remove('-show-ui');
   }
 
   private async _fetchSpecs(): Promise<void> {
@@ -191,11 +219,11 @@ export default class FactoryElement extends __LitElement {
 
           //   break;
           case api.search?.startsWith('!'):
-            return Object.entries(this.currentComponent.engines).map(
+            return Object.entries(this.selectedComponent.engines).map(
               ([idx, name]) => {
                 return {
-                  id: `!${this.currentComponent.id}`,
-                  value: `!${this.currentComponent.id}`,
+                  id: `!${this.selectedComponent.id}`,
+                  value: `!${this.selectedComponent.id}`,
                   preventSet: true,
                   label: `${__upperFirst(name as string)}`,
                   engine: name,
@@ -205,7 +233,7 @@ export default class FactoryElement extends __LitElement {
 
             break;
           case api.search?.startsWith('<'):
-            return Object.entries(this.currentComponent.savedValues).map(
+            return Object.entries(this.selectedComponent.savedValues).map(
               ([key, savedData]) => {
                 return {
                   id: `<${key}`,
@@ -278,7 +306,7 @@ export default class FactoryElement extends __LitElement {
     // // popstate
     // window.addEventListener('popstate', (e) => {
     //   if (e.state.id) {
-    //     this._currentComponentId = e.state.id;
+    //     this._selectedComponentId = e.state.id;
     //   }
     // });
 
@@ -293,6 +321,12 @@ export default class FactoryElement extends __LitElement {
     context.addEventListener('keyup', (e) => {
       switch (true) {
         case e.key === '§':
+          // do not hide ui if it was shown with the `showUi` method
+          if (this._showUi) {
+            return;
+          }
+
+          //
           document.body.classList.remove('-show-ui');
           e.preventDefault();
           (<any>document.activeElement)?.blur();
@@ -307,6 +341,10 @@ export default class FactoryElement extends __LitElement {
       'escape',
       (e) => {
         this._currentAction = null;
+        const escapeQueueLength = __escapeQueueLength();
+        if (escapeQueueLength === 0) {
+          this.hideUi();
+        }
       },
       hotkeySettings,
     );
@@ -362,7 +400,7 @@ export default class FactoryElement extends __LitElement {
     __hotkey(
       'cmd+r',
       (e) => {
-        this.randomizeComponentValues(this.currentComponentId as string);
+        this.randomizeComponentValues(this.selectedComponentId as string);
       },
       hotkeySettings,
     );
@@ -388,11 +426,11 @@ export default class FactoryElement extends __LitElement {
     });
 
     // set the current component to be the first one
-    this._currentComponentId = Object.keys(this._components)[0];
+    this._selectedComponentId = Object.keys(this._components)[0];
   }
 
   private async _updateComponent(
-    pathOrId: string | undefined = this.currentComponentId,
+    pathOrId: string | undefined = this.selectedComponentId,
     settings: TFactoryUpdateComponentSettings = {},
   ): Promise<void> {
     // save the carpenter reference
@@ -518,7 +556,7 @@ export default class FactoryElement extends __LitElement {
     // maintain the history
     history.pushState({ id, engine }, '', url);
     // set the current component
-    this._currentComponentId = id;
+    this._selectedComponentId = id;
     // render the new component
     this._updateComponent();
   }
@@ -552,7 +590,7 @@ export default class FactoryElement extends __LitElement {
   }
 
   public randomizeComponentValues(
-    id: string | undefined = this.currentComponentId,
+    id: string | undefined = this.selectedComponentId,
   ): void {
     if (!id) {
       return;
@@ -626,8 +664,8 @@ export default class FactoryElement extends __LitElement {
         break;
       case item.value.startsWith('<'):
         // this.setComponentValues(
-        //   this.currentComponent.name,
-        //   this.currentComponent.savedValues[item.value.slice(1)]?.values,
+        //   this.selectedComponent.name,
+        //   this.selectedComponent.savedValues[item.value.slice(1)]?.values,
         // );
         break;
     }
@@ -643,7 +681,7 @@ export default class FactoryElement extends __LitElement {
                   ([id, component]) => html`
                     <li
                       class="${this.cls('_components-list-item')} ${this
-                        .currentComponentId === id
+                        .selectedComponentId === id
                         ? '-active'
                         : ''}"
                     >
@@ -707,13 +745,13 @@ export default class FactoryElement extends __LitElement {
   private _renderTopbar(): any {
     return html`<nav class="${this.cls('_topbar')}">
       <h1 class="${this.cls('_topbar-title')}">${__logoFactory}</h1>
-      ${this.currentComponent
+      ${this.selectedComponent
         ? html`<div class="${this.cls('_topbar-component')}">
             <h2 class="${this.cls('_topbar-component-name')}">
-              ${__upperFirst(this.currentComponent.name)}
+              ${__upperFirst(this.selectedComponent.name)}
             </h2>
             <p class="${this.cls('_topbar-component-version')}">
-              ${this.currentComponent.version}
+              ${this.selectedComponent.version}
             </p>
             <p class="${this.cls('_topbar-component-engine')}">
               ${__upperFirst(this.currentEngine as string)}
@@ -806,7 +844,7 @@ export default class FactoryElement extends __LitElement {
 
             // save the values
             const formValues = __getFormValues(e.target);
-            this._saveComponentValues(this.currentComponent, formValues.name);
+            this._saveComponentValues(this.selectedComponent, formValues.name);
           }}
         >
           <s-json-schema-form
@@ -816,7 +854,7 @@ export default class FactoryElement extends __LitElement {
             .values=${{}}
           ></s-json-schema-form>
           <code class="${this.cls('_save-values-form-code')}">
-            ${JSON.stringify(this.currentComponent?.values, null, 2)}
+            ${JSON.stringify(this.selectedComponent?.values, null, 2)}
           </code>
           <input
             type="submit"
@@ -834,7 +872,8 @@ export default class FactoryElement extends __LitElement {
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
             .lnf=${this.lnf}
-            .component=${this.currentComponent}
+            .selectedComponent=${this.selectedComponent}
+            .preselectedComponentId=${this.preselectedComponent}
             .verbose=${this.verbose}
             @s-carpenter.update=${() => {
               this._updateComponent();
@@ -847,11 +886,41 @@ export default class FactoryElement extends __LitElement {
               });
               this._initComponents();
             }}
-            @s-carpenter.edit=${(e) => {
-              if (!e.detail?.id) {
+            @s-carpenter.component.connect=${(e) => {
+              if (!e.details?.id) {
                 return;
               }
-              this._currentComponentId = e.detail.id;
+              // add the component to the list
+              this._components[e.detail.id] = e.detail;
+            }}
+            @s-carpenter.component.disconnect=${(e) => {
+              if (!e.details?.id) {
+                return;
+              }
+              // add the component to the list
+              delete this._components[e.detail.id];
+            }}
+            @s-carpenter.preselect=${(e) => {
+              if (!e.detail?.id || !this._components[e.detail.id]) {
+                return;
+              }
+              // set the preselected component id
+              this._preselectedComponentId = e.detail.id;
+            }}
+            @s-carpenter.select=${(e) => {
+              if (!e.detail?.id || !this._components[e.detail.id]) {
+                return;
+              }
+              // set the selected component id
+              this._selectedComponentId = e.detail.id;
+            }}
+            @s-carpenter.edit=${(e) => {
+              if (!e.detail?.id || !this._components[e.detail.id]) {
+                return;
+              }
+              this.showUi();
+              // set the selected component id
+              this._selectedComponentId = e.detail.id;
             }}
           />
         </div>

@@ -26,4 +26,9 @@
   .s-carpenter-daemon_tool-label {
     font-weight: bold;
   }
+
+  .s-carpenter-daemon_header {
+    background: s-color(complementary);
+    font-size: s-rem(12px);
+  }
 }

@@ -36,6 +36,21 @@ import '../../src/css/icon.element.css';
 export default class AdvancedSelectElement extends __LitElement {
     name: string;
     type: string;
+    provider: string;
+    providers: {
+        heroicons: {
+            name: string;
+            url: string;
+        };
+        fontawesome: {
+            name: string;
+            url: string;
+        };
+        pixelarticons: {
+            name: string;
+            url: string;
+        };
+    };
     svg: string;
     constructor();
     protected mount(): Promise<void>;

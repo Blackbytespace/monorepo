@@ -38,12 +38,32 @@ import '../../src/css/icon.element.css';
  */
 export default class AdvancedSelectElement extends __LitElement {
   @property({ type: String })
+  // @ts-ignore
   public name: string;
 
   @property({ type: String })
   public type: string = 'outline';
 
-  @state({ type: String })
+  @property({ type: String })
+  public provider: string = 'heroicons';
+
+  @property({ type: Object })
+  public providers = {
+    heroicons: {
+      name: 'Heroicons',
+      url: 'https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@2.2.0/src/24/%type/%name.svg',
+    },
+    fontawesome: {
+      name: 'FontAwesome',
+      url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
+    },
+    pixelarticons: {
+      name: 'PixelArtIcons',
+      url: 'https://cdn.jsdelivr.net/gh/halfmage/pixelarticons@master/svg/%name.svg',
+    },
+  };
+
+  @state()
   public svg: string = '';
 
   constructor() {
@@ -51,10 +71,19 @@ export default class AdvancedSelectElement extends __LitElement {
   }
 
   protected async mount() {
-    const svg = await fetch(
-        `https://raw.githubusercontent.com/tailwindlabs/heroicons/refs/heads/master/src/24/${this.type}/${this.name}.svg`,
-      ),
+    // add the provider class
+    this.classList.add(`-${this.provider}`);
+
+    // construct the url
+    let url: string = this.providers[this.provider].url
+      .replace('%type', this.type)
+      .replace('%name', this.name);
+
+    // fetch the actual icon svg
+    const svg = await fetch(url),
       svgText = await svg.text();
+
+    // set the svg
     this.svg = svgText;
   }
 

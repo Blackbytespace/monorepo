@@ -14,7 +14,7 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
     let noScopeSelector, observer, canceled = false;
     const selectedNodes = [];
     // extend settings
-    const finalSettings = Object.assign({ rootNode: document, once: true, afterFirst: undefined, scopes: true, firstOnly: false, attributes: [], when: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
+    const finalSettings = Object.assign({ rootNode: document, once: true, afterFirst: undefined, scopes: true, firstOnly: false, attributes: [], disconnectedCallback: undefined, when: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
     const innerQuerySelectorLive = [];
     // process selectors when scopes are true
     if (finalSettings.scopes) {
@@ -39,6 +39,10 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
         if (isCanceled()) {
             return;
         }
+        // reset the "isDisconnected" flag
+        if ($node._isDisconnected) {
+            delete $node._isDisconnected;
+        }
         // callback with our node
         cb === null || cb === void 0 ? void 0 : cb($node, {
             cancel,
@@ -50,6 +54,26 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
         // mark our node as selected at least 1 time
         if (!selectedNodes.includes($node)) {
             selectedNodes.push($node);
+        }
+        // disconnected callback
+        if (finalSettings.disconnectedCallback) {
+            let mutationTimeout;
+            if ($node.parentNode) {
+                const disconnectObserver = new MutationObserver((mutations) => {
+                    clearTimeout(mutationTimeout);
+                    mutationTimeout = setTimeout(() => {
+                        var _a;
+                        if (!$node.parentNode && !$node._isDisconnected) {
+                            $node._isDisconnected = true;
+                            (_a = finalSettings.disconnectedCallback) === null || _a === void 0 ? void 0 : _a.call(finalSettings, $node);
+                            disconnectObserver.disconnect();
+                        }
+                    });
+                });
+                disconnectObserver.observe($node.parentNode, {
+                    childList: true,
+                });
+            }
         }
     }
     function processNode($node, sel) {

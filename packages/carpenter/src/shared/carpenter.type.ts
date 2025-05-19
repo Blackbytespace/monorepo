@@ -1,4 +1,3 @@
-import { TComponentsComponentJson } from '@lotsof/components';
 import { TJsonSchemaFormWidget } from '@lotsof/json-schema-form/src/shared/JsonSchemaForm.types.js';
 import { JSONSchema7 } from 'json-schema';
 
@@ -11,15 +10,6 @@ export type TCarpenterMediaQuery = {
   name: string;
   min: number;
   max: number;
-};
-
-export type TCarpenterComponentJson = TComponentsComponentJson & {
-  path: string;
-  engines: string[];
-  mocks: Record<string, string>;
-  files: string[];
-  values: any;
-  schema: any;
 };
 
 export type TCarpenterNotification = {

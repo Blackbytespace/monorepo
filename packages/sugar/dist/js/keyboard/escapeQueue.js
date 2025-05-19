@@ -5,6 +5,9 @@ let _isEscaping = false;
 class CancelablePromise extends Promise {
     cancel() { }
 }
+export function __escapeQueueLength() {
+    return _escapeQueue.length;
+}
 export default function escapeQueue(callback, settings) {
     const pro = new CancelablePromise((resolve) => {
         var _a;

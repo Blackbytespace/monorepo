@@ -53,6 +53,7 @@ export type TQuerySelectorLiveSettings = {
   scopes: boolean;
   firstOnly: boolean;
   when?: TWhenTrigger<string>;
+  disconnectedCallback?: ($elm: HTMLElement) => void;
   attributes: string[];
 };
 
@@ -85,6 +86,7 @@ export default function __querySelectorLive(
     scopes: true,
     firstOnly: false,
     attributes: [],
+    disconnectedCallback: undefined,
     when: undefined,
     ...(settings ?? {}),
   };
@@ -119,6 +121,11 @@ export default function __querySelectorLive(
       return;
     }
 
+    // reset the "isDisconnected" flag
+    if ((<any>$node)._isDisconnected) {
+      delete (<any>$node)._isDisconnected;
+    }
+
     // callback with our node
     cb?.($node, {
       cancel,
@@ -132,6 +139,26 @@ export default function __querySelectorLive(
     // mark our node as selected at least 1 time
     if (!selectedNodes.includes($node)) {
       selectedNodes.push($node);
+    }
+
+    // disconnected callback
+    if (finalSettings.disconnectedCallback) {
+      let mutationTimeout;
+      if ($node.parentNode) {
+        const disconnectObserver = new MutationObserver((mutations) => {
+          clearTimeout(mutationTimeout);
+          mutationTimeout = setTimeout(() => {
+            if (!$node.parentNode && !(<any>$node)._isDisconnected) {
+              (<any>$node)._isDisconnected = true;
+              finalSettings.disconnectedCallback?.($node);
+              disconnectObserver.disconnect();
+            }
+          });
+        });
+        disconnectObserver.observe($node.parentNode, {
+          childList: true,
+        });
+      }
     }
   }
 

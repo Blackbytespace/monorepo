@@ -49,6 +49,7 @@ export type TQuerySelectorLiveSettings = {
     scopes: boolean;
     firstOnly: boolean;
     when?: TWhenTrigger<string>;
+    disconnectedCallback?: ($elm: HTMLElement) => void;
     attributes: string[];
 };
 export type TQuerySelectorLiveApi = {

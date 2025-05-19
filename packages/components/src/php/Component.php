@@ -140,21 +140,21 @@ class Component
     {
         return (object) [
             'id' => $this->getId(),
-            'path' => $this->getPath(),
-            'relPath' => $this->getRelPath(),
-            'shortName' => $this->getShortName(),
             'name' => $this->getName(),
+            'shortName' => $this->getShortName(),
             'organization' => $this->getOrganization(),
-            'type' => $this->getType(),
             'description' => $this->getDescription(),
             'version' => $this->getVersion(),
+            'path' => $this->getPath(),
+            'relPath' => $this->getRelPath(),
+            'type' => $this->getType(),
             'json' => $this->_componentJson,
+            'savedValues' => $this->getSavedValues(),
+            'schema' => $this->getJsonSchema(),
+            'values' => $this->getValues(),
             'files' => $this->getFiles(),
             'engines' => $this->getEngines(),
             'mocks' => $this->getMocks(),
-            'schema' => $this->getJsonSchema(),
-            'values' => $this->getValues(),
-            'savedValues' => $this->getSavedValues()
         ];
     }
 
