@@ -12,6 +12,7 @@ export default class CarpenterElement extends __LitElement {
     preselectedComponent?: TCarpenterComponent | null;
     darkModeClass: string;
     loaded?: Function;
+    uiMode: string;
     _notifications: TCarpenterNotification[];
     _currentMediaQuery: string;
     _currentAction: 'saveValues' | null;
@@ -20,6 +21,7 @@ export default class CarpenterElement extends __LitElement {
     private _$iframe?;
     private _$canvas?;
     private _$daemon?;
+    private _$jsonSchemaForm?;
     constructor();
     private static _adapters;
     static registerAdapter(id: string, adapter: TCarpenterAdapter): void;

@@ -1,9 +1,9 @@
 <template>
   <article class="card" :id="id">
-    <figure v-if="image" class="_figure">
+    <figure v-if="image" class="card_figure">
       <Image v-bind="image" />
     </figure>
-    <div class="_body">
+    <div class="card_body">
       <Body v-if="body" v-bind="body" />
     </div>
   </article>

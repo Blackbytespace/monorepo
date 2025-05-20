@@ -65,6 +65,9 @@ export default function size(value, settings) {
             const easingFunctionStr = easingFunction.replace(/t/gm, `${argValue * 0.01}`);
             resultCalc = `(${easingFunctionStr} * ${sizeDelta} * ${argValue}) + var(--s-sizes-min)`;
         }
+        if (args.values.arg0 === 4) {
+            console.log('sizes', resultCalc);
+        }
         // create the calc declaration
         sizes.push(`var(--s-size-${argValue}, ${resultCalc})`);
     }

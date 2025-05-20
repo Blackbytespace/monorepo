@@ -81,6 +81,10 @@ export default function size(value: any, settings: TSugarCssSettings): any {
       resultCalc = `(${easingFunctionStr} * ${sizeDelta} * ${argValue}) + var(--s-sizes-min)`;
     }
 
+    if (args.values.arg0 === 4) {
+      console.log('sizes', resultCalc);
+    }
+
     // create the calc declaration
     sizes.push(`var(--s-size-${argValue}, ${resultCalc})`);
   }

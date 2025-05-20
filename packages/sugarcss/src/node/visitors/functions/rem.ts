@@ -36,6 +36,8 @@ export default function rem(value: any, settings: TSugarCssSettings): any {
     remValues.push(__toRem(value));
   }
 
+  console.log('DFD', remValues);
+
   return {
     raw: remValues
       .map((v) => {

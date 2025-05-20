@@ -3,6 +3,7 @@
 
 @import './saveValuesForm/saveValuesForm.css';
 
+@import './generic/id/id.css';
 @import './generic/notifications/notifications.css';
 @import './generic/popin/popin.css';
 

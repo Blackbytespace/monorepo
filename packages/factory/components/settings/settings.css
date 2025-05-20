@@ -5,6 +5,8 @@
   --s-factory-editor-width: clamp(450px, 25%, 600px);
   --s-factory-sidebar-width: var(--s-factory-panel-width);
 
+  --s-factory-frost-amount: 10px;
+
   --s-factory-depth: 0px 1px 4px rgba(3, 7, 18, 0.01),
     0px 5px 15px rgba(3, 7, 18, 0.01), 0px 12px 34px rgba(3, 7, 18, 0.02),
     0px 20px 60px rgba(3, 7, 18, 0.02), 0px 32px 94px rgba(3, 7, 18, 0.03);

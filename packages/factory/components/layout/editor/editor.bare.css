@@ -47,6 +47,7 @@
   }
 }
 
+.-show-editor .s-factory_editor,
 .-show-ui .s-factory_editor {
   translate: 0;
 }

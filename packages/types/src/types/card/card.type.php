@@ -35,6 +35,10 @@ class CardType extends \Lotsof\Types\BaseType
             );
         }
 
+        if ($id === null) {
+            $id = 'card-' . rand(0, 9999);
+        }
+
         $card = new static(
             body: $body,
             image: $image,

@@ -5,7 +5,9 @@
  * @platform          js
  * @status        stable
  *
- * Detect if the user prefer the dark mode
+ * Detect if the user prefer the dark mode.
+ * If you pass a "rootNode", it will check by querying up the DOM if an element
+ * has the class `-dark` on it.
  *
  * @return    {Boolean}    true if prefer dark mode, false if not
  *
@@ -22,4 +24,8 @@
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-export default function __isDarkMode(): boolean;
+export type TIsDarkModeSettings = {
+    ctx: Window;
+    rootNode?: HTMLElement;
+};
+export default function __isDarkMode(settings?: Partial<TIsDarkModeSettings>): boolean;

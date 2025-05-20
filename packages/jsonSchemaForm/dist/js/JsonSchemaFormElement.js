@@ -25,6 +25,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
+import __IconElement from '@lotsof/icon-element';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
 import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
@@ -557,8 +558,9 @@ class JsonSchemaFormElement extends __LitElement {
                     @click=${() => {
                     __copyText(this.values.id);
                 }}
-                    >ID: #${this.values.id}</span
-                  >`
+                    >ID: #${this.values.id}
+                    <s-icon name="clipboard-document-list"
+                  /></span>`
                 : ''}
             </h2>
             <p class=${this.cls('_description')}>${this.schema.description}</p>
@@ -599,4 +601,7 @@ JsonSchemaFormElement.registerGroupRenderer({
     tag: 's-json-schema-form-stack-group-renderer',
 });
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});
+__IconElement.define('s-icon', {
+    type: 'outline',
+});
 //# sourceMappingURL=JsonSchemaFormElement.js.map

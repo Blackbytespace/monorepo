@@ -1,4 +1,5 @@
-@import './settings/sugarcss.css';
+/* @import './settings/sugarcss.css'; */
+@import './settings/settings.css';
 
 @import './canvas/canvas.css';
 @import './editor/editor.css';

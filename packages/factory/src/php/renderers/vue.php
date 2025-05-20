@@ -42,5 +42,4 @@ function vue(object $component, object $config): string
     HTML;
 
     return $html;
-
 }

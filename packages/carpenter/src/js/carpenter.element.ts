@@ -1,11 +1,12 @@
 import '@fontsource/poppins';
 import __IconElement from '@lotsof/icon-element';
 import '@lotsof/json-schema-form';
+import __JsonSchemaFormElement from '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __injectHtml } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { type THotkeySettings } from '@lotsof/sugar/keyboard';
-import { __set } from '@lotsof/sugar/object';
+import { __clone, __set } from '@lotsof/sugar/object';
 import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
@@ -42,6 +43,9 @@ export default class CarpenterElement extends __LitElement {
   @property({ type: Function })
   public loaded?: Function;
 
+  @property({ type: String })
+  public uiMode = 'light';
+
   @state()
   public _notifications: TCarpenterNotification[] = [];
 
@@ -58,6 +62,7 @@ export default class CarpenterElement extends __LitElement {
   private _$iframe?: HTMLIFrameElement;
   private _$canvas?: HTMLDivElement;
   private _$daemon?: __CarpenterDaemonElement;
+  private _$jsonSchemaForm?: __JsonSchemaFormElement;
 
   constructor() {
     super('s-carpenter');
@@ -81,6 +86,15 @@ export default class CarpenterElement extends __LitElement {
   public update(changedProperties: any): void {
     super.update(changedProperties);
 
+    // update the daemon accordingly
+    this._$daemon?.requestUpdate();
+
+    // get the json schema form
+    if (!this._$jsonSchemaForm) {
+      this._$jsonSchemaForm = this.querySelector(
+        's-json-schema-form',
+      ) as __JsonSchemaFormElement;
+    }
     // update the media query
     if (changedProperties.has('_currentMediaQuery')) {
       if (this.currentMediaQuery?.max !== -1) {
@@ -94,6 +108,14 @@ export default class CarpenterElement extends __LitElement {
       setTimeout(() => {
         this._updateIframeSize();
       }, 300);
+    }
+
+    if (this._$jsonSchemaForm) {
+      // @TODO       find a better way to update the form without using setTimeout
+      setTimeout(() => {
+        // @ts-ignore
+        this._$jsonSchemaForm.requestUpdate();
+      });
     }
   }
 
@@ -144,7 +166,7 @@ export default class CarpenterElement extends __LitElement {
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
     // get the daemon reference
-    const $daemon = document.querySelector('s-carpenter-daemon');
+    const $daemon = this.querySelector('s-carpenter-daemon');
     this._$iframe?.contentDocument?.body.appendChild($daemon as Node);
     this._$daemon = $daemon as __CarpenterDaemonElement;
 
@@ -186,15 +208,10 @@ export default class CarpenterElement extends __LitElement {
       (e: CustomEvent) => {
         this.dispatch('preselect', {
           bubbles: true,
-          detail: e.detail
+          detail: e.detail,
         });
       },
     );
-    this._$daemon?.$currentComponent?.addEventListener(
-      's-carpenter-daemon.component.new',
-      (e: CustomEvent) => {
-        console.log('NEW', e.detail);
-      },
   }
 
   private _initListeners(context: Document): void {
@@ -283,6 +300,8 @@ export default class CarpenterElement extends __LitElement {
     $centerStyle.innerHTML = `
       body {
         display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         justify-content: center;
         align-items: center;
       }
@@ -345,19 +364,27 @@ export default class CarpenterElement extends __LitElement {
   // }
 
   private async _applyUpdate(update: TCarpenterUpdatePayload): Promise<void> {
+    console.log('apply update', update);
     // do nothing if no component is set
     if (!this.selectedComponent) {
       return;
     }
 
     // set the value into the component
+
+    console.log('update.path', update.path, update.value);
+
     __set(this.selectedComponent.values, update.path, update.value);
+
+    console.log('selectedComponent', this.selectedComponent);
 
     // create the update object
     const updateObject: TCarpenterUpdateObject = {
       ...update,
-      component: this.selectedComponent,
+      component: __clone(this.selectedComponent),
     };
+
+    console.log('updateObject', updateObject);
 
     // if an adapter is set, use it to apply the update
     if (
@@ -433,27 +460,24 @@ export default class CarpenterElement extends __LitElement {
   // }
 
   private _renderEditor(): any {
-    if (!this.selectedComponent) {
-      return;
-    }
-
     return html`<div class="${this.cls('_editor')}">
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
           .lnf=${this.lnf}
-          @s-json-schema-form.update=${(e: CustomEvent) => {
-            this._applyUpdate({
-              ...e.detail.update,
-            });
-          }}
           id="s-carpenter-json-schema-form"
           name="s-carpenter-json-schema-form"
           .buttonClasses=${true}
           .formClasses=${true}
           .verbose=${this.verbose}
-          .schema=${this.selectedComponent.schema}
-          .values=${this.selectedComponent.values ?? {}}
+          .schema=${this.selectedComponent?.schema}
+          .values=${this.selectedComponent?.values}
+          @s-json-schema-form.update=${(e: CustomEvent) => {
+            console.log('update', e.detail);
+            this._applyUpdate({
+              ...e.detail.update,
+            });
+          }}
         ></s-json-schema-form>
       </div>
     </div>`;
@@ -462,9 +486,8 @@ export default class CarpenterElement extends __LitElement {
   public render() {
     return html`
       <s-carpenter-daemon
+        .uiMode=${this.uiMode}
         .lnf=${this.lnf}
-        .selectedComponent=${this.selectedComponent}
-        .preselectedComponent=${this.preselectedComponent}
         @s-carpenter-daemon.component.connect=${(e: CustomEvent) => {
           // add the component to the list
           this._components[e.detail.id] = e.detail;
@@ -484,17 +507,17 @@ export default class CarpenterElement extends __LitElement {
           });
         }}
         @s-carpenter-daemon.select=${(e: CustomEvent) => {
+          this.selectedComponent = e.detail;
           this.dispatch('select', {
             bubbles: true,
-            detail: e.detail
-          })
+            detail: e.detail,
+          });
         }}
         @s-carpenter-daemon.edit=${(e: CustomEvent) => {
-          console.log('EDIT', e.detail);
           this.dispatch('edit', {
             bubbles: true,
-            detail: e.detail
-          })
+            detail: e.detail,
+          });
         }}
       ></s-carpenter-daemon>
       ${this._renderEditor()}

@@ -29,8 +29,8 @@
   --s-zindex-header: 100;
   --s-zindex-modal: 200;
 
-  --s-sizes: 0 80px linear;
-  --s-spaces: 0 80px linear;
+  /* --s-sizes: 0 80px linear;
+  --s-spaces: 0 80px linear; */
 
   --s-space-05: 2px;
   --s-space-1: 4px;

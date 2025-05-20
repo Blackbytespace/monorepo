@@ -6,6 +6,7 @@ import { TCard } from './card.type.js';
 export default function __cardMock(props: Partial<TCard> = {}): TCard {
   return __deepMerge([
     {
+      id: `card-${Math.round(Math.random() * 9999)}`,
       image: __imageMock(),
       body: __bodyMock(),
     },

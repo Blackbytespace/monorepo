@@ -133,23 +133,24 @@ $app->post('/api/render[/{path:.*}]', function (Request $request, Response $resp
     }
 
     // add the assets from the project
-    foreach ($config->project->assets as $asset) {
-
+    $assets = [];
+    foreach ($config->project->assets as $id => $asset) {
         // build correct url
         $url = \Factory\Project\assetUrl($asset);
 
         // add the asset to the html
         if (str_contains($asset, '.css')) {
-            $html .= '<link rel="stylesheet" href="' . $url . '">';
+            $assets[] = '<link id="project-' . $id . '" rel="stylesheet" href="' . $url . '" />';
         } else if (str_contains($asset, '.js') || str_contains($asset, '.ts')) {
-            $html .= '<script type="module" src="' . $url . '"></script>';
+            $assets[] = '<script id="project-' . $id . '" type="module" src="' . $url . '"></script>';
         }
     }
 
     $response->getBody()->write(json_encode((object) [
         'html' => $html,
         'values' => $component->getValues(),
-        'savedValues' => $savedValues
+        'savedValues' => $savedValues,
+        'assets' => $assets
     ]));
 
     return $response

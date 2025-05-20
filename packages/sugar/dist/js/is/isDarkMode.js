@@ -1,29 +1,17 @@
-/**
- * @name        isDarkMode
- * @namespace            js.is
- * @type      Function
- * @platform          js
- * @status        stable
- *
- * Detect if the user prefer the dark mode
- *
- * @return    {Boolean}    true if prefer dark mode, false if not
- *
- * @todo      tests
- *
- * @snippet         __isDarkMode()
- *
- * @example 	js
- * import { __isDarkMode } from '@lotsof/sugar/is'
- * if ( __isDarkMode()) {
- *   // do something cool
- * }
- *
- * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
- */
-export default function __isDarkMode() {
-    return (window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches);
+import { __querySelectorUp } from '@lotsof/sugar/dom';
+export default function __isDarkMode(settings) {
+    const finalSettings = Object.assign({ ctx: window }, (settings !== null && settings !== void 0 ? settings : {}));
+    if (finalSettings.rootNode) {
+        if (finalSettings.rootNode.classList.contains('-dark')) {
+            return true;
+        }
+        const $dark = __querySelectorUp(finalSettings.rootNode, '.-dark');
+        if ($dark) {
+            return true;
+        }
+        return false;
+    }
+    return (finalSettings.ctx.matchMedia &&
+        finalSettings.ctx.matchMedia('(prefers-color-scheme: dark)').matches);
 }
 //# sourceMappingURL=isDarkMode.js.map

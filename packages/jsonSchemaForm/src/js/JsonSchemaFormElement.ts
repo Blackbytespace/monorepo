@@ -1,3 +1,4 @@
+import __IconElement from '@lotsof/icon-element';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
 import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
@@ -612,8 +613,9 @@ export default class JsonSchemaFormElement extends __LitElement {
                     @click=${() => {
                       __copyText(this.values.id);
                     }}
-                    >ID: #${this.values.id}</span
-                  >`
+                    >ID: #${this.values.id}
+                    <s-icon name="clipboard-document-list"
+                  /></span>`
                 : ''}
             </h2>
             <p class=${this.cls('_description')}>${this.schema.description}</p>
@@ -637,3 +639,6 @@ JsonSchemaFormElement.registerGroupRenderer({
 });
 
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});
+__IconElement.define('s-icon', {
+  type: 'outline',
+});

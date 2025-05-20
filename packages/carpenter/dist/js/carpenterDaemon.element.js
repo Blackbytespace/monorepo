@@ -8,14 +8,18 @@ import __LitElement from '@lotsof/lit-element';
 import { __injectStyle, __querySelectorLive } from '@lotsof/sugar/dom';
 import { html } from 'lit';
 // @ts-ignore
+import { __copyText } from '@lotsof/sugar/clipboard';
+import { __isDarkMode } from '@lotsof/sugar/is';
 import { property } from 'lit/decorators.js';
 import __css from '../../src/css/carpenterDaemon.css?raw';
 export default class CarpenterDaemonElement extends __LitElement {
     constructor() {
         super('s-carpenter-daemon');
+        this.uiMode = 'light';
         this.selectedComponent = null;
         this.preselectedComponent = null;
-        this.$currentComponent = null;
+        this.$selectedComponent = null;
+        this.$preselectedComponent = null;
     }
     get $document() {
         return this.ownerDocument;
@@ -27,6 +31,31 @@ export default class CarpenterDaemonElement extends __LitElement {
     get component() {
         var _a;
         return (_a = this.preselectedComponent) !== null && _a !== void 0 ? _a : this.selectedComponent;
+    }
+    get $component() {
+        var _a;
+        return (_a = this.$preselectedComponent) !== null && _a !== void 0 ? _a : this.$selectedComponent;
+    }
+    update(changedProperties) {
+        super.update(changedProperties);
+        // update the daemon position
+        setTimeout(() => {
+            this._updateDaemonPosition();
+        }, 100);
+    }
+    firstUpdated(_changedProperties) {
+        // set the daemon ui mode depending on
+        // the mode of the website
+        if (__isDarkMode({
+            rootNode: this,
+        })) {
+            this.classList.add('-light');
+            this.classList.remove('-dark');
+        }
+        else {
+            this.classList.add('-dark');
+            this.classList.remove('-light');
+        }
     }
     getComponentJson($component) {
         var _a, _b, _c;
@@ -51,7 +80,7 @@ export default class CarpenterDaemonElement extends __LitElement {
         });
         // update the position of the daemon on resize
         this.$window.addEventListener('resize', () => {
-            this._setDaemonPosition();
+            this._updateDaemonPosition();
         });
     }
     _initComponent($component) {
@@ -62,31 +91,35 @@ export default class CarpenterDaemonElement extends __LitElement {
             bubbles: true,
             detail: componentJson,
         });
-        // move the daemon on the component
-        $component.addEventListener('mousemove', () => {
-            this._setComponent($component);
-        });
-        // when doubleclick, trigger the select event
-        $component.addEventListener('dblclick', () => {
-            this._select($component);
-            this._edit($component);
-        });
         // when mouseenter, trigger the preselect event
         $component.addEventListener('mouseenter', () => {
             this._preselect($component);
         });
     }
     _preselect($component) {
+        if (this.$preselectedComponent &&
+            this.$preselectedComponent === $component) {
+            return;
+        }
+        this.$preselectedComponent = $component;
+        this.preselectedComponent = this.getComponentJson($component);
         this.dispatch('preselect', {
             bubbles: true,
-            detail: this.getComponentJson($component),
+            detail: this.preselectedComponent,
         });
+        this._updateDaemonPosition();
+        this.requestUpdate();
     }
     _select($component) {
+        if (this.$selectedComponent && this.$selectedComponent === $component) {
+            return;
+        }
+        this.selectedComponent = this.getComponentJson($component);
         this.dispatch('select', {
             bubbles: true,
-            detail: this.getComponentJson($component),
+            detail: this.selectedComponent,
         });
+        this._updateDaemonPosition();
     }
     _edit($component) {
         this.dispatch('edit', {
@@ -102,48 +135,56 @@ export default class CarpenterDaemonElement extends __LitElement {
             },
         });
     }
-    _setComponent($component) {
-        // do nothing if the component is already set
-        if (this.$currentComponent === $component) {
-            return;
-        }
-        // set the current component
-        this.$currentComponent = $component;
-        // update the position of the daemon
-        this._setDaemonPosition();
-    }
-    _setDaemonPosition() {
+    _updateDaemonPosition() {
         var _a, _b, _c, _d;
-        const top = (_a = this.$currentComponent) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect().top;
-        const left = (_b = this.$currentComponent) === null || _b === void 0 ? void 0 : _b.getBoundingClientRect().left;
-        const width = (_c = this.$currentComponent) === null || _c === void 0 ? void 0 : _c.getBoundingClientRect().width;
-        const height = (_d = this.$currentComponent) === null || _d === void 0 ? void 0 : _d.getBoundingClientRect().height;
+        const top = (_a = this.$component) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect().top;
+        const left = (_b = this.$component) === null || _b === void 0 ? void 0 : _b.getBoundingClientRect().left;
+        const width = (_c = this.$component) === null || _c === void 0 ? void 0 : _c.getBoundingClientRect().width;
+        const height = (_d = this.$component) === null || _d === void 0 ? void 0 : _d.getBoundingClientRect().height;
         this.style.top = `${top}px`;
         this.style.left = `${left}px`;
         this.style.width = `${width}px`;
         this.style.height = `${height}px`;
     }
     render() {
-        var _a;
-        return html `<div class="${this.cls('_inner')}">
+        var _a, _b, _c, _d, _e;
+        return html `<div
+      class="${this.cls('_inner')}"
+      @dblclick=${() => {
+            if (!this.$preselectedComponent) {
+                return;
+            }
+            this._select(this.$preselectedComponent);
+            this._edit(this.$preselectedComponent);
+        }}
+    >
       <div class="${this.cls('_header')}">
-        <div class="${this.cls('_title')}">${(_a = this.selectedComponent) === null || _a === void 0 ? void 0 : _a.name}</div>
+        <span class="${this.cls('_title')}">${(_a = this.component) === null || _a === void 0 ? void 0 : _a.name}</span>
+        ${((_c = (_b = this.component) === null || _b === void 0 ? void 0 : _b.values) === null || _c === void 0 ? void 0 : _c.id)
+            ? html `
+              <button
+                class="${this.cls('_id')}"
+                @click=${() => {
+                var _a, _b, _c;
+                __copyText((_c = (_b = (_a = this.component) === null || _a === void 0 ? void 0 : _a.values) === null || _b === void 0 ? void 0 : _b.id) !== null && _c !== void 0 ? _c : '');
+            }}
+              >
+                ${(_e = (_d = this.component) === null || _d === void 0 ? void 0 : _d.values) === null || _e === void 0 ? void 0 : _e.id}
+                <s-icon type="outline" name="clipboard-document-list" />
+              </button>
+            `
+            : ''}
       </div>
       <div class="${this.cls('_tools')}">
-        <div
-          class="${this.cls('_tool')}"
-          @click=${() => {
-            console.log('efit');
-        }}
-        >
+        <div class="${this.cls('_tool')}">
           <span
             class="${this.cls('_tool-label')}"
             @click=${() => {
-            if (!this.$currentComponent) {
+            if (!this.$preselectedComponent) {
                 return;
             }
-            this._select(this.$currentComponent);
-            this._edit(this.$currentComponent);
+            this._select(this.$preselectedComponent);
+            this._edit(this.$preselectedComponent);
         }}
             >Edit</span
           >
@@ -154,9 +195,6 @@ export default class CarpenterDaemonElement extends __LitElement {
     }
 }
 __decorate([
-    property({ type: Object })
-], CarpenterDaemonElement.prototype, "selectedComponent", void 0);
-__decorate([
-    property({ type: Object })
-], CarpenterDaemonElement.prototype, "preselectedComponent", void 0);
+    property({ type: String })
+], CarpenterDaemonElement.prototype, "uiMode", void 0);
 //# sourceMappingURL=carpenterDaemon.element.js.map

@@ -17,7 +17,7 @@ import {
 } from '@lotsof/sugar/keyboard';
 import { __clone } from '@lotsof/sugar/object';
 import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import '../../src/css/output/factory.build.css';
@@ -82,7 +82,7 @@ export default class FactoryElement extends __LitElement {
   public _currentAction: 'saveValues' | null = null;
 
   @state()
-  public _showUi: boolean = false;
+  public _showEditor: boolean = false;
 
   @state()
   protected _state: TFactoryState = {};
@@ -130,14 +130,14 @@ export default class FactoryElement extends __LitElement {
     return matches?.[1]?.split('+');
   }
 
-  public showUi(): void {
-    this._showUi = true;
-    document.body.classList.add('-show-ui');
+  public showEditor(): void {
+    this._showEditor = true;
+    document.body.classList.add('-show-editor');
   }
 
   public hideUi(): void {
-    this._showUi = false;
-    document.body.classList.remove('-show-ui');
+    this._showEditor = false;
+    document.body.classList.remove('-show-editor');
   }
 
   private async _fetchSpecs(): Promise<void> {
@@ -146,6 +146,11 @@ export default class FactoryElement extends __LitElement {
       json = await request.json();
     // set the specs
     this.specs = json;
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    // save the carpenter reference
+    this._$carpenter = this.querySelector('s-carpenter');
   }
 
   async mount() {
@@ -321,8 +326,8 @@ export default class FactoryElement extends __LitElement {
     context.addEventListener('keyup', (e) => {
       switch (true) {
         case e.key === '§':
-          // do not hide ui if it was shown with the `showUi` method
-          if (this._showUi) {
+          // do not hide ui if it was shown with the `showEditor` method
+          if (this._showEditor) {
             return;
           }
 
@@ -422,22 +427,17 @@ export default class FactoryElement extends __LitElement {
   private _initComponents(): void {
     // loop on all the components to render
     this.componentsToRender?.forEach((path) => {
-      this._updateComponent(path);
+      this._postComponent(path);
     });
 
     // set the current component to be the first one
     this._selectedComponentId = Object.keys(this._components)[0];
   }
 
-  private async _updateComponent(
+  private async _postComponent(
     pathOrId: string | undefined = this.selectedComponentId,
     settings: TFactoryUpdateComponentSettings = {},
   ): Promise<void> {
-    // save the carpenter reference
-    if (!this._$carpenter) {
-      this._$carpenter = this.querySelector('s-carpenter');
-    }
-
     const finalSettings = {
       $iframe: this._$carpenter?.$iframe,
       ...settings,
@@ -481,6 +481,27 @@ export default class FactoryElement extends __LitElement {
 
     // updading the component values
     component.values = json.values;
+
+    // handling assets
+    if (json.assets) {
+      for (let asset of json.assets) {
+        const $asset = new DOMParser().parseFromString(asset, 'text/html').head
+          .firstChild as HTMLElement;
+
+        if (!$asset) {
+          continue;
+        }
+
+        const id = $asset.getAttribute('id');
+        if (finalSettings.$iframe?.querySelector(`#${id}`)) {
+          // already exists, continue
+          continue;
+        }
+
+        // add the asset to the iframe
+        finalSettings.$iframe?.contentDocument.head.appendChild($asset);
+      }
+    }
 
     // update the iframe with new component html
     if (finalSettings.$iframe) {
@@ -534,6 +555,11 @@ export default class FactoryElement extends __LitElement {
     this.requestUpdate();
   }
 
+  public setComponent(pathOrId: string, newComponent: TFactoryComponent): void {
+    const component = this.getComponent(pathOrId);
+    this._components[component.id] = newComponent;
+  }
+
   public getComponent(pathOrId: string): TFactoryComponent {
     if (this._components[pathOrId]) {
       return this._components[pathOrId];
@@ -558,7 +584,7 @@ export default class FactoryElement extends __LitElement {
     // set the current component
     this._selectedComponentId = id;
     // render the new component
-    this._updateComponent();
+    this._postComponent();
   }
 
   // public setComponentValues(id: string, values: any): void {
@@ -567,7 +593,7 @@ export default class FactoryElement extends __LitElement {
   //     return;
   //   }
   //   component.values = values;
-  //   this._updateComponent(component.name);
+  //   this._postComponent(component.name);
   // }
 
   public toggleUiMode(): void {
@@ -602,7 +628,7 @@ export default class FactoryElement extends __LitElement {
     }
     // update the component with empty values
     component.values = {};
-    // this._updateComponent({
+    // this._postComponent({
     //   id,
     // });
   }
@@ -872,11 +898,11 @@ export default class FactoryElement extends __LitElement {
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
             .lnf=${this.lnf}
-            .selectedComponent=${this.selectedComponent}
-            .preselectedComponentId=${this.preselectedComponent}
+            .uiMode=${this.state.mode}
             .verbose=${this.verbose}
-            @s-carpenter.update=${() => {
-              this._updateComponent();
+            @s-carpenter.update=${(e) => {
+              this.setComponent(e.detail.component.id, e.detail.component);
+              this._postComponent(e.detail.id);
             }}
             @s-carpenter.ready=${(e) => {
               setTimeout(() => {
@@ -918,7 +944,7 @@ export default class FactoryElement extends __LitElement {
               if (!e.detail?.id || !this._components[e.detail.id]) {
                 return;
               }
-              this.showUi();
+              this.showEditor();
               // set the selected component id
               this._selectedComponentId = e.detail.id;
             }}

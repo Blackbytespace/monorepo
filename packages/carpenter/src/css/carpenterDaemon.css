@@ -1,13 +1,37 @@
 @import './carpenterDaemon.bare.css';
 
 .s-carpenter-daemon.-lnf {
-  border: 3px solid s-color(accent);
+  --s-carpenter-daemon-border-width: 3px;
+}
+
+.s-carpenter-daemon.-lnf {
+  border-width: var(--s-carpenter-daemon-border-width);
+  border-color: s-color(main, background);
   color: s-color(accent, foreground);
+  opacity: 0;
   @s-transition (fast);
 
+  &:after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: s-color(main, background, --alpha 0.1);
+    z-index: -1;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
   .s-carpenter-daemon_tools {
-    background: s-color(accent);
+    background: s-color(main, background, --alpha 0.8);
+    backdrop-filter: blur(var(--s-carpenter-frost-amount));
     font-size: s-rem(12px);
+    border-bottom-left-radius: s-radius();
   }
 
   .s-carpenter-daemon_tool {
@@ -28,7 +52,22 @@
   }
 
   .s-carpenter-daemon_header {
-    background: s-color(complementary);
+    background: s-color(main, background, --alpha 0.8);
+    backdrop-filter: blur(var(--s-carpenter-frost-amount));
+    color: s-color(main, text);
+    box-shadow: var(--s-factory-depth);
     font-size: s-rem(12px);
+    padding: s-space(sm);
+    gap: s-space(sm);
+    border-bottom-right-radius: s-radius();
+  }
+
+  .s-carpenter-daemon_title {
+    font-weight: bold;
+  }
+
+  .s-carpenter-daemon_id {
+    color: s-color(complementary);
+    @s-font (code);
   }
 }

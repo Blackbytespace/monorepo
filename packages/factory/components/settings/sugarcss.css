@@ -2,7 +2,8 @@
 
 @include s-reset;
 
-:root {
+body:has(.s-factory),
+.s-carpenter-daemon {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
 
@@ -149,6 +150,7 @@
   --s-radius-default: 6px;
 }
 
+.-dark,
 body.-dark {
   --s-color-main: hsl(47, 0%, 50%);
   --s-color-error: #ff7b9a;

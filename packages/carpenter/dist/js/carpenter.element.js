@@ -19,7 +19,7 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __injectHtml } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { __set } from '@lotsof/sugar/object';
+import { __clone, __set } from '@lotsof/sugar/object';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
@@ -31,6 +31,7 @@ class CarpenterElement extends __LitElement {
         this.mediaQuery = 'desktop';
         this.preselectedComponent = null;
         this.darkModeClass = '-dark';
+        this.uiMode = 'light';
         this._notifications = [];
         this._currentMediaQuery = '';
         this._currentAction = null;
@@ -48,19 +49,32 @@ class CarpenterElement extends __LitElement {
         return this.mediaQueries[this._currentMediaQuery];
     }
     update(changedProperties) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         super.update(changedProperties);
+        // update the daemon accordingly
+        (_a = this._$daemon) === null || _a === void 0 ? void 0 : _a.requestUpdate();
+        // get the json schema form
+        if (!this._$jsonSchemaForm) {
+            this._$jsonSchemaForm = this.querySelector('s-json-schema-form');
+        }
         // update the media query
         if (changedProperties.has('_currentMediaQuery')) {
-            if (((_a = this.currentMediaQuery) === null || _a === void 0 ? void 0 : _a.max) !== -1) {
-                (_b = this._$canvas) === null || _b === void 0 ? void 0 : _b.style.setProperty('--s-carpenter-canvas-width', ((_c = this.currentMediaQuery) === null || _c === void 0 ? void 0 : _c.max) + 'px');
+            if (((_b = this.currentMediaQuery) === null || _b === void 0 ? void 0 : _b.max) !== -1) {
+                (_c = this._$canvas) === null || _c === void 0 ? void 0 : _c.style.setProperty('--s-carpenter-canvas-width', ((_d = this.currentMediaQuery) === null || _d === void 0 ? void 0 : _d.max) + 'px');
             }
             else {
-                (_d = this._$canvas) === null || _d === void 0 ? void 0 : _d.style.removeProperty('--s-carpenter-canvas-width');
+                (_e = this._$canvas) === null || _e === void 0 ? void 0 : _e.style.removeProperty('--s-carpenter-canvas-width');
             }
             setTimeout(() => {
                 this._updateIframeSize();
             }, 300);
+        }
+        if (this._$jsonSchemaForm) {
+            // @TODO       find a better way to update the form without using setTimeout
+            setTimeout(() => {
+                // @ts-ignore
+                this._$jsonSchemaForm.requestUpdate();
+            });
         }
     }
     // private _updateMediaQueries(): void {
@@ -105,7 +119,7 @@ class CarpenterElement extends __LitElement {
     firstUpdated(_changedProperties) {
         var _a, _b;
         // get the daemon reference
-        const $daemon = document.querySelector('s-carpenter-daemon');
+        const $daemon = this.querySelector('s-carpenter-daemon');
         (_b = (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument) === null || _b === void 0 ? void 0 : _b.body.appendChild($daemon);
         this._$daemon = $daemon;
         // init the daemon listeners
@@ -128,7 +142,7 @@ class CarpenterElement extends __LitElement {
         });
     }
     _initDaemonListeners() {
-        var _a, _b, _c, _d;
+        var _a, _b;
         // listen for edit event from the daemon
         // @ts-ignore
         (_a = this._$daemon) === null || _a === void 0 ? void 0 : _a.addEventListener('s-carpenter-daemon.select', (e) => {
@@ -140,11 +154,8 @@ class CarpenterElement extends __LitElement {
         (_b = this._$daemon) === null || _b === void 0 ? void 0 : _b.addEventListener('s-carpenter-daemon.preselect', (e) => {
             this.dispatch('preselect', {
                 bubbles: true,
-                detail: e.detail
+                detail: e.detail,
             });
-        });
-        (_d = (_c = this._$daemon) === null || _c === void 0 ? void 0 : _c.$currentComponent) === null || _d === void 0 ? void 0 : _d.addEventListener('s-carpenter-daemon.component.new', (e) => {
-            console.log('NEW', e.detail);
         });
     }
     _initListeners(context) {
@@ -220,6 +231,8 @@ class CarpenterElement extends __LitElement {
             $centerStyle.innerHTML = `
       body {
         display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         justify-content: center;
         align-items: center;
       }
@@ -272,14 +285,18 @@ class CarpenterElement extends __LitElement {
     // }
     _applyUpdate(update) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('apply update', update);
             // do nothing if no component is set
             if (!this.selectedComponent) {
                 return;
             }
             // set the value into the component
+            console.log('update.path', update.path, update.value);
             __set(this.selectedComponent.values, update.path, update.value);
+            console.log('selectedComponent', this.selectedComponent);
             // create the update object
-            const updateObject = Object.assign(Object.assign({}, update), { component: this.selectedComponent });
+            const updateObject = Object.assign(Object.assign({}, update), { component: __clone(this.selectedComponent) });
+            console.log('updateObject', updateObject);
             // if an adapter is set, use it to apply the update
             if (typeof this.adapter === 'string' &&
                 CarpenterElement._adapters[this.adapter]) {
@@ -348,25 +365,23 @@ class CarpenterElement extends __LitElement {
     //   `;
     // }
     _renderEditor() {
-        var _a;
-        if (!this.selectedComponent) {
-            return;
-        }
+        var _a, _b;
         return html `<div class="${this.cls('_editor')}">
       <div class="${this.cls('_editor-inner')}">
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
           .lnf=${this.lnf}
-          @s-json-schema-form.update=${(e) => {
-            this._applyUpdate(Object.assign({}, e.detail.update));
-        }}
           id="s-carpenter-json-schema-form"
           name="s-carpenter-json-schema-form"
           .buttonClasses=${true}
           .formClasses=${true}
           .verbose=${this.verbose}
-          .schema=${this.selectedComponent.schema}
-          .values=${(_a = this.selectedComponent.values) !== null && _a !== void 0 ? _a : {}}
+          .schema=${(_a = this.selectedComponent) === null || _a === void 0 ? void 0 : _a.schema}
+          .values=${(_b = this.selectedComponent) === null || _b === void 0 ? void 0 : _b.values}
+          @s-json-schema-form.update=${(e) => {
+            console.log('update', e.detail);
+            this._applyUpdate(Object.assign({}, e.detail.update));
+        }}
         ></s-json-schema-form>
       </div>
     </div>`;
@@ -374,9 +389,8 @@ class CarpenterElement extends __LitElement {
     render() {
         return html `
       <s-carpenter-daemon
+        .uiMode=${this.uiMode}
         .lnf=${this.lnf}
-        .selectedComponent=${this.selectedComponent}
-        .preselectedComponent=${this.preselectedComponent}
         @s-carpenter-daemon.component.connect=${(e) => {
             // add the component to the list
             this._components[e.detail.id] = e.detail;
@@ -396,16 +410,16 @@ class CarpenterElement extends __LitElement {
             });
         }}
         @s-carpenter-daemon.select=${(e) => {
+            this.selectedComponent = e.detail;
             this.dispatch('select', {
                 bubbles: true,
-                detail: e.detail
+                detail: e.detail,
             });
         }}
         @s-carpenter-daemon.edit=${(e) => {
-            console.log('EDIT', e.detail);
             this.dispatch('edit', {
                 bubbles: true,
-                detail: e.detail
+                detail: e.detail,
             });
         }}
       ></s-carpenter-daemon>
@@ -436,6 +450,9 @@ __decorate([
 __decorate([
     property({ type: Function })
 ], CarpenterElement.prototype, "loaded", void 0);
+__decorate([
+    property({ type: String })
+], CarpenterElement.prototype, "uiMode", void 0);
 __decorate([
     state()
 ], CarpenterElement.prototype, "_notifications", void 0);

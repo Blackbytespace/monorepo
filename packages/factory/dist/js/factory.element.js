@@ -58,7 +58,7 @@ export default class FactoryElement extends __LitElement {
         this._selectedComponent = null;
         this._components = {};
         this._currentAction = null;
-        this._showUi = false;
+        this._showEditor = false;
         this._state = {};
         this._$commandPanelSelect = null;
         this._$carpenter = null;
@@ -92,13 +92,13 @@ export default class FactoryElement extends __LitElement {
         const matches = document.location.pathname.match(/^\/component\/([^\?]+)/);
         return (_a = matches === null || matches === void 0 ? void 0 : matches[1]) === null || _a === void 0 ? void 0 : _a.split('+');
     }
-    showUi() {
-        this._showUi = true;
-        document.body.classList.add('-show-ui');
+    showEditor() {
+        this._showEditor = true;
+        document.body.classList.add('-show-editor');
     }
     hideUi() {
-        this._showUi = false;
-        document.body.classList.remove('-show-ui');
+        this._showEditor = false;
+        document.body.classList.remove('-show-editor');
     }
     _fetchSpecs() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -107,6 +107,10 @@ export default class FactoryElement extends __LitElement {
             // set the specs
             this.specs = json;
         });
+    }
+    firstUpdated(_changedProperties) {
+        // save the carpenter reference
+        this._$carpenter = this.querySelector('s-carpenter');
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -260,8 +264,8 @@ export default class FactoryElement extends __LitElement {
             var _a;
             switch (true) {
                 case e.key === '§':
-                    // do not hide ui if it was shown with the `showUi` method
-                    if (this._showUi) {
+                    // do not hide ui if it was shown with the `showEditor` method
+                    if (this._showEditor) {
                         return;
                     }
                     //
@@ -336,18 +340,14 @@ export default class FactoryElement extends __LitElement {
         var _a;
         // loop on all the components to render
         (_a = this.componentsToRender) === null || _a === void 0 ? void 0 : _a.forEach((path) => {
-            this._updateComponent(path);
+            this._postComponent(path);
         });
         // set the current component to be the first one
         this._selectedComponentId = Object.keys(this._components)[0];
     }
-    _updateComponent() {
+    _postComponent() {
         return __awaiter(this, arguments, void 0, function* (pathOrId = this.selectedComponentId, settings = {}) {
-            var _a, _b, _c;
-            // save the carpenter reference
-            if (!this._$carpenter) {
-                this._$carpenter = this.querySelector('s-carpenter');
-            }
+            var _a, _b, _c, _d, _e;
             const finalSettings = Object.assign({ $iframe: (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe }, settings);
             // get the component from the specs
             // or from the components list
@@ -382,9 +382,26 @@ export default class FactoryElement extends __LitElement {
             }), json = yield request.json();
             // updading the component values
             component.values = json.values;
+            // handling assets
+            if (json.assets) {
+                for (let asset of json.assets) {
+                    const $asset = new DOMParser().parseFromString(asset, 'text/html').head
+                        .firstChild;
+                    if (!$asset) {
+                        continue;
+                    }
+                    const id = $asset.getAttribute('id');
+                    if ((_b = finalSettings.$iframe) === null || _b === void 0 ? void 0 : _b.querySelector(`#${id}`)) {
+                        // already exists, continue
+                        continue;
+                    }
+                    // add the asset to the iframe
+                    (_c = finalSettings.$iframe) === null || _c === void 0 ? void 0 : _c.contentDocument.head.appendChild($asset);
+                }
+            }
             // update the iframe with new component html
             if (finalSettings.$iframe) {
-                let $componentInIframe = (_b = finalSettings.$iframe.contentDocument) === null || _b === void 0 ? void 0 : _b.querySelector(`#${component.id}`);
+                let $componentInIframe = (_d = finalSettings.$iframe.contentDocument) === null || _d === void 0 ? void 0 : _d.querySelector(`#${component.id}`);
                 const newComponentDom = new DOMParser().parseFromString(json.html, 'text/html');
                 const $newComponent = newComponentDom.querySelector(`#${component.id}`);
                 if (!$componentInIframe) {
@@ -411,9 +428,13 @@ export default class FactoryElement extends __LitElement {
                 });
             }
             // update Factory AND Carpenter
-            (_c = this._$carpenter) === null || _c === void 0 ? void 0 : _c.requestUpdate();
+            (_e = this._$carpenter) === null || _e === void 0 ? void 0 : _e.requestUpdate();
             this.requestUpdate();
         });
+    }
+    setComponent(pathOrId, newComponent) {
+        const component = this.getComponent(pathOrId);
+        this._components[component.id] = newComponent;
     }
     getComponent(pathOrId) {
         if (this._components[pathOrId]) {
@@ -438,7 +459,7 @@ export default class FactoryElement extends __LitElement {
         // set the current component
         this._selectedComponentId = id;
         // render the new component
-        this._updateComponent();
+        this._postComponent();
     }
     // public setComponentValues(id: string, values: any): void {
     //   const component = this.getComponent(id);
@@ -446,7 +467,7 @@ export default class FactoryElement extends __LitElement {
     //     return;
     //   }
     //   component.values = values;
-    //   this._updateComponent(component.name);
+    //   this._postComponent(component.name);
     // }
     toggleUiMode() {
         this.setUiMode(this.state.mode === 'dark' ? 'light' : 'dark');
@@ -475,7 +496,7 @@ export default class FactoryElement extends __LitElement {
         }
         // update the component with empty values
         component.values = {};
-        // this._updateComponent({
+        // this._postComponent({
         //   id,
         // });
     }
@@ -710,11 +731,11 @@ export default class FactoryElement extends __LitElement {
         <div class="${this.cls('_editor-inner')}">
           <s-carpenter
             .lnf=${this.lnf}
-            .selectedComponent=${this.selectedComponent}
-            .preselectedComponentId=${this.preselectedComponent}
+            .uiMode=${this.state.mode}
             .verbose=${this.verbose}
-            @s-carpenter.update=${() => {
-            this._updateComponent();
+            @s-carpenter.update=${(e) => {
+            this.setComponent(e.detail.component.id, e.detail.component);
+            this._postComponent(e.detail.id);
         }}
             @s-carpenter.ready=${(e) => {
             setTimeout(() => {
@@ -760,7 +781,7 @@ export default class FactoryElement extends __LitElement {
             if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
                 return;
             }
-            this.showUi();
+            this.showEditor();
             // set the selected component id
             this._selectedComponentId = e.detail.id;
         }}
@@ -813,7 +834,7 @@ __decorate([
 ], FactoryElement.prototype, "_currentAction", void 0);
 __decorate([
     state()
-], FactoryElement.prototype, "_showUi", void 0);
+], FactoryElement.prototype, "_showEditor", void 0);
 __decorate([
     state()
 ], FactoryElement.prototype, "_state", void 0);

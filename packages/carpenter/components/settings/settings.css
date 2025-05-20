@@ -1,0 +1,5 @@
+.s-carpenter,
+.s-carpenter-daemon {
+  --s-carpenter-frost-amount: 5px;
+  --s-carpenter-frost-alpha: 0.9;
+}
