@@ -13,6 +13,7 @@ export default class CarpenterElement extends __LitElement {
     darkModeClass: string;
     loaded?: Function;
     uiMode: string;
+    appendToBody: boolean;
     _notifications: TCarpenterNotification[];
     _currentMediaQuery: string;
     _currentAction: 'saveValues' | null;

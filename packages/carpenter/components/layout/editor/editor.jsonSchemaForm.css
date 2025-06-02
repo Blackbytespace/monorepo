@@ -132,12 +132,12 @@
 
   .s-json-schema-form-stack-group-renderer {
     > *:first-child {
-      box-shadow: var(--s-factory-depth);
+      box-shadow: var(--s-carpenter-depth);
       background: s-color(main, background, --lightness 98 --alpha 0.98);
       backdrop-filter: blur(5px);
       border: 1px solid s-color(main, border);
       padding: s-space(md);
-      translate: calc(var(--s-factory-side-padding) * -1) 0;
+      translate: calc(var(--s-carpenter-side-padding) * -1) 0;
       @s-transition (fast);
       @s-radius;
 
@@ -146,8 +146,8 @@
       }
     }
     &.-open > *:first-child {
-      translate: calc(var(--s-factory-side-padding) * -1)
-        calc(var(--s-factory-side-padding) * -1);
+      translate: calc(var(--s-carpenter-side-padding) * -1)
+        calc(var(--s-carpenter-side-padding) * -1);
     }
   }
 

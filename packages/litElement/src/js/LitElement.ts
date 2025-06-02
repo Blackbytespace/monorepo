@@ -385,7 +385,9 @@ export default class LitElement extends __LitElement {
         'style',
         ($style) => {
           if ($firstStylesheetLink) {
-            document.head.insertBefore($style, $firstStylesheetLink);
+            try {
+              document.head.insertBefore($style, $firstStylesheetLink);
+            } catch (e) {}
           }
         },
         {

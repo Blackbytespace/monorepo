@@ -47,6 +47,9 @@ export default class CarpenterElement extends __LitElement {
   @property({ type: String })
   public uiMode = 'light';
 
+  @property({ type: Boolean })
+  public appendToBody: boolean = true;
+
   @state()
   public _notifications: TCarpenterNotification[] = [];
 
@@ -172,13 +175,16 @@ export default class CarpenterElement extends __LitElement {
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
-    // get the daemon reference
-    const $daemon = this.querySelector('s-carpenter-daemon');
-    this._$iframe?.contentDocument?.body.appendChild($daemon as Node);
-    this._$daemon = $daemon as __CarpenterDaemonElement;
+    // wait for the iframe to load
+    this._$iframe?.addEventListener('load', () => {
+      // get the daemon reference
+      const $daemon = this.querySelector('s-carpenter-daemon');
+      this._$iframe?.contentDocument?.body.appendChild($daemon as Node);
+      this._$daemon = $daemon as __CarpenterDaemonElement;
 
-    // init the daemon listeners
-    this._initDaemonListeners();
+      // init the daemon listeners
+      this._initDaemonListeners();
+    });
   }
 
   async mount() {
@@ -253,10 +259,18 @@ export default class CarpenterElement extends __LitElement {
     }
     document.body.appendChild($canvas);
 
+    // if wanted, append the carpenter element to the body
+    const $carpenter = document.querySelector(this.tagName);
+    if (this.appendToBody && $carpenter) {
+      this.log(
+        `Appending the carpenter element to the body, as "appendToBody" is set to true`,
+      );
+      document.body.appendChild($carpenter);
+    }
+
     // create the iframe
     const $iframe = document.createElement('iframe');
     $iframe.classList.add(...this.cls('_iframe'));
-    // __iframeAutoSize($iframe, { width: false, height: true });
     this._$iframe = $iframe;
 
     // append the iframe to the body
@@ -288,6 +302,7 @@ export default class CarpenterElement extends __LitElement {
     );
     doc.body.querySelector('s-factory')?.remove();
     doc.body.querySelector('s-carpenter')?.remove();
+    doc.body.querySelector('s-carpenter-cms')?.remove();
     doc.body.querySelector('s-carpenter-daemon')?.remove();
     doc.body.querySelector('.s-carpenter_canvas')?.remove();
 
@@ -315,26 +330,26 @@ export default class CarpenterElement extends __LitElement {
     `;
     $iframe.contentWindow?.document.head.appendChild($centerStyle);
 
-    // if we have some html provided in the component,
-    // set it into the iframe
-    setTimeout(() => {
+    this.$iframe?.addEventListener('load', () => {
+      // if the component has some html,
+      // set it into the iframe
       if (this.selectedComponent?.html) {
         this._setIframeContent(this.selectedComponent.html);
       }
-    }, 100);
 
-    // make sure we don't have any dark mode class
-    this._$iframe?.contentDocument?.body.classList.remove('-dark');
+      // make sure we don't have any dark mode class
+      this._$iframe?.contentDocument?.body.classList.remove('-dark');
+    });
 
     // register the deamon into the iframe
-    __CarpenterDaemonElement.define('s-carpenter-daemon', null, {
-      // window: this._$iframe?.contentWindow,
-    });
+    __CarpenterDaemonElement.define('s-carpenter-daemon');
 
     // empty page
     document
       .querySelectorAll(
-        `body > *:not(${this.tagName}):not(s-factory):not(.${this.cls(
+        `body > *:not(${
+          this.tagName
+        }):not(s-factory):not(.s-carpenter):not(.s-carpenter-cms):not(.${this.cls(
           '_canvas',
         )}):not(script):not(${this.cls('_canvas')
           .map((c) => `.${c}`)
@@ -557,8 +572,9 @@ export default class CarpenterElement extends __LitElement {
       </header>
 
       <ol class="${this.cls('_tree-list')}">
-        ${Object.entries(this._components).map(
-          ([id, component]) => html`
+        ${Object.entries(this._components).map(([id, component]) => {
+          console.log('com', component);
+          return html`
             <li
               class="${this.cls('_tree-item')}"
               @mouseenter=${() => {
@@ -590,8 +606,8 @@ export default class CarpenterElement extends __LitElement {
                   : ''}
               </button>
             </li>
-          `,
-        )}
+          `;
+        })}
       </ol>
     </nav>`;
   }

@@ -277,7 +277,10 @@ class LitElement extends __LitElement {
             const $firstStylesheetLink = document.head.querySelector('link[rel="stylesheet"]');
             __querySelectorLive('style', ($style) => {
                 if ($firstStylesheetLink) {
-                    document.head.insertBefore($style, $firstStylesheetLink);
+                    try {
+                        document.head.insertBefore($style, $firstStylesheetLink);
+                    }
+                    catch (e) { }
                 }
             }, {
                 rootNode: document.head,

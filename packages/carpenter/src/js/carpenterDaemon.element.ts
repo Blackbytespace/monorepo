@@ -117,6 +117,10 @@ export default class CarpenterDaemonElement extends __LitElement {
     __querySelectorLive(
       '[type="carpenter/component"]',
       ($component) => {
+        if (!$component.parentElement) {
+          return;
+        }
+        console.log('ININT', $component);
         this._initComponent($component);
       },
       {

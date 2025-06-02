@@ -1,0 +1,8 @@
+body:has(.s-carpenter-cms),
+.s-carpenter-daemon {
+  .button {
+    display: inline-block;
+    padding: s-space(sm) s-space(md);
+    cursor: pointer;
+  }
+}

@@ -94,6 +94,10 @@ export default class CarpenterDaemonElement extends __LitElement {
     adoptedCallback() {
         // query live for all the components
         __querySelectorLive('[type="carpenter/component"]', ($component) => {
+            if (!$component.parentElement) {
+                return;
+            }
+            console.log('ININT', $component);
             this._initComponent($component);
         }, {
             disconnectedCallback: ($component) => {

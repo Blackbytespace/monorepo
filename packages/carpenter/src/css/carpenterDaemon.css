@@ -58,7 +58,7 @@
     background: s-color(main, background, --alpha 0.6);
     backdrop-filter: blur(var(--s-carpenter-frost-amount));
     color: s-color(main, text);
-    box-shadow: var(--s-factory-depth);
+    box-shadow: var(--s-carpenter-depth);
     padding: var(--s-carpenter-daemon-padding);
     gap: s-space(sm);
     @s-radius;

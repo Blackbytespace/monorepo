@@ -1,0 +1,6 @@
+@import './id.bare.css';
+
+.s-factory_id {
+  color: s-color(complementary);
+  border: 1px solid s-color(complementary);
+}

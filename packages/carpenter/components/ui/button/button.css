@@ -1,0 +1,51 @@
+@import './button.bare.css';
+
+body:has(.s-carpenter-cms),
+.s-carpenter-daemon {
+  .button {
+    border-radius: s-radius();
+    text-align: center;
+    font-size: s-size(button);
+    font-weight: bold;
+    transition: s-transition(fast);
+    @s-radius;
+
+    &:not(.-outline, .-text) {
+      background: s-color(current);
+      color: s-color(current, foreground);
+      border: 1px solid s-color(current, border);
+
+      &:hover {
+        background: s-color(current, --lighten 10);
+        border: 1px solid s-color(current, --lighten 10);
+      }
+      &:active {
+        background: s-color(current, --darken 10);
+        border: 1px solid s-color(current, --darken 10);
+        color: s-color(current, foreground);
+      }
+    }
+
+    &.-outline {
+      color: s-color(current);
+      background: s-color(current, --alpha 0.04);
+      border: 1px solid s-color(current, --alpha 0.4);
+
+      &:hover {
+        background: s-color(current);
+        color: s-color(current, foreground);
+      }
+      &:active {
+        background: s-color(current, --darken 10);
+        border: 1px solid s-color(current, --darken 10);
+        color: s-color(current, foreground);
+      }
+    }
+
+    &.-text {
+      background: transparent !important;
+      border: none !important;
+      color: s-color(current);
+    }
+  }
+}

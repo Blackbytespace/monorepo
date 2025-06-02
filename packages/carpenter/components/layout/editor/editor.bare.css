@@ -1,0 +1,53 @@
+.s-carpenter-cms_editor {
+  position: absolute;
+  top: var(--s-carpenter-side-padding);
+  right: var(--s-carpenter-side-padding);
+  bottom: var(--s-carpenter-side-padding);
+  width: var(--s-carpenter-editor-width);
+  translate: calc(100% + var(--s-carpenter-side-padding));
+
+  &:hover {
+    translate: 0;
+  }
+
+  .s-carpenter-cms_editor-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    @s-scrollbar (hide);
+
+    .s-carpenter {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 100px;
+    height: 100%;
+    background: transparent;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100px;
+    height: 100%;
+    background: transparent;
+  }
+}
+
+.-show-editor .s-carpenter-cms_editor,
+.-show-ui .s-carpenter-cms_editor {
+  translate: 0;
+}

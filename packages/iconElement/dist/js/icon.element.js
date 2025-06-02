@@ -77,6 +77,7 @@ export default class AdvancedSelectElement extends __LitElement {
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('wfewf', this.name);
             // construct the url
             let url = this.providers[this.provider].url
                 .replace('%type', this.type)

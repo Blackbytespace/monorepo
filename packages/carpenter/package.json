@@ -6,21 +6,16 @@
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch & vite build --watch",
+    "dev": "tsc --watch & vite build --watch & npm run dev.dependencies",
+    "dev.dependencies": "npm run dev.sugarcss & npm run dev.jsonSchemaForm & npm run dev.sugar",
+    "dev.sugarcss": "(cd ../sugarcss && npm run dev)",
+    "dev.sugar": "(cd ../sugar && npm run dev)",
+    "dev.jsonSchemaForm": "(cd ../jsonSchemaForm && npm run dev)",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@editorjs/editorjs": "^2.30.2",
-    "@editorjs/embed": "^2.7.4",
-    "@editorjs/header": "^2.8.7",
-    "@editorjs/link": "^2.6.2",
-    "@editorjs/list": "^1.10.0",
-    "@editorjs/nested-list": "^1.4.3",
-    "@editorjs/paragraph": "^2.11.6",
-    "@editorjs/quote": "^2.6.0",
-    "@editorjs/underline": "^1.1.0",
     "@lotsof/json-schema-form": "^1.0.0-alpha.93",
     "@lotsof/lit-element": "^1.0.0-alpha.93",
     "@lotsof/icon-element": "^1.0.0-alpha.93",
@@ -37,7 +32,7 @@
       "browser": "./dist/js/_exports.js"
     }
   },
-  "types": "src/shared/carpenter.type.ts",
+  "types": "./src/shared/_exports.ts",
   "homepage": "https://lotsof.dev",
   "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }
