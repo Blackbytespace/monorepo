@@ -14,8 +14,8 @@
     align-items: center;
     pointer-events: all;
     position: absolute;
-    top: calc(var(--s-carpenter-daemon-border-width) * -1);
-    right: calc(var(--s-carpenter-daemon-border-width) * -1);
+    top: var(--s-carpenter-daemon-offset);
+    right: var(--s-carpenter-daemon-offset);
     display: flex;
   }
 
@@ -31,8 +31,8 @@
     align-items: center;
     pointer-events: all;
     position: absolute;
-    top: calc(var(--s-carpenter-daemon-border-width) * -1);
-    left: calc(var(--s-carpenter-daemon-border-width) * -1);
+    top: var(--s-carpenter-daemon-offset);
+    left: var(--s-carpenter-daemon-offset);
     display: flex;
   }
 

@@ -3,9 +3,10 @@ import __IconElement from '@lotsof/icon-element';
 import '@lotsof/json-schema-form';
 import __JsonSchemaFormElement from '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
+import { __copyText } from '@lotsof/sugar/clipboard';
 import { __injectHtml } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { type THotkeySettings } from '@lotsof/sugar/keyboard';
+import { __escapeQueue, type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { __clone, __set } from '@lotsof/sugar/object';
 import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
@@ -115,6 +116,12 @@ export default class CarpenterElement extends __LitElement {
       setTimeout(() => {
         // @ts-ignore
         this._$jsonSchemaForm.requestUpdate();
+      });
+    }
+
+    if (changedProperties.has('selectedComponent')) {
+      setTimeout(() => {
+        this.requestUpdate();
       });
     }
   }
@@ -338,6 +345,38 @@ export default class CarpenterElement extends __LitElement {
       });
   }
 
+  private _setSelectedComponent(component: TCarpenterComponent | null): void {
+    // set the selected component
+    this.selectedComponent = component ?? undefined;
+    // add an action in the escape queue
+    __escapeQueue(
+      () => {
+        this.selectedComponent = undefined;
+      },
+      {
+        ctx: [document, this.$iframeDocument as Document],
+      },
+    );
+    // dispatch the select event
+    this.dispatch('select', {
+      bubbles: true,
+      detail: component,
+    });
+  }
+
+  private _setPreselectedComponent(
+    component: TCarpenterComponent | null,
+  ): void {
+    // set the preselected component
+    this.preselectedComponent = component ?? undefined;
+
+    // dispatch the preselect event
+    this.dispatch('preselect', {
+      bubbles: true,
+      detail: component,
+    });
+  }
+
   private _setIframeContent(html: string): void {
     if (!this._$iframe?.contentDocument) {
       return;
@@ -359,24 +398,19 @@ export default class CarpenterElement extends __LitElement {
     );
   }
 
-  // public selectMediaQuery(name: string): void {
-  //   this._currentMediaQuery = name;
-  // }
-
   private async _applyUpdate(update: TCarpenterUpdatePayload): Promise<void> {
-    console.log('apply update', update);
     // do nothing if no component is set
     if (!this.selectedComponent) {
       return;
     }
 
     // set the value into the component
-
-    console.log('update.path', update.path, update.value);
-
     __set(this.selectedComponent.values, update.path, update.value);
-
-    console.log('selectedComponent', this.selectedComponent);
+    __set(
+      this._components[this.selectedComponent.id].values,
+      update.path,
+      update.value,
+    );
 
     // create the update object
     const updateObject: TCarpenterUpdateObject = {
@@ -384,16 +418,14 @@ export default class CarpenterElement extends __LitElement {
       component: __clone(this.selectedComponent),
     };
 
-    console.log('updateObject', updateObject);
-
     // if an adapter is set, use it to apply the update
     if (
       typeof this.adapter === 'string' &&
       CarpenterElement._adapters[this.adapter]
     ) {
-      CarpenterElement._adapters[this.adapter].applyUpdate(updateObject);
+      await CarpenterElement._adapters[this.adapter].applyUpdate(updateObject);
     } else if (this.adapter) {
-      (<TCarpenterAdapter>this.adapter).applyUpdate(updateObject);
+      await (<TCarpenterAdapter>this.adapter).applyUpdate(updateObject);
     }
 
     // dispatch an event
@@ -402,6 +434,15 @@ export default class CarpenterElement extends __LitElement {
       cancelable: false,
       detail: updateObject,
     });
+
+    // set the internal name of the component
+    // if exists and is not set
+    if (this._components[this.selectedComponent.id]) {
+      if (this._components[this.selectedComponent.id].values?.internalName) {
+        this._components[this.selectedComponent.id].internalName =
+          this._components[this.selectedComponent.id].values.internalName;
+      }
+    }
   }
 
   // private _renderMediaQueries(): any {
@@ -460,27 +501,99 @@ export default class CarpenterElement extends __LitElement {
   // }
 
   private _renderEditor(): any {
+    if (!this.selectedComponent) {
+      return html``;
+    }
+
     return html`<div class="${this.cls('_editor')}">
       <div class="${this.cls('_editor-inner')}">
+        <header class=${this.cls('_header')}>
+          <div class="${this.cls('_header-metas')}">
+            <h2 class=${this.cls('_header-title')}>
+              <s-icon
+                class="${this.cls('_header-icon')}"
+                name="${this.selectedComponent.icon}"
+              ></s-icon>
+              ${this.selectedComponent.schema.title}
+            </h2>
+            ${this.selectedComponent.values?.id
+              ? html`<span
+                  class="${this.cls('_header-title-id')} button -outline"
+                  @click=${() => {
+                    __copyText(this.selectedComponent?.values.id);
+                  }}
+                  >ID: #${this.selectedComponent.values.id}
+                  <s-icon name="clipboard-document-list"
+                /></span>`
+              : ''}
+          </div>
+          <p class=${this.cls('_header-description')}>
+            ${this.selectedComponent.schema.description}
+          </p>
+        </header>
+
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
-          .lnf=${this.lnf}
-          id="s-carpenter-json-schema-form"
           name="s-carpenter-json-schema-form"
+          .lnf=${this.lnf}
           .buttonClasses=${true}
           .formClasses=${true}
+          .header=${false}
           .verbose=${this.verbose}
-          .schema=${this.selectedComponent?.schema}
-          .values=${this.selectedComponent?.values}
+          .schema=${__clone(this.selectedComponent.schema)}
+          .values=${__clone(this.selectedComponent.values)}
           @s-json-schema-form.update=${(e: CustomEvent) => {
-            console.log('update', e.detail);
-            this._applyUpdate({
-              ...e.detail.update,
-            });
+            this._applyUpdate(e.detail.update);
           }}
         ></s-json-schema-form>
       </div>
     </div>`;
+  }
+
+  public _renderTree(): any {
+    return html`<nav class="${this.cls('_tree')}">
+      <header class=${this.cls('_header')}>
+        <h2 class=${this.cls('_header-title')}>Inspector</h2>
+      </header>
+
+      <ol class="${this.cls('_tree-list')}">
+        ${Object.entries(this._components).map(
+          ([id, component]) => html`
+            <li
+              class="${this.cls('_tree-item')}"
+              @mouseenter=${() => {
+                this._setPreselectedComponent(component);
+              }}
+            >
+              <button
+                class="${this.cls('_tree-item-button')}"
+                @click=${() => {
+                  this._setSelectedComponent(component);
+                }}
+              >
+                <s-icon name="${component.icon}"></s-icon>
+                <span class="${this.cls('_tree-item-name')}">
+                  ${component.internalName}
+                </span>
+                ${component.values?.id
+                  ? html`
+                      <span
+                        class="${this.cls('_tree-item-id')}"
+                        @click=${(e: MouseEvent) => {
+                          e.stopPropagation();
+                          __copyText(component.values.id ?? '');
+                        }}
+                        >#${component.values.id}
+                        <s-icon name="clipboard-document-list"></s-icon>
+                      </span>
+                    `
+                  : ''}
+              </button>
+            </li>
+          `,
+        )}
+      </ol>
+    </nav>`;
   }
 
   public render() {
@@ -488,6 +601,10 @@ export default class CarpenterElement extends __LitElement {
       <s-carpenter-daemon
         .uiMode=${this.uiMode}
         .lnf=${this.lnf}
+        .selectedComponent=${this.selectedComponent}
+        .preselectedComponent=${this.preselectedComponent}
+        .scrollOnSelect=${true}
+        .scrollOnPreselect=${true}
         @s-carpenter-daemon.component.connect=${(e: CustomEvent) => {
           // add the component to the list
           this._components[e.detail.id] = e.detail;
@@ -506,12 +623,11 @@ export default class CarpenterElement extends __LitElement {
             detail: e.detail,
           });
         }}
+        @s-carpenter-daemon.preselect=${(e: CustomEvent) => {
+          this._setPreselectedComponent(e.detail);
+        }}
         @s-carpenter-daemon.select=${(e: CustomEvent) => {
-          this.selectedComponent = e.detail;
-          this.dispatch('select', {
-            bubbles: true,
-            detail: e.detail,
-          });
+          this._setSelectedComponent(e.detail);
         }}
         @s-carpenter-daemon.edit=${(e: CustomEvent) => {
           this.dispatch('edit', {
@@ -520,7 +636,7 @@ export default class CarpenterElement extends __LitElement {
           });
         }}
       ></s-carpenter-daemon>
-      ${this._renderEditor()}
+      ${this.selectedComponent ? this._renderEditor() : this._renderTree()}
     `;
   }
 }

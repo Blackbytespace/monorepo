@@ -34,9 +34,12 @@ export default class CarpenterElement extends __LitElement {
     private _initDaemonListeners;
     private _initListeners;
     private _initEnvironment;
+    private _setSelectedComponent;
+    private _setPreselectedComponent;
     private _setIframeContent;
     private _updateIframeSize;
     private _applyUpdate;
     private _renderEditor;
+    _renderTree(): any;
     render(): import("lit-html").TemplateResult<1>;
 }

@@ -12,6 +12,8 @@
 #!.yarn/cache
 .pnp.*
 
+/packages/website-cosc/
+
 /node_modules
 /packages/*/node_modules
 /packages/*/vendor

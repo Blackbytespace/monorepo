@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@lotsof/wordpress-playground",
-  "version": "1.0.0-alpha.91",
+  "version": "1.0.0-alpha.93",
   "description": "",
   "main": "index.js",
   "type": "module",

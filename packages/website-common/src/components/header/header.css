@@ -11,6 +11,10 @@
 .header {
   position: relative;
   margin-block-end: s-space(10);
+  /* transition: s-delay(default);
+  transition: s-delay(in-viewport, 1s);
+  transition: s-delay();
+  transition: s-delay(1s); */
   @s-weight (bolder);
 
   .header_title {

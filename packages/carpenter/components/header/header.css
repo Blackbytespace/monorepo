@@ -1,0 +1,28 @@
+@import './header.bare.css';
+
+.s-carpenter_header {
+  padding: s-space(lg);
+  padding-block-end: 0;
+
+  .s-carpenter_header-metas {
+    display: flex;
+    align-items: center;
+  }
+
+  .s-carpenter_header-title {
+    display: flex;
+    flex-grow: 1;
+    gap: s-space(sm);
+    @s-typo (h1);
+    margin-block-end: s-space(xs);
+  }
+
+  .s-carpenter_header-title-id {
+    font-family: s-font-family(code);
+    @s-map-color (complementary);
+  }
+
+  .s-carpenter_header-description {
+    @s-typo (p);
+  }
+}

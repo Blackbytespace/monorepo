@@ -24,6 +24,9 @@
   --s-transition-default: all 0.2s s-ease();
   --s-transition-fast: all 0.1s s-ease();
 
+  --s-delay-default: 0s;
+  --s-delay-in-viewport: 0.5s;
+
   --s-radius-default: 8px;
 
   --s-zindex-header: 100;

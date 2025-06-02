@@ -13,6 +13,7 @@ export default class JsonSchemaFormElement extends __LitElement {
     accessor values: any;
     accessor formClasses: boolean;
     accessor buttonClasses: boolean | string;
+    accessor header: boolean | string;
     accessor widgets: Record<string, TJsonSchemaFormWidget>;
     private _registeredWidgets;
     private _errorsByPath;

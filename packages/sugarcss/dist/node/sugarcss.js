@@ -1,5 +1,6 @@
 import __colorDeclaration from './visitors/declarations/color.js';
 import __containerDeclaration from './visitors/declarations/container.js';
+import __delayDeclaration from './visitors/declarations/delay.js';
 import __easeDeclaration from './visitors/declarations/ease.js';
 import __fontDeclaration from './visitors/declarations/font.js';
 import __fontFamilyDeclaration from './visitors/declarations/fontFamily.js';
@@ -16,6 +17,7 @@ import __transitionDeclaration from './visitors/declarations/transition.js';
 import __typoDeclaration from './visitors/declarations/typo.js';
 import __colorFunction from './visitors/functions/color.js';
 import __containerFunction from './visitors/functions/container.js';
+import __delayFunction from './visitors/functions/delay.js';
 import __easeFunction from './visitors/functions/ease.js';
 import __fontFunction from './visitors/functions/font.js';
 import __fontFamilyFunction from './visitors/functions/fontFamily.js';
@@ -133,6 +135,7 @@ export default function sugarcss(settings = {}) {
     env.functions['s-rem'] = __remFunction;
     env.functions['s-zindex'] = __zindexFunction;
     env.functions['s-weight'] = __weight;
+    env.functions['s-delay'] = __delayFunction;
     env.rules['s-scrollbar'] = __scrollbarRule;
     env.rules['s-transition'] = __transitionRule;
     env.rules['s-radius'] = __radiusRule;
@@ -187,6 +190,9 @@ export default function sugarcss(settings = {}) {
             ['s-weight'](v) {
                 return __weight(v, finalSettings);
             },
+            ['s-delay'](v) {
+                return __delayFunction(v, finalSettings);
+            },
         },
         Declaration: {
             custom(v) {
@@ -228,6 +234,8 @@ export default function sugarcss(settings = {}) {
                         return __containerDeclaration(v, finalSettings);
                     case v.name.startsWith(`--s-grid-`):
                         return __gridDeclaration(v, finalSettings);
+                    case v.name.startsWith(`--s-delay-`):
+                        return __delayDeclaration(v, finalSettings);
                 }
             },
         },

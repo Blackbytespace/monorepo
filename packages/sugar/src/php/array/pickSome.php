@@ -2,6 +2,8 @@
 
 namespace Sugar\Array;
 
+use PhpParser\Node\NullableType;
+
 /**
  * @name            pickSome
  * @namespace       php.array
@@ -24,7 +26,7 @@ namespace Sugar\Array;
  * @since       2.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
  */
-function pickSome(array $array, int $min = 1, int $max = null): array
+function pickSome(array $array, int $min = 1, NullableType $max = null): array
 {
     if ($max === null) {
         $max = count($array);

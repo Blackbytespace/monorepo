@@ -1,0 +1,36 @@
+@import './tree.bare.css';
+
+.s-carpenter_tree {
+  .s-carpenter_tree-list {
+    padding: s-space(lg);
+    display: flex;
+    flex-direction: column;
+    gap: s-space(sm);
+    align-items: stretch;
+  }
+
+  .s-carpenter_tree-item {
+  }
+
+  .s-carpenter_tree-item-button {
+    display: flex;
+    align-items: center;
+    gap: s-space(sm);
+    padding: s-space(sm);
+    width: 100%;
+    @s-radius;
+
+    &:hover {
+      background: s-color(main, surface);
+    }
+  }
+
+  .s-carpenter_tree-item-name {
+    flex-grow: 1;
+  }
+
+  .s-carpenter_tree-item-id {
+    color: s-color(complementary);
+    @s-font (code);
+  }
+}

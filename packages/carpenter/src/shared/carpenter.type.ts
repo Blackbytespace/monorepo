@@ -26,6 +26,8 @@ export type TCarpenterComponentAsset = {
 export type TCarpenterComponent = {
   id: string;
   name: string;
+  icon?: string;
+  internalName?: string;
   description?: string;
   schema: JSONSchema7;
   values: any;

@@ -1,5 +1,4 @@
 @import './editor.bare.css';
-@import './editor.jsonSchemaForm.css';
 
 .s-factory.-lnf .s-factory_editor {
   background: s-color(main, background);

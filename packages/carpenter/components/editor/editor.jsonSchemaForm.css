@@ -7,24 +7,6 @@
     gap: s-space(md);
   }
 
-  .s-json-schema-form_header {
-    user-select: none;
-  }
-  .s-json-schema-form_title {
-    @s-typo (h1);
-    margin-block-end: s-space(xs);
-  }
-
-  .s-json-schema-form_title-id {
-    float: right;
-    font-family: s-font-family(code);
-    @s-map-color (complementary);
-  }
-
-  .s-json-schema-form_description {
-    @s-typo (p);
-  }
-
   .s-json-schema-form_values-object,
   .s-json-schema-form_values {
     &:has(.s-json-schema-form-stack-group-renderer.-open):before {

@@ -1,4 +1,4 @@
-import { LitElement as __LitElement, html as __html } from 'lit';
+import { PropertyValues, LitElement as __LitElement, html as __html } from 'lit';
 export { __html as html };
 export type TLitElementEventListenerObject = {
     listener: EventListenerOrEventListenerObject;
@@ -140,6 +140,7 @@ export default class LitElement extends __LitElement {
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
     constructor(internalName: string, props?: TSLitElementDefaultProps);
+    protected update(changedProperties: PropertyValues): void;
     connectedCallback(): void;
     /**
      * @name           setState

@@ -24,7 +24,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
+var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_header_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
 import __IconElement from '@lotsof/icon-element';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
@@ -52,6 +52,8 @@ class JsonSchemaFormElement extends __LitElement {
     set formClasses(value) { __classPrivateFieldSet(this, _JsonSchemaFormElement_formClasses_accessor_storage, value, "f"); }
     get buttonClasses() { return __classPrivateFieldGet(this, _JsonSchemaFormElement_buttonClasses_accessor_storage, "f"); }
     set buttonClasses(value) { __classPrivateFieldSet(this, _JsonSchemaFormElement_buttonClasses_accessor_storage, value, "f"); }
+    get header() { return __classPrivateFieldGet(this, _JsonSchemaFormElement_header_accessor_storage, "f"); }
+    set header(value) { __classPrivateFieldSet(this, _JsonSchemaFormElement_header_accessor_storage, value, "f"); }
     get widgets() { return __classPrivateFieldGet(this, _JsonSchemaFormElement_widgets_accessor_storage, "f"); }
     set widgets(value) { __classPrivateFieldSet(this, _JsonSchemaFormElement_widgets_accessor_storage, value, "f"); }
     constructor() {
@@ -60,6 +62,7 @@ class JsonSchemaFormElement extends __LitElement {
         _JsonSchemaFormElement_values_accessor_storage.set(this, {});
         _JsonSchemaFormElement_formClasses_accessor_storage.set(this, false);
         _JsonSchemaFormElement_buttonClasses_accessor_storage.set(this, false);
+        _JsonSchemaFormElement_header_accessor_storage.set(this, true);
         _JsonSchemaFormElement_widgets_accessor_storage.set(this, {});
         this._registeredWidgets = {};
         this._errorsByPath = {};
@@ -395,6 +398,7 @@ class JsonSchemaFormElement extends __LitElement {
         </ul>
       `;
         }
+        // console.log('eee', schema, path, values);
         switch (true) {
             case schema.type === 'object' && schema.properties !== undefined:
                 return html `
@@ -549,22 +553,28 @@ class JsonSchemaFormElement extends __LitElement {
         if (this.schema) {
             return html `
         <div class=${this.cls('_inner')}>
-          <header class=${this.cls('_header')}>
-            <h2 class=${this.cls('_title')}>
-              ${this.schema.title}
-              ${((_a = this.values) === null || _a === void 0 ? void 0 : _a.id)
-                ? html `<span
-                    class="${this.cls('_title-id')} button -outline"
-                    @click=${() => {
-                    __copyText(this.values.id);
-                }}
-                    >ID: #${this.values.id}
-                    <s-icon name="clipboard-document-list"
-                  /></span>`
+          ${this.header
+                ? html `
+                <header class=${this.cls('_header')}>
+                  <h2 class=${this.cls('_title')}>
+                    ${this.schema.title}
+                    ${((_a = this.values) === null || _a === void 0 ? void 0 : _a.id)
+                    ? html `<span
+                          class="${this.cls('_title-id')} button -outline"
+                          @click=${() => {
+                        __copyText(this.values.id);
+                    }}
+                          >ID: #${this.values.id}
+                          <s-icon name="clipboard-document-list"
+                        /></span>`
+                    : ''}
+                  </h2>
+                  <p class=${this.cls('_description')}>
+                    ${this.schema.description}
+                  </p>
+                </header>
+              `
                 : ''}
-            </h2>
-            <p class=${this.cls('_description')}>${this.schema.description}</p>
-          </header>
           <div class=${this.cls('_values')}>
             ${this._renderComponentValuesPreview(this.schema)}
           </div>
@@ -573,7 +583,7 @@ class JsonSchemaFormElement extends __LitElement {
         }
     }
 }
-_JsonSchemaFormElement_schema_accessor_storage = new WeakMap(), _JsonSchemaFormElement_values_accessor_storage = new WeakMap(), _JsonSchemaFormElement_formClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_buttonClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_widgets_accessor_storage = new WeakMap();
+_JsonSchemaFormElement_schema_accessor_storage = new WeakMap(), _JsonSchemaFormElement_values_accessor_storage = new WeakMap(), _JsonSchemaFormElement_formClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_buttonClasses_accessor_storage = new WeakMap(), _JsonSchemaFormElement_header_accessor_storage = new WeakMap(), _JsonSchemaFormElement_widgets_accessor_storage = new WeakMap();
 JsonSchemaFormElement.widgets = {};
 JsonSchemaFormElement.groupRenderers = {};
 export default JsonSchemaFormElement;
@@ -589,6 +599,9 @@ __decorate([
 __decorate([
     property()
 ], JsonSchemaFormElement.prototype, "buttonClasses", null);
+__decorate([
+    property()
+], JsonSchemaFormElement.prototype, "header", null);
 __decorate([
     property({ type: Object })
 ], JsonSchemaFormElement.prototype, "widgets", null);

@@ -1,4 +1,5 @@
 import __LitElement from '@lotsof/lit-element';
+import { PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import '../../src/css/icon.element.css';
@@ -70,10 +71,12 @@ export default class AdvancedSelectElement extends __LitElement {
     super('s-icon');
   }
 
-  protected async mount() {
+  protected firstUpdated(_changedProperties: PropertyValues): void {
     // add the provider class
     this.classList.add(`-${this.provider}`);
+  }
 
+  protected async mount() {
     // construct the url
     let url: string = this.providers[this.provider].url
       .replace('%type', this.type)

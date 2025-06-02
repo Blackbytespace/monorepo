@@ -9,7 +9,11 @@ import {
 import { __unique } from '@lotsof/sugar/array';
 import { __isInViewport } from '@lotsof/sugar/is';
 import { __camelCase } from '@lotsof/sugar/string';
-import { LitElement as __LitElement, html as __html } from 'lit';
+import {
+  PropertyValues,
+  LitElement as __LitElement,
+  html as __html,
+} from 'lit';
 import { property } from 'lit/decorators.js';
 
 export { __html as html };
@@ -281,6 +285,22 @@ export default class LitElement extends __LitElement {
     const nodeFirstUpdated = this.firstUpdated?.bind(this);
     // @ts-ignore
     this.firstUpdated = async () => {
+      // make sure the component has it's base class
+      // this is useful when some classes are added on the component itself
+      // and overrides the base class
+      const observer = new MutationObserver((mutations) => {
+        observer.disconnect();
+        this.classList.add(...this.cls(''));
+        observer.observe(this, {
+          childList: true,
+          attributeFilter: ['class'],
+        });
+      });
+      observer.observe(this, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+
       if (nodeFirstUpdated) {
         // @ts-ignore
         await nodeFirstUpdated();
@@ -312,6 +332,11 @@ export default class LitElement extends __LitElement {
     this._waitAndExecute(mountWhen, () => {
       this._mount();
     });
+  }
+
+  protected update(changedProperties: PropertyValues): void {
+    super.update(changedProperties);
+    this.classList.add(...this.cls(''));
   }
 
   connectedCallback(): void {

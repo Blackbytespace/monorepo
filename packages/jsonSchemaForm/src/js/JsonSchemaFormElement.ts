@@ -40,6 +40,9 @@ export default class JsonSchemaFormElement extends __LitElement {
   @property()
   accessor buttonClasses: boolean | string = false;
 
+  @property()
+  accessor header: boolean | string = true;
+
   @property({ type: Object })
   accessor widgets: Record<string, TJsonSchemaFormWidget> = {};
 
@@ -436,6 +439,8 @@ export default class JsonSchemaFormElement extends __LitElement {
       `;
     }
 
+    // console.log('eee', schema, path, values);
+
     switch (true) {
       case schema.type === 'object' && schema.properties !== undefined:
         return html`
@@ -604,22 +609,28 @@ export default class JsonSchemaFormElement extends __LitElement {
     if (this.schema) {
       return html`
         <div class=${this.cls('_inner')}>
-          <header class=${this.cls('_header')}>
-            <h2 class=${this.cls('_title')}>
-              ${this.schema.title}
-              ${this.values?.id
-                ? html`<span
-                    class="${this.cls('_title-id')} button -outline"
-                    @click=${() => {
-                      __copyText(this.values.id);
-                    }}
-                    >ID: #${this.values.id}
-                    <s-icon name="clipboard-document-list"
-                  /></span>`
-                : ''}
-            </h2>
-            <p class=${this.cls('_description')}>${this.schema.description}</p>
-          </header>
+          ${this.header
+            ? html`
+                <header class=${this.cls('_header')}>
+                  <h2 class=${this.cls('_title')}>
+                    ${this.schema.title}
+                    ${this.values?.id
+                      ? html`<span
+                          class="${this.cls('_title-id')} button -outline"
+                          @click=${() => {
+                            __copyText(this.values.id);
+                          }}
+                          >ID: #${this.values.id}
+                          <s-icon name="clipboard-document-list"
+                        /></span>`
+                      : ''}
+                  </h2>
+                  <p class=${this.cls('_description')}>
+                    ${this.schema.description}
+                  </p>
+                </header>
+              `
+            : ''}
           <div class=${this.cls('_values')}>
             ${this._renderComponentValuesPreview(this.schema)}
           </div>

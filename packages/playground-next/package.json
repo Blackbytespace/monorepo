@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "playground-next",
-  "version": "1.0.0-alpha.91",
+  "version": "1.0.0-alpha.93",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

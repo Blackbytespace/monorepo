@@ -4,6 +4,7 @@ import __AdvancedSelectElement, {
   TAdvancedSelectElementItemsFunctionApi,
 } from '@lotsof/advanced-select-element';
 import '@lotsof/carpenter';
+// @ts-ignore
 import { __CarpenterElement } from '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
@@ -941,9 +942,9 @@ export default class FactoryElement extends __LitElement {
               this._selectedComponentId = e.detail.id;
             }}
             @s-carpenter.edit=${(e) => {
-              if (!e.detail?.id || !this._components[e.detail.id]) {
-                return;
-              }
+              // if (!e.detail?.id || !this._components[e.detail.id]) {
+              //   return;
+              // }
               this.showEditor();
               // set the selected component id
               this._selectedComponentId = e.detail.id;

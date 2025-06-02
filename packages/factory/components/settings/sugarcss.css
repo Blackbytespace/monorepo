@@ -162,6 +162,7 @@ body.-dark {
   --s-shade-background: --lightness 16;
   --s-shade-surface: --lightness 94;
   --s-shade-border: --lightness 26;
+  --s-shade-surface: --lightness 22;
 }
 
 ::selection {

@@ -2,14 +2,17 @@
 
 .s-carpenter-daemon.-lnf {
   --s-carpenter-daemon-border-width: 3px;
+  --s-carpenter-daemon-padding: s-space(md);
+  --s-carpenter-daemon-offset: calc(s-space(md) * -1);
 }
 
 .s-carpenter-daemon.-lnf {
   border-width: var(--s-carpenter-daemon-border-width);
-  border-color: s-color(main, background);
+  border-color: s-color(main, background, --alpha 0.6);
   color: s-color(accent, foreground);
-  opacity: 0;
+  font-size: s-rem(14px);
   @s-transition (fast);
+  @s-radius;
 
   &:after {
     pointer-events: none;
@@ -19,24 +22,24 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: s-color(main, background, --alpha 0.1);
+    background: s-color(main, background, --alpha 0.04);
     z-index: -1;
   }
 
   &:hover {
-    opacity: 1;
+    /* opacity: 1; */
   }
 
   .s-carpenter-daemon_tools {
-    background: s-color(main, background, --alpha 0.8);
+    background: s-color(main, background, --alpha 0.6);
     backdrop-filter: blur(var(--s-carpenter-frost-amount));
-    font-size: s-rem(12px);
-    border-bottom-left-radius: s-radius();
+    @s-radius;
   }
 
   .s-carpenter-daemon_tool {
-    padding: s-space(sm);
+    padding: var(--s-carpenter-daemon-padding);
     gap: s-space(xs);
+    @s-radius;
     @s-transition (fast);
 
     &:hover {
@@ -52,14 +55,13 @@
   }
 
   .s-carpenter-daemon_header {
-    background: s-color(main, background, --alpha 0.8);
+    background: s-color(main, background, --alpha 0.6);
     backdrop-filter: blur(var(--s-carpenter-frost-amount));
     color: s-color(main, text);
     box-shadow: var(--s-factory-depth);
-    font-size: s-rem(12px);
-    padding: s-space(sm);
+    padding: var(--s-carpenter-daemon-padding);
     gap: s-space(sm);
-    border-bottom-right-radius: s-radius();
+    @s-radius;
   }
 
   .s-carpenter-daemon_title {

@@ -777,10 +777,9 @@ export default class FactoryElement extends __LitElement {
             this._selectedComponentId = e.detail.id;
         }}
             @s-carpenter.edit=${(e) => {
-            var _a;
-            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
-                return;
-            }
+            // if (!e.detail?.id || !this._components[e.detail.id]) {
+            //   return;
+            // }
             this.showEditor();
             // set the selected component id
             this._selectedComponentId = e.detail.id;

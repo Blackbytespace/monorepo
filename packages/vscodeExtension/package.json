@@ -27,7 +27,7 @@
   "dependencies": {
     "glob": "^11.0.0",
     "vscode-languageclient": "^9.0.1",
-    "@lotsof/lsp": "^1.0.0-alpha.91"
+    "@lotsof/lsp": "^1.0.0-alpha.93"
   },
   "devDependencies": {
     "@types/vscode": "^1.75.1",

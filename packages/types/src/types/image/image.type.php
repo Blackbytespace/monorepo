@@ -25,7 +25,7 @@ class ImageType extends BaseType
         $faker = \Faker\Factory::create();
 
         if ($src === null) {
-            $src = 'https://picsum.photos/1600/900';
+            $src = 'https://picsum.photos/1600/900?random=' . rand(1, 1000);
         }
         if ($title === null) {
             $title = $faker->sentence();

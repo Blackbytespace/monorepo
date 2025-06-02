@@ -71,10 +71,12 @@ export default class AdvancedSelectElement extends __LitElement {
         };
         this.svg = '';
     }
+    firstUpdated(_changedProperties) {
+        // add the provider class
+        this.classList.add(`-${this.provider}`);
+    }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
-            // add the provider class
-            this.classList.add(`-${this.provider}`);
             // construct the url
             let url = this.providers[this.provider].url
                 .replace('%type', this.type)

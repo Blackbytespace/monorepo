@@ -30,7 +30,6 @@ export default function rem(value, settings) {
     for (let [key, value] of Object.entries(args.ast)) {
         remValues.push(__toRem(value));
     }
-    console.log('DFD', remValues);
     return {
         raw: remValues
             .map((v) => {
