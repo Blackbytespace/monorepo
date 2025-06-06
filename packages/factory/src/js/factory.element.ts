@@ -159,6 +159,7 @@ export default class FactoryElement extends __LitElement {
     // by creating an iframe and load the factory deamon
     // inside it
     if (__isInIframe()) {
+      console.log('SS');
       return;
     }
 
@@ -433,6 +434,15 @@ export default class FactoryElement extends __LitElement {
 
     // set the current component to be the first one
     this._selectedComponentId = Object.keys(this._components)[0];
+
+    document.querySelectorAll('#factory-css, #factory-js').forEach(($el) => {
+      // remove the factory css and js from the document
+      console.log($el);
+
+      this._$carpenter?.$iframe?.contentDocument.head.appendChild(
+        $el.cloneNode(true),
+      );
+    });
   }
 
   private async _postComponent(
@@ -494,7 +504,7 @@ export default class FactoryElement extends __LitElement {
         }
 
         const id = $asset.getAttribute('id');
-        if (finalSettings.$iframe?.querySelector(`#${id}`)) {
+        if (finalSettings.$iframe?.contentDocument.querySelector(`#${id}`)) {
           // already exists, continue
           continue;
         }
@@ -504,13 +514,13 @@ export default class FactoryElement extends __LitElement {
       }
     }
 
-    // update the iframe with new component html
-    if (finalSettings.$iframe) {
-      let $componentInIframe: HTMLElement =
-        finalSettings.$iframe.contentDocument?.querySelector(
-          `#${component.id}`,
-        );
-
+    if (
+      this._$carpenter.$iframe.contentWindow._factoryComponents?.[component.id]
+    ) {
+      this._$carpenter.$iframe.contentWindow._factoryComponents[
+        component.id
+      ]?.update?.(this._components[component.id].values);
+    } else {
       const newComponentDom = new DOMParser().parseFromString(
         json.html,
         'text/html',
@@ -520,22 +530,11 @@ export default class FactoryElement extends __LitElement {
         `#${component.id}`,
       ) as HTMLElement;
 
-      if (!$componentInIframe) {
-        // add the new component in the iframe
-        finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
-
-        // get the component in the iframe
-        $componentInIframe =
-          finalSettings.$iframe.contentDocument.querySelector(
-            `#${component.id}`,
-          ) as HTMLElement;
-      } else {
-        // update the component in the iframe
-        $componentInIframe.innerHTML = $newComponent.innerHTML;
-      }
+      // add the new component in the iframe
+      finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
 
       // make sure the scripts are executed
-      Array.from($componentInIframe.querySelectorAll('script')).forEach(
+      Array.from($newComponent.querySelectorAll('script')).forEach(
         (oldScriptEl: HTMLElement) => {
           const newScriptEl = document.createElement('script');
 
@@ -676,9 +675,6 @@ export default class FactoryElement extends __LitElement {
       case item.value.startsWith('/'):
       case item.value.startsWith('!'):
         [id, engine] = item.value.slice(1).split('/');
-
-        console.log('select', item);
-
         // this.selectComponent(id, engine);
         break;
       case item.value.startsWith('@'):
@@ -824,6 +820,8 @@ export default class FactoryElement extends __LitElement {
             .uiMode=${this.state.mode}
             .verbose=${this.verbose}
             .appendToBody=${false}
+            .addInternalName=${true}
+            .centerContent=${true}
             @s-carpenter.update=${(e) => {
               this.setComponent(e.detail.component.id, e.detail.component);
               this._postComponent(e.detail.id);
@@ -877,6 +875,10 @@ export default class FactoryElement extends __LitElement {
   }
 
   public render() {
+    if (__isInIframe()) {
+      return '';
+    }
+
     return html`
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderEditor()}

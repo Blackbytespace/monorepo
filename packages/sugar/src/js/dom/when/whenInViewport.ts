@@ -2,7 +2,7 @@ import __uniqid from '../../string/uniqid.js';
 
 /**
  * @name                whenInViewport
- * @namespace           js.dom.detect
+ * @namespace           js.dom.when
  * @type                Function
  * @platform            js
  * @status              stable

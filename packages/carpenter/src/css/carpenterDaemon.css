@@ -11,7 +11,6 @@
   border-color: s-color(main, background, --alpha 0.6);
   color: s-color(accent, foreground);
   font-size: s-rem(14px);
-  @s-transition (fast);
   @s-radius;
 
   &:after {
@@ -26,14 +25,17 @@
     z-index: -1;
   }
 
-  &:hover {
-    /* opacity: 1; */
-  }
-
   .s-carpenter-daemon_tools {
+    opacity: 0;
     background: s-color(main, background, --alpha 0.6);
     backdrop-filter: blur(var(--s-carpenter-frost-amount));
+    @s-transition (fast);
     @s-radius;
+  }
+  &:hover {
+    .s-carpenter-daemon_tools {
+      opacity: 1;
+    }
   }
 
   .s-carpenter-daemon_tool {
@@ -55,13 +57,20 @@
   }
 
   .s-carpenter-daemon_header {
+    opacity: 0;
     background: s-color(main, background, --alpha 0.6);
     backdrop-filter: blur(var(--s-carpenter-frost-amount));
     color: s-color(main, text);
     box-shadow: var(--s-carpenter-depth);
     padding: var(--s-carpenter-daemon-padding);
     gap: s-space(sm);
+    @s-transition (fast);
     @s-radius;
+  }
+  &:hover {
+    .s-carpenter-daemon_header {
+      opacity: 1;
+    }
   }
 
   .s-carpenter-daemon_title {

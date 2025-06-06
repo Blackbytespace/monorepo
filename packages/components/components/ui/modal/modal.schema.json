@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/ui/modal",
+  "title": "Modal",
+  "description": "Modal component",
+  "type": "object",
+  "editor": {
+    "groups": [
+      {
+        "id": "default",
+        "title": "Default",
+        "description": "Default options"
+      }
+    ]
+  },
+  "properties": {
+    "open": {
+      "type": "boolean",
+      "title": "Open",
+      "description": "Whether the modal is open or not",
+      "default": false,
+      "editor": {
+        "group": "default"
+      }
+    },
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "description": "Unique identifier",
+      "editor": {
+        "group": "advanced"
+      }
+    }
+  }
+}

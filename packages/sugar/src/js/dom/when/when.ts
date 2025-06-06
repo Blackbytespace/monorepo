@@ -19,7 +19,7 @@ import __whenVisible from '../when/whenVisible.js';
 
 /**
  * @name            when
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform          js
  * @status        stable

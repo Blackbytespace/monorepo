@@ -2,7 +2,7 @@ import __whenLinkLoaded from './whenLinkLoaded.js';
 
 /**
  * @name            whenStylesheetsReady
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform        js
  * @status          stable

@@ -11,10 +11,10 @@ import { html } from 'lit';
 import { __copyText } from '@lotsof/sugar/clipboard';
 import { __isDarkMode } from '@lotsof/sugar/is';
 import { property } from 'lit/decorators.js';
+import '../../src/css/output/carpenter.build.css';
 export default class CarpenterDaemonElement extends __LitElement {
     constructor() {
         super('s-carpenter-daemon');
-        this.uiMode = 'light';
         this.preselectedComponent = null;
         this.selectedComponent = null;
         this.scrollOnSelect = false;
@@ -44,6 +44,12 @@ export default class CarpenterDaemonElement extends __LitElement {
     get $preselectedComponent() {
         return this._$preselectedComponent;
     }
+    firstUpdated(_changedProperties) {
+        super.firstUpdated(_changedProperties);
+        // update the ui mode depending on the
+        // mode of the website
+        this.updateUiMode();
+    }
     update(changedProperties) {
         super.update(changedProperties);
         // preselect the component if the preselectedComponent property has changed
@@ -71,11 +77,11 @@ export default class CarpenterDaemonElement extends __LitElement {
             }
         }
     }
-    firstUpdated(_changedProperties) {
+    updateUiMode() {
         // set the daemon ui mode depending on
         // the mode of the website
         if (__isDarkMode({
-            rootNode: this,
+            rootNode: this.parentElement,
         })) {
             this.classList.add('-light');
             this.classList.remove('-dark');
@@ -92,12 +98,14 @@ export default class CarpenterDaemonElement extends __LitElement {
         return componentJson;
     }
     adoptedCallback() {
+        // update the ui mode dependingon the
+        // mode of the website
+        this.updateUiMode();
         // query live for all the components
         __querySelectorLive('[type="carpenter/component"]', ($component) => {
             if (!$component.parentElement) {
                 return;
             }
-            console.log('ININT', $component);
             this._initComponent($component);
         }, {
             disconnectedCallback: ($component) => {
@@ -209,7 +217,7 @@ export default class CarpenterDaemonElement extends __LitElement {
     render() {
         var _a, _b, _c, _d, _e;
         return html `<div
-      class="${this.cls('_inner')}"
+      class="${`${this.cls('_inner')}`}"
       @dblclick=${() => {
             if (!this._$preselectedComponent) {
                 return;
@@ -253,9 +261,6 @@ export default class CarpenterDaemonElement extends __LitElement {
     </div> `;
     }
 }
-__decorate([
-    property({ type: String })
-], CarpenterDaemonElement.prototype, "uiMode", void 0);
 __decorate([
     property({ type: Object })
 ], CarpenterDaemonElement.prototype, "preselectedComponent", void 0);

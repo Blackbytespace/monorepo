@@ -7,14 +7,14 @@ function render(\Lotsof\Components\Component $component, mixed $config): string
     $css = [];
     $js = [];
     if (isset($config->ui->assets)) {
-        foreach ($config->ui->assets as $asset) {
+        foreach ($config->ui->assets as $key => $asset) {
             if (str_contains($asset, '.css')) {
                 $css[] = <<<HTML
-                    <link rel="stylesheet" href="$asset" />
+                    <link id="factory-{$key}" rel="stylesheet" href="$asset" />
                 HTML;
             } else if (str_contains($asset, '.js') || str_contains($asset, '.ts')) {
                 $js[] = <<<HTML
-                    <script type="module" src="$asset"></script>
+                    <script id="factory-{$key}" type="module" src="$asset"></script>
                 HTML;
             }
         }
@@ -23,7 +23,18 @@ function render(\Lotsof\Components\Component $component, mixed $config): string
     $js = implode("\n", $js);
     $title = 'Factory - ' . $component->getName();
 
+    $isInIframe = isset($_SERVER['HTTP_SEC_FETCH_DEST']) && $_SERVER['HTTP_SEC_FETCH_DEST'] === 'iframe';
+
+    $factoryHtml = '';
+    if (!$isInIframe) {
+        $factoryHtml = <<<HTML
+            <s-factory lnf id="s-factory"></s-factory>
+        HTML;
+    }
+
+
     return <<<HTML
+        <!DOCTYPE html>
         <html>
             <head>
                 <title>$title</title>
@@ -33,7 +44,7 @@ function render(\Lotsof\Components\Component $component, mixed $config): string
                 $js
             </head>
             <body>
-                <s-factory lnf id="s-factory"></s-factory>
+                $factoryHtml
             </body>
         </html>
     HTML;

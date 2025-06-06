@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "tsc --watch & vite --host",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "factory": "npx lotsof factory.start",
     "build": "tsc && vite build",
     "install.composer": "composer install",
     "publish": "npm publish --access public"

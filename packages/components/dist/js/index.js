@@ -1,2 +1,2 @@
-import '../../components/index.ts';
+import '../../../components/index.ts';
 //# sourceMappingURL=index.js.map

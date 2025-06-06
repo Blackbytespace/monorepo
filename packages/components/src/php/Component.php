@@ -9,17 +9,16 @@ class Component
     private string $_path;
     private object $_componentJson;
     private string $_schemaId;
-
-    private string $id;
+    private string $_id;
     private ?\Lotsof\Components\Components $components;
 
     public function __construct(string $path, ?object $values = null, ?string $id = null, ?\Lotsof\Components\Components $components = null)
     {
         // uid
         if ($id) {
-            $this->id = $id;
+            $this->_id = $id;
         } else {
-            $this->id = 's-component-' . uniqid();
+            $this->_id = 's-component-' . uniqid();
         }
 
         if ($components) {
@@ -89,17 +88,28 @@ class Component
 
     public function getId(): string
     {
-        return $this->id;
+        return $this->_id;
     }
 
     public function setId(string $id): void
     {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     public function getType(): string
     {
-        return $this->_componentJson->type;
+        if (isset($this->_componentJson->type) && !empty($this->_componentJson->type)) {
+            return $this->_componentJson->type;
+        }
+        return 'unknown';
+    }
+
+    public function getIcon(): string
+    {
+        if (isset($this->_componentJson->icon) && !empty($this->_componentJson->icon)) {
+            return $this->_componentJson->icon;
+        }
+        return '';
     }
 
     public function getDescription(): string
@@ -145,6 +155,7 @@ class Component
             'organization' => $this->getOrganization(),
             'description' => $this->getDescription(),
             'version' => $this->getVersion(),
+            'icon' => $this->getIcon(),
             'path' => $this->getPath(),
             'relPath' => $this->getRelPath(),
             'type' => $this->getType(),

@@ -10,6 +10,7 @@ export * from './offset/_exports.js';
 export * from './on/_exports.js';
 export * from './position/_exports.js';
 export * from './query/_exports.js';
+export * from './script/_exports.js';
 export * from './selection/_exports.js';
 export * from './style/_exports.js';
 export * from './when/_exports.js';

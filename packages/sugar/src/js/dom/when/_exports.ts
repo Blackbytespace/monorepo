@@ -4,6 +4,7 @@ import __whenAttribute from './whenAttribute.js';
 import __whenBackgroundImageLoaded from './whenBackgroundImageLoaded.js';
 import __whenDomReady from './whenDomReady.js';
 import __whenEntersViewport from './whenEntersViewport.js';
+import __whenEventListener from './whenEventListener.js';
 import __whenIframeReady from './whenIframeReady.js';
 import __whenImageLoaded from './whenImageLoaded.js';
 import __whenImagesLoaded from './whenImagesLoaded.js';
@@ -24,6 +25,7 @@ export {
   __whenBackgroundImageLoaded,
   __whenDomReady,
   __whenEntersViewport,
+  __whenEventListener,
   __whenIframeReady,
   __whenImageLoaded,
   __whenImagesLoaded,

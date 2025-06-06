@@ -118,6 +118,7 @@ export default class FactoryElement extends __LitElement {
             // by creating an iframe and load the factory deamon
             // inside it
             if (__isInIframe()) {
+                console.log('SS');
                 return;
             }
             // fetch the specs
@@ -344,10 +345,16 @@ export default class FactoryElement extends __LitElement {
         });
         // set the current component to be the first one
         this._selectedComponentId = Object.keys(this._components)[0];
+        document.querySelectorAll('#factory-css, #factory-js').forEach(($el) => {
+            var _a, _b;
+            // remove the factory css and js from the document
+            console.log($el);
+            (_b = (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument.head.appendChild($el.cloneNode(true));
+        });
     }
     _postComponent() {
         return __awaiter(this, arguments, void 0, function* (pathOrId = this.selectedComponentId, settings = {}) {
-            var _a, _b, _c, _d, _e;
+            var _a, _b, _c, _d, _e, _f, _g;
             const finalSettings = Object.assign({ $iframe: (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe }, settings);
             // get the component from the specs
             // or from the components list
@@ -391,7 +398,7 @@ export default class FactoryElement extends __LitElement {
                         continue;
                     }
                     const id = $asset.getAttribute('id');
-                    if ((_b = finalSettings.$iframe) === null || _b === void 0 ? void 0 : _b.querySelector(`#${id}`)) {
+                    if ((_b = finalSettings.$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument.querySelector(`#${id}`)) {
                         // already exists, continue
                         continue;
                     }
@@ -399,24 +406,16 @@ export default class FactoryElement extends __LitElement {
                     (_c = finalSettings.$iframe) === null || _c === void 0 ? void 0 : _c.contentDocument.head.appendChild($asset);
                 }
             }
-            // update the iframe with new component html
-            if (finalSettings.$iframe) {
-                let $componentInIframe = (_d = finalSettings.$iframe.contentDocument) === null || _d === void 0 ? void 0 : _d.querySelector(`#${component.id}`);
+            if ((_d = this._$carpenter.$iframe.contentWindow._factoryComponents) === null || _d === void 0 ? void 0 : _d[component.id]) {
+                (_f = (_e = this._$carpenter.$iframe.contentWindow._factoryComponents[component.id]) === null || _e === void 0 ? void 0 : _e.update) === null || _f === void 0 ? void 0 : _f.call(_e, this._components[component.id].values);
+            }
+            else {
                 const newComponentDom = new DOMParser().parseFromString(json.html, 'text/html');
                 const $newComponent = newComponentDom.querySelector(`#${component.id}`);
-                if (!$componentInIframe) {
-                    // add the new component in the iframe
-                    finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
-                    // get the component in the iframe
-                    $componentInIframe =
-                        finalSettings.$iframe.contentDocument.querySelector(`#${component.id}`);
-                }
-                else {
-                    // update the component in the iframe
-                    $componentInIframe.innerHTML = $newComponent.innerHTML;
-                }
+                // add the new component in the iframe
+                finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
                 // make sure the scripts are executed
-                Array.from($componentInIframe.querySelectorAll('script')).forEach((oldScriptEl) => {
+                Array.from($newComponent.querySelectorAll('script')).forEach((oldScriptEl) => {
                     var _a;
                     const newScriptEl = document.createElement('script');
                     Array.from(oldScriptEl.attributes).forEach((attr) => {
@@ -428,7 +427,7 @@ export default class FactoryElement extends __LitElement {
                 });
             }
             // update Factory AND Carpenter
-            (_e = this._$carpenter) === null || _e === void 0 ? void 0 : _e.requestUpdate();
+            (_g = this._$carpenter) === null || _g === void 0 ? void 0 : _g.requestUpdate();
             this.requestUpdate();
         });
     }
@@ -534,7 +533,6 @@ export default class FactoryElement extends __LitElement {
             case item.value.startsWith('/'):
             case item.value.startsWith('!'):
                 [id, engine] = item.value.slice(1).split('/');
-                console.log('select', item);
                 // this.selectComponent(id, engine);
                 break;
             case item.value.startsWith('@'):
@@ -665,6 +663,8 @@ export default class FactoryElement extends __LitElement {
             .uiMode=${this.state.mode}
             .verbose=${this.verbose}
             .appendToBody=${false}
+            .addInternalName=${true}
+            .centerContent=${true}
             @s-carpenter.update=${(e) => {
             this.setComponent(e.detail.component.id, e.detail.component);
             this._postComponent(e.detail.id);
@@ -720,6 +720,9 @@ export default class FactoryElement extends __LitElement {
     `;
     }
     render() {
+        if (__isInIframe()) {
+            return '';
+        }
         return html `
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderEditor()}

@@ -10,13 +10,6 @@
         "id": "default",
         "title": "Default",
         "description": "Default options"
-      },
-      {
-        "id": "advanced",
-        "title": "Advanced (card)",
-        "description": "Advanced card options",
-        "type": "stack",
-        "buttonText": "Edit advanced card options"
       }
     ]
   },

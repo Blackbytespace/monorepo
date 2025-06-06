@@ -71,7 +71,7 @@
   --s-typo-button: s-font(body) s-size(button) 1.65;
   --s-typo-menu: s-font(body) s-size(menu) 1.2;
 
-  --s-radius-default: 0;
+  --s-radius-default: 20px;
 
   --s-space-05: 2px;
   --s-space-1: 4px;

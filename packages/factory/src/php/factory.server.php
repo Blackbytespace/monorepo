@@ -128,6 +128,7 @@ $app->post('/api/render[/{path:.*}]', function (Request $request, Response $resp
             $html = \Factory\Renderers\react($component, $config);
             break;
         case 'vue':
+
             $html = \Factory\Renderers\vue($component, $config);
             break;
     }
@@ -137,7 +138,6 @@ $app->post('/api/render[/{path:.*}]', function (Request $request, Response $resp
     foreach ($config->project->assets as $id => $asset) {
         // build correct url
         $url = \Factory\Project\assetUrl($asset);
-
         // add the asset to the html
         if (str_contains($asset, '.css')) {
             $assets[] = '<link id="project-' . $id . '" rel="stylesheet" href="' . $url . '" />';

@@ -19,6 +19,15 @@ export type TCarpenterNotification = {
   timeout: number;
 };
 
+export type TCarpenterGroup = {
+  id: string;
+  title: string;
+  type: 'default' | 'stack';
+  description?: string;
+  buttonText?: string;
+  icon?: string;
+};
+
 export type TCarpenterComponentAsset = {
   url: string;
 };

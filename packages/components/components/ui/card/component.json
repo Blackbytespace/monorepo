@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "name": "@lotsof/card",
   "type": "ui",
+  "icon": "credit-card",
   "description": "Simple card component",
   "files": ["*.php", "*.css"],
   "composerJson": {

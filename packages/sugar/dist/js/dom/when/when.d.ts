@@ -7,7 +7,7 @@ import type { IWhenStyleSheetsReadySettings } from '../when/whenStylesheetsReady
 import type { TWhenVisibleSettings } from '../when/whenVisible.js';
 /**
  * @name            when
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform          js
  * @status        stable

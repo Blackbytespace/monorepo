@@ -18,14 +18,16 @@ import __IconElement from '@lotsof/icon-element';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
-import { __injectHtml } from '@lotsof/sugar/dom';
+import { __whenEventListener } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import { __clone, __set } from '@lotsof/sugar/object';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
+import __VueProxy from '../../src/proxies/vueProxy.vue';
 import __CarpenterDaemonElement from './carpenterDaemon.element.js';
+window.__VueProxy = __VueProxy;
 class CarpenterElement extends __LitElement {
     constructor() {
         super('s-carpenter');
@@ -35,6 +37,16 @@ class CarpenterElement extends __LitElement {
         this.darkModeClass = '-dark';
         this.uiMode = 'light';
         this.appendToBody = true;
+        this.addInternalName = false;
+        this.centerContent = false;
+        this.advancedGroup = {
+            id: 'advanced',
+            title: 'Advanced',
+            type: 'stack',
+            description: 'Advanced options for the component',
+            icon: 'cog',
+            buttonText: 'Open advanced options',
+        };
         this._notifications = [];
         this._currentMediaQuery = '';
         this._currentAction = null;
@@ -125,32 +137,85 @@ class CarpenterElement extends __LitElement {
         return this._$iframe;
     }
     firstUpdated(_changedProperties) {
-        var _a;
-        // wait for the iframe to load
-        (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.addEventListener('load', () => {
-            var _a, _b;
-            // get the daemon reference
-            const $daemon = this.querySelector('s-carpenter-daemon');
-            (_b = (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument) === null || _b === void 0 ? void 0 : _b.body.appendChild($daemon);
-            this._$daemon = $daemon;
-            // init the daemon listeners
-            this._initDaemonListeners();
-        });
+        var _a, _b;
+        // get the daemon reference
+        const $daemon = this.querySelector('s-carpenter-daemon');
+        (_b = (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument) === null || _b === void 0 ? void 0 : _b.body.appendChild($daemon);
+        this._$daemon = $daemon;
+        // init the daemon listeners
+        this._initDaemonListeners();
     }
     mount() {
         return __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d;
             // if not in an iframe, init the environment
             // by creating an iframe and load the factory deamon
             // inside it
             if (__isInIframe()) {
                 return;
             }
-            // load the environment by
-            // creating the iframe etc...
-            yield this._initEnvironment();
+            // create the canvas
+            const $canvas = document.createElement('div');
+            $canvas.classList.add(...this.cls('_canvas'));
+            if (this.lnf) {
+                $canvas.classList.add('-lnf');
+            }
+            document.body.appendChild($canvas);
+            // create the iframe
+            const $iframe = document.createElement('iframe');
+            $iframe.src = document.location.href;
+            $iframe.classList.add(...this.cls('_iframe'));
+            this._$iframe = $iframe;
+            // add the iframe to the canvas
+            $canvas.appendChild($iframe);
+            // wait the iframe to be loaded
+            yield __whenEventListener('load', $iframe);
+            // if wanted, append the carpenter element to the body
+            const $carpenter = document.querySelector(this.tagName);
+            if (this.appendToBody && $carpenter) {
+                this.log(`Appending the carpenter element to the body, as "appendToBody" is set to true`);
+                document.body.appendChild($carpenter);
+            }
+            // center the content if wanted
+            if (this.centerContent) {
+                // center the content in the iframe
+                const $centerStyle = (_b = (_a = this.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument) === null || _b === void 0 ? void 0 : _b.createElement('style');
+                $centerStyle.innerHTML = `
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+    `;
+                (_d = (_c = this.$iframe) === null || _c === void 0 ? void 0 : _c.contentWindow) === null || _d === void 0 ? void 0 : _d.document.head.appendChild($centerStyle);
+            }
+            // register the deamon into the iframe
+            __CarpenterDaemonElement.define('s-carpenter-daemon');
+            // empty page
+            // document
+            //   .querySelectorAll(
+            //     `body > *:not(${
+            //       this.tagName
+            //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter-cms):not(.${this.cls(
+            //       '_canvas',
+            //     )}):not(script):not(${this.cls('_canvas')
+            //       .map((c) => `.${c}`)
+            //       .join(',')}`,
+            //   )
+            //   .forEach(($el) => {
+            //     $el.remove();
+            //   });
             // init the listeners like escape key, etc...
             this._initListeners(document);
             this._initListeners(this.$iframeDocument);
+            // dispatch the ready event
+            this.dispatch('ready', {
+                bubbles: true,
+                cancelable: false,
+                detail: this,
+            });
         });
     }
     _initDaemonListeners() {
@@ -191,96 +256,80 @@ class CarpenterElement extends __LitElement {
     }
     _initEnvironment() {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r;
             this.log(`Init the carpenter environment...`);
-            // create the canvas
-            const $canvas = document.createElement('div');
-            $canvas.classList.add(...this.cls('_canvas'));
-            if (this.lnf) {
-                $canvas.classList.add('-lnf');
-            }
-            document.body.appendChild($canvas);
-            // if wanted, append the carpenter element to the body
-            const $carpenter = document.querySelector(this.tagName);
-            if (this.appendToBody && $carpenter) {
-                this.log(`Appending the carpenter element to the body, as "appendToBody" is set to true`);
-                document.body.appendChild($carpenter);
-            }
-            // create the iframe
-            const $iframe = document.createElement('iframe');
-            $iframe.classList.add(...this.cls('_iframe'));
-            this._$iframe = $iframe;
-            // append the iframe to the body
-            let iframeLoaded = false;
-            const iframeLoadedPromise = new Promise((resolve) => {
-                $iframe.addEventListener('load', () => {
-                    if (iframeLoaded) {
-                        return;
-                    }
-                    iframeLoaded = true;
-                    this.dispatch('ready', {
-                        bubbles: true,
-                        cancelable: false,
-                        detail: this,
-                    });
-                    resolve(true);
-                });
-            });
-            $canvas.appendChild($iframe);
-            yield iframeLoadedPromise;
+            // // append the iframe to the body
+            // let iframeLoaded = false;
+            // const iframeLoadedPromise = new Promise((resolve) => {
+            //   $iframe.addEventListener('load', () => {
+            //     if (iframeLoaded) {
+            //       return;
+            //     }
+            //     iframeLoaded = true;
+            //     this.dispatch('ready', {
+            //       bubbles: true,
+            //       cancelable: false,
+            //       detail: this,
+            //     });
+            //     resolve(true);
+            //   });
+            // });
+            // await iframeLoadedPromise;
             // update the media queries
             // this._updateMediaQueries();
-            const domParser = new DOMParser();
-            const doc = domParser.parseFromString(document.documentElement.outerHTML, 'text/html');
-            (_a = doc.body.querySelector('s-factory')) === null || _a === void 0 ? void 0 : _a.remove();
-            (_b = doc.body.querySelector('s-carpenter')) === null || _b === void 0 ? void 0 : _b.remove();
-            (_c = doc.body.querySelector('s-carpenter-cms')) === null || _c === void 0 ? void 0 : _c.remove();
-            (_d = doc.body.querySelector('s-carpenter-daemon')) === null || _d === void 0 ? void 0 : _d.remove();
-            (_e = doc.body.querySelector('.s-carpenter_canvas')) === null || _e === void 0 ? void 0 : _e.remove();
+            // const domParser = new DOMParser();
+            // const doc = domParser.parseFromString(
+            //   document.documentElement.outerHTML,
+            //   'text/html',
+            // );
+            // doc.body.querySelector('s-factory')?.remove();
+            // doc.body.querySelector('s-carpenter')?.remove();
+            // doc.body.querySelector('s-carpenter-cms')?.remove();
+            // doc.body.querySelector('s-carpenter-daemon')?.remove();
+            // doc.body.querySelector('.s-carpenter_canvas')?.remove();
             // copy the document into the iframe
-            (_f = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _f === void 0 ? void 0 : _f.document.open();
-            (_g = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _g === void 0 ? void 0 : _g.document.write(doc.documentElement.outerHTML);
-            (_h = $iframe === null || $iframe === void 0 ? void 0 : $iframe.contentWindow) === null || _h === void 0 ? void 0 : _h.document.close();
+            // $iframe.contentWindow?.document.open();
+            // $iframe.contentWindow?.document.write(`
+            //   <!DOCTYPE html>
+            //   ${doc.documentElement.outerHTML}
+            // `);
+            // $iframe?.contentWindow?.document.close();
             // clean the iframe
-            (_k = (_j = this.$iframeDocument) === null || _j === void 0 ? void 0 : _j.querySelector(`.${this.cls('_iframe')}`)) === null || _k === void 0 ? void 0 : _k.remove();
-            (_m = (_l = this.$iframeDocument) === null || _l === void 0 ? void 0 : _l.querySelector(this.tagName)) === null || _m === void 0 ? void 0 : _m.remove();
-            // center the content in the iframe
-            const $centerStyle = (_p = (_o = this._$iframe) === null || _o === void 0 ? void 0 : _o.contentDocument) === null || _p === void 0 ? void 0 : _p.createElement('style');
-            $centerStyle.innerHTML = `
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        justify-content: center;
-        align-items: center;
-      }
-    `;
-            (_q = $iframe.contentWindow) === null || _q === void 0 ? void 0 : _q.document.head.appendChild($centerStyle);
-            (_r = this.$iframe) === null || _r === void 0 ? void 0 : _r.addEventListener('load', () => {
-                var _a, _b, _c;
-                // if the component has some html,
-                // set it into the iframe
-                if ((_a = this.selectedComponent) === null || _a === void 0 ? void 0 : _a.html) {
-                    this._setIframeContent(this.selectedComponent.html);
-                }
-                // make sure we don't have any dark mode class
-                (_c = (_b = this._$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument) === null || _c === void 0 ? void 0 : _c.body.classList.remove('-dark');
-            });
-            // register the deamon into the iframe
-            __CarpenterDaemonElement.define('s-carpenter-daemon');
-            // empty page
-            document
-                .querySelectorAll(`body > *:not(${this.tagName}):not(s-factory):not(.s-carpenter):not(.s-carpenter-cms):not(.${this.cls('_canvas')}):not(script):not(${this.cls('_canvas')
-                .map((c) => `.${c}`)
-                .join(',')}`)
-                .forEach(($el) => {
-                $el.remove();
-            });
+            // this.$iframeDocument?.querySelector(`.${this.cls('_iframe')}`)?.remove();
+            // this.$iframeDocument?.querySelector(this.tagName)?.remove();
+            //   // make sure we don't have any dark mode class
+            //   // this._$iframe?.contentDocument?.body.classList.remove('-dark');
+            // });
         });
     }
     _setSelectedComponent(component) {
+        var _a, _b, _c, _d, _e, _f;
         // set the selected component
         this.selectedComponent = component !== null && component !== void 0 ? component : undefined;
+        // add the "internalName" field into the component schema
+        if (this.addInternalName &&
+            this.selectedComponent &&
+            !((_b = (_a = this.selectedComponent.schema) === null || _a === void 0 ? void 0 : _a.properties) === null || _b === void 0 ? void 0 : _b.internalName)) {
+            if (!((_c = this.selectedComponent.schema) === null || _c === void 0 ? void 0 : _c.properties)) {
+                this.selectedComponent.schema.properties = {};
+            }
+            this.selectedComponent.schema.properties.internalName = {
+                type: 'string',
+                title: 'Internal name',
+                description: 'The internal name of the component',
+                editor: {
+                    group: this.advancedGroup.id,
+                },
+            };
+            if (!((_e = (_d = this.selectedComponent.schema.editor) === null || _d === void 0 ? void 0 : _d.groups) === null || _e === void 0 ? void 0 : _e.find((group) => group.id === this.advancedGroup.id))) {
+                if (!((_f = this.selectedComponent.schema) === null || _f === void 0 ? void 0 : _f.editor)) {
+                    this.selectedComponent.schema.editor = {};
+                }
+                if (!this.selectedComponent.schema.editor.groups) {
+                    this.selectedComponent.schema.editor.groups = [];
+                }
+                this.selectedComponent.schema.editor.groups.push(this.advancedGroup);
+            }
+        }
         // add an action in the escape queue
         __escapeQueue(() => {
             this.selectedComponent = undefined;
@@ -302,17 +351,6 @@ class CarpenterElement extends __LitElement {
             detail: component,
         });
     }
-    _setIframeContent(html) {
-        var _a;
-        if (!((_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument)) {
-            return;
-        }
-        __injectHtml(this._$iframe.contentDocument.body, html);
-        // @TODO    find a better way to resize the iframe correctly
-        setTimeout(this._updateIframeSize.bind(this), 50);
-        setTimeout(this._updateIframeSize.bind(this), 100);
-        setTimeout(this._updateIframeSize.bind(this), 200);
-    }
     _updateIframeSize() {
         var _a;
         (_a = this._$iframe) === null || _a === void 0 ? void 0 : _a.dispatchEvent(new CustomEvent('load', {
@@ -327,6 +365,7 @@ class CarpenterElement extends __LitElement {
             if (!this.selectedComponent) {
                 return;
             }
+            console.log(this._components, this.selectedComponent.id);
             // set the value into the component
             __set(this.selectedComponent.values, update.path, update.value);
             __set(this._components[this.selectedComponent.id].values, update.path, update.value);
@@ -417,10 +456,14 @@ class CarpenterElement extends __LitElement {
         <header class=${this.cls('_header')}>
           <div class="${this.cls('_header-metas')}">
             <h2 class=${this.cls('_header-title')}>
-              <s-icon
-                class="${this.cls('_header-icon')}"
-                name="${this.selectedComponent.icon}"
-              ></s-icon>
+              ${this.selectedComponent.icon
+            ? html `
+                    <s-icon
+                      class="${this.cls('_header-icon')}"
+                      name="${this.selectedComponent.icon}"
+                    ></s-icon>
+                  `
+            : ''}
               ${this.selectedComponent.schema.title}
             </h2>
             ${((_a = this.selectedComponent.values) === null || _a === void 0 ? void 0 : _a.id)
@@ -465,8 +508,7 @@ class CarpenterElement extends __LitElement {
 
       <ol class="${this.cls('_tree-list')}">
         ${Object.entries(this._components).map(([id, component]) => {
-            var _a;
-            console.log('com', component);
+            var _a, _b;
             return html `
             <li
               class="${this.cls('_tree-item')}"
@@ -482,9 +524,9 @@ class CarpenterElement extends __LitElement {
               >
                 <s-icon name="${component.icon}"></s-icon>
                 <span class="${this.cls('_tree-item-name')}">
-                  ${component.internalName}
+                  ${(_a = component.internalName) !== null && _a !== void 0 ? _a : component.name}
                 </span>
-                ${((_a = component.values) === null || _a === void 0 ? void 0 : _a.id)
+                ${((_b = component.values) === null || _b === void 0 ? void 0 : _b.id)
                 ? html `
                       <span
                         class="${this.cls('_tree-item-id')}"
@@ -515,6 +557,7 @@ class CarpenterElement extends __LitElement {
         .scrollOnSelect=${true}
         .scrollOnPreselect=${true}
         @s-carpenter-daemon.component.connect=${(e) => {
+            console.log('connect', e.detail);
             // add the component to the list
             this._components[e.detail.id] = e.detail;
             // forward the event to the parent
@@ -524,8 +567,10 @@ class CarpenterElement extends __LitElement {
             });
         }}
         @s-carpenter-daemon.component.disconnect=${(e) => {
+            console.log('disconnect', e.detail);
+            // do nothing if no component is set
             // remove the component from the list
-            delete this._components[e.detail.id];
+            // delete this._components[e.detail.id];
             // forward the event to the parent
             this.dispatch('component.disconnect', {
                 bubbles: true,
@@ -578,6 +623,15 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], CarpenterElement.prototype, "appendToBody", void 0);
+__decorate([
+    property({ type: Boolean })
+], CarpenterElement.prototype, "addInternalName", void 0);
+__decorate([
+    property({ type: Boolean })
+], CarpenterElement.prototype, "centerContent", void 0);
+__decorate([
+    property({ type: Object })
+], CarpenterElement.prototype, "advancedGroup", void 0);
 __decorate([
     state()
 ], CarpenterElement.prototype, "_notifications", void 0);

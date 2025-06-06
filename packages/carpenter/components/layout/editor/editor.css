@@ -1,4 +1,5 @@
 @import './editor.bare.css';
+@import './editor.jsonSchemaForm.css';
 
 .s-carpenter-cms.-lnf .s-carpenter-cms_editor {
   background: s-color(main, background);

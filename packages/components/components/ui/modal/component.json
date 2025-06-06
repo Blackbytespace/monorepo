@@ -1,0 +1,14 @@
+{
+  "id": "ui-modal",
+  "version": "1.0.0",
+  "name": "@lotsof/modal",
+  "type": "ui",
+  "icon": "window",
+  "description": "Simple modal component",
+  "files": ["*.php", "*.css"],
+  "composerJson": {
+    "require": {
+      "lotsof/types": "^1.0.0"
+    }
+  }
+}

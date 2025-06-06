@@ -2,7 +2,7 @@ import __parse from '../../../shared/string/parse.js';
 
 /**
  * @name            whenAttribute
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform        js
  * @status          stable

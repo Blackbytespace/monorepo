@@ -1,13 +1,14 @@
 export type TComponentsComponentObject = {
-  id?: string;
+  id: string;
   path: string;
   relPath: string;
   shortName: string;
   name: string;
   organization?: string;
-  type: string;
+  type?: string;
   description?: string;
   version: string;
+  icon?: string;
   json: TComponentsComponentJson;
   files: string[];
   engines: 'vue' | 'react' | 'blade' | 'twig';
@@ -21,9 +22,10 @@ export type TComponentsComponentJson = {
   id: string;
   name: string;
   version: string;
-  type: string;
+  type?: string;
   description?: string;
-  files: string[];
+  icon?: string;
+  files?: string[];
 };
 
 export type TComponentsConfig = {

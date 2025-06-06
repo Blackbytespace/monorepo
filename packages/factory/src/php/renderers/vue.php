@@ -33,10 +33,39 @@ function vue(object $component, object $config): string
             <div id="{$componentId}-root"></div>
             <script type="application/json" id="{$componentId}-data">{$carpenterComponentJson}</script>
             <script type="module" id="{$componentId}-script">
-                import { createApp } from 'https://unpkg.com/vue@3.5/dist/vue.esm-browser.js'
+                import { createApp } from 'https://unpkg.com/vue@3.5/dist/vue.esm-browser.js';
                 import __Component from '{$componentUrl}';
-                const componentData = JSON.parse(document.getElementById('{$componentId}-data')?.innerText?.trim() ?? '{}');       
-                createApp(__Component, componentData?.values ?? {}).mount('#{$componentId}-root');
+
+                if (!window._factoryComponents?.['{$componentId}']) {
+                    // create the vue app with the VueProxy component
+                    let app, values = {}, props = {
+                        id: '{$componentId}',
+                        component: __Component,
+                    };
+                    
+                    // get the props from the component
+                    const componentData = JSON.parse(document.getElementById('{$componentId}-data')?.innerText?.trim() ?? '{}');       
+                    window._factoryComponents = window._factoryComponents || {};
+                    window._factoryComponents['{$componentId}'] = {
+                        component: __Component,
+                        update(newValues) {
+                            window._factoryComponents['{$componentId}'].values = newValues;
+                            Object.assign(values, newValues);
+                            document.dispatchEvent(new CustomEvent('factory.update', {
+                                detail: {
+                                    id: '{$componentId}',
+                                    values: newValues
+                                }
+                            }));
+                        }
+                    };
+                    app = createApp(window.__VueProxy, props);
+                    // app.provide('values', () => {
+                    //     console.log('access')
+                    //     return values;
+                    // })
+                    app.mount('#{$componentId}-root');
+                }
             </script>
         </div>
     HTML;

@@ -2,7 +2,7 @@ import __whenImageLoaded from './whenImageLoaded.js';
 
 /**
  * @name            whenImagesLoaded
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform        js
  * @status          stable

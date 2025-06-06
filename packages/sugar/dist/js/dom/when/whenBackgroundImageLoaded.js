@@ -3,7 +3,7 @@ import __whenImageLoaded from './whenImageLoaded.js';
 import __unquote from '../../../shared/string/unquote.js';
 /**
  * @name            whenBackgroundImageLoaded
- * @namespace       js.dom.detect
+ * @namespace       js.dom.when
  * @type            Function
  * @platform        js
  * @status          stable

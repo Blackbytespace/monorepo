@@ -3,7 +3,7 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/output/carpenter.build.css';
-import { TCarpenterAdapter, TCarpenterComponent, TCarpenterMediaQuery, TCarpenterNotification, TCarpenterState } from '../shared/carpenter.type.js';
+import { TCarpenterAdapter, TCarpenterComponent, TCarpenterGroup, TCarpenterMediaQuery, TCarpenterNotification, TCarpenterState } from '../shared/carpenter.type.js';
 export default class CarpenterElement extends __LitElement {
     mediaQueries: Record<string, TCarpenterMediaQuery>;
     mediaQuery: string;
@@ -14,6 +14,9 @@ export default class CarpenterElement extends __LitElement {
     loaded?: Function;
     uiMode: string;
     appendToBody: boolean;
+    addInternalName: boolean;
+    centerContent: boolean;
+    advancedGroup: TCarpenterGroup;
     _notifications: TCarpenterNotification[];
     _currentMediaQuery: string;
     _currentAction: 'saveValues' | null;
@@ -37,7 +40,6 @@ export default class CarpenterElement extends __LitElement {
     private _initEnvironment;
     private _setSelectedComponent;
     private _setPreselectedComponent;
-    private _setIframeContent;
     private _updateIframeSize;
     private _applyUpdate;
     private _renderEditor;
