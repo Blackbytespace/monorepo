@@ -6,10 +6,10 @@
   gap: s-space(md);
   background: s-color(main, background);
   box-shadow: var(--s-factory-depth);
-  @s-transition();
-  @s-radius;
   font-size: s-size(menu);
   user-select: none;
+  border-bottom-right-radius: s-radius();
+  @s-transition();
 
   .s-factory_topbar-title {
     color: s-color(accent);

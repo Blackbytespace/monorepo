@@ -159,7 +159,6 @@ export default class FactoryElement extends __LitElement {
     // by creating an iframe and load the factory deamon
     // inside it
     if (__isInIframe()) {
-      console.log('SS');
       return;
     }
 
@@ -436,9 +435,7 @@ export default class FactoryElement extends __LitElement {
     this._selectedComponentId = Object.keys(this._components)[0];
 
     document.querySelectorAll('#factory-css, #factory-js').forEach(($el) => {
-      // remove the factory css and js from the document
-      console.log($el);
-
+      // add the css/js to the iframe
       this._$carpenter?.$iframe?.contentDocument.head.appendChild(
         $el.cloneNode(true),
       );
@@ -504,7 +501,9 @@ export default class FactoryElement extends __LitElement {
         }
 
         const id = $asset.getAttribute('id');
-        if (finalSettings.$iframe?.contentDocument.querySelector(`#${id}`)) {
+        if (
+          finalSettings.$iframe?.contentDocument.querySelector(`#${id}-wrapper`)
+        ) {
           // already exists, continue
           continue;
         }
@@ -515,9 +514,11 @@ export default class FactoryElement extends __LitElement {
     }
 
     if (
-      this._$carpenter.$iframe.contentWindow._factoryComponents?.[component.id]
+      this._$carpenter.$iframe.contentWindow._carpenterComponents?.[
+        component.id
+      ]
     ) {
-      this._$carpenter.$iframe.contentWindow._factoryComponents[
+      this._$carpenter.$iframe.contentWindow._carpenterComponents[
         component.id
       ]?.update?.(this._components[component.id].values);
     } else {
@@ -527,7 +528,7 @@ export default class FactoryElement extends __LitElement {
       );
 
       const $newComponent = newComponentDom.querySelector(
-        `#${component.id}`,
+        `#${component.id}-wrapper`,
       ) as HTMLElement;
 
       // add the new component in the iframe
@@ -813,64 +814,60 @@ export default class FactoryElement extends __LitElement {
 
   private _renderEditor(): any {
     return html`
-      <div class="${this.cls('_editor')}">
-        <div class="${this.cls('_editor-inner')}">
-          <s-carpenter
-            .lnf=${this.lnf}
-            .uiMode=${this.state.mode}
-            .verbose=${this.verbose}
-            .appendToBody=${false}
-            .addInternalName=${true}
-            .centerContent=${true}
-            @s-carpenter.update=${(e) => {
-              this.setComponent(e.detail.component.id, e.detail.component);
-              this._postComponent(e.detail.id);
-            }}
-            @s-carpenter.ready=${(e) => {
-              setTimeout(() => {
-                this._initListeners(
-                  (<any>e.detail.$iframe)?.contentDocument as Document,
-                );
-              });
-              this._initComponents();
-            }}
-            @s-carpenter.component.connect=${(e) => {
-              if (!e.details?.id) {
-                return;
-              }
-              // add the component to the list
-              this._components[e.detail.id] = e.detail;
-            }}
-            @s-carpenter.component.disconnect=${(e) => {
-              if (!e.details?.id) {
-                return;
-              }
-              // add the component to the list
-              delete this._components[e.detail.id];
-            }}
-            @s-carpenter.preselect=${(e) => {
-              if (!e.detail?.id || !this._components[e.detail.id]) {
-                return;
-              }
-              // set the preselected component id
-              this._preselectedComponentId = e.detail.id;
-            }}
-            @s-carpenter.select=${(e) => {
-              if (!e.detail?.id || !this._components[e.detail.id]) {
-                return;
-              }
-              // set the selected component id
-              this._selectedComponentId = e.detail.id;
-            }}
-            @s-carpenter.edit=${(e) => {
-              // show the editor
-              this.showEditor();
-              // set the selected component id
-              this._selectedComponentId = e.detail.id;
-            }}
-          />
-        </div>
-      </div>
+      <s-carpenter
+        .lnf=${this.lnf}
+        .uiMode=${this.state.mode}
+        .verbose=${this.verbose}
+        .appendToBody=${false}
+        .addInternalName=${true}
+        .centerContent=${true}
+        @s-carpenter.update=${(e) => {
+          this.setComponent(e.detail.component.id, e.detail.component);
+          this._postComponent(e.detail.id);
+        }}
+        @s-carpenter.ready=${(e) => {
+          setTimeout(() => {
+            this._initListeners(
+              (<any>e.detail.$iframe)?.contentDocument as Document,
+            );
+          });
+          this._initComponents();
+        }}
+        @s-carpenter.component.connect=${(e) => {
+          if (!e.details?.id) {
+            return;
+          }
+          // add the component to the list
+          this._components[e.detail.id] = e.detail;
+        }}
+        @s-carpenter.component.disconnect=${(e) => {
+          if (!e.details?.id) {
+            return;
+          }
+          // add the component to the list
+          delete this._components[e.detail.id];
+        }}
+        @s-carpenter.preselect=${(e) => {
+          if (!e.detail?.id || !this._components[e.detail.id]) {
+            return;
+          }
+          // set the preselected component id
+          this._preselectedComponentId = e.detail.id;
+        }}
+        @s-carpenter.select=${(e) => {
+          if (!e.detail?.id || !this._components[e.detail.id]) {
+            return;
+          }
+          // set the selected component id
+          this._selectedComponentId = e.detail.id;
+        }}
+        @s-carpenter.edit=${(e) => {
+          // show the editor
+          this.showEditor();
+          // set the selected component id
+          this._selectedComponentId = e.detail.id;
+        }}
+      />
     `;
   }
 

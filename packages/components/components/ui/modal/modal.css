@@ -49,6 +49,7 @@
   @s-container;
   height: 400px;
   background: s-color(white, --lightness 98);
+  @s-radius;
 
   &:before {
     content: 'modal';

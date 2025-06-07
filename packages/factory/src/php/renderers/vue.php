@@ -6,65 +6,47 @@ function vue(object $component, object $config): string
 {
     $componentPath = $component->getPath() . '/' . $component->getShortName() . '.vue';
     $componentUrl = \Factory\Project\assetViteUrl($componentPath);
-    $mockPath = $component->getJsCompatibleMockPath('vue');
-    $mockUrl = '';
-    if ($mockPath) {
-        $mockUrl = \Factory\Project\assetViteUrl($mockPath);
-    }
+    // $mockPath = $component->getJsCompatibleMockPath('vue');
+    // $mockUrl = '';
+    // if ($mockPath) {
+    //     $mockUrl = \Factory\Project\assetViteUrl($mockPath);
+    // }
 
-    $valuesJs = '';
-    if (!$component->hasValues()) {
-        $valuesJs = <<<JS
-            import __values from '{$mockUrl}';
-        JS;
-    } else {
-        $values = $component->getValues();
-        $valuesJson = json_encode($values);
-        $valuesJs = <<<JS
-            const __values = JSON.parse('$valuesJson'.replace(/\\\/gm, ''));
-        JS;
-    }
-
-    $carpenterComponentJson = json_encode($component->toObject());
+    // if (!$component->hasValues()) {
+    //     $valuesJs = <<<JS
+    //         import __values from '{$mockUrl}';
+    //     JS;
+    // } else {
+    //     $values = $component->getValues();
+    //     $valuesJson = json_encode($values);
+    //     $valuesJs = <<<JS
+    //         const __values = JSON.parse('$valuesJson'.replace(/\\\/gm, ''));
+    //     JS;
+    // }
 
     $componentId = $component->getId();
+    $componentName = $component->getName();
+    $componentSpecs = json_encode($component->toObject());
+
     $html = <<<HTML
-        <div id="{$componentId}" type="carpenter/component">
+        <div id="{$componentId}-wrapper" name="{$componentName}" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <div id="{$componentId}-root"></div>
-            <script type="application/json" id="{$componentId}-data">{$carpenterComponentJson}</script>
-            <script type="module" id="{$componentId}-script">
+            <script type="module">
                 import { createApp } from 'https://unpkg.com/vue@3.5/dist/vue.esm-browser.js';
                 import __Component from '{$componentUrl}';
-
-                if (!window._factoryComponents?.['{$componentId}']) {
+                if (!window._carpenterComponents?.['{$componentId}']) {
                     // create the vue app with the VueProxy component
-                    let app, values = {}, props = {
+                    let props = {
                         id: '{$componentId}',
                         component: __Component,
+                        specs: {$componentSpecs}
                     };
                     
                     // get the props from the component
-                    const componentData = JSON.parse(document.getElementById('{$componentId}-data')?.innerText?.trim() ?? '{}');       
-                    window._factoryComponents = window._factoryComponents || {};
-                    window._factoryComponents['{$componentId}'] = {
-                        component: __Component,
-                        update(newValues) {
-                            window._factoryComponents['{$componentId}'].values = newValues;
-                            Object.assign(values, newValues);
-                            document.dispatchEvent(new CustomEvent('factory.update', {
-                                detail: {
-                                    id: '{$componentId}',
-                                    values: newValues
-                                }
-                            }));
-                        }
-                    };
-                    app = createApp(window.__VueProxy, props);
-                    // app.provide('values', () => {
-                    //     console.log('access')
-                    //     return values;
-                    // })
-                    app.mount('#{$componentId}-root');
+                    const app = createApp(window.__CarpenterVueProxy, props);
+                    app.component('VueProxiedComponent', __Component);
+                    app.provide('carpenter', true);
+                    app.mount('#{$componentId}-wrapper');
                 }
             </script>
         </div>

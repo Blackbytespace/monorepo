@@ -25,9 +25,11 @@ import { __clone, __set } from '@lotsof/sugar/object';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
-import __VueProxy from '../../src/proxies/vueProxy.vue';
+import __CarpenterVueProxy from '../../src/proxies/CarpenterueProxy.vue';
 import __CarpenterDaemonElement from './carpenterDaemon.element.js';
-window.__VueProxy = __VueProxy;
+// save the carpenter vue proxy to access globally
+// @ts-ignore
+window.__CarpenterVueProxy = __CarpenterVueProxy;
 class CarpenterElement extends __LitElement {
     constructor() {
         super('s-carpenter');
@@ -198,7 +200,7 @@ class CarpenterElement extends __LitElement {
             //   .querySelectorAll(
             //     `body > *:not(${
             //       this.tagName
-            //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter-cms):not(.${this.cls(
+            //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter):not(.${this.cls(
             //       '_canvas',
             //     )}):not(script):not(${this.cls('_canvas')
             //       .map((c) => `.${c}`)
@@ -283,7 +285,7 @@ class CarpenterElement extends __LitElement {
             // );
             // doc.body.querySelector('s-factory')?.remove();
             // doc.body.querySelector('s-carpenter')?.remove();
-            // doc.body.querySelector('s-carpenter-cms')?.remove();
+            // doc.body.querySelector('s-carpenter')?.remove();
             // doc.body.querySelector('s-carpenter-daemon')?.remove();
             // doc.body.querySelector('.s-carpenter_canvas')?.remove();
             // copy the document into the iframe
@@ -365,7 +367,6 @@ class CarpenterElement extends __LitElement {
             if (!this.selectedComponent) {
                 return;
             }
-            console.log(this._components, this.selectedComponent.id);
             // set the value into the component
             __set(this.selectedComponent.values, update.path, update.value);
             __set(this._components[this.selectedComponent.id].values, update.path, update.value);
@@ -509,6 +510,7 @@ class CarpenterElement extends __LitElement {
       <ol class="${this.cls('_tree-list')}">
         ${Object.entries(this._components).map(([id, component]) => {
             var _a, _b;
+            // if the component is not visible, skip it
             return html `
             <li
               class="${this.cls('_tree-item')}"
@@ -557,7 +559,6 @@ class CarpenterElement extends __LitElement {
         .scrollOnSelect=${true}
         .scrollOnPreselect=${true}
         @s-carpenter-daemon.component.connect=${(e) => {
-            console.log('connect', e.detail);
             // add the component to the list
             this._components[e.detail.id] = e.detail;
             // forward the event to the parent

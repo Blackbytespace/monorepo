@@ -11,30 +11,28 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
 import './modal.css';
 import type { TModal } from './modal.type.js';
 
 const props = withDefaults(defineProps<TModal>(), {
   open: false,
 });
-const $root = ref<HTMLElement>();
 
-const open = () => {
-  $root.value?.dispatchEvent(
-    new CustomEvent('modal.open', {
-      detail: { id: props.id },
-    }),
-  );
-  props.onOpen?.();
-};
+// const open = () => {
+//   $root.value?.dispatchEvent(
+//     new CustomEvent('modal.open', {
+//       detail: { id: props.id },
+//     }),
+//   );
+//   props.onOpen?.();
+// };
 
-const close = () => {
-  $root.value?.dispatchEvent(
-    new CustomEvent('modal.close', {
-      detail: { id: props.id },
-    }),
-  );
-  props.onClose?.();
-};
+// const close = () => {
+//   $root.value?.dispatchEvent(
+//     new CustomEvent('modal.close', {
+//       detail: { id: props.id },
+//     }),
+//   );
+//   props.onClose?.();
+// };
 </script>

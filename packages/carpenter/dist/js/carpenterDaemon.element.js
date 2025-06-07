@@ -94,7 +94,7 @@ export default class CarpenterDaemonElement extends __LitElement {
     getComponentJson($component) {
         var _a, _b, _c;
         const componentJson = JSON.parse((_c = (_b = (_a = $component
-            .querySelector(`#${$component.getAttribute('id')}-data`)) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : '{}');
+            .querySelector(`#${$component.getAttribute('id')}-specs`)) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : '{}');
         return componentJson;
     }
     adoptedCallback() {

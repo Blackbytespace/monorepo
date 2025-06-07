@@ -11,10 +11,10 @@ import { __clone, __set } from '@lotsof/sugar/object';
 import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
-import __VueProxy from '../../src/proxies/vueProxy.vue';
+import __CarpenterVueProxy from '../../src/proxies/CarpenterueProxy.vue';
 import {
   TCarpenterAdapter,
-  TCarpenterComponent,
+  TCarpenterComponentSpecs,
   TCarpenterGroup,
   TCarpenterMediaQuery,
   TCarpenterNotification,
@@ -24,7 +24,9 @@ import {
 } from '../shared/carpenter.type.js';
 import __CarpenterDaemonElement from './carpenterDaemon.element.js';
 
-window.__VueProxy = __VueProxy;
+// save the carpenter vue proxy to access globally
+// @ts-ignore
+window.__CarpenterVueProxy = __CarpenterVueProxy;
 
 export default class CarpenterElement extends __LitElement {
   @property({ type: Object })
@@ -37,10 +39,10 @@ export default class CarpenterElement extends __LitElement {
   public adapter?: TCarpenterAdapter | string;
 
   @property({ type: Object })
-  public selectedComponent?: TCarpenterComponent;
+  public selectedComponent?: TCarpenterComponentSpecs;
 
   @property({ type: Object })
-  public preselectedComponent?: TCarpenterComponent | null = null;
+  public preselectedComponent?: TCarpenterComponentSpecs | null = null;
 
   @property({ type: String })
   public darkModeClass: string = '-dark';
@@ -82,7 +84,7 @@ export default class CarpenterElement extends __LitElement {
   @state()
   protected _state: TCarpenterState = {};
 
-  private _components: Record<string, TCarpenterComponent> = {};
+  private _components: Record<string, TCarpenterComponentSpecs> = {};
   private _$iframe?: HTMLIFrameElement;
   private _$canvas?: HTMLDivElement;
   private _$daemon?: __CarpenterDaemonElement;
@@ -267,7 +269,7 @@ export default class CarpenterElement extends __LitElement {
     //   .querySelectorAll(
     //     `body > *:not(${
     //       this.tagName
-    //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter-cms):not(.${this.cls(
+    //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter):not(.${this.cls(
     //       '_canvas',
     //     )}):not(script):not(${this.cls('_canvas')
     //       .map((c) => `.${c}`)
@@ -364,7 +366,7 @@ export default class CarpenterElement extends __LitElement {
     // );
     // doc.body.querySelector('s-factory')?.remove();
     // doc.body.querySelector('s-carpenter')?.remove();
-    // doc.body.querySelector('s-carpenter-cms')?.remove();
+    // doc.body.querySelector('s-carpenter')?.remove();
     // doc.body.querySelector('s-carpenter-daemon')?.remove();
     // doc.body.querySelector('.s-carpenter_canvas')?.remove();
 
@@ -385,7 +387,9 @@ export default class CarpenterElement extends __LitElement {
     // });
   }
 
-  private _setSelectedComponent(component: TCarpenterComponent | null): void {
+  private _setSelectedComponent(
+    component: TCarpenterComponentSpecs | null,
+  ): void {
     // set the selected component
     this.selectedComponent = component ?? undefined;
 
@@ -438,7 +442,7 @@ export default class CarpenterElement extends __LitElement {
   }
 
   private _setPreselectedComponent(
-    component: TCarpenterComponent | null,
+    component: TCarpenterComponentSpecs | null,
   ): void {
     // set the preselected component
     this.preselectedComponent = component ?? undefined;
@@ -464,8 +468,6 @@ export default class CarpenterElement extends __LitElement {
     if (!this.selectedComponent) {
       return;
     }
-
-    console.log(this._components, this.selectedComponent.id);
 
     // set the value into the component
     __set(this.selectedComponent.values, update.path, update.value);
@@ -567,7 +569,6 @@ export default class CarpenterElement extends __LitElement {
     if (!this.selectedComponent) {
       return html``;
     }
-
     return html`<div class="${this.cls('_editor')}">
       <div class="${this.cls('_editor-inner')}">
         <header class=${this.cls('_header')}>
@@ -625,6 +626,7 @@ export default class CarpenterElement extends __LitElement {
 
       <ol class="${this.cls('_tree-list')}">
         ${Object.entries(this._components).map(([id, component]) => {
+          // if the component is not visible, skip it
           return html`
             <li
               class="${this.cls('_tree-item')}"
@@ -673,7 +675,6 @@ export default class CarpenterElement extends __LitElement {
         .scrollOnSelect=${true}
         .scrollOnPreselect=${true}
         @s-carpenter-daemon.component.connect=${(e: CustomEvent) => {
-          console.log('connect', e.detail);
           // add the component to the list
           this._components[e.detail.id] = e.detail;
           // forward the event to the parent

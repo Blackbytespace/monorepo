@@ -1,10 +1,10 @@
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/output/carpenter.build.css';
-import { TCarpenterComponent } from '../shared/carpenter.type.js';
+import { TCarpenterComponentSpecs } from '../shared/carpenter.type.js';
 export default class CarpenterDaemonElement extends __LitElement {
-    preselectedComponent: TCarpenterComponent | null;
-    selectedComponent: TCarpenterComponent | null;
+    preselectedComponent: TCarpenterComponentSpecs | null;
+    selectedComponent: TCarpenterComponentSpecs | null;
     scrollOnSelect: boolean;
     scrollOnPreselect: boolean;
     private _$selectedComponent;
@@ -12,14 +12,14 @@ export default class CarpenterDaemonElement extends __LitElement {
     constructor();
     get $document(): Document;
     get $window(): Window;
-    get component(): TCarpenterComponent | null;
+    get component(): TCarpenterComponentSpecs | null;
     get $component(): HTMLElement | null;
     get $selectedComponent(): HTMLElement | null;
     get $preselectedComponent(): HTMLElement | null;
     protected firstUpdated(_changedProperties: PropertyValues): void;
     protected update(changedProperties: PropertyValues): void;
     protected updateUiMode(): void;
-    getComponentJson($component: HTMLElement): TCarpenterComponent | null;
+    getComponentJson($component: HTMLElement): TCarpenterComponentSpecs | null;
     adoptedCallback(): void;
     private _get$Component;
     private _initComponent;

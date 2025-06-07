@@ -2,9 +2,9 @@
   width: 100vw;
   height: 100vh;
 
-  body:has(.s-carpenter-cms_editor:hover) &,
+  body:has(.s-carpenter:hover) &,
   .-show-editor &,
   .-show-ui & {
-    width: calc(100% - var(--s-carpenter-cms-editor-width));
+    width: calc(100% - var(--s-carpenter-editor-width));
   }
 }

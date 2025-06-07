@@ -26,7 +26,7 @@ export type TCarpenterGroup = {
 export type TCarpenterComponentAsset = {
     url: string;
 };
-export type TCarpenterComponent = {
+export type TCarpenterComponentSpecs = {
     id: string;
     name: string;
     icon?: string;
@@ -40,12 +40,12 @@ export type TCarpenterComponent = {
     $component: Element;
 };
 export type TCarpenterCustomEvent = CustomEvent & {
-    detail: TCarpenterComponent;
+    detail: TCarpenterComponentSpecs;
 };
 export type TCarpenterUpdateObject = {
     path: string[];
     value: any;
-    component: TCarpenterComponent;
+    component: TCarpenterComponentSpecs;
 };
 export type TCarpenterUpdatePayload = {
     path: string[];

@@ -118,7 +118,6 @@ export default class FactoryElement extends __LitElement {
             // by creating an iframe and load the factory deamon
             // inside it
             if (__isInIframe()) {
-                console.log('SS');
                 return;
             }
             // fetch the specs
@@ -347,8 +346,7 @@ export default class FactoryElement extends __LitElement {
         this._selectedComponentId = Object.keys(this._components)[0];
         document.querySelectorAll('#factory-css, #factory-js').forEach(($el) => {
             var _a, _b;
-            // remove the factory css and js from the document
-            console.log($el);
+            // add the css/js to the iframe
             (_b = (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument.head.appendChild($el.cloneNode(true));
         });
     }
@@ -398,7 +396,7 @@ export default class FactoryElement extends __LitElement {
                         continue;
                     }
                     const id = $asset.getAttribute('id');
-                    if ((_b = finalSettings.$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument.querySelector(`#${id}`)) {
+                    if ((_b = finalSettings.$iframe) === null || _b === void 0 ? void 0 : _b.contentDocument.querySelector(`#${id}-wrapper`)) {
                         // already exists, continue
                         continue;
                     }
@@ -406,12 +404,12 @@ export default class FactoryElement extends __LitElement {
                     (_c = finalSettings.$iframe) === null || _c === void 0 ? void 0 : _c.contentDocument.head.appendChild($asset);
                 }
             }
-            if ((_d = this._$carpenter.$iframe.contentWindow._factoryComponents) === null || _d === void 0 ? void 0 : _d[component.id]) {
-                (_f = (_e = this._$carpenter.$iframe.contentWindow._factoryComponents[component.id]) === null || _e === void 0 ? void 0 : _e.update) === null || _f === void 0 ? void 0 : _f.call(_e, this._components[component.id].values);
+            if ((_d = this._$carpenter.$iframe.contentWindow._carpenterComponents) === null || _d === void 0 ? void 0 : _d[component.id]) {
+                (_f = (_e = this._$carpenter.$iframe.contentWindow._carpenterComponents[component.id]) === null || _e === void 0 ? void 0 : _e.update) === null || _f === void 0 ? void 0 : _f.call(_e, this._components[component.id].values);
             }
             else {
                 const newComponentDom = new DOMParser().parseFromString(json.html, 'text/html');
-                const $newComponent = newComponentDom.querySelector(`#${component.id}`);
+                const $newComponent = newComponentDom.querySelector(`#${component.id}-wrapper`);
                 // add the new component in the iframe
                 finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
                 // make sure the scripts are executed
@@ -656,27 +654,25 @@ export default class FactoryElement extends __LitElement {
     }
     _renderEditor() {
         return html `
-      <div class="${this.cls('_editor')}">
-        <div class="${this.cls('_editor-inner')}">
-          <s-carpenter
-            .lnf=${this.lnf}
-            .uiMode=${this.state.mode}
-            .verbose=${this.verbose}
-            .appendToBody=${false}
-            .addInternalName=${true}
-            .centerContent=${true}
-            @s-carpenter.update=${(e) => {
+      <s-carpenter
+        .lnf=${this.lnf}
+        .uiMode=${this.state.mode}
+        .verbose=${this.verbose}
+        .appendToBody=${false}
+        .addInternalName=${true}
+        .centerContent=${true}
+        @s-carpenter.update=${(e) => {
             this.setComponent(e.detail.component.id, e.detail.component);
             this._postComponent(e.detail.id);
         }}
-            @s-carpenter.ready=${(e) => {
+        @s-carpenter.ready=${(e) => {
             setTimeout(() => {
                 var _a;
                 this._initListeners((_a = e.detail.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument);
             });
             this._initComponents();
         }}
-            @s-carpenter.component.connect=${(e) => {
+        @s-carpenter.component.connect=${(e) => {
             var _a;
             if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
                 return;
@@ -684,7 +680,7 @@ export default class FactoryElement extends __LitElement {
             // add the component to the list
             this._components[e.detail.id] = e.detail;
         }}
-            @s-carpenter.component.disconnect=${(e) => {
+        @s-carpenter.component.disconnect=${(e) => {
             var _a;
             if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
                 return;
@@ -692,7 +688,7 @@ export default class FactoryElement extends __LitElement {
             // add the component to the list
             delete this._components[e.detail.id];
         }}
-            @s-carpenter.preselect=${(e) => {
+        @s-carpenter.preselect=${(e) => {
             var _a;
             if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
                 return;
@@ -700,7 +696,7 @@ export default class FactoryElement extends __LitElement {
             // set the preselected component id
             this._preselectedComponentId = e.detail.id;
         }}
-            @s-carpenter.select=${(e) => {
+        @s-carpenter.select=${(e) => {
             var _a;
             if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
                 return;
@@ -708,15 +704,13 @@ export default class FactoryElement extends __LitElement {
             // set the selected component id
             this._selectedComponentId = e.detail.id;
         }}
-            @s-carpenter.edit=${(e) => {
+        @s-carpenter.edit=${(e) => {
             // show the editor
             this.showEditor();
             // set the selected component id
             this._selectedComponentId = e.detail.id;
         }}
-          />
-        </div>
-      </div>
+      />
     `;
     }
     render() {

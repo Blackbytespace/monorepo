@@ -6,15 +6,15 @@ import { __copyText } from '@lotsof/sugar/clipboard';
 import { __isDarkMode } from '@lotsof/sugar/is';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
-import { TCarpenterComponent } from '../shared/carpenter.type.js';
+import { TCarpenterComponentSpecs } from '../shared/carpenter.type.js';
 import { TCarpenterDaemonPreselectSettings } from './_exports.js';
 
 export default class CarpenterDaemonElement extends __LitElement {
   @property({ type: Object })
-  public preselectedComponent: TCarpenterComponent | null = null;
+  public preselectedComponent: TCarpenterComponentSpecs | null = null;
 
   @property({ type: Object })
-  public selectedComponent: TCarpenterComponent | null = null;
+  public selectedComponent: TCarpenterComponentSpecs | null = null;
 
   @property({ type: Boolean })
   public scrollOnSelect: boolean = false;
@@ -38,7 +38,7 @@ export default class CarpenterDaemonElement extends __LitElement {
     return this.$document.defaultView || this.$document.parentWindow;
   }
 
-  get component(): TCarpenterComponent | null {
+  get component(): TCarpenterComponentSpecs | null {
     return this.preselectedComponent ?? this.selectedComponent;
   }
 
@@ -107,12 +107,14 @@ export default class CarpenterDaemonElement extends __LitElement {
     }
   }
 
-  public getComponentJson($component: HTMLElement): TCarpenterComponent | null {
+  public getComponentJson(
+    $component: HTMLElement,
+  ): TCarpenterComponentSpecs | null {
     const componentJson = JSON.parse(
       $component
-        .querySelector(`#${$component.getAttribute('id')}-data`)
+        .querySelector(`#${$component.getAttribute('id')}-specs`)
         ?.textContent?.trim() ?? '{}',
-    ) as TCarpenterComponent;
+    ) as TCarpenterComponentSpecs;
 
     return componentJson;
   }
@@ -145,7 +147,9 @@ export default class CarpenterDaemonElement extends __LitElement {
     });
   }
 
-  private _get$Component(component: TCarpenterComponent): HTMLElement | null {
+  private _get$Component(
+    component: TCarpenterComponentSpecs,
+  ): HTMLElement | null {
     return this.$document.querySelector(
       `[type="carpenter/component"][id="${component.id}"]`,
     );

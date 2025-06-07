@@ -1,4 +1,4 @@
-body:not(:has(s-carpenter-cms, .s-carpenter-cms)) {
+body:not(:has(s-carpenter, .s-carpenter)) {
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
@@ -16,6 +16,6 @@ body:not(:has(s-carpenter-cms, .s-carpenter-cms)) {
   }
 }
 
-body:has(s-carpenter-cms, .s-carpenter-cms) {
+body:has(s-carpenter, .s-carpenter) {
   overflow: hidden;
 }

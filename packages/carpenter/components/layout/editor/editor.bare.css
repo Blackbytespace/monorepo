@@ -1,8 +1,8 @@
-.s-carpenter-cms_editor {
+.s-carpenter_editor {
   position: absolute;
-  top: var(--s-carpenter-side-padding);
-  right: var(--s-carpenter-side-padding);
-  bottom: var(--s-carpenter-side-padding);
+  top: 0;
+  right: 0;
+  bottom: 0;
   width: var(--s-carpenter-editor-width);
   translate: calc(100% + var(--s-carpenter-side-padding));
 
@@ -10,7 +10,7 @@
     translate: 0;
   }
 
-  .s-carpenter-cms_editor-inner {
+  .s-carpenter_editor-inner {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,11 +20,6 @@
     flex-direction: column;
     justify-content: stretch;
     @s-scrollbar (hide);
-
-    .s-carpenter {
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
   }
 
   &:before {
@@ -47,7 +42,7 @@
   }
 }
 
-.-show-editor .s-carpenter-cms_editor,
-.-show-ui .s-carpenter-cms_editor {
+.-show-editor .s-carpenter_editor,
+.-show-ui .s-carpenter_editor {
   translate: 0;
 }

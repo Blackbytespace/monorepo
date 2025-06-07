@@ -93,7 +93,7 @@ export default class CarpenterCmsElement extends __LitElement {
   private _$carpenter: __CarpenterElement | null = null;
 
   constructor() {
-    super('s-carpenter-cms');
+    super('s-carpenter');
     this.saveState = true;
   }
 
@@ -181,7 +181,7 @@ export default class CarpenterCmsElement extends __LitElement {
   }
 
   private _initCommandPanel(): void {
-    __AdvancedSelectElement.define('s-carpenter-cms-command-panel-select', {
+    __AdvancedSelectElement.define('s-carpenter-command-panel-select', {
       activeWhen: [],
       items: (api: TAdvancedSelectElementItemsFunctionApi) => {
         switch (true) {
@@ -258,7 +258,7 @@ export default class CarpenterCmsElement extends __LitElement {
                 value: '/',
                 preventClose: true,
                 preventSelect: true,
-                label: `<span class="s-carpenter-cms-command-panel_prefix"
+                label: `<span class="s-carpenter-command-panel_prefix"
                       >/</span
                     >${__i18n('Components')}`,
               },
@@ -267,7 +267,7 @@ export default class CarpenterCmsElement extends __LitElement {
                 value: '!',
                 preventClose: true,
                 preventSelect: true,
-                label: `<span class="s-carpenter-cms-command-panel_prefix"
+                label: `<span class="s-carpenter-command-panel_prefix"
                       >!</span
                     >${__i18n('Switch engine')}`,
               },
@@ -276,7 +276,7 @@ export default class CarpenterCmsElement extends __LitElement {
               //   value: '@',
               //   preventClose: true,
               //   preventSelect: true,
-              //   label: `<span class="s-carpenter-cms-command-panel_prefix"
+              //   label: `<span class="s-carpenter-command-panel_prefix"
               //         >@</span
               //       >${__i18n('Media queries')}`,
               // },
@@ -285,14 +285,14 @@ export default class CarpenterCmsElement extends __LitElement {
               //   value: '<',
               //   preventClose: true,
               //   preventSelect: true,
-              //   label: `<span class="s-carpenter-cms-command-panel_prefix"
+              //   label: `<span class="s-carpenter-command-panel_prefix"
               //         >&lt;</span
               //       >${__i18n('Load values')}`,
               // },
               // {
               //   id: '>',
               //   value: '>',
-              //   label: `<span class="s-carpenter-cms-command-panel_prefix"
+              //   label: `<span class="s-carpenter-command-panel_prefix"
               //         >&gt;</span
               //       >${__i18n('Save values')}`,
               // },
@@ -304,7 +304,7 @@ export default class CarpenterCmsElement extends __LitElement {
     });
     setTimeout(() => {
       this._$commandPanelSelect = this.querySelector(
-        's-carpenter-cms-command-panel-select',
+        's-carpenter-command-panel-select',
       ) as __AdvancedSelectElement;
     });
   }
@@ -739,12 +739,12 @@ export default class CarpenterCmsElement extends __LitElement {
 
   private _renderCommandPanel(): any {
     return html`<nav class="${this.cls('_command-panel')}">
-      <s-carpenter-cms-command-panel-select
+      <s-carpenter-command-panel-select
         .verbose=${this.verbose}
-        id="s-carpenter-cms-command-panel"
+        id="s-carpenter-command-panel"
         mountWhen="direct"
         hotkey=${this.commandPanelHotkey}
-        @s-carpenter-cms-command-panel-select.select=${(e) => {
+        @s-carpenter-command-panel-select.select=${(e) => {
           this._handleCommandPanelSelect(e.detail.item);
         }}
       >
@@ -753,7 +753,7 @@ export default class CarpenterCmsElement extends __LitElement {
           class="form-input"
           placeholder=${__i18n(`Command panel (${this.commandPanelHotkey})`)}
         />
-      </s-carpenter-cms-command-panel-select>
+      </s-carpenter-command-panel-select>
     </nav>`;
   }
 
@@ -801,7 +801,7 @@ export default class CarpenterCmsElement extends __LitElement {
           }}
         >
           <s-json-schema-form
-            id="s-carpenter-cms-save-values-form"
+            id="s-carpenter-save-values-form"
             .formClasses=${true}
             .schema=${__saveComponentValuesSchema}
             .values=${{}}
@@ -891,4 +891,4 @@ export default class CarpenterCmsElement extends __LitElement {
   }
 }
 
-CarpenterCmsElement.define('s-carpenter-cms');
+CarpenterCmsElement.define('s-carpenter');

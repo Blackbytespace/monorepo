@@ -14,5 +14,5 @@ import Image from '../image/image.vue';
 import './card.css';
 import type { TCard } from './card.type.js';
 
-const props = withDefaults(defineProps<TCard>(), {});
+withDefaults(defineProps<TCard>(), {});
 </script>

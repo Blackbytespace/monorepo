@@ -1,7 +1,7 @@
 .s-factory_topbar {
   position: absolute;
-  top: var(--s-factory-side-padding);
-  left: var(--s-factory-side-padding);
+  top: 0;
+  left: 0;
   /* right: var(--s-factory-side-padding); */
   height: 50px;
   display: flex;

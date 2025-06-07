@@ -2,7 +2,7 @@ import { TBody } from '../body/body.type.js';
 import { TImage } from '../image/image.type.js';
 
 export type TCard = {
-  body?: TBody;
+  body: TBody;
   image?: TImage;
   id?: string;
   class?: string;

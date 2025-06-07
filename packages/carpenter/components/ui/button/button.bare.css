@@ -1,4 +1,4 @@
-body:has(.s-carpenter-cms),
+body:has(.s-carpenter),
 .s-carpenter-daemon {
   .button {
     display: inline-block;

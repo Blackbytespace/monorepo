@@ -1,6 +1,6 @@
 @import './button.bare.css';
 
-body:has(.s-carpenter-cms),
+body:has(.s-carpenter),
 .s-carpenter-daemon {
   .button {
     border-radius: s-radius();

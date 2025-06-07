@@ -2,7 +2,7 @@
 
 @include s-reset;
 
-body:has(.s-carpenter-cms),
+body:has(.s-carpenter),
 .s-carpenter-daemon {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
@@ -150,7 +150,7 @@ body:has(.s-carpenter-cms),
   --s-radius-default: 6px;
 }
 
-body:has(.s-carpenter-cms).-dark,
+body:has(.s-carpenter).-dark,
 .-dark .s-carpenter-daemon {
   --s-color-main: hsl(47, 0%, 50%);
   --s-color-error: #ff7b9a;
@@ -170,7 +170,7 @@ body:has(.s-carpenter-cms).-dark,
   color: s-color(accent, --lighten 50);
 }
 
-body:has(.s-carpenter-cms) {
+body:has(.s-carpenter) {
   @s-typo (body);
   color: s-color(main, text);
 }

@@ -3,6 +3,7 @@ body:not(:has(s-factory)) {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  gap: s-rem(20px);
 
   &::-webkit-scrollbar {
     width: 2px;

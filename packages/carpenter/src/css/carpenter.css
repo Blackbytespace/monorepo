@@ -5,7 +5,13 @@ body {
 }
 
 .s-carpenter.-lnf {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  background: s-color(main, background, --lightness 98 --alpha 0.98);
+  backdrop-filter: blur(5px);
+  box-shadow: var(--s-carpenter-depth);
+  @s-radius;
+  @s-transition();
+
+  @media dark {
+    background: s-color(main, background, --lightness 16 --alpha 0.98);
+  }
 }
