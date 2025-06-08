@@ -45,10 +45,10 @@
   }
 }
 
-[type='carpenter/component']:has(.modal) {
-  @s-container;
+[carpenter]:has(.modal) {
   height: 400px;
   background: s-color(white, --lightness 98);
+  @s-container;
   @s-radius;
 
   &:before {

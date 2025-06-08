@@ -1,6 +1,6 @@
 .s-carpenter-daemon {
   position: absolute;
-  z-index: 100;
+  z-index: 500;
   /* pointer-events: none; */
   user-select: none;
 

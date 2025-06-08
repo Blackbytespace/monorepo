@@ -5,7 +5,7 @@ import __AdvancedSelectElement, {
 } from '@lotsof/advanced-select-element';
 import '@lotsof/carpenter';
 // @ts-ignore
-import { __CarpenterElement } from '@lotsof/carpenter';
+import { __CarpenterElement, __CarpenterRegistry } from '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
@@ -487,9 +487,6 @@ export default class FactoryElement extends __LitElement {
       }),
       json = await request.json();
 
-    // updading the component values
-    component.values = json.values;
-
     // handling assets
     if (json.assets) {
       for (let asset of json.assets) {
@@ -513,23 +510,21 @@ export default class FactoryElement extends __LitElement {
       }
     }
 
-    if (
-      this._$carpenter.$iframe.contentWindow._carpenterComponents?.[
-        component.id
-      ]
-    ) {
-      this._$carpenter.$iframe.contentWindow._carpenterComponents[
-        component.id
-      ]?.update?.(this._components[component.id].values);
+    // if the component is already registered in Carpenter
+    // we update it with the new values
+    if (__CarpenterRegistry.hasComponent(component.id)) {
+      __CarpenterRegistry.getComponent(component.id).update(json.values);
     } else {
       const newComponentDom = new DOMParser().parseFromString(
         json.html,
         'text/html',
       );
 
-      const $newComponent = newComponentDom.querySelector(
-        `#${component.id}-wrapper`,
-      ) as HTMLElement;
+      const $newComponent = document.createElement('div');
+      $newComponent.classList.add(...this.cls('_component-wrapper'));
+      for (let $child of newComponentDom.body.childNodes) {
+        $newComponent.appendChild($child);
+      }
 
       // add the new component in the iframe
       finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
@@ -834,14 +829,14 @@ export default class FactoryElement extends __LitElement {
           this._initComponents();
         }}
         @s-carpenter.component.connect=${(e) => {
-          if (!e.details?.id) {
+          if (!e.detail?.id) {
             return;
           }
           // add the component to the list
           this._components[e.detail.id] = e.detail;
         }}
         @s-carpenter.component.disconnect=${(e) => {
-          if (!e.details?.id) {
+          if (!e.detail?.id) {
             return;
           }
           // add the component to the list

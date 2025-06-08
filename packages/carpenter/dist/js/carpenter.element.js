@@ -25,8 +25,9 @@ import { __clone, __set } from '@lotsof/sugar/object';
 import { html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
-import __CarpenterVueProxy from '../../src/proxies/CarpenterueProxy.vue';
+import __CarpenterVueProxy from '../../src/proxies/carpenterVueProxy.vue';
 import __CarpenterDaemonElement from './carpenterDaemon.element.js';
+import __CarpenterRegistry from './carpenterRegistry.js';
 // save the carpenter vue proxy to access globally
 // @ts-ignore
 window.__CarpenterVueProxy = __CarpenterVueProxy;
@@ -53,7 +54,6 @@ class CarpenterElement extends __LitElement {
         this._currentMediaQuery = '';
         this._currentAction = null;
         this._state = {};
-        this._components = {};
         this.saveState = true;
     }
     static registerAdapter(id, adapter) {
@@ -362,14 +362,19 @@ class CarpenterElement extends __LitElement {
     }
     _applyUpdate(update) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a;
+            var _a, _b;
             // do nothing if no component is set
             if (!this.selectedComponent) {
                 return;
             }
             // set the value into the component
             __set(this.selectedComponent.values, update.path, update.value);
-            __set(this._components[this.selectedComponent.id].values, update.path, update.value);
+            __set((_b = (_a = __CarpenterRegistry.getComponent(this.selectedComponent.$component)) === null || _a === void 0 ? void 0 : _a.values) !== null && _b !== void 0 ? _b : {}, update.path, update.value);
+            // __set(
+            //   this._components[this.selectedComponent.id].values,
+            //   update.path,
+            //   update.value,
+            // );
             // create the update object
             const updateObject = Object.assign(Object.assign({}, update), { component: __clone(this.selectedComponent) });
             // if an adapter is set, use it to apply the update
@@ -386,14 +391,6 @@ class CarpenterElement extends __LitElement {
                 cancelable: false,
                 detail: updateObject,
             });
-            // set the internal name of the component
-            // if exists and is not set
-            if (this._components[this.selectedComponent.id]) {
-                if ((_a = this._components[this.selectedComponent.id].values) === null || _a === void 0 ? void 0 : _a.internalName) {
-                    this._components[this.selectedComponent.id].internalName =
-                        this._components[this.selectedComponent.id].values.internalName;
-                }
-            }
         });
     }
     // private _renderMediaQueries(): any {
@@ -502,49 +499,50 @@ class CarpenterElement extends __LitElement {
     </div>`;
     }
     _renderTree() {
+        var _a;
         return html `<nav class="${this.cls('_tree')}">
       <header class=${this.cls('_header')}>
         <h2 class=${this.cls('_header-title')}>Inspector</h2>
       </header>
 
       <ol class="${this.cls('_tree-list')}">
-        ${Object.entries(this._components).map(([id, component]) => {
+        ${Object.entries((_a = __CarpenterRegistry.components) !== null && _a !== void 0 ? _a : {}).map(([id, component]) => {
             var _a, _b;
             // if the component is not visible, skip it
             return html `
-            <li
-              class="${this.cls('_tree-item')}"
-              @mouseenter=${() => {
+              <li
+                class="${this.cls('_tree-item')}"
+                @mouseenter=${() => {
                 this._setPreselectedComponent(component);
             }}
-            >
-              <button
-                class="${this.cls('_tree-item-button')}"
-                @click=${() => {
+              >
+                <button
+                  class="${this.cls('_tree-item-button')}"
+                  @click=${() => {
                 this._setSelectedComponent(component);
             }}
-              >
-                <s-icon name="${component.icon}"></s-icon>
-                <span class="${this.cls('_tree-item-name')}">
-                  ${(_a = component.internalName) !== null && _a !== void 0 ? _a : component.name}
-                </span>
-                ${((_b = component.values) === null || _b === void 0 ? void 0 : _b.id)
+                >
+                  <s-icon name="${component.icon}"></s-icon>
+                  <span class="${this.cls('_tree-item-name')}">
+                    ${(_a = component.values.internalName) !== null && _a !== void 0 ? _a : component.name}
+                  </span>
+                  ${((_b = component.values) === null || _b === void 0 ? void 0 : _b.id)
                 ? html `
-                      <span
-                        class="${this.cls('_tree-item-id')}"
-                        @click=${(e) => {
+                        <span
+                          class="${this.cls('_tree-item-id')}"
+                          @click=${(e) => {
                     var _a;
                     e.stopPropagation();
                     __copyText((_a = component.values.id) !== null && _a !== void 0 ? _a : '');
                 }}
-                        >#${component.values.id}
-                        <s-icon name="clipboard-document-list"></s-icon>
-                      </span>
-                    `
+                          >#${component.values.id}
+                          <s-icon name="clipboard-document-list"></s-icon>
+                        </span>
+                      `
                 : ''}
-              </button>
-            </li>
-          `;
+                </button>
+              </li>
+            `;
         })}
       </ol>
     </nav>`;
@@ -560,7 +558,7 @@ class CarpenterElement extends __LitElement {
         .scrollOnPreselect=${true}
         @s-carpenter-daemon.component.connect=${(e) => {
             // add the component to the list
-            this._components[e.detail.id] = e.detail;
+            // this._components[e.detail.id] = e.detail;
             // forward the event to the parent
             this.dispatch('component.connect', {
                 bubbles: true,
@@ -568,7 +566,6 @@ class CarpenterElement extends __LitElement {
             });
         }}
         @s-carpenter-daemon.component.disconnect=${(e) => {
-            console.log('disconnect', e.detail);
             // do nothing if no component is set
             // remove the component from the list
             // delete this._components[e.detail.id];

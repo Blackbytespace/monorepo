@@ -37,8 +37,11 @@ export type TCarpenterComponentSpecs = {
     assets?: TCarpenterComponentAsset[];
     savedValues: any;
     html?: string;
-    $component: Element;
 };
+export type TCarpenterComponent = {
+    $component: HTMLElement;
+    update(newValues: any): void;
+} & TCarpenterComponentSpecs;
 export type TCarpenterCustomEvent = CustomEvent & {
     detail: TCarpenterComponentSpecs;
 };

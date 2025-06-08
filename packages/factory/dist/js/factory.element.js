@@ -16,6 +16,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import '@fontsource/poppins';
 import __AdvancedSelectElement from '@lotsof/advanced-select-element';
 import '@lotsof/carpenter';
+// @ts-ignore
+import { __CarpenterRegistry } from '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
@@ -352,7 +354,7 @@ export default class FactoryElement extends __LitElement {
     }
     _postComponent() {
         return __awaiter(this, arguments, void 0, function* (pathOrId = this.selectedComponentId, settings = {}) {
-            var _a, _b, _c, _d, _e, _f, _g;
+            var _a, _b, _c, _d;
             const finalSettings = Object.assign({ $iframe: (_a = this._$carpenter) === null || _a === void 0 ? void 0 : _a.$iframe }, settings);
             // get the component from the specs
             // or from the components list
@@ -385,8 +387,6 @@ export default class FactoryElement extends __LitElement {
                 method: 'POST',
                 body: formData,
             }), json = yield request.json();
-            // updading the component values
-            component.values = json.values;
             // handling assets
             if (json.assets) {
                 for (let asset of json.assets) {
@@ -404,12 +404,18 @@ export default class FactoryElement extends __LitElement {
                     (_c = finalSettings.$iframe) === null || _c === void 0 ? void 0 : _c.contentDocument.head.appendChild($asset);
                 }
             }
-            if ((_d = this._$carpenter.$iframe.contentWindow._carpenterComponents) === null || _d === void 0 ? void 0 : _d[component.id]) {
-                (_f = (_e = this._$carpenter.$iframe.contentWindow._carpenterComponents[component.id]) === null || _e === void 0 ? void 0 : _e.update) === null || _f === void 0 ? void 0 : _f.call(_e, this._components[component.id].values);
+            // if the component is already registered in Carpenter
+            // we update it with the new values
+            if (__CarpenterRegistry.hasComponent(component.id)) {
+                __CarpenterRegistry.getComponent(component.id).update(json.values);
             }
             else {
                 const newComponentDom = new DOMParser().parseFromString(json.html, 'text/html');
-                const $newComponent = newComponentDom.querySelector(`#${component.id}-wrapper`);
+                const $newComponent = document.createElement('div');
+                $newComponent.classList.add(...this.cls('_component-wrapper'));
+                for (let $child of newComponentDom.body.childNodes) {
+                    $newComponent.appendChild($child);
+                }
                 // add the new component in the iframe
                 finalSettings.$iframe.contentDocument.body.appendChild($newComponent);
                 // make sure the scripts are executed
@@ -425,7 +431,7 @@ export default class FactoryElement extends __LitElement {
                 });
             }
             // update Factory AND Carpenter
-            (_g = this._$carpenter) === null || _g === void 0 ? void 0 : _g.requestUpdate();
+            (_d = this._$carpenter) === null || _d === void 0 ? void 0 : _d.requestUpdate();
             this.requestUpdate();
         });
     }
@@ -674,7 +680,7 @@ export default class FactoryElement extends __LitElement {
         }}
         @s-carpenter.component.connect=${(e) => {
             var _a;
-            if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id)) {
                 return;
             }
             // add the component to the list
@@ -682,7 +688,7 @@ export default class FactoryElement extends __LitElement {
         }}
         @s-carpenter.component.disconnect=${(e) => {
             var _a;
-            if (!((_a = e.details) === null || _a === void 0 ? void 0 : _a.id)) {
+            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id)) {
                 return;
             }
             // add the component to the list
