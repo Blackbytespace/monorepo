@@ -1,15 +1,12 @@
 import '@fontsource/poppins';
 import __IconElement from '@lotsof/icon-element';
 import '@lotsof/json-schema-form';
-import __JsonSchemaFormElement from '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
-import { __copyText } from '@lotsof/sugar/clipboard';
 import { __whenEventListener } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
 import { __escapeQueue, type THotkeySettings } from '@lotsof/sugar/keyboard';
-import { __clone, __set } from '@lotsof/sugar/object';
 import { html, PropertyValues } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
 import __CarpenterVueProxy from '../../src/proxies/carpenterVueProxy.vue';
 import {
@@ -17,25 +14,14 @@ import {
   TCarpenterComponent,
   TCarpenterGroup,
   TCarpenterMediaQuery,
-  TCarpenterNotification,
-  TCarpenterState,
-  TCarpenterUpdateObject,
-  TCarpenterUpdatePayload,
 } from '../shared/carpenter.type.js';
-import __CarpenterDaemonElement from './carpenterDaemon.element.js';
-import __CarpenterRegistry from './carpenterRegistry.js';
+import { __Carpenter, __CarpenterDaemonElement } from './_exports.js';
 
 // save the carpenter vue proxy to access globally
 // @ts-ignore
 window.__CarpenterVueProxy = __CarpenterVueProxy;
 
 export default class CarpenterElement extends __LitElement {
-  @property({ type: Object })
-  public mediaQueries: Record<string, TCarpenterMediaQuery> = {};
-
-  @property({ type: String })
-  public mediaQuery: string = 'desktop';
-
   @property({ type: Object })
   public adapter?: TCarpenterAdapter | string;
 
@@ -44,12 +30,6 @@ export default class CarpenterElement extends __LitElement {
 
   @property({ type: Object })
   public preselectedComponent?: TCarpenterComponent | null = null;
-
-  @property({ type: String })
-  public darkModeClass: string = '-dark';
-
-  @property({ type: Function })
-  public loaded?: Function;
 
   @property({ type: String })
   public uiMode = 'light';
@@ -73,22 +53,8 @@ export default class CarpenterElement extends __LitElement {
     buttonText: 'Open advanced options',
   };
 
-  @state()
-  public _notifications: TCarpenterNotification[] = [];
-
-  @state()
-  public _currentMediaQuery: string = '';
-
-  @state()
-  public _currentAction: 'saveValues' | null = null;
-
-  @state()
-  protected _state: TCarpenterState = {};
-
   private _$iframe?: HTMLIFrameElement;
-  private _$canvas?: HTMLDivElement;
   private _$daemon?: __CarpenterDaemonElement;
-  private _$jsonSchemaForm?: __JsonSchemaFormElement;
 
   constructor() {
     super('s-carpenter');
@@ -115,35 +81,6 @@ export default class CarpenterElement extends __LitElement {
     // update the daemon accordingly
     this._$daemon?.requestUpdate();
 
-    // get the json schema form
-    if (!this._$jsonSchemaForm) {
-      this._$jsonSchemaForm = this.querySelector(
-        's-json-schema-form',
-      ) as __JsonSchemaFormElement;
-    }
-    // update the media query
-    if (changedProperties.has('_currentMediaQuery')) {
-      if (this.currentMediaQuery?.max !== -1) {
-        this._$canvas?.style.setProperty(
-          '--s-carpenter-canvas-width',
-          this.currentMediaQuery?.max + 'px',
-        );
-      } else {
-        this._$canvas?.style.removeProperty('--s-carpenter-canvas-width');
-      }
-      setTimeout(() => {
-        this._updateIframeSize();
-      }, 300);
-    }
-
-    if (this._$jsonSchemaForm) {
-      // @TODO       find a better way to update the form without using setTimeout
-      setTimeout(() => {
-        // @ts-ignore
-        this._$jsonSchemaForm.requestUpdate();
-      });
-    }
-
     if (changedProperties.has('selectedComponent')) {
       setTimeout(() => {
         this.requestUpdate();
@@ -151,55 +88,10 @@ export default class CarpenterElement extends __LitElement {
     }
   }
 
-  // private _updateMediaQueries(): void {
-  //   // get the computed style of the document (iframe)
-  //   const style = this._$iframe?.contentWindow?.getComputedStyle(
-  //     this.$iframeDocument?.body as Element,
-  //   );
-
-  //   // try to get the media queries from the css variables (sugarcss)
-  //   ['mobile', 'tablet', 'desktop', 'wide'].forEach((media) => {
-  //     const min = parseInt(
-  //         style?.getPropertyValue(`--s-media-${media}-min`) ?? '0',
-  //       ),
-  //       max = parseInt(
-  //         style?.getPropertyValue(`--s-media-${media}-max`) ?? '0',
-  //       );
-
-  //     if (min || max) {
-  //       const query: TCarpenterMediaQuery = {
-  //         name: media,
-  //         min: min ? min : -1,
-  //         max: max ? max : -1,
-  //       };
-  //       this.mediaQueries[media] = query;
-  //     }
-  //   });
-
-  //   // init the media query if not set
-  //   if (
-  //     !this._currentMediaQuery &&
-  //     Object.keys(this.mediaQueries ?? {}).length
-  //   ) {
-  //     this._currentMediaQuery = Object.keys(this.mediaQueries)[0];
-  //   }
-
-  //   // make sure we update the UI
-  //   this.requestUpdate();
-  // }
-
-  public get $iframeDocument(): Document | null | undefined {
-    return this._$iframe?.contentDocument;
-  }
-
-  public get $iframe(): HTMLIFrameElement | undefined {
-    return this._$iframe;
-  }
-
   protected firstUpdated(_changedProperties: PropertyValues): void {
     // get the daemon reference
     const $daemon = this.querySelector('s-carpenter-daemon');
-    this._$iframe?.contentDocument?.body.appendChild($daemon as Node);
+    __Carpenter.$iframe?.contentDocument?.body.appendChild($daemon as Node);
     this._$daemon = $daemon as __CarpenterDaemonElement;
 
     // init the daemon listeners
@@ -226,7 +118,7 @@ export default class CarpenterElement extends __LitElement {
     const $iframe = document.createElement('iframe');
     $iframe.src = document.location.href;
     $iframe.classList.add(...this.cls('_iframe'));
-    this._$iframe = $iframe;
+    __Carpenter.$iframe = $iframe;
 
     // add the iframe to the canvas
     $canvas.appendChild($iframe);
@@ -246,7 +138,7 @@ export default class CarpenterElement extends __LitElement {
     // center the content if wanted
     if (this.centerContent) {
       // center the content in the iframe
-      const $centerStyle = this.$iframe?.contentDocument?.createElement(
+      const $centerStyle = __Carpenter.$iframe?.contentDocument?.createElement(
         'style',
       ) as HTMLStyleElement;
       $centerStyle.innerHTML = `
@@ -258,37 +150,20 @@ export default class CarpenterElement extends __LitElement {
         align-items: center;
       }
     `;
-      this.$iframe?.contentWindow?.document.head.appendChild($centerStyle);
+      __Carpenter.$iframe?.contentWindow?.document.head.appendChild(
+        $centerStyle,
+      );
     }
 
     // register the deamon into the iframe
     __CarpenterDaemonElement.define('s-carpenter-daemon');
 
-    // empty page
-    // document
-    //   .querySelectorAll(
-    //     `body > *:not(${
-    //       this.tagName
-    //     }):not(s-factory):not(.s-carpenter):not(.s-carpenter):not(.${this.cls(
-    //       '_canvas',
-    //     )}):not(script):not(${this.cls('_canvas')
-    //       .map((c) => `.${c}`)
-    //       .join(',')}`,
-    //   )
-    //   .forEach(($el) => {
-    //     $el.remove();
-    //   });
-
     // init the listeners like escape key, etc...
     this._initListeners(document);
-    this._initListeners(this.$iframeDocument as Document);
+    this._initListeners(__Carpenter.$iframe.contentDocument as Document);
 
     // dispatch the ready event
-    this.dispatch('ready', {
-      bubbles: true,
-      cancelable: false,
-      detail: this,
-    });
+    __Carpenter.dispatchEvent('ready', {});
   }
 
   private _initDaemonListeners(): void {
@@ -303,6 +178,7 @@ export default class CarpenterElement extends __LitElement {
         });
       },
     );
+    // @ts-ignore
     this._$daemon?.addEventListener(
       's-carpenter-daemon.preselect',
       (e: CustomEvent) => {
@@ -335,61 +211,7 @@ export default class CarpenterElement extends __LitElement {
     // );
   }
 
-  private async _initEnvironment(): Promise<void> {
-    this.log(`Init the carpenter environment...`);
-
-    // // append the iframe to the body
-    // let iframeLoaded = false;
-    // const iframeLoadedPromise = new Promise((resolve) => {
-    //   $iframe.addEventListener('load', () => {
-    //     if (iframeLoaded) {
-    //       return;
-    //     }
-    //     iframeLoaded = true;
-    //     this.dispatch('ready', {
-    //       bubbles: true,
-    //       cancelable: false,
-    //       detail: this,
-    //     });
-    //     resolve(true);
-    //   });
-    // });
-    // await iframeLoadedPromise;
-
-    // update the media queries
-    // this._updateMediaQueries();
-
-    // const domParser = new DOMParser();
-    // const doc = domParser.parseFromString(
-    //   document.documentElement.outerHTML,
-    //   'text/html',
-    // );
-    // doc.body.querySelector('s-factory')?.remove();
-    // doc.body.querySelector('s-carpenter')?.remove();
-    // doc.body.querySelector('s-carpenter')?.remove();
-    // doc.body.querySelector('s-carpenter-daemon')?.remove();
-    // doc.body.querySelector('.s-carpenter_canvas')?.remove();
-
-    // copy the document into the iframe
-    // $iframe.contentWindow?.document.open();
-    // $iframe.contentWindow?.document.write(`
-    //   <!DOCTYPE html>
-    //   ${doc.documentElement.outerHTML}
-    // `);
-    // $iframe?.contentWindow?.document.close();
-
-    // clean the iframe
-    // this.$iframeDocument?.querySelector(`.${this.cls('_iframe')}`)?.remove();
-    // this.$iframeDocument?.querySelector(this.tagName)?.remove();
-
-    //   // make sure we don't have any dark mode class
-    //   // this._$iframe?.contentDocument?.body.classList.remove('-dark');
-    // });
-  }
-
-  private _setSelectedComponent(
-    component: TCarpenterComponentSpecs | null,
-  ): void {
+  private _setSelectedComponent(component: TCarpenterComponent | null): void {
     // set the selected component
     this.selectedComponent = component ?? undefined;
 
@@ -431,7 +253,7 @@ export default class CarpenterElement extends __LitElement {
         this.selectedComponent = undefined;
       },
       {
-        ctx: [document, this.$iframeDocument as Document],
+        ctx: [document, __Carpenter.$iframe?.contentDocument as Document],
       },
     );
     // dispatch the select event
@@ -442,7 +264,7 @@ export default class CarpenterElement extends __LitElement {
   }
 
   private _setPreselectedComponent(
-    component: TCarpenterComponentSpecs | null,
+    component: TCarpenterComponent | null,
   ): void {
     // set the preselected component
     this.preselectedComponent = component ?? undefined;
@@ -452,216 +274,6 @@ export default class CarpenterElement extends __LitElement {
       bubbles: true,
       detail: component,
     });
-  }
-
-  private _updateIframeSize(): void {
-    this._$iframe?.dispatchEvent(
-      new CustomEvent('load', {
-        bubbles: true,
-        cancelable: false,
-      }),
-    );
-  }
-
-  private async _applyUpdate(update: TCarpenterUpdatePayload): Promise<void> {
-    // do nothing if no component is set
-    if (!this.selectedComponent) {
-      return;
-    }
-
-    // set the value into the component
-    __set(this.selectedComponent.values, update.path, update.value);
-    __set(
-      __CarpenterRegistry.getComponent(this.selectedComponent.$component)
-        ?.values ?? {},
-      update.path,
-      update.value,
-    );
-    // __set(
-    //   this._components[this.selectedComponent.id].values,
-    //   update.path,
-    //   update.value,
-    // );
-
-    // create the update object
-    const updateObject: TCarpenterUpdateObject = {
-      ...update,
-      component: __clone(this.selectedComponent),
-    };
-
-    // if an adapter is set, use it to apply the update
-    if (
-      typeof this.adapter === 'string' &&
-      CarpenterElement._adapters[this.adapter]
-    ) {
-      await CarpenterElement._adapters[this.adapter].applyUpdate(updateObject);
-    } else if (this.adapter) {
-      await (<TCarpenterAdapter>this.adapter).applyUpdate(updateObject);
-    }
-
-    // dispatch an event
-    this.dispatch('update', {
-      bubbles: true,
-      cancelable: false,
-      detail: updateObject,
-    });
-  }
-
-  // private _renderMediaQueries(): any {
-  //   return html`<nav class="${this.cls('_media-queries')}">
-  //     <ol class="${this.cls('_media-queries-list')}">
-  //       ${Object.entries(this.mediaQueries).map(
-  //         ([name, query]) => html`
-  //           <li
-  //             class="${this.cls('_media-queries-list-item')} ${this
-  //               ._currentMediaQuery === name
-  //               ? '-active'
-  //               : ''}"
-  //             @pointerup=${() => {
-  //               this._currentMediaQuery = name;
-  //             }}
-  //           >
-  //             <span class="${this.cls('_media-queries-list-item-name')}"
-  //               >${query.name}</span
-  //             >
-  //           </li>
-  //         `,
-  //       )}
-  //     </ol>
-  //   </nav>`;
-  // }
-
-  // private _renderBottombar(): any {
-  //   return html`<nav class="${this.cls('_bottombar')}">
-  //     ${this._renderMediaQueries()}
-  //   </nav>`;
-  // }
-
-  // private _renderNotifications(): any {
-  //   if (!this._notifications.length) {
-  //     return;
-  //   }
-
-  //   return html`
-  //     <div class="${this.cls('_notifications')}">
-  //       <ul class="${this.cls('_notifications-list')}">
-  //         ${this._notifications.map(
-  //           (notification) => html`
-  //             <li
-  //               class="${this.cls('_notifications-item')} ${notification.type
-  //                 ? `-${notification.type}`
-  //                 : ''}"
-  //             >
-  //               <span class="${this.cls('_notifications-message')}">
-  //                 ${notification.message}
-  //               </span>
-  //             </li>
-  //           `,
-  //         )}
-  //     </div>
-  //   `;
-  // }
-
-  private _renderEditor(): any {
-    if (!this.selectedComponent) {
-      return html``;
-    }
-    return html`<div class="${this.cls('_editor')}">
-      <div class="${this.cls('_editor-inner')}">
-        <header class=${this.cls('_header')}>
-          <div class="${this.cls('_header-metas')}">
-            <h2 class=${this.cls('_header-title')}>
-              ${this.selectedComponent.icon
-                ? html`
-                    <s-icon
-                      class="${this.cls('_header-icon')}"
-                      name="${this.selectedComponent.icon}"
-                    ></s-icon>
-                  `
-                : ''}
-              ${this.selectedComponent.schema.title}
-            </h2>
-            ${this.selectedComponent.values?.id
-              ? html`<span
-                  class="${this.cls('_header-title-id')} button -outline"
-                  @click=${() => {
-                    __copyText(this.selectedComponent?.values.id);
-                  }}
-                  >ID: #${this.selectedComponent.values.id}
-                  <s-icon name="clipboard-document-list"
-                /></span>`
-              : ''}
-          </div>
-          <p class=${this.cls('_header-description')}>
-            ${this.selectedComponent.schema.description}
-          </p>
-        </header>
-
-        <s-json-schema-form
-          id="s-carpenter-json-schema-form"
-          name="s-carpenter-json-schema-form"
-          .lnf=${this.lnf}
-          .buttonClasses=${true}
-          .formClasses=${true}
-          .header=${false}
-          .verbose=${this.verbose}
-          .schema=${__clone(this.selectedComponent.schema)}
-          .values=${__clone(this.selectedComponent.values)}
-          @s-json-schema-form.update=${(e: CustomEvent) => {
-            this._applyUpdate(e.detail.update);
-          }}
-        ></s-json-schema-form>
-      </div>
-    </div>`;
-  }
-
-  public _renderTree(): any {
-    return html`<nav class="${this.cls('_tree')}">
-      <header class=${this.cls('_header')}>
-        <h2 class=${this.cls('_header-title')}>Inspector</h2>
-      </header>
-
-      <ol class="${this.cls('_tree-list')}">
-        ${Object.entries(__CarpenterRegistry.components ?? {}).map(
-          ([id, component]) => {
-            // if the component is not visible, skip it
-            return html`
-              <li
-                class="${this.cls('_tree-item')}"
-                @mouseenter=${() => {
-                  this._setPreselectedComponent(component);
-                }}
-              >
-                <button
-                  class="${this.cls('_tree-item-button')}"
-                  @click=${() => {
-                    this._setSelectedComponent(component);
-                  }}
-                >
-                  <s-icon name="${component.icon}"></s-icon>
-                  <span class="${this.cls('_tree-item-name')}">
-                    ${component.values.internalName ?? component.name}
-                  </span>
-                  ${component.values?.id
-                    ? html`
-                        <span
-                          class="${this.cls('_tree-item-id')}"
-                          @click=${(e: MouseEvent) => {
-                            e.stopPropagation();
-                            __copyText(component.values.id ?? '');
-                          }}
-                          >#${component.values.id}
-                          <s-icon name="clipboard-document-list"></s-icon>
-                        </span>
-                      `
-                    : ''}
-                </button>
-              </li>
-            `;
-          },
-        )}
-      </ol>
-    </nav>`;
   }
 
   public render() {
@@ -705,7 +317,6 @@ export default class CarpenterElement extends __LitElement {
           });
         }}
       ></s-carpenter-daemon>
-      ${this.selectedComponent ? this._renderEditor() : this._renderTree()}
     `;
   }
 }

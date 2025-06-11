@@ -1,7 +1,7 @@
 {
   "name": "@lotsof/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
-  "version": "1.0.0-alpha.93",
+  "version": "1.0.0-alpha.97",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -159,6 +159,10 @@
     "./type": {
       "types": "./dist/node/type/_exports.d.ts",
       "node": "./dist/node/type/_exports.js"
+    },
+    "./utils": {
+      "types": "./dist/shared/utils/_exports.d.ts",
+      "default": "./dist/shared/utils/_exports.js"
     },
     "./url": {
       "types": "./dist/shared/url/_exports.d.ts",

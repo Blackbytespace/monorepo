@@ -5,7 +5,7 @@ import __AdvancedSelectElement, {
 } from '@lotsof/advanced-select-element';
 import '@lotsof/carpenter';
 // @ts-ignore
-import { __CarpenterElement, __CarpenterRegistry } from '@lotsof/carpenter';
+import { __Carpenter, __CarpenterElement } from '@lotsof/carpenter';
 import { __i18n } from '@lotsof/i18n';
 import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
@@ -24,7 +24,6 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import '../../src/css/output/factory.build.css';
 import {
   TFactoryComponent,
-  TFactoryNotification,
   TFactorySpecs,
   TFactoryState,
   TFactoryUpdateComponentSettings,
@@ -65,18 +64,6 @@ export default class FactoryElement extends __LitElement {
   public specs: TFactorySpecs = {};
 
   @state()
-  public _notifications: TFactoryNotification[] = [];
-
-  @state()
-  public _selectedComponent: TFactoryComponent | null = null;
-
-  @state()
-  public _selectedComponentId: string | undefined;
-
-  @state()
-  public _preselectedComponentId: string | undefined;
-
-  @state()
   public _components: Record<string, TFactoryComponent> = {};
 
   @state()
@@ -107,22 +94,6 @@ export default class FactoryElement extends __LitElement {
 
     // return the engine
     return params.get('engine') || undefined;
-  }
-
-  public get selectedComponent(): TFactoryComponent {
-    return this._components[this.selectedComponentId as string];
-  }
-
-  public get selectedComponentId(): string | undefined {
-    return this._selectedComponentId;
-  }
-
-  public get preselectedComponent(): TFactoryComponent | null {
-    return this._components[this.preselectedComponentId as string];
-  }
-
-  public get preselectedComponentId(): string | undefined {
-    return this._preselectedComponentId;
   }
 
   public get componentsToRender(): string[] | undefined {
@@ -161,6 +132,15 @@ export default class FactoryElement extends __LitElement {
     if (__isInIframe()) {
       return;
     }
+
+    __Carpenter.addEventListener('ready', (e) => {
+      this._initListeners(__Carpenter.$iframe.contentDocument as Document);
+      this._initComponents();
+    });
+
+    __Carpenter.addEventListener('edit', (e) => {
+      this.showEditor();
+    });
 
     // fetch the specs
     await this._fetchSpecs();
@@ -225,11 +205,11 @@ export default class FactoryElement extends __LitElement {
 
           //   break;
           case api.search?.startsWith('!'):
-            return Object.entries(this.selectedComponent.engines).map(
+            return Object.entries(__Carpenter.selectedComponent.engines).map(
               ([idx, name]) => {
                 return {
-                  id: `!${this.selectedComponent.id}`,
-                  value: `!${this.selectedComponent.id}`,
+                  id: `!${__Carpenter.selectedComponent.id}`,
+                  value: `!${__Carpenter.selectedComponent.id}`,
                   preventSet: true,
                   label: `${__upperFirst(name as string)}`,
                   engine: name,
@@ -239,16 +219,16 @@ export default class FactoryElement extends __LitElement {
 
             break;
           case api.search?.startsWith('<'):
-            return Object.entries(this.selectedComponent.savedValues).map(
-              ([key, savedData]) => {
-                return {
-                  id: `<${key}`,
-                  value: `<${key}`,
-                  preventSet: true,
-                  label: (<any>savedData).name,
-                };
-              },
-            );
+            return Object.entries(
+              __Carpenter.selectedComponent.savedValues,
+            ).map(([key, savedData]) => {
+              return {
+                id: `<${key}`,
+                value: `<${key}`,
+                preventSet: true,
+                label: (<any>savedData).name,
+              };
+            });
             break;
           default:
             return [
@@ -309,13 +289,6 @@ export default class FactoryElement extends __LitElement {
   }
 
   private _initListeners(context: Document): void {
-    // // popstate
-    // window.addEventListener('popstate', (e) => {
-    //   if (e.state.id) {
-    //     this._selectedComponentId = e.state.id;
-    //   }
-    // });
-
     // show/hide UI
     context.addEventListener('keydown', (e) => {
       switch (true) {
@@ -403,13 +376,13 @@ export default class FactoryElement extends __LitElement {
     //   },
     //   hotkeySettings,
     // );
-    __hotkey(
-      'cmd+r',
-      (e) => {
-        this.randomizeComponentValues(this.selectedComponentId as string);
-      },
-      hotkeySettings,
-    );
+    // __hotkey(
+    //   'cmd+r',
+    //   (e) => {
+    //     this.randomizeComponentValues(__Carpenter.selectedComponent?.id, as string);
+    //   },
+    //   hotkeySettings,
+    // );
     __hotkey(
       'cmd+m',
       (e) => {
@@ -436,18 +409,18 @@ export default class FactoryElement extends __LitElement {
 
     document.querySelectorAll('#factory-css, #factory-js').forEach(($el) => {
       // add the css/js to the iframe
-      this._$carpenter?.$iframe?.contentDocument.head.appendChild(
+      __Carpenter.$iframe?.contentDocument.head.appendChild(
         $el.cloneNode(true),
       );
     });
   }
 
   private async _postComponent(
-    pathOrId: string | undefined = this.selectedComponentId,
+    pathOrId: string | undefined = __Carpenter.selectedComponent?.id,
     settings: TFactoryUpdateComponentSettings = {},
   ): Promise<void> {
     const finalSettings = {
-      $iframe: this._$carpenter?.$iframe,
+      $iframe: __Carpenter.$iframe,
       ...settings,
     };
 
@@ -512,8 +485,8 @@ export default class FactoryElement extends __LitElement {
 
     // if the component is already registered in Carpenter
     // we update it with the new values
-    if (__CarpenterRegistry.hasComponent(component.id)) {
-      __CarpenterRegistry.getComponent(component.id).update(json.values);
+    if (__Carpenter.hasComponent(component.id)) {
+      __Carpenter.getComponent(component.id).update(json.values);
     } else {
       const newComponentDom = new DOMParser().parseFromString(
         json.html,
@@ -577,20 +550,9 @@ export default class FactoryElement extends __LitElement {
     }
     // maintain the history
     history.pushState({ id, engine }, '', url);
-    // set the current component
-    this._selectedComponentId = id;
     // render the new component
     this._postComponent();
   }
-
-  // public setComponentValues(id: string, values: any): void {
-  //   const component = this.getComponent(id);
-  //   if (!component) {
-  //     return;
-  //   }
-  //   component.values = values;
-  //   this._postComponent(component.name);
-  // }
 
   public toggleUiMode(): void {
     this.setUiMode(this.state.mode === 'dark' ? 'light' : 'dark');
@@ -609,59 +571,6 @@ export default class FactoryElement extends __LitElement {
     } else {
       document.body.classList.add('-dark');
     }
-  }
-
-  public randomizeComponentValues(
-    id: string | undefined = this.selectedComponentId,
-  ): void {
-    if (!id) {
-      return;
-    }
-
-    const component = this.getComponent(id);
-    if (!component) {
-      return;
-    }
-    // update the component with empty values
-    component.values = {};
-    // this._postComponent({
-    //   id,
-    // });
-  }
-
-  private async _saveComponentValues(
-    component: TFactoryComponent,
-    name: String,
-  ): Promise<void> {
-    // post the new values to the server
-    const request = await fetch(`/api/saveValues/${component.name}`, {
-        method: 'POST',
-        body: JSON.stringify({
-          id: component.id,
-          name,
-          values: component.values,
-        }),
-      }),
-      json = await request.json();
-
-    if (json.errors) {
-      console.error(json.errors);
-      return;
-    }
-
-    // update specs
-    await this._fetchSpecs();
-
-    // remove the popin
-    this._currentAction = null;
-
-    // @TODO   send a notification
-    this._sendNotification({
-      id: 'valuesSaved',
-      message: `Values saved as ${name}`,
-      type: 'success',
-      timeout: 2000,
-    });
   }
 
   private _handleCommandPanelSelect(item: TAdvancedSelectElementItem): void {
@@ -683,36 +592,23 @@ export default class FactoryElement extends __LitElement {
         break;
       case item.value.startsWith('<'):
         // this.setComponentValues(
-        //   this.selectedComponent.name,
-        //   this.selectedComponent.savedValues[item.value.slice(1)]?.values,
+        //   __Carpenter.selectedComponent.name,
+        //   __Carpenter.selectedComponent.savedValues[item.value.slice(1)]?.values,
         // );
         break;
-    }
-  }
-
-  private async _sendNotification(
-    notification: TFactoryNotification,
-  ): Promise<void> {
-    this._notifications.push(notification);
-    if (notification.timeout) {
-      setTimeout(() => {
-        this._notifications = this._notifications.filter(
-          (n) => n !== notification,
-        );
-      }, notification.timeout);
     }
   }
 
   private _renderTopbar(): any {
     return html`<nav class="${this.cls('_topbar')}">
       <h1 class="${this.cls('_topbar-title')}">${__logoFactory}</h1>
-      ${this.selectedComponent
+      ${__Carpenter.selectedComponent
         ? html`<div class="${this.cls('_topbar-component')}">
             <h2 class="${this.cls('_topbar-component-name')}">
-              ${__upperFirst(this.selectedComponent.name)}
+              ${__upperFirst(__Carpenter.selectedComponent.name)}
             </h2>
             <p class="${this.cls('_topbar-component-version')}">
-              ${this.selectedComponent.version}
+              ${__Carpenter.selectedComponent.version}
             </p>
             <p class="${this.cls('_topbar-component-engine')}">
               ${__upperFirst(this.currentEngine as string)}
@@ -743,31 +639,6 @@ export default class FactoryElement extends __LitElement {
         />
       </s-factory-command-panel-select>
     </nav>`;
-  }
-
-  private _renderNotifications(): any {
-    if (!this._notifications.length) {
-      return;
-    }
-
-    return html`
-      <div class="${this.cls('_notifications')}">
-        <ul class="${this.cls('_notifications-list')}">
-          ${this._notifications.map(
-            (notification) => html`
-              <li
-                class="${this.cls('_notifications-item')} ${notification.type
-                  ? `-${notification.type}`
-                  : ''}"
-              >
-                <span class="${this.cls('_notifications-message')}">
-                  ${notification.message}
-                </span>
-              </li>
-            `,
-          )}
-      </div>
-    `;
   }
 
   private _renderSaveValuesForm(): any {
@@ -809,60 +680,7 @@ export default class FactoryElement extends __LitElement {
 
   private _renderEditor(): any {
     return html`
-      <s-carpenter
-        .lnf=${this.lnf}
-        .uiMode=${this.state.mode}
-        .verbose=${this.verbose}
-        .appendToBody=${false}
-        .addInternalName=${true}
-        .centerContent=${true}
-        @s-carpenter.update=${(e) => {
-          this.setComponent(e.detail.component.id, e.detail.component);
-          this._postComponent(e.detail.id);
-        }}
-        @s-carpenter.ready=${(e) => {
-          setTimeout(() => {
-            this._initListeners(
-              (<any>e.detail.$iframe)?.contentDocument as Document,
-            );
-          });
-          this._initComponents();
-        }}
-        @s-carpenter.component.connect=${(e) => {
-          if (!e.detail?.id) {
-            return;
-          }
-          // add the component to the list
-          this._components[e.detail.id] = e.detail;
-        }}
-        @s-carpenter.component.disconnect=${(e) => {
-          if (!e.detail?.id) {
-            return;
-          }
-          // add the component to the list
-          delete this._components[e.detail.id];
-        }}
-        @s-carpenter.preselect=${(e) => {
-          if (!e.detail?.id || !this._components[e.detail.id]) {
-            return;
-          }
-          // set the preselected component id
-          this._preselectedComponentId = e.detail.id;
-        }}
-        @s-carpenter.select=${(e) => {
-          if (!e.detail?.id || !this._components[e.detail.id]) {
-            return;
-          }
-          // set the selected component id
-          this._selectedComponentId = e.detail.id;
-        }}
-        @s-carpenter.edit=${(e) => {
-          // show the editor
-          this.showEditor();
-          // set the selected component id
-          this._selectedComponentId = e.detail.id;
-        }}
-      />
+      <s-carpenter-editor .lnf=${this.lnf} id="s-factory-editor" />
     `;
   }
 
@@ -872,12 +690,32 @@ export default class FactoryElement extends __LitElement {
     }
 
     return html`
+      <s-carpenter
+        .lnf=${this.lnf}
+        .uiMode=${this.state.mode}
+        .verbose=${this.verbose}
+        .appendToBody=${false}
+        .addInternalName=${true}
+        .centerContent=${true}
+        @s-carpenter.update=${(e) => {
+          console.log('efef');
+          // this.setComponent(e.detail.component.id, e.detail.component);
+          // this._postComponent(e.detail.id);
+        }}
+        @s-carpenter.select=${(e) => {
+          if (!e.detail?.id || !this._components[e.detail.id]) {
+            return;
+          }
+          // set the selected component id
+          // this._selectedComponentId = e.detail.id;
+        }}
+      />
+
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderEditor()}
       ${this._currentAction === 'saveValues'
         ? this._renderSaveValuesForm()
         : ''}
-      ${this._renderNotifications()}
     `;
   }
 }

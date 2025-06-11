@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { __CarpenterRegistry, TCarpenterComponent } from '@lotsof/carpenter';
+import { __Carpenter, type TCarpenterComponent } from '@lotsof/carpenter';
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { type TCarpenterVueProxy } from './carpenterVueProxy.type';
 
@@ -22,12 +22,11 @@ onMounted(() => {
     ...props.specs,
     $component,
     update(newValues) {
-      __CarpenterRegistry.updateComponent(props.id, newValues);
       values.value = { ...values.value, ...newValues };
       seed.value++;
       instance?.proxy?.$forceUpdate();
     },
   };
-  __CarpenterRegistry.addComponent(component);
+  __Carpenter.addComponent(component);
 });
 </script>

@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "playground-sveltekit",
-	"version": "1.0.0-alpha.93",
+	"version": "1.0.0-alpha.97",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",

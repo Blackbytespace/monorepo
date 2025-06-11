@@ -1,6 +1,6 @@
 {
   "name": "@lotsof/components",
-  "version": "1.0.0-alpha.91",
+  "version": "1.0.0-alpha.97",
   "description": "Components system to share components libraries easily",
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
