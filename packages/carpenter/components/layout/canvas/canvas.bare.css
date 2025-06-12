@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
 
-  body:has(.s-carpenter:hover) &,
+  body:has(.s-carpenter-editor:hover) &,
   .-show-editor &,
   .-show-ui & {
     width: calc(100% - var(--s-carpenter-editor-width));

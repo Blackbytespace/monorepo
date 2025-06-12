@@ -16,7 +16,7 @@ let CarpenterStackGroupRenderer = class CarpenterStackGroupRenderer extends __Li
         this.buttonText = 'Open options';
         this.isOpen = false;
         this.renderedProps = null;
-        this._escapeQueue = null;
+        this._escapeQueues = [];
         this._clickOutsideHandler = (e) => {
             if (this.contains(e.target)) {
                 return;
@@ -33,7 +33,6 @@ let CarpenterStackGroupRenderer = class CarpenterStackGroupRenderer extends __Li
         const viewportHeight = window.innerHeight;
         const maxHeight = Math.floor(viewportHeight - boundingRect.y);
         const groupHeight = $group.scrollHeight;
-        console.log(groupHeight, maxHeight);
         if (groupHeight > maxHeight && maxHeight < boundingRect.y) {
             $group.style.setProperty('--s-json-schema-form-group-translate-y', `${groupHeight * -1}px`);
         }
@@ -42,9 +41,9 @@ let CarpenterStackGroupRenderer = class CarpenterStackGroupRenderer extends __Li
     open() {
         this.isOpen = true;
         this.classList.add('-open');
-        this._escapeQueue = __escapeQueue(() => {
+        this._escapeQueues.push(__escapeQueue(() => {
             this.close();
-        });
+        }));
         document.addEventListener('click', this._clickOutsideHandler);
         // update size
         this.updateSizeProperties();
@@ -53,11 +52,11 @@ let CarpenterStackGroupRenderer = class CarpenterStackGroupRenderer extends __Li
         $control === null || $control === void 0 ? void 0 : $control.focus();
     }
     close() {
-        var _a, _b;
+        var _a, _b, _c;
         console.log('close');
         this.isOpen = false;
         this.classList.remove('-open');
-        (_b = (_a = this._escapeQueue) === null || _a === void 0 ? void 0 : _a.cancel) === null || _b === void 0 ? void 0 : _b.call(_a);
+        (_c = (_b = (_a = this._escapeQueues) === null || _a === void 0 ? void 0 : _a.pop()) === null || _b === void 0 ? void 0 : _b.cancel) === null || _c === void 0 ? void 0 : _c.call(_b);
         document.removeEventListener('click', this._clickOutsideHandler);
     }
     render() {

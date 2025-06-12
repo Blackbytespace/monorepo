@@ -1,7 +1,7 @@
 @import './tree.bare.css';
 
-.s-carpenter_tree {
-  .s-carpenter_tree-list {
+.s-carpenter-editor_tree {
+  .s-carpenter-editor_tree-list {
     padding: s-space(lg);
     display: flex;
     flex-direction: column;
@@ -9,10 +9,10 @@
     align-items: stretch;
   }
 
-  .s-carpenter_tree-item {
+  .s-carpenter-editor_tree-item {
   }
 
-  .s-carpenter_tree-item-button {
+  .s-carpenter-editor_tree-item-button {
     display: flex;
     align-items: center;
     gap: s-space(sm);
@@ -25,11 +25,11 @@
     }
   }
 
-  .s-carpenter_tree-item-name {
+  .s-carpenter-editor_tree-item-name {
     flex-grow: 1;
   }
 
-  .s-carpenter_tree-item-id {
+  .s-carpenter-editor_tree-item-id {
     color: s-color(complementary);
     @s-font (code);
   }

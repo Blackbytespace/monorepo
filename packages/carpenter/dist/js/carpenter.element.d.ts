@@ -3,7 +3,7 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/output/carpenter.build.css';
-import { TCarpenterAdapter, TCarpenterComponent, TCarpenterGroup, TCarpenterMediaQuery } from '../shared/carpenter.type.js';
+import { type TCarpenterAdapter, type TCarpenterComponent, type TCarpenterGroup } from '../shared/carpenter.type.js';
 export default class CarpenterElement extends __LitElement {
     adapter?: TCarpenterAdapter | string;
     selectedComponent?: TCarpenterComponent;
@@ -18,7 +18,6 @@ export default class CarpenterElement extends __LitElement {
     constructor();
     private static _adapters;
     static registerAdapter(id: string, adapter: TCarpenterAdapter): void;
-    get currentMediaQuery(): TCarpenterMediaQuery | undefined;
     update(changedProperties: any): void;
     protected firstUpdated(_changedProperties: PropertyValues): void;
     mount(): Promise<void>;

@@ -31,6 +31,13 @@ export default class CarpenterDaemonElement extends __LitElement {
         var _a;
         return (_a = __Carpenter.preselectedComponent) !== null && _a !== void 0 ? _a : __Carpenter.selectedComponent;
     }
+    mount() {
+        __Carpenter.addEventListener('update', () => {
+            setTimeout(() => {
+                this._updateDaemonPosition();
+            }, 200);
+        });
+    }
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
         // update the ui mode depending on the

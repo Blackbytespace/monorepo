@@ -54,7 +54,6 @@ export default class FactoryElement extends __LitElement {
         super('s-factory');
         this.src = '/api/specs';
         this.commandPanelHotkey = 'cmd+p';
-        this.darkModeClass = '-dark';
         this.specs = {};
         this._components = {};
         this._currentAction = null;
@@ -108,6 +107,11 @@ export default class FactoryElement extends __LitElement {
             if (__isInIframe()) {
                 return;
             }
+            // request update when something changes
+            // in the carpenter "store"
+            __Carpenter.addEventListener('update', (e) => {
+                this.requestUpdate();
+            });
             __Carpenter.addEventListener('ready', (e) => {
                 this._initListeners(__Carpenter.$iframe.contentDocument);
                 this._initComponents();
@@ -269,6 +273,7 @@ export default class FactoryElement extends __LitElement {
         };
         __hotkey('escape', (e) => {
             this._currentAction = null;
+            console.log('escape', __escapeQueueLength());
             const escapeQueueLength = __escapeQueueLength();
             if (escapeQueueLength === 0) {
                 this.hideUi();
@@ -585,20 +590,7 @@ export default class FactoryElement extends __LitElement {
         .appendToBody=${false}
         .addInternalName=${true}
         .centerContent=${true}
-        @s-carpenter.update=${(e) => {
-            console.log('efef');
-            // this.setComponent(e.detail.component.id, e.detail.component);
-            // this._postComponent(e.detail.id);
-        }}
-        @s-carpenter.select=${(e) => {
-            var _a;
-            if (!((_a = e.detail) === null || _a === void 0 ? void 0 : _a.id) || !this._components[e.detail.id]) {
-                return;
-            }
-            // set the selected component id
-            // this._selectedComponentId = e.detail.id;
-        }}
-      />
+      ></s-carpenter>
 
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderEditor()}
@@ -614,9 +606,6 @@ __decorate([
 __decorate([
     property({ type: String })
 ], FactoryElement.prototype, "commandPanelHotkey", void 0);
-__decorate([
-    property({ type: String })
-], FactoryElement.prototype, "darkModeClass", void 0);
 __decorate([
     state()
     // @ts-ignore

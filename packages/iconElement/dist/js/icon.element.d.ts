@@ -55,6 +55,8 @@ export default class AdvancedSelectElement extends __LitElement {
     svg: string;
     constructor();
     protected firstUpdated(_changedProperties: PropertyValues): void;
+    update(changedProperties: PropertyValues): void;
+    private _updateIcon;
     protected mount(): Promise<void>;
     render(): import("lit-html/directive.js").DirectiveResult<typeof import("lit-html/directives/unsafe-html.js").UnsafeHTMLDirective>;
 }

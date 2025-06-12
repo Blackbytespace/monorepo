@@ -11,6 +11,7 @@ body:has(.s-carpenter),
 
   .form-input,
   .form-select {
+    height: s-rem(38px);
     width: 100%;
   }
 

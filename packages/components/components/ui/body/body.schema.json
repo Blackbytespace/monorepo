@@ -39,8 +39,10 @@
     "title": {
       "type": "string",
       "title": "Title",
+      "required": true,
       "description": "Title of the body",
-      "minLength": 100000,
+      "minLength": 3,
+      "maxLength": 100,
       "editor": {
         "group": "default"
       }
@@ -50,6 +52,8 @@
       "title": "Subtitle",
       "description": "Subtitle of the body",
       "placeholder": "Hello world",
+      "minLength": 3,
+      "maxLength": 400,
       "editor": {
         "group": "texts"
       }
@@ -82,11 +86,12 @@
       }
     },
     "titleLevel": {
-      "type": "number",
+      "type": "integer",
       "title": "Title level",
       "description": "Title level (1-6)",
       "minimum": 1,
       "maximum": 6,
+      "default": 2,
       "editor": {
         "group": "advanced"
       }
@@ -95,6 +100,7 @@
       "type": "boolean",
       "title": "Typo classes",
       "description": "Use typography classes or not",
+      "default": true,
       "editor": {
         "group": "advanced"
       }

@@ -4,16 +4,16 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __whenEventListener } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { __escapeQueue, type THotkeySettings } from '@lotsof/sugar/keyboard';
+import { type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { html, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
+// @ts-ignore
 import __CarpenterVueProxy from '../../src/proxies/carpenterVueProxy.vue';
 import {
-  TCarpenterAdapter,
-  TCarpenterComponent,
-  TCarpenterGroup,
-  TCarpenterMediaQuery,
+  type TCarpenterAdapter,
+  type TCarpenterComponent,
+  type TCarpenterGroup,
 } from '../shared/carpenter.type.js';
 import { __Carpenter, __CarpenterDaemonElement } from './_exports.js';
 
@@ -69,10 +69,6 @@ export default class CarpenterElement extends __LitElement {
       );
     }
     this._adapters[id] = adapter;
-  }
-
-  public get currentMediaQuery(): TCarpenterMediaQuery | undefined {
-    return this.mediaQueries[this._currentMediaQuery];
   }
 
   public update(changedProperties: any): void {
@@ -196,13 +192,6 @@ export default class CarpenterElement extends __LitElement {
     };
 
     // __hotkey(
-    //   'escape',
-    //   (e) => {
-    //     this._currentAction = null;
-    //   },
-    //   hotkeySettings,
-    // );
-    // __hotkey(
     //   'cmd+s',
     //   (e) => {
     //     this._currentAction = 'saveValues';
@@ -228,6 +217,7 @@ export default class CarpenterElement extends __LitElement {
         type: 'string',
         title: 'Internal name',
         description: 'The internal name of the component',
+        // @ts-ignore
         editor: {
           group: this.advancedGroup.id,
         },
@@ -247,15 +237,6 @@ export default class CarpenterElement extends __LitElement {
       }
     }
 
-    // add an action in the escape queue
-    __escapeQueue(
-      () => {
-        this.selectedComponent = undefined;
-      },
-      {
-        ctx: [document, __Carpenter.$iframe?.contentDocument as Document],
-      },
-    );
     // dispatch the select event
     this.dispatch('select', {
       bubbles: true,

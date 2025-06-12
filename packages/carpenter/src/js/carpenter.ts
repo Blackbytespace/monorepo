@@ -1,3 +1,4 @@
+import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
 import type {
   TCarpenterComponent,
@@ -37,6 +38,12 @@ export default class Carpenter {
     this._$iframe = $iframe;
   }
 
+  public static get contexts(): Document[] {
+    return [document, this.$iframe?.contentDocument].filter(
+      (doc): doc is Document => doc !== undefined && doc !== null,
+    );
+  }
+
   private static get _components(): Record<string, TCarpenterComponent> {
     return this.$window._carpenterComponents;
   }
@@ -46,8 +53,7 @@ export default class Carpenter {
   }
 
   public static get selectedComponent(): TCarpenterComponent | undefined {
-    const keys = Object.keys(this._components);
-    return this._selectedComponent ?? this._components[keys[0]];
+    return this._selectedComponent;
   }
 
   public static get preselectedComponent(): TCarpenterComponent | null {
@@ -129,6 +135,19 @@ export default class Carpenter {
       component,
       preventScroll: finalSettings.preventScroll,
     });
+
+    // add an action in the escape queue
+    __escapeQueue(
+      () => {
+        this._selectedComponent = undefined;
+        this._triggerUpdate();
+      },
+      {
+        ctx: this.contexts,
+      },
+    );
+
+    // trigger an update across the app
     this._triggerUpdate();
   }
 

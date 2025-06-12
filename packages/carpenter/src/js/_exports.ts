@@ -1,3 +1,4 @@
+// @ts-ignore
 import __CarpenterVueProxy from '../../src/proxies/carpenterVueProxy.vue';
 import __CarpenterElement from './carpenter.element.js';
 import __Carpenter from './carpenter.js';

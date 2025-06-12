@@ -1,3 +1,4 @@
+import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import { __set } from '@lotsof/sugar/object';
 import { __CarpenterVueProxy } from './_exports.js';
 // save the carpenter vue proxy to access globally
@@ -18,6 +19,10 @@ class Carpenter {
     static set $iframe($iframe) {
         this._$iframe = $iframe;
     }
+    static get contexts() {
+        var _a;
+        return [document, (_a = this.$iframe) === null || _a === void 0 ? void 0 : _a.contentDocument].filter((doc) => doc !== undefined && doc !== null);
+    }
     static get _components() {
         return this.$window._carpenterComponents;
     }
@@ -25,9 +30,7 @@ class Carpenter {
         return Object.values(this._components);
     }
     static get selectedComponent() {
-        var _a;
-        const keys = Object.keys(this._components);
-        return (_a = this._selectedComponent) !== null && _a !== void 0 ? _a : this._components[keys[0]];
+        return this._selectedComponent;
     }
     static get preselectedComponent() {
         return this._preselectedComponent;
@@ -80,6 +83,14 @@ class Carpenter {
             component,
             preventScroll: finalSettings.preventScroll,
         });
+        // add an action in the escape queue
+        __escapeQueue(() => {
+            this._selectedComponent = undefined;
+            this._triggerUpdate();
+        }, {
+            ctx: this.contexts,
+        });
+        // trigger an update across the app
         this._triggerUpdate();
     }
     static _triggerUpdate() {

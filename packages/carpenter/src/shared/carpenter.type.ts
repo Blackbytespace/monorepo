@@ -32,13 +32,21 @@ export type TCarpenterComponentAsset = {
   url: string;
 };
 
+export type TCarpenterSchemaEditor = {
+  groups?: TCarpenterGroup[];
+};
+
+export type TCarpenterSchema = JSONSchema7 & {
+  editor: TCarpenterSchemaEditor;
+};
+
 export type TCarpenterComponentSpecs = {
   id: string;
   name: string;
   icon?: string;
   internalName?: string;
   description?: string;
-  schema: JSONSchema7;
+  schema: TCarpenterSchema;
   values: any;
   assets?: TCarpenterComponentAsset[];
   savedValues: any;

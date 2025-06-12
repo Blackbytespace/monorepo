@@ -11,12 +11,20 @@
     transition: all 0.1s ease-in-out;
     max-height: var(--s-json-schema-form-group-max-height);
     /* margin-top: var(--s-json-schema-form-group-translate-y); */
+
+    * {
+      pointer-events: none !important;
+    }
   }
 
   &.-open > *:first-child {
     translate: 0 0;
     opacity: 1;
     pointer-events: all;
+
+    * {
+      pointer-events: unset !important;
+    }
   }
 
   .s-json-schema-form-stack-group-renderer_button {

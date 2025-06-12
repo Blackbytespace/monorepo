@@ -26,6 +26,10 @@ body:has(.s-carpenter),
       }
     }
 
+    &.-sm {
+      padding: s-space(xs) s-space(sm);
+    }
+
     &.-outline {
       color: s-color(current);
       background: s-color(current, --alpha 0.04);

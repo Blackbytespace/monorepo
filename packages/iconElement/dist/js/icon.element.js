@@ -75,7 +75,14 @@ export default class AdvancedSelectElement extends __LitElement {
         // add the provider class
         this.classList.add(`-${this.provider}`);
     }
-    mount() {
+    update(changedProperties) {
+        super.update(changedProperties);
+        // if the name has changed, we need to remount
+        if (changedProperties.has('name')) {
+            this._updateIcon();
+        }
+    }
+    _updateIcon() {
         return __awaiter(this, void 0, void 0, function* () {
             // construct the url
             let url = this.providers[this.provider].url
@@ -85,6 +92,11 @@ export default class AdvancedSelectElement extends __LitElement {
             const svg = yield fetch(url), svgText = yield svg.text();
             // set the svg
             this.svg = svgText;
+        });
+    }
+    mount() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this._updateIcon();
         });
     }
     render() {

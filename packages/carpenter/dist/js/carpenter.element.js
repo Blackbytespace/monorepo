@@ -19,10 +19,10 @@ import '@lotsof/json-schema-form';
 import __LitElement from '@lotsof/lit-element';
 import { __whenEventListener } from '@lotsof/sugar/dom';
 import { __isInIframe } from '@lotsof/sugar/is';
-import { __escapeQueue } from '@lotsof/sugar/keyboard';
 import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
+// @ts-ignore
 import __CarpenterVueProxy from '../../src/proxies/carpenterVueProxy.vue';
 import { __Carpenter, __CarpenterDaemonElement } from './_exports.js';
 // save the carpenter vue proxy to access globally
@@ -51,9 +51,6 @@ class CarpenterElement extends __LitElement {
             throw new Error(`[s-carpenter] An adapter with id "${id}" already exists`);
         }
         this._adapters[id] = adapter;
-    }
-    get currentMediaQuery() {
-        return this.mediaQueries[this._currentMediaQuery];
     }
     update(changedProperties) {
         var _a;
@@ -153,13 +150,6 @@ class CarpenterElement extends __LitElement {
             ctx: context,
         };
         // __hotkey(
-        //   'escape',
-        //   (e) => {
-        //     this._currentAction = null;
-        //   },
-        //   hotkeySettings,
-        // );
-        // __hotkey(
         //   'cmd+s',
         //   (e) => {
         //     this._currentAction = 'saveValues';
@@ -168,7 +158,7 @@ class CarpenterElement extends __LitElement {
         // );
     }
     _setSelectedComponent(component) {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c, _d, _e, _f;
         // set the selected component
         this.selectedComponent = component !== null && component !== void 0 ? component : undefined;
         // add the "internalName" field into the component schema
@@ -182,6 +172,7 @@ class CarpenterElement extends __LitElement {
                 type: 'string',
                 title: 'Internal name',
                 description: 'The internal name of the component',
+                // @ts-ignore
                 editor: {
                     group: this.advancedGroup.id,
                 },
@@ -196,12 +187,6 @@ class CarpenterElement extends __LitElement {
                 this.selectedComponent.schema.editor.groups.push(this.advancedGroup);
             }
         }
-        // add an action in the escape queue
-        __escapeQueue(() => {
-            this.selectedComponent = undefined;
-        }, {
-            ctx: [document, (_g = __Carpenter.$iframe) === null || _g === void 0 ? void 0 : _g.contentDocument],
-        });
         // dispatch the select event
         this.dispatch('select', {
             bubbles: true,

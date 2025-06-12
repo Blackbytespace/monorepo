@@ -16,7 +16,7 @@ export default class CarpenterStackGroupRenderer extends __LitElement {
   @property({ type: Object })
   public renderedProps: any = null;
 
-  private _escapeQueue: any = null;
+  private _escapeQueues: any[] = [];
 
   constructor() {
     super('s-json-schema-form-stack-group-renderer');
@@ -39,8 +39,6 @@ export default class CarpenterStackGroupRenderer extends __LitElement {
     const maxHeight = Math.floor(viewportHeight - boundingRect.y);
     const groupHeight = $group.scrollHeight;
 
-    console.log(groupHeight, maxHeight);
-
     if (groupHeight > maxHeight && maxHeight < boundingRect.y) {
       $group.style.setProperty(
         '--s-json-schema-form-group-translate-y',
@@ -57,9 +55,11 @@ export default class CarpenterStackGroupRenderer extends __LitElement {
   public open(): void {
     this.isOpen = true;
     this.classList.add('-open');
-    this._escapeQueue = __escapeQueue(() => {
-      this.close();
-    });
+    this._escapeQueues.push(
+      __escapeQueue(() => {
+        this.close();
+      }),
+    );
     document.addEventListener('click', this._clickOutsideHandler);
 
     // update size
@@ -76,7 +76,7 @@ export default class CarpenterStackGroupRenderer extends __LitElement {
     console.log('close');
     this.isOpen = false;
     this.classList.remove('-open');
-    this._escapeQueue?.cancel?.();
+    this._escapeQueues?.pop()?.cancel?.();
     document.removeEventListener('click', this._clickOutsideHandler);
   }
 

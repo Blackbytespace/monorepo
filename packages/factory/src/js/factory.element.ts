@@ -56,9 +56,6 @@ export default class FactoryElement extends __LitElement {
   @property({ type: String })
   public commandPanelHotkey: string = 'cmd+p';
 
-  @property({ type: String })
-  public darkModeClass: string = '-dark';
-
   @state()
   // @ts-ignore
   public specs: TFactorySpecs = {};
@@ -132,6 +129,12 @@ export default class FactoryElement extends __LitElement {
     if (__isInIframe()) {
       return;
     }
+
+    // request update when something changes
+    // in the carpenter "store"
+    __Carpenter.addEventListener('update', (e: CustomEvent) => {
+      this.requestUpdate();
+    });
 
     __Carpenter.addEventListener('ready', (e) => {
       this._initListeners(__Carpenter.$iframe.contentDocument as Document);
@@ -320,6 +323,7 @@ export default class FactoryElement extends __LitElement {
       'escape',
       (e) => {
         this._currentAction = null;
+        console.log('escape', __escapeQueueLength());
         const escapeQueueLength = __escapeQueueLength();
         if (escapeQueueLength === 0) {
           this.hideUi();
@@ -697,19 +701,7 @@ export default class FactoryElement extends __LitElement {
         .appendToBody=${false}
         .addInternalName=${true}
         .centerContent=${true}
-        @s-carpenter.update=${(e) => {
-          console.log('efef');
-          // this.setComponent(e.detail.component.id, e.detail.component);
-          // this._postComponent(e.detail.id);
-        }}
-        @s-carpenter.select=${(e) => {
-          if (!e.detail?.id || !this._components[e.detail.id]) {
-            return;
-          }
-          // set the selected component id
-          // this._selectedComponentId = e.detail.id;
-        }}
-      />
+      ></s-carpenter>
 
       ${this._renderTopbar()} ${this._renderCommandPanel()}
       ${this._renderEditor()}

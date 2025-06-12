@@ -25,11 +25,13 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_header_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
+import { faker } from '@faker-js/faker';
 import __IconElement from '@lotsof/icon-element';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
 import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
 import { spread } from '@open-wc/lit-helpers';
+import { JSONSchemaFaker } from 'json-schema-faker';
 import { Draft2019 } from 'json-schema-library';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -37,6 +39,20 @@ import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import '../../src/css/JsonSchemaFormElement.css';
 import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
 import '../components/stackGroupRenderer/stackGroupRenderer.js';
+/**
+ * Adding some custom faker methods
+ * to be used in the editor
+ * through the json schema "editor" property
+ */
+JSONSchemaFaker.extend('editor', () => {
+    // @ts-ignore
+    faker.mock = {
+        picsum: (width, height) => {
+            return `https://picsum.photos/${width}/${height}?v=${Math.round(Math.random() * 1000)}`;
+        },
+    };
+    return faker;
+});
 class JsonSchemaFormElement extends __LitElement {
     static registerWidget(widget) {
         this.widgets[widget.id] = widget;
@@ -165,7 +181,8 @@ class JsonSchemaFormElement extends __LitElement {
         // get the field name
         const fieldName = path[path.length - 1];
         // handle default value
-        if (value === null && schema.default !== undefined) {
+        if ((value === null || value === undefined) &&
+            schema.default !== undefined) {
             __set(this.values, path, schema.default);
             value = schema.default;
         }
@@ -418,6 +435,7 @@ class JsonSchemaFormElement extends __LitElement {
                 ${Object.entries(schema.properties).map(([key, value]) => {
                     var _a, _b;
                     if (value.type === 'object') {
+                        const objectId = __get(this.values, [...path, key, 'id']);
                         return html `
                       <li class=${this.cls('_values-object-item')}>
                         <header
@@ -426,6 +444,18 @@ class JsonSchemaFormElement extends __LitElement {
                           <h3 class="${this.cls('_values-object-item-title')}">
                             ${(_a = value.title) !== null && _a !== void 0 ? _a : key}
                           </h3>
+                          ${objectId
+                            ? html `
+                                <button
+                                  class="${this.cls('_values-array-item-id')} button -sm -outline"
+                                  @click=${() => {
+                                __copyText(objectId);
+                            }}
+                                >
+                                  ID: #${objectId}
+                                </button>
+                              `
+                            : ''}
                         </header>
                         ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
                         ${this._renderComponentValueErrors([...path, key])}
@@ -445,10 +475,37 @@ class JsonSchemaFormElement extends __LitElement {
                             class=${this.cls('_values-prop')}
                             style="--prop-length: ${key.length}"
                           >
-                            ${(_b = value.title) !== null && _b !== void 0 ? _b : key}
+                            <span class=${this.cls('_values-prop-name')}
+                              >${(_b = value.title) !== null && _b !== void 0 ? _b : key}</span
+                            >
                           </div>
                         </label>
                         ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
+
+                        <nav class=${this.cls('_values-prop-tools')}>
+                          ${value.type !== 'boolean' &&
+                            value.type !== 'array' &&
+                            value.type !== 'object'
+                            ? html `
+                                <button
+                                  class=${this.cls('_values-prop-tool')}
+                                  @click=${(e) => {
+                                // generate a mock value
+                                const mock = JSONSchemaFaker.generate(value !== null && value !== void 0 ? value : {});
+                                // set the value in the values object
+                                // and emit the update
+                                __set(this.values, [...path, key], mock);
+                                this._emitUpdate({
+                                    value: mock,
+                                    path: [...path, key],
+                                });
+                            }}
+                                >
+                                  <s-icon name="arrow-path"></s-icon>
+                                </button>
+                              `
+                            : ''}
+                        </nav>
                         ${this._renderComponentValueErrors([...path, key])}
                       </li>
                     `;

@@ -6,6 +6,7 @@ export default class Carpenter {
     private static get $window();
     static get $iframe(): HTMLIFrameElement | undefined;
     static set $iframe($iframe: HTMLIFrameElement | undefined);
+    static get contexts(): Document[];
     private static get _components();
     static get components(): TCarpenterComponent[];
     static get selectedComponent(): TCarpenterComponent | undefined;

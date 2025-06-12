@@ -4,7 +4,7 @@ export default class CarpenterStackGroupRenderer extends __LitElement {
     buttonText: string;
     isOpen: boolean;
     renderedProps: any;
-    private _escapeQueue;
+    private _escapeQueues;
     constructor();
     private _clickOutsideHandler;
     updateSizeProperties(): void;

@@ -9,6 +9,7 @@ export default class CarpenterDaemonElement extends __LitElement {
     get $document(): Document;
     get $window(): Window;
     get component(): TCarpenterComponent | undefined;
+    mount(): void;
     protected firstUpdated(_changedProperties: PropertyValues): void;
     protected updateUiMode(): void;
     adoptedCallback(): void;

@@ -1,15 +1,15 @@
 @import './header.bare.css';
 
-.s-carpenter_header {
+.s-carpenter-editor_header {
   padding: s-space(lg);
   padding-block-end: 0;
 
-  .s-carpenter_header-metas {
+  .s-carpenter-editor_header-metas {
     display: flex;
     align-items: center;
   }
 
-  .s-carpenter_header-title {
+  .s-carpenter-editor_header-title {
     display: flex;
     flex-grow: 1;
     gap: s-space(sm);
@@ -17,12 +17,12 @@
     margin-block-end: s-space(xs);
   }
 
-  .s-carpenter_header-title-id {
+  .s-carpenter-editor_header-title-id {
     font-family: s-font-family(code);
     @s-map-color (complementary);
   }
 
-  .s-carpenter_header-description {
+  .s-carpenter-editor_header-description {
     @s-typo (p);
   }
 }

@@ -28,6 +28,8 @@
   }
 
   .s-json-schema-form_values-item {
+    position: relative;
+
     &:last-child {
       border-bottom: none;
     }
@@ -200,6 +202,7 @@
   .s-json-schema-form_values-object-item-title {
     font-weight: bold;
     color: s-color(accent);
+    flex-grow: 1;
   }
 
   .s-json-schema-form_values-object-item .s-json-schema-form_values-object-item,
@@ -223,6 +226,52 @@
     @s-typo (label);
     @s-transition (fast);
     user-select: none;
+  }
+
+  .s-json-schema-form_values-prop-name {
+  }
+
+  .s-json-schema-form_values-prop-tools {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: s-color(main, background, --lightness 98 --alpha 0.38);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--s-carpenter-depth);
+    pointer-events: none;
+    opacity: 0;
+    @s-radius;
+    @s-transition (fast);
+
+    @media dark {
+      background: s-color(main, background, --lightness 18 --alpha 0.38);
+    }
+  }
+  .s-json-schema-form_values-item {
+    &:hover > .s-json-schema-form_values-prop-tools {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  .s-json-schema-form_values-prop-tool {
+    font-size: s-rem(38px);
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @s-transition (fast);
+
+    .s-icon {
+      font-size: 0.5em;
+    }
+
+    &:hover {
+      background: s-color(accent);
+      color: s-color(accent, foreground);
+      @s-radius;
+    }
   }
 
   .s-json-schema-form_values-value {

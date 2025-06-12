@@ -1,5 +1,6 @@
 export type TJsonSchemaFormSettings = {
   classPrefix: string;
+  mock?: boolean;
 };
 
 export type TJsonSchemaFormUpdateEvent = {

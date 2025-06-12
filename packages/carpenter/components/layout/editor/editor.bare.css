@@ -1,4 +1,4 @@
-.s-carpenter_editor {
+.s-carpenter-editor {
   position: absolute;
   top: 0;
   right: 0;
@@ -10,7 +10,7 @@
     translate: 0;
   }
 
-  .s-carpenter_editor-inner {
+  .s-carpenter-editor-inner {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@
   }
 }
 
-.-show-editor .s-carpenter_editor,
-.-show-ui .s-carpenter_editor {
+.-show-editor .s-carpenter-editor,
+.-show-ui .s-carpenter-editor {
   translate: 0;
 }

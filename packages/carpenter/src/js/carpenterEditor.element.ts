@@ -118,6 +118,8 @@ export default class CarpenterEditorElement extends __LitElement {
       return;
     }
 
+    console.log('selected', this.selectedComponent);
+
     return html`<div
       class="${`${this.cls('_editor')} ${this.lnf ? '-lnf' : ''}`}"
     >
@@ -175,8 +177,6 @@ export default class CarpenterEditorElement extends __LitElement {
   }
 
   public _renderTree(): any {
-    console.log('tree', __Carpenter.components);
-
     return html`<nav class="${this.cls('_tree')}">
       <header class=${this.cls('_header')}>
         <h2 class=${this.cls('_header-title')}>Inspector</h2>
@@ -190,13 +190,13 @@ export default class CarpenterEditorElement extends __LitElement {
               <li
                 class="${this.cls('_tree-item')}"
                 @mouseenter=${() => {
-                  this._setPreselectedComponent(component);
+                  __Carpenter.preselectComponent(component);
                 }}
               >
                 <button
                   class="${this.cls('_tree-item-button')}"
                   @click=${() => {
-                    this._setSelectedComponent(component);
+                    __Carpenter.selectComponent(component);
                   }}
                 >
                   <s-icon name="${component.icon}"></s-icon>

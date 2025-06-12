@@ -33,15 +33,18 @@
       "type": "string",
       "title": "Source",
       "description": "Image source",
+      "placeholder": "https://picsum.photos/1600/900",
       "format": "uri",
       "editor": {
+        "mock.picsum": [1600, 900],
         "group": "default"
       }
     },
     "alt": {
       "type": "string",
-      "title": "Alt",
+      "title": "Alternative text",
       "description": "Image alt text",
+      "placeholder": "A beautiful image",
       "editor": {
         "group": "default"
       }
@@ -50,6 +53,7 @@
       "type": "string",
       "title": "Title",
       "description": "Image title",
+      "placeholder": "Beautiful image",
       "editor": {
         "group": "default"
       }

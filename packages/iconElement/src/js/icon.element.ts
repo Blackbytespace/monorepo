@@ -76,7 +76,16 @@ export default class AdvancedSelectElement extends __LitElement {
     this.classList.add(`-${this.provider}`);
   }
 
-  protected async mount() {
+  public update(changedProperties: PropertyValues): void {
+    super.update(changedProperties);
+
+    // if the name has changed, we need to remount
+    if (changedProperties.has('name')) {
+      this._updateIcon();
+    }
+  }
+
+  private async _updateIcon(): Promise<void> {
     // construct the url
     let url: string = this.providers[this.provider].url
       .replace('%type', this.type)
@@ -88,6 +97,10 @@ export default class AdvancedSelectElement extends __LitElement {
 
     // set the svg
     this.svg = svgText;
+  }
+
+  protected async mount() {
+    this._updateIcon();
   }
 
   public render() {

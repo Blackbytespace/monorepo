@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "/ui/modal",
   "title": "Modal",
+  "icon": "window",
   "description": "Modal component",
   "type": "object",
   "editor": {
@@ -10,6 +11,13 @@
         "id": "default",
         "title": "Default",
         "description": "Default options"
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced (modal)",
+        "description": "Advanced modal options",
+        "type": "stack",
+        "buttonText": "Edit modal advanced options"
       }
     ]
   },
