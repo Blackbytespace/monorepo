@@ -13,8 +13,8 @@ import { globSync as __globSync } from 'glob';
 import __fs from 'fs';
 import __path from 'path';
 
-import { __copySync, __readJsonSync, __renameSync } from '@lotsof/sugar/fs';
-import { __deepMerge } from '@lotsof/sugar/object';
+import { __copySync, __readJsonSync, __renameSync } from '@blackbyte/sugar/fs';
+import { __deepMerge } from '@blackbyte/sugar/object';
 import {
   __camelCase,
   __capitalCase,
@@ -25,7 +25,7 @@ import {
   __pascalCase,
   __snakeCase,
   __trainCase,
-} from '@lotsof/sugar/string';
+} from '@blackbyte/sugar/string';
 
 export default class ComponentsComponent {
   private _settings: TComponentsComponentSettings;

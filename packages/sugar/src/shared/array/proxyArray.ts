@@ -17,7 +17,7 @@
  * @todo        tests
  *
  * @example       js
- * import { __proxyArray } from '@lotsof/sugar/array';
+ * import { __proxyArray } from '@blackbyte/sugar/array';
  * const myArray = __proxyArray([1,2,3]);
  * myArray.watch(['push','pop'], (watchObj) => {
  *    // check the watchObj action
@@ -28,7 +28,7 @@
  *    }
  * });
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __proxyArray(array) {
   if (array.__$proxied) return array;
@@ -106,7 +106,7 @@ export default function __proxyArray(array) {
    *    // do something...
    * });
    *
-   * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   Object.defineProperty(array, 'watch', {
     writable: false,
@@ -140,7 +140,7 @@ export default function __proxyArray(array) {
    * const watchId = myArray.watch('push', (obj) => //...);
    * myArray.unwatch(watchId);
    *
-   * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   Object.defineProperty(array, 'unwatch', {
     writable: false,

@@ -18,11 +18,11 @@ import __readJsonSync from './readJsonSync.js';
  * await __readJson($1)
  *
  * @example         js
- * import { __readJson } from '@lotsof/sugar/fs';
+ * import { __readJson } from '@blackbyte/sugar/fs';
  * await __readJson('my-cool-json/file.json');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __readJson(path: string): Promise<any> {
   if (!__fs.existsSync(path)) {

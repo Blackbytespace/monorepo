@@ -21,7 +21,7 @@
  * @snippet         __trimLines($1)
  *
  * @example         js
- * import { __trimLines } from '@lotsof/sugar/string';
+ * import { __trimLines } from '@blackbyte/sugar/string';
  * __trimLines(`my cool lines
  *      that have some lines to trim
  * and some not...`);
@@ -30,7 +30,7 @@
  * // and some not...
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TTrimLinesSettings = {

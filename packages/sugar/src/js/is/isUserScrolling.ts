@@ -16,13 +16,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __isUserScrolling } from '@lotsof/sugar/dom'
+ * import { __isUserScrolling } from '@blackbyte/sugar/dom'
  * if (__isUserScrolling(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 let _isUserScrolling = false,
   _isUserScrollingTimeout;

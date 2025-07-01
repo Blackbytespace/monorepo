@@ -1,4 +1,4 @@
-import { __querySelectorUp } from '@lotsof/sugar/dom';
+import { __querySelectorUp } from '@blackbyte/sugar/dom';
 
 /**
  * @name        isDarkMode
@@ -18,13 +18,13 @@ import { __querySelectorUp } from '@lotsof/sugar/dom';
  * @snippet         __isDarkMode()
  *
  * @example 	js
- * import { __isDarkMode } from '@lotsof/sugar/is'
+ * import { __isDarkMode } from '@blackbyte/sugar/is'
  * if ( __isDarkMode()) {
  *   // do something cool
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIsDarkModeSettings = {

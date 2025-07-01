@@ -1,9 +1,10 @@
 import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/JsonSchemaFormElement.css';
-import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
-import '../components/stackGroupRenderer/stackGroupRenderer.js';
-import { TJsonSchemaFormWidget, TJsonSchemaGroupRenderer } from '../shared/JsonSchemaForm.types.js';
+import '../components/groupRenderers/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/groupRenderers/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/widgets/textareaWidget/textareaWidget.js';
+import { TJsonSchemaFormWidget, TJsonSchemaGroupRenderer } from '../shared/JsonSchemaForm.type.js';
 export default class JsonSchemaFormElement extends __LitElement {
     static widgets: Record<string, TJsonSchemaFormWidget>;
     static registerWidget(widget: TJsonSchemaFormWidget): void;
@@ -17,6 +18,8 @@ export default class JsonSchemaFormElement extends __LitElement {
     accessor widgets: Record<string, TJsonSchemaFormWidget>;
     private _registeredWidgets;
     private _errorsByPath;
+    private _jsonSchemaUtils;
+    private _finalSchema;
     constructor();
     get $form(): HTMLFormElement | null;
     mount(): Promise<void>;

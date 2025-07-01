@@ -22,11 +22,11 @@ import __micromatch from 'micromatch';
  * @snippet         __pickOneSync([$1])
  *
  * @example         js
- * import { __pickOneSync } from '@lotsof/sugar/fs';
+ * import { __pickOneSync } from '@blackbyte/sugar/fs';
  * __pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TPickOneSyncSettings = {

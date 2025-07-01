@@ -14,12 +14,12 @@
  * @snippet         __isValidCssUnitValue($1)
  *
  * @example         js
- * import { __isValidCssUnitValue } from '@lotsof/sugar/css';
+ * import { __isValidCssUnitValue } from '@blackbyte/sugar/css';
  * __isValidCssUnitValue('10px'); // => true
  * __isValidCssUnitValue('default'); // => false
  *
  * @since       1.0.0
- * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isValidCssUnitValue(value: string | number): boolean {
   if (typeof value === 'number') return true;

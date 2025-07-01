@@ -16,14 +16,14 @@
  * @todo      tests
  *
  * @example  	js
- * import { __matches } from '@lotsof/sugar/dom'
+ * import { __matches } from '@blackbyte/sugar/dom'
  * if (__matches(myCoolHTMLElement, '.my-cool-css-selector')) {
  * 		// the element match the selector
  * }
  *
  * @see 		https://developer.mozilla.org/en/docs/Web/API/Element/matches
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __matches(el: HTMLElement, selector: string): boolean {
   if (el.nodeName == '#comment' || el.nodeName == '#text') {

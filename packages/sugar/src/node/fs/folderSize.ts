@@ -20,13 +20,13 @@ import __fastFolderSize from 'fast-folder-size';
  * await __folderSize($1)
  *
  * @example           js
- * import { __folderSize } from '@lotsof/sugar/fs';
+ * import { __folderSize } from '@blackbyte/sugar/fs';
  * await __folderSize('my/cool/folder');
  *
  *
  * @see             https://www.npmjs.com/package/get-folder-size
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __folderSize(folderPath: string): Promise<number> {
   return new Promise(async (resolve, reject) => {

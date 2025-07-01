@@ -17,12 +17,12 @@ import __parse from '../../../shared/string/parse.js';
  * @todo      tests
  *
  * @example  	js
- * import { __parseTransformRule } from '@lotsof/sugar/css';
+ * import { __parseTransformRule } from '@blackbyte/sugar/css';
  * __parseTransformRule('translate(-100px, 200rem));
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-css-rules.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TParseTransformRuleResult = {

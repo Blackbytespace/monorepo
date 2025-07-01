@@ -17,11 +17,11 @@
  * @snippet         __isWindows()
  *
  * @example       js
- * import { __isWindows } from '@lotsof/sugar/is';
+ * import { __isWindows } from '@blackbyte/sugar/is';
  * __isWindows(); // => true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isWindows(): boolean {
   if (process && process.platform) {

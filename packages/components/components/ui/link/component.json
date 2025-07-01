@@ -1,7 +1,7 @@
 {
   "id": "ui-link",
   "version": "1.0.0",
-  "name": "@lotsof/link",
+  "name": "@blackbyte/link",
   "type": "ui",
   "description": "Simple link component",
   "files": ["*"],

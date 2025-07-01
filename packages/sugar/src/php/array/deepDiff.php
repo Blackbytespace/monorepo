@@ -30,7 +30,7 @@ namespace Sugar\Array;
  * // ]
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function deepDiff($array1, $array2)
 {

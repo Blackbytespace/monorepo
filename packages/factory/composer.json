@@ -1,5 +1,5 @@
 {
-  "name": "lotsof/factory",
+  "name": "blackbyte/factory",
   "description": "Useful components factory UI that allows you to build and test your own components easily",
   "version": "1.0.0",
   "type": "library",
@@ -13,7 +13,7 @@
     {
       "name": "Olivier Bossel",
       "email": "olivier.bossel@gmail.com",
-      "homepage": "https://lotsof.dev"
+      "homepage": "https://blackbyte.space"
     }
   ],
   "repositories": [
@@ -28,8 +28,8 @@
   ],
   "require": {
     "php": ">=8.0",
-    "lotsof/components": "^1.0.0",
-    "lotsof/sugar": "^1.0.0",
+    "blackbyte/components": "^1.0.0",
+    "blackbyte/sugar": "^1.0.0",
     "eftec/bladeone": "^4.13",
     "twig/twig": "^3.11",
     "slim/slim": "4.*",

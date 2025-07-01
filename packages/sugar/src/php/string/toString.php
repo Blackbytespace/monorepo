@@ -21,7 +21,7 @@ namespace Sugar\String;
  * Sugar\String\toString(['hello','world']); // => "['hello','world']"
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function toString($value)
 {

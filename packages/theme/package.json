@@ -1,7 +1,7 @@
 {
-  "name": "@lotsof/theme",
+  "name": "@blackbyte/theme",
   "description": "Useful theme related stuffs",
-  "version": "1.0.0-alpha.97",
+  "version": "1.0.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -16,7 +16,7 @@
     "default": "./dist/js/_exports.js",
     "node": "./dist/node/_exports.js"
   },
-  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
     {
       "name": "Olivier Bossel",
@@ -27,8 +27,8 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

@@ -26,7 +26,7 @@ import __parseTypeString, {
  * @snippet         __resolveTypeString($1)
  *
  * @example       js
- * import { __resolveTypeString } from '@lotsof/sugar/type';
+ * import { __resolveTypeString } from '@blackbyte/sugar/type';
  * __resolveTypeString('string');
  * // {
  * //    types: [{

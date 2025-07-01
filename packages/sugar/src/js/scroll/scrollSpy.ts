@@ -16,11 +16,11 @@
  * @snippet          __scrollSpy($1);
  *
  * @example         js
- * import { __scrollSpy } from '@lotsof/sugar/scroll';
+ * import { __scrollSpy } from '@blackbyte/sugar/scroll';
  * __scrollSpy($myLinks);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TScrollSpySettings = {
   offset?: number;

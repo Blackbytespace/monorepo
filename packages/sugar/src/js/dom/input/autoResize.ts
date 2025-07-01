@@ -14,7 +14,7 @@
  * @snippet         __autoResize($1)
  *
  * @example 	js
- * import { __autoResize } from '@lotsof/sugar/dom';
+ * import { __autoResize } from '@blackbyte/sugar/dom';
  * __autoResize($textarea);
  *
  * @see             https://stackoverflow.com/a/56416714

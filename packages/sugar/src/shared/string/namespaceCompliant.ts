@@ -19,11 +19,11 @@ import __simplifySpecialChars from './simplifySpecialChars.js';
  * @todo     tests
  *
  * @example         php
- * import { __namespaceCompliant } from '@lotsof/sugar/string';
+ * import { __namespaceCompliant } from '@blackbyte/sugar/string';
  * __namespaceCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TNamespaceCompliantSettings = {

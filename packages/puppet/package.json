@@ -1,7 +1,7 @@
 {
-  "name": "@lotsof/puppet",
+  "name": "@blackbyte/puppet",
   "description": "Useful puppeteer utilities to help you in your daily tasks",
-  "version": "1.0.0-alpha.97",
+  "version": "1.0.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,7 +12,7 @@
   },
   "main": "./dist/node/_exports.js",
   "types": "./src/node/puppet.types.ts",
-  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
     {
       "name": "Olivier Bossel",
@@ -23,9 +23,9 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
-    "@lotsof/theme": "^1.0.0-alpha.97",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/theme": "^1.0.0-beta.1",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

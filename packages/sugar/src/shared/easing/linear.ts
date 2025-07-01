@@ -14,13 +14,13 @@
  * @snippet         __linear($1)
  *
  * @example         js
- * import { __linear } from '@lotsof/sugar/easing';
+ * import { __linear } from '@blackbyte/sugar/easing';
  * __linear(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __linear(t: number): number {
   return t;

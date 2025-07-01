@@ -28,11 +28,11 @@ import __packageRootDir from './packageRootDir.js';
  * @snippet         __addPackageDependencies($1, $2)
  *
  * @example         js
- * import { __addPackageDependencies } from '@lotsof/sugar/package`;
+ * import { __addPackageDependencies } from '@blackbyte/sugar/package`;
  * __addPackageDependencies('lodash');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TAddPackageDependenciesSettings = {

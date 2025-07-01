@@ -32,9 +32,13 @@
       }
     },
     "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "Unique identifier",
+      "$extends": "jsonSchemaUtils/id",
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "class": {
+      "$extends": "jsonSchemaUtils/class",
       "editor": {
         "group": "advanced"
       }

@@ -19,14 +19,14 @@ import __fs from 'fs-extra';
  * await __move($1, $2)
  *
  * @example       js
- * import { __move } from '@lotsof/sugar/fs';
+ * import { __move } from '@blackbyte/sugar/fs';
  * await __move('my/cool/dir', 'another/place/for/directory').then(() => {
  *    // do something...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __move(src: string, dest: string): Promise<void> {
   if (src === dest) {

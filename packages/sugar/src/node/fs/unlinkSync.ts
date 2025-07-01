@@ -17,12 +17,12 @@ import __isDirectory from '../is/isDirectory.js';
  * @snippet         __unlinkSync($1)
  *
  * @example       js
- * import { __unlinkSync } from '@lotsof/sugar/fs';
+ * import { __unlinkSync } from '@blackbyte/sugar/fs';
  *  __unlinkSync('my/cool/file.json');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __unlinkSync(path: string): void {
   if (!__fs.existsSync(path)) return;

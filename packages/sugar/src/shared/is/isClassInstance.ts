@@ -14,7 +14,7 @@
  * @snippet         __isClassInstance($1)
  *
  * @example         js
- * import { __isClassInstance } from '@lotsof/sugar/is';
+ * import { __isClassInstance } from '@blackbyte/sugar/is';
  * if (__isClassInstance({
  *      something: 'hello'
  * })); // => false
@@ -24,7 +24,7 @@
  * __isClassInstance(new MyClass());
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isClassInstance(object: any): boolean {
   if (!object) return false;

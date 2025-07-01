@@ -15,12 +15,12 @@
  * @todo      tests
  *
  * @example  	js
- * import { __positionFromEvent } from '@lotsof/sugar/dom'
+ * import { __positionFromEvent } from '@blackbyte/sugar/dom'
  * __positionFromEvent(e);
  * // output : { x, 230, y: 122 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __positionFromEvent(e: MouseEvent | TouchEvent): {
   x: number;

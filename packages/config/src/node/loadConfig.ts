@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-import '@lotsof/components';
-import '@lotsof/factory';
-import '@lotsof/puppet';
-import { __packageRootDir } from '@lotsof/sugar/package';
+import '@blackbyte/components';
+import '@blackbyte/factory';
+import '@blackbyte/puppet';
+import { __packageRootDir } from '@blackbyte/sugar/package';
 import __fs from 'fs';
 import __defineConfig from './defineConfig.js';
 import __getConfig from './getConfig.js';
@@ -13,9 +13,9 @@ export default async function loadConfig(
   def?: any,
 ): Promise<any> {
   const possibleFiles: string[] = [
-    // `${__packageRootDir()}/lotsof.config.ts`,
-    `${__packageRootDir()}/lotsof.config.js`,
-    `${__packageRootDir()}/lotsof.config.json`,
+    // `${__packageRootDir()}/blackbyte.config.ts`,
+    `${__packageRootDir()}/blackbyte.config.js`,
+    `${__packageRootDir()}/blackbyte.config.json`,
   ];
 
   let configFilePath = '';
@@ -28,7 +28,7 @@ export default async function loadConfig(
     }
 
     if (!configFilePath) {
-      return process.lotsofConfig ?? {};
+      return process.blackbyteConfig ?? {};
     }
   }
 

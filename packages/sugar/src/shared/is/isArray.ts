@@ -16,13 +16,13 @@
  * @snippet         __isArray($1)
  *
  * @example    js
- * import { __isArray } from '@lotsof/sugar/is'
+ * import { __isArray } from '@blackbyte/sugar/is'
  * if (__isArray([]) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isArray(value: any): boolean {
   return Array.isArray(value);

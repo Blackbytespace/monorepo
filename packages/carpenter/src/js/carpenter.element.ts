@@ -1,10 +1,10 @@
+import __IconElement from '@blackbyte/icon-element';
+import '@blackbyte/json-schema-form';
+import __LitElement from '@blackbyte/lit-element';
+import { __whenEventListener } from '@blackbyte/sugar/dom';
+import { __isInIframe } from '@blackbyte/sugar/is';
+import { type THotkeySettings } from '@blackbyte/sugar/keyboard';
 import '@fontsource/poppins';
-import __IconElement from '@lotsof/icon-element';
-import '@lotsof/json-schema-form';
-import __LitElement from '@lotsof/lit-element';
-import { __whenEventListener } from '@lotsof/sugar/dom';
-import { __isInIframe } from '@lotsof/sugar/is';
-import { type THotkeySettings } from '@lotsof/sugar/keyboard';
 import { html, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';

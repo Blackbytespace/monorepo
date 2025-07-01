@@ -23,13 +23,13 @@
  * @todo      tests
  *
  * @example 	js
- * import { __whenRemoved } from '@lotsof/sugar/dom'
+ * import { __whenRemoved } from '@blackbyte/sugar/dom'
  * __whenRemoved(myCoolHTMLElement).then(() => {
  * 		// the element has been removed
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenRemoved($elm: HTMLElement): Promise<HTMLElement> {
   return new Promise((resolve, reject) => {

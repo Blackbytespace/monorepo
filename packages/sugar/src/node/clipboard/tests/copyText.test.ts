@@ -1,4 +1,4 @@
-import { __wait } from '@lotsof/sugar/datetime';
+import { __wait } from '@blackbyte/sugar/datetime';
 import __copyText from '../copyText';
 import __readText from '../readText';
 

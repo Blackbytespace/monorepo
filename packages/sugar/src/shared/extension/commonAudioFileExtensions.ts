@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonAudioFileExtensions()
  *
  * @example         js
- * import { __commonAudioFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonAudioFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonAudioFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonAudioFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Components;
+namespace Blackbyte\Components;
 
 class Components
 {

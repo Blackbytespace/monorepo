@@ -17,10 +17,10 @@ namespace Sugar\Url;
  *
  * @example    php
  * \Sugar\Url\currentUrl();
- * // https://lotsof.dev/hello/world?query=string
+ * // https://blackbyte.space/hello/world?query=string
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function currentUrl()
 {

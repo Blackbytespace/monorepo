@@ -18,12 +18,12 @@ import { pascalSnakeCase } from 'change-case';
  * @snippet         __pascalSnakeCase($1)
  *
  * @example     js
- * import { __pascalSnakeCase } from '@lotsof/sugar/string';
+ * import { __pascalSnakeCase } from '@blackbyte/sugar/string';
  * __pascalSnakeCase('hello world'); // => Hello_World
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pascalSnakeCase(text: string): string {
   return pascalSnakeCase(text);

@@ -15,13 +15,13 @@
  * @snippet         __isOpera()
  *
  * @example 	js
- * import { __isOpera } from '@lotsof/sugar/is'
+ * import { __isOpera } from '@blackbyte/sugar/is'
  * if ( __isOpera()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isOpera(ua: string = navigator.userAgent): boolean {
   return ua.toLowerCase().indexOf('op') > -1;

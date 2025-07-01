@@ -15,11 +15,11 @@
  * @snippet         __isTestEnv()
  *
  * @example       js
- * import { __isTestEnv } from '@lotsof/sugar/is';
+ * import { __isTestEnv } from '@blackbyte/sugar/is';
  * __isTestEnv(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isTestEnv(): boolean {
   // @ts-ignore

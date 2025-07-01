@@ -22,12 +22,12 @@ import __parseHsla from './parseHsla.js';
  * @snippet         __hslaToHexa($1)
  *
  * @example         js
- * import { __hslaToHexa } from '@lotsof/sugar/color';
+ * import { __hslaToHexa } from '@blackbyte/sugar/color';
  * __hslaToHexa(10,20,30,1);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function HSLAToHexA(h, s, l, a) {
   s /= 100;

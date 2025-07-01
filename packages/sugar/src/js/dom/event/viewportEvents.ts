@@ -26,13 +26,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __viewportEvents } from '@lotsof/sugar/dom';
+ * import { __viewportEvents } from '@blackbyte/sugar/dom';
  * __viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      // do something
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TViewportEventsSettings = {
   offset: number | string;

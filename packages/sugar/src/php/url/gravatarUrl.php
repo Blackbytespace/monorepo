@@ -27,7 +27,7 @@ namespace Sugar\gravatar;
  * \Sugar\Url\gravatarUrl('olivier.bossel@gmail.com');
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 class GravatarUrlSettings

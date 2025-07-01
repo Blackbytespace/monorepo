@@ -20,13 +20,13 @@
  * });
  *
  * @example  	js
- * import { __whenLinkLoaded } from '@lotsof/sugar/dom'
+ * import { __whenLinkLoaded } from '@blackbyte/sugar/dom'
  * __whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
  * 		// do something when the link is loaded
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function alreadyLoaded(link: HTMLLinkElement): boolean {
   const href = link.href;

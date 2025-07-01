@@ -30,13 +30,13 @@ import __deepMap from '../object/deepMap.js';
  * @snippet         __toString($1)
  *
  * @example    js
- * import { __toString } from '@lotsof/sugar/string'
+ * import { __toString } from '@blackbyte/sugar/string'
  * __toString({
  * 	id:'hello'
  * }) // '{"id":"hello"}'
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TToStringSettings = {

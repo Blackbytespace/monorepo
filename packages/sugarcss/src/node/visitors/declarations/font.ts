@@ -32,7 +32,7 @@ import __argsToCustomPropertiesAst from '../../utils/argsToCustomPropertiesAst.j
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 
 export default function font(v, settings: TSugarCssSettings): any {

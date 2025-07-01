@@ -17,11 +17,11 @@
  * @snippet         __convertTime($1, $2)
  *
  * @example           js
- * import { __convertTime } from '@lotsof/sugar/datetime';
+ * import { __convertTime } from '@blackbyte/sugar/datetime';
  * __convertTime('10s', 'ms'); // => 10000
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __convertTime(from: string | number, to = 'ms') {
   // @ts-ignore

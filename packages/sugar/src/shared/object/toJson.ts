@@ -17,7 +17,7 @@ import __set from './set.js';
  * @snippet         __toJson($1)
  *
  * @example         js
- * import { __toJson } from '@lotsof/sugar/object';
+ * import { __toJson } from '@blackbyte/sugar/object';
  * class MyClass {
  *      hello = 'world';
  *      something() {}
@@ -25,7 +25,7 @@ import __set from './set.js';
  * __toJson(new MyClass()); // => { hello: 'world' }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __toJson(object: any): any {
   const newObj = {};

@@ -20,11 +20,11 @@ import __isPath from '../../shared/is/isPath.js';
  * @snippet         __folderPath($1)
  *
  * @example         js
- * import { __folderPath } from '@lotsof/sugar/fs';
+ * import { __folderPath } from '@blackbyte/sugar/fs';
  * __folderPath('my/cool/path.js'); // => true
  *
  * @since           1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFolderPathSettings = {

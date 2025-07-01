@@ -16,11 +16,11 @@ const __encryptedMessages: any = {};
  * @snippet         __md5.encrypt($1)
  *
  * @example         js
- * import { __md5 } from '@lotsof/sugar/crypto';
+ * import { __md5 } from '@blackbyte/sugar/crypto';
  * __md5.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default {
   /**
@@ -32,7 +32,7 @@ export default {
    * @param       {String}      message         The message to encrypt
    * @return      {String}                      The encrypted string
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   encrypt: function (message: any): string {
     if (typeof message !== 'string') message = toString(message);
@@ -50,7 +50,7 @@ export default {
    * @param       {String}        message         The message to decrypt
    * @return      {String}                        The decrypted message
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   decrypt: function (message: string): any {
     if (!__encryptedMessages[message]) {

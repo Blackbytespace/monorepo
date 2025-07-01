@@ -1,0 +1,25 @@
+.s-json-schema-form-stack-group-renderer {
+  display: block;
+
+  > *:first-child {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: white;
+    z-index: 10;
+    transition: all 0.1s ease-in-out;
+    max-height: var(--s-json-schema-form-group-max-height);
+  }
+
+  &.-open > *:first-child {
+    translate: 0 0;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .s-json-schema-form-stack-group-renderer_button {
+    display: block;
+    width: 100%;
+  }
+}

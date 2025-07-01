@@ -16,14 +16,14 @@ import { XMLParser } from 'fast-xml-parser';
  * @snippet         __xmlToJson($1)
  *
  * @example         js
- * import ( __xmlToJson ) from '@lotsof/sugar/convert';
+ * import ( __xmlToJson ) from '@blackbyte/sugar/convert';
  * __xmlToJson('...');
  *
  * @todo    tests
  *
  * @see             https://www.npmjs.com/package/fast-xml-parser
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __xmlToJson(xml: string): any {
   const parser = new XMLParser();

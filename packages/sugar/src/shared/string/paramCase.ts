@@ -18,12 +18,12 @@ import { kebabCase } from 'change-case';
  * @snippet         __paramCase($1)
  *
  * @example       js
- * import { __paramCase } from '@lotsof/sugar/string';
+ * import { __paramCase } from '@blackbyte/sugar/string';
  * __paramCase('some thoing cool'); // => some-thing-cool
  *
  * @see         https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __paramCase(string: string): string {
   return kebabCase(string);

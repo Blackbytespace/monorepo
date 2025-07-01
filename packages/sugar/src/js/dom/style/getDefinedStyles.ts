@@ -20,11 +20,11 @@
  * @todo      tests
  *
  * @example  	js
- * import { __getDefinedStyles } from '@lotsof/sugar/dom';
+ * import { __getDefinedStyles } from '@blackbyte/sugar/dom';
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-defined-styles.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-defined-styles.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __getDefinedStyles(properties) {
   const styles = {};

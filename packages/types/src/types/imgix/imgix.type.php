@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Types;
+namespace Blackbyte\Types;
 
 class ImgixType extends BaseType
 {

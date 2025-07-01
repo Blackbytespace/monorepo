@@ -1,13 +1,13 @@
 #!/usr/bin/env -S node --experimental-json-modules --trace-warnings --trace-uncaught --no-warnings --es-module-specifier-resolution=node
 
-import { __parseHtml } from '@lotsof/sugar/console';
+import { __parseHtml } from '@blackbyte/sugar/console';
 import { Command as __Command } from 'commander';
 import __figlet from 'figlet';
 
 // @ts-ignore
 import __packageJson from '../../package.json' with { type: 'json' };
 
-import { __loadConfig } from '@lotsof/config';
+import { __loadConfig } from '@blackbyte/config';
 // import __registerComponentsCommands from './modules/components/components.api.js';
 import __registerDocmapCommands from './modules/docmap/docmap.api.js';
 import __registerFactoryCommands from './modules/factory/factory.api.js';
@@ -25,7 +25,7 @@ console.log = (...args): void => {
 
 const program = new __Command();
 
-console.log(__figlet.textSync('Lotsof'));
+console.log(__figlet.textSync('Blackbyte'));
 
 program.version(__packageJson.version).description(__packageJson.description);
 

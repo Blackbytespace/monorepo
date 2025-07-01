@@ -1,36 +1,45 @@
+import __IconElement from '@blackbyte/icon-element';
+import __JsonSchemaUtils from '@blackbyte/json-schema-utils';
+import __LitElement from '@blackbyte/lit-element';
+import { __copyText } from '@blackbyte/sugar/clipboard';
+import { __disablePasswordManagerAttributes } from '@blackbyte/sugar/dom';
+import { __isPlainObject } from '@blackbyte/sugar/is';
+import {
+  __deepFilter,
+  __deepize,
+  __deepMap,
+  __deepMerge,
+  __get,
+  __set,
+} from '@blackbyte/sugar/object';
 import { faker } from '@faker-js/faker';
-import __IconElement from '@lotsof/icon-element';
-import __LitElement from '@lotsof/lit-element';
-import { __copyText } from '@lotsof/sugar/clipboard';
-import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
 import { spread } from '@open-wc/lit-helpers';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Draft, Draft2019, JsonError } from 'json-schema-library';
+import { compileSchema, JsonError } from 'json-schema-library';
 import { html, nothing, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import '../../src/css/JsonSchemaFormElement.css';
-import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
-import '../components/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/groupRenderers/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/groupRenderers/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/widgets/textareaWidget/textareaWidget.js';
 import {
   TJsonSchemaFormUpdateObject,
   TJsonSchemaFormWidget,
   TJsonSchemaGroupRenderer,
-} from '../shared/JsonSchemaForm.types.js';
+} from '../shared/JsonSchemaForm.type.js';
 
 /**
  * Adding some custom faker methods
  * to be used in the editor
  * through the json schema "editor" property
  */
-JSONSchemaFaker.extend('editor', () => {
+JSONSchemaFaker.extend('faker', () => {
   // @ts-ignore
-  faker.mock = {
-    picsum: (width, height) => {
-      return `https://picsum.photos/${width}/${height}?v=${Math.round(
-        Math.random() * 1000,
-      )}`;
-    },
+  faker.image.picsum = (width, height) => {
+    return `https://picsum.photos/${width}/${height}?v=${Math.round(
+      Math.random() * 1000,
+    )}`;
   };
   return faker;
 });
@@ -60,13 +69,15 @@ export default class JsonSchemaFormElement extends __LitElement {
   accessor buttonClasses: boolean | string = false;
 
   @property()
-  accessor header: boolean | string = true;
+  accessor header: boolean | string = false;
 
   @property({ type: Object })
   accessor widgets: Record<string, TJsonSchemaFormWidget> = {};
 
   private _registeredWidgets: Record<string, TJsonSchemaFormWidget> = {};
   private _errorsByPath: Record<string, JsonError[]> = {};
+  private _jsonSchemaUtils: __JsonSchemaUtils = new __JsonSchemaUtils();
+  private _finalSchema: any = {};
 
   constructor() {
     super('s-json-schema-form');
@@ -90,7 +101,12 @@ export default class JsonSchemaFormElement extends __LitElement {
   }
 
   protected update(changedProperties: PropertyValues): void {
-    super.update(changedProperties);
+    // fill the "_finalSchema" property
+    // with the schema that has been extended
+    // using the "extends" property
+    if (changedProperties.has('schema')) {
+      this._finalSchema = this._jsonSchemaUtils.applyExtends(this.schema);
+    }
 
     // handle the "-invalid" class on the form
     if (this.$form) {
@@ -100,6 +116,9 @@ export default class JsonSchemaFormElement extends __LitElement {
         this.$form.classList.add('-invalid');
       }
     }
+
+    // apply the update in parent class
+    super.update(changedProperties);
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -144,9 +163,20 @@ export default class JsonSchemaFormElement extends __LitElement {
   }
 
   private _validateValues(schema: any, value: any): JsonError[] {
-    const jsonSchema: Draft = new Draft2019(schema),
-      errors: JsonError[] = jsonSchema.validate(value);
-    return errors;
+    const jsonSchema = compileSchema(schema),
+      validateResponse = jsonSchema.validate(value);
+
+    return validateResponse.errors.filter((error) => {
+      // @ts-ignore
+      if (!error.data.received && !error.schema?.required) {
+        return false;
+      }
+      // @ts-ignore
+      if (error.data?.received === 'undefined' && !error.schema?.required) {
+        return false; // Ignore undefined values for non-required fields
+      }
+      return true; // Keep other errors
+    });
   }
 
   private _renderComponentValueErrors(path: string[]): any {
@@ -177,7 +207,7 @@ export default class JsonSchemaFormElement extends __LitElement {
     const pathWithoutIndexes = path.filter((p) => isNaN(parseInt(p)));
 
     // get the schema for the current path
-    const schema = this._findInSchema(this.schema, pathWithoutIndexes);
+    const schema = this._findInSchema(this._finalSchema, pathWithoutIndexes);
 
     // get the field name
     const fieldName = path[path.length - 1];
@@ -190,6 +220,9 @@ export default class JsonSchemaFormElement extends __LitElement {
       __set(this.values, path, schema.default);
       value = schema.default;
     }
+
+    const disablePasswordManagerAttributes =
+      __disablePasswordManagerAttributes();
 
     // validate the value
     let renderedErrors = '';
@@ -205,6 +238,7 @@ export default class JsonSchemaFormElement extends __LitElement {
       switch (true) {
         case schema.enum !== undefined:
           return html`<select
+              ${spread(disablePasswordManagerAttributes)}
               id="${this.getIdFromPath(path)}"
               name=${fieldName}
               class=${`${this.cls('_values-select')} ${
@@ -229,6 +263,7 @@ export default class JsonSchemaFormElement extends __LitElement {
           break;
         case schema.type === 'string':
           return html`<input
+            ${spread(disablePasswordManagerAttributes)}
             type="text"
             name=${fieldName}
             .value=${value ?? ''}
@@ -268,8 +303,10 @@ export default class JsonSchemaFormElement extends __LitElement {
             }}
           />`;
           break;
+        case schema.type === 'integer':
         case schema.type === 'number':
           return html`<input
+            ${spread(disablePasswordManagerAttributes)}
             type="number"
             name=${fieldName}
             .value=${value}
@@ -366,23 +403,25 @@ export default class JsonSchemaFormElement extends __LitElement {
 
   private _renderComponentValuesPreview(schema: any, path: string[] = []): any {
     // get the values for the current path
-    const values = __get(this.values, path);
+    let values = __get(this.values, path);
 
     // check if we have a widget specified and that it is available
-    if (schema.widget) {
-      if (!this._registeredWidgets[schema.widget]) {
+    if (schema.editor?.widget) {
+      if (!this._registeredWidgets[schema.editor?.widget]) {
         throw new Error(
-          `The widget "${schema.widget}" is not registered in carpenter. Make sure to register it using SCarpenterElement.registerWidget static method...`,
+          `The widget "${schema.editor?.widget}" is not registered in JsonSchemaForm. Make sure to register it using JsonSchemaForm.registerWidget static method...`,
         );
       }
       const tag = literal`${unsafeStatic(
-        this._registeredWidgets[schema.widget].tag,
+        this._registeredWidgets[schema.editor?.widget].tag,
       )}`;
       return staticHtml`
-        <${tag} @s-carpenter.update=${(e) => {
-        __set(this.values, path, e.detail);
+        <${tag} class="${this.cls(
+        '_widget _values-value',
+      )}" .value=${values} .schema=${schema} .applyUpdate=${(newValue) => {
+        __set(this.values, path, newValue);
         this._emitUpdate({
-          value: e.detail,
+          value: newValue,
           path,
         });
       }}></${tag}>
@@ -460,7 +499,12 @@ export default class JsonSchemaFormElement extends __LitElement {
       `;
     }
 
-    // console.log('eee', schema, path, values);
+    // if the schema is an array and the values are not defined,
+    // we create an empty array to avoid errors
+    // when rendering the array items
+    if (schema.type === 'array' && !Array.isArray(values)) {
+      values = [];
+    }
 
     switch (true) {
       case schema.type === 'object' && schema.properties !== undefined:
@@ -536,9 +580,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                         )}
 
                         <nav class=${this.cls('_values-prop-tools')}>
-                          ${value.type !== 'boolean' &&
-                          value.type !== 'array' &&
-                          value.type !== 'object'
+                          ${(<any>value).editor?.mock
                             ? html`
                                 <button
                                   class=${this.cls('_values-prop-tool')}
@@ -644,11 +686,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                 @click=${() => {
                   const newValues =
                     this._createComponentDefaultValuesFromSchema(schema.items);
-                  if (!values) {
-                    __set(this.values, path, [newValues]);
-                  } else {
-                    values.push(newValues);
-                  }
+                  values.push(newValues);
 
                   this._emitUpdate({
                     value: values,
@@ -673,17 +711,21 @@ export default class JsonSchemaFormElement extends __LitElement {
   }
 
   protected render() {
-    if (this.schema) {
+    if (this._finalSchema) {
       return html`
         <div class=${this.cls('_inner')}>
           ${this.header
             ? html`
                 <header class=${this.cls('_header')}>
-                  <h2 class=${this.cls('_title')}>
-                    ${this.schema.title}
+                  <div class=${this.cls('_header-metas')}>
+                    <h2 class=${this.cls('_header-title')}>
+                      ${this._finalSchema.title}
+                    </h2>
                     ${this.values?.id
                       ? html`<span
-                          class="${this.cls('_title-id')} button -outline"
+                          class="${this.cls(
+                            '_header-title-id',
+                          )} button -outline"
                           @click=${() => {
                             __copyText(this.values.id);
                           }}
@@ -691,15 +733,70 @@ export default class JsonSchemaFormElement extends __LitElement {
                           <s-icon name="clipboard-document-list"
                         /></span>`
                       : ''}
-                  </h2>
-                  <p class=${this.cls('_description')}>
-                    ${this.schema.description}
-                  </p>
+                  </div>
+                  <div class=${this.cls('_header-content')}>
+                    <p class=${this.cls('_header-description')}>
+                      ${this._finalSchema.description}
+                    </p>
+                    <nav class=${this.cls('_header-tools')}>
+                      <button
+                        class=${this.cls('_header-tool')}
+                        @click=${(e: MouseEvent) => {
+                          const finalSchema = __deepFilter(
+                            this.schema,
+                            ({ key, value, isObject }) => {
+                              if (
+                                !isObject ||
+                                key === 'properties' ||
+                                key === 'faker'
+                              ) {
+                                return true;
+                              }
+                              if (
+                                isObject &&
+                                !value.$id &&
+                                !value.editor?.mock
+                              ) {
+                                return false;
+                              }
+                              return true;
+                            },
+                          );
+
+                          // generate a mock value
+                          const mock = JSONSchemaFaker.generate(
+                            finalSchema.properties ?? {},
+                          );
+
+                          for (let [key, value] of Object.entries(mock)) {
+                            if (
+                              __isPlainObject(this.values[key]) &&
+                              __isPlainObject(value)
+                            ) {
+                              console.log('key', key, this.values[key]);
+                              __deepMerge([this.values[key], value], {
+                                clone: false,
+                              });
+                            } else {
+                              this.values[key] = value;
+                            }
+
+                            this._emitUpdate({
+                              value: value,
+                              path: [key],
+                            });
+                          }
+                        }}
+                      >
+                        <s-icon name="arrow-path"></s-icon>
+                      </button>
+                    </nav>
+                  </div>
                 </header>
               `
             : ''}
           <div class=${this.cls('_values')}>
-            ${this._renderComponentValuesPreview(this.schema)}
+            ${this._renderComponentValuesPreview(this._finalSchema)}
           </div>
         </div>
       `;
@@ -714,6 +811,11 @@ JsonSchemaFormElement.registerGroupRenderer({
 JsonSchemaFormElement.registerGroupRenderer({
   id: 'stack',
   tag: 's-json-schema-form-stack-group-renderer',
+});
+
+JsonSchemaFormElement.registerWidget({
+  id: 'textarea',
+  tag: 's-json-schema-form-textarea-widget',
 });
 
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});

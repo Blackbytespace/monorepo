@@ -22,10 +22,10 @@ import __sameItems from './sameItems.js';
  * @snippet         __intersection($1, $2)
  *
  * @example         js
- * import { __intersection } from '@lotsof/sugar/array';
+ * import { __intersection } from '@blackbyte/sugar/array';
  * __intersection([1,2,3,4], [1,3,5]); // => [1,3]
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default __sameItems;

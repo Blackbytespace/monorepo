@@ -2,11 +2,11 @@ import {
   TComponentsComponentJson,
   TComponentsComponentObject,
   TComponentsSettings,
-} from '@lotsof/components';
+} from '@blackbyte/components';
 import {
   TJsonSchemaFormUpdateObject,
   TJsonSchemaFormWidget,
-} from '@lotsof/json-schema-form';
+} from '@blackbyte/json-schema-form';
 
 export type TFactoryState = {
   mode?: 'light' | 'dark';

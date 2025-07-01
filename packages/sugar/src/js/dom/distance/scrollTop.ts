@@ -14,11 +14,11 @@
  * @todo      tests
  *
  * @example     js
- * import { __scrollTop } from '@lotsof/sugar/dom';
+ * import { __scrollTop } from '@blackbyte/sugar/dom';
  * __scrollTop();
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev) (https://olivierbossel.com)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space) (https://olivierbossel.com)
  */
 function scrollTop(): number {
   return (

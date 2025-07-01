@@ -31,10 +31,10 @@ import __parseString from '../string/parse.js';
  * @todo      tests
  *
  * @example       js
- * import { __parseSchema } from '@lotsof/sugar/url';
- * __parseSchema('https://github.com/myApp/master/3', '{project:string}/{?branch:string}/{?idx:number}');
+ * import { __parseSchema } from '@blackbyte/sugar/url';
+ * __parseSchema('https://github.com/myApp/main/3', '{project:string}/{?branch:string}/{?idx:number}');
  * // {
- * //   url: 'https://github.com/myApp/master/3',
+ * //   url: 'https://github.com/myApp/main/3',
  * //   schema: '{project:string}/{?branch:string}/{?idx:number}',
  * //   match: true,
  * //   errors: null,

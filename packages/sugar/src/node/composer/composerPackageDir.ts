@@ -23,13 +23,13 @@ import __composerVendorDir from './composerVendorDir.js';
  * @snippet         __composerPackageDir($1)
  *
  * @example         js
- * import { __composerPackageDir } from '@lotsof/sugar/composer`;
+ * import { __composerPackageDir } from '@blackbyte/sugar/composer`;
  * __composerPackageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TComposerPackageDirSettings = {

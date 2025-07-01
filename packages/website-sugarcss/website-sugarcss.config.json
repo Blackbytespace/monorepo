@@ -3,10 +3,10 @@
   "description": "Add a sugar in your css with nice features like live update and more",
   "license": {
     "name": "MIT",
-    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugarcss/LICENSE"
+    "url": "https://github.com/blackbytespace/monorepo/blob/main/packages/sugarcss/LICENSE.md"
   },
   "og": {
-    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugarcss-og.png"
+    "imageUrl": "https://cdn.blackbyte.space/img/blackbyte-sugarcss-og.png"
   },
   "menu": [
     {
@@ -52,14 +52,14 @@
           "id": "issues",
           "label": "Declare an issue",
           "value": "issue",
-          "url": "https://github.com/lotsofdev/monorepo/issues",
+          "url": "https://github.com/blackbytespace/monorepo/issues",
           "preventSet": true
         },
         {
           "id": "license",
           "label": "License",
           "value": "license",
-          "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugarcss/LICENSE.md",
+          "url": "https://github.com/blackbytespace/monorepo/blob/main/packages/sugarcss/LICENSE.md",
           "preventSet": true
         }
       ]

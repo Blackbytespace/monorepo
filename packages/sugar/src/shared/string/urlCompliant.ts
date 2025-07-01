@@ -20,11 +20,11 @@ import __simplifySpecialChars from './simplifySpecialChars.js';
  * @todo        tests
  *
  * @example         php
- * import { __urlCompliant } from '@lotsof/sugar/string';
+ * import { __urlCompliant } from '@blackbyte/sugar/string';
  * __urlCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TUrlCompliantSettings = {
   exclude: string[];

@@ -1,4 +1,4 @@
-import { __md5 } from '@lotsof/sugar/crypto';
+import { __md5 } from '@blackbyte/sugar/crypto';
 
 /**
  * @name            generateIdFromForm
@@ -23,11 +23,11 @@ import { __md5 } from '@lotsof/sugar/crypto';
  * @snippet         __generateIdFromForm()
  *
  * @example         js
- * import { __generateIdFromForm } from '@lotsof/sugar/dom';
+ * import { __generateIdFromForm } from '@blackbyte/sugar/dom';
  * const id = __generateIdFromForm($myForm); // => a md5 hash id
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function generateIdFromForm($form: HTMLFormElement): string {
   let attrStr = '';

@@ -18,7 +18,7 @@ import __querySelectorUp from './querySelectorUp.js';
  * @todo      tests
  *
  * @example  	js
- * import { __closestElement } from '@lotsof/sugar/dom'
+ * import { __closestElement } from '@blackbyte/sugar/dom'
  * const closestElm =  __closestElement(myCoolElement, '.my-cool-class');
  * if (closestElm) {
  * 		// we have found en element that matches the selector
@@ -29,6 +29,6 @@ import __querySelectorUp from './querySelectorUp.js';
  * })
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default __querySelectorUp;

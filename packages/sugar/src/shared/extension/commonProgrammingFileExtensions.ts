@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonProgrammingFileExtensions()
  *
  * @example         js
- * import { __commonProgrammingFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonProgrammingFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonProgrammingFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonProgrammingFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

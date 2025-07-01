@@ -20,12 +20,12 @@ import __jsAgo from 'js-ago';
  * @snippet         __timeAgo($1)
  *
  * @example           js
- * import { __timeAgo } from '@lotsof/sugar/datetime';
+ * import { __timeAgo } from '@blackbyte/sugar/datetime';
  * __timeAgo(1611344957); // => 7 secs ago
  *
  * @see         https://www.npmjs.com/package/js-ago
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __timeAgo(
   timestamp: number,

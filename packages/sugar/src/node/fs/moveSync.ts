@@ -15,12 +15,12 @@ import __fs from 'fs-extra';
  * @snippet         __moveSync($1, $2)
  *
  * @example       js
- * import { __moveSync } from '@lotsof/sugar/fs';
+ * import { __moveSync } from '@blackbyte/sugar/fs';
  * __moveSync('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __moveSync(src: string, dest: string): void {
   if (src === dest) {

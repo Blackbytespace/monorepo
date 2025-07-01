@@ -21,7 +21,7 @@ import __tagsMap from './tagsMap.js';
  * @snippet         __parseHtml($1)
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __parseHtml(message) {
   let isArray = false;

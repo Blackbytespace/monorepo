@@ -21,11 +21,11 @@ import { format } from 'fecha';
  * @snippet         __format($1, $2)
  *
  * @example    js
- * import { __format } from '@lotsof/sugar/string'
+ * import { __format } from '@blackbyte/sugar/string'
  *
  * @see       https://www.npmjs.com/package/fecha
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFormat =
   | 'isoDate'

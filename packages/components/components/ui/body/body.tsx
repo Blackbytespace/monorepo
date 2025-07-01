@@ -1,4 +1,4 @@
-// import { TBody } from '@lotsof/types';
+// import { TBody } from '@blackbyte/types';
 // import React from 'react';
 // import './body.css';
 

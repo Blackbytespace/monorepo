@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonFontFileExtensions()
  *
  * @example         js
- * import { __commonFontFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonFontFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonFontFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonFontFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

@@ -12,14 +12,14 @@
  * @return      {ISDocmapInterfaceField}            The full interface data
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export interface ISDocmapInterfaceField {}
 
 export default async function interfaceTagProxy(
-    data: any,
+  data: any,
 ): Promise<ISDocmapInterfaceField> {
-    const int = (await import(data.path)).default;
-    return int.toObject();
+  const int = (await import(data.path)).default;
+  return int.toObject();
 }

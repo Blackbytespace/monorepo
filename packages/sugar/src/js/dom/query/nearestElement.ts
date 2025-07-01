@@ -21,7 +21,7 @@ import __distanceBetween from '../../../shared/math/distanceBetween.js';
  * @snippet         __nearestElement($1, $2, $3)
  *
  * @example    js
- * import { __nearestElement } from '@lotsof/sugar/dom'
+ * import { __nearestElement } from '@blackbyte/sugar/dom'
  * __nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
  *      direction: 'top'
  * });

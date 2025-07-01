@@ -1,19 +1,20 @@
 // @ts-nocheck
 
-import { __isPlainObject } from '@lotsof/sugar/is';
-import { __deepMerge, __get } from '@lotsof/sugar/object';
+import { __isPlainObject } from '@blackbyte/sugar/is';
+import { __deepMerge, __get } from '@blackbyte/sugar/object';
 
 export default function getConfig(path?: string, def?: any): any {
-  if (!process.lotsofConfig && !process.lotsofConfigDefaults) {
+  if (!process.blackbyteConfig && !process.blackbyteConfigDefaults) {
     throw new Error(
       'Config not loaded. Please call the loadConfig function before trying to get a config value',
     );
   }
 
   if (path) {
-    const userConfig = __get(process.lotsofConfig ?? {}, path) ?? (def || {}),
+    const userConfig =
+        __get(process.blackbyteConfig ?? {}, path) ?? (def || {}),
       defaultConfig =
-        __get(process.lotsofConfigDefaults ?? {}, path) ?? (def || {});
+        __get(process.blackbyteConfigDefaults ?? {}, path) ?? (def || {});
     if (__isPlainObject(userConfig) && __isPlainObject(defaultConfig)) {
       return __deepMerge([defaultConfig, userConfig]);
     } else {
@@ -22,8 +23,8 @@ export default function getConfig(path?: string, def?: any): any {
   }
 
   const config = __deepMerge([
-    process.lotsofConfigDefaults ?? {},
-    process.lotsofConfig ?? {},
+    process.blackbyteConfigDefaults ?? {},
+    process.blackbyteConfig ?? {},
   ]);
   return config;
 }

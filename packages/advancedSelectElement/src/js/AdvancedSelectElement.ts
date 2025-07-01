@@ -1,19 +1,19 @@
-import __LitElement from '@lotsof/lit-element';
-import { __highlightText } from '@lotsof/sugar/string';
+import __LitElement from '@blackbyte/lit-element';
+import { __highlightText } from '@blackbyte/sugar/string';
 // @TODO            check why import does not work
 // @ts-ignore
-import { __i18n } from '@lotsof/i18n';
+import { __i18n } from '@blackbyte/i18n';
 import {
   __distanceFromElementTopToViewportBottom,
   __distanceFromElementTopToViewportTop,
   __getStyleProperty,
   __nearestElement,
   __onScrollEnd,
-} from '@lotsof/sugar/dom';
-import { __stripTags } from '@lotsof/sugar/html';
-import { __isFocusWithin } from '@lotsof/sugar/is';
-import { __escapeQueue, __hotkey } from '@lotsof/sugar/keyboard';
-import { __escapeRegexChars, __uniqid } from '@lotsof/sugar/string';
+} from '@blackbyte/sugar/dom';
+import { __stripTags } from '@blackbyte/sugar/html';
+import { __isFocusWithin } from '@blackbyte/sugar/is';
+import { __escapeQueue, __hotkey } from '@blackbyte/sugar/keyboard';
+import { __escapeRegexChars, __uniqid } from '@blackbyte/sugar/string';
 import { PropertyValueMap, html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -74,15 +74,15 @@ import type {
  * @support         safari
  * @support         edge
  *
- * @import          import { define as __AdvancedSelectElementDefine } from '@lotsof/advancedSelect-component';
+ * @import          import { define as __AdvancedSelectElementDefine } from '@blackbyte/advancedSelect-component';
  *
  * @snippet         __AdvancedSelectElementDefine($1)
  *
  * @install           shell
- * npm i @lotsof/advancedSelect-component
+ * npm i @blackbyte/advancedSelect-component
  *
  * @install           js
- * import __SAdvancedSelectElement from '@lotsof/advancedSelect-component';
+ * import __SAdvancedSelectElement from '@blackbyte/advancedSelect-component';
  * __SAdvancedSelectElement.define();
  *
  * @example         html            Simple example
@@ -94,7 +94,7 @@ import type {
  * </advancedSelect>
  *
  * @example         js
- * import __SAdvancedSelectElement from '@lotsof/advanced-select-element';
+ * import __SAdvancedSelectElement from '@blackbyte/advanced-select-element';
  * __SAdvancedSelectElement.define('my-cool-filtrable-input');
  *
  * @example         html        Custom templates and items
@@ -103,7 +103,7 @@ import type {
  * </my-cool-filtrable-input>
  *
  * @example         js
- * import __SAdvancedSelectElement from '@lotsof/advanced-select-element';
+ * import __SAdvancedSelectElement from '@blackbyte/advanced-select-element';
  * __SAdvancedSelectElement.define('my-cool-filtrable-input', {
  *     items: async () => {
  *         // you can get your items however you want
@@ -114,7 +114,7 @@ import type {
  * });
  *
  * @since           2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default class AdvancedSelectElement extends __LitElement {
   // @state()

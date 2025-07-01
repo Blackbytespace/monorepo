@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { __escapeHtml } from '@lotsof/sugar/html';
+import { __escapeHtml } from '@blackbyte/sugar/html';
 
 /**
  * @name              description

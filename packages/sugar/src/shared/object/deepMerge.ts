@@ -29,12 +29,12 @@ import __isPlainObject from '../is/isPlainObject.js';
  * @snippet         __deepMerge($1, $2)
  *
  * @example           js
- * import { __deepMerge } from '@lotsof/sugar/object';
+ * import { __deepMerge } from '@blackbyte/sugar/object';
  * __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepMergeSettings = {
   array?: boolean;

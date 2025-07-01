@@ -21,7 +21,7 @@
  * })
  *
  * @example 		js
- * import { __debounce } from '@lotsof/sugar/function';
+ * import { __debounce } from '@blackbyte/sugar/function';
  * const myDebouncedFn = __debounce(1000, () => {
  * 		// my function content that will be
  * 		// executed only once after the 1 second delay
@@ -33,7 +33,7 @@
  * });
  *
  * @since           1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __debounce(delay: number, fn: Function): Function {
   let timer;

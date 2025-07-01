@@ -20,11 +20,11 @@ import __packageRootDir from '../package/packageRootDir.js';
  * @snippet         __composerVendorDir($1)
  *
  * @example         js
- * import { __composerVendorDir } from '@lotsof/sugar/composer`;
+ * import { __composerVendorDir } from '@blackbyte/sugar/composer`;
  * __composerVendorDir('lodash');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TComposerVendorDirSettings = {
   cwd: string;

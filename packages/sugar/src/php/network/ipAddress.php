@@ -22,7 +22,7 @@ namespace Sugar\Network;
  * Sugar\Network\ipAddress('external'); // => 23.45.322.67
  *
  * @since           2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function ipAddress($type = 'local')
 {

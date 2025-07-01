@@ -11,7 +11,7 @@ namespace Sugar\Theme;
  *
  * This function allows you to get the setted theme from the `theme` cookie.
  * You can simply set/restore the theme in frontend using the `__setTheme`, `__restoreTheme` functions from the
- * `@lotsof/sugar/theme` package.
+ * `@blackbyte/sugar/theme` package.
  *
  * @param       {String}        [$default=null]         The default theme to return if no theme has been setted     
  * @return      {String}                                The theme name  

@@ -1,4 +1,4 @@
-import { TJsonSchemaFormWidget } from '@lotsof/json-schema-form/src/shared/JsonSchemaForm.types.js';
+import { TJsonSchemaFormWidget } from '@blackbyte/json-schema-form/src/shared/JsonSchemaForm.type.js';
 import { JSONSchema7 } from 'json-schema';
 
 export type TCarpenterState = {

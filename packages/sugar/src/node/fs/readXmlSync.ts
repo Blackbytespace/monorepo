@@ -18,11 +18,11 @@ import __xmlToJson from '../../shared/convert/xmlTojson.js';
  * @snippet         __readXmlSync($1)
  *
  * @example         js
- * import { __readXmlSync } from '@lotsof/sugar/fs';
+ * import { __readXmlSync } from '@blackbyte/sugar/fs';
  * __readXmlSync('my-cool-xml/file.xml');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __readXmlSync(path: string): any {
   if (!__fs.existsSync(path)) {

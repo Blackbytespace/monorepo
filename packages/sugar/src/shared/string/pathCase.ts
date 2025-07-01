@@ -18,12 +18,12 @@ import { pathCase } from 'change-case';
  * @snippet         __pathCase($1)
  *
  * @example     js
- * import { __pathCase } from '@lotsof/sugar/string';
+ * import { __pathCase } from '@blackbyte/sugar/string';
  * __pathCase('hello world'); // => hello/world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pathCase(text: string): string {
   return pathCase(text);

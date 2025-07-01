@@ -16,11 +16,11 @@ import __path from 'path';
  * @snippet         __dirname()
  *
  * @example             js
- * import { __dirname } from '@lotsof/sugar/fs';
+ * import { __dirname } from '@blackbyte/sugar/fs';
  * __dirname();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __dirname(): string {
   const error = new Error();

@@ -21,13 +21,13 @@ import __isClass from '../is/isClass.js';
  * @snippet         __getExtendsStack($1)
  *
  * @example         js
- * import { __getExtendsStack } from '@lotsof/sugar/class';
+ * import { __getExtendsStack } from '@blackbyte/sugar/class';
  * class Coco extends Error {}
  * class Plop extends Coco {}
  * __getExtendsStack(Plop); // => {Coco: [class ...], Error: [class ...]};
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetExtendsStackSettings = {

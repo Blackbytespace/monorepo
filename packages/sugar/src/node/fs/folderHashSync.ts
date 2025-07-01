@@ -26,11 +26,11 @@ import __sha256 from '../../shared/crypto/sha256.js';
  * @snippet         __folderHashSync($1)
  *
  * @example         js
- * import { __folderHashSync } from '@lotsof/sugar/fs';
+ * import { __folderHashSync } from '@blackbyte/sugar/fs';
  * __folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFolderHashSettings = {

@@ -25,11 +25,11 @@ import __get from './get.js';
  * @snippet         __set($1, $2)
  *
  * @example               js
- * import { __set } from '@lotsof/sugar/object';
+ * import { __set } from '@blackbyte/sugar/object';
  *  __set('myObject.cool.value', 'Hello world'); // => Hello world
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TSetSettings = {

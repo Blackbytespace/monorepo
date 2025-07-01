@@ -19,12 +19,12 @@ import __Mark from 'mark.js';
  * @todo      tests
  *
  * @example         php
- * import { __highlightText } from '@lotsof/sugar/string';
+ * import { __highlightText } from '@blackbyte/sugar/string';
  * __highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
  *
  * @see         https://markjs.io
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type THighlightTextSettings = {

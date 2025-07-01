@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { __idCompliant } from '@lotsof/sugar/string';
+import { __idCompliant } from '@blackbyte/sugar/string';
 
 /**
  * @name              cssClass

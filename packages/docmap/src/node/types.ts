@@ -1,4 +1,4 @@
-import type { TDocblockBlock, TDocblockSettings } from '@lotsof/docblock';
+import type { TDocblockBlock, TDocblockSettings } from '@blackbyte/docblock';
 
 export type TDocmapConfig = {
   settings: TDocmapSettings;

@@ -27,7 +27,7 @@ import __uniqid from '../../string/uniqid.js';
  * @todo      tests
  *
  * @example 	js
- * import { __whenInViewport } from '@lotsof/sugar/dom'
+ * import { __whenInViewport } from '@blackbyte/sugar/dom'
  * const promise = __whenInViewport(myCoolHTMLElement).then((elm) => {
  * 		// do something with your element that has entered the viewport...
  * });
@@ -35,7 +35,7 @@ import __uniqid from '../../string/uniqid.js';
  * promise.cancel();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TWhenInViewportSettings = {

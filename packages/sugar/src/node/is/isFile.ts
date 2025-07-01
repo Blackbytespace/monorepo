@@ -17,11 +17,11 @@ import * as __fs from 'fs';
  * @snippet         __isFile($1);
  *
  * @example     js
- * import { __isFile } from '@lotsof/sugar/is';
+ * import { __isFile } from '@blackbyte/sugar/is';
  * __isFile('something/cool');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIsFileSettings = {

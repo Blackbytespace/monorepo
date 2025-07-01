@@ -21,11 +21,11 @@ import __uniqid from '../../../js/string/uniqid.js';
  * @todo        tests
  *
  * @example       js
- * import { __injectStyle } from '@lotsof/sugar/dom';
+ * import { __injectStyle } from '@blackbyte/sugar/dom';
  *  __injectStyle('a { color: red; }');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TInjectStyleSettings = {

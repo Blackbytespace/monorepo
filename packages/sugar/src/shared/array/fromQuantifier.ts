@@ -20,14 +20,14 @@
  * @snippet         __fromQuantifier($1)
  *
  * @example    js
- * import { __fromQuantifier } from '@lotsof/sugar/array'
+ * import { __fromQuantifier } from '@blackbyte/sugar/array'
  * __fromQuantifier(3); // => [0,1,2]
  * __fromQuantifier('3-5'); // => [3,4,5]
  * __fromQuantifier('3-6', {
  *    value(i) => `c-${i}`
  * }); // => ['c-3','c-4','c-5','c-6']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFromQuantifierSettings = {

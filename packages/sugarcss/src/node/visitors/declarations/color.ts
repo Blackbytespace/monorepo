@@ -1,6 +1,6 @@
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 
-import { __convert } from '@lotsof/sugar/color';
+import { __convert } from '@blackbyte/sugar/color';
 
 /**
  * @name            s-color
@@ -30,7 +30,7 @@ import { __convert } from '@lotsof/sugar/color';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function color(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-color-`, '').replace(/\-[a-z]$/, '');

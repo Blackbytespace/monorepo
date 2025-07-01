@@ -17,7 +17,7 @@ import * as __rematrix from 'rematrix';
  * @snippet         __getTranslateProperties($1)
  *
  * @example  	js
- * import { __getTranslateProperties } from '@lotsof/sugar/dom'
+ * import { __getTranslateProperties } from '@blackbyte/sugar/dom'
  * const props = __getTranslateProperties(myCoolHTMLElement);
  * // output format
  * // {
@@ -27,7 +27,7 @@ import * as __rematrix from 'rematrix';
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetTranslatePropertiesResult = {

@@ -1,12 +1,13 @@
 ---
 title: 'fromQuantifier'
-namespace: '@lotsof.sugar.shared.array'
+namespace: '@blackbyte.sugar.shared.array'
 description: 'This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc... This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.'
 type: 'Function'
 status: 'stable'
 platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
-author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://blackbyte.space"}'
 ---
+
 <div class="docmap-mdx">
 # fromQuantifier
 <div class="_metas">
@@ -14,7 +15,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_status"><span class="_status-label">Status:</span><span class="_status-value -stable">stable</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.shared.array</div>
+<div class="_namespace">@blackbyte.sugar.shared.array</div>
 <div class="_description typo-lead typo-format">
 This function allows you to generate an array from a certain passed quantifier like &quot;2&quot;, &quot;&amp;lt;10&quot;, &quot;&amp;gt;10&quot;, &quot;9-12&quot;, etc...
 This is useful to create arrays that are depending on user-friendly quantifier and it&#39;s used for example in the
@@ -45,7 +46,7 @@ s-postcss-sugar-plugin for the `@s.lod(&amp;gt;2)` mixin.
 <div class="_examples">
 ## Example
 ```js
-import { __fromQuantifier } from '@lotsof/sugar/array'
+import { __fromQuantifier } from '@blackbyte/sugar/array'
 __fromQuantifier(3); // => [0,1,2]
 __fromQuantifier('3-5'); // => [3,4,5]
 __fromQuantifier('3-6', {
@@ -72,7 +73,7 @@ __fromQuantifier('3-6', {
 <li class="_item">
 <span class="_name">Olivier Bossel</span>
 <span class="_email">olivier.bossel@gmail.com</span>
-<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+<a href="https://blackbyte.space" target="_blank" class="_url">https://blackbyte.space</a>
 </li>
 </ul>
 </div>

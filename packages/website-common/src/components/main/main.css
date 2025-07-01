@@ -198,12 +198,12 @@
     }
 
     @media theme-oddworld {
-      background-image: url('/lotsof-oddworld-abe.webp');
+      background-image: url('/blackbyte-oddworld-abe.webp');
       opacity: 1;
       translate: 0;
     }
     @media theme-half-life {
-      background-image: url('/lotsof-gordon-freeman.webp');
+      background-image: url('/blackbyte-gordon-freeman.webp');
       opacity: 1;
       translate: 0;
     }

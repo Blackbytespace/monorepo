@@ -18,11 +18,11 @@ import __extension from '../fs/extension.js';
  * @snippet         __filename($1)
  *
  * @example       js
- * import { __filename } from '@lotsof/sugar/fs';
+ * import { __filename } from '@blackbyte/sugar/fs';
  * __filename('hello/world.js'); // => world.js
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __filename(
   path: string,

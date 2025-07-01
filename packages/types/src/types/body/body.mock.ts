@@ -1,6 +1,6 @@
+import { __pickSome } from '@blackbyte/sugar/array';
+import { __deepMerge } from '@blackbyte/sugar/object';
 import { faker } from '@faker-js/faker';
-import { __pickSome } from '@lotsof/sugar/array';
-import { __deepMerge } from '@lotsof/sugar/object';
 import __buttonMock from '../button/button.mock.js';
 import type { TBody } from './body.type.js';
 

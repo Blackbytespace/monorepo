@@ -15,11 +15,11 @@
  * @snippet         __stylesheetToString($1)
  *
  * @example         js
- * import { __stylesheetToString } from '@lotsof/sugar/dom';
+ * import { __stylesheetToString } from '@blackbyte/sugar/dom';
  * __stylesheetToString(document.stylesheets); // => body { ... }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __stylesheetToString(
   // @ts-ignore

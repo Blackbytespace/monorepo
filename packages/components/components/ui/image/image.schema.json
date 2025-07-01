@@ -21,22 +21,17 @@
     ]
   },
   "properties": {
-    "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "Unique identifier",
-      "editor": {
-        "group": "advanced"
-      }
-    },
     "src": {
       "type": "string",
       "title": "Source",
       "description": "Image source",
       "placeholder": "https://picsum.photos/1600/900",
       "format": "uri",
+      "faker": {
+        "image.picsum": [1600, 900]
+      },
       "editor": {
-        "mock.picsum": [1600, 900],
+        "mock": true,
         "group": "default"
       }
     },
@@ -46,6 +41,7 @@
       "description": "Image alt text",
       "placeholder": "A beautiful image",
       "editor": {
+        "mock": true,
         "group": "default"
       }
     },
@@ -55,7 +51,20 @@
       "description": "Image title",
       "placeholder": "Beautiful image",
       "editor": {
+        "mock": true,
         "group": "default"
+      }
+    },
+    "id": {
+      "$extends": "jsonSchemaUtils/id",
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "class": {
+      "$extends": "jsonSchemaUtils/class",
+      "editor": {
+        "group": "advanced"
       }
     }
   }

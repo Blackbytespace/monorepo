@@ -16,14 +16,14 @@
  * @snippet         __isIsoDateTime($1)
  *
  * @example 	js
- * import { __isIsoDateTime } from '@lotsof/sugar/is';
+ * import { __isIsoDateTime } from '@blackbyte/sugar/is';
  * __isIsoDateTime('john.doe@gmail.com') => false
  * __isIsoDateTime('plop@yop.com') => false
  * __isIsoDateTime('2008-08-30 17:21:59') => true
  *
  * @see             https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isIsoDateTime(value: string): boolean {
   const res =

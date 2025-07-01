@@ -1,8 +1,8 @@
 // @ts-nocheck
 
-import { __getConfig } from '@lotsof/config';
-import '@lotsof/factory';
-import type { TFactoryConfig } from '@lotsof/factory';
+import { __getConfig } from '@blackbyte/config';
+import '@blackbyte/factory';
+import type { TFactoryConfig } from '@blackbyte/factory';
 import __childProcess from 'child_process';
 
 let factoryConfig: TFactoryConfig;

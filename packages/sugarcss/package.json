@@ -1,19 +1,19 @@
 {
-  "name": "@lotsof/sugarcss",
+  "name": "@blackbyte/sugarcss",
   "description": "Add a sugar in your css with nice features like live update and more",
-  "version": "1.0.0-alpha.97",
+  "version": "1.0.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
-    "doc.build": "lotsof docmap.build",
+    "doc.build": "blackbyte docmap.build",
     "test": "vitest",
     "publish": "npm publish --access public"
   },
   "main": "./dist/node/sugarcss.js",
   "types": "./src/node/sugarcss.types.ts",
-  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
     {
       "name": "Olivier Bossel",
@@ -24,8 +24,8 @@
   "license": "MIT",
   "globalDependencies": {},
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "browserslist": "^4.23.0",
     "lightningcss": "^1.30.1"
   },

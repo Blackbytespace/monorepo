@@ -22,7 +22,7 @@ namespace Sugar\String;
  * Sugar\String\randomString(10); // => ak93mdkaod
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function randomString(
     $length,

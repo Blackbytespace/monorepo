@@ -18,7 +18,7 @@
  * @snippet         __toQueryString($1)
  *
  * @example 	js
- * import { __toQueryString } from '@lotsof/sugar/object'
+ * import { __toQueryString } from '@blackbyte/sugar/object'
  * console.log(__toQueryString({
  * 	value1 : 'coco',
  * 	value1 : 'plop'
@@ -26,7 +26,7 @@
  * // => ?value1=coco&value2=plop
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __toQueryString(obj: any): string {
   return (

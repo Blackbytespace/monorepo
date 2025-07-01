@@ -1,4 +1,4 @@
-import { __parseHtml } from '@lotsof/sugar/console';
+import { __parseHtml } from '@blackbyte/sugar/console';
 
 let _isOverrided = false,
   nativeConsoleFn: any;

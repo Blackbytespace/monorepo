@@ -19,7 +19,7 @@ import __set from './set.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepSearch } from '@lotsof/sugar/object';
+ * import { __deepSearch } from '@blackbyte/sugar/object';
  * __deepSearch ({
  *    coco: 'hello',
  *    plop: true,
@@ -35,7 +35,7 @@ import __set from './set.js';
  * // }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepSearchFilter = {
   (item: TDeepSearchItem): undefined | boolean;

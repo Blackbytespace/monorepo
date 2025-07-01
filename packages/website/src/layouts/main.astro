@@ -1,8 +1,8 @@
 ---
-import Layout from '@lotsof/website-common/src/components/layout/layout.astro';
+import Layout from '@blackbyte/website-common/src/components/layout/layout.astro';
 import '../components/index.css';
 
-import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo.svg?raw';
+import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.svg?raw';
 
 import __websiteConfig from '../../website.config.json';
 import __packageJson from '../../package.json';
@@ -24,11 +24,11 @@ import __packageJson from '../../package.json';
       <div class="container">
         <header class="header">
           <a class="header_logo" href="/" title={__websiteConfig.title}>
-            <Fragment set:html={__logoLotsof} />
+            <Fragment set:html={__logoBlackbyte} />
           </a>
           <div class="header_metas">
             <a
-              href="https://github.com/lotsofdev/monorepo/blob/master/LICENSE"
+              href="https://github.com/blackbytespace/monorepo/blob/main/LICENSE.md"
               target="_blank"
               title="MIT License"
             >
@@ -41,7 +41,7 @@ import __packageJson from '../../package.json';
         </header>
         <ol class="websites">
           <li class="websites_website -sugarcss">
-            <a href="https://sugarcss.lotsof.dev" title="Sugarcss">
+            <a href="https://sugarcss.blackbyte.space" title="Sugarcss">
               <p class="websites_title" style="--chars: 8;">Sugarcss</p>
               <p class="websites_text typo-p">
                 Add a sugar in your css with nice features like live update and
@@ -50,7 +50,7 @@ import __packageJson from '../../package.json';
             </a>
           </li>
           <li class="websites_website -sugarcss">
-            <a href="https://sugar.lotsof.dev" title="Sugar">
+            <a href="https://sugar.blackbyte.space" title="Sugar">
               <p class="websites_title" style="--chars: 6;">Sugar</p>
               <p class="websites_text typo-p">
                 A toolkit that gives you access to "lots of" of cool and useful

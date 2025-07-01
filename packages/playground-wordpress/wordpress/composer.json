@@ -1,8 +1,0 @@
-{
-  "name": "lotsof/wordpress-playground",
-  "description": "Lotsof wordpress playground",
-  "type": "project",
-  "require": {
-    "vlucas/phpdotenv": "^5.6"
-  }
-}

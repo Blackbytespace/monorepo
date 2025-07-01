@@ -13,13 +13,13 @@
  * @snippet         __availableEasingsArray()
  *
  * @example         js
- * import { __availableEasingsArray } from '@lotsof/sugar/easing';
+ * import { __availableEasingsArray } from '@blackbyte/sugar/easing';
  * __availableEasingsArray();
  *
  * @todo      tests
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __availableEasingsArray(): string[] {
   return [

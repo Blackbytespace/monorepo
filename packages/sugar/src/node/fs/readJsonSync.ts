@@ -17,11 +17,11 @@ import * as __fs from 'fs';
  * @snippet         __readJsonSync($1)
  *
  * @example         js
- * import { __readJsonSync } from '@lotsof/sugar/fs';
+ * import { __readJsonSync } from '@blackbyte/sugar/fs';
  * __readJsonSync('my-cool-json/file.json');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __readJsonSync(path: string): any {

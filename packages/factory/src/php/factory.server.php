@@ -15,10 +15,10 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php')) {
 }
 
 // load the config
-$config = \Lotsof\Factory\Config\get();
+$config = \Blackbyte\Factory\Config\get();
 
 // create a components instance
-$components = new \Lotsof\Components\Components($config);
+$components = new \Blackbyte\Components\Components($config);
 
 // load the components index.php if exists
 if (file_exists($config->components->rootDir . '/index.php')) {

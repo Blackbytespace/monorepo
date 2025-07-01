@@ -23,7 +23,7 @@ import __sort from './sort.js';
  * })
  *
  * @example               js
- * import { __sortDeep } from '@lotsof/sugar/object';
+ * import { __sortDeep } from '@blackbyte/sugar/object';
  * __sortDeep({
  *    lolo: { weight: 2 },
  *    coco: { weight: 10 },
@@ -46,7 +46,7 @@ import __sort from './sort.js';
  * // }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __sortDeep(
   object: any,

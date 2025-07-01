@@ -27,29 +27,31 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 var _JsonSchemaFormElement_schema_accessor_storage, _JsonSchemaFormElement_values_accessor_storage, _JsonSchemaFormElement_formClasses_accessor_storage, _JsonSchemaFormElement_buttonClasses_accessor_storage, _JsonSchemaFormElement_header_accessor_storage, _JsonSchemaFormElement_widgets_accessor_storage;
 import { faker } from '@faker-js/faker';
 import __IconElement from '@lotsof/icon-element';
+import __JsonSchemaUtils from '@lotsof/json-schema-utils';
 import __LitElement from '@lotsof/lit-element';
 import { __copyText } from '@lotsof/sugar/clipboard';
-import { __deepize, __deepMap, __get, __set } from '@lotsof/sugar/object';
+import { __disablePasswordManagerAttributes } from '@lotsof/sugar/dom';
+import { __isPlainObject } from '@lotsof/sugar/is';
+import { __deepFilter, __deepize, __deepMap, __deepMerge, __get, __set, } from '@lotsof/sugar/object';
 import { spread } from '@open-wc/lit-helpers';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Draft2019 } from 'json-schema-library';
+import { compileSchema } from 'json-schema-library';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { literal, html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import '../../src/css/JsonSchemaFormElement.css';
-import '../components/defaultGroupRenderer/defaultGroupRenderer.js';
-import '../components/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/groupRenderers/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/groupRenderers/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/widgets/textareaWidget/textareaWidget.js';
 /**
  * Adding some custom faker methods
  * to be used in the editor
  * through the json schema "editor" property
  */
-JSONSchemaFaker.extend('editor', () => {
+JSONSchemaFaker.extend('faker', () => {
     // @ts-ignore
-    faker.mock = {
-        picsum: (width, height) => {
-            return `https://picsum.photos/${width}/${height}?v=${Math.round(Math.random() * 1000)}`;
-        },
+    faker.image.picsum = (width, height) => {
+        return `https://picsum.photos/${width}/${height}?v=${Math.round(Math.random() * 1000)}`;
     };
     return faker;
 });
@@ -78,10 +80,12 @@ class JsonSchemaFormElement extends __LitElement {
         _JsonSchemaFormElement_values_accessor_storage.set(this, {});
         _JsonSchemaFormElement_formClasses_accessor_storage.set(this, false);
         _JsonSchemaFormElement_buttonClasses_accessor_storage.set(this, false);
-        _JsonSchemaFormElement_header_accessor_storage.set(this, true);
+        _JsonSchemaFormElement_header_accessor_storage.set(this, false);
         _JsonSchemaFormElement_widgets_accessor_storage.set(this, {});
         this._registeredWidgets = {};
         this._errorsByPath = {};
+        this._jsonSchemaUtils = new __JsonSchemaUtils();
+        this._finalSchema = {};
     }
     get $form() {
         var _a;
@@ -98,7 +102,12 @@ class JsonSchemaFormElement extends __LitElement {
         });
     }
     update(changedProperties) {
-        super.update(changedProperties);
+        // fill the "_finalSchema" property
+        // with the schema that has been extended
+        // using the "extends" property
+        if (changedProperties.has('schema')) {
+            this._finalSchema = this._jsonSchemaUtils.applyExtends(this.schema);
+        }
         // handle the "-invalid" class on the form
         if (this.$form) {
             if (this.$form.checkValidity()) {
@@ -108,6 +117,8 @@ class JsonSchemaFormElement extends __LitElement {
                 this.$form.classList.add('-invalid');
             }
         }
+        // apply the update in parent class
+        super.update(changedProperties);
     }
     firstUpdated(_changedProperties) {
         // handle form submit.
@@ -149,8 +160,19 @@ class JsonSchemaFormElement extends __LitElement {
         return foundSchema;
     }
     _validateValues(schema, value) {
-        const jsonSchema = new Draft2019(schema), errors = jsonSchema.validate(value);
-        return errors;
+        const jsonSchema = compileSchema(schema), validateResponse = jsonSchema.validate(value);
+        return validateResponse.errors.filter((error) => {
+            var _a, _b, _c;
+            // @ts-ignore
+            if (!error.data.received && !((_a = error.schema) === null || _a === void 0 ? void 0 : _a.required)) {
+                return false;
+            }
+            // @ts-ignore
+            if (((_b = error.data) === null || _b === void 0 ? void 0 : _b.received) === 'undefined' && !((_c = error.schema) === null || _c === void 0 ? void 0 : _c.required)) {
+                return false; // Ignore undefined values for non-required fields
+            }
+            return true; // Keep other errors
+        });
     }
     _renderComponentValueErrors(path) {
         var _a;
@@ -177,7 +199,7 @@ class JsonSchemaFormElement extends __LitElement {
         // aware of the array indexes
         const pathWithoutIndexes = path.filter((p) => isNaN(parseInt(p)));
         // get the schema for the current path
-        const schema = this._findInSchema(this.schema, pathWithoutIndexes);
+        const schema = this._findInSchema(this._finalSchema, pathWithoutIndexes);
         // get the field name
         const fieldName = path[path.length - 1];
         // handle default value
@@ -186,6 +208,7 @@ class JsonSchemaFormElement extends __LitElement {
             __set(this.values, path, schema.default);
             value = schema.default;
         }
+        const disablePasswordManagerAttributes = __disablePasswordManagerAttributes();
         // validate the value
         let renderedErrors = '';
         const errors = this._validateValues(schema, value);
@@ -200,6 +223,7 @@ class JsonSchemaFormElement extends __LitElement {
             switch (true) {
                 case schema.enum !== undefined:
                     return html `<select
+              ${spread(disablePasswordManagerAttributes)}
               id="${this.getIdFromPath(path)}"
               name=${fieldName}
               class=${`${this.cls('_values-select')} ${this.formClasses ? 'form-select' : ''}`}
@@ -222,6 +246,7 @@ class JsonSchemaFormElement extends __LitElement {
                     break;
                 case schema.type === 'string':
                     return html `<input
+            ${spread(disablePasswordManagerAttributes)}
             type="text"
             name=${fieldName}
             .value=${value !== null && value !== void 0 ? value : ''}
@@ -257,8 +282,10 @@ class JsonSchemaFormElement extends __LitElement {
                     }}
           />`;
                     break;
+                case schema.type === 'integer':
                 case schema.type === 'number':
                     return html `<input
+            ${spread(disablePasswordManagerAttributes)}
             type="number"
             name=${fieldName}
             .value=${value}
@@ -345,27 +372,27 @@ class JsonSchemaFormElement extends __LitElement {
         return `${this.tagName.toLowerCase()}-value-${path.join('-')}`;
     }
     _renderComponentValuesPreview(schema, path = []) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         // get the values for the current path
-        const values = __get(this.values, path);
+        let values = __get(this.values, path);
         // check if we have a widget specified and that it is available
-        if (schema.widget) {
-            if (!this._registeredWidgets[schema.widget]) {
-                throw new Error(`The widget "${schema.widget}" is not registered in carpenter. Make sure to register it using SCarpenterElement.registerWidget static method...`);
+        if ((_a = schema.editor) === null || _a === void 0 ? void 0 : _a.widget) {
+            if (!this._registeredWidgets[(_b = schema.editor) === null || _b === void 0 ? void 0 : _b.widget]) {
+                throw new Error(`The widget "${(_c = schema.editor) === null || _c === void 0 ? void 0 : _c.widget}" is not registered in JsonSchemaForm. Make sure to register it using JsonSchemaForm.registerWidget static method...`);
             }
-            const tag = literal `${unsafeStatic(this._registeredWidgets[schema.widget].tag)}`;
+            const tag = literal `${unsafeStatic(this._registeredWidgets[(_d = schema.editor) === null || _d === void 0 ? void 0 : _d.widget].tag)}`;
             return staticHtml `
-        <${tag} @s-carpenter.update=${(e) => {
-                __set(this.values, path, e.detail);
+        <${tag} class="${this.cls('_widget _values-value')}" .value=${values} .schema=${schema} .applyUpdate=${(newValue) => {
+                __set(this.values, path, newValue);
                 this._emitUpdate({
-                    value: e.detail,
+                    value: newValue,
                     path,
                 });
             }}></${tag}>
       `;
         }
         // handle group display
-        if ((_b = (_a = schema.editor) === null || _a === void 0 ? void 0 : _a.groups) === null || _b === void 0 ? void 0 : _b.length) {
+        if ((_f = (_e = schema.editor) === null || _e === void 0 ? void 0 : _e.groups) === null || _f === void 0 ? void 0 : _f.length) {
             return html `
         <ul class=${this.cls('_groups')}>
           ${schema.editor.groups.map((group) => {
@@ -415,7 +442,12 @@ class JsonSchemaFormElement extends __LitElement {
         </ul>
       `;
         }
-        // console.log('eee', schema, path, values);
+        // if the schema is an array and the values are not defined,
+        // we create an empty array to avoid errors
+        // when rendering the array items
+        if (schema.type === 'array' && !Array.isArray(values)) {
+            values = [];
+        }
         switch (true) {
             case schema.type === 'object' && schema.properties !== undefined:
                 return html `
@@ -433,7 +465,7 @@ class JsonSchemaFormElement extends __LitElement {
                     : ''}
               <ul class=${this.cls('_values-object-items')}>
                 ${Object.entries(schema.properties).map(([key, value]) => {
-                    var _a, _b;
+                    var _a, _b, _c;
                     if (value.type === 'object') {
                         const objectId = __get(this.values, [...path, key, 'id']);
                         return html `
@@ -483,9 +515,7 @@ class JsonSchemaFormElement extends __LitElement {
                         ${this._renderComponentValuesPreview(schema.properties[key], [...path, key])}
 
                         <nav class=${this.cls('_values-prop-tools')}>
-                          ${value.type !== 'boolean' &&
-                            value.type !== 'array' &&
-                            value.type !== 'object'
+                          ${((_c = value.editor) === null || _c === void 0 ? void 0 : _c.mock)
                             ? html `
                                 <button
                                   class=${this.cls('_values-prop-tool')}
@@ -579,12 +609,7 @@ class JsonSchemaFormElement extends __LitElement {
                         : ''}`}
                 @click=${() => {
                     const newValues = this._createComponentDefaultValuesFromSchema(schema.items);
-                    if (!values) {
-                        __set(this.values, path, [newValues]);
-                    }
-                    else {
-                        values.push(newValues);
-                    }
+                    values.push(newValues);
                     this._emitUpdate({
                         value: values,
                         path,
@@ -592,7 +617,7 @@ class JsonSchemaFormElement extends __LitElement {
                     this.requestUpdate();
                 }}
               >
-                Add a ${(_d = (_c = schema.items.title) === null || _c === void 0 ? void 0 : _c.toLowerCase()) !== null && _d !== void 0 ? _d : 'new item'}
+                Add a ${(_h = (_g = schema.items.title) === null || _g === void 0 ? void 0 : _g.toLowerCase()) !== null && _h !== void 0 ? _h : 'new item'}
               </button>
             </ul>
           </div>
@@ -607,17 +632,19 @@ class JsonSchemaFormElement extends __LitElement {
     }
     render() {
         var _a;
-        if (this.schema) {
+        if (this._finalSchema) {
             return html `
         <div class=${this.cls('_inner')}>
           ${this.header
                 ? html `
                 <header class=${this.cls('_header')}>
-                  <h2 class=${this.cls('_title')}>
-                    ${this.schema.title}
+                  <div class=${this.cls('_header-metas')}>
+                    <h2 class=${this.cls('_header-title')}>
+                      ${this._finalSchema.title}
+                    </h2>
                     ${((_a = this.values) === null || _a === void 0 ? void 0 : _a.id)
                     ? html `<span
-                          class="${this.cls('_title-id')} button -outline"
+                          class="${this.cls('_header-title-id')} button -outline"
                           @click=${() => {
                         __copyText(this.values.id);
                     }}
@@ -625,15 +652,59 @@ class JsonSchemaFormElement extends __LitElement {
                           <s-icon name="clipboard-document-list"
                         /></span>`
                     : ''}
-                  </h2>
-                  <p class=${this.cls('_description')}>
-                    ${this.schema.description}
-                  </p>
+                  </div>
+                  <div class=${this.cls('_header-content')}>
+                    <p class=${this.cls('_header-description')}>
+                      ${this._finalSchema.description}
+                    </p>
+                    <nav class=${this.cls('_header-tools')}>
+                      <button
+                        class=${this.cls('_header-tool')}
+                        @click=${(e) => {
+                    var _a;
+                    const finalSchema = __deepFilter(this.schema, ({ key, value, isObject }) => {
+                        var _a;
+                        if (!isObject ||
+                            key === 'properties' ||
+                            key === 'faker') {
+                            return true;
+                        }
+                        if (isObject &&
+                            !value.$id &&
+                            !((_a = value.editor) === null || _a === void 0 ? void 0 : _a.mock)) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    // generate a mock value
+                    const mock = JSONSchemaFaker.generate((_a = finalSchema.properties) !== null && _a !== void 0 ? _a : {});
+                    for (let [key, value] of Object.entries(mock)) {
+                        if (__isPlainObject(this.values[key]) &&
+                            __isPlainObject(value)) {
+                            console.log('key', key, this.values[key]);
+                            __deepMerge([this.values[key], value], {
+                                clone: false,
+                            });
+                        }
+                        else {
+                            this.values[key] = value;
+                        }
+                        this._emitUpdate({
+                            value: value,
+                            path: [key],
+                        });
+                    }
+                }}
+                      >
+                        <s-icon name="arrow-path"></s-icon>
+                      </button>
+                    </nav>
+                  </div>
                 </header>
               `
                 : ''}
           <div class=${this.cls('_values')}>
-            ${this._renderComponentValuesPreview(this.schema)}
+            ${this._renderComponentValuesPreview(this._finalSchema)}
           </div>
         </div>
       `;
@@ -669,6 +740,10 @@ JsonSchemaFormElement.registerGroupRenderer({
 JsonSchemaFormElement.registerGroupRenderer({
     id: 'stack',
     tag: 's-json-schema-form-stack-group-renderer',
+});
+JsonSchemaFormElement.registerWidget({
+    id: 'textarea',
+    tag: 's-json-schema-form-textarea-widget',
 });
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});
 __IconElement.define('s-icon', {

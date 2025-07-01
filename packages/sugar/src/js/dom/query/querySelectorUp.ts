@@ -18,7 +18,7 @@ import __matches from './matches.js';
  * @snippet         __querySelectorUp($1, $2)
  *
  * @example  	js
- * import { __querySelectorUp } from '@lotsof/sugar/dom'
+ * import { __querySelectorUp } from '@blackbyte/sugar/dom'
  * const closestElm =  __querySelectorUp(myCoolElement, '.my-cool-class');
  * if (closestElm) {
  * 		// we have found en element that matches the selector
@@ -29,7 +29,7 @@ import __matches from './matches.js';
  * })
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __querySelectorUp(
   $from: HTMLElement,

@@ -16,13 +16,13 @@
  * @snippet         __isEmail($1)
  *
  * @example 	js
- * import { __isEmail } from '@lotsof/sugar/is';
+ * import { __isEmail } from '@blackbyte/sugar/is';
  * __isEmail('john.doe@gmail.com') => true
  * __isEmail('plop@yop.com') => true
  * __isEmail('hello') => false
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isEmail(value: string): boolean {
   const re =

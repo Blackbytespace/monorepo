@@ -20,7 +20,7 @@
  * __filterObject
  *
  * @example           js
- * import { __filterObject } from '@lotsof/sugar/object';
+ * import { __filterObject } from '@blackbyte/sugar/object';
  * __filterObject({
  *    coco: 'hello',
  *    plop: true
@@ -28,7 +28,7 @@
  * // { coco: 'hello' }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __filterObject(

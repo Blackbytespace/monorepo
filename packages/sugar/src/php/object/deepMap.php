@@ -34,7 +34,7 @@ namespace Sugar\Object;
  *
  * @see             https://developer.wordpress.org/reference/functions/deepMap/
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function deepMap(mixed &$value, $callback, $prop = null, &$object = null)
 {

@@ -1,6 +1,6 @@
 <template>
   <article class="card" :id="id">
-    <figure v-if="image" class="card_figure">
+    <figure v-if="image?.src" class="card_figure">
       <Image v-bind="image" />
     </figure>
     <div class="card_body">

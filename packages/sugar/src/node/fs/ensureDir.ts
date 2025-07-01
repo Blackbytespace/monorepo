@@ -19,14 +19,14 @@ import __fs from 'fs-extra';
  * await __ensureDir($1)
  *
  * @example       js
- * import { __ensureDir } from '@lotsof/sugar/fs';
+ * import { __ensureDir } from '@blackbyte/sugar/fs';
  *  __ensureDir('my/cool/dir').then(() => {
  *    // do something...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __ensureDir(dir: string): Promise<void> {
   return __fs.ensureDir(dir);

@@ -16,7 +16,7 @@
  * @snippet         __getMethods($1)
  *
  * @example         js
- * import { __getMethods } from '@lotsof/sugar/class';
+ * import { __getMethods } from '@blackbyte/sugar/class';
  * myClass {
  *  constructor() {}
  *  hello() {}
@@ -26,7 +26,7 @@
  * __getMethods(myInstance); // => ['hello','world']
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __getMethods(toCheck: any): string[] {
   let props: string[] = [];

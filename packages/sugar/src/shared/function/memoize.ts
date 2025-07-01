@@ -17,7 +17,7 @@ import __memoizee from 'memoizee';
  * @return      {Any}                       The memoized function result
  *
  * @example         js
- * import { __memoize } from '@lotsof/sugar/function';
+ * import { __memoize } from '@blackbyte/sugar/function';
  * const fn =  __memoize(function(text) => {
  *    return `Hello ${text}`;
  * });
@@ -27,7 +27,7 @@ import __memoizee from 'memoizee';
  *
  * @see             https://www.npmjs.com/package/memoizee
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __memoize(...args): any {
   return __memoizee(...args);

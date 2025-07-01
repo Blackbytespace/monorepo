@@ -1,4 +1,4 @@
-import { __pad } from '@lotsof/sugar/number';
+import { __pad } from '@blackbyte/sugar/number';
 
 /**
  * @name                 convert24To12
@@ -18,11 +18,11 @@ import { __pad } from '@lotsof/sugar/number';
  * @snippet         __convert24To12($1)
  *
  * @example    js
- * import { __convert24To12 } from '@lotsof/sugar/time'
+ * import { __convert24To12 } from '@blackbyte/sugar/time'
  * __convert24To12('23:12') // => '11:12pm'
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TConvert24To12Settings = {

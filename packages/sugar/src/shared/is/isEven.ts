@@ -16,12 +16,12 @@
  * @snippet         isEven($1)
  *
  * @example    js
- * import { __isEven } from '@lotsof/sugar/is'
+ * import { __isEven } from '@blackbyte/sugar/is'
  * __isEven(1) // false
  * __isEven(2) // true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isEven(value: number): boolean {
   return value % 2 === 0;

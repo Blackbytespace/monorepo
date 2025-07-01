@@ -28,7 +28,7 @@
  * @todo      tests
  *
  * @example 	js
- * import { __onSwipe } from '@lotsof/sugar/dom'
+ * import { __onSwipe } from '@blackbyte/sugar/dom'
  * __onSwipe(myCoolElm, (swipe) => {
  * 	// check the swipe direction
  * 	if (swipe.left) {
@@ -42,7 +42,7 @@
  *
  * @see 		https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TOnSwipeSettings = {

@@ -1,10 +1,10 @@
-# Lotsof Lit Element
+# Blackbyte Lit Element
 
 This class extends the wonderful [lit](https://lit.dev) library. His goal is to provide a solid base for your custom elements.
 
 ---
 
-- [Lotsof Lit Element](#lotsof-lit-element)
+- [Blackbyte Lit Element](#blackbyte-lit-element)
   - [Features](#features)
   - [Usage](#usage)
   - [Attributes](#attributes)
@@ -30,7 +30,7 @@ Here's some features that this class adds to the lit element base one:
 This class is meant to extend your custom element, just like the native Lit one. Here's how to do it:
 
 ```ts
-import __LitElement from '@lotsof/lit-element`
+import __LitElement from '@blackbyte/lit-element`
 
 // create your component
 class MyCustomElement extends __LitElement {
@@ -254,6 +254,6 @@ Here's all the methods available on an extended `LitElement`:
 
 ## Contribute
 
-To contribute to this package, please [follow these guidelines](https://github.com/lotsofdev/monorepo/blob/master/CONTRIBUTE.md).
+To contribute to this package, please [follow these guidelines](https://github.com/blackbytespace/monorepo/blob/main/CONTRIBUTE.md).
 
-Everyone is welcome as long as they respect our [code of conduct](https://github.com/lotsofdev/monorepo/blob/master/CODEOFCONDUCT.md).
+Everyone is welcome as long as they respect our [code of conduct](https://github.com/blackbytespace/monorepo/blob/main/CODEOFCONDUCT.md).

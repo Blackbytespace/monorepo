@@ -26,7 +26,7 @@
  *    sub: {
  *      property: 'world'
  *    }
- * }, ({key, item}) => typeof item === 'string');
+ * }, ({key, value}) => typeof item === 'string');
  * // {
  * //   coco: 'hello'
  * //   sub: {

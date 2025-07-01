@@ -22,7 +22,7 @@ import __toRem from '../../utils/toRem.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function rem(value: any, settings: TSugarCssSettings): any {
   const args = {

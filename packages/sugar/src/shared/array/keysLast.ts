@@ -17,11 +17,11 @@ import __unique from './unique.js';
  * @snippet         __keysLast($1, $2)
  *
  * @example    js
- * import { __keysLast } from '@lotsof/sugar/array'
+ * import { __keysLast } from '@blackbyte/sugar/array'
  * __keysLast(['a','b','d','g','c'], ['d','g'])
  * // ['a','b','c','d','g']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __keysLast(array: any[], keys: any[]): any[] {
   // all the keys has to exist in the array stack

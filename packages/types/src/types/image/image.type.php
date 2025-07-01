@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Types;
+namespace Blackbyte\Types;
 
 class ImageType extends BaseType
 {
@@ -16,7 +16,7 @@ class ImageType extends BaseType
         ?int $width = null,
         ?int $height = null,
         ?string $priority = null,
-        ?\Lotsof\Types\ImgixType $imgix = null,
+        ?\Blackbyte\Types\ImgixType $imgix = null,
         ?array $focalPoint = null,
         ?string $id = null,
         ?string $class = null,
@@ -69,7 +69,7 @@ class ImageType extends BaseType
     protected ?int $width = null;
     protected ?int $height = null;
     protected ?string $priority = 'auto';
-    protected ?\Lotsof\Types\ImgixType $imgix = null;
+    protected ?\Blackbyte\Types\ImgixType $imgix = null;
     protected ?array $focalPoint = null;
     protected ?string $id = null;
     protected ?string $class = null;
@@ -85,7 +85,7 @@ class ImageType extends BaseType
         ?int $width = null,
         ?int $height = null,
         ?string $priority = 'auto',
-        ?\Lotsof\Types\ImgixType $imgix = null,
+        ?\Blackbyte\Types\ImgixType $imgix = null,
         ?array $focalPoint = null,
         ?string $id = null,
         ?string $class = null,

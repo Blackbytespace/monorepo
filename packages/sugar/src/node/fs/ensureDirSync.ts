@@ -19,12 +19,12 @@ import __isDirectory from '../is/isDirectory.js';
  * @snippet         __ensureDirSync($1)
  *
  * @example       js
- * import { __ensureDirSync } from '@lotsof/sugar/fs';
+ * import { __ensureDirSync } from '@blackbyte/sugar/fs';
  * __ensureDirSync('my/cool/dir');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __ensureDirSync(dir: string): void {
   // check if the directory already exists

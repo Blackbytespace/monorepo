@@ -2,7 +2,7 @@
 
 namespace Factory\Renderers;
 
-function blade(\Lotsof\Components\Component $component, object $config): string
+function blade(\Blackbyte\Components\Component $component, object $config): string
 {
     // make sure we have a temp directory to store the cache
     $tmpDir = sys_get_temp_dir();

@@ -21,7 +21,7 @@
  * @todo      tests
  *
  * @example 	js
- * import { __propertyProxy } from '@lotsof/sugar/object';
+ * import { __propertyProxy } from '@blackbyte/sugar/object';
  * const myObject = {
  * 		title : 'World'
  * };
@@ -39,7 +39,7 @@
  * console.log(myObject.title) => 'Hello Youhou Universe';
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TPropertyProxyDescriptor = {

@@ -24,11 +24,11 @@
  * @todo            tests
  *
  * @example         js
- * import { __setCookie } from '@lotsof/sugar/cookie';
+ * import { __setCookie } from '@blackbyte/sugar/cookie';
  * __setCookie('myCookie', 'hello world');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export interface ISetCookieSettings {
   path: string;

@@ -1,9 +1,9 @@
 {
-  "name": "@lotsof/config",
-  "version": "1.0.0-alpha.97",
-  "description": "Simple and useful way to configure all the lotsof ecosystem",
+  "name": "@blackbyte/config",
+  "version": "1.0.0-beta.1",
+  "description": "Simple and useful way to configure all the blackbyte ecosystem",
   "type": "module",
-  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,12 +12,12 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/cli": "^1.0.0-alpha.97",
-    "@lotsof/docmap": "^1.0.0-alpha.97",
-    "@lotsof/factory": "^1.0.0-alpha.97",
-    "@lotsof/puppet": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
-    "@lotsof/components": "^1.0.0-alpha.97",
+    "@blackbyte/cli": "^1.0.0-beta.1",
+    "@blackbyte/docmap": "^1.0.0-beta.1",
+    "@blackbyte/factory": "^1.0.0-beta.1",
+    "@blackbyte/puppet": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/components": "^1.0.0-beta.1",
     "typescript": "^5.4.5"
   },
   "exports": {
@@ -27,6 +27,6 @@
     }
   },
   "types": "src/node/types.ts",
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

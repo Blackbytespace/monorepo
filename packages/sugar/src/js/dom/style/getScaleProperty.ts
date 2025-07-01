@@ -17,13 +17,13 @@ import * as rematrix from 'rematrix';
  * @snippet         __getScaleProperty($1)
  *
  * @example  	js
- * import { __getScaleProperty } from '@lotsof/sugar/dom'
+ * import { __getScaleProperty } from '@blackbyte/sugar/dom'
  * const props = __getScaleProperty(myCoolHTMLElement);
  * // output format
  * // 2
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetScalePropertyResult = {

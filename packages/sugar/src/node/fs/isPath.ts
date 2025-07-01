@@ -20,12 +20,12 @@ import __isValidPath from 'is-valid-path';
  * @snippet         __isPath($1)
  *
  * @example       js
- * import { __isPath } from '@lotsof/sugar/fs';
+ * import { __isPath } from '@blackbyte/sugar/fs';
  * __isPath('hello/world'); // => true
  *
  * @see         https://www.npmjs.com/package/is-valid-path
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isPath(
   path: string,

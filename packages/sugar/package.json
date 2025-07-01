@@ -1,18 +1,18 @@
 {
-  "name": "@lotsof/sugar",
+  "name": "@blackbyte/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful Node/Js/Php functions/classes like \"querySelectorLive\", \"getFreePort\", etc... ",
-  "version": "1.0.0-alpha.97",
+  "version": "1.0.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
-    "doc.build": "lotsof docmap.build",
+    "doc.build": "blackbyte docmap.build",
     "test": "vitest",
     "publish": "npm publish --access public"
   },
-  "homepage": "https://sugar.lotsof.dev",
-  "author": "Lotsof <hello@lotsof.dev> (https://lotsof.dev)",
+  "homepage": "https://sugar.blackbyte.space",
+  "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
   "contributors": [
     {
       "name": "Olivier Bossel",

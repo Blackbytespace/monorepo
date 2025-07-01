@@ -19,11 +19,11 @@
  * @snippet         __unquote($1)
  *
  * @example    js
- * import { __unquote } from '@lotsof/sugar/string'
+ * import { __unquote } from '@blackbyte/sugar/string'
  * __unquote("'Hello world'") // "Hello world"
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TUnquoteSettings = {

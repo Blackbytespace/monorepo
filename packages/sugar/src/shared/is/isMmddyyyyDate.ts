@@ -17,13 +17,13 @@
  * @snippet         __isMmddyyyyDate($1)
  *
  * @example    js
- * import { __isMmddyyyyDate } from '@lotsof/sugar/is'
+ * import { __isMmddyyyyDate } from '@blackbyte/sugar/is'
  * if (__isMmddyyyyDate('12.25.2018')) {
  *     // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isMmddyyyyDate(date: string): boolean {
   return /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d\d\d\d$/.test(

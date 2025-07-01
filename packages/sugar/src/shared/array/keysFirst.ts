@@ -17,11 +17,11 @@ import __unique from './unique.js';
  * @snippet         __keysFirst($1, $2)
  *
  * @example    js
- * import { __keysFirst } from '@lotsof/sugar/array'
+ * import { __keysFirst } from '@blackbyte/sugar/array'
  * __keysFirst(['a','b','d','g','c'], ['d','g'])
  * // ['d','g','a','b','c']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __keysFirst(array: any[], keys: any[]): any[] {
   // all the keys has to exist in the array stack

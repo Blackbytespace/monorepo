@@ -16,12 +16,12 @@ import __fs from 'fs-extra';
  * @snippet         __emptyDirSync($1)
  *
  * @example       js
- * import { __emptyDirSync } from '@lotsof/sugar/fs';
+ * import { __emptyDirSync } from '@blackbyte/sugar/fs';
  * __emptyDirSync('my/cool/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __emptyDirSync(dir: string): void {
   __fs.emptyDirSync(dir);

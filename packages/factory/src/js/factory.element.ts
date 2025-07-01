@@ -1,23 +1,23 @@
-import '@fontsource/poppins';
 import __AdvancedSelectElement, {
   TAdvancedSelectElementItem,
   TAdvancedSelectElementItemsFunctionApi,
-} from '@lotsof/advanced-select-element';
-import '@lotsof/carpenter';
+} from '@blackbyte/advanced-select-element';
+import '@blackbyte/carpenter';
+import '@fontsource/poppins';
 // @ts-ignore
-import { __Carpenter, __CarpenterElement } from '@lotsof/carpenter';
-import { __i18n } from '@lotsof/i18n';
-import '@lotsof/json-schema-form';
-import __LitElement from '@lotsof/lit-element';
-import { __getFormValues } from '@lotsof/sugar/dom';
-import { __isInIframe } from '@lotsof/sugar/is';
+import { __Carpenter, __CarpenterElement } from '@blackbyte/carpenter';
+import { __i18n } from '@blackbyte/i18n';
+import '@blackbyte/json-schema-form';
+import __LitElement from '@blackbyte/lit-element';
+import { __getFormValues } from '@blackbyte/sugar/dom';
+import { __isInIframe } from '@blackbyte/sugar/is';
 import {
   __escapeQueueLength,
   __hotkey,
   type THotkeySettings,
-} from '@lotsof/sugar/keyboard';
-import { __clone } from '@lotsof/sugar/object';
-import { __uniqid, __upperFirst } from '@lotsof/sugar/string';
+} from '@blackbyte/sugar/keyboard';
+import { __clone } from '@blackbyte/sugar/object';
+import { __uniqid, __upperFirst } from '@blackbyte/sugar/string';
 import { html, PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';

@@ -1,9 +1,9 @@
 {
-  "name": "@lotsof/docmap",
-  "version": "1.0.0-alpha.97",
+  "name": "@blackbyte/docmap",
+  "version": "1.0.0-beta.1",
   "description": "Powerful class that let you generate and read docmap.json file. A docmap.json file is a \"directory\" that lists all the documentation found in your code using docblocks and the \"@namespace\" tag.",
   "type": "module",
-  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,15 +12,15 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/config": "^1.0.0-alpha.97",
-    "@lotsof/docblock": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/docblock": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "micromatch": "^4.0.5",
     "typescript": "^5.4.5"
   },
   "main": "dist/node/_exports.js",
   "module": "dist/node/_exports.js",
   "types": "src/node/_exports.ts",
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

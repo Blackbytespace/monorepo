@@ -17,11 +17,11 @@ import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
  * @snippet         __expandPleasantCssClassnames($1)
  *
  * @example         js
- * import { __expandPleasantCssClassnames } from '@lotsof/sugar/html';
+ * import { __expandPleasantCssClassnames } from '@blackbyte/sugar/html';
  * __expandPleasantCssClassnames('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __expandPleasantCssClassnames(html: string): string {

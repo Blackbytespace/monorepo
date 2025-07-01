@@ -28,7 +28,7 @@ import __closestNotVisible from './closestNotVisibleElement.js';
  * @snippet         __querySelectorAll($1)
  *
  * @example 	js
- * import { __querySelectorAll } from '@lotsof/sugar/dom';
+ * import { __querySelectorAll } from '@blackbyte/sugar/dom';
  * // simple query
  * const elms = __querySelectorAll('.a-cool-css-selector');
  *
@@ -38,7 +38,7 @@ import __closestNotVisible from './closestNotVisibleElement.js';
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TQuerySelectorAllSettings = {

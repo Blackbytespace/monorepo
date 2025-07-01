@@ -16,11 +16,11 @@
  * @snippet         __formatDuration($1)
  *
  * @example       js
- * import { __formatDuration } from '@lotsof/sugar/datetime';
+ * import { __formatDuration } from '@blackbyte/sugar/datetime';
  * __formatDuration(2000); // => 2s
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __formatDuration(duration: number): string {
   if (duration === Infinity) {

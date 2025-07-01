@@ -25,13 +25,13 @@ import __unquote from '../../../shared/string/unquote.js';
  * @todo      tests
  *
  * @example    js
- * import { __whenBackgroundImageLoaded } from '@lotsof/sugar/dom'
+ * import { __whenBackgroundImageLoaded } from '@blackbyte/sugar/dom'
  *
  * // using promise
  * await __whenBackgroundImageLoaded($elm);
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenBackgroundImageLoaded(
   $elm: HTMLElement,

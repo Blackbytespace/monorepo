@@ -1,14 +1,14 @@
-import { __wait } from '@lotsof/sugar/datetime';
+import { __wait } from '@blackbyte/sugar/datetime';
 import {
   __adoptStyleInShadowRoot,
   __injectStyle,
   __querySelectorLive,
   __when,
-} from '@lotsof/sugar/dom';
+} from '@blackbyte/sugar/dom';
 
-import { __unique } from '@lotsof/sugar/array';
-import { __isInViewport } from '@lotsof/sugar/is';
-import { __camelCase } from '@lotsof/sugar/string';
+import { __unique } from '@blackbyte/sugar/array';
+import { __isInViewport } from '@blackbyte/sugar/is';
+import { __camelCase } from '@blackbyte/sugar/string';
 import {
   PropertyValues,
   LitElement as __LitElement,

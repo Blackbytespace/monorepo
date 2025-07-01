@@ -16,12 +16,12 @@ import __renameSync from './renameSync.js';
  * @snippet         __rename($1, $2)
  *
  * @example       js
- * import { __rename } from '@lotsof/sugar/fs';
+ * import { __rename } from '@blackbyte/sugar/fs';
  * await __rename('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TRenameSettings = {

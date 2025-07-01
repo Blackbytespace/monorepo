@@ -33,7 +33,11 @@
       "title": "Suptitle",
       "description": "Suptitle of the body",
       "editor": {
+        "mock": true,
         "group": "advanced"
+      },
+      "faker": {
+        "lorem.paragraph": [1]
       }
     },
     "title": {
@@ -44,7 +48,11 @@
       "minLength": 3,
       "maxLength": 100,
       "editor": {
+        "mock": true,
         "group": "default"
+      },
+      "faker": {
+        "lorem.paragraph": [1]
       }
     },
     "subtitle": {
@@ -55,7 +63,11 @@
       "minLength": 3,
       "maxLength": 400,
       "editor": {
+        "mock": true,
         "group": "texts"
+      },
+      "faker": {
+        "lorem.paragraph": [1]
       }
     },
     "lead": {
@@ -63,14 +75,26 @@
       "title": "Lead",
       "description": "Lead of the body",
       "editor": {
+        "mock": true,
+        "widget": "textarea",
+        "rows": 3,
         "group": "default"
+      },
+      "faker": {
+        "lorem.paragraph": [1]
       }
     },
     "text": {
       "type": "string",
       "title": "Text",
       "description": "Text of the body",
+      "faker": {
+        "lorem.paragraph": [5]
+      },
       "editor": {
+        "mock": true,
+        "widget": "textarea",
+        "rows": 5,
         "group": "default"
       }
     },
@@ -78,6 +102,7 @@
       "type": "array",
       "title": "Buttons",
       "description": "Buttons of the body",
+      "maxItems": 2,
       "items": {
         "$ref": "/ui/button"
       },
@@ -85,31 +110,63 @@
         "group": "buttons"
       }
     },
-    "titleLevel": {
+    "titleLevelDisplay": {
       "type": "integer",
       "title": "Title level",
-      "description": "Title level (1-6)",
+      "description": "Title level (display) (1-3)",
       "minimum": 1,
-      "maximum": 6,
+      "maximum": 3,
       "default": 2,
       "editor": {
         "group": "advanced"
       }
     },
-    "typoClasses": {
+    "titleLevelTag": {
+      "type": "integer",
+      "title": "Title tag",
+      "description": "Title level (tag) (1-3)",
+      "minimum": 1,
+      "maximum": 3,
+      "default": 2,
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "format": {
       "type": "boolean",
-      "title": "Typo classes",
-      "description": "Use typography classes or not",
+      "title": "Format typography",
+      "description": "Apply typography formatting",
+      "default": true,
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "rhythm": {
+      "type": "boolean",
+      "title": "Vertical rhythm",
+      "description": "Apply vertical rhythm",
+      "default": true,
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "spacer": {
+      "type": "boolean",
+      "title": "Spacer",
+      "description": "Apply spacer between elements and buttons?",
       "default": true,
       "editor": {
         "group": "advanced"
       }
     },
     "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "Unique identifier",
-      "placeholder": "body-1",
+      "$extends": "jsonSchemaUtils/id",
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "class": {
+      "$extends": "jsonSchemaUtils/class",
       "editor": {
         "group": "advanced"
       }

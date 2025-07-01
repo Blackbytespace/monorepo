@@ -19,13 +19,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __whenIframeReady } from '@lotsof/sugar/dom'
+ * import { __whenIframeReady } from '@blackbyte/sugar/dom'
  * __whenIframeReady($myCoolIframe).then($iframe => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __whenIframeReady(

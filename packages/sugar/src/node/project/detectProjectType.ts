@@ -29,7 +29,7 @@ import __packageRootDir from '../package/packageRootDir.js';
  * __detectProjectType();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TDetectProjectTypeResult = {

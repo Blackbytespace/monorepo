@@ -44,11 +44,11 @@ import __unique from '../array/unique.js';
  * @snippet         __commonFileExtensions()
  *
  * @example         js
- * import { __commonFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonFileExtensions(); // => ['avi','mp3',...]
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type Types = (

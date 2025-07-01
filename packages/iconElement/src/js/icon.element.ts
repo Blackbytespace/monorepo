@@ -1,4 +1,4 @@
-import __LitElement from '@lotsof/lit-element';
+import __LitElement from '@blackbyte/lit-element';
 import { PropertyValues } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -20,22 +20,22 @@ import '../../src/css/icon.element.css';
  * @support         safari
  * @support         edge
  *
- * @import          import { define as __IconElementDefine } from '@lotsof/icon-element';
+ * @import          import { define as __IconElementDefine } from '@blackbyte/icon-element';
  *
  * @snippet         __IconElementDefine($1)
  *
  * @install           shell
- * npm i @lotsof/icon-element
+ * npm i @blackbyte/icon-element
  *
  * @install           js
- * import __SIconElement from '@lotsof/icon-element';
+ * import __SIconElement from '@blackbyte/icon-element';
  * __SIconElement.define();
  *
  * @example         html            Simple example
  * <s-icon name="play" />
  *
  * @since           2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default class AdvancedSelectElement extends __LitElement {
   @property({ type: String })

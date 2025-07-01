@@ -16,11 +16,11 @@
  * @todo      tests
  *
  * @example         js
- * import { __stripDocblocks } from '@lotsof/sugar/string';
+ * import { __stripDocblocks } from '@blackbyte/sugar/string';
  * __stripDocblocks('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __stripDocblocks(str: string): string {
   return str.replace(/(\/\*{2})([\s\S]+?)(\*\/)/gm, '');

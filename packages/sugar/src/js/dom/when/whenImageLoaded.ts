@@ -20,13 +20,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __whenImageLoaded } from '@lotsof/sugar/dom'
+ * import { __whenImageLoaded } from '@blackbyte/sugar/dom'
  *  __whenImageLoaded(myCoolHTMLImageElement).then(($img) => {
  * 		// do something when the image is loaded
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenImageLoaded(
   $img: HTMLImageElement,

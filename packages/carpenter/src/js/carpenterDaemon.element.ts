@@ -1,9 +1,9 @@
-import __LitElement from '@lotsof/lit-element';
-import { __querySelectorLive } from '@lotsof/sugar/dom';
+import __LitElement from '@blackbyte/lit-element';
+import { __querySelectorLive } from '@blackbyte/sugar/dom';
 import { html, PropertyValues } from 'lit';
 // @ts-ignore
-import { __copyText } from '@lotsof/sugar/clipboard';
-import { __isDarkMode } from '@lotsof/sugar/is';
+import { __copyText } from '@blackbyte/sugar/clipboard';
+import { __isDarkMode } from '@blackbyte/sugar/is';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
 import {

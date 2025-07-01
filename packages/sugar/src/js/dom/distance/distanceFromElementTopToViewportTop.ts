@@ -17,11 +17,11 @@ import __offsetFromViewport from '../offset/offsetFromViewport.js';
  * @snippet         __distanceFromElementTopToViewportTop($1)
  *
  * @example         js
- * import { __distanceFromElementTopToViewportTop } from '@lotsof/sugar/dom';
+ * import { __distanceFromElementTopToViewportTop } from '@blackbyte/sugar/dom';
  * __distanceFromElementTopToViewportTop(myElement); // => 23
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __distanceFromElementTopToViewportTop(
   elm: HTMLElement,

@@ -1,29 +1,29 @@
-import { __getConfig } from '@lotsof/config';
-import { __unique } from '@lotsof/sugar/array';
+import { __getConfig } from '@blackbyte/config';
+import { __unique } from '@blackbyte/sugar/array';
 import {
-  __copySync,
-  __ensureDirSync,
-  __existsSync,
-  __readJsonSync,
-} from '@lotsof/sugar/fs';
-import { __isCommandExists } from '@lotsof/sugar/is';
-import { __packageRootDir } from '@lotsof/sugar/package';
+    __copySync,
+    __ensureDirSync,
+    __existsSync,
+    __readJsonSync,
+} from '@blackbyte/sugar/fs';
+import { __isCommandExists } from '@blackbyte/sugar/is';
+import { __packageRootDir } from '@blackbyte/sugar/package';
 import {
-  __detectProjectType,
-  type TDetectProjectTypeResult,
-} from '@lotsof/sugar/project';
+    __detectProjectType,
+    type TDetectProjectTypeResult,
+} from '@blackbyte/sugar/project';
 import __fs from 'fs';
 import * as __glob from 'glob';
 import { globSync as __globSync } from 'glob';
 import __inquier from 'inquirer';
 import __path from 'path';
 import {
-  TComponentsAddComponentOptions,
-  TComponentsAddComponentResult,
-  TComponentsComponentJson,
-  TComponentsLibrariesUpdateResult,
-  TComponentsLibrarySettings,
-  TComponentsSettings,
+    TComponentsAddComponentOptions,
+    TComponentsAddComponentResult,
+    TComponentsComponentJson,
+    TComponentsLibrariesUpdateResult,
+    TComponentsLibrarySettings,
+    TComponentsSettings,
 } from './Components.types.js';
 import __ComponentLibrary from './ComponentsLibrary.js';
 import { __ComponentsComponent, __ComponentsLibrary } from './_exports.js';

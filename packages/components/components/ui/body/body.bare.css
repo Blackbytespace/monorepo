@@ -1,5 +1,6 @@
 .body {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 
   .body_suptitle {
@@ -19,5 +20,9 @@
 
   .body_buttons {
     display: flex;
+  }
+
+  .body_spacer {
+    flex-grow: 1;
   }
 }

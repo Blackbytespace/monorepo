@@ -14,13 +14,13 @@
  * @snippet         __isUcBrowser()
  *
  * @example    js
- * import { __isUcBrowser } from '@lotsof/sugar/is'
+ * import { __isUcBrowser } from '@blackbyte/sugar/is'
  * if (__isUcBrowser()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isUcBrowser(
   ua: string = navigator.userAgent,

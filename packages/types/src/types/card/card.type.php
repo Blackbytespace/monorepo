@@ -1,13 +1,13 @@
 <?php
 
-namespace Lotsof\Types;
+namespace Blackbyte\Types;
 
-class CardType extends \Lotsof\Types\BaseType
+class CardType extends \Blackbyte\Types\BaseType
 {
     public static function mock(
-        ?\Lotsof\Types\BodyType $body = null,
-        ?\Lotsof\Types\ImageType $image = null,
-        // ?\Lotsof\Types\VideoType $video = null,
+        ?\Blackbyte\Types\BodyType $body = null,
+        ?\Blackbyte\Types\ImageType $image = null,
+        // ?\Blackbyte\Types\VideoType $video = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = null
@@ -50,17 +50,17 @@ class CardType extends \Lotsof\Types\BaseType
         return $card;
     }
 
-    protected ?\Lotsof\Types\BodyType $body;
-    protected ?\Lotsof\Types\ImageType $image;
-    // protected ?\Lotsof\Types\VideoType $video;
+    protected ?\Blackbyte\Types\BodyType $body;
+    protected ?\Blackbyte\Types\ImageType $image;
+    // protected ?\Blackbyte\Types\VideoType $video;
     protected ?string $id = null;
     protected ?string $class = null;
     protected ?array $attrs = [];
 
     public function __construct(
-        ?\Lotsof\Types\BodyType $body = null,
-        ?\Lotsof\Types\ImageType $image = null,
-        // ?\Lotsof\Types\VideoType $video = null,
+        ?\Blackbyte\Types\BodyType $body = null,
+        ?\Blackbyte\Types\ImageType $image = null,
+        // ?\Blackbyte\Types\VideoType $video = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = []

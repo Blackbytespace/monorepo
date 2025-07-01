@@ -16,11 +16,11 @@ import __uniqid from '../../string/uniqid.js';
  * @snippet         __reloadStylesheets()
  *
  * @example         js
- * import { __reloeadStylesheets } from '@lotsof/sugar/dom';
+ * import { __reloeadStylesheets } from '@blackbyte/sugar/dom';
  * __reloadStylesheets();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TReloadStylesheetsSettings = {

@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { __parse } from '@lotsof/sugar/string';
-import { __resolveTypeString } from '@lotsof/sugar/type';
+import { __parse } from '@blackbyte/sugar/string';
+import { __resolveTypeString } from '@blackbyte/sugar/type';
 
 /**
  * @name                param

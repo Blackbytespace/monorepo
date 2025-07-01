@@ -23,11 +23,11 @@ import { hashFileSync } from 'hasha';
  * @snippet         __fileHashSync($1)
  *
  * @example         js
- * import { __fileHashSync } from '@lotsof/sugar/fs';
+ * import { __fileHashSync } from '@blackbyte/sugar/fs';
  * __fileHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFileHashSettings = {

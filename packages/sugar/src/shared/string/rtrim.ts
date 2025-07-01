@@ -18,11 +18,11 @@
  * @snippet             __rtrim($1, $2)
  *
  * @example    js
- * import { __rtrim } from '@lotsof/sugar/string'
+ * import { __rtrim } from '@blackbyte/sugar/string'
  * __rtrim('Hello World', 'ld') // Hello Wor
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __rtrim(
   string: string,

@@ -1,5 +1,5 @@
 {
-  "name": "lotsof/sugar",
+  "name": "blackbyte/sugar",
   "description": "A toolkit that gives you access to \"lots of\" of cool and useful PHP functions/classes like \\\\Sugar\\network\\ipAddress, \\Sugar\\object\\deepMerge, \\Sugar\\string\\replaceTokens, and a lot more...",
   "type": "library",
   "version": "1.0.0",
@@ -13,7 +13,7 @@
     {
       "name": "Olivier Bossel",
       "email": "olivier.bossel@gmail.com",
-      "homepage": "https://lotsof.dev"
+      "homepage": "https://blackbyte.space"
     }
   ],
   "require": {

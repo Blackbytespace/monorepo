@@ -20,7 +20,7 @@
  * @snippet         __flatten($1)
  *
  * @example             js
- * import { __flatten } from '@lotsof/sugar/object';
+ * import { __flatten } from '@blackbyte/sugar/object';
  * __flatten({
  *    hello: {
  *      world: 'Coco'
@@ -28,7 +28,7 @@
  * });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFlattenSettings = {

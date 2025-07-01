@@ -25,7 +25,7 @@ import distanceBetween from './distanceBetween.js';
  * })
  *
  * @example    js
- * import { __circleConstrain } from '@lotsof/sugar/math'
+ * import { __circleConstrain } from '@blackbyte/sugar/math'
  * __circleConstrain({
  * 	x: 10, y: 10
  * }, 10, {
@@ -34,7 +34,7 @@ import distanceBetween from './distanceBetween.js';
  *
  * @see    https://stackoverflow.com/questions/8515900/how-to-constrain-movement-within-the-area-of-a-circle
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TCircleConstrainPoint = {

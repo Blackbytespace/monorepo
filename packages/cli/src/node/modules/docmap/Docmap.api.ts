@@ -1,5 +1,5 @@
-import __Docmap, { TDocmapBuildParams, __defaults } from '@lotsof/docmap';
-import { __diff } from '@lotsof/sugar/object';
+import __Docmap, { TDocmapBuildParams, __defaults } from '@blackbyte/docmap';
+import { __diff } from '@blackbyte/sugar/object';
 
 export default function __registerCommands(program: any): void {
   program

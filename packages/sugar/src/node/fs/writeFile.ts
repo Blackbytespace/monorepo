@@ -24,14 +24,14 @@ import __folderPath from './folderPath.js';
  * await __writeFile($1, $2)
  *
  * @example       js
- * import { __writeFile } from '@lotsof/sugar/fs';
+ * import { __writeFile } from '@blackbyte/sugar/fs';
  * __writeFile('my/cool/file.txt', 'Hello World').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __writeFile(
   path: string,

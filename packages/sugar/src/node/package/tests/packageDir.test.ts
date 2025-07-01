@@ -18,9 +18,9 @@ describe('sugar.node.package.packageDir', () => {
     }).not.toThrow();
   });
   //   it('should return the correct package path for the sugar package', () => {
-  //     const path = __packageDir('lotsof/sugar', {
+  //     const path = __packageDir('blackbyte/sugar', {
   //       checkExistence: false,
   //     });
-  //     expect(path.includes('sugar/vendor/lotsof/sugar')).toBe(true);
+  //     expect(path.includes('sugar/vendor/blackbyte/sugar')).toBe(true);
   //   });
 });

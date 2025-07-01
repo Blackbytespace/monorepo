@@ -23,12 +23,12 @@ import __isGlob from '../../shared/is/isGlob.js';
  * await __findUp($1)
  *
  * @example         js
- * import { __findUp } from '@lotsof/sugar/fs';
+ * import { __findUp } from '@blackbyte/sugar/fs';
  * const file = await __findUp('myCoolFile.json', {});
  * console.log(file.path);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFindUpSettings = {

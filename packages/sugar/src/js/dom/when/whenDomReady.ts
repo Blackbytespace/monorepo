@@ -19,14 +19,14 @@
  * @todo      tests
  *
  * @example  	js
- * import { __whenDomReady } from '@lotsof/sugar/dom'
+ * import { __whenDomReady } from '@blackbyte/sugar/dom'
  * __whenDomReady().then(() => {
  *     // do something...
  * });
  *
  * @see             https://www.jstips.co/en/javascript/detect-document-ready-in-pure-js/
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenDomReady(): Promise<void> {
   return new Promise((resolve) => {

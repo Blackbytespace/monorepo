@@ -16,12 +16,12 @@
  * @snippet         __isInteger($1)
  *
  * @example 	js
- * import { __isInteger } from '@lotsof/sugar/is';
+ * import { __isInteger } from '@blackbyte/sugar/is';
  * __isInteger(10) => true
  * __isInteger('hello') => false
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isInteger(data: any): boolean {
   return (

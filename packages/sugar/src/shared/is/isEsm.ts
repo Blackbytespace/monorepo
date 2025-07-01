@@ -17,11 +17,11 @@ import __isCjs from './isCjs.js';
  * @todo            tests
  *
  * @example       js
- * import { __isEsm } from '@lotsof/sugar/is';
+ * import { __isEsm } from '@blackbyte/sugar/is';
  * __isEsm(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isEsm(): boolean {
   return !__isCjs();

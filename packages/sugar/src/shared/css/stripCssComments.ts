@@ -24,7 +24,7 @@ import __stripCssComments from 'strip-css-comments';
  * @snippet         __stripCssComments($1)
  *
  * @example       js
- * import { __stripCssComments } from '@lotsof/sugar/css';
+ * import { __stripCssComments } from '@blackbyte/sugar/css';
  * __stripCssComments(`
  * // something cool
  * body { background-color: red; }
@@ -33,7 +33,7 @@ import __stripCssComments from 'strip-css-comments';
  *
  * @see         https://www.npmjs.com/package/strip-css-comments
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TStripCssCommentsSettings = {

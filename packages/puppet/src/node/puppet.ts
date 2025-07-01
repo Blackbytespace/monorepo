@@ -4,15 +4,15 @@ import type {
   TPuppetSettings,
 } from './puppet.type.js';
 
-import { __getConfig } from '@lotsof/config';
-import { __readJsonSync } from '@lotsof/sugar/fs';
+import { __getConfig } from '@blackbyte/config';
+import { __readJsonSync } from '@blackbyte/sugar/fs';
 import * as __glob from 'glob';
 import __puppeteer from 'puppeteer';
 
 import __fs from 'fs';
 import __path from 'path';
 
-import { __generateThemeClassesCombinations } from '@lotsof/theme';
+import { __generateThemeClassesCombinations } from '@blackbyte/theme';
 
 export default class Puppet {
   public settings: TPuppetSettings;
@@ -144,7 +144,7 @@ export default class Puppet {
         .replace(/\%name/g, finalSettings.name);
 
       screenshots.push({
-        url: settings?.url ?? 'https://lotsof.dev',
+        url: settings?.url ?? 'https://blackbyte.space',
         name: finalSettings.name,
         outPath,
         selector: finalSettings.selector,

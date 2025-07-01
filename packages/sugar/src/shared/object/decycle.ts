@@ -18,7 +18,7 @@ import { decycle as __decycle } from 'json-cyclic';
  * @todo     tests
  *
  * @example     js
- * import { __decycle } from '@lotsof/sugar/object';
+ * import { __decycle } from '@blackbyte/sugar/object';
  * __decycle({
  *    something: 'cool',
  *    with: 'circular references',
@@ -27,7 +27,7 @@ import { decycle as __decycle } from 'json-cyclic';
  *
  * @see         https://www.npmjs.com/package/json-cyclic
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function decycle(obj: any): any {
   return __decycle(obj);

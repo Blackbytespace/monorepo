@@ -15,11 +15,11 @@
  * @snippet         __unique($1)
  *
  * @example         js
- * import { __unique } from '@lotsof/sugar/array';
+ * import { __unique } from '@blackbyte/sugar/array';
  * __unique(['hello','world','hello','world']); // => ['hello','world']
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __unique(array: any[]): any[] {
   const a = array.concat();

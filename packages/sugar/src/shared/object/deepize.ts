@@ -34,11 +34,11 @@ import __set from './set.js';
  * @snippet         __deepize($1)
  *
  * @example       js
- * import { __deepize } from '@lotsof/sugar/object';
+ * import { __deepize } from '@blackbyte/sugar/object';
  * __deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __deepize(object: any): any {
   const finalObject = {};

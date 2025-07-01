@@ -18,12 +18,12 @@ import { noCase } from 'change-case';
  * @snippet         __noCase($1)
  *
  * @example     js
- * import { __noCase } from '@lotsof/sugar/string';
+ * import { __noCase } from '@blackbyte/sugar/string';
  * __noCase('hello world'); // => hello world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __noCase(text: string): string {
   return noCase(text);

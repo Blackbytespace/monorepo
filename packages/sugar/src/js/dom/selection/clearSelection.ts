@@ -12,11 +12,11 @@
  * @todo        tests
  *
  * @example       js
- * import { __clearSelection } from '@lotsof/sugar/dom';
+ * import { __clearSelection } from '@blackbyte/sugar/dom';
  * __clearSelection();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __clearSelection(): void {
   if (window.getSelection) {

@@ -17,11 +17,11 @@ import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions
  * @snippet         __commonTextFileExtensions()
  *
  * @example         js
- * import { __commonTextFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonTextFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonTextFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __commonTextFileExtensions(

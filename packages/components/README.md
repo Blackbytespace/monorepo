@@ -2,7 +2,7 @@
 
 The goal of this package is to gives you access to a nive and convinient way to manage components that you may use across multiple projects.
 
-A component in our vision is a folder that gives you access to 1 feature. It can be UI components like **buttons**, **card**, **hero**, but also things like **api facade**, **settings facade**, etc... and that can be added into you project through our [lotsof CLI](https://github.com/lotsofdev/monorepo/tree/master/packages/cli).
+A component in our vision is a folder that gives you access to 1 feature. It can be UI components like **buttons**, **card**, **hero**, but also things like **api facade**, **settings facade**, etc... and that can be added into you project through our [blackbyte CLI](https://github.com/blackbytespace/monorepo/tree/main/packages/cli).
 
 > Some official components are availble but you can, and you should, create your own as well!
 
@@ -28,13 +28,13 @@ We can describe **components** as **npm packages** or **composer packages** with
 
 ## Install
 
-Basically, you don't have to install this package. It will come with the `@lotsof/cli` one.
+Basically, you don't have to install this package. It will come with the `@blackbyte/cli` one.
 
 **BUT...**
 
 If you have a package on your side that describe a `library`, you will have to install it to have access to this library components.
 
-This documentation will come later. For now you can make use of our officials components through the `lotsof` CLI.
+This documentation will come later. For now you can make use of our officials components through the `blackbyte` CLI.
 
 ## Principles
 
@@ -180,18 +180,18 @@ Here's how to specify them:
   "files": ["*.php", "*.ts", "*.css"],
   "packageJson": {
     "dependencies": {
-      "@lotsof/types": "^1.0"
+      "@blackbyte/types": "^1.0"
     }
   },
   "composerJson": {
     "require": {
-      "lotsof/types": "^1.0"
+      "blackbyte/types": "^1.0"
     }
   }
 }
 ```
 
-This will make the CLI add the `@lotsof/types` package in the `package.json` file as well as the `lotsof/types` package in your `composer.json` file.
+This will make the CLI add the `@blackbyte/types` package in the `package.json` file as well as the `blackbyte/types` package in your `composer.json` file.
 
 #### Subset
 
@@ -234,12 +234,12 @@ Here's how to specify them:
   },
   "packageJson": {
     "dependencies": {
-      "@lotsof/types": "^1.0"
+      "@blackbyte/types": "^1.0"
     }
   },
   "composerJson": {
     "require": {
-      "lotsof/types": "^1.0"
+      "blackbyte/types": "^1.0"
     }
   }
 }
@@ -256,7 +256,7 @@ The files added will be the result of all the `files` arrays choosed by the user
 To list the available components, simply use this command:
 
 ```shell
-lotsof components.ls
+blackbyte components.ls
 ```
 
 ### Add a component into our project
@@ -264,7 +264,7 @@ lotsof components.ls
 To add a component into our project, simply use this command:
 
 ```shell
-lotsof components.add @lotsof/body
+blackbyte components.add @blackbyte/body
 ```
 
 ### Updating the "libraries"
@@ -273,14 +273,14 @@ Libraries are like "sources" where to get components from.
 
 Built-in libraries are:
 
-- `@lotsof/components`: Main lotsof components library
+- `@blackbyte/components`: Main blackbyte components library
 
 It's possible to add you own library but documentation will come later as the project is still in `alpha`.
 
 To update your libraries localy, simple use this command:
 
 ```shell
-lotsof components.update
+blackbyte components.update
 ```
 
 > Note that this does not update components in your projects, but it updates the libraries cached on your disk for futur installs.
@@ -289,6 +289,6 @@ lotsof components.update
 
 ## Contribute
 
-To contribute to this package, please [follow these guidelines](https://github.com/lotsofdev/monorepo/blob/master/CONTRIBUTE.md).
+To contribute to this package, please [follow these guidelines](https://github.com/blackbytespace/monorepo/blob/main/CONTRIBUTE.md).
 
-Everyone is welcome as long as they respect our [code of conduct](https://github.com/lotsofdev/monorepo/blob/master/CODEOFCONDUCT.md).
+Everyone is welcome as long as they respect our [code of conduct](https://github.com/blackbytespace/monorepo/blob/main/CODEOFCONDUCT.md).

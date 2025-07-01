@@ -14,13 +14,13 @@
  * @snippet         __easeInQuart($1)
  *
  * @example         js
- * import { __easeInQuart } from '@lotsof/sugar/easing';
+ * import { __easeInQuart } from '@blackbyte/sugar/easing';
  * __easeInQuart(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __easeInQuart(t: number): number {
   return t * t * t * t;

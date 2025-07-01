@@ -27,7 +27,7 @@ import __uniqid from '../string/uniqid.js';
  * });
  *
  * @example    js
- * import { __escapeQueue } from '@lotsof/sugar/keyboard'
+ * import { __escapeQueue } from '@blackbyte/sugar/keyboard'
  * const promise = __escapeQueue();
  * promise.then(() => {
  *      // do something...
@@ -37,7 +37,7 @@ import __uniqid from '../string/uniqid.js';
  * promise.cancel();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TEscapeQueueSettings = {

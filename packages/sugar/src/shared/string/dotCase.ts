@@ -18,12 +18,12 @@ import { dotCase } from 'change-case';
  * @snippet         __dotCase($1)
  *
  * @example     js
- * import { __dotCase } from '@lotsof/sugar/string';
+ * import { __dotCase } from '@blackbyte/sugar/string';
  * __dotCase('hello world'); // => hello.world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __dotCase(text: string): string {
   return dotCase(text);

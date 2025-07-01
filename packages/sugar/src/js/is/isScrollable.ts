@@ -14,13 +14,13 @@
  * @todo      tests
  *
  * @example    js
- * import { __isScrollable } from '@lotsof/sugar/dom'
+ * import { __isScrollable } from '@blackbyte/sugar/dom'
  * if (__isScrollable($myElement)) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIsScrollableSettings = {

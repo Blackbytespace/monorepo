@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Types;
+namespace Blackbyte\Types;
 
 class ButtonType extends BaseType
 {
@@ -8,7 +8,7 @@ class ButtonType extends BaseType
 
     public static function mock(
         ?string $type = null,
-        ?\Lotsof\Types\LinkType $link = null,
+        ?\Blackbyte\Types\LinkType $link = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = null
@@ -33,18 +33,18 @@ class ButtonType extends BaseType
     }
 
     protected string $type;
-    protected ?\Lotsof\Types\LinkType $link;
+    protected ?\Blackbyte\Types\LinkType $link;
     protected ?string $id;
     protected ?string $class;
     protected ?array $attrs = [];
 
     public array $typesMap = [
-        'link' => \Lotsof\Types\LinkType::class
+        'link' => \Blackbyte\Types\LinkType::class
     ];
 
     public function __construct(
         ?string $type = 'solid',
-        ?\Lotsof\Types\LinkType $link = null,
+        ?\Blackbyte\Types\LinkType $link = null,
         ?string $id = null,
         ?string $class = null,
         ?array $attrs = []

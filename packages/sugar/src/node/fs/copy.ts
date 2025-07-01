@@ -18,14 +18,14 @@ import __fs from 'fs-extra';
  * await __copy($1, $2)
  *
  * @example       js
- * import { __copy } from '@lotsof/sugar/fs';
+ * import { __copy } from '@blackbyte/sugar/fs';
  * await __copy('my/cool/file.jpg', 'my/new/file.jpg').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __copy(src: string, dest: string): Promise<void> {
   return __fs.copy(src, dest);

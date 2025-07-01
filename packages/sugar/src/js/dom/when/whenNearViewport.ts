@@ -27,13 +27,13 @@ import __closestScrollableElement from '../query/closestScrollableElement.js';
  * @todo      tests
  *
  * @example 	js
- * import { __whenNearViewport } from '@lotsof/sugar/dom'
+ * import { __whenNearViewport } from '@blackbyte/sugar/dom'
  * __whenNearViewport(myCoolHTMLElement).then($elm => {
  * 		// do something with your element that has entered the viewport...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TWhenNearViewportSettings = {

@@ -1,13 +1,14 @@
 ---
 title: 'hotkey'
-namespace: '@lotsof.sugar.js.keyboard'
+namespace: '@blackbyte.sugar.js.keyboard'
 description: 'This function allows you to register a hotkey on the passed element. You can specify the hotkey using the following syntax: - ctrl+a - shift+ctrl+a - a This function take care of avoiding to call your callback when the active element is an input, a textarea or an editable content with the &quot;contenteditable&quot; attribute, unless: - the &quot;meta&quot; or &quot;ctrl&quot; key is used in the hotkey. - the pressed key is the &quot;escape&quot; key.'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
 platform: '[{"name":"js","description":""}]'
-author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://blackbyte.space"}'
 ---
+
 <div class="docmap-mdx">
 # hotkey
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.js.keyboard</div>
+<div class="_namespace">@blackbyte.sugar.js.keyboard</div>
 <div class="_description typo-lead typo-format">
 This function allows you to register a hotkey on the passed element.
 You can specify the hotkey using the following syntax:
@@ -58,13 +59,14 @@ unless:
 <div class="_examples">
 ## Example
 ```js
-import { __hotkey } from '@lotsof/sugar/keyboard'
+import { __hotkey } from '@blackbyte/sugar/keyboard'
 const hotkeyApi = __hotkey('ctrl+a', (e) => {
  console.log('Hotkey pressed');
 });
 
 // if you want to cancel the hotkey
 hotkeyApi.cancel();
+
 ```
 </div>
 <div class="_settings">
@@ -95,8 +97,9 @@ hotkeyApi.cancel();
 <li class="_item">
 <span class="_name">Olivier Bossel</span>
 <span class="_email">olivier.bossel@gmail.com</span>
-<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+<a href="https://blackbyte.space" target="_blank" class="_url">https://blackbyte.space</a>
 </li>
 </ul>
 </div>
 </div>
+```

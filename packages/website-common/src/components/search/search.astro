@@ -7,12 +7,12 @@ const items = Astro.props;
 ---
 
 <script>
-  import __AdvancedSelectElement from '@lotsof/advanced-select-element';
+  import __AdvancedSelectElement from '@blackbyte/advanced-select-element';
   // @ts-ignore
-  import { __isMobile } from '@lotsof/sugar/is';
-  import { __hotkey } from '@lotsof/sugar/keyboard';
-  import { __idCompliant } from '@lotsof/sugar/string';
-  import { __toSlug } from '@lotsof/website-common/src/components/utils/utils';
+  import { __isMobile } from '@blackbyte/sugar/is';
+  import { __hotkey } from '@blackbyte/sugar/keyboard';
+  import { __idCompliant } from '@blackbyte/sugar/string';
+  import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils';
   import { navigate } from 'astro:transitions/client';
 
   const $expand = document.querySelector('.search ._expand') as HTMLElement;

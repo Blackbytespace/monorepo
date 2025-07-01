@@ -14,13 +14,13 @@
  * @snippet         __easeInOutQuint($1)
  *
  * @example         js
- * import { __easeInOutQuint } from '@lotsof/sugar/easing';
+ * import { __easeInOutQuint } from '@blackbyte/sugar/easing';
  * __easeInOutQuint(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __easeInOutQuint(t: number): number {
   return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;

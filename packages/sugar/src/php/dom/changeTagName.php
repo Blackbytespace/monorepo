@@ -21,7 +21,7 @@ namespace Sugar\Dom;
  * print \Sugar\Dom\changeTagName($element, 'a');
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 function changeTagName(\DOMElement $element, string $name): \DOMElement

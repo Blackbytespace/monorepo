@@ -18,12 +18,12 @@ import { pascalCase } from 'change-case';
  * @snippet         __pascalCase($1)
  *
  * @example     js
- * import { __pascalCase } from '@lotsof/sugar/string';
+ * import { __pascalCase } from '@blackbyte/sugar/string';
  * __pascalCase('hello world'); // => HelloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pascalCase(text: string): string {
   return pascalCase(text);

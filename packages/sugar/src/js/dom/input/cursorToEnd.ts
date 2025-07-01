@@ -14,7 +14,7 @@
  * @snippet         __cursorToEnd($1)
  *
  * @example 	js
- * import { __cursorToEnd } from '@lotsof/sugar/dom';
+ * import { __cursorToEnd } from '@blackbyte/sugar/dom';
  * __cursorToEnd($input);
  *
  * @see             https://stackoverflow.com/a/56416714

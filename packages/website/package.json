@@ -1,15 +1,15 @@
 {
   "private": true,
-  "name": "@lotsof/website",
+  "name": "@blackbyte/website",
   "type": "module",
-  "version": "1.0.0-alpha.97",
+  "version": "1.0.0-beta.1",
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && rsync -azP --delete ./dist/ fe0mt_lotsof@fe0mt.ftp.infomaniak.com:sites/lotsof.dev/"
+    "deploy": "npm run build && rsync -azP --delete ./dist/ fe0mt_blackbyte@fe0mt.ftp.infomaniak.com:sites/blackbyte.space/"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -17,12 +17,12 @@
     "@fontsource-variable/sixtyfour": "^5.0.2",
     "@fontsource/sixtyfour": "^5.0.2",
     "@fontsource/vt323": "^5.0.13",
-    "@lotsof/advanced-select-element": "^1.0.0-alpha.97",
-    "@lotsof/config": "^1.0.0-alpha.97",
-    "@lotsof/docmap": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
-    "@lotsof/sugarcss": "^1.0.0-alpha.97",
-    "@lotsof/website-common": "^1.0.0-alpha.97",
+    "@blackbyte/advanced-select-element": "^1.0.0-beta.1",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/docmap": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugarcss": "^1.0.0-beta.1",
+    "@blackbyte/website-common": "^1.0.0-beta.1",
     "@pixi/filter-crt": "^5.1.1",
     "astro": "^4.6.3",
     "i": "^0.3.7",

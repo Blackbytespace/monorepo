@@ -16,13 +16,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __isInViewport } from '@lotsof/sugar/dom'
+ * import { __isInViewport } from '@blackbyte/sugar/dom'
  * if (__isInViewport(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIsInViewport = {};

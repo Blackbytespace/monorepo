@@ -17,12 +17,12 @@ import __idCompliant from '../string/idCompliant.js';
  * @snippet         __isIdCompliant($1)
  *
  * @example         php
- * import { __isIdCompliant } from '@lotsof/sugar/string';
+ * import { __isIdCompliant } from '@blackbyte/sugar/string';
  * __isIdCompliant('Hello world'); // => false
  * __isIdCompliant('hello-world'); // => true
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __isIdCompliant(str: string): boolean {

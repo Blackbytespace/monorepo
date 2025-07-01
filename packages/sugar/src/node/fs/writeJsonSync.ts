@@ -20,11 +20,11 @@ import __folderPath from './folderPath.js';
  * @snippet         __writeJsonSync($1, $2)
  *
  * @example       js
- * import { __writeJsonSync } from '@lotsof/sugar/fs';
+ * import { __writeJsonSync } from '@blackbyte/sugar/fs';
  * __writeJsonSync('my/cool/file.json', { hello: 'world' });
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __writeJsonSync(path: string, data: any): string {
   const folderPath = __folderPath(path);

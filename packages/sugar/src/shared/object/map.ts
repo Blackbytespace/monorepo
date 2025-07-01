@@ -22,7 +22,7 @@
  * })
  *
  * @example         js
- * import { __map } from '@lotsof/sugar/object';
+ * import { __map } from '@blackbyte/sugar/object';
  * const myObject = {
  *    hello: 'world',
  *    cat: 'Nelson'
@@ -36,7 +36,7 @@
  * }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TMapObjProcessorArg = {

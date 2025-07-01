@@ -1,6 +1,6 @@
 ---
 title: 'resolveTypeString'
-namespace: '@lotsof.sugar.node.type'
+namespace: '@blackbyte.sugar.node.type'
 description: 'This method simply parse the passed typeString like &quot;string | number&quot;, or &quot;string &amp; path&quot;, etc... and return an object defining the resolved type with interface if defined, etc...'
 type: 'Function'
 status: 'beta'
@@ -8,6 +8,7 @@ since: '1.0.0'
 platform: '[{"name":"node","description":""}]'
 author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 ---
+
 <div class="docmap-mdx">
 # resolveTypeString
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -node">node</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.node.type</div>
+<div class="_namespace">@blackbyte.sugar.node.type</div>
 <div class="_description typo-lead typo-format">
 This method simply parse the passed typeString like &quot;string | number&quot;, or &quot;string &amp; path&quot;, etc... and return
 an object defining the resolved type with interface if defined, etc...
@@ -46,7 +47,7 @@ an object defining the resolved type with interface if defined, etc...
 <div class="_examples">
 ## Example
 ```js
-import { __resolveTypeString } from '@lotsof/sugar/type';
+import { __resolveTypeString } from '@blackbyte/sugar/type';
 __resolveTypeString('string');
 // {
 //    types: [{
@@ -61,7 +62,7 @@ __resolveTypeString('string');
 ## Settings
 <ol class="_list">
 <li class="_item">
-<span class="_name">cwd</span><span class="_default">&sol;Users&sol;olivier&sol;data&sol;web&sol;lotsof&sol;monorepo&sol;packages&sol;sugar</span> <span class="_type">String</span>
+<span class="_name">cwd</span><span class="_default">&sol;Users&sol;olivier&sol;data&sol;web&sol;blackbyte&sol;monorepo&sol;packages&sol;sugar</span> <span class="_type">String</span>
 <p class="_description">The cwd to use to resolve the type string when they are path</p>
 </li>
 </ol>

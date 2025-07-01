@@ -17,11 +17,11 @@
  * @snippet         __emToPx($1)
  *
  * @example         js
- * import { __emToPx } from '@lotsof/sugar/convert';
+ * import { __emToPx } from '@blackbyte/sugar/convert';
  * __emToPx(2);
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __emToPx(
   em: number,

@@ -19,11 +19,11 @@ import __isInViewport from '../../is/isInViewport.js';
  * @todo      tests
  *
  * @example 	js
- * import { __elementsInViewport } from '@lotsof/sugar/dom';
+ * import { __elementsInViewport } from '@blackbyte/sugar/dom';
  * const $elements = __elementsInViewport();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TElementsInViewportSettings = {

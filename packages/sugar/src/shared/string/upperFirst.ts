@@ -16,11 +16,11 @@
  * @snippet         __upperFirst($1)
  *
  * @example    js
- * import { __upperFirst } from '@lotsof/sugar/string'
+ * import { __upperFirst } from '@blackbyte/sugar/string'
  * __upperFirst('hello world') // Hello world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __upperFirst(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);

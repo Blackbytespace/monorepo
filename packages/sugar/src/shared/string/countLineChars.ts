@@ -27,11 +27,11 @@ import __stripAnsi from 'strip-ansi';
  * @snippet         __countLineChars($1)
  *
  * @example         js
- * import { __countLineChars } from '@lotsof/sugar/string';
+ * import { __countLineChars } from '@blackbyte/sugar/string';
  *  __countLineChars('Hello <red>World</red>'); // 11
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TCountLineCharsSettings = {

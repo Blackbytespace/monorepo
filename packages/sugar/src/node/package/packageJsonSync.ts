@@ -22,13 +22,13 @@ import __packageDir from './packageDir.js';
  * @snippet         __packageJsonSync($1)
  *
  * @example         js
- * import { __packageJsonSync } from '@lotsof/sugar/package`;
- * __packageJsonSync('lotsof/sugar');
+ * import { __packageJsonSync } from '@blackbyte/sugar/package`;
+ * __packageJsonSync('blackbyte/sugar');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TPackageJsonSyncSettings = {

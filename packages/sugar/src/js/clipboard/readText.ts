@@ -15,11 +15,11 @@
  * @snippet         __readText($1)
  *
  * @example         js
- * import { __copyText, __readText } from '@lotsof/sugar/clipboard';
+ * import { __copyText, __readText } from '@blackbyte/sugar/clipboard';
  * await __readText();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default async function __readText(): Promise<string> {
   if (navigator?.clipboard?.readText) {

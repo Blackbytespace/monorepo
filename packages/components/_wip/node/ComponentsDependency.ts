@@ -1,6 +1,6 @@
 import type { TComponentsDependency } from './Components.types.js';
 
-import { __addPackageDependencies } from '@lotsof/sugar/package';
+import { __addPackageDependencies } from '@blackbyte/sugar/package';
 
 let __installedDependencies: Record<string, ComponentsDependency> = {};
 

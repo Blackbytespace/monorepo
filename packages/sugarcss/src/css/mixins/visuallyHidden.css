@@ -14,7 +14,7 @@
  *
  * @see         https://www.a11yproject.com/posts/how-to-hide-content/
  * @since       1.0.0
- * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 @mixin s-visually-hidden {
   clip: rect(0 0 0 0);

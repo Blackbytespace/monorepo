@@ -1,2 +1,2 @@
-import type { TCard as _TCard } from '@lotsof/types';
+import type { TCard as _TCard } from '@blackbyte/types';
 export type TCard = _TCard;

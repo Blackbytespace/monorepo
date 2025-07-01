@@ -1,23 +1,17 @@
 import { type TButton } from '../button/button.type.js';
 
-export type TBodyHeadingLevel = {
-  tag: number;
-  display: number;
-};
-
 export type TBody = {
   suptitle?: string;
   title?: any;
-  headingLevel?: TBodyHeadingLevel;
   subtitle?: string;
   lead?: any;
   text?: any;
-  spacer?: boolean;
   buttons?: TButton[];
+  spacer?: boolean;
   format?: boolean;
   rhythm?: boolean;
+  titleLevelTag?: number;
+  titleLevelDisplay?: number;
   id?: string;
   class?: string;
-  typoClasses?: boolean;
-  attrs?: Record<string, any>;
 };

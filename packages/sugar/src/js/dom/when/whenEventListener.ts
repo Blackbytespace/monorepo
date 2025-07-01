@@ -21,13 +21,13 @@
  * @todo      tests
  *
  * @example    js
- * import {__whenEventListener } from '@lotsof/sugar/dom'
+ * import {__whenEventListener } from '@blackbyte/sugar/dom'
  * __whenEventListener('click', myCoolElm).then((e: Event) => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenEventListener(
   event: string,

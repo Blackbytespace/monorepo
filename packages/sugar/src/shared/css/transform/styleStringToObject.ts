@@ -19,7 +19,7 @@ import __parse from '../../string/parse.js';
  * @snippet         __styleStringToObject($1)
  *
  * @example 	js
- * import { __styleStringToObject } from '@lotsof/sugar/css'
+ * import { __styleStringToObject } from '@blackbyte/sugar/css'
  * const styleString =  __styleStringToObject('padding-left:20px; display:block;');
  * // output => {
  * //		paddingLeft : '20px',
@@ -27,7 +27,7 @@ import __parse from '../../string/parse.js';
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __styleStringToObject(style: string): any {
   if (!style || style === '') return {};

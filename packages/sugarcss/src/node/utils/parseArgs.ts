@@ -1,4 +1,4 @@
-import { __set } from '@lotsof/sugar/object';
+import { __set } from '@blackbyte/sugar/object';
 import { env } from '../sugarcss.js';
 import __toString from './toString.js';
 

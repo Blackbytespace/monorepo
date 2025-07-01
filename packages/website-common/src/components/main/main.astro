@@ -24,7 +24,7 @@ import LoHeader from '../header/header.astro';
 import LoSearch from '../search/search.astro';
 import LoTheme from '../theme/theme.astro';
 import './main';
-import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo-picto.svg?raw';
+import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-picto.svg?raw';
 
 const { title, version, license } = Astro.props;
 ---
@@ -67,7 +67,7 @@ const { title, version, license } = Astro.props;
           <div class="main_footer-brand">
             <a href="/" title={title}>
               <div class="main_footer-logo">
-                <Fragment set:html={__logoLotsof} />
+                <Fragment set:html={__logoBlackbyte} />
               </div>
               <h1 class="main_footer-title">{title}</h1>
             </a>

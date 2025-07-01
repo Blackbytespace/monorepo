@@ -18,12 +18,12 @@ import { kebabCase } from 'change-case';
  * @snippet         __kebabCase($1)
  *
  * @example     js
- * import { __kebabCase } from '@lotsof/sugar/string';
+ * import { __kebabCase } from '@blackbyte/sugar/string';
  * __kebabCase('hello world'); // => Hello World
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __kebabCase(text: string): string {
   return kebabCase(text);

@@ -27,13 +27,13 @@
  * @todo      tests
  *
  * @example  	js
- * import { __whenInteract } from '@lotsof/sugar/dom'
+ * import { __whenInteract } from '@blackbyte/sugar/dom'
  * __whenInteract(myCoolElement).then($elm => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TWhenInteractSettings = {

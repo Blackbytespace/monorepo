@@ -15,12 +15,12 @@
  * @todo      tests
  *
  * @example  	js
- * import { __offsetFromViewport } from '@lotsof/sugar/dom'
+ * import { __offsetFromViewport } from '@blackbyte/sugar/dom'
  * const __offsetFromViewport = offset(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __offsetFromViewport(elm: HTMLElement): {
   top: number;

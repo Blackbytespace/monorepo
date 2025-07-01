@@ -1,5 +1,8 @@
-import { __parseHtml } from '@lotsof/sugar/console';
-import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
+import { __parseHtml } from '@blackbyte/sugar/console';
+import {
+  __generateIdFromForm,
+  __querySelectorLive,
+} from '@blackbyte/sugar/dom';
 
 /**
  * @name            formTrackingEvents
@@ -37,7 +40,7 @@ import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
  * @snippet         __formTrackingEvents($1)
  *
  * @example         js
- * import { __formTrackingEvents } from '@lotsof/sugar/tracking';
+ * import { __formTrackingEvents } from '@blackbyte/sugar/tracking';
  * __formTrackingEvents();
  *
  * // Each dispatched events are like:
@@ -48,7 +51,7 @@ import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
  * }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFormTrackingEventsSettings = {

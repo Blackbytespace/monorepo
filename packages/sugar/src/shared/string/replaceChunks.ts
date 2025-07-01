@@ -22,13 +22,13 @@
  * });
  *
  * @example    js
- * import { __replaceChunks } from '@lotsof/sugar/string'
+ * import { __replaceChunks } from '@blackbyte/sugar/string'
  * __replaceChunks('hello world', ['or'], (token) => {
  *      return `<span>${token}</span>;
  * }) // Hello w<span>or</span>ld
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __replaceChunks(
   string: string,

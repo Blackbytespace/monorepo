@@ -14,13 +14,13 @@
  * @todo      tests
  *
  * @example    js
- * import { __isInIframe } from '@lotsof/sugar/dom'
+ * import { __isInIframe } from '@blackbyte/sugar/dom'
  * if (__isInIframe()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isInIframe(): boolean {
   try {

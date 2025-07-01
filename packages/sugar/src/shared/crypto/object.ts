@@ -13,13 +13,13 @@ import __base64 from './base64.js';
  * @snippet         __object.encrypt($1)
  *
  * @example         js
- * import { __object } from '@lotsof/sugar/crypto';
+ * import { __object } from '@blackbyte/sugar/crypto';
  * __object.encrypt({
  *      hello: 'world'
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
  */
 export default {
   /**
@@ -29,12 +29,12 @@ export default {
    * Encrypt
    *
    * @param       {Object}       object         The object to encrypt
-   * @param       {String}       [salt="lotsof.sugar.crypto.object"]   The salt to encode the object. Needed to decode correctly the object
+   * @param       {String}       [salt="blackbyte.sugar.crypto.object"]   The salt to encode the object. Needed to decode correctly the object
    * @return      {String}                       The encrypted object
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
    */
-  encrypt: function (object, salt = 'lotsof.sugar.crypto.object') {
+  encrypt: function (object, salt = 'blackbyte.sugar.crypto.object') {
     return __base64.encrypt(`${JSON.stringify(object)}-${salt}`);
   },
 
@@ -45,12 +45,12 @@ export default {
    * Decrypt
    *
    * @param       {String}      encodedObject          The object to decrypt
-   * @param       {String}      [salt='lotsof.sugar.crypto.object']        The salt to decode the object
+   * @param       {String}      [salt='blackbyte.sugar.crypto.object']        The salt to decode the object
    * @return      {Object}                      The decrypted object
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
    */
-  decrypt: function (encodedObject, salt = 'lotsof.sugar.crypto.object') {
+  decrypt: function (encodedObject, salt = 'blackbyte.sugar.crypto.object') {
     return JSON.parse(__base64.decrypt(encodedObject).replace(`-${salt}`, ''));
   },
 } as {

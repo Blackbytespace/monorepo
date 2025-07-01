@@ -16,12 +16,12 @@ import __unique from './unique.js';
  * @snippet         __pickRandom($1)
  *
  * @example         js
- * import { __pickRandom } from '@lotsof/sugar/array';
+ * import { __pickRandom } from '@blackbyte/sugar/array';
  * const array = ['hello','world'];
  * __pickRandom(array); // => 'world'
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pickRandom(array: any[], count: number = 1): any {
   // make the array unique

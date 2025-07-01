@@ -13,11 +13,11 @@
  * @snippet         __isCjs()
  *
  * @example       js
- * import { __isCjs } from '@lotsof/sugar/is';
+ * import { __isCjs } from '@blackbyte/sugar/is';
  * __isCjs(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isCjs(): boolean {
   try {

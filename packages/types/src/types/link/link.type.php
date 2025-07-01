@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Types;
+namespace Blackbyte\Types;
 
 class LinkType extends BaseType
 {

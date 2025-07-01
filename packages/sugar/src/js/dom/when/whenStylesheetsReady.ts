@@ -24,7 +24,7 @@ import __whenLinkLoaded from './whenLinkLoaded.js';
  * });
  *
  * @example 	js
- * import { __whenStylesheetsReady } from '@lotsof/sugar/dom'
+ * import { __whenStylesheetsReady } from '@blackbyte/sugar/dom'
  * __whenStylesheetsReady([
  * 		myHTMLLinkElement1,
  * 		myHTMLLinkElement2
@@ -33,7 +33,7 @@ import __whenLinkLoaded from './whenLinkLoaded.js';
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenStylesheetsReady(
   links?: HTMLLinkElement[],

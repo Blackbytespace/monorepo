@@ -8,11 +8,11 @@ import __childProcess from 'child_process';
 
 import __ComponentsDependency from './ComponentsDependency.js';
 
-import { __existsSync } from '@lotsof/sugar/fs';
+import { __existsSync } from '@blackbyte/sugar/fs';
 
 import { globSync as __globSync } from 'glob';
 
-import { __readJsonSync } from '@lotsof/sugar/fs';
+import { __readJsonSync } from '@blackbyte/sugar/fs';
 
 import __ComponentsComponent from './ComponentsComponent.js';
 

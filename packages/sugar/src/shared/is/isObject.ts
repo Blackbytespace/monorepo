@@ -16,13 +16,13 @@
  * @snippet         __isObject($1)
  *
  * @example    js
- * import { __isObject } from '@lotsof/sugar/is'
+ * import { __isObject } from '@blackbyte/sugar/is'
  * if (__isObject({}) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isObject(value: any): boolean {
   return value && typeof value === 'object' && value.constructor === Object;

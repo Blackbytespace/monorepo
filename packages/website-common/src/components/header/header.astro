@@ -8,7 +8,7 @@ interface Props {
   };
 }
 
-import __logoLotsof from '@lotsof/website-common/src/img/lotsof-logo-picto.svg?raw';
+import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-picto.svg?raw';
 
 const { title, version, license } = Astro.props;
 ---
@@ -19,7 +19,7 @@ const { title, version, license } = Astro.props;
 <header class="header">
   <a href="/" title={title}>
     <div class="header_logo">
-      <Fragment set:html={__logoLotsof} />
+      <Fragment set:html={__logoBlackbyte} />
     </div>
     <h1 class="header_title">{title}</h1>
   </a>

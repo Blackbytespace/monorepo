@@ -22,14 +22,14 @@ import __deepClone from 'lodash.clonedeep';
  * @snippet         __clone($1)
  *
  * @example       js
- * import { __clone } from '@lotsof/sugar/object';
+ * import { __clone } from '@blackbyte/sugar/object';
  * __clone({
  *    hello: 'world'
  * });
  *
  * @see       https://www.npmjs.com/package/lodash
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TCloneSettings = {
   deep?: boolean;

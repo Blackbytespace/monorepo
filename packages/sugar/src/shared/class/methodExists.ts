@@ -20,13 +20,13 @@
  * class Coco {
  *    hello() {}
  * }
- * import { __methodExists } from '@lotsof/sugar/class';
+ * import { __methodExists } from '@blackbyte/sugar/class';
  * const myInstance = new Coco();
  * __methodExists(myInstance, 'hello', 'world'); // => ['world'];
  * __methodExists(myInstance, 'hello'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __methodExists(
   instance: any,

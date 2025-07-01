@@ -18,7 +18,7 @@ import __getTranslateProperties from './getTranslateProperties.js';
  * @snippet         __getTransformProperties($1)
  *
  * @example  	js
- * import { __getTransformProperties } from '@lotsof/sugar/dom'
+ * import { __getTransformProperties } from '@blackbyte/sugar/dom'
  * const props = getTransformProperties(myCoolHTMLElement);
  * // output format
  * // {
@@ -31,7 +31,7 @@ import __getTranslateProperties from './getTranslateProperties.js';
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetTransformPropertiesResult = {

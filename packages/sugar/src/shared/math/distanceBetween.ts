@@ -22,7 +22,7 @@
  * })
  *
  * @example    js
- * import { __distanceBetween } from '@lotsof/sugar/geom'
+ * import { __distanceBetween } from '@blackbyte/sugar/geom'
  * __distanceBetween({
  * 	x: 10, y: 20
  * }, {
@@ -30,7 +30,7 @@
  * }) // 10
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TDistanceBetweenPoint = {

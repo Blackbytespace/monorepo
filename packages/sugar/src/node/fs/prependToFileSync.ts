@@ -18,11 +18,11 @@ import __writeFileSync from '../fs/writeFileSync.js';
  * @snippet         __prependToFileSync($1, $2)
  *
  * @example         js
- * import { __prependToFileSync } from '@lotsof/sugar/fs';
+ * import { __prependToFileSync } from '@blackbyte/sugar/fs';
  * __prependToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __prependToFileSync(
   path: string,

@@ -21,13 +21,13 @@ import __set from './set.js';
  * @snippet         __ensurePropertyExists($1, $2)
  *
  * @example           js
- * import { __ensureProperyExists } from '@lotsof/sugar/object';
+ * import { __ensureProperyExists } from '@blackbyte/sugar/object';
  * const myObj = { hello: 'world' }«
  * __ensureProperyExists(myObj, 'cool.object', {});
  * // { hello: 'world', cool: { object: {} } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __ensureProperyExists(
   obj: any,

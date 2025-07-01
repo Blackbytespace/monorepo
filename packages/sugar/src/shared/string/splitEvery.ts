@@ -22,13 +22,13 @@ import __countLineChars from './countLineChars.js';
  * @snippet         __splitEvery($1, $2)
  *
  * @example           js
- * import { __splitEvery } from '@lotsof/sugar/string';
+ * import { __splitEvery } from '@blackbyte/sugar/string';
  * __splitEvery('Hello World', 2, {
  *    splitWords: true
  * }); // => ['He','ll','o ','Wo','rl','d']
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 // TODO: Add support for special characters like terminal colors, html tags, etc...

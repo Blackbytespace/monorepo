@@ -14,13 +14,13 @@
  * @todo      tests
  *
  * @example    js
- * import { __isHlsSupported } from '@lotsof/sugar/id'
+ * import { __isHlsSupported } from '@blackbyte/sugar/id'
  * if (!__isHlsSupported()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isHlsSupported(): boolean {
   const video = document.createElement('video');

@@ -1,23 +1,26 @@
 // @ts-nocheck
 
-import { __deepMerge } from '@lotsof/sugar/object';
+import { __deepMerge } from '@blackbyte/sugar/object';
 import type { TConfig, TConfigDefineSettings } from './types.js';
 
-process.lotsofConfigDefaults = {};
-process.lotsofConfig = {};
+process.blackbyteConfigDefaults = {};
+process.blackbyteConfig = {};
 
 export default function defineConfig(
   config: TConfig,
   settings?: TConfigDefineSettings,
 ): any {
   if (settings?.defaults) {
-    process.lotsofConfigDefaults = __deepMerge([
-      process.lotsofConfigDefaults,
+    process.blackbyteConfigDefaults = __deepMerge([
+      process.blackbyteConfigDefaults,
       config,
     ]);
-    return process.lotsofConfigDefaults;
+    return process.blackbyteConfigDefaults;
   } else {
-    process.lotsofConfig = __deepMerge([process.lotsofConfig ?? {}, config]);
-    return process.lotsofConfig;
+    process.blackbyteConfig = __deepMerge([
+      process.blackbyteConfig ?? {},
+      config,
+    ]);
+    return process.blackbyteConfig;
   }
 }

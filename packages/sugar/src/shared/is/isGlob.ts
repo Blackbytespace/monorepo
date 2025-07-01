@@ -18,12 +18,12 @@ import __isGlob from 'is-glob';
  * @snippet         __isGlob($1)
  *
  * @example               js
- * import { __isGlob } from '@lotsof/sugar/is';
+ * import { __isGlob } from '@blackbyte/sugar/is';
  * __isGlob('something/*.js); // => true
  *
  * @see       https://www.npmjs.com/package/is-glob
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function (string: string): boolean {
   return __isGlob(string);

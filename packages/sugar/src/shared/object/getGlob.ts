@@ -26,7 +26,7 @@ import __flatten from './flatten.js';
  * @snippet         __getGlob($1, $2)
  *
  * @example             js
- * import { __getGlob } from '@lotsof/sugar/object';
+ * import { __getGlob } from '@blackbyte/sugar/object';
  * __getGlob({
  *  hello: {
  *     world: true,
@@ -34,7 +34,7 @@ import __flatten from './flatten.js';
  * }, 'hello.*');
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetGlobSettings = {
   deepize?: boolean;

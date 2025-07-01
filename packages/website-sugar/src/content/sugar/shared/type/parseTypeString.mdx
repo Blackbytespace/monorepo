@@ -1,6 +1,6 @@
 ---
 title: 'parseTypeString'
-namespace: '@lotsof.sugar.shared.type'
+namespace: '@blackbyte.sugar.shared.type'
 description: 'This method simply parse the passed typeString like &quot;string | number&quot;, or &quot;string &amp; path&quot;, etc... and return an object defining this type string'
 type: 'Function'
 status: 'beta'
@@ -8,6 +8,7 @@ since: '1.0.0'
 platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
 author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 ---
+
 <div class="docmap-mdx">
 # parseTypeString
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.shared.type</div>
+<div class="_namespace">@blackbyte.sugar.shared.type</div>
 <div class="_description typo-lead typo-format">
 This method simply parse the passed typeString like &quot;string | number&quot;, or &quot;string &amp; path&quot;, etc... and return
 an object defining this type string
@@ -42,7 +43,7 @@ an object defining this type string
 <div class="_examples">
 ## Example
 ```js
-import { __parseTypeString } from '@lotsof/sugar/type';
+import { __parseTypeString } from '@blackbyte/sugar/type';
 __parseTypeString('string|number');
 //[{
 //   type: 'string',

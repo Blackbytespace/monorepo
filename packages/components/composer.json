@@ -1,7 +1,7 @@
 {
-  "name": "lotsof/components",
+  "name": "blackbyte/components",
   "version": "1.0.0",
-  "description": "Lotsof components",
+  "description": "Blackbyte components",
   "type": "project",
   "autoload": {
     "files": [
@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "lotsof/types": "^1.0.0",
+    "blackbyte/types": "^1.0.0",
     "eftec/bladeone": "^4.13",
     "twig/twig": "^3.10"
   }

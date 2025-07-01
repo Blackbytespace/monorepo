@@ -25,13 +25,13 @@
  * @todo      tests
  *
  * @example 	js
- * import { __whenOutOfViewport } from '@lotsof/sugar/dom'
+ * import { __whenOutOfViewport } from '@blackbyte/sugar/dom'
  * __whenOutOfViewport(myCoolHTMLElement).then(($elm) => {
  * 		// do something with your element that has exit the viewport...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TWhenOutOfViewportSettings = {

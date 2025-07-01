@@ -16,11 +16,11 @@
  * @snippet         __alphaToHex($1)
  *
  * @example         js
- * import { __alphaToHex } from '@lotsof/sugar/color';
+ * import { __alphaToHex } from '@blackbyte/sugar/color';
  * __alphaToHex(1); // FF
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __alphaToHex(alpha: number): string {
   const _opacity = Math.round(Math.min(Math.max(alpha || 1, 0), 1) * 255);

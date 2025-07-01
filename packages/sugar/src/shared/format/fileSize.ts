@@ -32,12 +32,12 @@ import { filesize as __filesize } from 'filesize';
  * @todo     tests
  *
  * @example             js
- * import { __formatFilesize } from '@lotsof/sugar/fs';
+ * import { __formatFilesize } from '@blackbyte/sugar/fs';
  * __formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TFormatFileSizeSettings = {

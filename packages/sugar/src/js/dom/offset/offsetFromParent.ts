@@ -17,12 +17,12 @@ import __offsetFromViewport from './offsetFromViewport.js';
  * @todo      tests
  *
  * @example  	js
- * import { __offsetFromParent } from '@lotsof/sugar/dom'
+ * import { __offsetFromParent } from '@blackbyte/sugar/dom'
  * const offsetFromParentElm = __offsetFromParent(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __offsetFromParent(elm: HTMLElement): {
   top: number;

@@ -18,14 +18,14 @@ import __matches from './matches.js';
  * @todo      tests
  *
  * @example  	js
- * import { __previousElement } from '@lotsof/sugar/dom'
+ * import { __previousElement } from '@blackbyte/sugar/dom'
  * const previousElm = __previousElement(myCoolElement, '.my-cool-class');
  * if (previousElm) {
  * 		// we have found en element that matches the selector
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __previousElement(
   $elm: HTMLElement,

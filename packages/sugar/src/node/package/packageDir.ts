@@ -23,13 +23,13 @@ import __nodeModulesDir from './nodeModulesDir.js';
  * @snippet         __packageDir($1, $2)
  *
  * @example         js
- * import { __packageDir } from '@lotsof/sugar/package`;
+ * import { __packageDir } from '@blackbyte/sugar/package`;
  * __packageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TPackageDirSettings = {

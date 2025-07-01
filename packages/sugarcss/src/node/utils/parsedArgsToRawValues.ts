@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { __isPlainObject } from '@lotsof/sugar/is';
-import { __parse } from '@lotsof/sugar/string';
+import { __isPlainObject } from '@blackbyte/sugar/is';
+import { __parse } from '@blackbyte/sugar/string';
 
 export default function parsedArgsToRawValues(args: any): any {
   const rawValues: any = {};

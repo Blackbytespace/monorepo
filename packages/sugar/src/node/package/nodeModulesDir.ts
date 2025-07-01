@@ -20,11 +20,11 @@ import __packageRootDir from './packageRootDir.js';
  * @snippet         __nodeModulesDir($1)
  *
  * @example         js
- * import { __nodeModulesDir } from '@lotsof/sugar/composer`;
+ * import { __nodeModulesDir } from '@blackbyte/sugar/composer`;
  * __nodeModulesDir('lodash');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TNodeModulesDirSettings = {
   cwd: string;

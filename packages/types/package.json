@@ -1,9 +1,9 @@
 {
-  "name": "@lotsof/types",
-  "version": "1.0.0-alpha.97",
+  "name": "@blackbyte/types",
+  "version": "1.0.0-beta.1",
   "description": "Types system to share types libraries easily",
   "type": "module",
-  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "typescript": "^5.4.5"
   },
   "main": "dist/types/_exports.js",
   "module": "dist/types/_exports.js",
   "types": "src/types/_exports.ts",
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }

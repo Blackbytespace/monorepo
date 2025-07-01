@@ -21,7 +21,7 @@
  * })
  *
  * @example 		js
- * import { __throttle } from '@lotsof/sugar/function';
+ * import { __throttle } from '@blackbyte/sugar/function';
  * const myThrottledFn = __throttle(1000, () => {
  * 		// my function content that will be
  * 		// executed only once each second
@@ -33,7 +33,7 @@
  * });
  *
  * @since         1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __throttle(threshhold: number, fn: Function): Function {
   threshhold || (threshhold = 250);

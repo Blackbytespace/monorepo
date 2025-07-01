@@ -16,11 +16,11 @@
  * @snippet         __pickSome($1,$2,$3);
  *
  * @example         ts
- * import { __pickSome } from '@lotsof/sugar/array':
+ * import { __pickSome } from '@blackbyte/sugar/array':
  * __pickSome(['hello','world','test'], 1, 2);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pickSome(
   array: any[],

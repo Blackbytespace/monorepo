@@ -48,7 +48,7 @@ import __whenVisible from '../when/whenVisible.js';
  * @todo      tests
  *
  * @example         js
- * import { __when } from '@lotsof/sugar/dom';
+ * import { __when } from '@blackbyte/sugar/dom';
  * __when($elm, 'inViewport', {
  *    whenInViewport: {
  *       offset: 50
@@ -58,7 +58,7 @@ import __whenVisible from '../when/whenVisible.js';
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TwhenSettings = {
   whenInViewport?: TWhenInViewportSettings;

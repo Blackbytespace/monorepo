@@ -16,11 +16,11 @@
  * @snippet         __moveItem($1, $2, $3)
  *
  * @example    js
- * import { __moveItem } from '@lotsof/sugar/array';
+ * import { __moveItem } from '@blackbyte/sugar/array';
  * const myArray = ['hello','world','something'];
  * __moveItem(myArray, 0, 1); // ['world','hello','something']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __moveItem(
   arr: any[],

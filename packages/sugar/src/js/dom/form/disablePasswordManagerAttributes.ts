@@ -20,11 +20,11 @@
  * @snippet         __disablePasswordManagerAttributes()
  *
  * @example  	js
- * import { __disablePasswordManagerAttributes } from '@lotsof/sugar/dom'
+ * import { __disablePasswordManagerAttributes } from '@blackbyte/sugar/dom'
  * const attrs = __disablePasswordManagerAttributes();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function disablePasswordManagerAttributes(): any {
   return {

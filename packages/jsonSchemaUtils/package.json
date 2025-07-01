@@ -1,0 +1,28 @@
+{
+  "name": "@blackbyte/json-schema-utils",
+  "version": "1.0.0-beta.1",
+  "description": "Some utils to work with JSON schema like base types to extends from, etc...",
+  "type": "module",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "build": "tsc",
+    "publish": "npm publish --access public"
+  },
+  "dependencies": {
+    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@types/json-schema": "^7.0.15",
+    "json-schema-library": "^10.0.0-rc2",
+    "typescript": "^5.4.5"
+  },
+  "types": "src/shared/_exports.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/shared/_exports.js"
+    }
+  },
+  "homepage": "https://blackbyte.space",
+  "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
+}

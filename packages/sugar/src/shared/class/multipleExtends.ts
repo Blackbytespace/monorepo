@@ -17,13 +17,13 @@ import __aggregation from 'aggregation/es5.js';
  * @snippet         __multipleExtends($1, $2)
  *
  * @example         js
- * import { __multipleExtends } from '@lotsof/sugar/class';
+ * import { __multipleExtends } from '@blackbyte/sugar/class';
  * class MyCoolClass extends __multipleExtends(Another, AnotherOne) {
  * }
  *
  * @see       https://www.npmjs.com/package/aggregation
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default (...classes): any => {
   return __aggregation(...classes);

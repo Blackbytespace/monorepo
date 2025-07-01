@@ -16,12 +16,12 @@
  * @snippet         __removeVendorPrefix($1)
  *
  * @example  	js
- * import { __removeVendorPrefix } from '@lotsof/sugar/css';
+ * import { __removeVendorPrefix } from '@blackbyte/sugar/css';
  * __removeVendorPrefix('moz-something'); // 'something'
  *
- * @see            https://github.com/marionebl/jogwheel/blob/master/source/library/remove-vendor-prefix.js
+ * @see            https://github.com/marionebl/jogwheel/blob/main/source/library/remove-vendor-prefix.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 const prefixes = ['ms', 'webkit', 'moz', 'o'];

@@ -24,13 +24,13 @@ import __positionFromEvent from '../position/positionFromEvent.js';
  * @todo      tests
  *
  * @example 	js
- * import { __onDrag } from '@lotsof/sugar/dom'
+ * import { __onDrag } from '@blackbyte/sugar/dom'
  * __onDrag($myElement, (drag) => {
  *    // do something...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TOnDragTrackItem = {

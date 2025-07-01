@@ -15,11 +15,11 @@
  * @snippet         __isOsx()
  *
  * @example       js
- * import { __isOsx } from '@lotsof/sugar/is';
+ * import { __isOsx } from '@blackbyte/sugar/is';
  * __isOsx(); // => true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isOsx(): boolean {
   if (process && process.platform) {

@@ -52,7 +52,7 @@ import {
   composeVisitors,
 } from 'lightningcss';
 
-import { __parseHtml } from '@lotsof/sugar/console';
+import { __parseHtml } from '@blackbyte/sugar/console';
 
 export const env: TSugarCssEnv = {
   remFactor: 0.0625,

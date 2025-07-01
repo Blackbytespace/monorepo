@@ -24,13 +24,13 @@ import * as __fs from 'fs';
  * await _writeJson($1, $2)
  *
  * @example       js
- * import { __writeJson } from '@lotsof/sugar/fs';
+ * import { __writeJson } from '@blackbyte/sugar/fs';
  * __writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
  *    // do something on complete...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default async function __writeJson(
   path: string,

@@ -23,7 +23,7 @@ namespace Sugar\Faker;
  * print \Sugar\Faker\richText();
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function richText(?bool $p = true, ?bool $ul = true, ?bool $ol = true, ?bool $dl = true, ?bool $strong = true, ?bool $em = true, ?bool $sup = true, ?bool $sub = true, ?bool $small = true, ?bool $code = true, ?bool $a = true, ?bool $blockquote = true, ?bool $h1 = true, ?bool $h2 = true, ?bool $h3 = true, ?bool $h4 = true, ?bool $h5 = true, ?bool $h6 = true): string
 {

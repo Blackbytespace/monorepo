@@ -1,4 +1,4 @@
-import { __defineDefaultConfig } from '@lotsof/config';
+import { __defineDefaultConfig } from '@blackbyte/config';
 import type { TPuppetConfig } from './puppet.type.js';
 
 const config: TPuppetConfig = {

@@ -1,4 +1,4 @@
-import { __getCookie } from '@lotsof/sugar/cookie';
+import { __getCookie } from '@blackbyte/sugar/cookie';
 
 /**
  * @name            getTheme
@@ -21,11 +21,11 @@ import { __getCookie } from '@lotsof/sugar/cookie';
  * @snippet         __getTheme($1)
  *
  * @example         js
- * import { __getTheme } from '@lotsof/sugar/theme';
+ * import { __getTheme } from '@blackbyte/sugar/theme';
  * __getTheme('dark');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetThemeSettings = {

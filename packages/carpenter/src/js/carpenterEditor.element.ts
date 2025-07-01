@@ -1,12 +1,12 @@
+import __IconElement from '@blackbyte/icon-element';
+import '@blackbyte/json-schema-form';
+import __JsonSchemaFormElement from '@blackbyte/json-schema-form';
+import __LitElement from '@blackbyte/lit-element';
+import { __copyText } from '@blackbyte/sugar/clipboard';
+import { __isInIframe } from '@blackbyte/sugar/is';
+import { type THotkeySettings } from '@blackbyte/sugar/keyboard';
+import { __clone } from '@blackbyte/sugar/object';
 import '@fontsource/poppins';
-import __IconElement from '@lotsof/icon-element';
-import '@lotsof/json-schema-form';
-import __JsonSchemaFormElement from '@lotsof/json-schema-form';
-import __LitElement from '@lotsof/lit-element';
-import { __copyText } from '@lotsof/sugar/clipboard';
-import { __isInIframe } from '@lotsof/sugar/is';
-import { type THotkeySettings } from '@lotsof/sugar/keyboard';
-import { __clone } from '@lotsof/sugar/object';
 import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
@@ -118,48 +118,17 @@ export default class CarpenterEditorElement extends __LitElement {
       return;
     }
 
-    console.log('selected', this.selectedComponent);
-
     return html`<div
       class="${`${this.cls('_editor')} ${this.lnf ? '-lnf' : ''}`}"
     >
       <div class="${this.cls('_editor-inner')}">
-        <header class=${this.cls('_header')}>
-          <div class="${this.cls('_header-metas')}">
-            <h2 class=${this.cls('_header-title')}>
-              ${this.selectedComponent.icon
-                ? html`
-                    <s-icon
-                      class="${this.cls('_header-icon')}"
-                      name="${this.selectedComponent.icon}"
-                    ></s-icon>
-                  `
-                : ''}
-              ${this.selectedComponent.schema.title}
-            </h2>
-            ${this.selectedComponent.values?.id
-              ? html`<span
-                  class="${this.cls('_header-title-id')} button -outline"
-                  @click=${() => {
-                    __copyText(this.selectedComponent?.values.id);
-                  }}
-                  >ID: #${this.selectedComponent.values.id}
-                  <s-icon name="clipboard-document-list"
-                /></span>`
-              : ''}
-          </div>
-          <p class=${this.cls('_header-description')}>
-            ${this.selectedComponent.schema.description}
-          </p>
-        </header>
-
         <s-json-schema-form
           id="s-carpenter-json-schema-form"
           name="s-carpenter-json-schema-form"
           .lnf=${this.lnf}
           .buttonClasses=${true}
           .formClasses=${true}
-          .header=${false}
+          .header=${true}
           .verbose=${this.verbose}
           .schema=${__clone(this.selectedComponent.schema)}
           .values=${__clone(this.selectedComponent.values)}
@@ -167,9 +136,7 @@ export default class CarpenterEditorElement extends __LitElement {
             if (!this.selectedComponent) {
               return;
             }
-            console.log('Apply update', e.detail.update);
             __Carpenter.applyUpdate(this.selectedComponent, e.detail.update);
-            // this._applyUpdate(e.detail.update);
           }}
         ></s-json-schema-form>
       </div>

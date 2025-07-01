@@ -38,7 +38,7 @@ import __deepMap from '../object/deepMap.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepProxy } from '@lotsof/sugar/object';
+ * import { __deepProxy } from '@blackbyte/sugar/object';
  * const a = __deepProxy({
  *    hello: 'world'
  * }, (actionObj) => {
@@ -49,7 +49,7 @@ import __deepMap from '../object/deepMap.js';
  * a.cancel();
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 const _loopTimeout = new WeakMap();

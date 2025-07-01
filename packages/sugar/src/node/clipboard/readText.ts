@@ -19,13 +19,13 @@ import __clipboardy from 'clipboardy';
  * @snippet         __read()
  *
  * @example       js
- * import { __copy, __read } from '@lotsof/sugar/clipboard';
+ * import { __copy, __read } from '@blackbyte/sugar/clipboard';
  * __copy('Hello world');
  * __read(); // => Hello world
  *
  * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __readText(): string {
   return __clipboardy.readSync();

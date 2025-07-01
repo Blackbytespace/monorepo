@@ -22,13 +22,13 @@
  * @todo      tests
  *
  * @example    js
- * import { __whenScriptLoaded } from '@lotsof/sugar/dom'
+ * import { __whenScriptLoaded } from '@blackbyte/sugar/dom'
  * __whenScriptLoaded($script).then(($script) => {
  *   // do something here
  * })
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenScriptLoaded(
   $script: HTMLScriptElement,

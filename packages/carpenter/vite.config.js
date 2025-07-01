@@ -1,4 +1,4 @@
-import { sugarize } from '@lotsof/sugarcss';
+import { sugarize } from '@blackbyte/sugarcss';
 import { defineConfig } from 'vite';
 
 export default defineConfig({

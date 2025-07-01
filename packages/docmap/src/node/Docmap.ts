@@ -1,21 +1,21 @@
 // @ts-nocheck
 
-import { __getConfig } from '@lotsof/config';
+import { __getConfig } from '@blackbyte/config';
 
-import { __encodeEntities } from '@lotsof/sugar/html';
+import { __encodeEntities } from '@blackbyte/sugar/html';
 
-import type { TDocblockSettings } from '@lotsof/docblock';
-import __Docblock from '@lotsof/docblock';
-import { __composerJsonSync } from '@lotsof/sugar/composer';
+import type { TDocblockSettings } from '@blackbyte/docblock';
+import __Docblock from '@blackbyte/docblock';
+import { __composerJsonSync } from '@blackbyte/sugar/composer';
 import {
   __checkPathWithMultipleExtensions,
   __fileName,
   __folderPath,
   __readJsonSync,
   __writeFileSync,
-} from '@lotsof/sugar/fs';
+} from '@blackbyte/sugar/fs';
 
-import { __writeJsonSync } from '@lotsof/sugar/fs';
+import { __writeJsonSync } from '@blackbyte/sugar/fs';
 
 import {
   __deepFilter,
@@ -25,14 +25,14 @@ import {
   __set,
   __sort,
   __sortDeep,
-} from '@lotsof/sugar/object';
+} from '@blackbyte/sugar/object';
 
 import __defaults from './defaults.js';
 
-import { __packageJsonSync, __packageRootDir } from '@lotsof/sugar/package';
+import { __packageJsonSync, __packageRootDir } from '@blackbyte/sugar/package';
 import { globSync as __globSync } from 'glob';
 
-import { __namespaceCompliant } from '@lotsof/sugar/string';
+import { __namespaceCompliant } from '@blackbyte/sugar/string';
 import __fs from 'fs';
 import __micromatch from 'micromatch';
 import __path from 'path';
@@ -41,7 +41,7 @@ function __toLowerCase(l = '') {
   return l.toLowerCase();
 }
 
-import { __isPlainObject } from '@lotsof/sugar/is';
+import { __isPlainObject } from '@blackbyte/sugar/is';
 import type {
   TDocmap,
   TDocmapBuildParams,
@@ -79,12 +79,12 @@ import type {
  * new __Docmap($1)
  *
  * @example             js
- * import __Docmap from '@lotsof/s-docmap';
+ * import __Docmap from '@blackbyte/s-docmap';
  * const docmap = new __Docmap();
  * await docmap.read();
  *
  * @since           2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 class Docmap implements TDocmap {
@@ -102,7 +102,7 @@ class Docmap implements TDocmap {
    * @param               {TDocmapTagProxyFn}      processor       The processor function
    *
    * @since           2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   static registerTagProxy(tag: string, processor: TDocmapTagProxyFn): any {
     this._registeredTagsProxy[tag] = processor;
@@ -116,7 +116,7 @@ class Docmap implements TDocmap {
    * Store the settings
    *
    * @since      2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   settings: TDocmapSettings;
 
@@ -128,7 +128,7 @@ class Docmap implements TDocmap {
    * This store the docmap.json entries
    *
    * @since         2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   _entries: TDocmapEntries = {};
 
@@ -140,7 +140,7 @@ class Docmap implements TDocmap {
    * Store the docmap readed with the method "read"
    *
    * @since       2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   _docmapJson: any;
 
@@ -152,7 +152,7 @@ class Docmap implements TDocmap {
    * Constructor
    *
    * @since       2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   constructor(settings?: Partial<TDocmapSettings>) {
     this.settings = __deepMerge([
@@ -183,7 +183,7 @@ class Docmap implements TDocmap {
    * @return      {Promise<TDocmapObj>}                          A promise instance that will be resolved once the docmap.json file(s) have been correctly read
    *
    * @since       2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   read(params?: Partial<TDocmapReadParams>): Promise<TDocmapObj> {
     return new Promise(async (resolve) => {
@@ -404,7 +404,7 @@ class Docmap implements TDocmap {
    * @return        {TDocmapSearchResult}                        The result of your search
    *
    * @since       2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   search(params?: Partial<TDocmapSearchParams>): Promise<TDocmapSearchResult> {
     return new Promise(async (resolve) => {
@@ -478,7 +478,7 @@ class Docmap implements TDocmap {
    * @return        {Record<string: SFile>}       The structured menu tree with an SFile instance attached for each source file
    *
    * @since       2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   _extractMenu(
     docmapJson: Partial<TDocmapObj> = this._docmapJson,
@@ -643,7 +643,7 @@ class Docmap implements TDocmap {
    * @return        {Promise}                                     A promise resolved once the scan process has been finished
    *
    * @since         2.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   build(params?: Partial<TDocmapBuildParams>): Promise<any> {
     const finalParams: TDocmapBuildParams = __deepMerge([

@@ -20,11 +20,11 @@ import __simplifySpecialChars from './simplifySpecialChars.js';
  * @todo      tests
  *
  * @example         php
- * import { __idCompliant } from '@lotsof/sugar/string';
+ * import { __idCompliant } from '@blackbyte/sugar/string';
  * __idCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIdCompliantSettings = {

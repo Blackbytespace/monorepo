@@ -1,6 +1,6 @@
 {
   "exclude": [
-    "lotsof.config.ts",
+    "blackbyte.config.ts",
     "**/*.test.*",
     "dist/**/*",
     "node_modules/**/*",

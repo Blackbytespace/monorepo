@@ -17,13 +17,13 @@ const __encryptedMessages = {};
  * @snippet         __sha256.encrypt($1)
  *
  * @example         js
- * import { __sha256 } from '@lotsof/sugar/crypto';
+ * import { __sha256 } from '@blackbyte/sugar/crypto';
  * __sha256.encrypt('hello world');
  *
  * @todo        tests
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default {
   /**
@@ -35,7 +35,7 @@ export default {
    * @param       {String}      message         The message to encrypt
    * @return      {String}                      The encrypted string
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   encrypt: function (message) {
     if (typeof message !== 'string') message = toString(message);
@@ -53,7 +53,7 @@ export default {
    * @param       {String}        message         The message to decrypt
    * @return      {String}                        The decrypted message
    *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   decrypt: function (message) {
     if (!__encryptedMessages[message]) {

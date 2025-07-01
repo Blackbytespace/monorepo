@@ -17,11 +17,11 @@ import * as __fs from 'fs';
  * @snippet         __isFolder($1)
  *
  * @example     js
- * import { __isfolder } from '@lotsof/sugar/is';
+ * import { __isfolder } from '@blackbyte/sugar/is';
  * __isfolder('something/cool');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsFolderSettings = {
   symlink?: boolean;

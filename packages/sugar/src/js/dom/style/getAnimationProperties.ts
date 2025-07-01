@@ -18,7 +18,7 @@ import __getStyleProperty from './getStyleProperty.js';
  * @snippet         __getAnimationProperties($1)
  *
  * @example  	js
- * import { __getAnimationProperties } from '@lotsof/sugar/dom'
+ * import { __getAnimationProperties } from '@blackbyte/sugar/dom'
  * const props = __getAnimationProperties(myCoolHTMLElement);
  * // output format
  * // {
@@ -32,7 +32,7 @@ import __getStyleProperty from './getStyleProperty.js';
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TGetAnimationPropertiesObject = {

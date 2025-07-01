@@ -15,13 +15,13 @@
  * @snippet         __isSamsungBrowser()
  *
  * @example    js
- * import { __isSamsumgBrowser } from '@lotsof/sugar/is'
+ * import { __isSamsumgBrowser } from '@blackbyte/sugar/is'
  * if (__isSamsumgBrowser()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isSamsumgBrowser(
   ua: string = navigator.userAgent,

@@ -18,11 +18,11 @@
  * @todo     tests
  *
  * @example         js
- * import { __stripSourcemap } from '@lotsof/sugar/string';
+ * import { __stripSourcemap } from '@blackbyte/sugar/string';
  * __stripSourcemap('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __stripSourcemap(str: string): string {
   str = str.replace(/\/\/#\s?sourceMappingURL=[\w\W]+/gm, '');

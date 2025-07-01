@@ -1,5 +1,5 @@
 {
-  "name": "lotsof/types",
+  "name": "blackbyte/types",
   "description": "Types system to share types libraries easily",
   "version": "1.0.0",
   "type": "library",
@@ -13,7 +13,7 @@
     {
       "name": "Olivier Bossel",
       "email": "olivier.bossel@gmail.com",
-      "homepage": "https://lotsof.dev"
+      "homepage": "https://blackbyte.space"
     }
   ],
   "repositories": [
@@ -24,7 +24,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "lotsof/sugar": "^1.0.0",
+    "blackbyte/sugar": "^1.0.0",
     "fakerphp/faker": "^1.23",
     "justinrainbow/json-schema": "^6.0"
   }

@@ -20,12 +20,12 @@ import __unlinkSync from './unlinkSync.js';
  * @snippet         __renameSync($1, $2)
  *
  * @example       js
- * import { __renameSync } from '@lotsof/sugar/fs';
+ * import { __renameSync } from '@blackbyte/sugar/fs';
  * __renameSync('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TRenameSyncSettings = {

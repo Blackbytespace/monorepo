@@ -25,7 +25,7 @@
  * });
  *
  * @example         js
- * import { __onScrollEnd } from '@lotsof/sugar/scroll';
+ * import { __onScrollEnd } from '@blackbyte/sugar/scroll';
  * __onScrollEnd($elm, () => {
  *      // do something
  * }, {
@@ -33,7 +33,7 @@
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TOnScrollEndSettings = {
   offset: number;

@@ -1,13 +1,14 @@
 ---
 title: 'deepMerge'
-namespace: '@lotsof.sugar.shared.object'
+namespace: '@blackbyte.sugar.shared.object'
 description: 'Deep merge one object with another and return the merged object result. This merging implementation support: - Merging object with getters/setters - n numbers of objects as arguments - Choose beetween cloning first (default) the object or keeping the first passed object as result Note that by default the resulting object is a clone and do not have the same reference that the first passed object.'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
 platform: '[{"name":"js","description":""},{"name":"node","description":""}]'
-author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://blackbyte.space"}'
 ---
+
 <div class="docmap-mdx">
 # deepMerge
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span><span class="_platform-value -node">node</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.shared.object</div>
+<div class="_namespace">@blackbyte.sugar.shared.object</div>
 <div class="_description typo-lead typo-format">
 Deep merge one object with another and return the merged object result. This merging implementation support:
 - Merging object with getters/setters
@@ -49,7 +50,7 @@ Note that by default the resulting object is a clone and do not have the same re
 <div class="_examples">
 ## Example
 ```js
-import { __deepMerge } from '@lotsof/sugar/object';
+import { __deepMerge } from '@blackbyte/sugar/object';
 __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
 // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
 ```
@@ -82,7 +83,7 @@ __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
 <li class="_item">
 <span class="_name">Olivier Bossel</span>
 <span class="_email">olivier.bossel@gmail.com</span>
-<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+<a href="https://blackbyte.space" target="_blank" class="_url">https://blackbyte.space</a>
 </li>
 </ul>
 </div>

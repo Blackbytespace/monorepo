@@ -22,7 +22,7 @@ namespace Sugar\Is;
  *
  * @see                 https://www.php.net/manual/en/function.preg-match.php#93824
  * @since           2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function url($url)
 {

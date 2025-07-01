@@ -17,7 +17,7 @@ import * as rematrix from 'rematrix';
  * @snippet         __getRotateProperties($1)
  *
  * @example  	js
- * import { __getRotateProperties } from '@lotsof/sugar/dom'
+ * import { __getRotateProperties } from '@blackbyte/sugar/dom'
  * const props = __getRotateProperties(myCoolHTMLElement);
  * // output format
  * // {
@@ -27,7 +27,7 @@ import * as rematrix from 'rematrix';
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __getRotateProperties($elm: HTMLElement):
   | {

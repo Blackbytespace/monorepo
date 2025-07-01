@@ -17,11 +17,11 @@ import * as __fs from 'fs';
  * @todo            tests
  *
  * @example         js
- * import { __appendToFileSync } from '@lotsof/sugar/fs';
+ * import { __appendToFileSync } from '@blackbyte/sugar/fs';
  * __appendToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __appendToFileSync(
   path: string,

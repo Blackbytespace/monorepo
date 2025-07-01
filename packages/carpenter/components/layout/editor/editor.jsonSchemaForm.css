@@ -7,6 +7,72 @@
     gap: s-space(md);
   }
 
+  .s-json-schema-form_header {
+  }
+
+  .s-json-schema-form_header-metas {
+    display: flex;
+    align-items: center;
+  }
+
+  .s-json-schema-form_header-title {
+    display: flex;
+    flex-grow: 1;
+    gap: s-space(sm);
+    @s-typo (h1);
+    margin-block-end: s-space(xs);
+  }
+
+  .s-json-schema-form_header-title-id {
+    font-family: s-font-family(code);
+    @s-map-color (complementary);
+  }
+
+  .s-json-schema-form_header-content {
+    display: flex;
+  }
+
+  .s-json-schema-form_header-description {
+    flex-grow: 1;
+    @s-typo (p);
+  }
+
+  .s-json-schema-form_header-tools {
+    display: flex;
+    justify-content: end;
+    flex-wrap: nowrap;
+    font-size: s-rem(30px);
+    background: s-color(main, background, --lightness 98 --alpha 0.38);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--s-carpenter-depth);
+    @s-radius;
+    @s-transition (fast);
+
+    @media dark {
+      background: s-color(main, background, --lightness 18 --alpha 0.38);
+    }
+  }
+
+  .s-json-schema-form_header-tool {
+    font-size: s-rem(38px);
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @s-transition (fast);
+
+    .s-icon {
+      font-size: 0.5em;
+    }
+
+    &:hover {
+      background: s-color(accent);
+      color: s-color(accent, foreground);
+      @s-radius;
+    }
+  }
+
   .s-json-schema-form_values-object,
   .s-json-schema-form_values {
     &:has(.s-json-schema-form-stack-group-renderer.-open):before {
@@ -282,13 +348,10 @@
     flex-shrink: 0;
     display: flex;
 
-    .s-json-schema-form_values-select {
+    .form-input,
+    .form-select,
+    .form-textarea {
       width: 100%;
-    }
-    .s-json-schema-form_values-input {
-      width: 100%;
-    }
-    .s-json-schema-form_values-checkbox {
     }
 
     .-number {
@@ -313,7 +376,7 @@
   }
 
   .s-json-schema-form_values-errors {
-    display: none !important;
+    /* display: none !important; */
     width: 100%;
     display: flex;
     flex-direction: column;

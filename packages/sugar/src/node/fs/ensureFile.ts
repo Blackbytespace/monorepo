@@ -19,14 +19,14 @@ import __fs from 'fs-extra';
  * await __ensureFile($1)
  *
  * @example       js
- * import { __ensureFile } from '@lotsof/sugar/fs';
+ * import { __ensureFile } from '@blackbyte/sugar/fs';
  * await __ensureFile('my/cool/file.jpg').then(() => {
  *    // do something...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __ensureFile(filePath: string): Promise<void> {
   return __fs.ensureFile(filePath);

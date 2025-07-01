@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx';
-import { sugarize } from '@lotsof/sugarcss';
+import { sugarize } from '@blackbyte/sugarcss';
 import { defineConfig } from 'astro/config';
-import __shikiLotsofTheme from './src/shikijs/lotsof.theme.json';
+import __shikiBlackbyteTheme from './src/shikijs/blackbyte.theme.json';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -9,7 +9,7 @@ import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sugarcss.lotsof.dev',
+  site: 'https://sugarcss.blackbyte.space',
   integrations: [
     mdx(),
     sitemap({
@@ -41,7 +41,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikTConfig: {
-      theme: __shikiLotsofTheme,
+      theme: __shikiBlackbyteTheme,
       langs: [],
       wrap: true,
       transformers: [],

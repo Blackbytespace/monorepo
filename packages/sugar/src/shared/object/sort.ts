@@ -24,7 +24,7 @@
  * })
  *
  * @example               js
- * import { __sort } from '@lotsof/sugar/object';
+ * import { __sort } from '@blackbyte/sugar/object';
  * __sort({
  *    coco: { weight: 10 },
  *    lolo: { weight: 2 },
@@ -39,7 +39,7 @@
  * // }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __sort(

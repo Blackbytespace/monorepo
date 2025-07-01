@@ -1,9 +1,9 @@
 // @ts-nocheck
 
-import type { TPuppetConfig } from '@lotsof/puppet';
-import __Puppet from '@lotsof/puppet';
+import type { TPuppetConfig } from '@blackbyte/puppet';
+import __Puppet from '@blackbyte/puppet';
 
-import { __getConfig } from '@lotsof/config';
+import { __getConfig } from '@blackbyte/config';
 
 let puppetConfig: TPuppetConfig;
 

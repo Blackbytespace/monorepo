@@ -15,13 +15,13 @@
  * @snippet         __isBrowser()
  *
  * @example    js
- * import { __isBrowser } from '@lotsof/sugar/is'
+ * import { __isBrowser } from '@blackbyte/sugar/is'
  * if (__isBrowser() {
  *   // do something
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isBrowser(): boolean {
   return typeof window !== 'undefined';

@@ -23,7 +23,7 @@ namespace Sugar\String;
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function camelCase(string $string, string $separator = '_'): string
 {

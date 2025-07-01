@@ -16,7 +16,7 @@
  * @snippet         __isIsoDate($1)
  *
  * @example 	js
- * import { __isIsoDate } from '@lotsof/sugar/is';
+ * import { __isIsoDate } from '@blackbyte/sugar/is';
  * __isIsoDate('john.doe@gmail.com') => false
  * __isIsoDate('plop@yop.com') => false
  * __isIsoDate('hello') => false
@@ -24,7 +24,7 @@
  *
  * @see             https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isIsoDate(value: string): boolean {
   const res =

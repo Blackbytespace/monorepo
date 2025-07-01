@@ -22,11 +22,11 @@ import __unique from '../array/unique.js';
  * @snippet         __commonMediaFileExtensions()
  *
  * @example         js
- * import { __commonMediaFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonMediaFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonMediaFileExtensions(); // => ['avi','mp3',...]
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonMediaFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

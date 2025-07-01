@@ -18,12 +18,12 @@ import __unescape from 'unescape';
  * @todo      tests
  *
  * @example         js
- * import { __unescapeHtml } from '@lotsof/sugar/html';
+ * import { __unescapeHtml } from '@blackbyte/sugar/html';
  * __unescapeHtml('&lt;s-code-example&gt;'); // => <s-code-example>
  *
  * @see             https://www.npmjs.com/package/unescape
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __unescapeHtml(html: string): string {
   // @ts-ignore

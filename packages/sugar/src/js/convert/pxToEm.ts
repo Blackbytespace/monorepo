@@ -17,11 +17,11 @@
  * @snippet         __pxToEm($1)
  *
  * @example         js
- * import { __pxToEm } from '@lotsof/sugar/convert';
+ * import { __pxToEm } from '@blackbyte/sugar/convert';
  * __pxToEm(36);
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pxToEm(
   px: number,

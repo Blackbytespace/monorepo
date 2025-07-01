@@ -21,14 +21,14 @@ import __isPlainObject from '../is/isPlainObject.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepFilter } from '@lotsof/sugar/object';
+ * import { __deepFilter } from '@blackbyte/sugar/object';
  * __deepFilter ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
  *      property: 'world'
  *    }
- * }, ({key, item}) => typeof item === 'string');
+ * }, ({key, value}) => typeof item === 'string');
  * // {
  * //   coco: 'hello'
  * //   sub: {
@@ -37,7 +37,7 @@ import __isPlainObject from '../is/isPlainObject.js';
  * // }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TDeepFilterSettings = {
@@ -73,9 +73,9 @@ function processObj(object: any, filter: TDeepFilterFilter, settings): any {
     // true mean: we keep this totally
     if (res === true) {
       if (__isPlainObject(value)) {
-        (newObj[key] = settings.clone ? Object.assign({}, value) : value),
-          filter,
-          settings;
+        newObj[key] = settings.clone
+          ? processObj(Object.assign({}, value), filter, settings)
+          : processObj(value, filter, settings);
       } else {
         newObj[key] = value;
       }

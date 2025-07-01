@@ -18,7 +18,7 @@ import __uncamelize from '../../../shared/string/uncamelize.js';
  * @snippet         __styleObjectToString($1)
  *
  * @example 	js
- * import { __styleObjectToString } from '@lotsof/sugar/css'
+ * import { __styleObjectToString } from '@blackbyte/sugar/css'
  * const styleString =  __styleObjectToString({
  * 		paddingLeft : '20px',
  * 		display : 'block'
@@ -26,7 +26,7 @@ import __uncamelize from '../../../shared/string/uncamelize.js';
  * // output => padding-left:20px; display:block;
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __styleObjectToString(styleObj: any): string {
   // process the style object

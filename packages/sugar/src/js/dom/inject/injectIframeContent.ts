@@ -15,11 +15,11 @@
  * @todo      tests
  *
  * @example    js
- * import { __injectIframeContent } from '@lotsof/sugar/dom'
+ * import { __injectIframeContent } from '@blackbyte/sugar/dom'
  *  __injectIframeContent($myIframe, '<html>...</html>');
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __injectIframeContent(
   $iframe: HTMLIFrameElement,

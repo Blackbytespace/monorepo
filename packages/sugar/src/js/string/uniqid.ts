@@ -17,10 +17,10 @@ import { v4 as uuidv4 } from 'uuid';
  * @snippet         __uniqid()
  *
  * @example         js
- * import { __uniqid } from '@lotsof/sugar/string';
+ * import { __uniqid } from '@blackbyte/sugar/string';
  * const id = __uniqid();
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default uuidv4;

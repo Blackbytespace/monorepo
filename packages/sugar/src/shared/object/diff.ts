@@ -27,7 +27,7 @@ import __isPlainObject from '../is/isPlainObject.js';
  * @snippet         __diff($1, $2)
  *
  * @example         js
- * import { __diff } from '@lotsof/sugar/object';
+ * import { __diff } from '@blackbyte/sugar/object';
  * const myObject1 = {
  *    hello: 'world',
  *    plop: 'yop'
@@ -45,7 +45,7 @@ import __isPlainObject from '../is/isPlainObject.js';
  *
  * @see       https://www.npmjs.com/package/is-equal
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TDiffSettings = {

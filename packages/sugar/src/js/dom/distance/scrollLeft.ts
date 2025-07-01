@@ -12,7 +12,7 @@
  * @snippet         __scrollLeft()
  *
  * @example    js
- * import { __scrollLeft } from '@lotsof/sugar/dom'
+ * import { __scrollLeft } from '@blackbyte/sugar/dom'
  * __scrollLeft() // 40
  *
  * @since           1.0.0

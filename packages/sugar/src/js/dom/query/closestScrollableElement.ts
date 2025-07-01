@@ -19,11 +19,11 @@ import __querySelectorUp from './querySelectorUp.js';
  * @todo      tests
  *
  * @example  	js
- * import { __closestScrollableElement } from '@lotsof/sugar/dom';
+ * import { __closestScrollableElement } from '@blackbyte/sugar/dom';
  * __closestScrollableElement($myElement);
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __closestScrollableElement(
   $elm: HTMLElement,

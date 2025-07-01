@@ -19,12 +19,12 @@ import __isEsm from './isEsm.js';
  * @snippet         __isModuleSystem($1)
  *
  * @example       js
- * import { __isModuleSystem } from '@lotsof/sugar/is';
+ * import { __isModuleSystem } from '@blackbyte/sugar/is';
  * __isModuleSystem('esm'); // => true
  * __isModuleSystem('cjs'); // => false
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isModuleSystem(
   systemNames: ('esm' | 'cjs')[],

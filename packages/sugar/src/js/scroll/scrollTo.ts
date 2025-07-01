@@ -41,7 +41,7 @@ import __isUserScrolling from '../is/isUserScrolling.js';
  * __scrollTo(myCoolHTMLElement);
  *
  * @since           2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export interface IScrollToSettings {
   $elm: HTMLElement | typeof window | typeof document;

@@ -18,12 +18,12 @@ import __commonImageFileExtensions from '../extension/commonImageFileExtensions.
  * @snippet         __isImageUrl($1)
  *
  * @example               js
- * import { __isImageUrl } from '@lotsof/sugar/is';
+ * import { __isImageUrl } from '@blackbyte/sugar/is';
  * __isImageUrl('something.jpg); // => true
  * __isImageUrl('other.pdf); // => false
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function (string: string): boolean {
   const imagesExtensions = __commonImageFileExtensions(),

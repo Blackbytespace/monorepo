@@ -1,12 +1,12 @@
 {
-  "title": "Lotsof",
+  "title": "Blackbyte",
   "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
   "license": {
     "name": "MIT",
-    "url": "https://github.com/lotsofdev/monorepo/blob/master/LICENSE"
+    "url": "https://github.com/blackbytespace/monorepo/blob/main/LICENSE.md"
   },
   "og": {
-    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-og.png"
+    "imageUrl": "https://cdn.blackbyte.space/img/blackbyte-og.png"
   },
   "menu": [],
   "themes": []

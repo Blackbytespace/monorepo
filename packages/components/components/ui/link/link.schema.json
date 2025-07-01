@@ -64,13 +64,6 @@
         "group": "advanced"
       }
     },
-    "class": {
-      "type": "string",
-      "description": "CSS class",
-      "editor": {
-        "group": "advanced"
-      }
-    },
     "noopener": {
       "type": "boolean",
       "description": "Whether to use rel='noopener' on the link",
@@ -82,6 +75,18 @@
     "noreferrer": {
       "type": "boolean",
       "description": "Whether to use rel='noreferrer' on the link",
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "id": {
+      "$extends": "jsonSchemaUtils/id",
+      "editor": {
+        "group": "advanced"
+      }
+    },
+    "class": {
+      "$extends": "jsonSchemaUtils/class",
       "editor": {
         "group": "advanced"
       }

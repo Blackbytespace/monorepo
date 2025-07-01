@@ -19,11 +19,11 @@
  * @snippet         __toBase($1, $2)
  *
  * @example    js
- * import { __toBase } from '@lotsof/sugar/number'
+ * import { __toBase } from '@blackbyte/sugar/number'
  * __toBase(1024, 62); // qF
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TToBaseSettings = {

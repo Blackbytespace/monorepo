@@ -28,7 +28,7 @@ namespace Sugar\String;
  * ]); // => Hello world 156.436.56.75, how are you?
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 function replaceTokens($string, $tokens = [])

@@ -20,11 +20,11 @@ import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
  * @snippet         __extractCssClassesNames($1)
  *
  * @example         js
- * import { __extractCssClassesNames } from '@lotsof/sugar/html';
+ * import { __extractCssClassesNames } from '@blackbyte/sugar/html';
  * __extractCssClassesNames('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TExtractCssClassesNamesSettings = {

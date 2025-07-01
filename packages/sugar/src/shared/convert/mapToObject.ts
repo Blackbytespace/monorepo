@@ -14,7 +14,7 @@
  * @snippet         __mapToObject($1)
  *
  * @example       js
- * import { __mapToObject } from '@lotsof/sugar/convert';
+ * import { __mapToObject } from '@blackbyte/sugar/convert';
  * const myMap = new Map();
  * myMap.set('hello', 'world');
  * __mapToObject(myMap);
@@ -23,7 +23,7 @@
  * // }
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __mapToObject(map: any): any {
   const obj = {};

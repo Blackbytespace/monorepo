@@ -1,4 +1,4 @@
-@import '@lotsof/sugarcss/src/css/sugarcss.css';
+@import '@blackbyte/sugarcss/src/css/sugarcss.css';
 
 @include s-reset;
 

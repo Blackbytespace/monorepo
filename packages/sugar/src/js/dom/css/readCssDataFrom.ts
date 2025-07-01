@@ -12,11 +12,11 @@
  * @snippet         __readCssDataFrom(document.body)
  *
  * @example         js
- * import { __readCssDataFrom } from '@lotsof/sugar/dom';
+ * import { __readCssDataFrom } from '@blackbyte/sugar/dom';
  * const data = __readCssDataFrom();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TReadCssDaraSettings = {};

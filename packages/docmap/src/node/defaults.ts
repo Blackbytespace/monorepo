@@ -2,7 +2,7 @@
 
 import type { TDocmapConfig } from './types.js';
 
-import { __commonTextFileExtensions } from '@lotsof/sugar/extension';
+import { __commonTextFileExtensions } from '@blackbyte/sugar/extension';
 
 export default {
   settings: {

@@ -7,20 +7,20 @@ describe('sugar.node.composer.composerPackageDir', () => {
   });
   it('should throw an error if the requested package does not exists', () => {
     expect(() => {
-      __composerPackageDir('lotsof/sugar');
+      __composerPackageDir('blackbyte/sugar');
     }).toThrow();
   });
   it('should not throw an error if the requested package does not exists and that we have setted the checkExistance setting to false', () => {
     expect(() => {
-      __composerPackageDir('lotsof/sugar', {
+      __composerPackageDir('blackbyte/sugar', {
         checkExistence: false,
       });
     }).not.toThrow();
   });
   it('should return the correct package path for the sugar package', () => {
-    const path = __composerPackageDir('lotsof/sugar', {
+    const path = __composerPackageDir('blackbyte/sugar', {
       checkExistence: false,
     });
-    expect(path.includes('sugar/vendor/lotsof/sugar')).toBe(true);
+    expect(path.includes('sugar/vendor/blackbyte/sugar')).toBe(true);
   });
 });

@@ -24,11 +24,11 @@ import __rgbaToHsla from './rgbaToHsla.js';
  * @snippet         __parseColor($1)
  *
  * @example         js
- * import { __parseColor } from '@lotsof/sugar/color';
+ * import { __parseColor } from '@blackbyte/sugar/color';
  * __parseColor('rgba(10,20,30,100)'); // => { r: 10, b: 20, b: 30, a: 100 }
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TParseColorRgbaResult = {
   r: number;

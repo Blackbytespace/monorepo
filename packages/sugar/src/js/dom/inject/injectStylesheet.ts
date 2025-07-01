@@ -17,11 +17,11 @@ import __whenLinkLoaded from '../when/whenLinkLoaded.js';
  * @todo      tests
  *
  * @example    js
- * import { __injectStylesheet } from '@lotsof/sugar/dom'
+ * import { __injectStylesheet } from '@blackbyte/sugar/dom'
  * __injectStylesheet('/dist/css/style.css')
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __injectStylesheet(
   href: string,

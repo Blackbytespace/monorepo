@@ -7,30 +7,30 @@
   >
     <div
       v-if="finalSuptitle"
-      :class="`body_suptitle ${typoClasses ? 'typo-suptitle' : ''}`"
+      :class="`body_suptitle ${format ? 'typo-suptitle' : ''}`"
       v-html="finalSuptitle"
     ></div>
     <component
-      :is="`h${headingLevel.tag}`"
-      :class="`body_title ${
-        typoClasses ? `typo-h${headingLevel.display}` : ''
-      }`"
+      :is="`h${titleLevelTag}`"
+      :class="`body_title ${format ? `typo-h${titleLevelDisplay}` : ''}`"
       v-html="finalTitle"
     />
     <div
       v-if="finalSubtitle"
-      :class="`body_subtitle ${typoClasses ? 'typo-subtitle' : ''}`"
+      :class="`body_subtitle ${format ? 'typo-subtitle' : ''}`"
       v-html="finalSubtitle"
     ></div>
 
     <div
-      :class="`body_lead ${typoClasses ? 'typo-lead' : ''}`"
+      :class="`body_lead ${format ? 'typo-lead' : ''}`"
       v-html="finalLead"
     ></div>
     <div
-      :class="`body_text ${typoClasses ? 'typo-p' : ''}`"
+      :class="`body_text ${format ? 'typo-p' : ''}`"
       v-html="finalText"
     ></div>
+
+    <div v-if="spacer" class="body_spacer"></div>
 
     <nav class="body_buttons" v-if="buttons?.length">
       <Button v-for="(button, i) in buttons" v-bind="button" :key="i" />

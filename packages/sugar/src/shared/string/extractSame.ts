@@ -20,11 +20,11 @@
  * @snippet             __extractSame($1)
  *
  * @example       js
- * import { __extractSame } from '@lotsof/sugar/string';
+ * import { __extractSame } from '@blackbyte/sugar/string';
  * __extractSame('Hello world', 'Hello plop'); // => 'Hello '
  *
  * @since       1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __extractSame(
   string1: string,

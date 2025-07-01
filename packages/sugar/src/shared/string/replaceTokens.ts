@@ -25,11 +25,11 @@
  * @todo      tests
  *
  * @example     js
- * import { __replaceTokens } from '@lotsof/sugar/string';
+ * import { __replaceTokens } from '@blackbyte/sugar/string';
  * __replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TReplaceTokensSettings = {
   regexp?: string;

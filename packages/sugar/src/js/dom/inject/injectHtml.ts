@@ -15,11 +15,11 @@
  * @todo      tests
  *
  * @example    js
- * import { __injectHtml } from '@lotsof/sugar/dom'
+ * import { __injectHtml } from '@blackbyte/sugar/dom'
  *  __injectHtml('<html>...</html>`, $myElement);
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default function __injectHtml($elm: HTMLElement, html: string): void {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Components;
+namespace Blackbyte\Components;
 
 class Component
 {
@@ -10,9 +10,9 @@ class Component
     private object $_componentJson;
     private string $_schemaId;
     private string $_id;
-    private ?\Lotsof\Components\Components $components;
+    private ?\Blackbyte\Components\Components $components;
 
-    public function __construct(string $path, ?object $values = null, ?string $id = null, ?\Lotsof\Components\Components $components = null)
+    public function __construct(string $path, ?object $values = null, ?string $id = null, ?\Blackbyte\Components\Components $components = null)
     {
         // uid
         if ($id) {

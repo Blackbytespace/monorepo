@@ -12,7 +12,7 @@
   </a>
 </template>
 <script lang="ts" setup>
-import { TButton } from '@lotsof/types';
+import { TButton } from '@blackbyte/types';
 import './button.css';
 
 const props = withDefaults(defineProps<TButton>(), {

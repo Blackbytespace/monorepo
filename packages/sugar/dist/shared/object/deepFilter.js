@@ -14,9 +14,9 @@ function processObj(object, filter, settings) {
         // true mean: we keep this totally
         if (res === true) {
             if (__isPlainObject(value)) {
-                (newObj[key] = settings.clone ? Object.assign({}, value) : value),
-                    filter,
-                    settings;
+                newObj[key] = settings.clone
+                    ? processObj(Object.assign({}, value), filter, settings)
+                    : processObj(value, filter, settings);
             }
             else {
                 newObj[key] = value;

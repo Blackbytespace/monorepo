@@ -33,7 +33,7 @@ import __when from '../when/when.js';
  * });
  *
  * @example 	js
- * import { __querySelectorLive } from '@lotsof/sugar/dom'
+ * import { __querySelectorLive } from '@blackbyte/sugar/dom'
  * const query = __querySelectorLive('.my-cool-item', (node, api) => {
  * 	    // do something here with the detected node
  *      // call api.cancel if you want to stop listening for this selector
@@ -43,7 +43,7 @@ import __when from '../when/when.js';
  * query.cancel();
  *
  * @since           1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TQuerySelectorLiveSettings = {

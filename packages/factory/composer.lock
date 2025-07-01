@@ -31,9 +31,7 @@
         "eftec/bladeonehtml": "Extension to create forms",
         "ext-mbstring": "This extension is used if it's active"
       },
-      "bin": [
-        "lib/bladeonecli"
-      ],
+      "bin": ["lib/bladeonecli"],
       "type": "library",
       "autoload": {
         "psr-4": {
@@ -41,9 +39,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Jorge Patricio Castro Castillo",
@@ -52,13 +48,7 @@
       ],
       "description": "The standalone version Blade Template Engine from Laravel in a single php file",
       "homepage": "https://github.com/EFTEC/BladeOne",
-      "keywords": [
-        "blade",
-        "php",
-        "template",
-        "templating",
-        "view"
-      ],
+      "keywords": ["blade", "php", "template", "templating", "view"],
       "support": {
         "issues": "https://github.com/EFTEC/BladeOne/issues",
         "source": "https://github.com/EFTEC/BladeOne/tree/4.18"
@@ -108,20 +98,14 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "François Zaninotto"
         }
       ],
       "description": "Faker is a PHP library that generates fake data for you.",
-      "keywords": [
-        "data",
-        "faker",
-        "fixtures"
-      ],
+      "keywords": ["data", "faker", "fixtures"],
       "support": {
         "issues": "https://github.com/FakerPHP/Faker/issues",
         "source": "https://github.com/FakerPHP/Faker/tree/v1.24.1"
@@ -160,9 +144,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -185,7 +167,7 @@
       "time": "2020-11-24T22:02:12+00:00"
     },
     {
-      "name": "lotsof/sugar",
+      "name": "blackbyte/sugar",
       "version": "1.0.0",
       "dist": {
         "type": "path",
@@ -198,18 +180,14 @@
       },
       "type": "library",
       "autoload": {
-        "files": [
-          "src/php/autoload.php"
-        ]
+        "files": ["src/php/autoload.php"]
       },
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Olivier Bossel",
           "email": "olivier.bossel@gmail.com",
-          "homepage": "https://lotsof.dev"
+          "homepage": "https://blackbyte.space"
         }
       ],
       "description": "A toolkit that gives you access to \"lots of\" of cool and useful PHP functions/classes like \\\\Sugar\\network\\ipAddress, \\Sugar\\object\\deepMerge, \\Sugar\\string\\replaceTokens, and a lot more...",
@@ -239,17 +217,13 @@
       },
       "type": "library",
       "autoload": {
-        "files": [
-          "src/functions.php"
-        ],
+        "files": ["src/functions.php"],
         "psr-4": {
           "FastRoute\\": "src/"
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "BSD-3-Clause"
-      ],
+      "license": ["BSD-3-Clause"],
       "authors": [
         {
           "name": "Nikita Popov",
@@ -257,10 +231,7 @@
         }
       ],
       "description": "Fast request router for PHP",
-      "keywords": [
-        "router",
-        "routing"
-      ],
+      "keywords": ["router", "routing"],
       "support": {
         "issues": "https://github.com/nikic/FastRoute/issues",
         "source": "https://github.com/nikic/FastRoute/tree/master"
@@ -296,9 +267,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -350,9 +319,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -404,9 +371,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -458,9 +423,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -515,9 +478,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -570,9 +531,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -581,11 +540,7 @@
       ],
       "description": "Common interface for logging libraries",
       "homepage": "https://github.com/php-fig/log",
-      "keywords": [
-        "log",
-        "psr",
-        "psr-3"
-      ],
+      "keywords": ["log", "psr", "psr-3"],
       "support": {
         "source": "https://github.com/php-fig/log/tree/3.0.2"
       },
@@ -614,14 +569,10 @@
       },
       "type": "library",
       "autoload": {
-        "files": [
-          "src/getallheaders.php"
-        ]
+        "files": ["src/getallheaders.php"]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Ralph Khattar",
@@ -679,9 +630,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Josh Lockhart",
@@ -706,11 +655,7 @@
       ],
       "description": "Strict PSR-7 implementation",
       "homepage": "https://www.slimframework.com",
-      "keywords": [
-        "http",
-        "psr-7",
-        "psr7"
-      ],
+      "keywords": ["http", "psr-7", "psr7"],
       "support": {
         "issues": "https://github.com/slimphp/Slim-Psr7/issues",
         "source": "https://github.com/slimphp/Slim-Psr7/tree/1.7.1"
@@ -773,9 +718,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Josh Lockhart",
@@ -805,12 +748,7 @@
       ],
       "description": "Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs",
       "homepage": "https://www.slimframework.com",
-      "keywords": [
-        "api",
-        "framework",
-        "micro",
-        "router"
-      ],
+      "keywords": ["api", "framework", "micro", "router"],
       "support": {
         "docs": "https://www.slimframework.com/docs/v4/",
         "forum": "https://discourse.slimframework.com/",
@@ -861,14 +799,10 @@
         }
       },
       "autoload": {
-        "files": [
-          "function.php"
-        ]
+        "files": ["function.php"]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Nicolas Grekas",
@@ -931,17 +865,13 @@
         }
       },
       "autoload": {
-        "files": [
-          "bootstrap.php"
-        ],
+        "files": ["bootstrap.php"],
         "psr-4": {
           "Symfony\\Polyfill\\Ctype\\": ""
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Gert de Pagter",
@@ -954,12 +884,7 @@
       ],
       "description": "Symfony polyfill for ctype functions",
       "homepage": "https://symfony.com",
-      "keywords": [
-        "compatibility",
-        "ctype",
-        "polyfill",
-        "portable"
-      ],
+      "keywords": ["compatibility", "ctype", "polyfill", "portable"],
       "support": {
         "source": "https://github.com/symfony/polyfill-ctype/tree/v1.32.0"
       },
@@ -1011,17 +936,13 @@
         }
       },
       "autoload": {
-        "files": [
-          "bootstrap.php"
-        ],
+        "files": ["bootstrap.php"],
         "psr-4": {
           "Symfony\\Polyfill\\Mbstring\\": ""
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Nicolas Grekas",
@@ -1034,13 +955,7 @@
       ],
       "description": "Symfony polyfill for the Mbstring extension",
       "homepage": "https://symfony.com",
-      "keywords": [
-        "compatibility",
-        "mbstring",
-        "polyfill",
-        "portable",
-        "shim"
-      ],
+      "keywords": ["compatibility", "mbstring", "polyfill", "portable", "shim"],
       "support": {
         "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.32.0"
       },
@@ -1085,20 +1000,14 @@
         }
       },
       "autoload": {
-        "files": [
-          "bootstrap.php"
-        ],
+        "files": ["bootstrap.php"],
         "psr-4": {
           "Symfony\\Polyfill\\Php80\\": ""
         },
-        "classmap": [
-          "Resources/stubs"
-        ]
+        "classmap": ["Resources/stubs"]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Ion Bazan",
@@ -1115,12 +1024,7 @@
       ],
       "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
       "homepage": "https://symfony.com",
-      "keywords": [
-        "compatibility",
-        "polyfill",
-        "portable",
-        "shim"
-      ],
+      "keywords": ["compatibility", "polyfill", "portable", "shim"],
       "support": {
         "source": "https://github.com/symfony/polyfill-php80/tree/v1.32.0"
       },
@@ -1178,9 +1082,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "BSD-3-Clause"
-      ],
+      "license": ["BSD-3-Clause"],
       "authors": [
         {
           "name": "Fabien Potencier",
@@ -1200,9 +1102,7 @@
       ],
       "description": "Twig, the flexible, fast, and secure template language for PHP",
       "homepage": "https://twig.symfony.com",
-      "keywords": [
-        "templating"
-      ],
+      "keywords": ["templating"],
       "support": {
         "issues": "https://github.com/twigphp/Twig/issues",
         "source": "https://github.com/twigphp/Twig/tree/v3.21.1"

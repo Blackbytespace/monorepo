@@ -20,7 +20,7 @@ namespace Sugar\Fs;
  * \Sugar\Fs\extension('/path/to/file.ext'); // => ext
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function extension($path)
 {

@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonVideoFileExtensions()
  *
  * @example         js
- * import { __commonVideoFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonVideoFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonVideoFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonVideoFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

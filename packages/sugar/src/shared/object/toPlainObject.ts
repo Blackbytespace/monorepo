@@ -19,11 +19,11 @@ import __isPlainObject from '../is/isPlainObject.js';
  * @snippet         __toPlainObject($1)
  *
  * @example           js
- * import { __toPlainObject } from '@lotsof/sugar/object';
+ * import { __toPlainObject } from '@blackbyte/sugar/object';
  * __toPlainObject({ something: 'cool' });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TToPlainObjectSettings = {
   deep: boolean;

@@ -17,7 +17,7 @@
  * });
  *
  * @example         js
- * import { __asyncForEach } from '@lotsof/sugar/array';
+ * import { __asyncForEach } from '@blackbyte/sugar/array';
  * const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
  * __asyncForEach([0,1,2,3], async (item) => {
  *    await waitWor(50);
@@ -28,7 +28,7 @@
  * // 2
  * // 3
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TAsyncForEach = {
   (value: any, index: number, array: any[]): void;

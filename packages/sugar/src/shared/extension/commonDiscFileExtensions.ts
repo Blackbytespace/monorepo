@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonDiscFileExtensions()
  *
  * @example         js
- * import { __commonDiscFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonDiscFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonDiscFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonDiscFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

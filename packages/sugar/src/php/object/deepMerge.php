@@ -26,7 +26,7 @@ namespace Sugar\Object;
  *
  * @see         https://developer.wordpress.org/reference/functions/deepMerge/
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function _deepMerge($obj1, $obj2)
 {

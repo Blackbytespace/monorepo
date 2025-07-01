@@ -21,7 +21,7 @@ namespace Sugar\Fs;
  * \Sugar\Fs\relativePath('/path/to/file.ext', '/path/to); // => file.ext
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function relativePath($from, $to, $separator = DIRECTORY_SEPARATOR)
 {

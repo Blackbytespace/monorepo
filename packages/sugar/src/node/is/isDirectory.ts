@@ -19,11 +19,11 @@ import * as __fs from 'fs';
  * @snippet         __isDirectory($1)
  *
  * @example     js
- * import { __isDirectory } from '@lotsof/sugar/is';
+ * import { __isDirectory } from '@blackbyte/sugar/is';
  * __isDirectory('something/cool');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsDirectorySettings = {
   symlink?: boolean;

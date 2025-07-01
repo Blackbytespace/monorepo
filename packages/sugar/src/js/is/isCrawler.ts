@@ -17,14 +17,14 @@ import { isbot as __isbot } from 'isbot';
  * @snippet         __isCrawler()
  *
  * @example 	js
- * import { __isCrawler } from '@lotsof/sugar/is'
+ * import { __isCrawler } from '@blackbyte/sugar/is'
  * if (__isCrawler()) {
  *   // do something cool
  * }
  *
  * @see            https://www.npmjs.com/package/isbot
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isCrawler(ua: string = navigator.userAgent): boolean {
   return __isbot(ua);

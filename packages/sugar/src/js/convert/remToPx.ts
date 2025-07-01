@@ -16,11 +16,11 @@
  * @snippet         __remToPx($1)
  *
  * @example         js
- * import { __remToPx } from '@lotsof/sugar/convert';
+ * import { __remToPx } from '@blackbyte/sugar/convert';
  * __remToPx(2);
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __remToPx(rem: number): number {
   return (

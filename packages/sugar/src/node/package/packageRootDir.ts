@@ -26,11 +26,11 @@ import __isFile from '../is/isFile.js';
  * @snippet         __packageRootDir()
  *
  * @example         js
- * import { __packageRootDir } from '@lotsof/sugar/path';
+ * import { __packageRootDir } from '@blackbyte/sugar/path';
  * const root = __packageRootDir();
  *
  * @see       https://www.npmjs.com/package/find-package-json
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TPackageRootSettings = {

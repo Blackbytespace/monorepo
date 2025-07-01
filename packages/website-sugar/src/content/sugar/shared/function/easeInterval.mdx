@@ -1,6 +1,6 @@
 ---
 title: 'easeInterval'
-namespace: '@lotsof.sugar.shared.function'
+namespace: '@blackbyte.sugar.shared.function'
 description: 'This function allows you to call a callback function exactly as the `setInterval` would do but with an easing that you can specify, as well as an `interval` setting to customize how many time your function will be called. By default this function will pass the &quot;easedPercent&quot; that represent the percentage of your passed &quot;duration&quot; with the easing applied on it. With that you can make everything you want inside your callback function.'
 type: 'Function'
 status: 'stable'
@@ -8,6 +8,7 @@ since: '1.0.0'
 platform: '[{"name":"js","description":""}]'
 author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 ---
+
 <div class="docmap-mdx">
 # easeInterval
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com"}'
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.shared.function</div>
+<div class="_namespace">@blackbyte.sugar.shared.function</div>
 <div class="_description typo-lead typo-format">
 This function allows you to call a callback function exactly as the `setInterval` would do but with an easing that you can specify,
 as well as an `interval` setting to customize how many time your function will be called.
@@ -52,7 +53,7 @@ With that you can make everything you want inside your callback function.
 <div class="_examples">
 ## Example
 ```js
-import { __easeInterval } from '@lotsof/sugar/function';
+import { __easeInterval } from '@blackbyte/sugar/function';
 await __easeInterval(2000, (easedPercent) => {
      // do something...
 }, {

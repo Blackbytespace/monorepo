@@ -20,11 +20,11 @@
  * @todo      tests
  *
  * @example  	js
- * import { __iframeAutoSize } from '@lotsof/sugar/dom';
+ * import { __iframeAutoSize } from '@blackbyte/sugar/dom';
  * __iframeAutoSize($1, $2);
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TIFrameAutoSizeSettings = {

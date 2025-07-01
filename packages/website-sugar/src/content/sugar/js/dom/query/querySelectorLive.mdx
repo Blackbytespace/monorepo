@@ -1,13 +1,14 @@
 ---
 title: 'querySelectorLive'
-namespace: '@lotsof.sugar.js.dom.query'
+namespace: '@blackbyte.sugar.js.dom.query'
 description: 'Observe the dom to get all the elements that matches a passed css selector at any point in time. Be warned that this use the mutation observer API and will monitor all the document for new nodes. Make sure to use it when you don&#39;t have the chance to use the custom elements API instead'
 type: 'Function'
 status: 'stable'
 since: '1.0.0'
 platform: '[{"name":"js","description":""}]'
-author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://lotsof.dev"}'
+author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"https://blackbyte.space"}'
 ---
+
 <div class="docmap-mdx">
 # querySelectorLive
 <div class="_metas">
@@ -16,7 +17,7 @@ author: '{"name":"Olivier Bossel","email":"olivier.bossel@gmail.com","url":"http
 <div class="_since"><span class="_since-label">Since:</span><span class="_since-value">1.0.0</span></div>
 <div class="_platform"><span class="_platform-label">Platform:</span><span class="_platform-value -js">js</span></div>
 </div>
-<div class="_namespace">@lotsof.sugar.js.dom.query</div>
+<div class="_namespace">@blackbyte.sugar.js.dom.query</div>
 <div class="_description typo-lead typo-format">
 Observe the dom to get all the elements that matches a passed css selector at any point in time.
 Be warned that this use the mutation observer API and will monitor all the document for new nodes. Make sure to use it
@@ -51,7 +52,7 @@ when you don&#39;t have the chance to use the custom elements API instead
 <div class="_examples">
 ## Example
 ```js
-import { __querySelectorLive } from '@lotsof/sugar/dom'
+import { __querySelectorLive } from '@blackbyte/sugar/dom'
 const query = __querySelectorLive('.my-cool-item', (node, api) => {
 	    // do something here with the detected node
      // call api.cancel if you want to stop listening for this selector
@@ -80,7 +81,7 @@ query.cancel();
 <li class="_item">
 <span class="_name">Olivier Bossel</span>
 <span class="_email">olivier.bossel@gmail.com</span>
-<a href="https://lotsof.dev" target="_blank" class="_url">https://lotsof.dev</a>
+<a href="https://blackbyte.space" target="_blank" class="_url">https://blackbyte.space</a>
 </li>
 </ul>
 </div>

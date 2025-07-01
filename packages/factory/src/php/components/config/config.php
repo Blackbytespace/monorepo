@@ -1,6 +1,6 @@
 <?php
 
-namespace Lotsof\Factory\Config;
+namespace Blackbyte\Factory\Config;
 
 function get(string $path = '.'): mixed
 {

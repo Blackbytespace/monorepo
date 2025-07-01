@@ -19,11 +19,11 @@ import __clamp from './clamp.js';
  * @todo      tests
  *
  * @example       js
- * import { __easeClamp } from '@lotsof/sugar/math';
+ * import { __easeClamp } from '@blackbyte/sugar/math';
  * __easeClamp(-20, -10, 0, 100, 110); // => -10
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __easeClamp(
   num: number,

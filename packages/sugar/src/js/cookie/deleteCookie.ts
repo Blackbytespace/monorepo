@@ -17,11 +17,11 @@ import __setCookie from './setCookie.js';
  * @todo            tests
  *
  * @example         js
- * import { __deleteCookie } from '@lotsof/sugar/cookie';
+ * import { __deleteCookie } from '@blackbyte/sugar/cookie';
  * __deleteCookie('myCookie');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __deleteCookie(name: string): void {
   __setCookie(name, '', {

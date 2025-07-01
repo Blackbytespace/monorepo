@@ -23,9 +23,9 @@ import __parseAuthorString from './parseAuthorString.js';
  * @snippet         __formatPackageJson($1)
  *
  * @example       js
- * import { __formatPackageJson } from '@lotsof/sugar/package';
+ * import { __formatPackageJson } from '@blackbyte/sugar/package';
  * __formatPackageJson({
- *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)"
+ *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)"
  * }); // => {
  *    "author": {
  *      "name": "Olivier Bossel",
@@ -35,7 +35,7 @@ import __parseAuthorString from './parseAuthorString.js';
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __formatPackageJson(json: any): any {
   // author

@@ -24,7 +24,7 @@ import __whenImageLoaded from './whenImageLoaded.js';
  * @todo      tests
  *
  * @example    js
- * import { __whenImagesLoaded } from '@lotsof/sugar/dom'
+ * import { __whenImagesLoaded } from '@blackbyte/sugar/dom'
  * __whenImagesLoaded([
  * 	$img1, $img2, $img3
  * ]).on('loaded', $img => {
@@ -34,7 +34,7 @@ import __whenImageLoaded from './whenImageLoaded.js';
  * })
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __whenImagesLoaded(
   $imgs: HTMLImageElement[],

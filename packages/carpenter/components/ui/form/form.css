@@ -17,18 +17,39 @@ body:has(.s-carpenter),
   }
 
   .form-input,
-  .form-select {
+  .form-select,
+  .form-textarea {
     border: solid 1px s-color(main, border);
     color: s-color(main, form);
     background: s-color(main, form-background);
     font-size: s-size(form);
     line-height: s-size(form);
     box-shadow: var(--s-shadow-form);
+    appearance: none;
     @s-radius;
 
     &:focus {
       outline: 1px solid s-color(accent);
     }
+  }
+
+  .form-textarea {
+    resize: none;
+    @s-scrollbar (2px, s-color(accent), transparent);
+  }
+
+  /* Disable the number input spinner buttons */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .form-textarea {
+    line-height: 1.3;
   }
 
   .form-checkbox {

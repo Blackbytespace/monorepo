@@ -18,11 +18,11 @@
  * await __wait($1)
  *
  * @example       js
- * import { __wait } from '@lotsof/sugar/datetime';
+ * import { __wait } from '@blackbyte/sugar/datetime';
  * await __wait(2000);
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __wait(timeout: number = 0): Promise<void> {
   return new Promise((resolve) => {

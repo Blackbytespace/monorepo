@@ -1,8 +1,8 @@
 {
   "libraries": {
-    "@lotsof/components": {
+    "@blackbyte/components": {
       "type": "git",
-      "url": "git@github.com:lotsofdev/components.git"
+      "url": "git@github.com:blackbytespace/components.git"
     }
   }
 }

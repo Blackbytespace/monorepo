@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { __uniqid } from '@lotsof/sugar/string';
+import { __uniqid } from '@blackbyte/sugar/string';
 import { computed, onMounted } from 'vue';
 import './image.css';
 import type { TImage } from './image.type.js';

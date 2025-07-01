@@ -15,11 +15,11 @@
  * @snippet         __splitEvery($1, $2)
  *
  * @example           js
- * import { __splitEvery } from '@lotsof/sugar/array';
+ * import { __splitEvery } from '@blackbyte/sugar/array';
  * __splitEvery([1,2,3,4,5,6,7,8,9], 3);
  * // [[1,2,3],[4,5,6],[7,8,9]]
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __splitEvery(array: any[], every: number): any[] {
   let i: number, j: number;

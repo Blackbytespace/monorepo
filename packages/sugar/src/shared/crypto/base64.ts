@@ -15,11 +15,11 @@ import __encUtf8 from 'crypto-js/enc-utf8.js';
  * @snippet         __base64.encrypt($1)
  *
  * @example         js
- * import { __base64 } from '@lotsof/sugar/crypto';
+ * import { __base64 } from '@blackbyte/sugar/crypto';
  * __base64.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export default {
@@ -33,7 +33,7 @@ export default {
    * @return      {String}                       The encrypted message
    *
    * @since       1.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   encrypt: function (message) {
     if (typeof message !== 'string') message = toString(message);
@@ -50,7 +50,7 @@ export default {
    * @return      {String}                      The decrypted message
    *
    * @since         1.0.0
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   decrypt: function (message) {
     if (typeof message !== 'string') message = toString(message);

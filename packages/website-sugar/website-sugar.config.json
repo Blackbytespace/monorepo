@@ -3,10 +3,10 @@
   "description": "High quality toolkit for web development",
   "license": {
     "name": "MIT",
-    "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugar/LICENSE.md"
+    "url": "https://github.com/blackbytespace/monorepo/blob/main/packages/sugar/LICENSE.md"
   },
   "og": {
-    "imageUrl": "https://cdn.lotsof.dev/img/lotsof-sugar-og.png"
+    "imageUrl": "https://cdn.blackbyte.space/img/blackbyte-sugar-og.png"
   },
   "menu": [
     {
@@ -24,14 +24,14 @@
           "id": "issues",
           "label": "Declare an issue",
           "value": "issue",
-          "url": "https://github.com/lotsofdev/monorepo/issues",
+          "url": "https://github.com/blackbytespace/monorepo/issues",
           "preventSet": true
         },
         {
           "id": "license",
           "label": "License",
           "value": "license",
-          "url": "https://github.com/lotsofdev/monorepo/blob/master/packages/sugar/LICENSE.md",
+          "url": "https://github.com/blackbytespace/monorepo/blob/main/packages/sugar/LICENSE.md",
           "preventSet": true
         }
       ]

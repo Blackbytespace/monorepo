@@ -24,7 +24,7 @@ use PhpParser\Node\NullableType;
  * \Sugar\Array\pickSome(['hello','world','test'], 1, 2);
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function pickSome(array $array, int $min = 1, NullableType $max = null): array
 {

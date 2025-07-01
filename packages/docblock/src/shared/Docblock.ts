@@ -1,12 +1,12 @@
-import { __isPath } from '@lotsof/sugar/fs';
-import { __packageJsonSync } from '@lotsof/sugar/package';
+import { __isPath } from '@blackbyte/sugar/fs';
+import { __packageJsonSync } from '@blackbyte/sugar/package';
 import __fs from 'fs';
 // import __markdown from './markdown/index.js';
-import { __isNode } from '@lotsof/sugar/is';
-import { __deepMerge } from '@lotsof/sugar/object';
+import { __isNode } from '@blackbyte/sugar/is';
+import { __deepMerge } from '@blackbyte/sugar/object';
 import __DocblockBlock from './DocblockBlock.js';
 
-import { __getConfig } from '@lotsof/config';
+import { __getConfig } from '@blackbyte/config';
 
 import type { TDocblockSettings, TDocblockSortFnSetting } from './types.js';
 
@@ -41,7 +41,7 @@ import __defaults from './defaults.js';
  * new __SDocblock($1)
  *
  * @example         js
- * import __SDocblock from '@lotsof/s-docblock';
+ * import __SDocblock from '@blackbyte/s-docblock';
  * const docblock = new __SDocblock(source, {
  *    // override some settings here...
  * });
@@ -181,7 +181,7 @@ class SDocblock {
    * @return      {Array<SDocblockBlock>}                       An array of SDocblockBlock instances
    *
    * @since       2.0.0
-   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   private _parsed = false;
   public parse(string = this._source): Promise<__DocblockBlock[]> {
@@ -317,7 +317,7 @@ class SDocblock {
    * This method convert the parsed docblocks to a simple object
    *
    * @since       2.0.0
-   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   public toObject() {
     if (!this._parsed) {
@@ -338,7 +338,7 @@ class SDocblock {
    * This method allows you to get the string version of the docblock(s)
    *
    * @since       2.0.0
-   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+   * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   public toString() {
     if (!this._parsed) {

@@ -17,14 +17,14 @@
  * @snippet         __isValidNumber()
  *
  * @example    js
- * import { __isValidNumber } from '@lotsof/sugar/is'
+ * import { __isValidNumber } from '@blackbyte/sugar/is'
  * __isValidNumber(12) // true
  * __isValidNumber('he') // false
  * __isValidNumber(undefined) // false
  * __isValidNumber(NaN) // false
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isValidNumber(value: any): boolean {
   if (Number.isInteger(value)) {

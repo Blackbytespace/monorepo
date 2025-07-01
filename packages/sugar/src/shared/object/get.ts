@@ -22,11 +22,11 @@ import __unquote from '../string/unquote.js';
  * @snippet         __get($1, $2)
  *
  * @example             js
- * import { __get } from '@lotsof/sugar/object';
+ * import { __get } from '@blackbyte/sugar/object';
  * __get(myObject, 'my.cool.value'); // => 'Hello world'
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function get(obj: any, path: string | string[]): any {
   if (Array.isArray(path)) {

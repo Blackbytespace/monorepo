@@ -17,11 +17,11 @@
  * @snippet         __getKeyByValue($1, $2)
  *
  * @example       js
- * import { __getKeyByValue } from '@lotsof/sugar/object';
+ * import { __getKeyByValue } from '@blackbyte/sugar/object';
  * __getKeyByValue({ hello: 'world' }, 'world'); // => hello
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __getKeyByValue(object: any, value: any): any {
   return Object.keys(object).find((key) => object[key] === value);

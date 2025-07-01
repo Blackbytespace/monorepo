@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx';
-import { sugarize } from '@lotsof/sugarcss';
+import { sugarize } from '@blackbyte/sugarcss';
 import { defineConfig } from 'astro/config';
-import __shikiLotsofTheme from './src/shikijs/lotsof.theme.json';
+import __shikiBlackbyteTheme from './src/shikijs/blackbyte.theme.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,7 +21,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikTConfig: {
-      theme: __shikiLotsofTheme,
+      theme: __shikiBlackbyteTheme,
       langs: [],
       wrap: true,
       transformers: [],

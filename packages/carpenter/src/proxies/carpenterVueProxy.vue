@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { __Carpenter, type TCarpenterComponent } from '@lotsof/carpenter';
+import { __Carpenter, type TCarpenterComponent } from '@blackbyte/carpenter';
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { type TCarpenterVueProxy } from './carpenterVueProxy.type';
 

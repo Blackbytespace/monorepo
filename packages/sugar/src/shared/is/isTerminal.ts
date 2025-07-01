@@ -13,11 +13,11 @@
  * @snippet         __isTerminal($1)
  *
  * @example         js
- * import { __isTerminal } from '@lotsof/sugar/is';
+ * import { __isTerminal } from '@blackbyte/sugar/is';
  * __isTerminal(); // => true
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isTerminal(): boolean {
   // @ts-ignore

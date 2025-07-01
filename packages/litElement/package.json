@@ -1,9 +1,9 @@
 {
-  "name": "@lotsof/lit-element",
-  "version": "1.0.0-alpha.97",
+  "name": "@blackbyte/lit-element",
+  "version": "1.0.0-beta.1",
   "description": "Simple class that extends the features of the wonderful lit-element package",
   "type": "module",
-  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,13 +12,13 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "lit": "^3.3.0",
     "typescript": "^5.4.5"
   },
   "main": "dist/js/_exports.js",
   "module": "dist/js/_exports.js",
   "types": "src/js/_exports.ts",
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "gitHead": "3a760e37ec10e3f90acac5df9e74cdb09750ff5f"
 }

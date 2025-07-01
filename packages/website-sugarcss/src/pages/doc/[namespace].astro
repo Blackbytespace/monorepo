@@ -2,7 +2,7 @@
 // @ts-nocheck
 import Layout from '../../layouts/main.astro';
 
-import { __toSlug } from '@lotsof/website-common/src/components/utils/utils.js';
+import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils.js';
 
 import { getCollection } from 'astro:content';
 
@@ -33,6 +33,8 @@ for (let [i, docObj] of allDoc.entries()) {
 }
 ---
 
-<Layout title={`Lotsof | Sugarcss | ${DocItem.remarkPluginFrontmatter.title}`}>
+<Layout
+  title={`Blackbyte | Sugarcss | ${DocItem.remarkPluginFrontmatter.title}`}
+>
   <DocItem.Content />
 </Layout>

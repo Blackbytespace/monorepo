@@ -16,13 +16,13 @@
  * @snippet         __isNumber($1)
  *
  * @example 	js
- * import { __isNumber } from '@lotsof/sugar/is';
+ * import { __isNumber } from '@blackbyte/sugar/is';
  * __isNumber(12) => true
  * __isNumber(22.3) => true
  * __isNumber('20') => false
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isNumber(source: any): boolean {
   return !isNaN(parseFloat(source)) && isFinite(source);

@@ -19,12 +19,12 @@ import { encode } from 'html-entities';
  * @todo      tests
  *
  * @example         js
- * import { __encodeEntities } from '@lotsof/sugar/html';
+ * import { __encodeEntities } from '@blackbyte/sugar/html';
  * __encodeEntities('<s-code-example>'); // => &lt;s-code-example&gt;
  *
  * @see             https://www.npmjs.com/package/escape-html
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function _encodeEntities(html: string): string {
   // @ts-ignore

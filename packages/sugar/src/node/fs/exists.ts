@@ -23,11 +23,11 @@ import * as __fs from 'fs';
  * await __exists($1)
  *
  * @example         js
- * import { __exists } from '@lotsof/sugar/fs';
+ * import { __exists } from '@blackbyte/sugar/fs';
  *  __exists('/something/cool.txt'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TExistsSettings = {
   directory: boolean;

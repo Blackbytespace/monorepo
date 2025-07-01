@@ -1,4 +1,4 @@
-import { sugarize } from '@lotsof/sugarcss';
+import { sugarize } from '@blackbyte/sugarcss';
 import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 

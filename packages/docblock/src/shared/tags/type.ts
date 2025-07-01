@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { __resolveTypeString } from '@lotsof/sugar/type';
+import { __resolveTypeString } from '@blackbyte/sugar/type';
 import { TResolveTypeStringResult } from '../../../../sugar/dist/node/type/resolveTypeString.js';
 
 /**

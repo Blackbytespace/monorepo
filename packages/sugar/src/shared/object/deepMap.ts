@@ -29,7 +29,7 @@ import __clone from './clone.js';
  * })
  *
  * @example       js
- * import { __deepMap } from '@lotsof/sugar/object';
+ * import { __deepMap } from '@blackbyte/sugar/object';
  * __deepMap({
  *    hello: 'world'
  * }, ({object, prop, value, path}) => {
@@ -37,7 +37,7 @@ import __clone from './clone.js';
  * });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TDeepMapSettings = {

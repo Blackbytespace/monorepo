@@ -1,4 +1,4 @@
-import { __dashCase } from '@lotsof/sugar/string';
+import { __dashCase } from '@blackbyte/sugar/string';
 
 export default function argsToCustomPropertiesAst(
   name: string,

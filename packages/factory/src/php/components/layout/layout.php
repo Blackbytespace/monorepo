@@ -2,7 +2,7 @@
 
 namespace Factory\Components\Layout;
 
-function render(\Lotsof\Components\Component $component, mixed $config): string
+function render(\Blackbyte\Components\Component $component, mixed $config): string
 {
     $css = [];
     $js = [];

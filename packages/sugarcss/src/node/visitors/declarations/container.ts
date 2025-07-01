@@ -1,4 +1,4 @@
-import { __dashCase } from '@lotsof/sugar/string';
+import { __dashCase } from '@blackbyte/sugar/string';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 import __toRem from '../../utils/toRem.js';
@@ -28,7 +28,7 @@ import __toRem from '../../utils/toRem.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function container(v, settings: TSugarCssSettings): any {
   const name = v.name.replace(`--s-container-`, ''),

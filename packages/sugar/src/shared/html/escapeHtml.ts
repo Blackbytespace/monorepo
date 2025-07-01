@@ -18,12 +18,12 @@ import __escape from 'escape-html';
  * @todo      tests
  *
  * @example         js
- * import { __escapeHtml } from '@lotsof/sugar/html';
+ * import { __escapeHtml } from '@blackbyte/sugar/html';
  * __escapeHtml('<s-code-example>'); // => &lt;s-code-example&gt;
  *
  * @see             https://www.npmjs.com/package/escape-html
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __escapeHtml(html: string): string {
   // @ts-ignore

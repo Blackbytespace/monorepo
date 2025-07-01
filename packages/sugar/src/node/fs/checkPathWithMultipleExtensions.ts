@@ -22,11 +22,11 @@ import __extension from './extension.js';
  * ])
  *
  * @example         js
- * import { __checkPathWithMultipleExtensions } from '@lotsof/sugar/fs';
+ * import { __checkPathWithMultipleExtensions } from '@blackbyte/sugar/fs';
  * __checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __checkPathWithMultipleExtensions(
   path: string,

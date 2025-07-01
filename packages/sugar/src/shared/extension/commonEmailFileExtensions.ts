@@ -16,11 +16,11 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @snippet         __commonEmailFileExtensions()
  *
  * @example         js
- * import { __commonEmailFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonEmailFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonEmailFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonEmailFileExtensions(
   settings: Partial<ICommonFileExtensionsSettings> = {},

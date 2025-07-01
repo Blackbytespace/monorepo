@@ -16,11 +16,11 @@
  * @snippet         __parseRgba($1)
  *
  * @example           js
- * import { __parseRgba } from '@lotsof/sugar/color';
+ * import { __parseRgba } from '@blackbyte/sugar/color';
  * __parseRgba('rgba(20,10,100,20)');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TParseRgbaResult = {

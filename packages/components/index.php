@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 
 <head>
-    <title>Lotsof Components</title>
+    <title>Blackbyte Components</title>
     <meta name='robots' content='noindex, nofollow' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://0.0.0.0:5173/src/index.css" />

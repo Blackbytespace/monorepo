@@ -22,13 +22,13 @@ import __composerPackageDir from './composerPackageDir.js';
  * @snippet         __composerJsonSync($1)
  *
  * @example         js
- * import { __composerJsonSync } from '@lotsof/sugar/composer`;
- * __composerJsonSync('lotsof/sugar');
+ * import { __composerJsonSync } from '@blackbyte/sugar/composer`;
+ * __composerJsonSync('blackbyte/sugar');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TComposerJsonSyncSettings = {

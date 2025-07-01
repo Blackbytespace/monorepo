@@ -1,9 +1,9 @@
 {
-  "name": "@lotsof/advanced-select-element",
-  "version": "1.0.0-alpha.97",
-  "description": "Simple class that extends the features of the wonderful lit-element package",
+  "name": "@blackbyte/advanced-select-element",
+  "version": "1.0.0-beta.1",
+  "description": "Fully features and simple to use advanced select element built on top of LitElement and TypeScript.",
   "type": "module",
-  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)",
+  "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
@@ -12,15 +12,15 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@lotsof/i18n": "^1.0.0-alpha.97",
-    "@lotsof/lit-element": "^1.0.0-alpha.97",
-    "@lotsof/sugar": "^1.0.0-alpha.97",
+    "@blackbyte/i18n": "^1.0.0-beta.1",
+    "@blackbyte/lit-element": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.1",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
   },
   "main": "dist/js/_exports.js",
   "module": "dist/js/_exports.js",
   "types": "src/js/_exports.ts",
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
 }

@@ -1,6 +1,6 @@
-import type { TComponentsSettings } from '@lotsof/components';
-import { __defineDefaultConfig, __getConfig } from '@lotsof/config';
-import { __dirname } from '@lotsof/sugar/fs';
+import type { TComponentsSettings } from '@blackbyte/components';
+import { __defineDefaultConfig, __getConfig } from '@blackbyte/config';
+import { __dirname } from '@blackbyte/sugar/fs';
 import __path from 'path';
 import type { TFactoryConfig } from '../shared/factory.type.js';
 

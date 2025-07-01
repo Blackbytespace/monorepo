@@ -1,6 +1,6 @@
-# Lotsof monorepo
+# Blackbyte monorepo
 
-Welcome in the Lotsof monorepo.
+Welcome in the Blackbyte monorepo.
 
 ## Glossary
 
@@ -17,35 +17,13 @@ Here you can get access to all the packages developed by our team. Things like:
 
 #### Custom Elements
 
-##### [Lit Element](https://github.com/lotsofdev/monorepo/tree/master/packages/litElement) **TS**
+##### [Lit Element](https://github.com/blackbytespace/monorepo/tree/main/packages/litElement)
 
 Base class on top of the wonderful [Lit](https://lit.dev) library that add some features like `mountWhen`, etc...
 
-##### [Advanced Select Element](hhttps://github.com/lotsofdev/monorepo/tree/master/packages/advancedSelectElement) **TS**
-
-Fully customizable advanced select element with built-in search and more...
-
-##### [JSON Schema Form Element](https://github.com/lotsofdev/monorepo/tree/master/packages/jsonSchemaForm) **TS**
-
-Fully customizable and easy to use element to display form based on the [json-schema](https://json-schema.org/) standard.
-
 #### Tools
 
-##### [Lotsof CLI](https://github.com/lotsofdev/monorepo/tree/master/packages/cli) **SH**
-
-Useful CLI that allows you to use all our tools quickly and efficiently.
-
-##### [Factory](https://github.com/lotsofdev/monorepo/tree/master/packages/factory) **TS/PHP**
-
-All in one components development UI supporting Blade, Twig, React, Vue, and more...
-
-#### Libraries
-
-##### [I18n](https://github.com/lotsofdev/monorepo/tree/master/packages/i18n) **TS**
-
-Simple but complete i18n library for your JS projects. It is used inside our tools like elements, etc...
-
-##### [Sugar](https://github.com/lotsofdev/monorepo/tree/master/packages/sugar) **TS/PHP**
+##### [Sugar](https://github.com/blackbytespace/monorepo/tree/main/packages/sugar) **TS/PHP**
 
 Useful toolbox that gives you access to nice functions like:
 
@@ -54,7 +32,7 @@ Useful toolbox that gives you access to nice functions like:
 - `onScrollEnd`: Do something when scroll as reached the end
 - And many many many more to discover...
 
-##### [SugarCSS](https://github.com/lotsofdev/monorepo/tree/master/packages/sugarcss) **CSS**
+##### [SugarCSS](https://github.com/blackbytespace/monorepo/tree/main/packages/sugarcss) **CSS**
 
 [Lightningcss](https://lightningcss.dev/) plugin based on `variables` that gives you a ton of features like:
 
@@ -77,70 +55,23 @@ h2 {
 
 ```css
 :root {
-  --s-media-mobile: 0, 768px;
-  --s-media-tablet: 769px, 1024px;
-  --s-media-desktop: 1025px;
-  --s-media-wide: 1440px;
+  --s-media-xs: 0 474px;
+  --s-media-sm: 475 639px;
+  --s-media-md: 640px 767px;
+  --s-media-lg: 768px 1023px;
+  --s-media-xl: 1024px 1279px;
+  --s-media-xxl: 1280px;
 }
 h1 {
   color: red;
 
-  @media desktop {
+  @media md {
     color: green;
   }
 }
 ```
 
 And a lot more like: **Font management**, **Spaces management**, **Easing management**, etc...
-
-##### [Types](https://github.com/lotsofdev/monorepo/tree/master/packages/types) **TS/PHP**
-
-The `types` package gives you access to a multiple of pre-made data types to be used as base for your own types or as is like:
-
-###### TBody
-
-```ts
-export type TBody = {
-  suptitle?: string;
-  title?: string;
-  subtitle?: string;
-  lead?: string;
-  text?: string;
-  buttons?: any[];
-  titleLevel?: number;
-  subtitleLevel?: number;
-  suptitleLevel?: number;
-};
-```
-
-###### TLink
-
-```ts
-export type TLink = {
-  href?: string;
-  text?: string;
-  title?: string;
-  target?: '_blank' | '_self';
-  class?: string;
-  noopener?: boolean;
-  noreferrer?: boolean;
-  ariaLabel?: string;
-};
-```
-
-###### TButton
-
-```ts
-export type TButton = {
-  style?: 'solid' | 'outline' | 'text';
-  class?: string;
-  link?: __LinkType;
-};
-```
-
-And a lot more like `TCard`, `THero`, `TImage`, etc...
-
-> All these types are available in **`TS`** as well as in **`PHP`** for convinience.
 
 ### Requirements
 
@@ -152,7 +83,7 @@ And a lot more like `TCard`, `THero`, `TImage`, etc...
 To clone this monorepo, make use of this command:
 
 ```sh
-git clone https://github.com/lotsofdev/monorepo.git
+git clone https://github.com/blackbytespace/monorepo.git
 ```
 
 ### Install

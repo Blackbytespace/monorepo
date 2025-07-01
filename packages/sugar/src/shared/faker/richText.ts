@@ -20,7 +20,7 @@ import { faker } from '@faker-js/faker';
  * print \Sugar\dom\changeTagName(element, 'a');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TRichTextSettings = {

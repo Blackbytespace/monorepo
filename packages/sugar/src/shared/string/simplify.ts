@@ -23,7 +23,7 @@
  * @snippet         __simplify($1)
  *
  * @example       js
- * import { __simplify } from '@lotsof/sugar/string';
+ * import { __simplify } from '@blackbyte/sugar/string';
  * __simplify('éàddö'); // => eaddo
  *
  * @since     1.0.0

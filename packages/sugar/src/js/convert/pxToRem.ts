@@ -16,11 +16,11 @@
  * @snippet         __pxToRem($1)
  *
  * @example         js
- * import { __pxToRem } from '@lotsof/sugar/convert';
+ * import { __pxToRem } from '@blackbyte/sugar/convert';
  * __pxToRem(36);
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __pxToRem(px: number): number {
   return (

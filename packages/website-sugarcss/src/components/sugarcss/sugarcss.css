@@ -1,4 +1,4 @@
-@import '@lotsof/website-common/src/components/sugarcss/sugarcss.css';
+@import '@blackbyte/website-common/src/components/sugarcss/sugarcss.css';
 
 .theme-light {
   --s-color-main: #4b423c;

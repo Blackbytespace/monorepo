@@ -32,7 +32,7 @@
  * });
  *
  * @example    js
- * import { __hotkey } from '@lotsof/sugar/keyboard'
+ * import { __hotkey } from '@blackbyte/sugar/keyboard'
  * const hotkeyApi = __hotkey('ctrl+a', (e) => {
  *  console.log('Hotkey pressed');
  * });
@@ -41,7 +41,7 @@
  * hotkeyApi.cancel();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type THotkeySettings = {

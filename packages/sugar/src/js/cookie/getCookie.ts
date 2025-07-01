@@ -15,11 +15,11 @@
  * @todo            tests
  *
  * @example         js
- * import { __getCookie } from '@lotsof/sugar/cookie';
+ * import { __getCookie } from '@blackbyte/sugar/cookie';
  * __getCookie('myCookie');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __getCookie(name: string): any {
   let matches = document.cookie.match(

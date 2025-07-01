@@ -1,6 +1,6 @@
 {
-  "name": "@lotsof/monorepo",
-  "version": "1.0.0-alpha.97",
+  "name": "@blackbyte/monorepo",
+  "version": "1.0.0-beta.1",
   "description": "We are a young collectve of front-end creative developers with one goal in mind. Build tools to make every team working day life better",
   "type": "module",
   "workspaces": [
@@ -15,14 +15,17 @@
   "pre-commit": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lotsofdev/monorepo.git"
+    "url": "https://github.com/blackbytespace/monorepo.git"
   },
   "keywords": [
-    "lotsof",
+    "blackbyte",
+    "black",
+    "byte",
+    "space",
     "sugar",
     "monorepo"
   ],
-  "author": "Lotsof <hello@lotsof.dev>",
+  "author": "Blackbyte <hello@blackbyte.space>",
   "contributors": [
     {
       "name": "Olivier Bossel",
@@ -32,9 +35,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lotsofdev/monorepo/issues"
+    "url": "https://github.com/blackbytespace/monorepo/issues"
   },
-  "homepage": "https://lotsof.dev",
+  "homepage": "https://blackbyte.space",
   "globalDependencies": {},
   "devDependencies": {
     "lerna": "^8.1.8",

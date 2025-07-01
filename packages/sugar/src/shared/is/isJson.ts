@@ -16,13 +16,13 @@
  * @snippet         __isJson($1)
  *
  * @example    js
- * import { __isJson } from '@lotsof/sugar/is'
+ * import { __isJson } from '@blackbyte/sugar/is'
  * if (__isJson('[{id:10}]')) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __isJson(value: string): boolean {
   try {

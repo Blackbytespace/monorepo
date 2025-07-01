@@ -17,12 +17,12 @@
  * @snippet         __hexToRgba($1)
  *
  * @example         js
- * import { __hexToRgba } from '@lotsof/sugar/color';
+ * import { __hexToRgba } from '@blackbyte/sugar/color';
  * __hexToRgba('#ff00ff');
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function hexToRGBA(h) {
   let r = 0,

@@ -17,11 +17,11 @@
  * @snippet         __uncamelize($1)
  *
  * @example    js
- * import { __uncamelize } from '@lotsof/sugar/string'
+ * import { __uncamelize } from '@blackbyte/sugar/string'
  * __uncamelize('helloWorldAndUniverse') // hello-world-and-universe
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __uncamelize(
   text: string,

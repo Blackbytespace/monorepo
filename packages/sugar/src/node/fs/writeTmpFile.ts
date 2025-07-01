@@ -27,13 +27,13 @@ import __writeFileSync from './writeFileSync.js';
  * await __writeTmpFile($1, $2)
  *
  * @example       js
- * import { __writeTmpFile } from '@lotsof/sugar/fs';
+ * import { __writeTmpFile } from '@blackbyte/sugar/fs';
  * __writeTmpFile('Hello World').then((path) => {
  *    // do something on complete...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TWriteTmpFileSettings = {

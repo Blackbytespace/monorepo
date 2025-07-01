@@ -32,7 +32,7 @@ This custom element allows you to create with ease some fully customizable advan
 - Support for groups
   - Can group some items
   - Display the group name into the options
-- I18n ready through [@lotsof/i18n](https://github.com/lotsofdev/i18n)
+- I18n ready through [@blackbyte/i18n](https://github.com/blackbyte/i18n)
 - Hotkey supported to focus in the `input`
 - `minChars` to trigger the search only with a certain amount of characters
 - `maxItems` to prevent displaying too many results
@@ -61,7 +61,7 @@ This custom element allows you to create with ease some fully customizable advan
 ## Install
 
 ```sh
-npm i @lotsof/advanced-select-element
+npm i @blackbyte/advanced-select-element
 ```
 
 ---
@@ -73,8 +73,8 @@ npm i @lotsof/advanced-select-element
 You need first to define your advanced select element like so:
 
 ```ts
-import __SAdvancedSelectElement from '@lotsof/s-advanced-select-element';
-import type { TAdvancedSelectElementItemsFunctionApi } from '@lotsof/s-advanced-select-element';
+import __SAdvancedSelectElement from '@blackbyte/s-advanced-select-element';
+import type { TAdvancedSelectElementItemsFunctionApi } from '@blackbyte/s-advanced-select-element';
 
 __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
     items: (api: TAdvancedSelectElementItemsFunctionApi): TAdvancedSelectElementItem[] {
@@ -102,8 +102,8 @@ Then, simply add it to your `html` like so:
 ### Using groups
 
 ```ts
-import __SAdvancedSelectElement from '@lotsof/s-advanced-select-element';
-import type { TAdvancedSelectElementItemsFunctionApi } from '@lotsof/s-advanced-select-element';
+import __SAdvancedSelectElement from '@blackbyte/s-advanced-select-element';
+import type { TAdvancedSelectElementItemsFunctionApi } from '@blackbyte/s-advanced-select-element';
 
 __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
     items: (api: TAdvancedSelectElementItemsFunctionApi): TAdvancedSelectElementItem[] {
@@ -131,8 +131,8 @@ __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
 ### Fetch items from an API
 
 ```ts
-import __SAdvancedSelectElement from '@lotsof/s-advanced-select-element';
-import type { TAdvancedSelectElementItemsFunctionApi } from '@lotsof/s-advanced-select-element';
+import __SAdvancedSelectElement from '@blackbyte/s-advanced-select-element';
+import type { TAdvancedSelectElementItemsFunctionApi } from '@blackbyte/s-advanced-select-element';
 
 __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
   items: '/my/cool/api',
@@ -158,8 +158,8 @@ You can as well pass the `items` attribute directly on the component like so:
 ### Different items depending on search
 
 ```ts
-import __SAdvancedSelectElement from '@lotsof/s-advanced-select-element';
-import type { TAdvancedSelectElementItemsFunctionApi } from '@lotsof/s-advanced-select-element';
+import __SAdvancedSelectElement from '@blackbyte/s-advanced-select-element';
+import type { TAdvancedSelectElementItemsFunctionApi } from '@blackbyte/s-advanced-select-element';
 
 __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
     items: (api: TAdvancedSelectElementItemsFunctionApi): TAdvancedSelectElementItem[] {
@@ -216,7 +216,7 @@ __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
 Here's the list of attributes that can be passed through the html attributes, or through the `define` function like so:
 
 ```ts
-import __SAdvancedSelectElement from '@lotsof/s-advanced-select-element';
+import __SAdvancedSelectElement from '@blackbyte/s-advanced-select-element';
 
 __SAdvancedSelectElement('my-advanced-select', __SAdvancedSelectElement, {
   // override default attributes here...
@@ -413,6 +413,6 @@ Here's all the methods you can access through the element directly:
 
 ## Contribute
 
-To contribute to this package, please [follow these guidelines](https://github.com/lotsofdev/monorepo/blob/master/CONTRIBUTE.md).
+To contribute to this package, please [follow these guidelines](https://github.com/blackbytespace/monorepo/blob/main/CONTRIBUTE.md).
 
-Everyone is welcome as long as they respect our [code of conduct](https://github.com/lotsofdev/monorepo/blob/master/CODEOFCONDUCT.md).
+Everyone is welcome as long as they respect our [code of conduct](https://github.com/blackbytespace/monorepo/blob/main/CODEOFCONDUCT.md).

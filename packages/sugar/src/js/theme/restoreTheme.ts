@@ -21,11 +21,11 @@ import __setTheme from './setTheme.js';
  * @snippet         __setTheme($1)
  *
  * @example         js
- * import { __setTheme } from '@lotsof/sugar/theme';
+ * import { __setTheme } from '@blackbyte/sugar/theme';
  * __setTheme('dark');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
 export type TRestoreThemeSettings = {

@@ -21,12 +21,12 @@ import __ncp from 'copy-paste';
  * @snippet         __copyText($1)
  *
  * @example       js
- * import { __copyText } from '@lotsof/sugar/clipboard';
+ * import { __copyText } from '@blackbyte/sugar/clipboard';
  * __copyText('Hello world');
  *
  * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __copyText(text: string): string {
   try {

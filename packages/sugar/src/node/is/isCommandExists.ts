@@ -19,11 +19,11 @@ import { spawnSync } from 'child_process';
  * await __isCommandExists($1)
  *
  * @example         js
- * import { __isCommandExists } from '@lotsof/sugar/is';
+ * import { __isCommandExists } from '@blackbyte/sugar/is';
  * await  __isCommandExists('ls'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default async function __isCommandExists(
   command: string,
