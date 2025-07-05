@@ -1,0 +1,23 @@
+@mixin bb-platform {
+  display: flex;
+  align-items: center;
+  gap: s-space(2);
+  padding: s-space(1) s-space(2);
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: s-radius();
+  font-size: s-size(small);
+
+  &.-css {
+    color: s-color(accent, platform);
+  }
+  &.-js {
+    color: s-color(accent, platform);
+  }
+  &.-node {
+    color: s-color(complementary, platform);
+  }
+  &.-php {
+    color: s-color(php, platform);
+  }
+}

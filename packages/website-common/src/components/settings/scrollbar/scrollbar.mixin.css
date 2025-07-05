@@ -1,0 +1,3 @@
+@mixin bb-scrollbar {
+  @s-scrollbar (2px, s-color(accent, --alpha 0.1), transparent);
+}

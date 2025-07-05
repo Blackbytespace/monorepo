@@ -1,5 +1,4 @@
-@import './sugarcss/sugarcss.css';
+@import './settings/sugarcss.css';
 @import '@blackbyte/website-common/src/components/index.css';
 
-@import './code/code.css';
-@import './main/main.css';
+@import './sections/welcome/welcome.css';

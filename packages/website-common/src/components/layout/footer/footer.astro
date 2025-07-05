@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  version: string;
+  license: {
+    name: string;
+    url: string;
+  };
+}
+
+import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.svg?raw';
+
+const { title, version, license } = Astro.props;
+---
+
+<footer class="main_footer">
+  <div class="main_footer-brand">
+    <a href="/" title={title}>
+      <div class="main_footer-logo">
+        <Fragment set:html={__logoBlackbyte} />
+      </div>
+      <h1 class="main_footer-title">{title}</h1>
+    </a>
+  </div>
+  <div class="main_footer-content">
+    <p class="main_footer-version">v{version}</p>
+    <a
+      class="main_footer-license"
+      href={license.url}
+      target="_blank"
+      title={license.name}
+    >
+      {license.name}
+    </a>
+  </div>
+</footer>

@@ -1,7 +1,0 @@
-@import './code.mixin.css';
-
-.astro-code {
-  @include code;
-  @s-radius;
-  @include lo-scrollbar;
-}

@@ -1,0 +1,87 @@
+@import './main.settings.css';
+
+/* @mixin log {
+  gap: s-space(3) s-space(4);
+} */
+
+.main {
+  padding-block-start: var(--bb-header-height);
+
+  .main_nav-toggle {
+    position: absolute !important;
+    z-index: 999 !important;
+    top: s-space(8);
+    left: calc(100% + s-space(8));
+    display: none;
+
+    @media sm {
+      display: block;
+    }
+  }
+
+  .main_nav-toggle-inner {
+    font-size: 30px;
+    @include s-menu;
+  }
+
+  .main_nav {
+    background: s-color(main, background);
+    position: relative;
+    z-index: 100;
+    width: var(--main-nav-width);
+    height: 100vh;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: var(--main-nav-padding);
+    @s-transition();
+    @include bb-scrollbar;
+
+    body.-search-large & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    @media sm {
+      overflow-y: visible;
+      overflow-x: visible;
+
+      &:focus-within {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
+
+    &:focus-within {
+      translate: 0 0;
+
+      .main_nav-toggle-inner {
+        @include s-menu-active;
+      }
+    }
+
+    .header {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    .search {
+      flex-grow: 0;
+      flex-shrink: 1;
+    }
+
+    @media sm {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      translate: -100% 0;
+    }
+  }
+
+  .main_body {
+  }
+
+  .main_body-inner {
+  }
+}

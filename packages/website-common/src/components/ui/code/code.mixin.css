@@ -1,0 +1,61 @@
+@mixin code {
+  background: s-color(main, surface) !important;
+
+  @s-typo (code);
+
+  & > code {
+    display: flex;
+    flex-direction: column;
+    gap: s-space(2);
+    padding: s-space(10);
+
+    @media xs {
+      padding: s-space(5);
+    }
+  }
+
+  .line:last-child:empty {
+    display: none;
+  }
+
+  .line {
+    height: 1.5em;
+  }
+
+  /* comments */
+  [style*='#6A737D'] {
+    color: s-color(main, --lightness 60) !important;
+  }
+
+  /* ponctuation */
+  [style*='#E1E4E8'] {
+    color: s-color(main) !important;
+  }
+
+  /* @ */
+  [style*='#E1E4E8'] {
+    color: s-color(complementary, --lightness 45) !important;
+  }
+
+  /* numbers / mixins */
+  [style*='#79B8FF'] {
+  }
+
+  /* values */
+  [style*='#9ECBFF'] {
+  }
+
+  /* strings */
+  [style*='#FDAEB7'] {
+  }
+
+  /* units / @media */
+  [style*='#F97583'] {
+  }
+
+  [style*='#31748F'] {
+    color: s-color(complementary) !important;
+  }
+
+  @s-scrollbar (2px, s-color(main, --alpha 0.2), s-color(main, --darken 40));
+}

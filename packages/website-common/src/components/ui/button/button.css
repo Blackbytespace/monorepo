@@ -1,0 +1,20 @@
+.button {
+  display: inline-block;
+  padding: s-space(3) s-space(5);
+  border-radius: s-radius();
+  background: s-color(accent);
+  color: s-color(accent, foreground) !important;
+  font-size: s-size(button);
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover {
+    background: s-color(accent, --darken 10);
+  }
+
+  p {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}

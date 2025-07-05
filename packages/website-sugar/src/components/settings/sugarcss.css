@@ -1,0 +1,36 @@
+@import '@blackbyte/website-common/src/components/settings/sugarcss.css';
+
+:root {
+  --s-color-success: #91ff00;
+  --s-color-warning: #ffd500;
+  --s-color-error: #ff003b;
+  --s-color-info: #00ffff;
+  --s-color-php: #777cb5;
+}
+
+:root {
+  --s-color-main: #101010;
+  --s-color-accent: #8854f7;
+  --s-color-complementary: #00ffcc;
+  --s-color-current: #8854f7;
+
+  --s-shade-text: --lightness 90;
+
+  --s-shade-foreground: --lightness 90;
+  --s-shade-background: --lightness 0;
+  --s-shade-surface: --lightness 8;
+
+  --s-shade-border: --alpha 0.1;
+  --s-shade-hover: --darken 40;
+  --s-shade-focus: --darken 10;
+
+  --s-shade-form-text: --lightness 50;
+  --s-shade-form-placeholder: --alpha 0.7;
+  --s-shade-form-background: --lightness 98;
+  --s-shade-form-border: --alpha 0.2;
+  --s-shade-form-border-focus: --alpha 0.5;
+
+  --s-shade-platform: --lightness 70;
+
+  --s-font-family-title: 'Poppins', sans-serif;
+}

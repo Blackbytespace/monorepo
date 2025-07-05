@@ -1,0 +1,7 @@
+@import './code.mixin.css';
+
+.astro-code {
+  @s-radius;
+  @include code;
+  @include bb-scrollbar;
+}
