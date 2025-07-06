@@ -4,7 +4,16 @@
 
 <div class="welcome">
   <div class="welcome_picto">
-    <div class="blackbyte-picto">
+    <div class="blackbyte-picto -white">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="blackbyte-picto -black">
       <div></div>
       <div></div>
       <div></div>
@@ -14,4 +23,118 @@
       <div></div>
     </div>
   </div>
+
+  <div class="welcome_header">
+    <h1 class="welcome_title">
+      Blackbyte <span class="color-accent">Sugar</span>
+    </h1>
+    <p class="welcome_description">
+      A toolkit that gives you access to "lots of" of cool and useful
+      Node/Js/Php functions/classes<br />like "querySelectorLive",
+      "getFreePort", etc...
+    </p>
+    <div class="welcome_actions">
+      <a class="welcome_get-started button" href="#" title="Get started">
+        Get started
+      </a>
+    </div>
+    <p>Made with ❤️ by Blackbyte</p>
+  </div>
 </div>
+
+<script>
+  import { animate } from 'animejs';
+
+  const $welcome = document.querySelector('.welcome'),
+    $pictoWhite = document.querySelector(
+      '.welcome_picto .blackbyte-picto.-white',
+    ) as HTMLElement,
+    $pictoBlack = document.querySelector(
+      '.welcome_picto .blackbyte-picto.-black',
+    ) as HTMLElement,
+    $bits = $pictoWhite.querySelectorAll('div') as NodeListOf<HTMLDivElement>;
+
+  const bitsMap = new WeakMap<HTMLElement, any>();
+
+  // Create a map of bits to their corresponding white and black elements
+  const $blackBits = $pictoBlack.querySelectorAll('div');
+  $bits.forEach(($bit, index) => {
+    bitsMap.set($bit, {
+      white: $bit,
+      black: $blackBits[index],
+    });
+  });
+
+  let speed = 0.1,
+    exploded = false,
+    maxBitRotation = 30,
+    maxBitDistance = $welcome?.getBoundingClientRect().height / 2;
+
+  $welcome?.addEventListener('mousemove', (event) => {
+    const { clientX, clientY } = event as any;
+    const { left, top, width, height } = $welcome.getBoundingClientRect();
+
+    const distX = Math.abs(clientX - (left + width / 2)),
+      distY = Math.abs(clientY - (top + height * 0.9));
+
+    let speedX = 1 - Math.min(distX / (width / 2), 1),
+      speedY = 1 - Math.min(distY / (height / 2), 1);
+
+    speed = Math.min(speedX, speedY);
+  });
+
+  const applyToBit = ($bit: HTMLElement, props: any) => {
+    const bitMap = bitsMap.get($bit);
+    animate([bitMap.white, bitMap.black], props);
+  };
+
+  setInterval(() => {
+    if (speed >= 0.9) {
+      if (!exploded) {
+        $bits.forEach(($bit, index) => {
+          applyToBit($bit, {
+            x: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
+            y: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
+            z: -500 + Math.random() * 1000,
+            rotateX: -maxBitRotation + Math.random() * maxBitRotation * 2,
+            rotateY: -maxBitRotation + Math.random() * maxBitRotation * 2,
+            duration: 700,
+            ease: 'out(5)',
+          });
+        });
+        animate([$pictoWhite, $pictoBlack], {
+          duration: 500,
+          ease: 'out(5)',
+          rotate: `+=${speed * 150}`,
+        });
+        $welcome?.classList.add('-exploded');
+      }
+
+      exploded = true;
+      return;
+    }
+
+    if (exploded) {
+      $bits.forEach(($bit, index) => {
+        applyToBit($bit, {
+          x: 0,
+          y: 0,
+          z: 0,
+          rotate: 0,
+          rotateX: 0,
+          rotateY: 0,
+          duration: 1000,
+          ease: 'out(5)',
+        });
+      });
+      exploded = false;
+      $welcome?.classList.remove('-exploded');
+    }
+
+    animate([$pictoWhite, $pictoBlack], {
+      duration: 100,
+      ease: 'in-out',
+      rotate: `+=${speed * 150}`,
+    });
+  }, 50);
+</script>

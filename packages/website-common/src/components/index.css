@@ -13,6 +13,7 @@
 @import './ui/button/button.css';
 @import './ui/burger/burger.css';
 @import './ui/code/code.css';
+@import './ui/color/color.css';
 @import './ui/form/form.css';
 @import './ui/hotkey/hotkey.css';
 @import './ui/platform/platform.mixin.css';

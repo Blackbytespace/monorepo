@@ -1,3 +1,112 @@
 .welcome {
-  height: 600px;
+  height: 90vh;
+  position: relative;
+  color: white;
+
+  --glow-multiplier: 1;
+
+  &.-exploded {
+    --glow-multiplier: 3.5;
+  }
+
+  &:after {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 90%;
+    translate: -50% -50%;
+    background-color: s-color(main, background, --lightness 10);
+    background-image: url('/public/blackbyte-earth-bkg.jpg');
+    background-position: bottom center;
+    background-size: cover;
+    pointer-events: none;
+    filter: grayscale(100%);
+    mix-blend-mode: lighten;
+    opacity: 0.1;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 20%,
+      white 80%,
+      transparent 100%
+    );
+  }
+
+  /* &:before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      s-color(accent, --alpha 0.05),
+      s-color(complementary, --alpha 0.1)
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  } */
+
+  .welcome_header {
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    top: 300px;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, 0);
+  }
+
+  .welcome_title {
+    @s-typo (h1);
+  }
+
+  .blackbyte-picto {
+    font-size: 20px;
+    perspective: 700;
+    position: absolute;
+    top: 150px;
+    left: calc(50% - 1.5em);
+    transform: translate(-50%, -50%);
+
+    &,
+    * {
+      transition:
+        box-shadow 0.2s ease-in-out,
+        filter 0.5s ease-in-out;
+    }
+  }
+  &.-exploded {
+    .blackbyte-picto {
+      filter: blur(20px);
+    }
+  }
+
+  .blackbyte-picto.-white {
+    color: white;
+    pointer-events: none;
+
+    &,
+    * {
+      backface-visibility: hidden;
+      box-shadow:
+        0 0 calc(20px * var(--glow-multiplier)) 10px #fff,
+        0 0 calc(100px * var(--glow-multiplier)) 40px
+          s-color(complementary, --alpha 0.1),
+        0 0 calc(50px * var(--glow-multiplier)) 20px s-color(accent);
+    }
+  }
+  .blackbyte-picto.-black {
+    color: black;
+    pointer-events: none;
+  }
 }

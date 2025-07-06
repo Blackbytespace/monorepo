@@ -20,6 +20,7 @@
     "@blackbyte/sugarcss": "^1.0.0-beta.1",
     "@blackbyte/types": "^1.0.0-beta.1",
     "@blackbyte/website-common": "^1.0.0-beta.1",
+    "animejs": "^4.0.2",
     "astro": "^5.1.7",
     "astro-compress": "^2.3.6",
     "astro-purgecss": "^5.1.0",

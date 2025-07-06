@@ -1,0 +1,12 @@
+.color-main {
+  color: s-color(main);
+}
+.color-accent {
+  color: s-color(accent);
+}
+.color-complementary {
+  color: s-color(complementary);
+}
+.color-current {
+  color: s-color(current);
+}

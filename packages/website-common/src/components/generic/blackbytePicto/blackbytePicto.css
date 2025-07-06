@@ -4,26 +4,17 @@
   height: 1em;
   background: currentColor;
   margin: 1em;
-  color: black;
-
-  &,
-  * {
-    box-shadow: 0 0 50px #fff, /* inner white */ 20px 0 80px #f0f,
-      /* inner left magenta short */ -20px 0 80px #0ff,
-      /* inner right cyan short */ 20px 0 300px #f0f,
-      /* inner left magenta broad */ -20px 0 300px #0ff,
-      /* inner right cyan broad */ 0 0 50px #fff,
-      /* outer white */ -10px 0 80px #f0f,
-      /* outer left magenta */ 10px 0 80px #0ff; /* outer right cyan */
-  }
+  color: white;
 
   div {
+    perspective: 700;
     width: 1em;
     height: 1em;
     background: currentColor;
     position: absolute;
     top: 0;
     left: 0;
+    transform-origin: 50% 50%;
   }
 
   div:nth-child(1) {
