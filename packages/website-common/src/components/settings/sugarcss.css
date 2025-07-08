@@ -25,7 +25,7 @@
   --s-delay-default: 0s;
   --s-delay-in-viewport: 0.5s;
 
-  --s-radius-default: 8px;
+  --s-radius-default: 20px;
 
   --s-zindex-header: 100;
   --s-zindex-modal: 200;

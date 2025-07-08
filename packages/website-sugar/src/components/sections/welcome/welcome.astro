@@ -3,24 +3,38 @@
 ---
 
 <div class="welcome">
-  <div class="welcome_picto">
-    <div class="blackbyte-picto -white">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="welcome_animation">
+    <div class="welcome_animation-picto">
+      <div class="blackbyte-picto -white">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="blackbyte-picto -black">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="blackbyte-picto -black">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+
+    <div class="welcome_animation-picto-white">
+      <div class="blackbyte-picto">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
 
@@ -34,11 +48,16 @@
       "getFreePort", etc...
     </p>
     <div class="welcome_actions">
-      <a class="welcome_get-started button" href="#" title="Get started">
+      <a
+        id="get-started"
+        class="welcome_get-started button"
+        href="#"
+        title="Get started"
+      >
         Get started
       </a>
     </div>
-    <p>Made with ❤️ by Blackbyte</p>
+    <p>Made with <span class="color-accent">♥</span> by Blackbyte</p>
   </div>
 </div>
 
@@ -46,11 +65,12 @@
   import { animate } from 'animejs';
 
   const $welcome = document.querySelector('.welcome'),
-    $pictoWhite = document.querySelector(
-      '.welcome_picto .blackbyte-picto.-white',
+    $getStarted = $welcome.querySelector('#get-started'),
+    $pictoWhite = $welcome.querySelector(
+      '.blackbyte-picto.-white',
     ) as HTMLElement,
-    $pictoBlack = document.querySelector(
-      '.welcome_picto .blackbyte-picto.-black',
+    $pictoBlack = $welcome.querySelector(
+      '.blackbyte-picto.-black',
     ) as HTMLElement,
     $bits = $pictoWhite.querySelectorAll('div') as NodeListOf<HTMLDivElement>;
 
@@ -71,14 +91,16 @@
     maxBitDistance = $welcome?.getBoundingClientRect().height / 2;
 
   $welcome?.addEventListener('mousemove', (event) => {
+    if (!$getStarted) return;
+
     const { clientX, clientY } = event as any;
-    const { left, top, width, height } = $welcome.getBoundingClientRect();
+    const { left, top, width, height } = $getStarted.getBoundingClientRect();
 
-    const distX = Math.abs(clientX - (left + width / 2)),
-      distY = Math.abs(clientY - (top + height * 0.9));
+    const distX = Math.abs(left + width * 0.5 - clientX),
+      distY = Math.abs(top + height * 0.5 - clientY);
 
-    let speedX = 1 - Math.min(distX / (width / 2), 1),
-      speedY = 1 - Math.min(distY / (height / 2), 1);
+    let speedX = 1 - Math.min(distX / 500, 1),
+      speedY = 1 - Math.min(distY / 500, 1);
 
     speed = Math.min(speedX, speedY);
   });
@@ -95,7 +117,7 @@
           applyToBit($bit, {
             x: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
             y: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
-            z: -500 + Math.random() * 1000,
+            z: -300 + Math.random() * 600,
             rotateX: -maxBitRotation + Math.random() * maxBitRotation * 2,
             rotateY: -maxBitRotation + Math.random() * maxBitRotation * 2,
             duration: 700,

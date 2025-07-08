@@ -1,5 +1,36 @@
+@keyframes welcome-logo-in {
+  from {
+    translate: 0 1em;
+    rotate: -90deg;
+    scale: 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-logo-out {
+  from {
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
+  to {
+    translate: 1em 2em;
+    rotate: 90deg;
+    scale: 0;
+    opacity: 0;
+  }
+}
+
 .welcome {
   height: 90vh;
+  max-height: s-rem(900px);
   position: relative;
   color: white;
 
@@ -34,25 +65,6 @@
     );
   }
 
-  /* &:before {
-    content: '';
-    z-index: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      s-color(accent, --alpha 0.05),
-      s-color(complementary, --alpha 0.1)
-    );
-    mix-blend-mode: overlay;
-    pointer-events: none;
-  } */
-
   .welcome_header {
     z-index: 10;
     position: absolute;
@@ -66,17 +78,50 @@
     transform: translate(-50%, 0);
   }
 
+  .welcome_animation {
+    font-size: 20px;
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
   .welcome_title {
     @s-typo (h1);
+  }
+
+  .welcome_animation-picto-white {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    scale: 0;
+    opacity: 0;
+    rotate: 90deg;
+    animation: welcome-logo-out 0.2s s-ease() forwards;
+  }
+  &.-exploded {
+    .welcome_animation-picto-white {
+      animation: welcome-logo-in 0.2s s-ease() forwards;
+    }
+  }
+
+  .welcome_animation-picto {
+    font-size: 20px;
+    perspective: 700;
+    position: absolute;
   }
 
   .blackbyte-picto {
     font-size: 20px;
     perspective: 700;
     position: absolute;
-    top: 150px;
-    left: calc(50% - 1.5em);
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    translate: -50% -50%;
+    pointer-events: none;
 
     &,
     * {
@@ -86,14 +131,13 @@
     }
   }
   &.-exploded {
-    .blackbyte-picto {
-      filter: blur(20px);
+    .welcome_picto {
+      filter: blur(10px);
     }
   }
 
   .blackbyte-picto.-white {
     color: white;
-    pointer-events: none;
 
     &,
     * {
@@ -107,6 +151,5 @@
   }
   .blackbyte-picto.-black {
     color: black;
-    pointer-events: none;
   }
 }

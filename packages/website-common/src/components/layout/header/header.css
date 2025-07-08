@@ -23,6 +23,8 @@
     gap: s-space(3);
 
     svg {
+      translate: 0 0.2em;
+
       [fill] {
         fill: s-color(main, foreground);
       }
@@ -50,22 +52,14 @@
   }
 
   .header_version {
-    /* font: s-font(code);
-    color: s-color(current);
-    font-size: s-size(3);
-    line-height: normal;
+    /* font: s-font(code); */
     pointer-events: none;
     @s-transition (fast);
-
-    @media theme-half-life {
-      color: s-color(accent, --lightness 70 --spin 15);
-    } */
   }
 
   .header_license {
     opacity: 0.8;
     display: inline-block;
-    margin-block-start: s-space(1);
   }
 
   .header_menu {
