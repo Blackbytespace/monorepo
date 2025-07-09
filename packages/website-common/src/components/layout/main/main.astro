@@ -24,11 +24,19 @@ import Header from '../header/header.astro';
 import Footer from '../footer/footer.astro';
 import './main';
 import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-picto.svg?raw';
-
-const { title, version, license } = Astro.props;
 ---
 
 <script>
+  import { __scrolledClasses } from '@blackbyte/sugar/feature';
+  import Lenis from 'lenis';
+
+  const lenis = new Lenis({
+    autoRaf: true,
+    anchors: true,
+  });
+
+  __scrolledClasses();
+
   document.addEventListener('astro:page-load', () => {
     if (document.location.pathname === '/') {
       document.body.classList.add('-home');
@@ -54,9 +62,7 @@ const { title, version, license } = Astro.props;
 
     <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
       <div class="container">
-        <div class="markdown typo-format typo-rhythm">
-          <slot />
-        </div>
+        <slot />
       </div>
     </div>
   </main>
@@ -66,6 +72,4 @@ const { title, version, license } = Astro.props;
     version={Astro.props.version}
     license={Astro.props.license}
   />
-
-  <!-- <Theme themes={Astro.props.themes} /> -->
 </Layout>

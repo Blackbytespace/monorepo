@@ -34,5 +34,7 @@ for (let [i, docObj] of allDoc.entries()) {
 ---
 
 <Layout pageTitle={DocItem.remarkPluginFrontmatter.title}>
-  <DocItem.Content />
+  <div class="markdown typo-format typo-rhythm">
+    <DocItem.Content />
+  </div>
 </Layout>

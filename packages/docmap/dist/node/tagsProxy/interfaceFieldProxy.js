@@ -12,7 +12,7 @@
  * @return      {ISDocmapInterfaceField}            The full interface data
  *
  * @since       2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }

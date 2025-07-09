@@ -1061,11 +1061,11 @@ class Docmap implements TDocmap {
     if (docmapObj.example?.length) {
       result.push('<div class="_examples">');
 
-      result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
+      result.push(`## sssExample${docmapObj.example.length > 1 ? 's' : ''}`);
       docmapObj.example.forEach((exampleObj) => {
-        result.push(`\`\`\`${exampleObj.language}
-${exampleObj.code}
-\`\`\``);
+        result.push(`\`\`\`${exampleObj.language}`);
+        result.push(exampleObj.code);
+        result.push(`\`\`\``);
       });
 
       result.push('</div>');

@@ -58,6 +58,10 @@ export default class AdvancedSelectElement extends __LitElement {
       name: 'FontAwesome',
       url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
     },
+    fa: {
+      name: 'FontAwesome',
+      url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
+    },
     pixelarticons: {
       name: 'PixelArtIcons',
       url: 'https://cdn.jsdelivr.net/gh/halfmage/pixelarticons@master/svg/%name.svg',

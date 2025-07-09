@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { __namespaceCompliant } from '@lotsof/sugar/string';
+import { __namespaceCompliant } from '@blackbyte/sugar/string';
 /**
  * @name              namespace
  * @namespace           shared.tags

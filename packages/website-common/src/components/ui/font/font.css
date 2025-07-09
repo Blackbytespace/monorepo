@@ -1,0 +1,19 @@
+.font-family-default {
+  font-family: s-font-family(default) !important;
+}
+
+.font-family-title {
+  font-family: s-font-family(title) !important;
+}
+
+.font-family-code {
+  font-family: s-font-family(code) !important;
+}
+
+.font-family-quote {
+  font-family: s-font-family(quote) !important;
+}
+
+.font-family-brand {
+  font-family: s-font-family(brand) !important;
+}

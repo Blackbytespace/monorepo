@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { __urlFromString } from '@lotsof/sugar/url';
+import { __urlFromString } from '@blackbyte/sugar/url';
 /**
  * @name              menuTag
  * @namespace           shared.tags

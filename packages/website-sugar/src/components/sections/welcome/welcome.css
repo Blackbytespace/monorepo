@@ -28,6 +28,17 @@
   }
 }
 
+@keyframes welcome-earth-in {
+  from {
+    translate: -50% calc(-50% + 50px);
+    opacity: 0;
+  }
+  to {
+    translate: -50% -50%;
+    opacity: 0.3;
+  }
+}
+
 .welcome {
   height: 90vh;
   max-height: s-rem(900px);
@@ -49,6 +60,7 @@
     width: 100vw;
     height: 90%;
     translate: -50% -50%;
+    opacity: 0;
     background-color: s-color(main, background, --lightness 10);
     background-image: url('/public/blackbyte-earth-bkg.jpg');
     background-position: bottom center;
@@ -56,13 +68,13 @@
     pointer-events: none;
     filter: grayscale(100%);
     mix-blend-mode: lighten;
-    opacity: 0.1;
     mask-image: linear-gradient(
       to bottom,
       transparent 20%,
       white 80%,
       transparent 100%
     );
+    animation: welcome-earth-in 2s ease-out forwards;
   }
 
   .welcome_header {
@@ -90,6 +102,46 @@
 
   .welcome_title {
     @s-typo (h1);
+    margin-block-end: s-space(5);
+  }
+
+  .welcome_description {
+    font-size: s-rem(30px);
+    line-height: 1.3;
+    margin-block-end: s-space(10);
+  }
+
+  .welcome_actions {
+    display: flex;
+    align-items: center;
+    gap: s-rem(20px);
+    margin-block-end: s-space(10);
+
+    a:has(svg) {
+      font-size: s-rem(22px);
+      @s-transition (fast);
+
+      &:hover,
+      &:focus {
+        color: s-color(accent);
+      }
+    }
+  }
+
+  .welcome_install {
+    background: s-color(main, surface, --lightness 20);
+    border: 1px solid s-color(accent, border);
+    padding: s-space(2) s-space(3);
+    margin-block-end: s-space(10);
+    user-select: all;
+    @s-typo (code);
+    @s-radius;
+  }
+
+  .welcome_made {
+    opacity: 0.5;
+    font-size: s-rem(12px);
+    user-select: none;
   }
 
   .welcome_animation-picto-white {

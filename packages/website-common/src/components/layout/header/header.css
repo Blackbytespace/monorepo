@@ -8,7 +8,12 @@
   height: var(--bb-header-height);
   background: s-color(main, background);
   border-bottom: 1px solid s-color(accent, border);
+  @s-transition;
   @s-zindex (header);
+
+  .scrolled-down & {
+    translate: 0 -100%;
+  }
 
   .container {
     position: relative;
@@ -52,14 +57,38 @@
   }
 
   .header_version {
-    /* font: s-font(code); */
     pointer-events: none;
+    font-size: s-rem(12px);
+    display: inline-block;
+    background: s-color(main, surface, --lightness 20) !important;
+    color: s-color(main, foreground, --alpha 0.6);
+    border: 1px solid s-color(accent, border) !important;
+    padding: s-space(1) s-space(2);
+    user-select: all;
+    @s-radius;
     @s-transition (fast);
   }
 
   .header_license {
     opacity: 0.8;
     display: inline-block;
+    @s-transition (fast);
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      color: s-color(accent);
+    }
+  }
+
+  .header_github {
+    display: inline-block;
+    @s-transition (fast);
+
+    &:hover,
+    &:focus {
+      color: s-color(accent);
+    }
   }
 
   .header_menu {

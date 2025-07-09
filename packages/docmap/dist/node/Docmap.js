@@ -8,24 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __getConfig } from '@lotsof/config';
-import { __encodeEntities } from '@lotsof/sugar/html';
-import __Docblock from '@lotsof/docblock';
-import { __composerJsonSync } from '@lotsof/sugar/composer';
-import { __checkPathWithMultipleExtensions, __fileName, __folderPath, __readJsonSync, __writeFileSync, } from '@lotsof/sugar/fs';
-import { __writeJsonSync } from '@lotsof/sugar/fs';
-import { __deepFilter, __deepMap, __deepMerge, __get, __set, __sort, __sortDeep, } from '@lotsof/sugar/object';
+import { __getConfig } from '@blackbyte/config';
+import { __encodeEntities } from '@blackbyte/sugar/html';
+import __Docblock from '@blackbyte/docblock';
+import { __composerJsonSync } from '@blackbyte/sugar/composer';
+import { __checkPathWithMultipleExtensions, __fileName, __folderPath, __readJsonSync, __writeFileSync, } from '@blackbyte/sugar/fs';
+import { __writeJsonSync } from '@blackbyte/sugar/fs';
+import { __deepFilter, __deepMap, __deepMerge, __get, __set, __sort, __sortDeep, } from '@blackbyte/sugar/object';
 import __defaults from './defaults.js';
-import { __packageJsonSync, __packageRootDir } from '@lotsof/sugar/package';
+import { __packageJsonSync, __packageRootDir } from '@blackbyte/sugar/package';
 import { globSync as __globSync } from 'glob';
-import { __namespaceCompliant } from '@lotsof/sugar/string';
+import { __namespaceCompliant } from '@blackbyte/sugar/string';
 import __fs from 'fs';
 import __micromatch from 'micromatch';
 import __path from 'path';
 function __toLowerCase(l = '') {
     return l.toLowerCase();
 }
-import { __isPlainObject } from '@lotsof/sugar/is';
+import { __isPlainObject } from '@blackbyte/sugar/is';
 /**
  * @name                Docmap
  * @namespace           node
@@ -49,12 +49,12 @@ import { __isPlainObject } from '@lotsof/sugar/is';
  * new __Docmap($1)
  *
  * @example             js
- * import __Docmap from '@lotsof/s-docmap';
+ * import __Docmap from '@blackbyte/s-docmap';
  * const docmap = new __Docmap();
  * await docmap.read();
  *
  * @since           2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 class Docmap {
     /**
@@ -68,7 +68,7 @@ class Docmap {
      * @param               {TDocmapTagProxyFn}      processor       The processor function
      *
      * @since           2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     static registerTagProxy(tag, processor) {
         this._registeredTagsProxy[tag] = processor;
@@ -81,7 +81,7 @@ class Docmap {
      * Constructor
      *
      * @since       2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     constructor(settings) {
         var _a;
@@ -93,7 +93,7 @@ class Docmap {
          * This store the docmap.json entries
          *
          * @since         2.0.0
-         * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+         * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
          */
         this._entries = {};
         this.settings = __deepMerge([
@@ -119,7 +119,7 @@ class Docmap {
      * @return      {Promise<TDocmapObj>}                          A promise instance that will be resolved once the docmap.json file(s) have been correctly read
      *
      * @since       2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     read(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
@@ -277,7 +277,7 @@ class Docmap {
      * @return        {TDocmapSearchResult}                        The result of your search
      *
      * @since       2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     search(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
@@ -336,7 +336,7 @@ class Docmap {
      * @return        {Record<string: SFile>}       The structured menu tree with an SFile instance attached for each source file
      *
      * @since       2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     _extractMenu(docmapJson = this._docmapJson) {
         const docmapJsonMenuByPackage = {};
@@ -469,7 +469,7 @@ class Docmap {
      * @return        {Promise}                                     A promise resolved once the scan process has been finished
      *
      * @since         2.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     build(params) {
         var _a;
@@ -752,11 +752,11 @@ class Docmap {
         // examples
         if ((_g = docmapObj.example) === null || _g === void 0 ? void 0 : _g.length) {
             result.push('<div class="_examples">');
-            result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
+            result.push(`## sssExample${docmapObj.example.length > 1 ? 's' : ''}`);
             docmapObj.example.forEach((exampleObj) => {
-                result.push(`\`\`\`${exampleObj.language}
-${exampleObj.code}
-\`\`\``);
+                result.push(`\`\`\`${exampleObj.language}`);
+                result.push(exampleObj.code);
+                result.push(`\`\`\``);
             });
             result.push('</div>');
         }

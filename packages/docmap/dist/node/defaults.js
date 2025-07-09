@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { __commonTextFileExtensions } from '@lotsof/sugar/extension';
+import { __commonTextFileExtensions } from '@blackbyte/sugar/extension';
 export default {
     settings: {
         tagsProxy: {},

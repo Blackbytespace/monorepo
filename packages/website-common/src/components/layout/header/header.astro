@@ -9,6 +9,7 @@ interface Props {
 }
 
 import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.svg?raw';
+import Search from '../search/search.astro';
 
 const { title, version, license } = Astro.props;
 ---
@@ -20,10 +21,12 @@ const { title, version, license } = Astro.props;
         <div class="header_logo">
           <Fragment set:html={__logoBlackbyte} />
         </div>
-        <h1 class="header_title">{title}</h1>
+        <h1 class="header_title font-family-brand">{title}</h1>
       </a>
     </div>
-    <div class="header_search"></div>
+    <div class="header_search">
+      <Search />
+    </div>
     <div class="header_metas">
       <p class="header_version">v{version}</p>
       <a
@@ -33,6 +36,14 @@ const { title, version, license } = Astro.props;
         title={license.name}
       >
         {license.name}
+      </a>
+      <a
+        class="header_github"
+        href="https://github.com/blackbytespace/monorepo"
+        title="Blackbyte monorepo on GitHub"
+        target="_blank"
+      >
+        <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>
       </a>
     </div>
   </div>

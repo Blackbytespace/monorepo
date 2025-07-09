@@ -49,7 +49,7 @@ import type { TDocblockBlockSettings, TDocblockBlockTagsMap } from './types.js';
  * new __DocblockBlock($1)
  *
  * @example         js
- * import { __DocblockBlock } from '@lotsof/s-docblock';
+ * import { __DocblockBlock } from '@blackbyte/s-docblock';
  * const docblock = new __DocblockBlock(myDocblockString);
  * const docblock.toObject();
  *
@@ -119,7 +119,7 @@ declare class DocblockBlock {
      *
      * Constructor
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     constructor(source: any, settings?: Partial<TDocblockBlockSettings>);
     /**
@@ -130,7 +130,7 @@ declare class DocblockBlock {
      *
      * @return      {String}              The passed docblock string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toString(): string;
     /**
@@ -141,7 +141,7 @@ declare class DocblockBlock {
      *
      * @return      {Object}              The parsed dobclock object
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toObject(): any;
     /**
@@ -154,7 +154,7 @@ declare class DocblockBlock {
      *
      * @return      {Object}          The object version of the source string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     parse(): Promise<any>;
 }

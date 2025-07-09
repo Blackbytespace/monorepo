@@ -1,5 +1,6 @@
 @mixin code {
-  background: s-color(main, surface) !important;
+  background: s-color(main, surface);
+  border: 1px solid s-color(accent, --alpha 0.05);
 
   @s-typo (code);
 

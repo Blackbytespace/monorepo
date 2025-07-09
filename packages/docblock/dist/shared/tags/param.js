@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __parse } from '@lotsof/sugar/string';
-import { __resolveTypeString } from '@lotsof/sugar/type';
+import { __parse } from '@blackbyte/sugar/string';
+import { __resolveTypeString } from '@blackbyte/sugar/type';
 /**
  * @name                param
  * @namespace           node.tags

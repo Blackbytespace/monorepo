@@ -40,14 +40,33 @@
 
   <div class="welcome_header">
     <h1 class="welcome_title">
-      Blackbyte <span class="color-accent">Sugar</span>
+      Blackbyte <span class="color-accent font-family-brand">Sugar</span>
     </h1>
+    <!-- <p class="welcome_description">
+      A toolkit that gives you access to lots of cool and useful <span
+        class="color-accent">Node/Js/Php</span
+      ><br />
+      <span class="color-accent">functions/classes</span> like "<span
+        class="color-accent">querySelectorLive</span
+      >", "<span class="color-accent">getFreePort</span>", etc...
+    </p> -->
     <p class="welcome_description">
-      A toolkit that gives you access to "lots of" of cool and useful
-      Node/Js/Php functions/classes<br />like "querySelectorLive",
-      "getFreePort", etc...
+      The toolkit that you missed...<br />...like <span class="color-accent"
+        >a sugar in your coffee!</span
+      >
     </p>
+    <code class="welcome_install">
+      npm i @blackbyte/sugar
+      <s-icon name="clipboard" provider="pixelarticons"></s-icon>
+    </code>
     <div class="welcome_actions">
+      <a
+        href="https://github.com/blackbytespace/monorepo"
+        title="Blackbyte monorepo on GitHub"
+        target="_blank"
+      >
+        <s-icon name="download" provider="pixelarticons"></s-icon>
+      </a>
       <a
         id="get-started"
         class="welcome_get-started button"
@@ -56,8 +75,18 @@
       >
         Get started
       </a>
+      <a
+        href="https://github.com/blackbytespace/monorepo"
+        title="Blackbyte monorepo on GitHub"
+        target="_blank"
+      >
+        <s-icon name="github" provider="pixelarticons"></s-icon>
+      </a>
     </div>
-    <p>Made with <span class="color-accent">♥</span> by Blackbyte</p>
+
+    <p class="welcome_made">
+      Made with <span class="color-accent">♥</span> by Blackbyte
+    </p>
   </div>
 </div>
 
@@ -87,7 +116,7 @@
 
   let speed = 0.1,
     exploded = false,
-    maxBitRotation = 30,
+    maxBitRotation = 20,
     maxBitDistance = $welcome?.getBoundingClientRect().height / 2;
 
   $welcome?.addEventListener('mousemove', (event) => {

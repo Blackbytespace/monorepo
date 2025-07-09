@@ -13,12 +13,11 @@
 .form-input,
 .form-select {
   color: s-color(main, form-text);
-  font-size: s-size(18);
-  line-height: s-size(18);
+  font-size: s-size(form);
   outline: none;
   border: 1px solid s-color(current, form-border);
   background: s-color(main, form-background);
-  padding: s-space(4) s-space(5);
+  padding: s-space(2) s-space(4);
   @s-radius;
 
   &:focus {

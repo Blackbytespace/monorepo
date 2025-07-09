@@ -19,9 +19,11 @@
  * @author 	Olivier Bossel <olivier.bossel@gmail.com>
  */
 function status(data, blockSettings) {
-    if (!['alpha', 'beta', 'stable', 'deprecated'].indexOf(data.value)) {
-        throw new Error(`The status tag value must be one of the following: "alpha", "beta", "stable", "deprecated" and you passed "${data.value}"`);
-    }
+    // if (!['alpha', 'beta', 'stable', 'deprecated'].indexOf(data.value?.trim())) {
+    //   throw new Error(
+    //     `The status tag value must be one of the following: "alpha", "beta", "stable", "deprecated" and you passed "${data.value}"`,
+    //   );
+    // }
     return data.value;
 }
 export default status;

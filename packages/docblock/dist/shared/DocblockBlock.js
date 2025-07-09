@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __sha256 } from '@lotsof/sugar/crypto';
-import { __isPlainObject } from '@lotsof/sugar/is';
-import { __deepMerge } from '@lotsof/sugar/object';
-import { __namespaceCompliant } from '@lotsof/sugar/string';
+import { __sha256 } from '@blackbyte/sugar/crypto';
+import { __isPlainObject } from '@blackbyte/sugar/is';
+import { __deepMerge } from '@blackbyte/sugar/object';
+import { __namespaceCompliant } from '@blackbyte/sugar/string';
 import { marked as __marked } from 'marked';
 import __asyncTag from './tags/async.js';
 import __authorTag from './tags/author.js';
@@ -83,7 +83,7 @@ import __typeTag from './tags/type.js';
  * new __DocblockBlock($1)
  *
  * @example         js
- * import { __DocblockBlock } from '@lotsof/s-docblock';
+ * import { __DocblockBlock } from '@blackbyte/s-docblock';
  * const docblock = new __DocblockBlock(myDocblockString);
  * const docblock.toObject();
  *
@@ -120,7 +120,7 @@ class DocblockBlock {
      *
      * Constructor
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     constructor(source, settings) {
         this.settings = __deepMerge([
@@ -153,7 +153,7 @@ class DocblockBlock {
      *
      * @return      {String}              The passed docblock string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toString() {
         return this._source.trim();
@@ -166,7 +166,7 @@ class DocblockBlock {
      *
      * @return      {Object}              The parsed dobclock object
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toObject() {
         if (!this._blockObj) {
@@ -184,7 +184,7 @@ class DocblockBlock {
      *
      * @return      {Object}          The object version of the source string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     parse() {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {

@@ -18,19 +18,17 @@
 
   --s-shade-foreground: --lightness 90;
   --s-shade-background: --lightness 0;
-  --s-shade-surface: --lightness 8;
+  --s-shade-surface: --lightness 10;
 
-  --s-shade-border: --alpha 0.1;
+  --s-shade-border: --alpha 0.2;
   --s-shade-hover: --darken 40;
   --s-shade-focus: --darken 10;
 
-  --s-shade-form-text: --lightness 50;
-  --s-shade-form-placeholder: --alpha 0.7;
-  --s-shade-form-background: --lightness 98;
+  --s-shade-form-text: --lightness 100;
+  --s-shade-form-placeholder: --lightness 100 --alpha 0.3;
+  --s-shade-form-background: --lightness 15;
   --s-shade-form-border: --alpha 0.2;
   --s-shade-form-border-focus: --alpha 0.5;
 
   --s-shade-platform: --lightness 70;
-
-  --s-font-family-title: 'Poppins', sans-serif;
 }

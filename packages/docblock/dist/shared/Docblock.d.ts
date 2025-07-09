@@ -29,7 +29,7 @@ import type { TDocblockSettings, TDocblockSortFnSetting } from './types.js';
  * new __SDocblock($1)
  *
  * @example         js
- * import __SDocblock from '@lotsof/s-docblock';
+ * import __SDocblock from '@blackbyte/s-docblock';
  * const docblock = new __SDocblock(source, {
  *    // override some settings here...
  * });
@@ -124,7 +124,7 @@ declare class SDocblock {
      * @return      {Array<SDocblockBlock>}                       An array of SDocblockBlock instances
      *
      * @since       2.0.0
-     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     private _parsed;
     parse(string?: string): Promise<__DocblockBlock[]>;
@@ -135,7 +135,7 @@ declare class SDocblock {
      * This method convert the parsed docblocks to a simple object
      *
      * @since       2.0.0
-     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toObject(): any[];
     /**
@@ -145,7 +145,7 @@ declare class SDocblock {
      * This method allows you to get the string version of the docblock(s)
      *
      * @since       2.0.0
-     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     toString(): string;
 }
