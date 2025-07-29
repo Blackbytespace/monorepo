@@ -15,16 +15,16 @@ import __isValidPath from 'is-valid-path';
  *
  * @todo      tests
  *
- * @snippet         __isPath($1)
+ * @snippet         isPath($1)
  *
  * @example       js
- * import { __isPath } from '@blackbyte/sugar/is';
- * __isPath('hello/world'); // => true
+ * import { isPath } from '@blackbyte/sugar/is';
+ * isPath('hello/world'); // => true
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isPath(path: string): boolean {
+export default function isPath(path: string): boolean {
   // check if the path is valid or not
   if (!__isValidPath(path)) return false;
   // otherwise, all is ok

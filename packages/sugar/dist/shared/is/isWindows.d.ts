@@ -12,13 +12,13 @@
  *
  * @todo      tests
  *
- * @snippet         __isWindows()
+ * @snippet         isWindows()
  *
  * @example       js
- * import { __isWindows } from '@lotsof/sugar/is';
- * __isWindows(); // => true
+ * import { isWindows } from '@blackbyte/sugar/is';
+ * isWindows(); // => true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isWindows(): boolean;
+export default function isWindows(): boolean;

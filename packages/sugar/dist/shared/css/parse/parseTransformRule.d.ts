@@ -15,12 +15,12 @@
  * @todo      tests
  *
  * @example  	js
- * import { __parseTransformRule } from '@lotsof/sugar/css';
- * __parseTransformRule('translate(-100px, 200rem));
+ * import { parseTransformRule } from '@blackbyte/sugar/css';
+ * parseTransformRule('translate(-100px, 200rem));
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-css-rules.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TParseTransformRuleResult = {
     scale: string | number;
@@ -38,4 +38,4 @@ export type TParseTransformRuleResult = {
     skewX: string | number;
     skewY: string | number;
 };
-export default function __parseTransformRule(transformStr: string): TParseTransformRuleResult;
+export default function parseTransformRule(transformStr: string): TParseTransformRuleResult;

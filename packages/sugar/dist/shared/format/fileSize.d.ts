@@ -25,17 +25,17 @@
  * @setting             {String}                [separator='.']         (string) Separator of thousands, default is '.'
  * @setting             {String}                [spacer=' ']            (string) Spacer of the output, default is ' '
  *
- * @snippet         __formatFileSize($1)
+ * @snippet         formatFileSize($1)
  *
  * @todo     tests
  *
  * @example             js
- * import { __formatFilesize } from '@lotsof/sugar/fs';
- * __formatFilesize(163931); // => 326.86 KB
+ * import { formatFilesize } from '@blackbyte/sugar/fs';
+ * formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFormatFileSizeSettings = {
     base?: number;
@@ -50,4 +50,4 @@ export type TFormatFileSizeSettings = {
     separator?: string;
     spacer?: string;
 };
-export default function __formatFileSize(size: number, settings?: TFormatFileSizeSettings): string | number | import("filesize").FileSizeReturnArray | import("filesize").FileSizeReturnObject;
+export default function formatFileSize(size: number, settings?: TFormatFileSizeSettings): string | number | import("filesize").FileSizeReturnArray | import("filesize").FileSizeReturnObject;

@@ -18,14 +18,14 @@
  * @setting     {Boolean}       [install=false]           Specify if you want to install the dependencies after adding them
  * @setting     {Boolean}       [override=false]          Specify if you want to override the dependencies if they already exists
  *
- * @snippet         __addPackageDependencies($1, $2)
+ * @snippet         addPackageDependencies($1, $2)
  *
  * @example         js
- * import { __addPackageDependencies } from '@lotsof/sugar/package`;
- * __addPackageDependencies('lodash');
+ * import { addPackageDependencies } from '@blackbyte/sugar/package`;
+ * addPackageDependencies('lodash');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TAddPackageDependenciesSettings = {
     cwd: string;
@@ -34,4 +34,4 @@ export type TAddPackageDependenciesSettings = {
     install: boolean;
     override: boolean;
 };
-export default function __addPackageDependencies(deps: Record<string, string>, settings: Partial<TAddPackageDependenciesSettings>): any;
+export default function addPackageDependencies(deps: Record<string, string>, settings: Partial<TAddPackageDependenciesSettings>): any;

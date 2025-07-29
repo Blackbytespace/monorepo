@@ -1,4 +1,4 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 import __extension from './extension.js';
 /**
  * @name            checkPathWithMultipleExtensions
@@ -15,24 +15,24 @@ import __extension from './extension.js';
  * @param       {Array<String>}     extensions      The extensions (without the dot) you want to check
  * @return      {String|undefined}                  The first valid path founded, or undefined
  *
- * @snippet         __checkPathWithMultipleExtensions($1, $2)
- * __checkPathWithMultipleExtensions($1, [
+ * @snippet         checkPathWithMultipleExtensions($1, $2)
+ * checkPathWithMultipleExtensions($1, [
  *     $2
  * ])
  *
  * @example         js
- * import { __checkPathWithMultipleExtensions } from '@lotsof/sugar/fs';
- * __checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
+ * import { checkPathWithMultipleExtensions } from '@blackbyte/sugar/fs';
+ * checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __checkPathWithMultipleExtensions(path, exts) {
+export default function checkPathWithMultipleExtensions(path, exts) {
     const extension = __extension(path) || '';
     const pathWithoutExt = path.replace(`.${extension}`, '');
     for (let i = 0; i < exts.length; i++) {
         const ext = exts[i];
-        if (__fs.existsSync(`${pathWithoutExt}.${ext}`)) {
+        if (fs.existsSync(`${pathWithoutExt}.${ext}`)) {
             return `${pathWithoutExt}.${ext}`;
         }
     }

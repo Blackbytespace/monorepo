@@ -12,16 +12,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isOsx()
+ * @snippet         isOsx()
  *
  * @example       js
- * import { __isOsx } from '@lotsof/sugar/is';
- * __isOsx(); // => true
+ * import { isOsx } from '@blackbyte/sugar/is';
+ * isOsx(); // => true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isOsx() {
+export default function isOsx() {
     var _a;
     if (process && process.platform) {
         return process.platform === 'darwin';

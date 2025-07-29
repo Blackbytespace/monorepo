@@ -15,17 +15,17 @@
  *
  * @setting         {Boolean}       [expandPleasantCssClassname=true]       Specify if you want to expand the pleasant css classes names like "s-typo:p" to "s-typo--p"
  *
- * @snippet         __extractCssClassesNames($1)
+ * @snippet         extractCssClassesNames($1)
  *
  * @example         js
- * import { __extractCssClassesNames } from '@lotsof/sugar/html';
- * __extractCssClassesNames('...');
+ * import { extractCssClassesNames } from '@blackbyte/sugar/html';
+ * extractCssClassesNames('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TExtractCssClassesNamesSettings = {
     expandPleasantCssClassname?: boolean;
     includeIds?: boolean;
 };
-export default function __extractCssClassesNames(html: string, settings?: Partial<TExtractCssClassesNamesSettings>): string[];
+export default function extractCssClassesNames(html: string, settings?: Partial<TExtractCssClassesNamesSettings>): string[];

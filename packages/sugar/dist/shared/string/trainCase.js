@@ -14,15 +14,15 @@ import { trainCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __trainCase($1)
+ * @snippet         trainCase($1)
  *
  * @example     js
- * import { __trainCase } from '@lotsof/sugar/string';
- * __trainCase('hello world'); // => Hello-World
+ * import { trainCase } from '@blackbyte/sugar/string';
+ * trainCase('hello world'); // => Hello-World
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __trainCase(text) {
     return trainCase(text);

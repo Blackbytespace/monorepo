@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __getCssRulesFromStylesheet($1)
+ * @snippet         getCssRulesFromStylesheet($1)
  *
  * @example  	js
- * import { __getCssRulesFromStylesheet } from '@lotsof/sugar/dom';
- * __getCssRulesFromStylesheet(myStylesheet);
+ * import { getCssRulesFromStylesheet } from '@blackbyte/sugar/dom';
+ * getCssRulesFromStylesheet(myStylesheet);
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-css-rules.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getCssRulesFromStylesheet(styleSheet: StyleSheet, recursive?: boolean): never[];
+export default function getCssRulesFromStylesheet(styleSheet: StyleSheet, recursive?: boolean): never[];

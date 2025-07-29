@@ -10,18 +10,18 @@
  * @param       {String}            name            The cookie name to get
  * @return      {any}                               The cookie value
  *
- * @snippet         __getCookie($1)
+ * @snippet         getCookie($1)
  *
  * @todo            tests
  *
  * @example         js
- * import { __getCookie } from '@blackbyte/sugar/cookie';
- * __getCookie('myCookie');
+ * import { getCookie } from '@blackbyte/sugar/cookie';
+ * getCookie('myCookie');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getCookie(name: string): any {
+export default function getCookie(name: string): any {
   let matches = document.cookie.match(
     new RegExp(
       '(?:^|; )' +

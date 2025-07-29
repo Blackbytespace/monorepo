@@ -1,6 +1,6 @@
-import __fs from 'fs';
-import __path from 'path';
-import __nodeModulesDir from './nodeModulesDir.js';
+import fs from 'fs';
+import path from 'path';
+import nodeModulesDir from './nodeModulesDir.js';
 
 /**
  * @name                    packageDir
@@ -20,11 +20,11 @@ import __nodeModulesDir from './nodeModulesDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __packageDir($1, $2)
+ * @snippet         packageDir($1, $2)
  *
  * @example         js
- * import { __packageDir } from '@blackbyte/sugar/package`;
- * __packageDir('lodash');
+ * import { packageDir } from '@blackbyte/sugar/package`;
+ * packageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
@@ -50,20 +50,20 @@ export default function packageDir(
   };
 
   // absolute path
-  if (__fs.existsSync(`${nameOrPath}/package.json`)) {
-    return __path.resolve(nameOrPath);
+  if (fs.existsSync(`${nameOrPath}/package.json`)) {
+    return path.resolve(nameOrPath);
   }
 
-  const vendorDir = __nodeModulesDir(settings);
+  const vendorDir = nodeModulesDir(settings);
 
   // current package dir "."
   if (nameOrPath === '.') {
-    return __path.resolve(`${vendorDir}/../`);
+    return path.resolve(`${vendorDir}/../`);
   }
 
   if (
     settings.checkExistence &&
-    !__fs.existsSync(`${vendorDir}/${nameOrPath}/package.json`)
+    !fs.existsSync(`${vendorDir}/${nameOrPath}/package.json`)
   ) {
     throw new Error(
       `The NPM package "<yellow>${nameOrPath}</yellow>" seems to not exists...`,

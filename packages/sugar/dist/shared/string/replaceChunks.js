@@ -16,21 +16,21 @@
  *
  * @todo      tests
  *
- * @snippet         __replaceChunks($1, [$2], $3)
+ * @snippet         replaceChunks($1, [$2], $3)
  * _replaceChunks($1, [$2], (token) => {
  *      return $3;
  * });
  *
  * @example    js
- * import { __replaceChunks } from '@lotsof/sugar/string'
- * __replaceChunks('hello world', ['or'], (token) => {
+ * import { replaceChunks } from '@blackbyte/sugar/string'
+ * replaceChunks('hello world', ['or'], (token) => {
  *      return `<span>${token}</span>;
  * }) // Hello w<span>or</span>ld
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __replaceChunks(string, chunks, replacer) {
+export default function replaceChunks(string, chunks, replacer) {
     const reg = new RegExp(chunks.join('|'), 'gi');
     return string.replace(reg, (str) => {
         return replacer(str);

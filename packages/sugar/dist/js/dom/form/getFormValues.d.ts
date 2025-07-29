@@ -12,13 +12,13 @@
  *
  * @todo      tests
  *
- * @snippet         __getFormValues($1)
+ * @snippet         getFormValues($1)
  *
  * @example  	js
- * import { __getFormValues } from '@lotsof/sugar/dom'
- * const values = __getFormValues(myForm);
+ * import { getFormValues } from '@blackbyte/sugar/dom'
+ * const values = getFormValues(myForm);
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getFormValues($form: HTMLFormElement): any;
+export default function getFormValues($form: HTMLFormElement): any;

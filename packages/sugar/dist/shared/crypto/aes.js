@@ -9,14 +9,14 @@ import toString from '../../shared/string/toString.js';
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the aes algorithm
  *
- * @snippet         __aes.encrypt($1)
+ * @snippet         aes.encrypt($1)
  *
  * @example         js
- * import { __aes } from '@lotsof/sugar/crypto';
- * __aes.encrypt('hello world');
+ * import { aes } from '@blackbyte/sugar/crypto';
+ * aes.encrypt('hello world');
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
  */
 const __encryptedMessages = {};
 export default {
@@ -27,12 +27,12 @@ export default {
      * Encrypt
      *
      * @param       {String}       message        The message to encrypt
-     * @param       {String}       [key='lotsof.sugar.crypto.aes']       The secret key to encrypt
+     * @param       {String}       [key='blackbyte.sugar.crypto.aes']       The secret key to encrypt
      * @return      {String}                       The encrypted message
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
      */
-    encrypt: function (message, key = 'lotsof.sugar.crypto.aes') {
+    encrypt: function (message, key = 'blackbyte.sugar.crypto.aes') {
         if (typeof message !== 'string')
             message = toString(message);
         const aesStr = AES.encrypt(message, key).toString();
@@ -46,12 +46,12 @@ export default {
      * Decrypt
      *
      * @param       {String}      message         The message to decrypt
-     * @param       {String}      [key='lotsof.sugar.crypto.aes']      The secret key to decrypt
+     * @param       {String}      [key='blackbyte.sugar.crypto.aes']      The secret key to decrypt
      * @return      {String}                      The decrypted message
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.io)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
      */
-    decrypt: function (message, key = 'lotsof.sugar.crypto.aes') {
+    decrypt: function (message, key = 'blackbyte.sugar.crypto.aes') {
         if (!__encryptedMessages[message]) {
             console.warn(`[AES] The message "${message}" cannot be decrypted...`);
             return;

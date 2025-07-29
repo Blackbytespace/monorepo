@@ -13,20 +13,20 @@
  *
  * @todo      tests
  *
- * @snippet         __isIsoDate($1)
+ * @snippet         isIsoDate($1)
  *
  * @example 	js
- * import { __isIsoDate } from '@blackbyte/sugar/is';
- * __isIsoDate('john.doe@gmail.com') => false
- * __isIsoDate('plop@yop.com') => false
- * __isIsoDate('hello') => false
- * __isIsoDate('2008-08') => true
+ * import { isIsoDate } from '@blackbyte/sugar/is';
+ * isIsoDate('john.doe@gmail.com') => false
+ * isIsoDate('plop@yop.com') => false
+ * isIsoDate('hello') => false
+ * isIsoDate('2008-08') => true
  *
  * @see             https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isIsoDate(value: string): boolean {
+export default function isIsoDate(value: string): boolean {
   const res =
     value.match(/^([0-9]{4})-(1[0-2]|0[1-9])$/) ||
     value.match(/^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])$/) ||

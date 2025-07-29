@@ -14,11 +14,11 @@ import { isbot as __isbot } from 'isbot';
  *
  * @todo      tests
  *
- * @snippet         __isCrawler()
+ * @snippet         isCrawler()
  *
  * @example 	js
- * import { __isCrawler } from '@blackbyte/sugar/is'
- * if (__isCrawler()) {
+ * import { isCrawler } from '@blackbyte/sugar/is'
+ * if (isCrawler()) {
  *   // do something cool
  * }
  *
@@ -26,6 +26,6 @@ import { isbot as __isbot } from 'isbot';
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCrawler(ua: string = navigator.userAgent): boolean {
+export default function isCrawler(ua: string = navigator.userAgent): boolean {
   return __isbot(ua);
 }

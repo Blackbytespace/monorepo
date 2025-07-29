@@ -15,11 +15,11 @@ import { dotCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __dotCase($1)
+ * @snippet         dotCase($1)
  *
  * @example     js
- * import { __dotCase } from '@blackbyte/sugar/string';
- * __dotCase('hello world'); // => hello.world
+ * import { dotCase } from '@blackbyte/sugar/string';
+ * dotCase('hello world'); // => hello.world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

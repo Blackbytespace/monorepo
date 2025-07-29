@@ -29,13 +29,13 @@
  *
  * @todo      tests
  *
- * @snippet         __deepize($1)
+ * @snippet         deepize($1)
  *
  * @example       js
- * import { __deepize } from '@lotsof/sugar/object';
- * __deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
+ * import { deepize } from '@blackbyte/sugar/object';
+ * deepize({ 'something.cool': 'hello' }); // => { something: { cool: 'hello' } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __deepize(object: any): any;
+export default function deepize(object: any): any;

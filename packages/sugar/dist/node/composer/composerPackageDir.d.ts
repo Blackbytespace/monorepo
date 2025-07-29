@@ -16,16 +16,16 @@
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __composerPackageDir($1)
+ * @snippet         composerPackageDir($1)
  *
  * @example         js
- * import { __composerPackageDir } from '@lotsof/sugar/composer`;
- * __composerPackageDir('lodash');
+ * import { composerPackageDir } from '@blackbyte/sugar/composer`;
+ * composerPackageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TComposerPackageDirSettings = {
     cwd: string;

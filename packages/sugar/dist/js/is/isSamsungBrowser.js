@@ -12,18 +12,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isSamsungBrowser()
+ * @snippet         isSamsungBrowser()
  *
  * @example    js
- * import { __isSamsumgBrowser } from '@lotsof/sugar/is'
- * if (__isSamsumgBrowser()) {
+ * import { isSamsungBrowser } from '@blackbyte/sugar/is'
+ * if (isSamsungBrowser()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSamsumgBrowser(ua = navigator.userAgent) {
+export default function isSamsungBrowser(ua = navigator.userAgent) {
     return ua.match(/SamsungBrowser/i) !== null;
 }
 //# sourceMappingURL=isSamsungBrowser.js.map

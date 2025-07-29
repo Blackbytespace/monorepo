@@ -1,8 +1,8 @@
-import __proxyArray from '../array/proxyArray.js';
-import __isDomElement from '../is/isDomElement.js';
-import __isPlainObject from '../is/isPlainObject.js';
-import __clone from '../object/clone.js';
-import __deepMap from '../object/deepMap.js';
+import proxyArray from '../array/proxyArray.js';
+import isDomElement from '../is/isDomElement.js';
+import isPlainObject from '../is/isPlainObject.js';
+import clone from '../object/clone.js';
+import deepMap from '../object/deepMap.js';
 
 /**
  * @name                            deepProxy
@@ -38,8 +38,8 @@ import __deepMap from '../object/deepMap.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepProxy } from '@blackbyte/sugar/object';
- * const a = __deepProxy({
+ * import { deepProxy } from '@blackbyte/sugar/object';
+ * const a = deepProxy({
  *    hello: 'world'
  * }, (actionObj) => {
  *    // do something with the actionObj...
@@ -73,7 +73,7 @@ export type TDeepProxySettings = {
   domElements: boolean;
 };
 
-export default function __deepProxy(
+export default function deepProxy(
   object,
   handlerFn,
   settings: Partial<TDeepProxySettings> = {},
@@ -101,7 +101,7 @@ export default function __deepProxy(
         if (
           settings.deep &&
           typeof value === 'object' &&
-          __isPlainObject(value)
+          isPlainObject(value)
         ) {
           value = proxify(value, [...path, key]);
         }
@@ -175,14 +175,14 @@ export default function __deepProxy(
 
   function proxify(obj, path) {
     if (obj === null) return obj;
-    if (!settings.domElements && __isDomElement(obj)) {
+    if (!settings.domElements && isDomElement(obj)) {
       return obj;
     }
 
     if (settings.deep) {
       for (const key of Object.keys(obj)) {
         if (Array.isArray(obj[key])) {
-          obj[key] = __proxyArray(obj[key]);
+          obj[key] = proxyArray(obj[key]);
           obj[key].watch(
             Object.getOwnPropertyNames(Array.prototype),
             (watchObj) => {
@@ -192,7 +192,7 @@ export default function __deepProxy(
               });
             },
           );
-        } else if (typeof obj[key] === 'object' && __isPlainObject(obj[key])) {
+        } else if (typeof obj[key] === 'object' && isPlainObject(obj[key])) {
           obj[key] = proxify(obj[key], [...path, key]);
         }
       }
@@ -207,11 +207,11 @@ export default function __deepProxy(
       enumerable: false,
       value: () => {
         // make a shallow copy of the proxy object
-        let __copy = __clone(p.proxy, { deep: true });
+        let __copy = clone(p.proxy, { deep: true });
         // mark the proxy as revoked
         isRevoked = true;
         // sanitize the copy
-        __copy = __deepMap(__copy, ({ value, prop }) => {
+        __copy = deepMap(__copy, ({ value, prop }) => {
           if (prop === 'revoke' && typeof value === 'function') {
             return -1;
           }
@@ -219,7 +219,7 @@ export default function __deepProxy(
         });
         // deep revoke the proxies
         setTimeout(() => {
-          __deepMap(
+          deepMap(
             p.proxy,
             ({ value, prop }) => {
               if (prop === 'revoke' && typeof value === 'function') {

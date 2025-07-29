@@ -1,12 +1,12 @@
-import * as __fs from 'fs';
-export default function __existsSync(path, settings) {
+import * as fs from 'fs';
+export default function existsSync(path, settings) {
     const set = Object.assign({ directory: true, file: true, symlink: true }, (settings || {}));
     let isSymlink = false, stats;
     try {
-        stats = __fs.statSync(path);
+        stats = fs.statSync(path);
         if (!stats)
             return false;
-        const realPath = __fs.realpathSync(path);
+        const realPath = fs.realpathSync(path);
         isSymlink = path !== realPath;
     }
     catch (e) {

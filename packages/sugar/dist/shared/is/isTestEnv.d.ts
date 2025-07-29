@@ -12,13 +12,13 @@
  *
  * @todo      tests
  *
- * @snippet         __isTestEnv()
+ * @snippet         isTestEnv()
  *
  * @example       js
- * import { __isTestEnv } from '@lotsof/sugar/is';
- * __isTestEnv(); // => true
+ * import { isTestEnv } from '@blackbyte/sugar/is';
+ * isTestEnv(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isTestEnv(): boolean;
+export default function isTestEnv(): boolean;

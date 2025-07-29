@@ -16,18 +16,18 @@
  * @setting         {Boolean}       [file=true]         Specify if you want to take care of files
  * @setting         {Boolean}       [symlink=true]      Specify if you want to take care of symlinks
  *
- * @snippet         __existsSync($1)
+ * @snippet         existsSync($1)
  *
  * @example         js
- * import { __existsSync } from '@lotsof/sugar/fs';
- * __existsSync('/something/cool.txt'); // => true
+ * import { existsSync } from '@blackbyte/sugar/fs';
+ * existsSync('/something/cool.txt'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TExistsSettings = {
     directory: boolean;
     file: boolean;
     symlink: boolean;
 };
-export default function __existsSync(path: string, settings?: Partial<TExistsSettings>): boolean;
+export default function existsSync(path: string, settings?: Partial<TExistsSettings>): boolean;

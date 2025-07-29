@@ -13,21 +13,21 @@
  *
  * @todo      tests
  *
- * @snippet         __toPlainObject($1)
+ * @snippet         toPlainObject($1)
  *
  * @example             js
- * import { __toPlainObject } from '@lotsof/sugar/class';
+ * import { toPlainObject } from '@blackbyte/sugar/class';
  * class Coco {
  *    constructor() {
  *      this.hello = 'world';
  *    }
  * }
- * __toPlainObject(new Coco()); // => { hello: 'world' }
+ * toPlainObject(new Coco()); // => { hello: 'world' }
  *
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __toPlainObject(theClass) {
+export default function toPlainObject(theClass) {
     const originalClass = theClass || {};
     const keys = Object.getOwnPropertyNames(originalClass);
     return keys.reduce((classAsObj, key) => {

@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isInteger($1)
+ * @snippet         isInteger($1)
  *
  * @example 	js
- * import { __isInteger } from '@blackbyte/sugar/is';
- * __isInteger(10) => true
- * __isInteger('hello') => false
+ * import { isInteger } from '@blackbyte/sugar/is';
+ * isInteger(10) => true
+ * isInteger('hello') => false
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isInteger(data: any): boolean {
+export default function isInteger(data: any): boolean {
   return (
     typeof data === 'number' &&
     !isNaN(data) &&

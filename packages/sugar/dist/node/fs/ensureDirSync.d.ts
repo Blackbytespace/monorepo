@@ -12,14 +12,14 @@
  *
  * @todo        tests
  *
- * @snippet         __ensureDirSync($1)
+ * @snippet         ensureDirSync($1)
  *
  * @example       js
- * import { __ensureDirSync } from '@lotsof/sugar/fs';
- * __ensureDirSync('my/cool/dir');
+ * import { ensureDirSync } from '@blackbyte/sugar/fs';
+ * ensureDirSync('my/cool/dir');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureDirSync(dir: string): void;
+export default function ensureDirSync(dir: string): void;

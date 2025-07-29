@@ -1,5 +1,5 @@
 const _viewportEventsInited = new WeakMap();
-export default function __viewportEvents($elm, settings) {
+export default function viewportEvents($elm, settings) {
     let observer, status = 'out';
     if (_viewportEventsInited.has($elm)) {
         return $elm;

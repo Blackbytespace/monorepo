@@ -18,11 +18,11 @@
  *
  * @todo      tests
  *
- * @snippet         __trimLines($1)
+ * @snippet         trimLines($1)
  *
  * @example         js
- * import { __trimLines } from '@lotsof/sugar/string';
- * __trimLines(`my cool lines
+ * import { trimLines } from '@blackbyte/sugar/string';
+ * trimLines(`my cool lines
  *      that have some lines to trim
  * and some not...`);
  * // my cool lines
@@ -30,9 +30,9 @@
  * // and some not...
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __trimLines(string, settings = {}) {
+export default function trimLines(string, settings = {}) {
     settings = Object.assign({ leftPadding: 0, rightPadding: 0, keepEmptyLines: true }, settings);
     string = string
         .split('\n')

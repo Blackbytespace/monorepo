@@ -1,6 +1,6 @@
-import __fs from 'fs';
-import __path from 'path';
-import __composerVendorDir from './composerVendorDir.js';
+import fs from 'fs';
+import path from 'path';
+import composerVendorDir from './composerVendorDir.js';
 
 /**
  * @name                    composerPackageDir
@@ -20,11 +20,11 @@ import __composerVendorDir from './composerVendorDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __composerPackageDir($1)
+ * @snippet         composerPackageDir($1)
  *
  * @example         js
- * import { __composerPackageDir } from '@blackbyte/sugar/composer`;
- * __composerPackageDir('lodash');
+ * import { composerPackageDir } from '@blackbyte/sugar/composer`;
+ * composerPackageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
@@ -50,20 +50,20 @@ export default function composerJsonSync(
   };
 
   // absolute path
-  if (__fs.existsSync(`${nameOrPath}/composer.json`)) {
-    return __path.resolve(nameOrPath);
+  if (fs.existsSync(`${nameOrPath}/composer.json`)) {
+    return path.resolve(nameOrPath);
   }
 
-  const vendorDir = __composerVendorDir(settings);
+  const vendorDir = composerVendorDir(settings);
 
   // current package dir "."
   if (nameOrPath === '.') {
-    return __path.resolve(`${vendorDir}/../`);
+    return path.resolve(`${vendorDir}/../`);
   }
 
   if (
     settings.checkExistence &&
-    !__fs.existsSync(`${vendorDir}/${nameOrPath}/composer.json`)
+    !fs.existsSync(`${vendorDir}/${nameOrPath}/composer.json`)
   ) {
     throw new Error(
       `The Composer package "<yellow>${nameOrPath}</yellow>" seems to not exists...`,

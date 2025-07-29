@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __deleteProperty($1, $2)
+ * @snippet         deleteProperty($1, $2)
  *
  * @example         js
- * import { __deleteProperty } from '@lotsof/sugar/object';
+ * import { deleteProperty } from '@blackbyte/sugar/object';
  * const myObject = {
  *    hello: 'world',
  *    plop: 'yop'
  * };
- * __deleteProperty(myObject, 'plop');
+ * deleteProperty(myObject, 'plop');
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __deleteProperty(object: any, dotPath: string): any;
+export default function deleteProperty(object: any, dotPath: string): any;

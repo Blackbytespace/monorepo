@@ -1,4 +1,4 @@
-import __isClass from '../is/isClass.js';
+import isClass from '../is/isClass.js';
 
 /**
  * @name            getExtendsStack
@@ -18,13 +18,13 @@ import __isClass from '../is/isClass.js';
  *
  * @todo      tests
  *
- * @snippet         __getExtendsStack($1)
+ * @snippet         getExtendsStack($1)
  *
  * @example         js
- * import { __getExtendsStack } from '@blackbyte/sugar/class';
+ * import { getExtendsStack } from '@blackbyte/sugar/class';
  * class Coco extends Error {}
  * class Plop extends Coco {}
- * __getExtendsStack(Plop); // => {Coco: [class ...], Error: [class ...]};
+ * getExtendsStack(Plop); // => {Coco: [class ...], Error: [class ...]};
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -46,7 +46,7 @@ const fn: TGetExtendsStack = function (
 ) {
   const stack = {};
 
-  if (!__isClass(cls)) {
+  if (!isClass(cls)) {
     cls = cls.constructor;
   }
 

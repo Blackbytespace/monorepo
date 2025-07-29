@@ -13,19 +13,19 @@
  *
  * @todo      tests
  *
- * @snippet         __isUrl($1)
+ * @snippet         isUrl($1)
  *
  * @example 	js
- * import { __isUrl } from '@lotsof/sugar/is';
- * __isUrl('http://google.com') => true
- * __isUrl('ftp://web.coco.com:2222') => false
- * __isUrl('hello') => false
+ * import { isUrl } from '@blackbyte/sugar/is';
+ * isUrl('http://google.com') => true
+ * isUrl('ftp://web.coco.com:2222') => false
+ * isUrl('hello') => false
  *
  * @see             https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isUrl(data) {
+export default function isUrl(data) {
     try {
         return Boolean(new URL(data));
     }

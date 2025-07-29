@@ -12,16 +12,16 @@
  * @param         {Array}         array               The array to deduplicates
  * @return        {Array}                             The deduplicated array
  *
- * @snippet         __unique($1)
+ * @snippet         unique($1)
  *
  * @example         js
- * import { __unique } from '@blackbyte/sugar/array';
- * __unique(['hello','world','hello','world']); // => ['hello','world']
+ * import { unique } from '@blackbyte/sugar/array';
+ * unique(['hello','world','hello','world']); // => ['hello','world']
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unique(array: any[]): any[] {
+export default function unique(array: any[]): any[] {
   const a = array.concat();
   for (let i = 0; i < a.length; ++i) {
     for (let j = i + 1; j < a.length; ++j) {

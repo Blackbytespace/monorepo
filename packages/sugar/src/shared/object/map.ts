@@ -16,18 +16,18 @@
  *
  * @todo      tests
  *
- * @snippet         __map($1, $2)
- * __map($1, ({value, prop}) => {
+ * @snippet         map($1, $2)
+ * map($1, ({value, prop}) => {
  *      $2
  * })
  *
  * @example         js
- * import { __map } from '@blackbyte/sugar/object';
+ * import { map } from '@blackbyte/sugar/object';
  * const myObject = {
  *    hello: 'world',
  *    cat: 'Nelson'
  * };
- * __map(myObject, ({value, prop}) => {
+ * map(myObject, ({value, prop}) => {
  *    return prop === 'hello' ? 'universe' : value;
  * });
  * {
@@ -47,7 +47,7 @@ export type TMapObjProcessorArg = {
   idx: number;
 };
 
-export default function __map(
+export default function map(
   object: any,
   processor: (item: TMapObjProcessorArg) => any,
 ): any {

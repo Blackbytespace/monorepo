@@ -13,17 +13,17 @@
  *
  * @todo        tests
  *
- * @snippet         __getArgsNames($1)
+ * @snippet         getArgsNames($1)
  *
  * @example         js
- * import { __getArgsNames } from '@blackbyte/sugar/function';
+ * import { getArgsNames } from '@blackbyte/sugar/function';
  * function hello(world, coco, plop) { }
- * __getArgsNames(hello); // => ['world', 'coco', 'plop']
+ * getArgsNames(hello); // => ['world', 'coco', 'plop']
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getArgsNames(func: Function): string[] {
+export default function getArgsNames(func: Function): string[] {
   // String representaation of the function code
   let str = func.toString();
   // Remove comments of the form /* ... */

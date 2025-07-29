@@ -19,11 +19,11 @@ import __unquote from '../string/unquote.js';
  *
  * @todo      tests
  *
- * @snippet         __get($1, $2)
+ * @snippet         get($1, $2)
  *
  * @example             js
- * import { __get } from '@blackbyte/sugar/object';
- * __get(myObject, 'my.cool.value'); // => 'Hello world'
+ * import { get } from '@blackbyte/sugar/object';
+ * get(myObject, 'my.cool.value'); // => 'Hello world'
  *
  * @since     1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

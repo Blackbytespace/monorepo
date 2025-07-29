@@ -15,14 +15,14 @@
  *
  * @todo      tests
  *
- * @snippet         __throttle($1, $2)
- * __throttle($1, () => {
+ * @snippet         throttle($1, $2)
+ * throttle($1, () => {
  *      $2
  * })
  *
  * @example 		js
- * import { __throttle } from '@lotsof/sugar/function';
- * const myThrottledFn = __throttle(1000, () => {
+ * import { throttle } from '@blackbyte/sugar/function';
+ * const myThrottledFn = throttle(1000, () => {
  * 		// my function content that will be
  * 		// executed only once each second
  * });
@@ -33,9 +33,9 @@
  * });
  *
  * @since         1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __throttle(threshhold, fn) {
+export default function throttle(threshhold, fn) {
     threshhold || (threshhold = 250);
     let last;
     return function () {

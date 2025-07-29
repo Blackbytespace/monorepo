@@ -15,14 +15,14 @@
  *
  * @todo      tests
  *
- * @snippet         __debounce($1, $2)
- * __debounce($1, () => {
+ * @snippet         debounce($1, $2)
+ * debounce($1, () => {
  *      $2
  * })
  *
  * @example 		js
- * import { __debounce } from '@blackbyte/sugar/function';
- * const myDebouncedFn = __debounce(1000, () => {
+ * import { debounce } from '@blackbyte/sugar/function';
+ * const myDebouncedFn = debounce(1000, () => {
  * 		// my function content that will be
  * 		// executed only once after the 1 second delay
  * });
@@ -35,7 +35,7 @@
  * @since           1.0.0
  * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __debounce(delay: number, fn: Function): Function {
+export default function debounce(delay: number, fn: Function): Function {
   let timer;
   return function () {
     // @ts-ignore

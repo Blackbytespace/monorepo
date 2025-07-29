@@ -9,13 +9,13 @@
  *
  * @return      {Boolean}       true if supported, false if not
  *
- * @snippet         __isHlsSupported($1)
+ * @snippet         isHlsSupported($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isHlsSupported } from '@blackbyte/sugar/id'
- * if (!__isHlsSupported()) {
+ * import { isHlsSupported } from '@blackbyte/sugar/id'
+ * if (!isHlsSupported()) {
  *   // do something
  * }
  *

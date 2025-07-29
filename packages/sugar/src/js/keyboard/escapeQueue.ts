@@ -1,4 +1,4 @@
-import __uniqid from '../string/uniqid.js';
+import uniqid from '../string/uniqid.js';
 
 /**
  * @name 		            escapeQueue
@@ -11,7 +11,7 @@ import __uniqid from '../string/uniqid.js';
  * It will take care of executing the last registered action first, then the others...
  * This function returns a SPromise instance on which you can call the `cancel` method to unregister your
  * action in the queue.
- * Note that you can get the current queue length by calling `__escapeQueueLength()`.
+ * Note that you can get the current queue length by calling `escapeQueueLength()`.
  *
  * @param           {Function}          [callback=null]            The callback to call on pressing escape
  * @param         {Object}      [settings={}]    An option object to configure your hotkey. Here's the list of available settings:
@@ -22,13 +22,13 @@ import __uniqid from '../string/uniqid.js';
  *
  * @todo      tests
  *
- * @snippet         __escapeQueue($1).then(() => {
+ * @snippet         escapeQueue($1).then(() => {
  *      $2
  * });
  *
  * @example    js
- * import { __escapeQueue } from '@blackbyte/sugar/keyboard'
- * const promise = __escapeQueue();
+ * import { escapeQueue } from '@blackbyte/sugar/keyboard'
+ * const promise = escapeQueue();
  * promise.then(() => {
  *      // do something...
  * });
@@ -67,7 +67,7 @@ class CancelablePromise extends Promise<void> {
   cancel() {}
 }
 
-export function __escapeQueueLength(): number {
+export function escapeQueueLength(): number {
   return _escapeQueue.length;
 }
 
@@ -111,7 +111,7 @@ export default function escapeQueue(
 
     // create the queue item to register
     const queueItem: TEscapeQueueItem = {
-      id: finalSettings.id ?? __uniqid(),
+      id: finalSettings.id ?? uniqid(),
       callback,
       resolve,
     };

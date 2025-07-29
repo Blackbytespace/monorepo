@@ -1,4 +1,4 @@
-import __unique from './unique.js';
+import unique from './unique.js';
 
 /**
  * @name                keysLast
@@ -14,16 +14,16 @@ import __unique from './unique.js';
  * @param    {Array}    keys    The keys to end the array with
  * @return    {Array}    The processed array
  *
- * @snippet         __keysLast($1, $2)
+ * @snippet         keysLast($1, $2)
  *
  * @example    js
- * import { __keysLast } from '@blackbyte/sugar/array'
- * __keysLast(['a','b','d','g','c'], ['d','g'])
+ * import { keysLast } from '@blackbyte/sugar/array'
+ * keysLast(['a','b','d','g','c'], ['d','g'])
  * // ['a','b','c','d','g']
  *
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __keysLast(array: any[], keys: any[]): any[] {
+export default function keysLast(array: any[], keys: any[]): any[] {
   // all the keys has to exist in the array stack
   // otherwise we filter it out
   keys = keys.filter((key) => {
@@ -34,7 +34,7 @@ export default function __keysLast(array: any[], keys: any[]): any[] {
   // reverse the array
   res = res.reverse();
   // remove double items
-  res = __unique(res);
+  res = unique(res);
   // reverse back the array
   res = res.reverse();
   // return the result

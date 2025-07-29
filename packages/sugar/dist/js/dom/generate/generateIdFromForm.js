@@ -1,4 +1,4 @@
-import { __md5 } from '@lotsof/sugar/crypto';
+import { md5 } from '@blackbyte/sugar/crypto';
 /**
  * @name            generateIdFromForm
  * @namespace       js.dom.generate
@@ -19,14 +19,14 @@ import { __md5 } from '@lotsof/sugar/crypto';
  *
  * @todo      tests
  *
- * @snippet         __generateIdFromForm()
+ * @snippet         generateIdFromForm()
  *
  * @example         js
- * import { __generateIdFromForm } from '@lotsof/sugar/dom';
- * const id = __generateIdFromForm($myForm); // => a md5 hash id
+ * import { generateIdFromForm } from '@blackbyte/sugar/dom';
+ * const id = generateIdFromForm($myForm); // => a md5 hash id
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function generateIdFromForm($form) {
     let attrStr = '';
@@ -47,6 +47,6 @@ export default function generateIdFromForm($form) {
             attrStr += controlName;
         }
     }
-    return `f${__md5.encrypt(attrStr)}`;
+    return `f${md5.encrypt(attrStr)}`;
 }
 //# sourceMappingURL=generateIdFromForm.js.map

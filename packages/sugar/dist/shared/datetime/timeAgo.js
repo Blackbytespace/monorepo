@@ -16,17 +16,17 @@ import __jsAgo from 'js-ago';
  *
  * @todo      tests
  *
- * @snippet         __timeAgo($1)
+ * @snippet         timeAgo($1)
  *
  * @example           js
- * import { __timeAgo } from '@lotsof/sugar/datetime';
- * __timeAgo(1611344957); // => 7 secs ago
+ * import { timeAgo } from '@blackbyte/sugar/datetime';
+ * timeAgo(1611344957); // => 7 secs ago
  *
  * @see         https://www.npmjs.com/package/js-ago
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __timeAgo(timestamp, format = 'medium') {
+export default function timeAgo(timestamp, format = 'medium') {
     return __jsAgo(timestamp, {
         format,
     });

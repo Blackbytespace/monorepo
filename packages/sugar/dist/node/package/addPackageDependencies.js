@@ -1,19 +1,19 @@
-import __childProcess from 'child_process';
-import __fs from 'fs';
-import * as __semver from 'semver';
-import __readJsonSync from '../fs/readJsonSync.js';
-import __writeJsonSync from '../fs/writeJsonSync.js';
-import __packageRootDir from './packageRootDir.js';
-export default function __addPackageDependencies(deps, settings) {
+import childProcess from 'child_process';
+import fs from 'fs';
+import * as semver from 'semver';
+import readJsonSync from '../fs/readJsonSync.js';
+import writeJsonSync from '../fs/writeJsonSync.js';
+import packageRootDir from './packageRootDir.js';
+export default function addPackageDependencies(deps, settings) {
     settings = Object.assign({ cwd: process.cwd(), dev: false, global: false, install: false }, (settings !== null && settings !== void 0 ? settings : {}));
     return new Promise((resolve, reject) => {
         // get the package.json file path
-        const packageJsonPath = `${__packageRootDir(settings.cwd)}/package.json`;
-        if (!__fs.existsSync(packageJsonPath)) {
+        const packageJsonPath = `${packageRootDir(settings.cwd)}/package.json`;
+        if (!fs.existsSync(packageJsonPath)) {
             throw new Error(`No package.json file found at "<yellow>${packageJsonPath}</yellow>"`);
         }
         // read the current package.json file
-        const packageJson = __readJsonSync(packageJsonPath);
+        const packageJson = readJsonSync(packageJsonPath);
         const depProp = settings.dev
             ? 'devDependencies'
             : settings.global
@@ -35,7 +35,7 @@ export default function __addPackageDependencies(deps, settings) {
                 packageJson[depProp][name] = version;
                 continue;
             }
-            const componentVersion = __semver.minVersion(version), projectVersion = __semver.coerce(packageJson[depProp][name]);
+            const componentVersion = semver.minVersion(version), projectVersion = semver.coerce(packageJson[depProp][name]);
             // check if the dependency satifdy the semver range
             if (componentVersion &&
                 projectVersion &&
@@ -44,11 +44,11 @@ export default function __addPackageDependencies(deps, settings) {
             }
         }
         // write the new package.json file
-        __writeJsonSync(packageJsonPath, packageJson);
+        writeJsonSync(packageJsonPath, packageJson);
         // check if we need to install the dependencies
         if (settings.install) {
-            const res = __childProcess.spawnSync('npm install', [], {
-                cwd: __packageRootDir(settings.cwd),
+            const res = childProcess.spawnSync('npm install', [], {
+                cwd: packageRootDir(settings.cwd),
                 shell: true,
             });
             if (res.stderr.toString() !== '') {

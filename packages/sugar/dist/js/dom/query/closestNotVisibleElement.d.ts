@@ -11,18 +11,18 @@
  * @param 		{HTMLElement} 					$elm  		The element to start on
  * @return 		{HTMLElement | undefined} 								The element found or undefined
  *
- * @snippet         __closestNotVisibleElement($1)
+ * @snippet         closestNotVisibleElement($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __closestNotVisibleElement } from '@lotsof/sugar/dom'
- * const closestElm =  __closestNotVisibleElement(myCoolElement);
+ * import { closestNotVisibleElement } from '@blackbyte/sugar/dom'
+ * const closestElm =  closestNotVisibleElement(myCoolElement);
  * if (closestElm) {
  * 		// we have found en element that is not visible
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __closestNotVisibleElement($elm: HTMLElement): HTMLElement | undefined;
+export default function closestNotVisibleElement($elm: HTMLElement): HTMLElement | undefined;

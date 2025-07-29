@@ -1,31 +1,45 @@
-import __commonAudioFileExtensions from './commonAudioFileExtensions.js';
-import __commonCompressedFileExtensions from './commonCompressedFileExtensions.js';
-import __commonDataFileExtensions from './commonDataFileExtensions.js';
-import __commonDiscFileExtensions from './commonDiscFileExtensions.js';
-import __commonEmailFileExtensions from './commonEmailFileExtensions.js';
-import __commonExecutableFileExtensions from './commonExecutableFileExtensions.js';
-import __commonFileExtensions from './commonFileExtensions.js';
-import __commonFontFileExtensions from './commonFontFileExtensions.js';
-import __commonImageFileExtensions from './commonImageFileExtensions.js';
-import __commonMediaFileExtensions from './commonMediaFileExtensions.js';
-import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
-import __commonTextFileExtensions from './commonTextFileExtensions.js';
-import __commonVideoFileExtensions from './commonVideoFileExtensions.js';
-import __commonWebFileExtensions from './commonWebFileExtensions.js';
+import commonAudioFileExtensions from './commonAudioFileExtensions.js';
+import commonCompressedFileExtensions from './commonCompressedFileExtensions.js';
+import commonDataFileExtensions from './commonDataFileExtensions.js';
+import commonDiscFileExtensions from './commonDiscFileExtensions.js';
+import commonEmailFileExtensions from './commonEmailFileExtensions.js';
+import commonExecutableFileExtensions from './commonExecutableFileExtensions.js';
+import commonFileExtensions from './commonFileExtensions.js';
+import commonFontFileExtensions from './commonFontFileExtensions.js';
+import commonImageFileExtensions from './commonImageFileExtensions.js';
+import commonMediaFileExtensions from './commonMediaFileExtensions.js';
+import commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
+import commonTextFileExtensions from './commonTextFileExtensions.js';
+import commonVideoFileExtensions from './commonVideoFileExtensions.js';
+import commonWebFileExtensions from './commonWebFileExtensions.js';
 
 export {
-  __commonAudioFileExtensions,
-  __commonCompressedFileExtensions,
-  __commonDataFileExtensions,
-  __commonDiscFileExtensions,
-  __commonEmailFileExtensions,
-  __commonExecutableFileExtensions,
-  __commonFileExtensions,
-  __commonFontFileExtensions,
-  __commonImageFileExtensions,
-  __commonMediaFileExtensions,
-  __commonProgrammingFileExtensions,
-  __commonTextFileExtensions,
-  __commonVideoFileExtensions,
-  __commonWebFileExtensions,
+  commonAudioFileExtensions as __commonAudioFileExtensions,
+  commonCompressedFileExtensions as __commonCompressedFileExtensions,
+  commonDataFileExtensions as __commonDataFileExtensions,
+  commonDiscFileExtensions as __commonDiscFileExtensions,
+  commonEmailFileExtensions as __commonEmailFileExtensions,
+  commonExecutableFileExtensions as __commonExecutableFileExtensions,
+  commonFileExtensions as __commonFileExtensions,
+  commonFontFileExtensions as __commonFontFileExtensions,
+  commonImageFileExtensions as __commonImageFileExtensions,
+  commonMediaFileExtensions as __commonMediaFileExtensions,
+  commonProgrammingFileExtensions as __commonProgrammingFileExtensions,
+  commonTextFileExtensions as __commonTextFileExtensions,
+  commonVideoFileExtensions as __commonVideoFileExtensions,
+  commonWebFileExtensions as __commonWebFileExtensions,
+  commonAudioFileExtensions,
+  commonCompressedFileExtensions,
+  commonDataFileExtensions,
+  commonDiscFileExtensions,
+  commonEmailFileExtensions,
+  commonExecutableFileExtensions,
+  commonFileExtensions,
+  commonFontFileExtensions,
+  commonImageFileExtensions,
+  commonMediaFileExtensions,
+  commonProgrammingFileExtensions,
+  commonTextFileExtensions,
+  commonVideoFileExtensions,
+  commonWebFileExtensions,
 };

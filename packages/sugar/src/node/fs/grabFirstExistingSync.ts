@@ -1,4 +1,4 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 
 /**
  * @name                grabFirstExistingSync
@@ -13,12 +13,12 @@ import * as __fs from 'fs';
  * @return          {String}                            The first existing path
  *
  * @todo            tests
- * 
- * @snippet         __gradFirst
- * 
+ *
+ * @snippet         grabFirstExistingSync($1)
+ *
  * @example       js
- * import { __grabFirstExistinSync } from '@blackbyte/sugar/fs';
- * __grabFirstExisting([
+ * import { grabFirstExistingSync } from '@blackbyte/sugar/fs';
+ * grabFirstExistingSync([
  *  'file/1.txt',
  *  'file/2.txt
  * ]); // => 'file/2.txt'
@@ -26,10 +26,10 @@ import * as __fs from 'fs';
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __grabFirstExistingSync(paths: string[]): string {
+export default function grabFirstExistingSync(paths: string[]): string {
   let result: string = '';
   for (let [idx, path] of Object.entries(paths)) {
-    if (__fs.existsSync(path)) {
+    if (fs.existsSync(path)) {
       result = path;
       break;
     }

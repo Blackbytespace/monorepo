@@ -1,5 +1,5 @@
-import __fs from 'fs';
-import __packageRootDir from './packageRootDir.js';
+import fs from 'fs';
+import packageRootDir from './packageRootDir.js';
 
 /**
  * @name                    nodeModulesDir
@@ -17,11 +17,11 @@ import __packageRootDir from './packageRootDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __nodeModulesDir($1)
+ * @snippet         nodeModulesDir($1)
  *
  * @example         js
- * import { __nodeModulesDir } from '@blackbyte/sugar/composer`;
- * __nodeModulesDir('lodash');
+ * import { nodeModulesDir } from '@blackbyte/sugar/composer`;
+ * nodeModulesDir('lodash');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -42,11 +42,11 @@ export default function nodeModulesDir(
     ...(settings ?? {}),
   };
 
-  let nodeModulesDir = `${__packageRootDir(set.cwd, {
+  let nodeModulesDir = `${packageRootDir(set.cwd, {
     highest: set.monorepo,
   })}/node_modules`;
 
-  if (set.checkExistence && !__fs.existsSync(nodeModulesDir)) {
+  if (set.checkExistence && !fs.existsSync(nodeModulesDir)) {
     throw new Error(
       `The NPM node_modules directory "<yellow>${nodeModulesDir}</yellow>" does not exists...`,
     );

@@ -20,11 +20,11 @@ import { hashFileSync } from 'hasha';
  *
  * @todo            tests
  *
- * @snippet         __fileHashSync($1)
+ * @snippet         fileHashSync($1)
  *
  * @example         js
- * import { __fileHashSync } from '@blackbyte/sugar/fs';
- * __fileHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
+ * import { fileHashSync } from '@blackbyte/sugar/fs';
+ * fileHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -35,7 +35,7 @@ export type TFileHashSettings = {
   encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
 
-export default function __fileHashSync(
+export default function fileHashSync(
   filePath: string,
   settings: Partial<TFileHashSettings> = {},
 ): string {

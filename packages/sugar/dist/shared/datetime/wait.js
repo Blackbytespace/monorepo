@@ -14,17 +14,17 @@
  *
  * @todo      tests
  *
- * @snippet         __wait($1)
- * await __wait($1)
+ * @snippet         wait($1)
+ * await wait($1)
  *
  * @example       js
- * import { __wait } from '@lotsof/sugar/datetime';
- * await __wait(2000);
+ * import { wait } from '@blackbyte/sugar/datetime';
+ * await wait(2000);
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __wait(timeout = 0) {
+export default function wait(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve();

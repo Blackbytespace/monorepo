@@ -21,24 +21,24 @@
  *
  * @todo      tests
  *
- * @snippet         __querySelectorAll($1)
+ * @snippet         querySelectorAll($1)
  *
  * @example 	js
- * import { __querySelectorAll } from '@lotsof/sugar/dom';
+ * import { querySelectorAll } from '@blackbyte/sugar/dom';
  * // simple query
- * const elms = __querySelectorAll('.a-cool-css-selector');
+ * const elms = querySelectorAll('.a-cool-css-selector');
  *
  * // get elements that are in the viewport
- * const elms = __querySelectorAll('.a-cool-css-selector', {
+ * const elms = querySelectorAll('.a-cool-css-selector', {
  * 		inViewport : true
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TQuerySelectorAllSettings = {
     visible: boolean | null;
     inViewport: boolean | null;
     rootNode: HTMLElement;
 };
-export default function __querySelectorAll(selector: string, settings?: Partial<TQuerySelectorAllSettings>): HTMLElement[];
+export default function querySelectorAll(selector: string, settings?: Partial<TQuerySelectorAllSettings>): HTMLElement[];

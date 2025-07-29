@@ -1,4 +1,4 @@
-export default function __parseAuthorString(string) {
+export default function parseAuthorString(string) {
     var _a, _b, _c, _d, _e, _f;
     const reg = /(.*)\s?<(.*)>\s?\((.*)\)/gm;
     const matches = reg.exec(string.trim());

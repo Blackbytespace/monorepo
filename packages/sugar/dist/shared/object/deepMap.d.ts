@@ -19,21 +19,21 @@
  *
  * @todo      tests
  *
- * @snippet         __deepMap($1, $2)
- * __deepMap($1, ({object, prop, value, path}) => {
+ * @snippet         deepMap($1, $2)
+ * deepMap($1, ({object, prop, value, path}) => {
  *      $2
  * })
  *
  * @example       js
- * import { __deepMap } from '@lotsof/sugar/object';
- * __deepMap({
+ * import { deepMap } from '@blackbyte/sugar/object';
+ * deepMap({
  *    hello: 'world'
  * }, ({object, prop, value, path}) => {
  *    return '~ ' + value;
  * });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepMapSettings = {
     classInstances?: boolean;
@@ -41,4 +41,4 @@ export type TDeepMapSettings = {
     clone?: boolean;
     privateProps?: boolean;
 };
-export default function __deepMap(objectOrArray: any, processor?: Function, settings?: TDeepMapSettings, _path?: never[]): any;
+export default function deepMap(objectOrArray: any, processor?: Function, settings?: TDeepMapSettings, _path?: never[]): any;

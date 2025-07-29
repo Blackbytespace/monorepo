@@ -12,9 +12,9 @@
  *
  * @todo        tests
  *
- * @snippet         __parseHtml($1)
+ * @snippet         parseHtml($1)
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __parseHtml(message: any): any;
+export default function parseHtml(message: any): any;

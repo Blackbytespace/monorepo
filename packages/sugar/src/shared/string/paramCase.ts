@@ -15,11 +15,11 @@ import { kebabCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __paramCase($1)
+ * @snippet         paramCase($1)
  *
  * @example       js
- * import { __paramCase } from '@blackbyte/sugar/string';
- * __paramCase('some thoing cool'); // => some-thing-cool
+ * import { paramCase } from '@blackbyte/sugar/string';
+ * paramCase('some thoing cool'); // => some-thing-cool
  *
  * @see         https://www.npmjs.com/package/change-case
  * @since       1.0.0

@@ -15,13 +15,13 @@
  *
  * @todo      tests
  *
- * @snippet         __convert($1, $2)
+ * @snippet         convert($1, $2)
  *
  * @example         js
- * import { __convert } from '@lotsof/sugar/color';
- * __convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
+ * import { convert } from '@blackbyte/sugar/color';
+ * convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __convert(input: any, format?: string): string | object;
+export default function convert(input: any, format?: string): string | object;

@@ -1,4 +1,4 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 
 /**
  * @name            readJsonSync
@@ -14,24 +14,24 @@ import * as __fs from 'fs';
  *
  * @todo            tests
  *
- * @snippet         __readJsonSync($1)
+ * @snippet         readJsonSync($1)
  *
  * @example         js
- * import { __readJsonSync } from '@blackbyte/sugar/fs';
- * __readJsonSync('my-cool-json/file.json');
+ * import { readJsonSync } from '@blackbyte/sugar/fs';
+ * readJsonSync('my-cool-json/file.json');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __readJsonSync(path: string): any {
-  if (!__fs.existsSync(path)) {
+export default function readJsonSync(path: string): any {
+  if (!fs.existsSync(path)) {
     throw new Error(
       `<red>[readJsonSync]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`,
     );
   }
 
-  const jsonStr = __fs.readFileSync(path, 'utf8').toString();
+  const jsonStr = fs.readFileSync(path, 'utf8').toString();
   const json = JSON.parse(jsonStr);
   return json;
 }

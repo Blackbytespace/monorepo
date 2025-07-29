@@ -10,19 +10,19 @@
  * @param       {HTMLElement}        $elm           The element to inject content into
  * @param       {String}            html           The html to inject
  *
- * @snippet         __injectHtml($1, $2)
+ * @snippet         injectHtml($1, $2)
  *
  * @todo      tests
  *
  * @example    js
- * import { __injectHtml } from '@blackbyte/sugar/dom'
- *  __injectHtml('<html>...</html>`, $myElement);
+ * import { injectHtml } from '@blackbyte/sugar/dom'
+ *  injectHtml('<html>...</html>`, $myElement);
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __injectHtml($elm: HTMLElement, html: string): void {
+export default function injectHtml($elm: HTMLElement, html: string): void {
   // replace the content
   $elm.innerHTML = html;
 

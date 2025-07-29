@@ -1,4 +1,4 @@
-import __Mark from 'mark.js';
+import Mark from 'mark.js';
 
 /**
  * @name            highlightText
@@ -14,13 +14,13 @@ import __Mark from 'mark.js';
  * @param      {String|String[]|RegExp}      search      The text to highlight
  * @return      {String|HTMLElement}                    The processed string or HTMLElement
  *
- * @snippet         __highlightText($1, $2)
+ * @snippet         highlightText($1, $2)
  *
  * @todo      tests
  *
  * @example         php
- * import { __highlightText } from '@blackbyte/sugar/string';
- * __highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
+ * import { highlightText } from '@blackbyte/sugar/string';
+ * highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
  *
  * @see         https://markjs.io
  * @since       1.0.0
@@ -31,7 +31,7 @@ export type THighlightTextSettings = {
   class: string;
 };
 
-export default function __highlightText<T>(
+export default function highlightText<T>(
   ctx: T,
   search: string | string[] | typeof RegExp,
   settings?: Partial<THighlightTextSettings>,
@@ -51,7 +51,7 @@ export default function __highlightText<T>(
     resType = 'element';
   }
 
-  const mark = new __Mark(internalCtx),
+  const mark = new Mark(internalCtx),
     markOptions = {
       className: finalSettings.class,
     };

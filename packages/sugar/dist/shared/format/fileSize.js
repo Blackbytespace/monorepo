@@ -1,5 +1,5 @@
 import { filesize as __filesize } from 'filesize';
-export default function __formatFileSize(size, settings = {}) {
+export default function formatFileSize(size, settings = {}) {
     // @ts-ignore
     return __filesize(size, settings);
 }

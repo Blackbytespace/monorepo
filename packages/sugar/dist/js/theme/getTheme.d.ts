@@ -16,14 +16,14 @@
  *
  * @todo      tests
  *
- * @snippet         __getTheme($1)
+ * @snippet         getTheme($1)
  *
  * @example         js
- * import { __getTheme } from '@lotsof/sugar/theme';
- * __getTheme('dark');
+ * import { getTheme } from '@blackbyte/sugar/theme';
+ * getTheme('dark');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetThemeSettings = {
     cookieName: string;

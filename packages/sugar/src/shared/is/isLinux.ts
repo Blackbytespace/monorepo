@@ -12,16 +12,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isLinux($1)
+ * @snippet         isLinux($1)
  *
  * @example       js
- * import { __isLinux } from '@blackbyte/sugar/is';
- * __isLinux(); // => true
+ * import { isLinux } from '@blackbyte/sugar/is';
+ * isLinux(); // => true
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isLinux(): boolean {
+export default function isLinux(): boolean {
   if (process && process.platform) {
     return process.platform === 'linux';
   }

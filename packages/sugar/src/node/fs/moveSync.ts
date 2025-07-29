@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * @name            moveSync
@@ -12,19 +12,19 @@ import __fs from 'fs-extra';
  * @param       {String}              src           The source path to moveSync
  * @param       {String}              dest          The destination path
  *
- * @snippet         __moveSync($1, $2)
+ * @snippet         moveSync($1, $2)
  *
  * @example       js
- * import { __moveSync } from '@blackbyte/sugar/fs';
- * __moveSync('my/cool/dir', 'another/place/for/directory');
+ * import { moveSync } from '@blackbyte/sugar/fs';
+ * moveSync('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __moveSync(src: string, dest: string): void {
+export default function moveSync(src: string, dest: string): void {
   if (src === dest) {
     return;
   }
-  __fs.moveSync(src, dest);
+  fs.moveSync(src, dest);
 }

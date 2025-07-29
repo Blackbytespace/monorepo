@@ -15,11 +15,11 @@ import { __querySelectorUp } from '@blackbyte/sugar/dom';
  *
  * @todo      tests
  *
- * @snippet         __isDarkMode()
+ * @snippet         isDarkMode()
  *
  * @example 	js
- * import { __isDarkMode } from '@blackbyte/sugar/is'
- * if ( __isDarkMode()) {
+ * import { isDarkMode } from '@blackbyte/sugar/is'
+ * if ( isDarkMode()) {
  *   // do something cool
  * }
  *
@@ -32,7 +32,7 @@ export type TIsDarkModeSettings = {
   rootNode?: HTMLElement;
 };
 
-export default function __isDarkMode(
+export default function isDarkMode(
   settings?: Partial<TIsDarkModeSettings>,
 ): boolean {
   const finalSettings: TIsDarkModeSettings = {

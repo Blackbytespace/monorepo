@@ -1,4 +1,4 @@
-import __isVisible from '../../is/isVisible.js';
+import isVisible from '../../is/isVisible.js';
 /**
  * @name                closestNotVisibleElement
  * @namespace           js.dom.query
@@ -12,26 +12,26 @@ import __isVisible from '../../is/isVisible.js';
  * @param 		{HTMLElement} 					$elm  		The element to start on
  * @return 		{HTMLElement | undefined} 								The element found or undefined
  *
- * @snippet         __closestNotVisibleElement($1)
+ * @snippet         closestNotVisibleElement($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __closestNotVisibleElement } from '@lotsof/sugar/dom'
- * const closestElm =  __closestNotVisibleElement(myCoolElement);
+ * import { closestNotVisibleElement } from '@blackbyte/sugar/dom'
+ * const closestElm =  closestNotVisibleElement(myCoolElement);
  * if (closestElm) {
  * 		// we have found en element that is not visible
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __closestNotVisibleElement($elm) {
+export default function closestNotVisibleElement($elm) {
     const originalElm = $elm;
     let $parent = $elm.parentNode;
     while ($parent && $parent != originalElm.ownerDocument) {
         // @ts-ignore
-        if (!__isVisible($parent)) {
+        if (!isVisible($parent)) {
             return $parent;
         }
         $parent = $parent.parentNode;

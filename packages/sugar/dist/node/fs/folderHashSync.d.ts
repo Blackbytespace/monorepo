@@ -17,18 +17,18 @@
  * @setting         {String}            [algo='sha356']             The algorithm to use
  * @setting         {BinaryToTextEncoding}      [digest='base64']       How to digest the hash
  *
- * @snippet         __folderHashSync($1)
+ * @snippet         folderHashSync($1)
  *
  * @example         js
- * import { __folderHashSync } from '@lotsof/sugar/fs';
- * __folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
+ * import { folderHashSync } from '@blackbyte/sugar/fs';
+ * folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFolderHashSettings = {
     recursive: boolean;
     algo: 'md5' | 'sha1' | 'sha256' | 'sha512';
     encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
-export default function __folderHashSync(folderPath: string, settings?: Partial<TFolderHashSettings>): string;
+export default function folderHashSync(folderPath: string, settings?: Partial<TFolderHashSettings>): string;

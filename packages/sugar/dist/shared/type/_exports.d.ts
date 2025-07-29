@@ -1,2 +1,2 @@
-import __parseTypeString from './parseTypeString.js';
-export { __parseTypeString };
+import parseTypeString from './parseTypeString.js';
+export { parseTypeString as __parseTypeString, parseTypeString };

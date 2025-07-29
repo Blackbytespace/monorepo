@@ -12,17 +12,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isBrowser()
+ * @snippet         isBrowser()
  *
  * @example    js
- * import { __isBrowser } from '@blackbyte/sugar/is'
- * if (__isBrowser() {
+ * import { isBrowser } from '@blackbyte/sugar/is'
+ * if (isBrowser() {
  *   // do something
  * }
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isBrowser(): boolean {
+export default function isBrowser(): boolean {
   return typeof window !== 'undefined';
 }

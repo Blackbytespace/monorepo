@@ -12,18 +12,18 @@ var _a, _b;
  * @param 		{HTMLElement} 				[$elm=document]  			The element to monitor
  * @return 		{Boolean}									If the element is in the viewport or not
  *
- * @snippet         __isUserScrolling()
+ * @snippet         isUserScrolling()
  *
  * @todo      tests
  *
  * @example  	js
- * import { __isUserScrolling } from '@lotsof/sugar/dom'
- * if (__isUserScrolling(myCoolHTMLElement) {
+ * import { isUserScrolling } from '@blackbyte/sugar/dom'
+ * if (isUserScrolling(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 let _isUserScrolling = false, _isUserScrollingTimeout;
 try {
@@ -43,7 +43,7 @@ try {
     });
 }
 catch (e) { }
-export default function __isUserScrolling($elm) {
+export default function isUserScrolling($elm) {
     if ($elm._isUserInteractive !== undefined) {
         return $elm._isUserInteractive && _isUserScrolling;
     }

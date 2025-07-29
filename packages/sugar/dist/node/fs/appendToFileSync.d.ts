@@ -10,15 +10,15 @@
  * @param       {String}            path            The file path you want to check. With or without an extension
  * @param       {String}            content             The content to add to the file
  *
- * @snippet         __appendToFileSync($1, $2)
+ * @snippet         appendToFileSync($1, $2)
  *
  * @todo            tests
  *
  * @example         js
- * import { __appendToFileSync } from '@lotsof/sugar/fs';
- * __appendToFileSync('/my/cool/file.txt', 'Hello world');
+ * import { appendToFileSync } from '@blackbyte/sugar/fs';
+ * appendToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __appendToFileSync(path: string, content: string): void;
+export default function appendToFileSync(path: string, content: string): void;

@@ -12,11 +12,11 @@
  *
  * @todo      tests
  *
- * @snippet         __getTransitionProperties($1)
+ * @snippet         getTransitionProperties($1)
  *
  * @example  	js
- * import { getTransitionProperties } from '@lotsof/sugar/dom'
- * const props = __getTransitionProperties(myCoolHTMLElement);
+ * import { getTransitionProperties } from '@blackbyte/sugar/dom'
+ * const props = getTransitionProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	property : ['all'],
@@ -27,7 +27,7 @@
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetTransitionPropertiesResult = {
     transitions: TGetTransitionPropertiesObject[];

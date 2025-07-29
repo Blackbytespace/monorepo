@@ -19,16 +19,16 @@
  * @setting         {boolean}           [touchend=true]          Specify if you want to detect the touchend or not
  * @setting         {boolean}           [focus=true]          Specify if you want to detect the focus or not
  *
- * @snippet         __whenInteract($1)
- * __whenInteract($1).then(\$elm => {
+ * @snippet         whenInteract($1)
+ * whenInteract($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __whenInteract } from '@blackbyte/sugar/dom'
- * __whenInteract(myCoolElement).then($elm => {
+ * import { whenInteract } from '@blackbyte/sugar/dom'
+ * whenInteract(myCoolElement).then($elm => {
  *      // do something...
  * });
  *
@@ -45,7 +45,7 @@ export type TWhenInteractSettings = {
   focus: boolean;
 };
 
-export default function __whenInteract(
+export default function whenInteract(
   elm: HTMLElement,
   settings?: Partial<TWhenInteractSettings>,
 ): Promise<any> {

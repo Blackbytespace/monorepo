@@ -1,5 +1,5 @@
 // @ts-nocheck
-import __parseHsla from './parseHsla.js';
+import parseHsla from './parseHsla.js';
 
 /**
  * @name              hslaToHexa
@@ -19,11 +19,11 @@ import __parseHsla from './parseHsla.js';
  *
  * @todo      tests
  *
- * @snippet         __hslaToHexa($1)
+ * @snippet         hslaToHexa($1)
  *
  * @example         js
- * import { __hslaToHexa } from '@blackbyte/sugar/color';
- * __hslaToHexa(10,20,30,1);
+ * import { hslaToHexa } from '@blackbyte/sugar/color';
+ * hslaToHexa(10,20,30,1);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
@@ -79,7 +79,7 @@ function HSLAToHexA(h, s, l, a) {
   return '#' + r + g + b + a;
 }
 
-export default function __hslaToHexa(
+export default function hslaToHexa(
   h: string | number | any,
   s,
   l,
@@ -92,7 +92,7 @@ export default function __hslaToHexa(
         '<red>[hslaToRgba]</red> When passing a string to the first parameter, it MUST be formatted like: hsla?(.*)',
       );
     }
-    h = __parseHsla(h);
+    h = parseHsla(h);
   }
 
   // object support

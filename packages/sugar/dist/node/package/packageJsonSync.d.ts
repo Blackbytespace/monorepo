@@ -16,20 +16,20 @@
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __packageJsonSync($1)
+ * @snippet         packageJsonSync($1)
  *
  * @example         js
- * import { __packageJsonSync } from '@lotsof/sugar/package`;
- * __packageJsonSync('lotsof/sugar');
+ * import { packageJsonSync } from '@blackbyte/sugar/package`;
+ * packageJsonSync('blackbyte/sugar');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TPackageJsonSyncSettings = {
     cwd: string;
     monorepo: boolean;
     checkExistence: boolean;
 };
-export default function __packageJsonSync(nameOrPath: string, settings?: Partial<TPackageJsonSyncSettings>): any;
+export default function packageJsonSync(nameOrPath: string, settings?: Partial<TPackageJsonSyncSettings>): any;

@@ -1,4 +1,4 @@
-import __LitElement from '@lotsof/lit-element';
+import __LitElement from '@blackbyte/lit-element';
 import { PropertyValueMap } from 'lit';
 import '../../src/css/AdvancedSelectElement.bare.css';
 import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvancedSelectElementItem, TAdvancedSelectElementItemsFunctionApi } from '../shared/AdvancedSelectElement.types.js';
@@ -51,15 +51,15 @@ import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvance
  * @support         safari
  * @support         edge
  *
- * @import          import { define as __AdvancedSelectElementDefine } from '@lotsof/advancedSelect-component';
+ * @import          import { define as __AdvancedSelectElementDefine } from '@blackbyte/advancedSelect-component';
  *
  * @snippet         __AdvancedSelectElementDefine($1)
  *
  * @install           shell
- * npm i @lotsof/advancedSelect-component
+ * npm i @blackbyte/advancedSelect-component
  *
  * @install           js
- * import __SAdvancedSelectElement from '@lotsof/advancedSelect-component';
+ * import __SAdvancedSelectElement from '@blackbyte/advancedSelect-component';
  * __SAdvancedSelectElement.define();
  *
  * @example         html            Simple example
@@ -71,7 +71,7 @@ import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvance
  * </advancedSelect>
  *
  * @example         js
- * import __SAdvancedSelectElement from '@lotsof/advanced-select-element';
+ * import __SAdvancedSelectElement from '@blackbyte/advanced-select-element';
  * __SAdvancedSelectElement.define('my-cool-filtrable-input');
  *
  * @example         html        Custom templates and items
@@ -80,7 +80,7 @@ import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvance
  * </my-cool-filtrable-input>
  *
  * @example         js
- * import __SAdvancedSelectElement from '@lotsof/advanced-select-element';
+ * import __SAdvancedSelectElement from '@blackbyte/advanced-select-element';
  * __SAdvancedSelectElement.define('my-cool-filtrable-input', {
  *     items: async () => {
  *         // you can get your items however you want
@@ -91,7 +91,7 @@ import type { TAdvancedSelectElementApi, TAdvancedSelectElementClasses, TAdvance
  * });
  *
  * @since           2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default class AdvancedSelectElement extends __LitElement {
     private _displayedMaxItems;

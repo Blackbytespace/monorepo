@@ -11,14 +11,14 @@
  *
  * @todo      tests
  *
- * @snippet         __unlinkSync($1)
+ * @snippet         unlinkSync($1)
  *
  * @example       js
- * import { __unlinkSync } from '@lotsof/sugar/fs';
- *  __unlinkSync('my/cool/file.json');
+ * import { unlinkSync } from '@blackbyte/sugar/fs';
+ *  unlinkSync('my/cool/file.json');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unlinkSync(path: string): void;
+export default function unlinkSync(path: string): void;

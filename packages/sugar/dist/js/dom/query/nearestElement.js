@@ -1,5 +1,5 @@
-import __distanceBetween from '../../../shared/math/distanceBetween.js';
-export default function __nearestElement($from, $elements, settings) {
+import distanceBetween from '../../../shared/math/distanceBetween.js';
+export default function nearestElement($from, $elements, settings) {
     const finalParams = Object.assign({}, (settings !== null && settings !== void 0 ? settings : {}));
     let $nearestElement, nearestDistance = Infinity;
     const fromElmBound = $from.getBoundingClientRect();
@@ -31,7 +31,7 @@ export default function __nearestElement($from, $elements, settings) {
                 }
                 break;
         }
-        distance = __distanceBetween(fromElmBound, elmBound);
+        distance = distanceBetween(fromElmBound, elmBound);
         if (distance < nearestDistance) {
             nearestDistance = distance;
             $nearestElement = $elm;

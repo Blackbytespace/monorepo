@@ -13,20 +13,20 @@
  * @param    {HTMLElement}   $elm     The element to listen on
  * @return   {Promise<Event>}         A promise that will be resolved once the event has been triggered
  *
- * @snippet         __whenEventListener($1, $2)
- * __whenAnimationEnd($1, $2).then(e: Event => {
+ * @snippet         whenEventListener($1, $2)
+ * whenEventListener($1, $2).then(e: Event => {
  *      $3
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import {__whenEventListener } from '@lotsof/sugar/dom'
- * __whenEventListener('click', myCoolElm).then((e: Event) => {
+ * import { whenEventListener } from '@blackbyte/sugar/dom'
+ * whenEventListener('click', myCoolElm).then((e: Event) => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenEventListener(event: string, $elm: HTMLElement): Promise<Event>;
+export default function whenEventListener(event: string, $elm: HTMLElement): Promise<Event>;

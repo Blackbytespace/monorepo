@@ -1,5 +1,5 @@
-import __getTheme from './getTheme.js';
-import __setTheme from './setTheme.js';
+import getTheme from './getTheme.js';
+import setTheme from './setTheme.js';
 
 /**
  * @name            restoreTheme
@@ -18,11 +18,11 @@ import __setTheme from './setTheme.js';
  *
  * @todo      tests
  *
- * @snippet         __setTheme($1)
+ * @snippet         setTheme($1)
  *
  * @example         js
- * import { __setTheme } from '@blackbyte/sugar/theme';
- * __setTheme('dark');
+ * import { setTheme } from '@blackbyte/sugar/theme';
+ * setTheme('dark');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -32,7 +32,7 @@ export type TRestoreThemeSettings = {
   cookieName: string;
 };
 
-export default function setTheme(
+export default function restoreTheme(
   defaultTheme: string,
   settings?: TRestoreThemeSettings,
 ): void {
@@ -40,6 +40,6 @@ export default function setTheme(
     cookieName: 'theme',
     ...(settings ?? {}),
   };
-  const theme = __getTheme(defaultTheme, finalSettings);
-  __setTheme(theme);
+  const theme = getTheme(defaultTheme, finalSettings);
+  setTheme(theme);
 }

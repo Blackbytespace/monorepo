@@ -1,4 +1,4 @@
-import __parseAuthorString from './parseAuthorString.js';
+import parseAuthorString from './parseAuthorString.js';
 /**
  * @name                    formatPackageJson
  * @namespace               shared.package
@@ -19,12 +19,12 @@ import __parseAuthorString from './parseAuthorString.js';
  *
  * @todo      tests
  *
- * @snippet         __formatPackageJson($1)
+ * @snippet         formatPackageJson($1)
  *
  * @example       js
- * import { __formatPackageJson } from '@lotsof/sugar/package';
- * __formatPackageJson({
- *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)"
+ * import { formatPackageJson } from '@blackbyte/sugar/package';
+ * formatPackageJson({
+ *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)"
  * }); // => {
  *    "author": {
  *      "name": "Olivier Bossel",
@@ -34,29 +34,29 @@ import __parseAuthorString from './parseAuthorString.js';
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __formatPackageJson(json) {
+export default function formatPackageJson(json) {
     // author
     if (json.author && typeof json.author === 'string') {
-        json.author = __parseAuthorString(json.author);
+        json.author = parseAuthorString(json.author);
     }
     else if (json.author && Array.isArray(json.author)) {
         json.author = json.author.map((string) => {
             if (typeof string === 'string') {
-                return __parseAuthorString(string);
+                return parseAuthorString(string);
             }
             return string;
         });
     }
     // contributors
     if (json.contributors && typeof json.contributors === 'string') {
-        json.contributors = __parseAuthorString(json.contributors);
+        json.contributors = parseAuthorString(json.contributors);
     }
     else if (json.contributors && Array.isArray(json.contributors)) {
         json.contributors = json.contributors.map((string) => {
             if (typeof string === 'string') {
-                return __parseAuthorString(string);
+                return parseAuthorString(string);
             }
             return string;
         });

@@ -14,11 +14,11 @@
  *
  * @todo      tests
  *
- * @snippet         __getCssDeclarations()
+ * @snippet         getCssDeclarations()
  *
  * @example  	js
- * import { __getCssDeclarations } from '@blackbyte/sugar/dom';
- * __getCssDeclarations('style', [myCoolCssRules]);
+ * import { getCssDeclarations } from '@blackbyte/sugar/dom';
+ * getCssDeclarations('style', [myCoolCssRules]);
  *
  * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-declarations.js
  * @since           1.0.0

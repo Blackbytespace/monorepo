@@ -14,15 +14,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isDdmmyyyyDate($1)
+ * @snippet         isDdmmyyyyDate($1)
  *
  * @example    js
- * import { __isDdmmyyyyDate } from '@lotsof/sugar/is'
- * if (__isDdmmyyyyDate('20.12.2018')) {
+ * import { isDdmmyyyyDate } from '@blackbyte/sugar/is'
+ * if (isDdmmyyyyDate('20.12.2018')) {
  *     // do something cool
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isDdmmyyyyDate(date: string): boolean;
+export default function isDdmmyyyyDate(date: string): boolean;

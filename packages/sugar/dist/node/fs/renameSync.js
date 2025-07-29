@@ -1,8 +1,8 @@
-import __fs from 'fs';
-import __ensureDirSync from './ensureDirSync.js';
-import __moveSync from './moveSync.js';
-import __unlinkSync from './unlinkSync.js';
-export default function __renameSync(src, newName, settings) {
+import fs from 'fs';
+import ensureDirSync from './ensureDirSync.js';
+import moveSync from './moveSync.js';
+import unlinkSync from './unlinkSync.js';
+export default function renameSync(src, newName, settings) {
     const finalSettings = Object.assign({ override: true, dry: false }, (settings !== null && settings !== void 0 ? settings : {}));
     const parts = src.split('/');
     let ext = '';
@@ -29,13 +29,13 @@ export default function __renameSync(src, newName, settings) {
     if (!finalSettings.dry) {
         // if want to override and file exists,
         // remove it
-        if (finalSettings.override && __fs.existsSync(newPath)) {
-            __unlinkSync(newPath);
+        if (finalSettings.override && fs.existsSync(newPath)) {
+            unlinkSync(newPath);
         }
         // make sure we have the folder to write in
-        __ensureDirSync(newPath);
+        ensureDirSync(newPath);
         // move the file to his new destination
-        __moveSync(src, newPath);
+        moveSync(src, newPath);
     }
     return newPath;
 }

@@ -19,25 +19,25 @@
  *
  * @todo      tests
  *
- * @snippet         __onScrollEnd($1, $2)
- * __onScrollEnd($1, () => {
+ * @snippet         onScrollEnd($1, $2)
+ * onScrollEnd($1, () => {
  *      $2
  * });
  *
  * @example         js
- * import { __onScrollEnd } from '@lotsof/sugar/dom';
- * __onScrollEnd($elm, () => {
+ * import { onScrollEnd } from '@blackbyte/sugar/dom';
+ * onScrollEnd($elm, () => {
  *      // do something
  * }, {
  *    offset: 50
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TOnScrollEndSettings = {
     offset: number;
     once: boolean;
     times: number;
 };
-export default function __onScrollEnd($elm: HTMLElement, callback: Function, settings?: TOnScrollEndSettings): void;
+export default function onScrollEnd($elm: HTMLElement, callback: Function, settings?: TOnScrollEndSettings): void;

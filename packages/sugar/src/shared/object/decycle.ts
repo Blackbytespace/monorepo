@@ -13,13 +13,13 @@ import { decycle as __decycle } from 'json-cyclic';
  * @param     {Object}      obj         The object to process
  * @return    {Object}                  The new object circular references free
  *
- * @snippet         __decycle($1)
+ * @snippet         decycle($1)
  *
  * @todo     tests
  *
  * @example     js
- * import { __decycle } from '@blackbyte/sugar/object';
- * __decycle({
+ * import { decycle } from '@blackbyte/sugar/object';
+ * decycle({
  *    something: 'cool',
  *    with: 'circular references',
  *    //..

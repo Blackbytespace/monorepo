@@ -13,18 +13,18 @@
  * @param       {String}        string         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __idCompliant($1)
+ * @snippet         idCompliant($1)
  *
  * @todo      tests
  *
  * @example         php
- * import { __idCompliant } from '@lotsof/sugar/string';
- * __idCompliant('Hello world'); // => hello-world
+ * import { idCompliant } from '@blackbyte/sugar/string';
+ * idCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIdCompliantSettings = {
     exclude: string[];
 };
-export default function __idCompliant(str: string, settings?: TIdCompliantSettings): string;
+export default function idCompliant(str: string, settings?: TIdCompliantSettings): string;

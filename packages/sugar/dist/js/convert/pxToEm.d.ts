@@ -1,10 +1,10 @@
 /**
  * @name                    pxToEm
- * @namespace            js.convert
+ * @namespace               js.convert
  * @type                    Function
- * @platform          js
- * @platform          node
- * @status        stable
+ * @platform                js
+ * @platform                node
+ * @status                  stable
  *
  * Convert rem value to a px one
  *
@@ -14,13 +14,13 @@
  *
  * @todo      tests
  *
- * @snippet         __pxToEm($1)
+ * @snippet         pxToEm($1)
  *
  * @example         js
- * import { __pxToEm } from '@lotsof/sugar/convert';
- * __pxToEm(36);
+ * import { pxToEm } from '@blackbyte/sugar/convert';
+ * pxToEm(36);
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __pxToEm(px: number, $elm?: HTMLElement): number;
+export default function pxToEm(px: number, $elm?: HTMLElement): number;

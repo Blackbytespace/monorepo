@@ -1,6 +1,6 @@
-import __uniqid from '../../string/uniqid.js';
+import uniqid from '../../string/uniqid.js';
 import type { TWhenTrigger } from '../when/when.js';
-import __when from '../when/when.js';
+import when from '../when/when.js';
 
 /**
  * @name            querySelectorLive
@@ -27,14 +27,14 @@ import __when from '../when/when.js';
  * @setting         {HTMLElement}           [rootNode=document]         The root node from where to observe childs
  * @setting         {Boolean}              [once=true]                If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom
  *
- * @snippet         __querySelectorLive($1, $2)
- * __querySelectorLive($1, \$elm => {
+ * @snippet         querySelectorLive($1, $2)
+ * querySelectorLive($1, \$elm => {
  *      $2
  * });
  *
  * @example 	js
- * import { __querySelectorLive } from '@blackbyte/sugar/dom'
- * const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ * import { querySelectorLive } from '@blackbyte/sugar/dom'
+ * const query = querySelectorLive('.my-cool-item', (node, api) => {
  * 	    // do something here with the detected node
  *      // call api.cancel if you want to stop listening for this selector
  *      api.cancel();
@@ -66,7 +66,7 @@ type TQuerySelectorLiveCallback = (
   api: TQuerySelectorLiveApi,
 ) => void;
 
-export default function __querySelectorLive(
+export default function querySelectorLive(
   selector: string,
   cb: TQuerySelectorLiveCallback,
   settings?: Partial<TQuerySelectorLiveSettings>,
@@ -174,7 +174,7 @@ export default function __querySelectorLive(
     ) {
       // handle the "when" setting
       if (finalSettings.when) {
-        await __when($node, [finalSettings.when]);
+        await when($node, [finalSettings.when]);
         if (isCanceled()) {
           return;
         }
@@ -209,11 +209,11 @@ export default function __querySelectorLive(
 
     // search for scopes and handle nested nodes
     innerQuerySelectorLive.push(
-      __querySelectorLive(
+      querySelectorLive(
         '[s-scope]',
         async ($scope) => {
           // get or generate a new id
-          const scopeId = $scope.id || `s-scope-${__uniqid()}`;
+          const scopeId = $scope.id || `s-scope-${uniqid()}`;
           if ($scope.id !== scopeId) {
             $scope.setAttribute('id', scopeId);
           }
@@ -222,14 +222,14 @@ export default function __querySelectorLive(
             return;
           }
 
-          await __when($scope, ['nearViewport']);
+          await when($scope, ['nearViewport']);
 
           if (isCanceled()) {
             return;
           }
 
           innerQuerySelectorLive.push(
-            __querySelectorLive(
+            querySelectorLive(
               selector,
               ($elm) => {
                 processNode($elm, selector);
@@ -265,7 +265,7 @@ export default function __querySelectorLive(
     );
     // handle things not in a scope
     innerQuerySelectorLive.push(
-      __querySelectorLive(
+      querySelectorLive(
         noScopeSelector,
         ($elm) => {
           // findAndProcess($scope, selector);

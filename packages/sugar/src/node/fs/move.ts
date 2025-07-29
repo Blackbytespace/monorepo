@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * @name                move
@@ -15,12 +15,12 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet         __move($1, $2)
- * await __move($1, $2)
+ * @snippet         move($1, $2)
+ * await move($1, $2)
  *
  * @example       js
- * import { __move } from '@blackbyte/sugar/fs';
- * await __move('my/cool/dir', 'another/place/for/directory').then(() => {
+ * import { move } from '@blackbyte/sugar/fs';
+ * await move('my/cool/dir', 'another/place/for/directory').then(() => {
  *    // do something...
  * });
  *
@@ -28,9 +28,9 @@ import __fs from 'fs-extra';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __move(src: string, dest: string): Promise<void> {
+export default function move(src: string, dest: string): Promise<void> {
   if (src === dest) {
     return Promise.resolve();
   }
-  return __fs.move(src, dest);
+  return fs.move(src, dest);
 }

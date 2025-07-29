@@ -1,5 +1,5 @@
-import __countLineChars from './countLineChars.js';
-export default function __crop(text, length, settings = {}) {
+import countLineChars from './countLineChars.js';
+export default function crop(text, length, settings = {}) {
     var _a, _b, _c, _d, _e;
     settings = Object.assign({ chars: '...', splitWords: false }, settings);
     text = text.replace(/\s/gm, '¯');
@@ -44,10 +44,10 @@ export default function __crop(text, length, settings = {}) {
                     currentWord += c;
                 }
                 else {
-                    if (__countLineChars(result) +
-                        __countLineChars(currentWord) +
+                    if (countLineChars(result) +
+                        countLineChars(currentWord) +
                         // @ts-ignore
-                        __countLineChars(settings.chars) <=
+                        countLineChars(settings.chars) <=
                         length) {
                         result += currentWord;
                     }

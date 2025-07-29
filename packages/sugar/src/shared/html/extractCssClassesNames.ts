@@ -1,4 +1,4 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
+import expandPleasantCssClassname from './expandPleasantCssClassname.js';
 
 /**
  * @name            extractCssClassesNames
@@ -17,11 +17,11 @@ import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
  *
  * @setting         {Boolean}       [expandPleasantCssClassname=true]       Specify if you want to expand the pleasant css classes names like "s-typo:p" to "s-typo--p"
  *
- * @snippet         __extractCssClassesNames($1)
+ * @snippet         extractCssClassesNames($1)
  *
  * @example         js
- * import { __extractCssClassesNames } from '@blackbyte/sugar/html';
- * __extractCssClassesNames('...');
+ * import { extractCssClassesNames } from '@blackbyte/sugar/html';
+ * extractCssClassesNames('...');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -32,7 +32,7 @@ export type TExtractCssClassesNamesSettings = {
   includeIds?: boolean;
 };
 
-export default function __extractCssClassesNames(
+export default function extractCssClassesNames(
   html: string,
   settings?: Partial<TExtractCssClassesNamesSettings>,
 ): string[] {
@@ -61,7 +61,7 @@ export default function __extractCssClassesNames(
       .replace('"', '');
 
     if (settings?.expandPleasantCssClassname) {
-      classesStr = __expandPleasantCssClassname(classesStr);
+      classesStr = expandPleasantCssClassname(classesStr);
     }
 
     classesNames = [...classesNames, ...classesStr.split(' ')].map((l) =>

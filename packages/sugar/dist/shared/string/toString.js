@@ -1,13 +1,13 @@
 import { decycle } from 'json-cyclic';
-import __mapToObj from '../convert/mapToObject.js';
-import __isArray from '../is/isArray.js';
-import __isBoolean from '../is/isBoolean.js';
-import __isFunction from '../is/isFunction.js';
-import __isJson from '../is/isJson.js';
-import __isMap from '../is/isMap.js';
-import __isObject from '../is/isObject.js';
-import __deepMap from '../object/deepMap.js';
-function fn(value, settings = {}) {
+import mapToObj from '../convert/mapToObject.js';
+import isArray from '../is/isArray.js';
+import isBoolean from '../is/isBoolean.js';
+import isFunction from '../is/isFunction.js';
+import isJson from '../is/isJson.js';
+import isMap from '../is/isMap.js';
+import isObject from '../is/isObject.js';
+import deepMap from '../object/deepMap.js';
+export default function toString(value, settings = {}) {
     settings = Object.assign({ beautify: true, verbose: true }, settings);
     // string
     if (typeof value === 'string')
@@ -35,18 +35,18 @@ function fn(value, settings = {}) {
         return errorStr;
     }
     // Map
-    if (__isMap(value)) {
-        value = __mapToObj(value);
+    if (isMap(value)) {
+        value = mapToObj(value);
     }
     // JSON
-    if (__isObject(value) || __isArray(value) || __isJson(value)) {
+    if (isObject(value) || isArray(value) || isJson(value)) {
         try {
             value = decycle(value);
         }
         catch (e) { }
-        value = __deepMap(value, ({ value }) => {
+        value = deepMap(value, ({ value }) => {
             if (value instanceof Map)
-                return __mapToObj(value);
+                return mapToObj(value);
             return value;
         });
         let prettyString = JSON.stringify(value, null, settings.beautify ? 4 : 0);
@@ -56,14 +56,14 @@ function fn(value, settings = {}) {
         return prettyString;
     }
     // boolean
-    if (__isBoolean(value)) {
+    if (isBoolean(value)) {
         if (value)
             return 'true';
         else
             return 'false';
     }
     // function
-    if (__isFunction(value)) {
+    if (isFunction(value)) {
         return '' + value;
     }
     // stringify
@@ -82,5 +82,4 @@ function fn(value, settings = {}) {
     }
     return returnString;
 }
-export default fn;
 //# sourceMappingURL=toString.js.map

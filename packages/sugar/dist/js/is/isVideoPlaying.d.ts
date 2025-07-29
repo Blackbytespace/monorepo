@@ -13,15 +13,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isVideoPlaying($1)
+ * @snippet         isVideoPlaying($1)
  *
  * @example 	js
- * import { __isVideoPlaying } from '@lotsof/sugar/is'
- * if (__isVideoPlaying($myVideo)) {
+ * import { isVideoPlaying } from '@blackbyte/sugar/is'
+ * if (isVideoPlaying($myVideo)) {
  *   // do something cool...
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isVideoPlaying($video: HTMLVideoElement): boolean;

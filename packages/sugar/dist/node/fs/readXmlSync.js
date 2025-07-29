@@ -1,5 +1,5 @@
-import * as __fs from 'fs';
-import __xmlToJson from '../../shared/convert/xmlTojson.js';
+import * as fs from 'fs';
+import xmlToJson from '../../shared/convert/xmlTojson.js';
 /**
  * @name            readXmlSync
  * @namespace       node.fs
@@ -14,21 +14,21 @@ import __xmlToJson from '../../shared/convert/xmlTojson.js';
  *
  * @todo            tests
  *
- * @snippet         __readXmlSync($1)
+ * @snippet         readXmlSync($1)
  *
  * @example         js
- * import { __readXmlSync } from '@lotsof/sugar/fs';
- * __readXmlSync('my-cool-xml/file.xml');
+ * import { readXmlSync } from '@blackbyte/sugar/fs';
+ * readXmlSync('my-cool-xml/file.xml');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readXmlSync(path) {
-    if (!__fs.existsSync(path)) {
+export default function readXmlSync(path) {
+    if (!fs.existsSync(path)) {
         throw new Error(`<red>[readXmlSync]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`);
     }
-    const xmlStr = __fs.readFileSync(path, 'utf8').toString();
-    const json = __xmlToJson(xmlStr);
+    const xmlStr = fs.readFileSync(path, 'utf8').toString();
+    const json = xmlToJson(xmlStr);
     return json;
 }
 //# sourceMappingURL=readXmlSync.js.map

@@ -15,17 +15,17 @@ import __isClass from 'is-class';
  *
  * @todo      tests
  *
- * @snippet         __isClass($1)
+ * @snippet         isClass($1)
  *
  * @example           js
- * import { __isClass } = from '@lotsof/sugar/is';
- * __isClass({ hello: 'world'}); // => false
+ * import { isClass } = from '@blackbyte/sugar/is';
+ * isClass({ hello: 'world'}); // => false
  * const myCoolClass = class Coco{};
- * __isClass(myCoolClass); // => true
+ * isClass(myCoolClass); // => true
  *
  * @see       https://www.npmjs.com/package/is-class
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isClass(cls) {
     if (!Array.isArray(cls))

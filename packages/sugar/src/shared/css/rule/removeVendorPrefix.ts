@@ -13,11 +13,11 @@
  *
  * @todo      tests
  *
- * @snippet         __removeVendorPrefix($1)
+ * @snippet         removeVendorPrefix($1)
  *
  * @example  	js
- * import { __removeVendorPrefix } from '@blackbyte/sugar/css';
- * __removeVendorPrefix('moz-something'); // 'something'
+ * import { removeVendorPrefix } from '@blackbyte/sugar/css';
+ * removeVendorPrefix('moz-something'); // 'something'
  *
  * @see            https://github.com/marionebl/jogwheel/blob/main/source/library/remove-vendor-prefix.js
  * @since           1.0.0
@@ -26,7 +26,7 @@
 
 const prefixes = ['ms', 'webkit', 'moz', 'o'];
 
-export default function __removeVendorPrefix(propertyName = '') {
+export default function removeVendorPrefix(propertyName = '') {
   const fragments = propertyName.split('-');
 
   if (prefixes.indexOf(fragments[1]) > -1) {

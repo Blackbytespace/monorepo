@@ -12,18 +12,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isSamsungBrowser()
+ * @snippet         isSamsungBrowser()
  *
  * @example    js
- * import { __isSamsumgBrowser } from '@blackbyte/sugar/is'
- * if (__isSamsumgBrowser()) {
+ * import { isSamsungBrowser } from '@blackbyte/sugar/is'
+ * if (isSamsungBrowser()) {
  *   // do something
  * }
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSamsumgBrowser(
+export default function isSamsungBrowser(
   ua: string = navigator.userAgent,
 ): boolean {
   return ua.match(/SamsungBrowser/i) !== null;

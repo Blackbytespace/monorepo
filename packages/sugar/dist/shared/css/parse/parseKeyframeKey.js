@@ -14,17 +14,17 @@
  *
  * @todo      tests
  *
- * @snippet         __parseKeyframeKey($1)
+ * @snippet         parseKeyframeKey($1)
  *
  * @example  	js
- * import { __parseKeyframeKey } from '@lotsof/sugar/css';
- * __parseKeyframeKey('from');
+ * import { parseKeyframeKey } from '@blackbyte/sugar/css';
+ * parseKeyframeKey('from');
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-css-rules.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __parseKeyframeKey(keyText) {
+export default function parseKeyframeKey(keyText) {
     // Split multivalue key,
     return (keyText
         .split(',')

@@ -17,23 +17,23 @@
  *
  * @setting       {String}      [offset=10px]     An offset to detect sooner or later the element exits the viewport
  *
- * @snippet         __whenOutOfViewport($1)
- * __whenOutOfViewport($1).then(\$$elm => {
+ * @snippet         whenOutOfViewport($1)
+ * whenOutOfViewport($1).then(\$$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenOutOfViewport } from '@lotsof/sugar/dom'
- * __whenOutOfViewport(myCoolHTMLElement).then(($elm) => {
+ * import { whenOutOfViewport } from '@blackbyte/sugar/dom'
+ * whenOutOfViewport(myCoolHTMLElement).then(($elm) => {
  * 		// do something with your element that has exit the viewport...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenOutOfViewport($elm, settings = {}) {
+export default function whenOutOfViewport($elm, settings = {}) {
     return new Promise((resolve, reject) => {
         settings = Object.assign({ offset: '10px' }, settings);
         let isInViewport = false;

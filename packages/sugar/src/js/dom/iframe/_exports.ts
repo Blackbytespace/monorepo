@@ -1,3 +1,3 @@
-import __iframeAutoSize from './iframeAutoSize.js';
+import iframeAutoSize from './iframeAutoSize.js';
 
-export { __iframeAutoSize };
+export { iframeAutoSize as __iframeAutoSize, iframeAutoSize };

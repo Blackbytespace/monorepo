@@ -15,16 +15,16 @@
  *
  * @todo            tests
  *
- * @snippet         __folderPath($1)
+ * @snippet         folderPath($1)
  *
  * @example         js
- * import { __folderPath } from '@lotsof/sugar/fs';
- * __folderPath('my/cool/path.js'); // => true
+ * import { folderPath } from '@blackbyte/sugar/fs';
+ * folderPath('my/cool/path.js'); // => true
  *
  * @since           1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFolderPathSettings = {
     checkExistence: boolean;
 };
-export default function __folderPath(path: string, settings?: Partial<TFolderPathSettings>): string;
+export default function folderPath(path: string, settings?: Partial<TFolderPathSettings>): string;

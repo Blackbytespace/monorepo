@@ -1,5 +1,5 @@
-import __Mark from 'mark.js';
-export default function __highlightText(ctx, search, settings) {
+import Mark from 'mark.js';
+export default function highlightText(ctx, search, settings) {
     const finalSettings = Object.assign({ class: '-highlight' }, (settings !== null && settings !== void 0 ? settings : {}));
     let resType, internalCtx;
     if (typeof ctx === 'string') {
@@ -11,7 +11,7 @@ export default function __highlightText(ctx, search, settings) {
         internalCtx = ctx;
         resType = 'element';
     }
-    const mark = new __Mark(internalCtx), markOptions = {
+    const mark = new Mark(internalCtx), markOptions = {
         className: finalSettings.class,
     };
     if (search instanceof RegExp) {

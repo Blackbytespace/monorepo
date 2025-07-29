@@ -18,13 +18,13 @@
  *
  * @todo      tests
  *
- * @snippet         __generateIdFromForm()
+ * @snippet         generateIdFromForm()
  *
  * @example         js
- * import { __generateIdFromForm } from '@lotsof/sugar/dom';
- * const id = __generateIdFromForm($myForm); // => a md5 hash id
+ * import { generateIdFromForm } from '@blackbyte/sugar/dom';
+ * const id = generateIdFromForm($myForm); // => a md5 hash id
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function generateIdFromForm($form: HTMLFormElement): string;

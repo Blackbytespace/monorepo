@@ -19,8 +19,8 @@
  * @todo      tests
  *
  * @example           js
- * import { __deepFilter } from '@lotsof/sugar/object';
- * __deepFilter ({
+ * import { deepFilter } from '@blackbyte/sugar/object';
+ * deepFilter ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -35,7 +35,7 @@
  * // }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepFilterSettings = {
     clone: boolean;
@@ -48,4 +48,4 @@ export type TDeepFilterItem = {
     value: any;
     isObject: boolean;
 };
-export default function __deepFilter(object: any, filter: TDeepFilterFilter, settings?: Partial<TDeepFilterSettings>): any;
+export default function deepFilter(object: any, filter: TDeepFilterFilter, settings?: Partial<TDeepFilterSettings>): any;

@@ -19,26 +19,26 @@
  * @param 		{Object} 			settings	 		The settings of the query
  * @return 		{HTMLElement} 							The founded element
  *
- * @snippet         __querySelector($1)
+ * @snippet         querySelector($1)
  *
  * @todo      tests
  *
  * @example 	js
- * import { __querySelector } from '@lotsof/sugar/dom';
+ * import { querySelector } from '@blackbyte/sugar/dom';
  * // simple query
- * const elm = __querySelector('.a-cool-css-selector');
+ * const elm = querySelector('.a-cool-css-selector');
  *
  * // get an element that is in the viewport
- * const elm = __querySelector('.a-cool-css-selector', {
+ * const elm = querySelector('.a-cool-css-selector', {
  * 		inViewport : true
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TQuerySelectorSettings = {
     visible: boolean | null;
     inViewport: boolean | null;
     rootNode: HTMLElement;
 };
-export default function __querySelector(selector: string, settings?: Partial<TQuerySelectorSettings>): HTMLElement | undefined;
+export default function querySelector(selector: string, settings?: Partial<TQuerySelectorSettings>): HTMLElement | undefined;

@@ -11,16 +11,16 @@
  * @param       {String}            html            The html to unescape
  * @return      {String}                            The unescaped html
  *
- * @snippet         __escapeHtml($1)
+ * @snippet         escapeHtml($1)
  *
  * @todo      tests
  *
  * @example         js
- * import { __escapeHtml } from '@lotsof/sugar/html';
- * __escapeHtml('<s-code-example>'); // => &lt;s-code-example&gt;
+ * import { escapeHtml } from '@blackbyte/sugar/html';
+ * escapeHtml('<s-code-example>'); // => &lt;s-code-example&gt;
  *
  * @see             https://www.npmjs.com/package/escape-html
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __escapeHtml(html: string): string;
+export default function escapeHtml(html: string): string;

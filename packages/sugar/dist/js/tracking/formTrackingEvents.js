@@ -1,5 +1,5 @@
-import { __parseHtml } from '@lotsof/sugar/console';
-import { __generateIdFromForm, __querySelectorLive } from '@lotsof/sugar/dom';
+import { parseHtml } from '@blackbyte/sugar/console';
+import { generateIdFromForm, querySelectorLive } from '@blackbyte/sugar/dom';
 function _getFormId($form) {
     // get from the form dataset
     if ($form.dataset.formId) {
@@ -15,7 +15,7 @@ function _getFormId($form) {
         return $form.id;
     }
     // generate form id
-    const formId = __generateIdFromForm($form);
+    const formId = generateIdFromForm($form);
     // apply the form id on the form
     $form.setAttribute('data-form-id', formId);
     // return the newsly created form id
@@ -32,10 +32,10 @@ export default function formTrackingEvents(settings) {
     const _log = (msg) => {
         if (!finalSettings.debug)
             return;
-        console.info(__parseHtml(`[FormTrackingEvents]: ${msg}`));
+        console.info(parseHtml(`[FormTrackingEvents]: ${msg}`));
     };
     // get each forms in the page
-    __querySelectorLive('form', ($form) => {
+    querySelectorLive('form', ($form) => {
         var _a;
         // get the form id
         const formId = _getFormId($form);

@@ -12,19 +12,19 @@
  * @param      {String|String[]|RegExp}      search      The text to highlight
  * @return      {String|HTMLElement}                    The processed string or HTMLElement
  *
- * @snippet         __highlightText($1, $2)
+ * @snippet         highlightText($1, $2)
  *
  * @todo      tests
  *
  * @example         php
- * import { __highlightText } from '@lotsof/sugar/string';
- * __highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
+ * import { highlightText } from '@blackbyte/sugar/string';
+ * highlightText('Hello world', 'llo'); // => He<span class="-highlight">llo</span> world
  *
  * @see         https://markjs.io
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type THighlightTextSettings = {
     class: string;
 };
-export default function __highlightText<T>(ctx: T, search: string | string[] | typeof RegExp, settings?: Partial<THighlightTextSettings>): T;
+export default function highlightText<T>(ctx: T, search: string | string[] | typeof RegExp, settings?: Partial<THighlightTextSettings>): T;

@@ -13,14 +13,14 @@
  *
  * @todo        tests
  *
- * @snippet         __isPath($1)
+ * @snippet         isPath($1)
  *
  * @example       js
- * import { __isPath } from '@lotsof/sugar/fs';
- * __isPath('hello/world'); // => true
+ * import { isPath } from '@blackbyte/sugar/fs';
+ * isPath('hello/world'); // => true
  *
  * @see         https://www.npmjs.com/package/is-valid-path
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isPath(path: string, checkExistence?: boolean): boolean;
+export default function isPath(path: string, checkExistence?: boolean): boolean;

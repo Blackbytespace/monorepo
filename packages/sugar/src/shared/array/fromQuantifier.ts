@@ -17,13 +17,13 @@
  * @setting         {Number}        max             The maximum wanted when using > and >= quantifiers
  * @setting         {Function}      value           A function that take the current index and that MUST return the value wanted in the generated array
  *
- * @snippet         __fromQuantifier($1)
+ * @snippet         fromQuantifier($1)
  *
  * @example    js
- * import { __fromQuantifier } from '@blackbyte/sugar/array'
- * __fromQuantifier(3); // => [0,1,2]
- * __fromQuantifier('3-5'); // => [3,4,5]
- * __fromQuantifier('3-6', {
+ * import { fromQuantifier } from '@blackbyte/sugar/array'
+ * fromQuantifier(3); // => [0,1,2]
+ * fromQuantifier('3-5'); // => [3,4,5]
+ * fromQuantifier('3-6', {
  *    value(i) => `c-${i}`
  * }); // => ['c-3','c-4','c-5','c-6']
  *
@@ -36,7 +36,7 @@ export type TFromQuantifierSettings = {
   action: '>' | '<' | '>=' | '<=' | '=';
 };
 
-export default function __fromQuantifier(
+export default function fromQuantifier(
   quantifier: string | number,
   settings?: Partial<TFromQuantifierSettings>,
 ): any[] {

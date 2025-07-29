@@ -7,16 +7,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as __fs from 'fs';
-export default function __exists(path, settings) {
+import * as fs from 'fs';
+export default function exists(path, settings) {
     return __awaiter(this, void 0, void 0, function* () {
         const set = Object.assign({ directory: true, file: true, symlink: true }, (settings || {}));
         let isSymlink = false, stats;
         try {
-            stats = __fs.statSync(path);
+            stats = fs.statSync(path);
             if (!stats)
                 return false;
-            const realPath = __fs.realpathSync(path);
+            const realPath = fs.realpathSync(path);
             isSymlink = path !== realPath;
         }
         catch (e) { }

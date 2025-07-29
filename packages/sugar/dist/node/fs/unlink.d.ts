@@ -12,17 +12,17 @@
  *
  * @todo        tests
  *
- * @snippet         __unlink($1)
- * await __unlink($1)
+ * @snippet         unlink($1)
+ * await unlink($1)
  *
  * @example       js
- * import { __unlink } from '@lotsof/sugar/fs';
- * await __unlink('my/cool/file.json').then(() => {
+ * import { unlink } from '@blackbyte/sugar/fs';
+ * await unlink('my/cool/file.json').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unlink(path: string): Promise<void>;
+export default function unlink(path: string): Promise<void>;

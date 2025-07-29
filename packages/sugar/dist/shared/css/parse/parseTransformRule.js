@@ -1,5 +1,5 @@
-import __parse from '../../../shared/string/parse.js';
-export default function __parseTransformRule(transformStr) {
+import parse from '../../../shared/string/parse.js';
+export default function parseTransformRule(transformStr) {
     const transforms = transformStr.trim().split(/\) |\)/);
     const result = {
         scale: 1,
@@ -23,10 +23,10 @@ export default function __parseTransformRule(transformStr) {
         }
         const parts = transStr.split('('), prop = parts[0].trim(), value = parts[1].trim();
         if (prop.match(/(X|Y|Z)$/)) {
-            result[prop] = __parse(value);
+            result[prop] = parse(value);
         }
         else {
-            const vals = value.split(',').map((v) => __parse(v.trim()));
+            const vals = value.split(',').map((v) => parse(v.trim()));
             if (vals.length === 1 && prop === 'scale') {
                 result.scale = parseFloat(value);
             }

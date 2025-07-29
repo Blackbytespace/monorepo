@@ -15,20 +15,20 @@
  *
  * @todo            tests
  *
- * @snippet         __findUp($1)
- * await __findUp($1)
+ * @snippet         findUp($1)
+ * await findUp($1)
  *
  * @example         js
- * import { __findUp } from '@lotsof/sugar/fs';
- * const file = await __findUp('myCoolFile.json', {});
+ * import { findUp } from '@blackbyte/sugar/fs';
+ * const file = await findUp('myCoolFile.json', {});
  * console.log(file.path);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFindUpSettings = {
     symlinks?: boolean;
     cwd?: string;
     stopWhenFound?: boolean;
 };
-export default function __findUp(search: string, settings: TFindUpSettings): Promise<string[]>;
+export default function findUp(search: string, settings: TFindUpSettings): Promise<string[]>;

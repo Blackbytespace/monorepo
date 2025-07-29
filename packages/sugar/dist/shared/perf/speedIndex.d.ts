@@ -22,13 +22,13 @@
  *
  * @todo      tests
  *
- * @snippet         __speedIndex($1, $2)
+ * @snippet         speedIndex($1, $2)
  *
  * @example       js
- * import { __speedIndex } from '@lotsof/sugar/perf';
- * __speedIndex(); // 78
+ * import { speedIndex } from '@blackbyte/sugar/perf';
+ * speedIndex(); // 78
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function speedIndex(slow?: number, fast?: number): number;

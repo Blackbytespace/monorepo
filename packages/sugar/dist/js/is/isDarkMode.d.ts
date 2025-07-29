@@ -13,19 +13,19 @@
  *
  * @todo      tests
  *
- * @snippet         __isDarkMode()
+ * @snippet         isDarkMode()
  *
  * @example 	js
- * import { __isDarkMode } from '@lotsof/sugar/is'
- * if ( __isDarkMode()) {
+ * import { isDarkMode } from '@blackbyte/sugar/is'
+ * if ( isDarkMode()) {
  *   // do something cool
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsDarkModeSettings = {
     ctx: Window;
     rootNode?: HTMLElement;
 };
-export default function __isDarkMode(settings?: Partial<TIsDarkModeSettings>): boolean;
+export default function isDarkMode(settings?: Partial<TIsDarkModeSettings>): boolean;

@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import __parseString from '../string/parse.js';
+import parseString from '../string/parse.js';
 
 /**
  * @name                            parseSchema
@@ -31,8 +31,8 @@ import __parseString from '../string/parse.js';
  * @todo      tests
  *
  * @example       js
- * import { __parseSchema } from '@blackbyte/sugar/url';
- * __parseSchema('https://github.com/myApp/main/3', '{project:string}/{?branch:string}/{?idx:number}');
+ * import { parseSchema } from '@blackbyte/sugar/url';
+ * parseSchema('https://github.com/myApp/main/3', '{project:string}/{?branch:string}/{?idx:number}');
  * // {
  * //   url: 'https://github.com/myApp/main/3',
  * //   schema: '{project:string}/{?branch:string}/{?idx:number}',
@@ -63,7 +63,7 @@ import __parseString from '../string/parse.js';
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __parseSchema(url: string, schema: string): any {
+export default function parseSchema(url: string, schema: string): any {
   const rawSchemaString = schema;
   const rawUrlString = url;
 
@@ -163,27 +163,25 @@ export default function __parseSchema(url: string, schema: string): any {
     // check that all correspond to the schema
     if (schema.type) {
       const type = schema.type;
-      if (type !== typeof __parseString(part)) {
+      if (type !== typeof parseString(part)) {
         match = false;
         const errorObj = {
           type: 'type',
           requested: type,
-          passed: typeof __parseString(part),
+          passed: typeof parseString(part),
           description: `This param "${
             schema.name
-          }" has to be a "${type}" but he's a "${typeof __parseString(
-            part,
-          )}"...`,
+          }" has to be a "${type}" but he's a "${typeof parseString(part)}"...`,
         };
         errors[schema.name] = errorObj;
         params[schema.name].error = errorObj;
-        params[schema.name].value = __parseString(part);
+        params[schema.name].value = parseString(part);
         continue;
       }
     }
 
     // this part match the schema so we add it to the params
-    params[schema.name].value = __parseString(part);
+    params[schema.name].value = parseString(part);
   }
   // return the schema result
   return {

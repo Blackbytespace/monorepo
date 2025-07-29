@@ -15,12 +15,12 @@ import __commonImageFileExtensions from '../extension/commonImageFileExtensions.
  *
  * @todo      tests
  *
- * @snippet         __isImageUrl($1)
+ * @snippet         isImageUrl($1)
  *
  * @example               js
- * import { __isImageUrl } from '@blackbyte/sugar/is';
- * __isImageUrl('something.jpg); // => true
- * __isImageUrl('other.pdf); // => false
+ * import { isImageUrl } from '@blackbyte/sugar/is';
+ * isImageUrl('something.jpg); // => true
+ * isImageUrl('other.pdf); // => false
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

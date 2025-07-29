@@ -12,15 +12,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isOpera()
+ * @snippet         isOpera()
  *
  * @example 	js
- * import { __isOpera } from '@lotsof/sugar/is'
- * if ( __isOpera()) {
+ * import { isOpera } from '@blackbyte/sugar/is'
+ * if ( isOpera()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isOpera(ua?: string): boolean;
+export default function isOpera(ua?: string): boolean;

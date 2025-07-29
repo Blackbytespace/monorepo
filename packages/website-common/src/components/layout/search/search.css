@@ -83,8 +83,9 @@
     border: s-color(accent, border);
     overflow: hidden;
     padding: s-space(5);
+    pointer-events: none;
     box-shadow: var(--bb-depth-large);
-
+    opacity: 0 !important;
     @s-radius;
 
     &:after {
@@ -101,6 +102,11 @@
         s-color(main, --lightness 15)
       );
     }
+  }
+
+  input[type='search']:not(:placeholder-shown) + .s-advanced-select_dropdown {
+    opacity: 1 !important;
+    pointer-events: auto;
   }
 
   .s-advanced-select_items {

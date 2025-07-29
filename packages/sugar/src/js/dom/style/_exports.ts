@@ -1,29 +1,42 @@
-import __getAnimationProperties from './getAnimationProperties.js';
-import __getCssDeclarations from './getCssDeclarations.js';
-import __getCssRulesFromStylesheet from './getCssRulesFromStylesheet.js';
-import __getDefinedStyles from './getDefinedStyles.js';
-import __getKeyframesDeclarations from './getKeyframesDeclarations.js';
-import __getKeyframesFromStylesheets from './getKeyframesFromStylesheets.js';
-import __getRotateProperties from './getRotateProperties.js';
-import __getScaleProperty from './getScaleProperty.js';
-import __getStyleProperty from './getStyleProperty.js';
-import __getTransformProperties from './getTransformProperties.js';
-import __getTransitionProperties from './getTransitionProperties.js';
-import __getTranslateProperties from './getTranslateProperties.js';
-import __transformKeyframeDeclaration from './transformKeyframesDeclarations.js';
+import getAnimationProperties from './getAnimationProperties.js';
+import getCssDeclarations from './getCssDeclarations.js';
+import getCssRulesFromStylesheet from './getCssRulesFromStylesheet.js';
+import getDefinedStyles from './getDefinedStyles.js';
+import getKeyframesDeclarations from './getKeyframesDeclarations.js';
+import getKeyframesFromStylesheets from './getKeyframesFromStylesheets.js';
+import getRotateProperties from './getRotateProperties.js';
+import getScaleProperty from './getScaleProperty.js';
+import getStyleProperty from './getStyleProperty.js';
+import getTransformProperties from './getTransformProperties.js';
+import getTransitionProperties from './getTransitionProperties.js';
+import getTranslateProperties from './getTranslateProperties.js';
+import transformKeyframeDeclaration from './transformKeyframesDeclarations.js';
 
 export {
-  __getAnimationProperties,
-  __getCssDeclarations,
-  __getCssRulesFromStylesheet,
-  __getDefinedStyles,
-  __getKeyframesDeclarations,
-  __getKeyframesFromStylesheets,
-  __getRotateProperties,
-  __getScaleProperty,
-  __getStyleProperty,
-  __getTransformProperties,
-  __getTransitionProperties,
-  __getTranslateProperties,
-  __transformKeyframeDeclaration,
+  getAnimationProperties as __getAnimationProperties,
+  getCssDeclarations as __getCssDeclarations,
+  getCssRulesFromStylesheet as __getCssRulesFromStylesheet,
+  getDefinedStyles as __getDefinedStyles,
+  getKeyframesDeclarations as __getKeyframesDeclarations,
+  getKeyframesFromStylesheets as __getKeyframesFromStylesheets,
+  getRotateProperties as __getRotateProperties,
+  getScaleProperty as __getScaleProperty,
+  getStyleProperty as __getStyleProperty,
+  getTransformProperties as __getTransformProperties,
+  getTransitionProperties as __getTransitionProperties,
+  getTranslateProperties as __getTranslateProperties,
+  transformKeyframeDeclaration as __transformKeyframeDeclaration,
+  getAnimationProperties,
+  getCssDeclarations,
+  getCssRulesFromStylesheet,
+  getDefinedStyles,
+  getKeyframesDeclarations,
+  getKeyframesFromStylesheets,
+  getRotateProperties,
+  getScaleProperty,
+  getStyleProperty,
+  getTransformProperties,
+  getTransitionProperties,
+  getTranslateProperties,
+  transformKeyframeDeclaration,
 };

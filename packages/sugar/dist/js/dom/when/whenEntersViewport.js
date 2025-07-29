@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __isInViewport from '../../is/isInViewport.js';
-export default function __whenEntersViewport(elm, settings) {
+import isInViewport from '../../is/isInViewport.js';
+export default function whenEntersViewport(elm, settings) {
     function getRootMargin() {
         return [
             `${Math.round(window.innerHeight * 0.15 * -1)}px`,
@@ -28,7 +28,7 @@ export default function __whenEntersViewport(elm, settings) {
             rootMargin, // margin around root. Values are similar to css property. Unitless values not allowed
             threshold: 0, // visible amount of item shown in relation to root
         };
-        if (__isInViewport(elm)) {
+        if (isInViewport(elm)) {
             return resolve(elm);
         }
         function onChange(changes, observer) {

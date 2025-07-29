@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject.js';
-export default function __deepMerge(objects, settings) {
+import isPlainObject from '../is/isPlainObject.js';
+export default function deepMerge(objects, settings) {
     const finalSettings = Object.assign({ array: false, clone: true }, (settings !== null && settings !== void 0 ? settings : {}));
     function merge(firstObj, secondObj) {
         const newObj = finalSettings.clone ? {} : firstObj;
@@ -26,8 +26,7 @@ export default function __deepMerge(objects, settings) {
                 Array.isArray(secondObj[key])) {
                 newObj[key] = [...firstObj[key], ...secondObj[key]];
             }
-            else if (__isPlainObject(newObj[key]) &&
-                __isPlainObject(secondObj[key])) {
+            else if (isPlainObject(newObj[key]) && isPlainObject(secondObj[key])) {
                 newObj[key] = merge(newObj[key], secondObj[key]);
             }
             else {

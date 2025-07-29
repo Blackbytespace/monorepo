@@ -1,7 +1,7 @@
-import __isPlainObject from '../is/isPlainObject.js';
-import __unquote from '../string/unquote.js';
-import __get from './get.js';
-export default function __set(obj, path, value, settings) {
+import isPlainObject from '../is/isPlainObject.js';
+import unquote from '../string/unquote.js';
+import get from './get.js';
+export default function set(obj, path, value, settings) {
     const finalSettings = Object.assign({ preferAssign: false }, (settings !== null && settings !== void 0 ? settings : {}));
     let o = obj, a;
     if (Array.isArray(path) && path.length === 1) {
@@ -14,9 +14,9 @@ export default function __set(obj, path, value, settings) {
         }
         path = path.replace(/\[(\w+)\]/g, '.[$1]');
         // path = path.replace(/^\./, '');
-        a = __unquote(path)
+        a = unquote(path)
             .split(/(?!\B"[^"]*)\.(?![^"]*"\B)/gm)
-            .map((p) => __unquote(p));
+            .map((p) => unquote(p));
     }
     else if (Array.isArray(path)) {
         a = [...path];
@@ -46,8 +46,8 @@ export default function __set(obj, path, value, settings) {
         o.push(value);
     }
     else {
-        if (__isPlainObject(o[a[0]]) &&
-            __isPlainObject(value) &&
+        if (isPlainObject(o[a[0]]) &&
+            isPlainObject(value) &&
             finalSettings.preferAssign) {
             // empty the current obj
             for (const key in o[a[0]]) {
@@ -60,6 +60,6 @@ export default function __set(obj, path, value, settings) {
             o[a[0]] = value;
         }
     }
-    return __get(obj, path);
+    return get(obj, path);
 }
 //# sourceMappingURL=set.js.map

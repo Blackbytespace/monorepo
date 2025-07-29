@@ -1,11 +1,11 @@
 import { XMLParser } from 'fast-xml-parser';
 
 /**
- * @name            xmlToJson
- * @namespace            shared.convert
- * @type            Function
- * @platform          js
- * @platform          node
+ * @name                xmlToJson
+ * @namespace           shared.convert
+ * @type                Function
+ * @platform            js
+ * @platform            node
  * @status              stable
  *
  * This function take a xml string as input and return a json object.
@@ -13,11 +13,11 @@ import { XMLParser } from 'fast-xml-parser';
  * @param       {String}            xml             The xml string to convert
  * @return      {Object}                            The corresponding json object
  *
- * @snippet         __xmlToJson($1)
+ * @snippet         xmlToJson($1)
  *
  * @example         js
- * import ( __xmlToJson ) from '@blackbyte/sugar/convert';
- * __xmlToJson('...');
+ * import ( xmlToJson ) from '@blackbyte/sugar/convert';
+ * xmlToJson('...');
  *
  * @todo    tests
  *
@@ -25,7 +25,7 @@ import { XMLParser } from 'fast-xml-parser';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __xmlToJson(xml: string): any {
+export default function xmlToJson(xml: string): any {
   const parser = new XMLParser();
   return parser.parse(xml);
 }

@@ -15,13 +15,13 @@
  * @snippet         __readText($1)
  *
  * @example         js
- * import { __copyText, __readText } from '@blackbyte/sugar/clipboard';
- * await __readText();
+ * import { copyText, __readText } from '@blackbyte/sugar/clipboard';
+ * await readText();
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default async function __readText(): Promise<string> {
+export default async function readText(): Promise<string> {
   if (navigator?.clipboard?.readText) {
     return navigator.clipboard.readText();
   }

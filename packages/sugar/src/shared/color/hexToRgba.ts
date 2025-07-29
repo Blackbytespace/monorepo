@@ -14,11 +14,11 @@
  *
  * @todo      tests
  *
- * @snippet         __hexToRgba($1)
+ * @snippet         hexToRgba($1)
  *
  * @example         js
- * import { __hexToRgba } from '@blackbyte/sugar/color';
- * __hexToRgba('#ff00ff');
+ * import { hexToRgba } from '@blackbyte/sugar/color';
+ * hexToRgba('#ff00ff');
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
@@ -51,7 +51,7 @@ interface IHexToToRbaResult {
   a: number;
 }
 
-export default function __hexToRgba(hex: string): IHexToToRbaResult {
+export default function hexToRgba(hex: string): IHexToToRbaResult {
   // return hexToRgba(hex, 1);
   return hexToRGBA(hex);
 }

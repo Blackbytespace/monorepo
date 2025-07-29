@@ -1,6 +1,6 @@
-import __base64 from '../crypto/base64.js';
-import __isPlainObject from '../is/isPlainObject.js';
-import __unique from './unique.js';
+import base64 from '../crypto/base64.js';
+import isPlainObject from '../is/isPlainObject.js';
+import unique from './unique.js';
 
 /**
  * @name            sameItems
@@ -21,31 +21,31 @@ import __unique from './unique.js';
  * @setting         {Boolean}          [references=true]        Specify if you want to use the references comparaison or not
  * @setting         {Boolean}           [hash=true]             Specify if you want to allows transforming object etc in to hashes and compare this instead
  *
- * @snippet         __sameItems($1, $2)
+ * @snippet         sameItems($1, $2)
  *
  * @example         js
- * import { __sameItems } from '@blackbyte/sugar/array';
- * __sameItems([1,2,3,4], [1,3,5]); // => [1,3]
+ * import { sameItems } from '@blackbyte/sugar/array';
+ * sameItems([1,2,3,4], [1,3,5]); // => [1,3]
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __sameItems(...args): any[] {
+export default function sameItems(...args): any[] {
   const arrays = args.filter((arg) => Array.isArray(arg));
   const settings = {
     references: true,
     hash: true,
-    ...(args.filter((arg) => __isPlainObject(arg))[0] ?? {}),
+    ...(args.filter((arg) => isPlainObject(arg))[0] ?? {}),
   };
 
   if (arrays.length > 2) {
     let newArray = arrays[0];
 
     arrays.forEach((currentArray) => {
-      newArray = __sameItems(newArray, currentArray, settings);
+      newArray = sameItems(newArray, currentArray, settings);
     });
 
-    return __unique(newArray);
+    return unique(newArray);
   } else {
     const array1 = arrays[0] ?? [],
       array2 = arrays[1] ?? [];
@@ -55,13 +55,13 @@ export default function __sameItems(...args): any[] {
     array1.forEach((array1Item) => {
       let array1ItemHash = array1Item;
       if (typeof array1Item !== 'string' && settings.hash) {
-        array1ItemHash = __base64.encrypt(array1Item);
+        array1ItemHash = base64.encrypt(array1Item);
       }
 
       array2.forEach((array2Item) => {
         let array2ItemHash = array2Item;
         if (typeof array2Item !== 'string' && settings.hash) {
-          array2ItemHash = __base64.encrypt(array2Item);
+          array2ItemHash = base64.encrypt(array2Item);
           if (array1ItemHash === array2ItemHash) {
             sameArray.push(array1Item);
             return;
@@ -73,6 +73,6 @@ export default function __sameItems(...args): any[] {
       });
     });
 
-    return __unique(sameArray);
+    return unique(sameArray);
   }
 }

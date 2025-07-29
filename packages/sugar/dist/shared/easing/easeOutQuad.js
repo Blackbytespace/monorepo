@@ -11,18 +11,18 @@
  * @param 		{Number} 		t 		The current time
  * @return 		{Number} 				The value depending on time
  *
- * @snippet         __easeOutQuad($1)
+ * @snippet         easeOutQuad($1)
  *
  * @example         js
- * import { __easeOutQuad } from '@lotsof/sugar/easing';
- * __easeOutQuad(0.4);
+ * import { easeOutQuad } from '@blackbyte/sugar/easing';
+ * easeOutQuad(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __easeOutQuad(t) {
+export default function easeOutQuad(t) {
     return t * (2 - t);
 }
 //# sourceMappingURL=easeOutQuad.js.map

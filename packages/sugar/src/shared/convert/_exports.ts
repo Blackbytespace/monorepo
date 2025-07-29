@@ -1,4 +1,9 @@
-import __mapToObject from './mapToObject.js';
-import __xmlToJson from './xmlTojson.js';
+import mapToObject from './mapToObject.js';
+import xmlToJson from './xmlTojson.js';
 
-export { __mapToObject, __xmlToJson };
+export {
+  mapToObject as __mapToObject,
+  xmlToJson as __xmlToJson,
+  mapToObject,
+  xmlToJson,
+};

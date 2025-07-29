@@ -1,5 +1,5 @@
-import __parseHtml from './parseHtml.js';
-import __tagsMap from './tagsMap.js';
+import parseHtml from './parseHtml.js';
+import tagsMap from './tagsMap.js';
 export * from '../../shared/console/_exports.js';
-export { __parseHtml, __tagsMap };
+export { parseHtml as __parseHtml, tagsMap as __tagsMap, parseHtml, tagsMap };
 //# sourceMappingURL=_exports.js.map

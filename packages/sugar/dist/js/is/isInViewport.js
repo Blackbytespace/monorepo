@@ -11,20 +11,20 @@
  * @param 		{Object} 					[offset=50] 	An object of top, right, bottom and left offset used to detect the status or an object with top, right, bottom and left offsets
  * @return 		{Boolean}									If the element is in the viewport or not
  *
- * @snippet         __isInViewport($1)
+ * @snippet         isInViewport($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __isInViewport } from '@lotsof/sugar/dom'
- * if (__isInViewport(myCoolHTMLElement) {
+ * import { isInViewport } from '@blackbyte/sugar/dom'
+ * if (isInViewport(myCoolHTMLElement) {
  * 		// i'm in the viewport
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isInViewport(elm, settings = {}) {
+export default function isInViewport(elm, settings = {}) {
     settings = Object.assign({}, settings);
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop, scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
     const containerHeight = window.innerHeight || document.documentElement.clientHeight, containerWidth = window.innerWidth || document.documentElement.clientWidth, rect = elm.getBoundingClientRect();

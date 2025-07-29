@@ -1,4 +1,4 @@
-import __matches from './matches.js';
+import matches from './matches.js';
 /**
  * @name          nextElement
  * @namespace     js.dom.query
@@ -12,24 +12,24 @@ import __matches from './matches.js';
  * @param 		{String} 						selector 	A css selector to search for
  * @return 		{HTMLElement|undefined} 								The element found or undefined
  *
- * @snippet         __next($1, $2)
+ * @snippet         nextElement($1, $2)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __nextElement } from '@lotsof/sugar/dom'
- * const nextElm =  __nextElement(myCoolElement, '.my-cool-class');
+ * import { nextElement } from '@blackbyte/sugar/dom'
+ * const nextElm =  nextElement(myCoolElement, '.my-cool-class');
  * if (nextElm) {
  * 		// we have found en element that matches the selector
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __nextElement($elm, selector) {
+export default function nextElement($elm, selector) {
     let $sibling = $elm.nextSibling;
     while ($sibling) {
-        if (__matches($sibling, selector)) {
+        if (matches($sibling, selector)) {
             return $sibling;
         }
         $sibling = $sibling.nextSibling;

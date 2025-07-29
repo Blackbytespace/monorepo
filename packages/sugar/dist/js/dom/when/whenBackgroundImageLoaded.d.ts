@@ -12,20 +12,20 @@
  * @param    {HTMLElement}    $elm    The HTMLElement on which to detect the background image load
  * @return    {SPromise}    A promise that will be resolved when the background image has been loaded
  *
- * @snippet         __whenBackgroundImageLoaded($1)
- * __whenBackgroundImageLoaded($1).then(\$elm => {
+ * @snippet         whenBackgroundImageLoaded($1)
+ * whenBackgroundImageLoaded($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import { __whenBackgroundImageLoaded } from '@lotsof/sugar/dom'
+ * import { whenBackgroundImageLoaded } from '@blackbyte/sugar/dom'
  *
  * // using promise
- * await __whenBackgroundImageLoaded($elm);
+ * await whenBackgroundImageLoaded($elm);
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenBackgroundImageLoaded($elm: HTMLElement): Promise<HTMLElement>;
+export default function whenBackgroundImageLoaded($elm: HTMLElement): Promise<HTMLElement>;

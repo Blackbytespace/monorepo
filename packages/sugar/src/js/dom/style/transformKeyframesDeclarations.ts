@@ -1,7 +1,7 @@
-import __parseKeyframeKey from '../../../shared/css/parse/parseKeyframeKey.js';
-import __removeVendorPrefix from '../../../shared/css/rule/removeVendorPrefix.js';
-import __camelCase from '../../../shared/string/camelCase.js';
-import __getDefinedStyles from './getDefinedStyles.js';
+import parseKeyframeKey from '../../../shared/css/parse/parseKeyframeKey.js';
+import removeVendorPrefix from '../../../shared/css/rule/removeVendorPrefix.js';
+import camelCase from '../../../shared/string/camelCase.js';
+import getDefinedStyles from './getDefinedStyles.js';
 
 /**
  * @name                transformKeyframesDeclarations
@@ -15,12 +15,12 @@ import __getDefinedStyles from './getDefinedStyles.js';
  * @param               {Object}            keyFrameRule                 KeyFrameRule to transform
  * @return              {Array}               Array of webanimation keyframes
  *
- * @snippet         __transformKeyframesDeclarations($1)
+ * @snippet         transformKeyframesDeclarations($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __transformKeyframesDeclarations } from '@blackbyte/sugar/dom';
+ * import { transformKeyframesDeclarations } from '@blackbyte/sugar/dom';
  *
  * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/transform-keyframe-declaration.js
  * @since           1.0.0
@@ -34,15 +34,15 @@ export type TTransformedKeyframeDeclaration = {
 };
 
 function normalizePropertyName(propertyName) {
-  return __camelCase(__removeVendorPrefix(propertyName));
+  return camelCase(removeVendorPrefix(propertyName));
 }
 
 export default function transformKeyframeDeclaration(
   keyFrameRule,
 ): TTransformedKeyframeDeclaration[] {
   // Convert keyFrame.keyText to integers holding percentage of keyframe
-  const percentages = __parseKeyframeKey(keyFrameRule.keyText);
-  const style = __getDefinedStyles(keyFrameRule.style);
+  const percentages = parseKeyframeKey(keyFrameRule.keyText);
+  const style = getDefinedStyles(keyFrameRule.style);
 
   // Normalize to unprefixed styles
   const normalizedStyles = Object.keys(style).reduce((result, propertyName) => {

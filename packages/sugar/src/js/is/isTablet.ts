@@ -12,11 +12,11 @@
  * @todo      integrate some kind of media query check
  * @todo      tests
  *
- * @snippet         __isTablet()
+ * @snippet         isTablet()
  *
  * @example 	js
- * import { __isTablet } from '@blackbyte/sugar/is'
- * if (__isTablet()) {
+ * import { isTablet } from '@blackbyte/sugar/is'
+ * if (isTablet()) {
  *   // do something cool...
  * }
  *
@@ -24,7 +24,7 @@
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isTablet(): boolean {
+export default function isTablet(): boolean {
   // touch event
   if (!('ontouchstart' in document.documentElement)) return false;
   // orientation

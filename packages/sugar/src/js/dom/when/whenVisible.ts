@@ -1,4 +1,4 @@
-import __uniqid from '../../string/uniqid.js';
+import uniqid from '../../string/uniqid.js';
 
 /**
  * @name            whenVisible
@@ -15,16 +15,16 @@ import __uniqid from '../../string/uniqid.js';
  * @param 		{HTMLElement} 				$elm 		The element to monitor
  * @return 		(Promise<HTMLElement>) 								The promise that will be resolved when the element is visible
  *
- * @snippet         __whenVisible($1)
- * __whenVisible($1).then(\$elm => {
+ * @snippet         whenVisible($1)
+ * whenVisible($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenVisible } from '@blackbyte/sugar/dom'
- * __whenVisible(myCoolHTMLElement).then(($elm) => {
+ * import { whenVisible } from '@blackbyte/sugar/dom'
+ * whenVisible(myCoolHTMLElement).then(($elm) => {
  * 		// do something with your element that is now visible
  * });
  *
@@ -40,7 +40,7 @@ export type TWhenVisibleSettings = {
 
 const _whenVisibleStatuses = new WeakMap();
 
-export default function __whenVisible(
+export default function whenVisible(
   $elm: HTMLElement,
   settings?: Partial<TWhenVisibleSettings>,
 ): Promise<HTMLElement> {
@@ -58,7 +58,7 @@ export default function __whenVisible(
     _whenVisibleStatuses.set($elm, statuses);
 
     // generate a uniqid for this listener
-    const id = __uniqid();
+    const id = uniqid();
 
     observer = new IntersectionObserver(function (entries) {
       if (entries[0]['intersectionRatio'] == 0) {

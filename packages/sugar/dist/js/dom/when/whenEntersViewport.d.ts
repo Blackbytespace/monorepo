@@ -17,23 +17,23 @@
  *
  * @setting         {String}        [offset='0px 0px -25% 0px']         An offset to detect the element entering in viewport earlier or later
  *
- * @snippet         __whenEntersViewport($1)
- * __whenEntersViewport($1).then(\$elm => {
+ * @snippet         whenEntersViewport($1)
+ * whenEntersViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenEntersViewport } from '@lotsof/sugar/dom'
- * __whenEntersViewport($myElement).then(($elm) => {
+ * import { whenEntersViewport } from '@blackbyte/sugar/dom'
+ * whenEntersViewport($myElement).then(($elm) => {
  * 		// do something with your element that has entered the viewport...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWhenEntersViewportSettings = {
     offset: string | number | undefined;
 };
-export default function __whenEntersViewport(elm: HTMLElement, settings?: TWhenEntersViewportSettings): Promise<HTMLElement>;
+export default function whenEntersViewport(elm: HTMLElement, settings?: TWhenEntersViewportSettings): Promise<HTMLElement>;

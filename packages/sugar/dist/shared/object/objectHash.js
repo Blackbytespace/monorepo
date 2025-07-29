@@ -1,4 +1,4 @@
-import __hashSum from 'hash-sum';
+import hashSum from 'hash-sum';
 /**
  * @name            objectHash
  * @namespace       shared.object
@@ -13,19 +13,19 @@ import __hashSum from 'hash-sum';
  * @param           {IObjectHashSettings}       [settings={}]       Some settings to configure your hash generation process
  * @return          {String}                            The calculated folder hash
  *
- * @snippet             __objectHash($1)
+ * @snippet             objectHash($1)
  *
  * @todo    tests
  *
  * @example         js
- * import { __objectHash } from '@lotsof/sugar/object';
- * __objectHash('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
+ * import { objectHash } from '@blackbyte/sugar/object';
+ * objectHash('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @see             https://www.npmjs.com/package/hash-sum
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function objectHash(obj) {
-    return __hashSum(obj);
+    return hashSum(obj);
 }
 //# sourceMappingURL=objectHash.js.map

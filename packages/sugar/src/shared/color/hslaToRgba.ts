@@ -1,4 +1,4 @@
-import __parseHsla from './parseHsla.js';
+import parseHsla from './parseHsla.js';
 
 /**
  * @name                hslToRgba
@@ -18,7 +18,7 @@ import __parseHsla from './parseHsla.js';
  *
  * @todo      tests
  *
- * @snippet         __hslaToRgba($1)
+ * @snippet         hslaToRgba($1)
  *
  * @example         js
  * import { __hslToRgba } from '@blackbyte/sugar/color';
@@ -85,7 +85,7 @@ interface IHslaToRgbaResult {
   a: number;
 }
 
-export default function __hslaToRgba(
+export default function hslaToRgba(
   h: string | number | any,
   s,
   l,
@@ -98,7 +98,7 @@ export default function __hslaToRgba(
         '<red>[hslaToRgba]</red> When passing a string to the first parameter, it MUST be formatted like: hsla?(.*)',
       );
     }
-    h = __parseHsla(h);
+    h = parseHsla(h);
   }
 
   // object support

@@ -1,8 +1,8 @@
 import __isDirectory from '../is/isDirectory.js';
 import __fileHashSync from './fileHashSync.js';
 
-import * as __fs from 'fs';
-import __sha256 from '../../shared/crypto/sha256.js';
+import * as fs from 'fs';
+import sha256 from '../../shared/crypto/sha256.js';
 
 /**
  * @name            folderHashSync
@@ -23,11 +23,11 @@ import __sha256 from '../../shared/crypto/sha256.js';
  * @setting         {String}            [algo='sha356']             The algorithm to use
  * @setting         {BinaryToTextEncoding}      [digest='base64']       How to digest the hash
  *
- * @snippet         __folderHashSync($1)
+ * @snippet         folderHashSync($1)
  *
  * @example         js
- * import { __folderHashSync } from '@blackbyte/sugar/fs';
- * __folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
+ * import { folderHashSync } from '@blackbyte/sugar/fs';
+ * folderHashSync('my/cool/folder'); // => YZOrKDx9LCLd8X39PoFTflXGpRU=,
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -39,7 +39,7 @@ export type TFolderHashSettings = {
   encoding: 'hex' | 'base64' | 'buffer' | 'latin1';
 };
 
-export default function __folderHashSync(
+export default function folderHashSync(
   folderPath: string,
   settings: Partial<TFolderHashSettings> = {},
 ): string {
@@ -52,7 +52,7 @@ export default function __folderHashSync(
   const paths: string[] = [];
 
   function readDir(dir) {
-    const files = __fs.readdirSync(dir);
+    const files = fs.readdirSync(dir);
     files.forEach((filePath) => {
       if (finalSettings.recursive && __isDirectory(`${dir}/${filePath}`)) {
         return readDir(`${dir}/${filePath}`);
@@ -75,5 +75,5 @@ export default function __folderHashSync(
     );
   });
 
-  return __sha256.encrypt(filesHashes.join('-'));
+  return sha256.encrypt(filesHashes.join('-'));
 }

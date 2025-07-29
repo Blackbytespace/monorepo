@@ -1,6 +1,6 @@
 import * as __fs from 'fs';
 import { globSync as __globSync } from 'glob';
-import __isGlob from '../../shared/is/isGlob.js';
+import isGlob from '../../shared/is/isGlob.js';
 
 /**
  * @name            findUp
@@ -19,12 +19,12 @@ import __isGlob from '../../shared/is/isGlob.js';
  *
  * @todo            tests
  *
- * @snippet         __findUp($1)
- * await __findUp($1)
+ * @snippet         findUp($1)
+ * await findUp($1)
  *
  * @example         js
- * import { __findUp } from '@blackbyte/sugar/fs';
- * const file = await __findUp('myCoolFile.json', {});
+ * import { findUp } from '@blackbyte/sugar/fs';
+ * const file = await findUp('myCoolFile.json', {});
  * console.log(file.path);
  *
  * @since       1.0.0
@@ -37,7 +37,7 @@ export type TFindUpSettings = {
   stopWhenFound?: boolean;
 };
 
-export default function __findUp(
+export default function findUp(
   search: string,
   settings: TFindUpSettings,
 ): Promise<string[]> {
@@ -57,7 +57,7 @@ export default function __findUp(
     while (currentPath.length > 0) {
       const path = `/${currentPath.join('/')}`;
 
-      if (__isGlob(search)) {
+      if (isGlob(search)) {
         let files = __globSync(search, {
           cwd: path,
           follow: settings.symlinks,

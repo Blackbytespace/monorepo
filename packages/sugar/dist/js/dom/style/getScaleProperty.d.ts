@@ -12,20 +12,20 @@
  *
  * @todo      tests
  *
- * @snippet         __getScaleProperty($1)
+ * @snippet         getScaleProperty($1)
  *
  * @example  	js
- * import { __getScaleProperty } from '@lotsof/sugar/dom'
- * const props = __getScaleProperty(myCoolHTMLElement);
+ * import { getScaleProperty } from '@blackbyte/sugar/dom'
+ * const props = getScaleProperty(myCoolHTMLElement);
  * // output format
  * // 2
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetScalePropertyResult = {
     x: number;
     y: number;
     z: number;
 };
-export default function __getScaleProperty($elm: HTMLElement): TGetScalePropertyResult | undefined;
+export default function getScaleProperty($elm: HTMLElement): TGetScalePropertyResult | undefined;

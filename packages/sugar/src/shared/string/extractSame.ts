@@ -17,16 +17,16 @@
  *
  * @todo      tests
  *
- * @snippet             __extractSame($1)
+ * @snippet             extractSame($1)
  *
  * @example       js
- * import { __extractSame } from '@blackbyte/sugar/string';
- * __extractSame('Hello world', 'Hello plop'); // => 'Hello '
+ * import { extractSame } from '@blackbyte/sugar/string';
+ * extractSame('Hello world', 'Hello plop'); // => 'Hello '
  *
  * @since       1.0.0
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __extractSame(
+export default function extractSame(
   string1: string,
   string2: string,
   multiple: boolean = false,

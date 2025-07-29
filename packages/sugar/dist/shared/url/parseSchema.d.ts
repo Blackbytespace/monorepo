@@ -27,10 +27,10 @@
  * @todo      tests
  *
  * @example       js
- * import { __parseSchema } from '@lotsof/sugar/url';
- * __parseSchema('https://github.com/myApp/master/3', '{project:string}/{?branch:string}/{?idx:number}');
+ * import { parseSchema } from '@blackbyte/sugar/url';
+ * parseSchema('https://github.com/myApp/main/3', '{project:string}/{?branch:string}/{?idx:number}');
  * // {
- * //   url: 'https://github.com/myApp/master/3',
+ * //   url: 'https://github.com/myApp/main/3',
  * //   schema: '{project:string}/{?branch:string}/{?idx:number}',
  * //   match: true,
  * //   errors: null,
@@ -59,4 +59,4 @@
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __parseSchema(url: string, schema: string): any;
+export default function parseSchema(url: string, schema: string): any;

@@ -11,17 +11,17 @@
  * @param       {String}              src           The source path to moveSync
  * @param       {String}              dest          The destination path
  *
- * @snippet         __rename($1, $2)
+ * @snippet         rename($1, $2)
  *
  * @example       js
- * import { __rename } from '@lotsof/sugar/fs';
- * await __rename('my/cool/dir', 'another/place/for/directory');
+ * import { rename } from '@blackbyte/sugar/fs';
+ * await rename('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TRenameSettings = {
     override: boolean;
 };
-export default function __rename(src: string, newName: string, settings?: Partial<TRenameSettings>): Promise<void>;
+export default function rename(src: string, newName: string, settings?: Partial<TRenameSettings>): Promise<void>;

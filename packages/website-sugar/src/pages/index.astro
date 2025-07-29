@@ -1,12 +1,15 @@
 ---
-import Intro from '../components/sections/intro/intro.mdx';
+import CodeSamples from '../components/sections/codeSamples/codeSamples.astro';
+import GetStarted from '../components/sections/getStarted/getStarted.astro';
 import Welcome from '../components/sections/welcome/welcome.astro';
 import Layout from '../layouts/main.astro';
 ---
 
-<Layout>
+<Layout pageTitle="Sugar">
   <Welcome />
-  <div class="markdown typo-format typo-rhythm">
+  <CodeSamples />
+  <GetStarted />
+  <!-- <div class="markdown typo-format typo-rhythm">
     <Intro />
-  </div>
+  </div> -->
 </Layout>

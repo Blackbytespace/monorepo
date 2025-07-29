@@ -1,4 +1,4 @@
-import * as __rematrix from 'rematrix';
+import * as rematrix from 'rematrix';
 
 /**
  * @name            getTranslateProperties
@@ -14,11 +14,11 @@ import * as __rematrix from 'rematrix';
  *
  * @todo      tests
  *
- * @snippet         __getTranslateProperties($1)
+ * @snippet         getTranslateProperties($1)
  *
  * @example  	js
- * import { __getTranslateProperties } from '@blackbyte/sugar/dom'
- * const props = __getTranslateProperties(myCoolHTMLElement);
+ * import { getTranslateProperties } from '@blackbyte/sugar/dom'
+ * const props = getTranslateProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	x : 100,
@@ -36,7 +36,7 @@ export type TGetTranslatePropertiesResult = {
   z: number;
 };
 
-export default function __getTranslateProperties(
+export default function getTranslateProperties(
   $elm: HTMLElement,
 ): TGetTranslatePropertiesResult {
   if (!window.getComputedStyle)
@@ -60,7 +60,7 @@ export default function __getTranslateProperties(
       z: 0,
     };
 
-  const matrix3d = __rematrix.fromString(transform);
+  const matrix3d = rematrix.fromString(transform);
   return {
     x: matrix3d[12],
     y: matrix3d[13],

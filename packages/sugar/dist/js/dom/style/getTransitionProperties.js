@@ -1,5 +1,5 @@
-import __convertTime from '../../../shared/datetime/convertTime.js';
-import __getStyleProperty from './getStyleProperty.js';
+import convertTime from '../../../shared/datetime/convertTime.js';
+import getStyleProperty from './getStyleProperty.js';
 function splitIfNeeded(what, separator) {
     var _a;
     if ((_a = what.includes) === null || _a === void 0 ? void 0 : _a.call(what, separator)) {
@@ -9,15 +9,15 @@ function splitIfNeeded(what, separator) {
 }
 function getTransitionProperties(elm) {
     // get the transition properties
-    const property = __getStyleProperty(elm, 'transition-property');
-    const duration = __getStyleProperty(elm, 'transition-duration') || 0;
-    const timingFunction = __getStyleProperty(elm, 'transition-timing-function');
-    const delay = __getStyleProperty(elm, 'transition-delay');
+    const property = getStyleProperty(elm, 'transition-property');
+    const duration = getStyleProperty(elm, 'transition-duration') || 0;
+    const timingFunction = getStyleProperty(elm, 'transition-timing-function');
+    const delay = getStyleProperty(elm, 'transition-delay');
     // return the transition object
     const props = {
         properties: splitIfNeeded(property, ','),
-        durations: splitIfNeeded(duration, ',').map((value) => __convertTime(value, 'ms')),
-        delays: splitIfNeeded(delay, ',').map((value) => __convertTime(value, 'ms')),
+        durations: splitIfNeeded(duration, ',').map((value) => convertTime(value, 'ms')),
+        delays: splitIfNeeded(delay, ',').map((value) => convertTime(value, 'ms')),
         timingFunctions: splitIfNeeded(timingFunction, ','),
     };
     const result = {

@@ -16,17 +16,17 @@
  *
  * @todo        tests
  *
- * @snippet         __utcTime()
+ * @snippet         utcTime()
  *
  * @example         js
- * import { __utcTime } from '@lotsof/sugar/date';
- * __utcTime(); // => 10:20:32
- * __utcTime(true, true, false); // => 10:20
+ * import { utcTime } from '@blackbyte/sugar/date';
+ * utcTime(); // => 10:20:32
+ * utcTime(true, true, false); // => 10:20
  *
  * @since       1.0.0
- * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __utcTime(hours = true, minutes = true, seconds = true, date = new Date()) {
+export default function utcTime(hours = true, minutes = true, seconds = true, date = new Date()) {
     const timeAr = [];
     if (hours)
         timeAr.push(date.getHours());

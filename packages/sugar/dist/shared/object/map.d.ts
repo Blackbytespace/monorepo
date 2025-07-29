@@ -16,18 +16,18 @@
  *
  * @todo      tests
  *
- * @snippet         __map($1, $2)
- * __map($1, ({value, prop}) => {
+ * @snippet         map($1, $2)
+ * map($1, ({value, prop}) => {
  *      $2
  * })
  *
  * @example         js
- * import { __map } from '@lotsof/sugar/object';
+ * import { map } from '@blackbyte/sugar/object';
  * const myObject = {
  *    hello: 'world',
  *    cat: 'Nelson'
  * };
- * __map(myObject, ({value, prop}) => {
+ * map(myObject, ({value, prop}) => {
  *    return prop === 'hello' ? 'universe' : value;
  * });
  * {
@@ -36,7 +36,7 @@
  * }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TMapObjProcessorArg = {
     value: any;
@@ -45,4 +45,4 @@ export type TMapObjProcessorArg = {
     i: number;
     idx: number;
 };
-export default function __map(object: any, processor: (item: TMapObjProcessorArg) => any): any;
+export default function map(object: any, processor: (item: TMapObjProcessorArg) => any): any;

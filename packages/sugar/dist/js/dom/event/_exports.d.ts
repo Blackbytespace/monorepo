@@ -1,2 +1,2 @@
-import __viewportEvents from './viewportEvents.js';
-export { __viewportEvents };
+import viewportEvents from './viewportEvents.js';
+export { viewportEvents as __viewportEvents, viewportEvents };

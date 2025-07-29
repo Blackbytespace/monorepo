@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __snakeCase($1)
+ * @snippet         snakeCase($1)
  *
  * @example     js
- * import { __snakeCase } from '@lotsof/sugar/string';
- * __snakeCase('hello world'); // => hello_world
+ * import { snakeCase } from '@blackbyte/sugar/string';
+ * snakeCase('hello world'); // => hello_world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __snakeCase(text: string): string;

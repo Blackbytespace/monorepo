@@ -24,18 +24,18 @@
  *
  * @todo      tests
  *
- * @snippet         __deepMerge($1, $2)
+ * @snippet         deepMerge($1, $2)
  *
  * @example           js
- * import { __deepMerge } from '@lotsof/sugar/object';
- * __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
+ * import { deepMerge } from '@blackbyte/sugar/object';
+ * deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepMergeSettings = {
     array?: boolean;
     clone?: boolean;
 };
-export default function __deepMerge(objects: any[], settings?: TDeepMergeSettings): any;
+export default function deepMerge(objects: any[], settings?: TDeepMergeSettings): any;

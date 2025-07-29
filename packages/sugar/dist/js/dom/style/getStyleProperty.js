@@ -1,5 +1,5 @@
-import __camelize from '../../../shared/string/camelize.js';
-import __parse from '../../../shared/string/parse.js';
+import camelize from '../../../shared/string/camelize.js';
+import parse from '../../../shared/string/parse.js';
 /**
  * @name            getStyleProperty
  * @namespace       js.dom.style
@@ -17,26 +17,26 @@ import __parse from '../../../shared/string/parse.js';
  *
  * @todo      tests
  *
- * @snippet         __getStyleProperty($1, $2)
+ * @snippet         getStyleProperty($1, $2)
  *
  * @example  	js
- * import { __getStyleProperty } from '@lotsof/sugar/dom'
- * const opacity = __getStyleProperty(myCoolHTMLElement, 'opacity');
+ * import { getStyleProperty } from '@blackbyte/sugar/dom'
+ * const opacity = getStyleProperty(myCoolHTMLElement, 'opacity');
  *
  * @see 		https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getStyleProperty(elm, property) {
+export default function getStyleProperty(elm, property) {
     if (!elm)
         return;
     const computed = window.getComputedStyle(elm);
     const prefixes = ['', 'webkit-', 'moz-', 'ms-', 'o-', 'khtml-'];
     for (let i = 0; i < prefixes.length; i++) {
         const prefix = prefixes[i];
-        const value = computed[__camelize(`${prefix}${property}`)];
+        const value = computed[camelize(`${prefix}${property}`)];
         if (value && value.trim() !== '')
-            return __parse(value);
+            return parse(value);
     }
     return null;
 }

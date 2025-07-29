@@ -10,14 +10,14 @@
  * @param       {String}              src           The source path to copy
  * @param       {String}              dest          The destination path
  *
- * @snippet         __copySync($1, $2)
+ * @snippet         copySync($1, $2)
  *
  * @example       js
- * import { __copySync } from '@lotsof/sugar/fs';
- *  __copySync('my/cool/file.jpg', 'my/new/file.jpg');
+ * import { copySync } from '@blackbyte/sugar/fs';
+ *  copySync('my/cool/file.jpg', 'my/new/file.jpg');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copySync(src: string, dest: string): void;
+export default function copySync(src: string, dest: string): void;

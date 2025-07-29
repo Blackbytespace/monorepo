@@ -12,19 +12,19 @@
  * @param 		{Object} 			settings	 		The settings of the query
  * @return 		{HTMLElement} 							The founded element
  *
- * @snippet         __elementInViewport($1)
+ * @snippet         elementsInViewport($1)
  *
  * @todo      tests
  *
  * @example 	js
- * import { __elementsInViewport } from '@lotsof/sugar/dom';
- * const $elements = __elementsInViewport();
+ * import { elementsInViewport } from '@blackbyte/sugar/dom';
+ * const $elements = elementsInViewport();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TElementsInViewportSettings = {
     rootNode: HTMLElement;
     threshold: number;
 };
-export default function __elementsInViewport(settings?: Partial<TElementsInViewportSettings>): HTMLElement[];
+export default function elementsInViewport(settings?: Partial<TElementsInViewportSettings>): HTMLElement[];

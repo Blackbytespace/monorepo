@@ -15,11 +15,11 @@ import { noCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __noCase($1)
+ * @snippet         noCase($1)
  *
  * @example     js
- * import { __noCase } from '@blackbyte/sugar/string';
- * __noCase('hello world'); // => hello world
+ * import { noCase } from '@blackbyte/sugar/string';
+ * noCase('hello world'); // => hello world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

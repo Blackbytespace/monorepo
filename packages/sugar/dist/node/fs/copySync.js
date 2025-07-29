@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 /**
  * @name            copySync
  * @namespace       node.fs
@@ -11,17 +11,17 @@ import __fs from 'fs-extra';
  * @param       {String}              src           The source path to copy
  * @param       {String}              dest          The destination path
  *
- * @snippet         __copySync($1, $2)
+ * @snippet         copySync($1, $2)
  *
  * @example       js
- * import { __copySync } from '@lotsof/sugar/fs';
- *  __copySync('my/cool/file.jpg', 'my/new/file.jpg');
+ * import { copySync } from '@blackbyte/sugar/fs';
+ *  copySync('my/cool/file.jpg', 'my/new/file.jpg');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copySync(src, dest) {
-    __fs.copySync(src, dest);
+export default function copySync(src, dest) {
+    fs.copySync(src, dest);
 }
 //# sourceMappingURL=copySync.js.map

@@ -1,6 +1,6 @@
-import __isInViewport from '../../is/isInViewport.js';
-import __isVisible from '../../is/isVisible.js';
-import __closestNotVisibleElement from './closestNotVisibleElement.js';
+import isInViewport from '../../is/isInViewport.js';
+import isVisible from '../../is/isVisible.js';
+import closestNotVisibleElement from './closestNotVisibleElement.js';
 
 /**
  * @name            querySelector
@@ -23,17 +23,17 @@ import __closestNotVisibleElement from './closestNotVisibleElement.js';
  * @param 		{Object} 			settings	 		The settings of the query
  * @return 		{HTMLElement} 							The founded element
  *
- * @snippet         __querySelector($1)
+ * @snippet         querySelector($1)
  *
  * @todo      tests
  *
  * @example 	js
- * import { __querySelector } from '@blackbyte/sugar/dom';
+ * import { querySelector } from '@blackbyte/sugar/dom';
  * // simple query
- * const elm = __querySelector('.a-cool-css-selector');
+ * const elm = querySelector('.a-cool-css-selector');
  *
  * // get an element that is in the viewport
- * const elm = __querySelector('.a-cool-css-selector', {
+ * const elm = querySelector('.a-cool-css-selector', {
  * 		inViewport : true
  * });
  *
@@ -47,7 +47,7 @@ export type TQuerySelectorSettings = {
   rootNode: HTMLElement;
 };
 
-export default function __querySelector(
+export default function querySelector(
   selector: string,
   settings: Partial<TQuerySelectorSettings> = {},
 ): HTMLElement | undefined {
@@ -66,14 +66,14 @@ export default function __querySelector(
 
   // check finalSettings
   if (finalSettings.visible === false) {
-    if (__isVisible($elm) || __closestNotVisibleElement($elm)) return;
+    if (isVisible($elm) || closestNotVisibleElement($elm)) return;
   } else if (finalSettings.visible === true) {
-    if (!__isVisible($elm) || !__closestNotVisibleElement($elm)) return;
+    if (!isVisible($elm) || !closestNotVisibleElement($elm)) return;
   }
   if (finalSettings.inViewport === false) {
-    if (__isInViewport($elm)) return;
+    if (isInViewport($elm)) return;
   } else if (finalSettings.inViewport === true) {
-    if (!__isInViewport($elm)) return;
+    if (!isInViewport($elm)) return;
   }
 
   // return the element

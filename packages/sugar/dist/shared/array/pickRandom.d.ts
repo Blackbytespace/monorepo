@@ -11,14 +11,14 @@
  * @param       {Array}         array       The array from which to pick a random item
  * @return      {Any}                       A random array item
  *
- * @snippet         __pickRandom($1)
+ * @snippet         pickRandom($1)
  *
  * @example         js
- * import { __pickRandom } from '@lotsof/sugar/array';
+ * import { pickRandom } from '@blackbyte/sugar/array';
  * const array = ['hello','world'];
- * __pickRandom(array); // => 'world'
+ * pickRandom(array); // => 'world'
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __pickRandom(array: any[], count?: number): any;
+export default function pickRandom(array: any[], count?: number): any;

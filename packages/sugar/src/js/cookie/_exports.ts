@@ -1,5 +1,12 @@
-import __deleteCookie from './deleteCookie.js';
-import __getCookie from './getCookie.js';
-import __setCookie from './setCookie.js';
+import deleteCookie from './deleteCookie.js';
+import getCookie from './getCookie.js';
+import setCookie from './setCookie.js';
 
-export { __deleteCookie, __getCookie, __setCookie };
+export {
+  deleteCookie as __deleteCookie,
+  getCookie as __getCookie,
+  setCookie as __setCookie,
+  deleteCookie,
+  getCookie,
+  setCookie,
+};

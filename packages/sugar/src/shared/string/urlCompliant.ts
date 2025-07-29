@@ -15,13 +15,13 @@ import __simplifySpecialChars from './simplifySpecialChars.js';
  * @param       {String}        string         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __urlCompliant($1)
+ * @snippet         urlCompliant($1)
  *
  * @todo        tests
  *
  * @example         php
- * import { __urlCompliant } from '@blackbyte/sugar/string';
- * __urlCompliant('Hello world'); // => hello-world
+ * import { urlCompliant } from '@blackbyte/sugar/string';
+ * urlCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -30,7 +30,7 @@ export type TUrlCompliantSettings = {
   exclude: string[];
 };
 
-export default function __urlCompliant(
+export default function urlCompliant(
   str: string,
   settings?: TUrlCompliantSettings,
 ): string {

@@ -1,8 +1,7 @@
-import __toString from '../../shared/string/toString.js';
-import __ensureDirSync from './ensureDirSync.js';
+import fs from 'fs-extra';
+import toString from '../../shared/string/toString.js';
+import ensureDirSync from './ensureDirSync.js';
 import __folderPath from './folderPath.js';
-
-import __fs from 'fs-extra';
 
 /**
  * @name                writeFileSync
@@ -19,23 +18,23 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet         __writeFileSync($1, $2)
+ * @snippet         writeFileSync($1, $2)
  *
  * @example       js
- * import { __writeFileSync } from '@blackbyte/sugar/fs';
- * __writeFileSync('my/cool/file.txt', 'Hello World');
+ * import { writeFileSync } from '@blackbyte/sugar/fs';
+ * writeFileSync('my/cool/file.txt', 'Hello World');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeFileSync(
+export default function writeFileSync(
   path: string,
   data: any,
   options = {},
 ): string {
   const folderPath = __folderPath(path);
-  __ensureDirSync(folderPath);
-  __fs.outputFileSync(path, __toString(data), options);
+  ensureDirSync(folderPath);
+  fs.outputFileSync(path, toString(data), options);
   return path;
 }

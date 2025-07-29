@@ -14,13 +14,13 @@
  *
  * @todo      tests
  *
- * @snippet         __pad($1, $2)
+ * @snippet         pad($1, $2)
  *
  * @example    js
- * import { __pad } from '@lotsof/sugar/number'
- * __pad(123, 4) // 0123
+ * import { pad } from '@blackbyte/sugar/number'
+ * pad(123, 4) // 0123
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __pad(number: number, width: number, character?: string): string;
+export default function pad(number: number, width: number, character?: string): string;

@@ -1,9 +1,9 @@
-import __uniqid from '../../string/uniqid.js';
-const __whenInViewportStatuses = new WeakMap();
+import uniqid from '../../string/uniqid.js';
+const whenInViewportStatuses = new WeakMap();
 class CancelablePromise extends Promise {
     cancel() { }
 }
-export default function __whenInViewport($elm, settings) {
+export default function whenInViewport($elm, settings) {
     const finalSettings = Object.assign({ offset: '10px', once: true, whenIn: undefined, whenOut: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
     let observer;
     function getRootMargin() {
@@ -15,7 +15,7 @@ export default function __whenInViewport($elm, settings) {
         ].join(' ');
     }
     // generate a uniqid for this listener
-    const id = __uniqid();
+    const id = uniqid();
     const rootMargin = finalSettings.offset
         ? `${finalSettings.offset}`
         : getRootMargin();
@@ -27,8 +27,8 @@ export default function __whenInViewport($elm, settings) {
             threshold: 0, // visible amount of item shown in relation to root
         };
         // store status for all listeners
-        let statuses = (_a = __whenInViewportStatuses.get($elm)) !== null && _a !== void 0 ? _a : {};
-        __whenInViewportStatuses.set($elm, statuses);
+        let statuses = (_a = whenInViewportStatuses.get($elm)) !== null && _a !== void 0 ? _a : {};
+        whenInViewportStatuses.set($elm, statuses);
         function onChange(changes) {
             changes.forEach((change) => {
                 var _a, _b;

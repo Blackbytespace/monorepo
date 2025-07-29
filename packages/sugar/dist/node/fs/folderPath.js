@@ -1,8 +1,8 @@
-import __isPath from '../../shared/is/isPath.js';
-export default function __folderPath(path, settings) {
+import isPath from '../../shared/is/isPath.js';
+export default function folderPath(path, settings) {
     const finalSettings = Object.assign({ checkExistence: false }, (settings !== null && settings !== void 0 ? settings : {}));
     if (finalSettings.checkExistence) {
-        if (!__isPath(path))
+        if (!isPath(path))
             return '';
     }
     const parts = path.split('/');

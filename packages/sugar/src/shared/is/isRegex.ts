@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isRegex($1)
+ * @snippet         isRegex($1)
  *
  * @example    js
- * import { __isRegex } from '@blackbyte/sugar/is'
- * if (__isRegex(/^hello$/g) {
+ * import { isRegex } from '@blackbyte/sugar/is'
+ * if (isRegex(/^hello$/g) {
  *   // do something
  * }
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isRegex(value: any): boolean {
+export default function isRegex(value: any): boolean {
   return value && typeof value === 'object' && value.constructor === RegExp;
 }

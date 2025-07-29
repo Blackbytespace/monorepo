@@ -12,13 +12,13 @@
  * @param       {StyleSheet|StyleSheetList}        stalesheet      The StyleSheet instance to convert
  * @return      {String}                            The css string
  *
- * @snippet         __stylesheetToString($1)
+ * @snippet         stylesheetToString($1)
  *
  * @example         js
- * import { __stylesheetToString } from '@lotsof/sugar/dom';
- * __stylesheetToString(document.stylesheets); // => body { ... }
+ * import { stylesheetToString } from '@blackbyte/sugar/dom';
+ * stylesheetToString(document.stylesheets); // => body { ... }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __stylesheetToString(stylesheet: StyleSheet | StyleSheetList): string;
+export default function stylesheetToString(stylesheet: StyleSheet | StyleSheetList): string;

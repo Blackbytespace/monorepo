@@ -19,16 +19,16 @@
  * @setting         {Boolean|'strict'|'lax'}        [samesite=null]         Controls whether or not a cookie is sent with cross-site requests, providing some protection against cross-site request forgery attacks (CSRF)
  * @setting         {Boolean}       [httpOnly=null]         Forbids JavaScript from accessing the cookie, for example, through the Document.cookie property.
  *
- * @snippet         __setCookie($1, $2)
+ * @snippet         setCookie($1, $2)
  *
  * @todo            tests
  *
  * @example         js
- * import { __setCookie } from '@lotsof/sugar/cookie';
- * __setCookie('myCookie', 'hello world');
+ * import { setCookie } from '@blackbyte/sugar/cookie';
+ * setCookie('myCookie', 'hello world');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export interface ISetCookieSettings {
     path: string;
@@ -39,4 +39,4 @@ export interface ISetCookieSettings {
     samesite: boolean | 'strict' | 'lax';
     httpOnly: boolean;
 }
-export default function __setCookie(name: string, value: any, settings?: Partial<ISetCookieSettings>): void;
+export default function setCookie(name: string, value: any, settings?: Partial<ISetCookieSettings>): void;

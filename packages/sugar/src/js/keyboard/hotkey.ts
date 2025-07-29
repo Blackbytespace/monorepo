@@ -27,13 +27,13 @@
  *
  * @todo      tests
  *
- * @snippet         __hotkey($1, () => {
+ * @snippet         hotkey($1, () => {
  *      $2
  * });
  *
  * @example    js
- * import { __hotkey } from '@blackbyte/sugar/keyboard'
- * const hotkeyApi = __hotkey('ctrl+a', (e) => {
+ * import { hotkey } from '@blackbyte/sugar/keyboard'
+ * const hotkeyApi = hotkey('ctrl+a', (e) => {
  *  console.log('Hotkey pressed');
  * });
  *
@@ -53,7 +53,7 @@ export type THotkeyApi = {
   cancel: Function;
 };
 
-export default function __hotkey(
+export default function hotkey(
   key: string | string[],
   callback: Function,
   settings?: Partial<THotkeySettings>,
@@ -67,7 +67,7 @@ export default function __hotkey(
   // multiple keys
   if (Array.isArray(key)) {
     const hotkeyApis = key.map((k) => {
-      return __hotkey(k, callback, settings);
+      return hotkey(k, callback, settings);
     });
     return {
       cancel: () => {

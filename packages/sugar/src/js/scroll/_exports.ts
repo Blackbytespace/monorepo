@@ -1,5 +1,9 @@
-import __onScrollEnd from './onScrollEnd.js';
-import __scrollSpy from './scrollSpy.js';
-import __scrollTo from './scrollTo.js';
+import scrollSpy from './scrollSpy.js';
+import scrollTo from './scrollTo.js';
 
-export { __onScrollEnd, __scrollSpy, __scrollTo };
+export {
+  scrollSpy as __scrollSpy,
+  scrollTo as __scrollTo,
+  scrollSpy,
+  scrollTo,
+};

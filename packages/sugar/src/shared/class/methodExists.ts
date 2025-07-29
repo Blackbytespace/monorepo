@@ -14,21 +14,21 @@
  *
  * @todo      tests
  *
- * @snippet         __methodExists($1)
+ * @snippet         methodExists($1)
  *
  * @example           js
  * class Coco {
  *    hello() {}
  * }
- * import { __methodExists } from '@blackbyte/sugar/class';
+ * import { methodExists } from '@blackbyte/sugar/class';
  * const myInstance = new Coco();
- * __methodExists(myInstance, 'hello', 'world'); // => ['world'];
- * __methodExists(myInstance, 'hello'); // => true
+ * methodExists(myInstance, 'hello', 'world'); // => ['world'];
+ * methodExists(myInstance, 'hello'); // => true
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __methodExists(
+export default function methodExists(
   instance: any,
   ...methods
 ): boolean | string[] {

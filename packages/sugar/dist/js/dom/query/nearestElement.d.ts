@@ -16,11 +16,11 @@
  *
  * @todo      tests
  *
- * @snippet         __nearestElement($1, $2, $3)
+ * @snippet         nearestElement($1, $2, $3)
  *
  * @example    js
- * import { __nearestElement } from '@lotsof/sugar/dom'
- * __nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
+ * import { nearestElement } from '@blackbyte/sugar/dom'
+ * nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
  *      direction: 'top'
  * });
  *
@@ -30,4 +30,4 @@
 export type TNearestElementSettings = {
     direction?: 'top' | 'right' | 'bottom' | 'left';
 };
-export default function __nearestElement($from: HTMLElement, $elements: HTMLElement[] | NodeListOf<HTMLElement>, settings?: TNearestElementSettings): HTMLElement | undefined;
+export default function nearestElement($from: HTMLElement, $elements: HTMLElement[] | NodeListOf<HTMLElement>, settings?: TNearestElementSettings): HTMLElement | undefined;

@@ -1,4 +1,4 @@
-import __fs from 'fs';
+import fs from 'fs';
 import __packageDir from './packageDir.js';
 
 /**
@@ -19,11 +19,11 @@ import __packageDir from './packageDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __packageJsonSync($1)
+ * @snippet         packageJsonSync($1)
  *
  * @example         js
- * import { __packageJsonSync } from '@blackbyte/sugar/package`;
- * __packageJsonSync('blackbyte/sugar');
+ * import { packageJsonSync } from '@blackbyte/sugar/package`;
+ * packageJsonSync('blackbyte/sugar');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
@@ -37,7 +37,7 @@ export type TPackageJsonSyncSettings = {
   checkExistence: boolean;
 };
 
-export default function __packageJsonSync(
+export default function packageJsonSync(
   nameOrPath: string,
   settings?: Partial<TPackageJsonSyncSettings>,
 ): any {
@@ -49,5 +49,5 @@ export default function __packageJsonSync(
   };
 
   const packageDir = __packageDir(nameOrPath, settings);
-  return JSON.parse(__fs.readFileSync(`${packageDir}/package.json`, 'utf8'));
+  return JSON.parse(fs.readFileSync(`${packageDir}/package.json`, 'utf8'));
 }

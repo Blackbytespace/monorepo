@@ -1,5 +1,5 @@
 // @ts-ignore
-import __fastFolderSize from 'fast-folder-size';
+import fastFolderSize from 'fast-folder-size';
 
 /**
  * @name                folderSize
@@ -16,21 +16,21 @@ import __fastFolderSize from 'fast-folder-size';
  *
  * @todo            tests
  *
- * @snippet         __folderSize($1)
- * await __folderSize($1)
+ * @snippet         folderSize($1)
+ * await folderSize($1)
  *
  * @example           js
- * import { __folderSize } from '@blackbyte/sugar/fs';
- * await __folderSize('my/cool/folder');
+ * import { folderSize } from '@blackbyte/sugar/fs';
+ * await folderSize('my/cool/folder');
  *
  *
  * @see             https://www.npmjs.com/package/get-folder-size
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __folderSize(folderPath: string): Promise<number> {
+export default function folderSize(folderPath: string): Promise<number> {
   return new Promise(async (resolve, reject) => {
-    __fastFolderSize(folderPath, (err, bytes) => {
+    fastFolderSize(folderPath, (err, bytes) => {
       resolve(bytes ?? 0);
     });
   });

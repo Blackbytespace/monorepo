@@ -1,5 +1,5 @@
-import __fs from 'fs';
-import __packageRootDir from '../package/packageRootDir.js';
+import fs from 'fs';
+import packageRootDir from '../package/packageRootDir.js';
 
 /**
  * @name                    composerVendorDir
@@ -17,11 +17,11 @@ import __packageRootDir from '../package/packageRootDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __composerVendorDir($1)
+ * @snippet         composerVendorDir($1)
  *
  * @example         js
- * import { __composerVendorDir } from '@blackbyte/sugar/composer`;
- * __composerVendorDir('lodash');
+ * import { composerVendorDir } from '@blackbyte/sugar/composer`;
+ * composerVendorDir('lodash');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -42,11 +42,11 @@ export default function composerVendorDir(
     ...(settings ?? {}),
   };
 
-  let vendorDir = `${__packageRootDir(set.cwd, {
+  let vendorDir = `${packageRootDir(set.cwd, {
     highest: set.monorepo,
   })}/vendor`;
 
-  if (set.checkExistence && !__fs.existsSync(vendorDir)) {
+  if (set.checkExistence && !fs.existsSync(vendorDir)) {
     throw new Error(
       `The composer vendors directory "<yellow>${vendorDir}</yellow>" does not exists...`,
     );

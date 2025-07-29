@@ -13,15 +13,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isArray($1)
+ * @snippet         isArray($1)
  *
  * @example    js
- * import { __isArray } from '@lotsof/sugar/is'
- * if (__isArray([]) {
+ * import { isArray } from '@blackbyte/sugar/is'
+ * if (isArray([]) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isArray(value: any): boolean;
+export default function isArray(value: any): boolean;

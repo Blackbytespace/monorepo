@@ -10,16 +10,16 @@
  * @param               {Object}            keyFrameRule                 KeyFrameRule to transform
  * @return              {Array}               Array of webanimation keyframes
  *
- * @snippet         __transformKeyframesDeclarations($1)
+ * @snippet         transformKeyframesDeclarations($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __transformKeyframesDeclarations } from '@lotsof/sugar/dom';
+ * import { transformKeyframesDeclarations } from '@blackbyte/sugar/dom';
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/transform-keyframe-declaration.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/transform-keyframe-declaration.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TTransformedKeyframeDeclaration = {
     percentage: number;

@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __isImageUrl($1)
+ * @snippet         isImageUrl($1)
  *
  * @example               js
- * import { __isImageUrl } from '@lotsof/sugar/is';
- * __isImageUrl('something.jpg); // => true
- * __isImageUrl('other.pdf); // => false
+ * import { isImageUrl } from '@blackbyte/sugar/is';
+ * isImageUrl('something.jpg); // => true
+ * isImageUrl('other.pdf); // => false
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function (string: string): boolean;

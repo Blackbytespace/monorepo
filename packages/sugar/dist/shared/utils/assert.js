@@ -16,7 +16,7 @@
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __assert(condition, message) {
+export default function assert(condition, message) {
     if (!condition) {
         console.error(message);
         throw new Error(message);

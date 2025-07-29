@@ -13,18 +13,18 @@
  * @param 		{HTMLElement} 				elm 		The element to monitor
  * @return 		(Promise<HTMLElement>) 								The promise that will be resolved when the element transition has ended
  *
- * @snippet         __whenTransitionEnd($1)
- * __whenTransitionEnd($1).then(\$elm => {
+ * @snippet         whenTransitionEnd($1)
+ * whenTransitionEnd($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenTransitionEnd } from '@lotsof/sugar/dom'
- * await __whenTransitionEnd(myCoolHTMLElement);
+ * import { whenTransitionEnd } from '@blackbyte/sugar/dom'
+ * await whenTransitionEnd(myCoolHTMLElement);
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenTransitionEnd($elm: HTMLElement): Promise<HTMLElement>;
+export default function whenTransitionEnd($elm: HTMLElement): Promise<HTMLElement>;

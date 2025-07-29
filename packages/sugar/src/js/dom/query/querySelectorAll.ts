@@ -1,6 +1,6 @@
-import __isInViewport from '../../is/isInViewport.js';
-import __isVisible from '../../is/isVisible.js';
-import __closestNotVisible from './closestNotVisibleElement.js';
+import isInViewport from '../../is/isInViewport.js';
+import isVisible from '../../is/isVisible.js';
+import closestNotVisible from './closestNotVisibleElement.js';
 
 /**
  * @name            querySelectorAll
@@ -25,15 +25,15 @@ import __closestNotVisible from './closestNotVisibleElement.js';
  *
  * @todo      tests
  *
- * @snippet         __querySelectorAll($1)
+ * @snippet         querySelectorAll($1)
  *
  * @example 	js
- * import { __querySelectorAll } from '@blackbyte/sugar/dom';
+ * import { querySelectorAll } from '@blackbyte/sugar/dom';
  * // simple query
- * const elms = __querySelectorAll('.a-cool-css-selector');
+ * const elms = querySelectorAll('.a-cool-css-selector');
  *
  * // get elements that are in the viewport
- * const elms = __querySelectorAll('.a-cool-css-selector', {
+ * const elms = querySelectorAll('.a-cool-css-selector', {
  * 		inViewport : true
  * });
  *
@@ -47,7 +47,7 @@ export type TQuerySelectorAllSettings = {
   rootNode: HTMLElement;
 };
 
-export default function __querySelectorAll(
+export default function querySelectorAll(
   selector: string,
   settings: Partial<TQuerySelectorAllSettings> = {},
 ): HTMLElement[] {
@@ -69,14 +69,14 @@ export default function __querySelectorAll(
   [].forEach.call(elms, ($elm) => {
     // check settings
     if (settings.visible === false) {
-      if (__isVisible($elm) || __closestNotVisible($elm)) return;
+      if (isVisible($elm) || closestNotVisible($elm)) return;
     } else if (settings.visible === true) {
-      if (!__isVisible($elm) || !__closestNotVisible($elm)) return;
+      if (!isVisible($elm) || !closestNotVisible($elm)) return;
     }
     if (settings.inViewport === false) {
-      if (__isInViewport($elm)) return;
+      if (isInViewport($elm)) return;
     } else if (settings.inViewport === true) {
-      if (!__isInViewport($elm)) return;
+      if (!isInViewport($elm)) return;
     }
 
     // add the element to the result array

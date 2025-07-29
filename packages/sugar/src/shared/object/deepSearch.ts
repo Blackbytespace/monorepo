@@ -1,4 +1,4 @@
-import __flatten from './flatten.js';
+import flatten from './flatten.js';
 import __set from './set.js';
 
 /**
@@ -19,8 +19,8 @@ import __set from './set.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepSearch } from '@blackbyte/sugar/object';
- * __deepSearch ({
+ * import { deepSearch } from '@blackbyte/sugar/object';
+ * deepSearch ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -46,12 +46,12 @@ export type TDeepSearchItem = {
   value: any;
 };
 
-export default function __deepSearch(object: any, filter: TDeepSearchFilter) {
+export default function deepSearch(object: any, filter: TDeepSearchFilter) {
   // make sure the object is a copy
   object = JSON.parse(JSON.stringify(object));
 
   // flatten the object
-  const flatObj = __flatten(object);
+  const flatObj = flatten(object);
   const res: any = {};
 
   // iterate over the flattened object

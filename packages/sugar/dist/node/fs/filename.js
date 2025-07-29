@@ -1,4 +1,4 @@
-import __extension from '../fs/extension.js';
+import extension from '../fs/extension.js';
 /**
  * @name                 filename
  * @namespace            node.fs
@@ -14,20 +14,20 @@ import __extension from '../fs/extension.js';
  *
  * @todo        tests
  *
- * @snippet         __filename($1)
+ * @snippet         filename($1)
  *
  * @example       js
- * import { __filename } from '@lotsof/sugar/fs';
- * __filename('hello/world.js'); // => world.js
+ * import { filename } from '@blackbyte/sugar/fs';
+ * filename('hello/world.js'); // => world.js
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __filename(path, withExtension = true) {
+export default function filename(path, withExtension = true) {
     var _a;
     let filename = (_a = path.split('/').pop()) !== null && _a !== void 0 ? _a : '';
     if (!withExtension) {
-        filename = filename.replace(`.${__extension(filename)}`, '');
+        filename = filename.replace(`.${extension(filename)}`, '');
     }
     return filename;
 }

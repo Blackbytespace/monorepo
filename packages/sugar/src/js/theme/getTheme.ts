@@ -1,4 +1,4 @@
-import { __getCookie } from '@blackbyte/sugar/cookie';
+import { getCookie } from '@blackbyte/sugar/cookie';
 
 /**
  * @name            getTheme
@@ -18,11 +18,11 @@ import { __getCookie } from '@blackbyte/sugar/cookie';
  *
  * @todo      tests
  *
- * @snippet         __getTheme($1)
+ * @snippet         getTheme($1)
  *
  * @example         js
- * import { __getTheme } from '@blackbyte/sugar/theme';
- * __getTheme('dark');
+ * import { getTheme } from '@blackbyte/sugar/theme';
+ * getTheme('dark');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -40,5 +40,5 @@ export default function getTheme(
     cookieName: 'theme',
     ...(settings ?? {}),
   };
-  return __getCookie(finalSettings.cookieName) ?? defaultTheme;
+  return getCookie(finalSettings.cookieName) ?? defaultTheme;
 }

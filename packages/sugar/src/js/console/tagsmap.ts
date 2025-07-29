@@ -1,9 +1,9 @@
 // @ts-nocheck
 
 /**
- * @name        tagsMap
- * @namespace            js.console
- * @type        Object
+ * @name              tagsMap
+ * @namespace         js.console
+ * @type              Object
  * @platform          js
  * @platform          node
  * @status            beta

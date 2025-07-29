@@ -1,5 +1,5 @@
-import __chalk from 'chalk';
-__chalk.level = 3;
+import chalk from 'chalk';
+chalk.level = 3;
 /**
  * @name                tagsMap
  * @namespace           node.console
@@ -11,36 +11,36 @@ __chalk.level = 3;
  * Store the tag->function map used in ```parseHtml``` function for example
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 const tagsMap = {
-    black: (tag, content) => __chalk.black(content),
-    red: (tag, content) => __chalk.red(content),
-    green: (tag, content) => __chalk.green(content),
-    yellow: (tag, content) => __chalk.yellow(content),
-    blue: (tag, content) => __chalk.blue(content),
-    magenta: (tag, content) => __chalk.magenta(content),
-    cyan: (tag, content) => __chalk.cyan(content),
-    white: (tag, content) => __chalk.white(content),
-    grey: (tag, content) => __chalk.grey(content),
-    bgBlack: (tag, content) => __chalk.bgBlack(content),
-    bgRed: (tag, content) => __chalk.bgRed(content),
-    bgGreen: (tag, content) => __chalk.bgGreen(content),
-    bgYellow: (tag, content) => __chalk.bgYellow(content),
-    bgBlue: (tag, content) => __chalk.bgBlue(content),
-    bgMagenta: (tag, content) => __chalk.bgMagenta(content),
-    bgCyan: (tag, content) => __chalk.bgCyan(content),
-    bgWhite: (tag, content) => __chalk.bgWhite(content),
-    bold: (tag, content) => __chalk.bold(content),
-    dim: (tag, content) => __chalk.dim(content),
-    italic: (tag, content) => __chalk.italic(content),
-    underline: (tag, content) => __chalk.underline(content),
-    strike: (tag, content) => __chalk.strikethrough(content),
+    black: (tag, content) => chalk.black(content),
+    red: (tag, content) => chalk.red(content),
+    green: (tag, content) => chalk.green(content),
+    yellow: (tag, content) => chalk.yellow(content),
+    blue: (tag, content) => chalk.blue(content),
+    magenta: (tag, content) => chalk.magenta(content),
+    cyan: (tag, content) => chalk.cyan(content),
+    white: (tag, content) => chalk.white(content),
+    grey: (tag, content) => chalk.grey(content),
+    bgBlack: (tag, content) => chalk.bgBlack(content),
+    bgRed: (tag, content) => chalk.bgRed(content),
+    bgGreen: (tag, content) => chalk.bgGreen(content),
+    bgYellow: (tag, content) => chalk.bgYellow(content),
+    bgBlue: (tag, content) => chalk.bgBlue(content),
+    bgMagenta: (tag, content) => chalk.bgMagenta(content),
+    bgCyan: (tag, content) => chalk.bgCyan(content),
+    bgWhite: (tag, content) => chalk.bgWhite(content),
+    bold: (tag, content) => chalk.bold(content),
+    dim: (tag, content) => chalk.dim(content),
+    italic: (tag, content) => chalk.italic(content),
+    underline: (tag, content) => chalk.underline(content),
+    strike: (tag, content) => chalk.strikethrough(content),
     h1: (tag, content) => {
-        return __chalk.underline(__chalk.bold(content)) + '\n\n';
+        return chalk.underline(chalk.bold(content)) + '\n\n';
     },
     h2: (tag, content) => {
-        return __chalk.bold(content) + '\n';
+        return chalk.bold(content) + '\n';
     },
     date: (tag, content) => new Date().getDate().toString().padStart(2, '0') +
         '-' +

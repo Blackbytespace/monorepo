@@ -25,8 +25,12 @@
 
 .typo-h3,
 .typo-format h3 {
-  color: s-color(accent);
   @s-typo (h3);
+}
+
+.typo-h4,
+.typo-format h4 {
+  @s-typo (h4);
 }
 
 .typo-p,
@@ -43,6 +47,13 @@
 .typo-format .typo-lead,
 .typo-format .typo-lead p {
   @s-typo (lead);
+}
+
+.typo-caption,
+.typo-format caption {
+  --opacity: 0.7;
+  opacity: 0.7;
+  @s-typo (caption);
 }
 
 .typo-code,

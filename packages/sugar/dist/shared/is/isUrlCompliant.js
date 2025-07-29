@@ -15,17 +15,17 @@ import __urlCompliant from '../string/urlCompliant.js';
  *
  * @todo      tests
  *
- * @snippet         __isUrlCompliant($1)
+ * @snippet         isUrlCompliant($1)
  *
  * @example         php
- * import { __isUrlCompliant } from '@lotsof/sugar/string';
- * __isUrlCompliant('Hello world'); // false
- * __isUrlCompliant('/something/cool'); // true
+ * import { isUrlCompliant } from '@blackbyte/sugar/string';
+ * isUrlCompliant('Hello world'); // false
+ * isUrlCompliant('/something/cool'); // true
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isUrlCompliant(str) {
+export default function isUrlCompliant(str) {
     return str === __urlCompliant(str);
 }
 //# sourceMappingURL=isUrlCompliant.js.map

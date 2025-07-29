@@ -14,14 +14,14 @@
  *
  * @todo      tests
  *
- * @snippet         __sortDeep($1, $2)
- * __sortDeep($1, (a, b) => {
+ * @snippet         sortDeep($1, $2)
+ * sortDeep($1, (a, b) => {
  *      $2
  * })
  *
  * @example               js
- * import { __sortDeep } from '@lotsof/sugar/object';
- * __sortDeep({
+ * import { sortDeep } from '@blackbyte/sugar/object';
+ * sortDeep({
  *    lolo: { weight: 2 },
  *    coco: { weight: 10 },
  *    plop: { weight: 5 },
@@ -43,9 +43,9 @@
  * // }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __sortDeep(object: any, sort: (a: {
+export default function sortDeep(object: any, sort: (a: {
     key: string;
     value: any;
 }, b: {

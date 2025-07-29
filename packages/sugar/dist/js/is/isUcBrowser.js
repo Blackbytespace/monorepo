@@ -11,18 +11,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isUcBrowser()
+ * @snippet         isUcBrowser()
  *
  * @example    js
- * import { __isUcBrowser } from '@lotsof/sugar/is'
- * if (__isUcBrowser()) {
+ * import { isUcBrowser } from '@blackbyte/sugar/is'
+ * if (isUcBrowser()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isUcBrowser(ua = navigator.userAgent) {
+export default function isUcBrowser(ua = navigator.userAgent) {
     return ua.match(/UCBrowser/i) !== null;
 }
 //# sourceMappingURL=isUcBrowser.js.map

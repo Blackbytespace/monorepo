@@ -1,4 +1,4 @@
-import { __setCookie } from '@lotsof/sugar/cookie';
+import { setCookie } from '@blackbyte/sugar/cookie';
 export default function setTheme(theme, settings) {
     const finalSettings = Object.assign({ cookieName: 'theme' }, (settings !== null && settings !== void 0 ? settings : {}));
     document.body.classList.forEach((cls) => {
@@ -7,6 +7,6 @@ export default function setTheme(theme, settings) {
         }
     });
     document.body.classList.add(`theme-${theme}`);
-    __setCookie(finalSettings.cookieName, theme);
+    setCookie(finalSettings.cookieName, theme);
 }
 //# sourceMappingURL=setTheme.js.map

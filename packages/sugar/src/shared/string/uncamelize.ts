@@ -14,16 +14,16 @@
  *
  * @todo      tests
  *
- * @snippet         __uncamelize($1)
+ * @snippet         uncamelize($1)
  *
  * @example    js
- * import { __uncamelize } from '@blackbyte/sugar/string'
- * __uncamelize('helloWorldAndUniverse') // hello-world-and-universe
+ * import { uncamelize } from '@blackbyte/sugar/string'
+ * uncamelize('helloWorldAndUniverse') // hello-world-and-universe
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __uncamelize(
+export default function uncamelize(
   text: string,
   separator: string = '-',
 ): string {

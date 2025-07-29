@@ -12,11 +12,11 @@
  *
  * @todo      tests
  *
- * @snippet         __getTranslateProperties($1)
+ * @snippet         getTranslateProperties($1)
  *
  * @example  	js
- * import { __getTranslateProperties } from '@lotsof/sugar/dom'
- * const props = __getTranslateProperties(myCoolHTMLElement);
+ * import { getTranslateProperties } from '@blackbyte/sugar/dom'
+ * const props = getTranslateProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	x : 100,
@@ -25,11 +25,11 @@
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetTranslatePropertiesResult = {
     x: number;
     y: number;
     z: number;
 };
-export default function __getTranslateProperties($elm: HTMLElement): TGetTranslatePropertiesResult;
+export default function getTranslateProperties($elm: HTMLElement): TGetTranslatePropertiesResult;

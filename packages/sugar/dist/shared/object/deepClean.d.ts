@@ -20,22 +20,22 @@
  *
  * @todo      tests
  *
- * @snippet         __deepClean($1)
- * __deepClean($1);
+ * @snippet         deepClean($1)
+ * deepClean($1);
  *
  * @example       js
- * import { __deepClean } from '@lotsof/sugar/object';
- * __deepClean({
+ * import { deepClean } from '@blackbyte/sugar/object';
+ * deepClean({
  *    hello: 'world',
  *    something: null
  * });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepCleanSettings = {
     array?: boolean;
     clone?: boolean;
     cleaner(value: any): boolean;
 };
-export default function __deepClean(objectOrArray: any, settings?: TDeepCleanSettings): any;
+export default function deepClean(objectOrArray: any, settings?: TDeepCleanSettings): any;

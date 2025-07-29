@@ -1,4 +1,4 @@
-import __countLineChars from './countLineChars.js';
+import countLineChars from './countLineChars.js';
 
 /**
  * @name                    crop
@@ -22,11 +22,11 @@ import __countLineChars from './countLineChars.js';
  *
  * @todo      tests
  *
- * @snippet         __crop($1, $2)
+ * @snippet         crop($1, $2)
  *
  * @example         js
- * import { __crop } from '@blackbyte/sugar/string';
- * __crop('Hello World', 10); // => Hello w...
+ * import { crop } from '@blackbyte/sugar/string';
+ * crop('Hello World', 10); // => Hello w...
  *
  * @since       1.0.0
  * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -37,7 +37,7 @@ export type TCropSettings = {
   splitWords?: boolean;
 };
 
-export default function __crop(
+export default function crop(
   text: string,
   length: number,
   settings: TCropSettings = {},
@@ -93,10 +93,10 @@ export default function __crop(
           currentWord += c;
         } else {
           if (
-            __countLineChars(result) +
-              __countLineChars(currentWord) +
+            countLineChars(result) +
+              countLineChars(currentWord) +
               // @ts-ignore
-              __countLineChars(settings.chars) <=
+              countLineChars(settings.chars) <=
             length
           ) {
             result += currentWord;

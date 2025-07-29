@@ -1,5 +1,5 @@
-import __getRotateProperties from './getRotateProperties.js';
-import __getTranslateProperties from './getTranslateProperties.js';
+import getRotateProperties from './getRotateProperties.js';
+import getTranslateProperties from './getTranslateProperties.js';
 
 /**
  * @name            getTransformProperties
@@ -15,10 +15,10 @@ import __getTranslateProperties from './getTranslateProperties.js';
  *
  * @todo      tests
  *
- * @snippet         __getTransformProperties($1)
+ * @snippet         getTransformProperties($1)
  *
  * @example  	js
- * import { __getTransformProperties } from '@blackbyte/sugar/dom'
+ * import { getTransformProperties } from '@blackbyte/sugar/dom'
  * const props = getTransformProperties(myCoolHTMLElement);
  * // output format
  * // {
@@ -46,8 +46,8 @@ export type TGetTransformPropertiesResult = {
 function getTransformProperties(
   $elm: HTMLElement,
 ): TGetTransformPropertiesResult {
-  const rotates = __getRotateProperties($elm),
-    translates = __getTranslateProperties($elm);
+  const rotates = getRotateProperties($elm),
+    translates = getTranslateProperties($elm);
 
   return {
     translateX: translates.x,

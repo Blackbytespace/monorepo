@@ -13,25 +13,25 @@
  * @param 		{HTMLElement} 				$elm 		The element to monitor
  * @return 		(Promise<HTMLElement>) 								The promise that will be resolved when the element is visible
  *
- * @snippet         __whenVisible($1)
- * __whenVisible($1).then(\$elm => {
+ * @snippet         whenVisible($1)
+ * whenVisible($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenVisible } from '@lotsof/sugar/dom'
- * __whenVisible(myCoolHTMLElement).then(($elm) => {
+ * import { whenVisible } from '@blackbyte/sugar/dom'
+ * whenVisible(myCoolHTMLElement).then(($elm) => {
  * 		// do something with your element that is now visible
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWhenVisibleSettings = {
     whenVisible?: Function;
     whenInvisible?: Function;
     once: boolean;
 };
-export default function __whenVisible($elm: HTMLElement, settings?: Partial<TWhenVisibleSettings>): Promise<HTMLElement>;
+export default function whenVisible($elm: HTMLElement, settings?: Partial<TWhenVisibleSettings>): Promise<HTMLElement>;

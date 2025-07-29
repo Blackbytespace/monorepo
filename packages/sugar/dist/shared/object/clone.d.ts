@@ -16,17 +16,17 @@
  *
  * @todo      tests
  *
- * @snippet         __clone($1)
+ * @snippet         clone($1)
  *
  * @example       js
- * import { __clone } from '@lotsof/sugar/object';
- * __clone({
+ * import { clone } from '@blackbyte/sugar/object';
+ * clone({
  *    hello: 'world'
  * });
  *
  * @see       https://www.npmjs.com/package/lodash
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TCloneSettings = {
     deep?: boolean;

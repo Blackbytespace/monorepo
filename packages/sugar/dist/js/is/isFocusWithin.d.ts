@@ -9,18 +9,18 @@
  *
  * @param    {HTMLElement}    $elm    The HTMLElement to check
  *
- * @snippet         __isFocusWithin($1)
+ * @snippet         isFocusWithin($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isFocusWithin } from '@lotsof/sugar/dom'
+ * import { isFocusWithin } from '@blackbyte/sugar/dom'
  * const $myElm = document.querySelector('.my-elm')
- * if (__isFocusWithin($myElm)) {
+ * if (isFocusWithin($myElm)) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isFocusWithin($elm: HTMLElement): boolean;
+export default function isFocusWithin($elm: HTMLElement): boolean;

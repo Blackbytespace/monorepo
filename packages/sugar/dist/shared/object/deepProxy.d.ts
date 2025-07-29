@@ -15,4 +15,4 @@ export type TDeepProxySettings = {
     handleDelete: boolean;
     domElements: boolean;
 };
-export default function __deepProxy(object: any, handlerFn: any, settings?: Partial<TDeepProxySettings>): any;
+export default function deepProxy(object: any, handlerFn: any, settings?: Partial<TDeepProxySettings>): any;

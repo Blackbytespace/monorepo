@@ -1,3 +1,3 @@
-import __clearSelection from './clearSelection.js';
+import clearSelection from './clearSelection.js';
 
-export { __clearSelection };
+export { clearSelection as __clearSelection, clearSelection };

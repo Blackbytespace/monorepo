@@ -1,4 +1,4 @@
-import __parse from '../../../shared/string/parse.js';
+import parse from '../../../shared/string/parse.js';
 
 /**
  * @name            parseTransformRule
@@ -17,8 +17,8 @@ import __parse from '../../../shared/string/parse.js';
  * @todo      tests
  *
  * @example  	js
- * import { __parseTransformRule } from '@blackbyte/sugar/css';
- * __parseTransformRule('translate(-100px, 200rem));
+ * import { parseTransformRule } from '@blackbyte/sugar/css';
+ * parseTransformRule('translate(-100px, 200rem));
  *
  * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
@@ -42,7 +42,7 @@ export type TParseTransformRuleResult = {
   skewY: string | number;
 };
 
-export default function __parseTransformRule(
+export default function parseTransformRule(
   transformStr: string,
 ): TParseTransformRuleResult {
   const transforms = transformStr.trim().split(/\) |\)/);
@@ -74,9 +74,9 @@ export default function __parseTransformRule(
       value = parts[1].trim();
 
     if (prop.match(/(X|Y|Z)$/)) {
-      result[prop] = __parse(value);
+      result[prop] = parse(value);
     } else {
-      const vals = value.split(',').map((v) => __parse(v.trim()));
+      const vals = value.split(',').map((v) => parse(v.trim()));
 
       if (vals.length === 1 && prop === 'scale') {
         result.scale = parseFloat(value);

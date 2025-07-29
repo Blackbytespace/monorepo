@@ -1,5 +1,5 @@
 /**
- * @name            scrolledClasses
+ * @name            scrollClasses
  * @namespace       js.dom.feature
  * @type            Function
  * @platform        js
@@ -19,18 +19,18 @@
  * - `--s-scrolled-classes-offset-y`: The offset y you want before adding the classes
  * - `--s-scrolled-classes-class`: The class name you want. Will be used also in the %cls-x and %cls-y classes
  *
- * @param           {TScrolledClassesSettings}          [settings={}]           The settings you want to override
+ * @param           {TScrollClassesSettings}          [settings={}]           The settings you want to override
  *
  * @setting         {number}        [offset=100]        The offset you want before adding the classes
  * @setting         {number}        [offsetX=null]             The offset x you want before adding the classes
  * @setting         {number}        [offsetY=null]             The offset y you want before adding the classes
  * @setting         {string}        [class=scrolled]        The class name you want. Will be used also in the %cls-x and %cls-y classes
  *
- * @snippet          __scrolledClasses($1);
+ * @snippet          scrollClasses($1);
  *
  * @example         js
- * import { __scrolledClasses } from '@blackbyte/sugar/features';
- * __scrolledClasses({
+ * import { scrollClasses } from '@blackbyte/sugar/features';
+ * scrollClasses({
  *      class: 'hello',
  *      offset: 200
  * });
@@ -39,16 +39,14 @@
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export type TScrolledClassesSettings = {
+export type TScrollClassesSettings = {
   offset: number;
   offsetX: number;
   offsetY: number;
   class: string;
 };
 
-export default function __scrolledClasses(
-  settings?: TScrolledClassesSettings,
-): void {
+export default function scrollClasses(settings?: TScrollClassesSettings): void {
   const style = window.getComputedStyle(document.body);
 
   const finalSettings = {

@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __capitalCase($1)
+ * @snippet         capitalCase($1)
  *
  * @example     js
- * import { __capitalCase } from '@lotsof/sugar/string';
- * __capitalCase('hello world'); // => HELLO WORLD
+ * import { capitalCase } from '@blackbyte/sugar/string';
+ * capitalCase('hello world'); // => HELLO WORLD
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __capitalCase(text: string): string;

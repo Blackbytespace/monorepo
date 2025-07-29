@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { describe, it } from 'vitest';
-import __copy from '../copy.js';
+import copy from '../copy.js';
 
 describe('sugar.node.fs.copy', () => {
   it('should copy correctly a file', async () => {
@@ -8,7 +8,7 @@ describe('sugar.node.fs.copy', () => {
       fs.unlinkSync(`${__dirname}/data/copy/copy.dest`);
     }
 
-    await __copy(
+    await copy(
       `${__dirname}/data/copy/copy.src`,
       `${__dirname}/data/copy/copy.dest`,
     );

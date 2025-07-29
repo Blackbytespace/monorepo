@@ -13,16 +13,16 @@
  *
  * @todo        tests
  *
- * @snippet         __roundWithSign($1)
+ * @snippet         roundWithSign($1)
  *
  * @example         js
- * import { __roundWithSign } from '@blackbyte/sugar/math';
- * __roundWithSign(1.5); // => 1
- * __roundWithSign(-1.5); // => -1
+ * import { roundWithSign } from '@blackbyte/sugar/math';
+ * roundWithSign(1.5); // => 1
+ * roundWithSign(-1.5); // => -1
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __roundWithSign(number: number): number {
+export default function roundWithSign(number: number): number {
   return Math.sign(number) * Math.round(Math.abs(number));
 }

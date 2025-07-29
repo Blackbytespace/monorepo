@@ -16,13 +16,13 @@ import __uniqid from '../../../js/string/uniqid.js';
  * @setting         {String}        id          An id for the injected style tag
  * @setting         {HTMLElement}   [rootNode=undefined]        A node in which to inject the style
  *
- * @snippet         __injectStyle($1)
+ * @snippet         injectStyle($1)
  *
  * @todo        tests
  *
  * @example       js
- * import { __injectStyle } from '@blackbyte/sugar/dom';
- *  __injectStyle('a { color: red; }');
+ * import { injectStyle } from '@blackbyte/sugar/dom';
+ *  injectStyle('a { color: red; }');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -33,7 +33,7 @@ export type TInjectStyleSettings = {
   rootNode: HTMLElement;
 };
 
-export default function __injectStyle(
+export default function injectStyle(
   style: any,
   settings?: Partial<TInjectStyleSettings>,
 ) {

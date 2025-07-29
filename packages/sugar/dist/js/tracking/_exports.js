@@ -1,4 +1,4 @@
-import __formTrackingEvents from './formTrackingEvents.js';
+import formTrackingEvents from './formTrackingEvents.js';
 export * from './formTrackingEvents.js';
-export { __formTrackingEvents };
+export { formTrackingEvents as __formTrackingEvents, formTrackingEvents };
 //# sourceMappingURL=_exports.js.map

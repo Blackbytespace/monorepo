@@ -1,4 +1,4 @@
-import __positionFromEvent from '../position/positionFromEvent.js';
+import positionFromEvent from '../position/positionFromEvent.js';
 
 /**
  * @name            onDrag
@@ -16,16 +16,16 @@ import __positionFromEvent from '../position/positionFromEvent.js';
  *
  * @setting     {Number}      [maxSpeed=0.01]       The maximum speed
  *
- * @snippet         __onDrag($1, $2)
- * __onDrag($1, drag => {
+ * @snippet         onDrag($1, $2)
+ * onDrag($1, drag => {
  *     $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __onDrag } from '@blackbyte/sugar/dom'
- * __onDrag($myElement, (drag) => {
+ * import { onDrag } from '@blackbyte/sugar/dom'
+ * onDrag($myElement, (drag) => {
  *    // do something...
  * });
  *
@@ -46,7 +46,7 @@ export type TOnDragSettings = {
   maxSpeed: number;
 };
 
-export default function __onDrag(
+export default function onDrag(
   $elm: HTMLElement,
   cb: Function,
   settings?: Partial<TOnDragSettings>,
@@ -65,7 +65,7 @@ export default function __onDrag(
   let lastCapturedTime;
 
   function buildTrackPoint(e) {
-    const { x, y } = __positionFromEvent(e);
+    const { x, y } = positionFromEvent(e);
     const deltaX = x - startPos.x,
       deltaY = y - startPos.y,
       time = Date.now() - lastCapturedTime;
@@ -103,7 +103,7 @@ export default function __onDrag(
 
     $target = e.target;
 
-    const { x, y } = __positionFromEvent(e);
+    const { x, y } = positionFromEvent(e);
 
     // set the start position
     startPos = {

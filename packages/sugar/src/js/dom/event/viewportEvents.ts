@@ -18,16 +18,16 @@
  * @event       viewport.in               Dispatched when the passed element enters the viewport
  * @event       viewport.out               Dispatched when the passed element exits the viewport
  *
- * @snippet         __viewportEvents($1)
- * __viewportEvents($1).addEventListener('viewport.enter', (e) => {
+ * @snippet         viewportEvents($1)
+ * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __viewportEvents } from '@blackbyte/sugar/dom';
- * __viewportEvents($1).addEventListener('viewport.enter', (e) => {
+ * import { viewportEvents } from '@blackbyte/sugar/dom';
+ * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      // do something
  * });
  *
@@ -41,7 +41,7 @@ export type TViewportEventsSettings = {
 
 const _viewportEventsInited = new WeakMap();
 
-export default function __viewportEvents(
+export default function viewportEvents(
   $elm: HTMLElement,
   settings?: Partial<TViewportEventsSettings>,
 ): HTMLElement {

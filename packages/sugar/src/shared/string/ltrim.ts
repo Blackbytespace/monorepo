@@ -15,16 +15,16 @@
  *
  * @todo      tests
  *
- * @snippet         __ltrim($1, $2)
+ * @snippet         ltrim($1, $2)
  *
  * @example    js
- * import { __ltrim } from '@blackbyte/sugar/string'
- *  __ltrim('Hello World', 'Hello') // World
+ * import { ltrim } from '@blackbyte/sugar/string'
+ *  ltrim('Hello World', 'Hello') // World
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ltrim(
+export default function ltrim(
   string: string,
   needle: string,
   trimResult: boolean = true,

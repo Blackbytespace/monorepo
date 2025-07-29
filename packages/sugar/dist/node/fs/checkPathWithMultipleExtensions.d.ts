@@ -13,16 +13,16 @@
  * @param       {Array<String>}     extensions      The extensions (without the dot) you want to check
  * @return      {String|undefined}                  The first valid path founded, or undefined
  *
- * @snippet         __checkPathWithMultipleExtensions($1, $2)
- * __checkPathWithMultipleExtensions($1, [
+ * @snippet         checkPathWithMultipleExtensions($1, $2)
+ * checkPathWithMultipleExtensions($1, [
  *     $2
  * ])
  *
  * @example         js
- * import { __checkPathWithMultipleExtensions } from '@lotsof/sugar/fs';
- * __checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
+ * import { checkPathWithMultipleExtensions } from '@blackbyte/sugar/fs';
+ * checkPathWithMultipleExtensions('/my/cool/file.txt', ['txt','js','css']);
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __checkPathWithMultipleExtensions(path: string, exts: string[]): string | undefined;
+export default function checkPathWithMultipleExtensions(path: string, exts: string[]): string | undefined;

@@ -11,15 +11,15 @@
  * @param 		{Number} 		t 		The current time
  * @return 		{Number} 				The value depending on time
  *
- * @snippet         __easeInQuad($1)
+ * @snippet         easeInQuad($1)
  *
  * @example         js
- * import { __easeInQuad } from '@lotsof/sugar/easing';
- * __easeInQuad(0.4);
+ * import { easeInQuad } from '@blackbyte/sugar/easing';
+ * easeInQuad(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __easeInQuad(t: number): number;
+export default function easeInQuad(t: number): number;

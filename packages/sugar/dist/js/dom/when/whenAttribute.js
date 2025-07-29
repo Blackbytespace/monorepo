@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import __parse from '../../../shared/string/parse.js';
-export default function __whenAttribute($elm, attrName, settings) {
+export default function whenAttribute($elm, attrName, settings) {
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
         var _a;
         const finalSettings = Object.assign({ check: undefined }, (settings !== null && settings !== void 0 ? settings : {}));

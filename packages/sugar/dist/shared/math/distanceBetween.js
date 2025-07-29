@@ -1,5 +1,5 @@
 /**
- * @name 		        distanceBetween
+ * @name 		            distanceBetween
  * @namespace           shared.math
  * @type                Function
  * @platform            js
@@ -14,25 +14,25 @@
  *
  * @todo      tests
  *
- * @snippet         __distanceBetween($1, $2)
- * __distanceBeetween({
+ * @snippet         distanceBetween($1, $2)
+ * distanceBetween({
  *      x: $1, y: $2
  * }, {
  *      x: $3, y: $4
  * })
  *
  * @example    js
- * import { __distanceBetween } from '@lotsof/sugar/geom'
- * __distanceBetween({
+ * import { distanceBetween } from '@blackbyte/sugar/geom'
+ * distanceBetween({
  * 	x: 10, y: 20
  * }, {
  * 	x: 10, y: 30
  * }) // 10
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __distanceBetween(point1, point2) {
+export default function distanceBetween(point1, point2) {
     let xs = 0;
     let ys = 0;
     xs = point2.x - point1.x;

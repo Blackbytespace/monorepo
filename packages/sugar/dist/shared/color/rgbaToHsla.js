@@ -1,4 +1,4 @@
-import __parseRgba from './parseRgba.js';
+import parseRgba from './parseRgba.js';
 /**
  * @name                    rgba2hsla
  * @namespace               shared.color
@@ -17,15 +17,15 @@ import __parseRgba from './parseRgba.js';
  *
  * @todo      tests
  *
- * @snippet         __rgbaToHsla($1)
+ * @snippet         rgbaToHsla($1)
  *
  * @example         js
- * import { __rgbaToHsla } from '@lotsof/sugar/color';
- * __rgbaToHsla(10,20,50,10);
+ * import { rgbaToHsla } from '@blackbyte/sugar/color';
+ * rgbaToHsla(10,20,50,10);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function RGBAToHSLA(r, g, b, a) {
     // Make r, g, and b fractions of 1
@@ -60,13 +60,13 @@ function RGBAToHSLA(r, g, b, a) {
     l = +(l * 100).toFixed(1);
     return { h, s, l, a };
 }
-export default function __rgbaToHsla(r, g, b, a = 1) {
+export default function rgbaToHsla(r, g, b, a = 1) {
     // string support
     if (typeof r === 'string') {
         if (!r.match(/^rgba?\(/)) {
             throw new Error('<red>[rgbaToHsla]</red> When passing a string to the first parameter, it MUST be formatted like: rgba?(.*)');
         }
-        r = __parseRgba(r);
+        r = parseRgba(r);
     }
     if (typeof r === 'object') {
         g = r.g;

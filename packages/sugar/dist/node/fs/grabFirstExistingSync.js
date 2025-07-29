@@ -1,4 +1,4 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 /**
  * @name                grabFirstExistingSync
  * @namespace           node.fs
@@ -13,22 +13,22 @@ import * as __fs from 'fs';
  *
  * @todo            tests
  *
- * @snippet         __gradFirst
+ * @snippet         grabFirstExistingSync($1)
  *
  * @example       js
- * import { __grabFirstExistinSync } from '@lotsof/sugar/fs';
- * __grabFirstExisting([
+ * import { grabFirstExistingSync } from '@blackbyte/sugar/fs';
+ * grabFirstExistingSync([
  *  'file/1.txt',
  *  'file/2.txt
  * ]); // => 'file/2.txt'
 ' *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __grabFirstExistingSync(paths) {
+export default function grabFirstExistingSync(paths) {
     let result = '';
     for (let [idx, path] of Object.entries(paths)) {
-        if (__fs.existsSync(path)) {
+        if (fs.existsSync(path)) {
             result = path;
             break;
         }

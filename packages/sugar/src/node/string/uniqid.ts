@@ -13,16 +13,16 @@ import { v4 as uuidv4 } from 'uuid';
  *
  * @todo      tests
  *
- * @snippet         __uniqid()
+ * @snippet         uniqid()
  *
  * @example       js
- * import { __uniqid } from '@blackbyte/sugar/string';
- * console.log(__uniqid()); // => 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
+ * import { uniqid } from '@blackbyte/sugar/string';
+ * console.log(uniqid()); // => 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
  *
  * @see       https://www.npmjs.com/package/uuid
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __uniqid(): string {
+export default function uniqid(): string {
   return uuidv4();
 }

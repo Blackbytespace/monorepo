@@ -12,17 +12,17 @@ import __isCjs from './isCjs.js';
  *
  * @return      {Boolean}           true if the current system is esm
  *
- * @snippet         __isEsm()
+ * @snippet         isEsm()
  *
  * @todo            tests
  *
  * @example       js
- * import { __isEsm } from '@blackbyte/sugar/is';
- * __isEsm(); // => true
+ * import { isEsm } from '@blackbyte/sugar/is';
+ * isEsm(); // => true
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEsm(): boolean {
+export default function isEsm(): boolean {
   return !__isCjs();
 }

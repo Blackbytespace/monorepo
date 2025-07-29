@@ -16,14 +16,14 @@
  *
  * @todo      tests
  *
- * @snippet         __whenStylesheetsReady($1)
- * __whenStylesheetsReady($1).then(stylesheets => {
+ * @snippet         whenStylesheetsReady($1)
+ * whenStylesheetsReady($1).then(stylesheets => {
  *      $2
  * });
  *
  * @example 	js
- * import { __whenStylesheetsReady } from '@lotsof/sugar/dom'
- * __whenStylesheetsReady([
+ * import { whenStylesheetsReady } from '@blackbyte/sugar/dom'
+ * whenStylesheetsReady([
  * 		myHTMLLinkElement1,
  * 		myHTMLLinkElement2
  * ]).then(stylesheets => {
@@ -31,6 +31,6 @@
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenStylesheetsReady(links?: HTMLLinkElement[]): Promise<HTMLLinkElement[]>;
+export default function whenStylesheetsReady(links?: HTMLLinkElement[]): Promise<HTMLLinkElement[]>;

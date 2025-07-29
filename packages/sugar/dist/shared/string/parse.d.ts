@@ -19,13 +19,13 @@
  *
  * @todo      tests
  *
- * @snippet         __parse($1)
+ * @snippet         parse($1)
  *
  * @example           js
- * import { __parse } from '@lotsof/sugar/string';
- *  __parse('10'); // => 10
+ * import { parse } from '@blackbyte/sugar/string';
+ *  parse('10'); // => 10
  *
  * @since     1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function (value: string): any;
+export default function parse(value: string): any;

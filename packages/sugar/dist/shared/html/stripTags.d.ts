@@ -16,14 +16,14 @@
  *
  * @todo      tests
  *
- * @snippet         __stripTags($1)
+ * @snippet         stripTags($1)
  *
  * @example    js
- * import { __stripTags } from '@lotsof/sugar/html'
- * __stripTags('<p><span>Hello</span> world</p>', '<span>') // <span>Hello</span> world
+ * import { stripTags } from '@blackbyte/sugar/html'
+ * stripTags('<p><span>Hello</span> world</p>', '<span>') // <span>Hello</span> world
  *
  * @see       https://www.npmjs.com/package/striptags
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function stripTags(html: string, allowedTags?: string[], tagReplacement?: string): string;

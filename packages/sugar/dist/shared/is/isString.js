@@ -13,18 +13,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isString($1)
+ * @snippet         isString($1)
  *
  * @example    js
- * import { __isString } from '@lotsof/sugar/is'
- * if (__isString({}) {
+ * import { isString } from '@blackbyte/sugar/is'
+ * if (isString({}) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isString(value) {
+export default function isString(value) {
     return typeof value === 'string' || value instanceof String;
 }
 //# sourceMappingURL=isString.js.map

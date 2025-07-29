@@ -16,14 +16,14 @@
  * @snippet         __copy($1)
  *
  * @example         js
- * import { __copyText } from '@lotsof/sugar/clipboard';
- * __copyText('Hello world');
+ * import { copyText } from '@blackbyte/sugar/clipboard';
+ * copyText('Hello world');
  *
  * @see             https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copyText(text) {
+export default function copyText(text) {
     var _a;
     if ((_a = navigator === null || navigator === void 0 ? void 0 : navigator.clipboard) === null || _a === void 0 ? void 0 : _a.writeText) {
         return navigator.clipboard.writeText(text);

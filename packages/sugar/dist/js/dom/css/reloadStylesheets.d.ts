@@ -11,14 +11,14 @@
  *
  * @param       {HTMLElement}           [$root=document]            The root element in which to reload the stylesheets
  *
- * @snippet         __reloadStylesheets()
+ * @snippet         reloadStylesheets()
  *
  * @example         js
- * import { __reloeadStylesheets } from '@lotsof/sugar/dom';
- * __reloadStylesheets();
+ * import { __reloeadStylesheets } from '@blackbyte/sugar/dom';
+ * reloadStylesheets();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TReloadStylesheetsSettings = {
     $root: HTMLElement | Document;

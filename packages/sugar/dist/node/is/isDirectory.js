@@ -1,5 +1,5 @@
 import * as __fs from 'fs';
-export default function __isDirectory(path, settings = {}) {
+export default function isDirectory(path, settings = {}) {
     settings = Object.assign({ symlink: true }, settings);
     let isMatching = __fs.existsSync(path);
     if (!isMatching)

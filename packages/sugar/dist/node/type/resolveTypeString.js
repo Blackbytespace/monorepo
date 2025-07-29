@@ -7,11 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __packageRootDir from '../package/packageRootDir.js';
-import __fs from 'fs';
+import fs from 'fs';
 import __path from 'path';
-import __parseTypeString from '../../shared/type/parseTypeString.js';
-export default function __resolveTypeString(typeString_1) {
+import parseTypeString from '../../shared/type/parseTypeString.js';
+import packageRootDir from '../package/packageRootDir.js';
+export default function resolveTypeString(typeString_1) {
     return __awaiter(this, arguments, void 0, function* (typeString, settings = {}) {
         var _a, _b, _c;
         const finalSettings = Object.assign({ cwd: process.cwd() }, settings);
@@ -24,9 +24,9 @@ export default function __resolveTypeString(typeString_1) {
                 potentialTypeFilePath = __path.resolve(finalSettings.cwd, path);
             }
             else {
-                potentialTypeFilePath = __path.resolve(__packageRootDir(finalSettings.cwd), path);
+                potentialTypeFilePath = __path.resolve(packageRootDir(finalSettings.cwd), path);
             }
-            if (__fs.existsSync(potentialTypeFilePath)) {
+            if (fs.existsSync(potentialTypeFilePath)) {
                 // @ts-ignore
                 const typeData = (yield import(potentialTypeFilePath)).default;
                 types = [
@@ -42,7 +42,7 @@ export default function __resolveTypeString(typeString_1) {
             // regular types
         }
         else {
-            types = __parseTypeString(typeString);
+            types = parseTypeString(typeString);
         }
         return {
             types,

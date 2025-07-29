@@ -1,5 +1,5 @@
-import __fs from 'fs';
-import __isDirectory from '../is/isDirectory.js';
+import fs from 'fs';
+import isDirectory from '../is/isDirectory.js';
 
 /**
  * @name            unlinkSync
@@ -14,21 +14,21 @@ import __isDirectory from '../is/isDirectory.js';
  *
  * @todo      tests
  *
- * @snippet         __unlinkSync($1)
+ * @snippet         unlinkSync($1)
  *
  * @example       js
- * import { __unlinkSync } from '@blackbyte/sugar/fs';
- *  __unlinkSync('my/cool/file.json');
+ * import { unlinkSync } from '@blackbyte/sugar/fs';
+ *  unlinkSync('my/cool/file.json');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unlinkSync(path: string): void {
-  if (!__fs.existsSync(path)) return;
-  if (__isDirectory(path)) {
-    __fs.rmdirSync(path, { recursive: true });
+export default function unlinkSync(path: string): void {
+  if (!fs.existsSync(path)) return;
+  if (isDirectory(path)) {
+    fs.rmdirSync(path, { recursive: true });
   } else {
-    __fs.unlinkSync(path);
+    fs.unlinkSync(path);
   }
 }

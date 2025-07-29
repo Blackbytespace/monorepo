@@ -1,5 +1,5 @@
-import __camelize from '../../string/camelize.js';
-import __parse from '../../string/parse.js';
+import camelize from '../../string/camelize.js';
+import parse from '../../string/parse.js';
 /**
  * @name            styleString2Object
  * @namespace       js.css.transform
@@ -15,29 +15,29 @@ import __parse from '../../string/parse.js';
  *
  * @todo      tests
  *
- * @snippet         __styleStringToObject($1)
+ * @snippet         styleStringToObject($1)
  *
  * @example 	js
- * import { __styleStringToObject } from '@lotsof/sugar/css'
- * const styleString =  __styleStringToObject('padding-left:20px; display:block;');
+ * import { styleStringToObject } from '@blackbyte/sugar/css'
+ * const styleString =  styleStringToObject('padding-left:20px; display:block;');
  * // output => {
  * //		paddingLeft : '20px',
  * // 		display : 'block'
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __styleStringToObject(style) {
+export default function styleStringToObject(style) {
     if (!style || style === '')
         return {};
     const obj = {};
     const split = style.replace(/\s/g, '').split(';');
     split.forEach((statement) => {
         // split statement by key value pairs
-        const spl = statement.split(':'), key = __camelize(spl[0]), value = spl[1];
+        const spl = statement.split(':'), key = camelize(spl[0]), value = spl[1];
         // add element into object
-        obj[key] = __parse(value);
+        obj[key] = parse(value);
     });
     // return the style object
     return obj;

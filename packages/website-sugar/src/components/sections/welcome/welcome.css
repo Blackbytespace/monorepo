@@ -44,6 +44,7 @@
   max-height: s-rem(900px);
   position: relative;
   color: white;
+  user-select: none;
 
   --glow-multiplier: 1;
 

@@ -17,18 +17,18 @@
  *
  * @todo      tests
  *
- * @snippet         __splitEvery($1, $2)
+ * @snippet         splitEvery($1, $2)
  *
  * @example           js
- * import { __splitEvery } from '@lotsof/sugar/string';
- * __splitEvery('Hello World', 2, {
+ * import { splitEvery } from '@blackbyte/sugar/string';
+ * splitEvery('Hello World', 2, {
  *    splitWords: true
  * }); // => ['He','ll','o ','Wo','rl','d']
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TSplitEverySettings = {
     splitWords: boolean;
 };
-export default function __splitEvery(text: string, every: number, settings?: Partial<TSplitEverySettings>): string[];
+export default function splitEvery(text: string, every: number, settings?: Partial<TSplitEverySettings>): string[];

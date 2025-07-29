@@ -12,17 +12,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isEdge()
+ * @snippet         isEdge()
  *
  * @example 	js
- * import { __isEdge } from '@blackbyte/sugar/is'
- * if (__isEdge()) {
+ * import { isEdge } from '@blackbyte/sugar/is'
+ * if (isEdge()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEdge(ua: string = navigator.userAgent): boolean {
+export default function isEdge(ua: string = navigator.userAgent): boolean {
   return ua.indexOf('Edg/') > -1;
 }

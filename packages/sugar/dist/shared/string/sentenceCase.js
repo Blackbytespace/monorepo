@@ -14,15 +14,15 @@ import { sentenceCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __sentenceCase($1)
+ * @snippet         sentenceCase($1)
  *
  * @example     js
- * import { __sentenceCase } from '@lotsof/sugar/string';
- * __sentenceCase('hello world'); // => Hello world
+ * import { sentenceCase } from '@blackbyte/sugar/string';
+ * sentenceCase('hello world'); // => Hello world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __sentenceCase(text) {
     return sentenceCase(text);

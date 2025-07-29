@@ -17,27 +17,27 @@
  *
  * @todo      tests
  *
- * @snippet         __flatten($1)
+ * @snippet         flatten($1)
  *
  * @example             js
- * import { __flatten } from '@lotsof/sugar/object';
- * __flatten({
+ * import { flatten } from '@blackbyte/sugar/object';
+ * flatten({
  *    hello: {
  *      world: 'Coco'
  *    }
  * });
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __flatten(obj, settings) {
+export default function flatten(obj, settings) {
     const finalSettings = Object.assign({ separator: '.', prefix: '' }, (settings !== null && settings !== void 0 ? settings : {}));
     return Object.keys(obj).reduce((acc, k) => {
         const pre = finalSettings.prefix.length
             ? finalSettings.prefix + finalSettings.separator
             : '';
         if (typeof obj[k] === 'object' && obj[k] !== null) {
-            Object.assign(acc, __flatten(obj[k], Object.assign(Object.assign({}, finalSettings), { prefix: pre + k })));
+            Object.assign(acc, flatten(obj[k], Object.assign(Object.assign({}, finalSettings), { prefix: pre + k })));
         }
         else {
             acc[pre + k] = obj[k];

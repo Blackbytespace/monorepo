@@ -14,15 +14,15 @@ import { camelCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __camelCase($1)
+ * @snippet         camelCase($1)
  *
  * @example     js
- * import { __camelCase } from '@lotsof/sugar/string';
- * __camelCase('hello world'); // => helloWorld
+ * import { camelCase } from '@blackbyte/sugar/string';
+ * camelCase('hello world'); // => helloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __camelCase(text) {
     return camelCase(text);

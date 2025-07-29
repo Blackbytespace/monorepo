@@ -17,23 +17,23 @@
  * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
  * @return 		(SPromise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
  *
- * @snippet         __whenInViewport($1)
- * __whenInViewport($1).then(\$elm => {
+ * @snippet         whenInViewport($1)
+ * whenInViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenInViewport } from '@lotsof/sugar/dom'
- * const promise = __whenInViewport(myCoolHTMLElement).then((elm) => {
+ * import { whenInViewport } from '@blackbyte/sugar/dom'
+ * const promise = whenInViewport(myCoolHTMLElement).then((elm) => {
  * 		// do something with your element that has entered the viewport...
  * });
  * // when you want to stop listening
  * promise.cancel();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWhenInViewportSettings = {
     offset: string;
@@ -44,4 +44,4 @@ export type TWhenInViewportSettings = {
 export type TWhenInViewportResult = Promise<HTMLElement> & {
     cancel: Function;
 };
-export default function __whenInViewport($elm: HTMLElement, settings?: Partial<TWhenInViewportSettings>): TWhenInViewportResult;
+export default function whenInViewport($elm: HTMLElement, settings?: Partial<TWhenInViewportSettings>): TWhenInViewportResult;

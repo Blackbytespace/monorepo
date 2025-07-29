@@ -15,16 +15,16 @@
  *
  * @todo      tests
  *
- * @snippet             __rtrim($1, $2)
+ * @snippet             rtrim($1, $2)
  *
  * @example    js
- * import { __rtrim } from '@blackbyte/sugar/string'
- * __rtrim('Hello World', 'ld') // Hello Wor
+ * import { rtrim } from '@blackbyte/sugar/string'
+ * rtrim('Hello World', 'ld') // Hello Wor
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __rtrim(
+export default function rtrim(
   string: string,
   needle: string,
   trimResult: boolean = true,

@@ -16,16 +16,16 @@
  *
  * @todo      tests
  *
- * @snippet         __unquote($1)
+ * @snippet         unquote($1)
  *
  * @example    js
- * import { __unquote } from '@lotsof/sugar/string'
- * __unquote("'Hello world'") // "Hello world"
+ * import { unquote } from '@blackbyte/sugar/string'
+ * unquote("'Hello world'") // "Hello world"
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unquote(string, settings) {
+export default function unquote(string, settings) {
     const finalSettings = Object.assign({ quotesToRemove: ['"', "'", '”', '`'] }, (settings !== null && settings !== void 0 ? settings : {}));
     // trim the string just in case
     string = string.trim();

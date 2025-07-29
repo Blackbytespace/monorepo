@@ -1,5 +1,5 @@
 import * as rematrix from 'rematrix';
-export default function __getScaleProperty($elm) {
+export default function getScaleProperty($elm) {
     if (!window.getComputedStyle)
         return;
     const style = getComputedStyle($elm);

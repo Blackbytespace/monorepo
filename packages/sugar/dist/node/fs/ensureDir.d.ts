@@ -13,17 +13,17 @@
  *
  * @todo        tests
  *
- * @snippet         __ensureDir($1)
- * await __ensureDir($1)
+ * @snippet         ensureDir($1)
+ * await ensureDir($1)
  *
  * @example       js
- * import { __ensureDir } from '@lotsof/sugar/fs';
- *  __ensureDir('my/cool/dir').then(() => {
+ * import { ensureDir } from '@blackbyte/sugar/fs';
+ *  ensureDir('my/cool/dir').then(() => {
  *    // do something...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureDir(dir: string): Promise<void>;
+export default function ensureDir(dir: string): Promise<void>;

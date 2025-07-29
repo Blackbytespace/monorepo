@@ -17,11 +17,11 @@
  *
  * @todo      tests
  *
- * @snippet         __flatten($1)
+ * @snippet         flatten($1)
  *
  * @example             js
- * import { __flatten } from '@blackbyte/sugar/object';
- * __flatten({
+ * import { flatten } from '@blackbyte/sugar/object';
+ * flatten({
  *    hello: {
  *      world: 'Coco'
  *    }
@@ -36,7 +36,7 @@ export type TFlattenSettings = {
   prefix: string;
 };
 
-export default function __flatten(
+export default function flatten(
   obj,
   settings?: Partial<TFlattenSettings>,
 ): Record<string, any> {
@@ -52,7 +52,7 @@ export default function __flatten(
     if (typeof obj[k] === 'object' && obj[k] !== null) {
       Object.assign(
         acc,
-        __flatten(obj[k], {
+        flatten(obj[k], {
           ...finalSettings,
           prefix: pre + k,
         }),

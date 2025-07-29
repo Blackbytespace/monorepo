@@ -1,7 +1,7 @@
 /**
- * @name        tagsMap
- * @namespace            js.console
- * @type        Object
+ * @name              tagsMap
+ * @namespace         js.console
+ * @type              Object
  * @platform          js
  * @platform          node
  * @status            beta
@@ -10,7 +10,7 @@
  * Store the tag->function map used in ```parseHtml``` function for example
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 declare const tagsMap: {
     black: (tag: any, content: any) => string;

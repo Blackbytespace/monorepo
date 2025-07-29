@@ -12,13 +12,13 @@
  * @param    {Array}    keys    The keys to end the array with
  * @return    {Array}    The processed array
  *
- * @snippet         __keysLast($1, $2)
+ * @snippet         keysLast($1, $2)
  *
  * @example    js
- * import { __keysLast } from '@lotsof/sugar/array'
- * __keysLast(['a','b','d','g','c'], ['d','g'])
+ * import { keysLast } from '@blackbyte/sugar/array'
+ * keysLast(['a','b','d','g','c'], ['d','g'])
  * // ['a','b','c','d','g']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __keysLast(array: any[], keys: any[]): any[];
+export default function keysLast(array: any[], keys: any[]): any[];

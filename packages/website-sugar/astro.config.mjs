@@ -1,10 +1,10 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import vue from '@astrojs/vue';
 import { sugarize } from '@blackbyte/sugarcss';
+import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
 import __shikiBlackbyteTheme from './src/shikijs/blackbyte.theme.json';
-
-import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +21,7 @@ export default defineConfig({
       JavaScript: true,
       SVG: true,
     }),
+    vue(),
   ],
   vite: {
     resolve: {

@@ -15,17 +15,17 @@ import { spawnSync } from 'child_process';
  * @param       {String}            command         The command to check like "ls", "node", etc...
  * @return      {Promise}                           A promise fullfiled once the check has finished with true of false as value
  *
- * @snippet         __isCommandExists($1)
- * await __isCommandExists($1)
+ * @snippet         isCommandExists($1)
+ * await isCommandExists($1)
  *
  * @example         js
- * import { __isCommandExists } from '@blackbyte/sugar/is';
- * await  __isCommandExists('ls'); // => true
+ * import { isCommandExists } from '@blackbyte/sugar/is';
+ * await  isCommandExists('ls'); // => true
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default async function __isCommandExists(
+export default async function isCommandExists(
   command: string,
 ): Promise<boolean | string> {
   const isWin = process.platform === 'win32';

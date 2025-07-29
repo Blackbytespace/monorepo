@@ -1,4 +1,4 @@
-import { __pad } from '@blackbyte/sugar/number';
+import { pad } from '@blackbyte/sugar/number';
 
 /**
  * @name                 convert12To24
@@ -15,11 +15,11 @@ import { __pad } from '@blackbyte/sugar/number';
  *
  * @todo      tests
  *
- * @snippet         __convert12To24($1)
+ * @snippet         convert12To24($1)
  *
  * @example    js
- * import { __convert12To24 } from '@blackbyte/sugar/time'
- * __convert12To24('12pm') // => '12:00'
+ * import { convert12To24 } from '@blackbyte/sugar/time'
+ * convert12To24('12pm') // => '12:00'
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -45,5 +45,5 @@ export default function convert12To24(time: string): string {
     finalHours = parseInt(hours);
   }
 
-  return `${__pad(finalHours, 2)}:${__pad(finalMinutes, 2)}`;
+  return `${pad(finalHours, 2)}:${pad(finalMinutes, 2)}`;
 }

@@ -8,14 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __whenAnimationEnd from '../when/whenAnimationEnd.js';
-import __whenEntersViewport from '../when/whenEntersViewport.js';
-import __whenInteract from '../when/whenInteract.js';
-import __whenInViewport from '../when/whenInViewport.js';
-import __whenNearViewport from '../when/whenNearViewport.js';
-import __whenOutOfViewport from '../when/whenOutOfViewport.js';
-import __whenStylesheetsReady from '../when/whenStylesheetsReady.js';
-import __whenVisible from '../when/whenVisible.js';
+import whenAnimationEnd from '../when/whenAnimationEnd.js';
+import whenEntersViewport from '../when/whenEntersViewport.js';
+import whenInteract from '../when/whenInteract.js';
+import whenInViewport from '../when/whenInViewport.js';
+import whenNearViewport from '../when/whenNearViewport.js';
+import whenOutOfViewport from '../when/whenOutOfViewport.js';
+import whenStylesheetsReady from '../when/whenStylesheetsReady.js';
+import whenVisible from '../when/whenVisible.js';
 export const WhenTriggers = [
     'direct',
     'directly',
@@ -29,7 +29,7 @@ export const WhenTriggers = [
     'domReady',
     'animationEnd',
 ];
-export default function __when($elm, trigger, settings) {
+export default function when($elm, trigger, settings) {
     const finalSettings = Object.assign({ whenInViewport: {}, whenNearViewport: {}, whenOutOfViewport: {}, whenInteract: {}, whenVisible: {}, whenStylesheetsReady: {} }, (settings !== null && settings !== void 0 ? settings : {}));
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
         // ensure we work with an array of time(s)
@@ -50,34 +50,34 @@ export default function __when($elm, trigger, settings) {
             }
             switch (t) {
                 case 'inViewport':
-                    promises.push(__whenInViewport($elm, finalSettings.whenInViewport));
+                    promises.push(whenInViewport($elm, finalSettings.whenInViewport));
                     break;
                 case 'nearViewport':
-                    promises.push(__whenNearViewport($elm, finalSettings.whenNearViewport));
+                    promises.push(whenNearViewport($elm, finalSettings.whenNearViewport));
                     break;
                 case 'entersViewport':
-                    promises.push(__whenEntersViewport($elm, finalSettings.whenEntersViewport));
+                    promises.push(whenEntersViewport($elm, finalSettings.whenEntersViewport));
                     break;
                 case 'outOfViewport':
-                    promises.push(__whenOutOfViewport($elm, finalSettings.whenOutOfViewport));
+                    promises.push(whenOutOfViewport($elm, finalSettings.whenOutOfViewport));
                     break;
                 case 'interact':
-                    promises.push(__whenInteract($elm, finalSettings.whenInteract));
+                    promises.push(whenInteract($elm, finalSettings.whenInteract));
                     break;
                 case 'visible':
-                    promises.push(__whenVisible($elm, {
+                    promises.push(whenVisible($elm, {
                         whenVisible: finalSettings.whenVisible,
                         once: true,
                     }));
                     break;
                 case 'domReady':
-                    promises.push(__whenDomReady());
+                    promises.push(whenDomReady());
                     break;
                 case 'stylesheetsReady':
-                    promises.push(__whenStylesheetsReady($elm ? [$elm] : null));
+                    promises.push(whenStylesheetsReady($elm ? [$elm] : null));
                     break;
                 case 'animationEnd':
-                    promises.push(__whenAnimationEnd($elm));
+                    promises.push(whenAnimationEnd($elm));
                     break;
             }
         });

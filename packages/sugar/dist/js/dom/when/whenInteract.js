@@ -19,23 +19,23 @@
  * @setting         {boolean}           [touchend=true]          Specify if you want to detect the touchend or not
  * @setting         {boolean}           [focus=true]          Specify if you want to detect the focus or not
  *
- * @snippet         __whenInteract($1)
- * __whenInteract($1).then(\$elm => {
+ * @snippet         whenInteract($1)
+ * whenInteract($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __whenInteract } from '@lotsof/sugar/dom'
- * __whenInteract(myCoolElement).then($elm => {
+ * import { whenInteract } from '@blackbyte/sugar/dom'
+ * whenInteract(myCoolElement).then($elm => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenInteract(elm, settings) {
+export default function whenInteract(elm, settings) {
     return new Promise((resolve, reject) => {
         const finalSettings = Object.assign({ pointerover: true, pointerout: true, pointerdown: true, touchstart: true, touchend: true, focus: true }, (settings !== null && settings !== void 0 ? settings : {}));
         function interacted(interaction) {

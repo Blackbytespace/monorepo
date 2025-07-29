@@ -1,5 +1,5 @@
 import type { TRichTextSettings } from './richText.js';
-import __richText from './richText.js';
+import richText from './richText.js';
 
-export { __richText };
+export { richText as __richText, richText };
 export type { TRichTextSettings };

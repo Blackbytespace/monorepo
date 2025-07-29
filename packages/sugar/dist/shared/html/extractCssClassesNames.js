@@ -1,5 +1,5 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
-export default function __extractCssClassesNames(html, settings) {
+import expandPleasantCssClassname from './expandPleasantCssClassname.js';
+export default function extractCssClassesNames(html, settings) {
     const finalSettings = Object.assign({ expandPleasantCssClassname: true, includeIds: false }, (settings !== null && settings !== void 0 ? settings : {}));
     let reg = /class="[a-zA-Z0-9_\-:@\s]+"/gm;
     if (finalSettings.includeIds) {
@@ -17,7 +17,7 @@ export default function __extractCssClassesNames(html, settings) {
             .replace('id="', '')
             .replace('"', '');
         if (settings === null || settings === void 0 ? void 0 : settings.expandPleasantCssClassname) {
-            classesStr = __expandPleasantCssClassname(classesStr);
+            classesStr = expandPleasantCssClassname(classesStr);
         }
         classesNames = [...classesNames, ...classesStr.split(' ')].map((l) => l.trim());
     });

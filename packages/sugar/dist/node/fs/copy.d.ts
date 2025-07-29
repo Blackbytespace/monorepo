@@ -1,7 +1,7 @@
 /**
- * @name        copy
- * @namespace            node.fs
- * @type          Function
+ * @name            copy
+ * @namespace       node.fs
+ * @type            Function
  * @async
  * @platform        node
  * @status          stable
@@ -12,17 +12,17 @@
  * @param       {String}              dest          The destination path
  * @return      {Promise}                           A promise that will be resolved when the copy is completed
  *
- * @snippet         __copy($1, $2)
- * await __copy($1, $2)
+ * @snippet         copy($1, $2)
+ * await copy($1, $2)
  *
  * @example       js
- * import { __copy } from '@lotsof/sugar/fs';
- * await __copy('my/cool/file.jpg', 'my/new/file.jpg').then(() => {
+ * import { copy } from '@blackbyte/sugar/fs';
+ * await copy('my/cool/file.jpg', 'my/new/file.jpg').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copy(src: string, dest: string): Promise<void>;
+export default function copy(src: string, dest: string): Promise<void>;

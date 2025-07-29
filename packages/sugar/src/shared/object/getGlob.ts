@@ -1,6 +1,6 @@
 import { minimatch as __minimatch } from 'minimatch';
-import __deepize from './deepize.js';
-import __flatten from './flatten.js';
+import deepize from './deepize.js';
+import flatten from './flatten.js';
 
 /**
  * @name                        getGlob
@@ -23,11 +23,11 @@ import __flatten from './flatten.js';
  *
  * @todo      tests
  *
- * @snippet         __getGlob($1, $2)
+ * @snippet         getGlob($1, $2)
  *
  * @example             js
- * import { __getGlob } from '@blackbyte/sugar/object';
- * __getGlob({
+ * import { getGlob } from '@blackbyte/sugar/object';
+ * getGlob({
  *  hello: {
  *     world: true,
  *     plop: false
@@ -40,7 +40,7 @@ export type TGetGlobSettings = {
   deepize?: boolean;
 };
 
-export default function __getGlob(
+export default function getGlob(
   obj: any,
   glob: string,
   settings: TGetGlobSettings = {},
@@ -50,7 +50,7 @@ export default function __getGlob(
     ...settings,
   };
 
-  const flat = __flatten(obj);
+  const flat = flatten(obj);
 
   const resultObj = {};
 
@@ -60,6 +60,6 @@ export default function __getGlob(
     }
   });
 
-  if (settings.deepize === true) return __deepize(resultObj);
+  if (settings.deepize === true) return deepize(resultObj);
   return resultObj;
 }

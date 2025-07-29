@@ -29,14 +29,14 @@
  * @snippet          __scrolledClasses($1);
  *
  * @example         js
- * import { __scrolledClasses } from '@lotsof/sugar/features';
+ * import { __scrolledClasses } from '@blackbyte/sugar/features';
  * __scrolledClasses({
  *      class: 'hello',
  *      offset: 200
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __scrolledClasses(settings) {
     const style = window.getComputedStyle(document.body);

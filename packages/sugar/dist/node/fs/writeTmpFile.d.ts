@@ -17,19 +17,19 @@
  *
  * @setting         {String}            [path=null]         A path relative to the temp folder to store your file
  *
- * @snippet         __writeTmpFile($1, $2)
- * await __writeTmpFile($1, $2)
+ * @snippet         writeTmpFile($1, $2)
+ * await writeTmpFile($1, $2)
  *
  * @example       js
- * import { __writeTmpFile } from '@lotsof/sugar/fs';
- * __writeTmpFile('Hello World').then((path) => {
+ * import { writeTmpFile } from '@blackbyte/sugar/fs';
+ * writeTmpFile('Hello World').then((path) => {
  *    // do something on complete...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWriteTmpFileSettings = {
     path: string;
 };
-export default function __writeTmpFile(data: any, settings?: Partial<TWriteTmpFileSettings>): Promise<String>;
+export default function writeTmpFile(data: any, settings?: Partial<TWriteTmpFileSettings>): Promise<String>;

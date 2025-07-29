@@ -1,10 +1,10 @@
-import __simplifySpecialChars from './simplifySpecialChars.js';
-export default function __idCompliant(str, settings) {
+import simplifySpecialChars from './simplifySpecialChars.js';
+export default function idCompliant(str, settings) {
     settings = Object.assign({ exclude: [] }, (settings !== null && settings !== void 0 ? settings : {}));
     // spaces
     str = str.replace(/\s/gm, '-');
     // special characters
-    str = __simplifySpecialChars(str);
+    str = simplifySpecialChars(str);
     // replace characters like /, etc...
     const dict = {
         '/': '-',

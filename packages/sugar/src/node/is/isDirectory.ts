@@ -16,11 +16,11 @@ import * as __fs from 'fs';
  * @todo      doc
  * @todo      tests
  *
- * @snippet         __isDirectory($1)
+ * @snippet         isDirectory($1)
  *
  * @example     js
- * import { __isDirectory } from '@blackbyte/sugar/is';
- * __isDirectory('something/cool');
+ * import { isDirectory } from '@blackbyte/sugar/is';
+ * isDirectory('something/cool');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -29,7 +29,7 @@ export type TIsDirectorySettings = {
   symlink?: boolean;
 };
 
-export default function __isDirectory(
+export default function isDirectory(
   path: string,
   settings: TIsDirectorySettings = {},
 ) {

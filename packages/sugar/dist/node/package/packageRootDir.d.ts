@@ -1,9 +1,9 @@
 /**
  * @name                    packageRootDir
- * @namespace            node.path
+ * @namespace               node.path
  * @type                    Function
- * @platform        node
- * @status          beta
+ * @platform                node
+ * @status                  beta
  *
  * Return the path to either the first finded package root going up the folders, or the highest package root finded
  *
@@ -18,18 +18,18 @@
  * @param           {Boolean}             [settings={}]         Some settings to configure the research
  * @return          {String}                                      The finded package path or false if not finded
  *
- * @snippet         __packageRootDir()
+ * @snippet         packageRootDir()
  *
  * @example         js
- * import { __packageRootDir } from '@lotsof/sugar/path';
- * const root = __packageRootDir();
+ * import { packageRootDir } from '@blackbyte/sugar/path';
+ * const root = packageRootDir();
  *
  * @see       https://www.npmjs.com/package/find-package-json
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TPackageRootSettings = {
     highest: boolean;
     upCount: number | undefined;
     requiredProperties: string[];
 };
-export default function __packageRootDir(from?: string, settings?: Partial<TPackageRootSettings>): any;
+export default function packageRootDir(from?: string, settings?: Partial<TPackageRootSettings>): any;

@@ -9,7 +9,7 @@
  * Store the tag->function map used in ```parseHtml``` function for example
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 declare const tagsMap: {
     black: (tag: any, content: any) => string;

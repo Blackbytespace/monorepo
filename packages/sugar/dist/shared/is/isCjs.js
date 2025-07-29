@@ -10,16 +10,16 @@
  *
  * @return      {Boolean}           true if the current system is esm
  *
- * @snippet         __isCjs()
+ * @snippet         isCjs()
  *
  * @example       js
- * import { __isCjs } from '@lotsof/sugar/is';
- * __isCjs(); // => true
+ * import { isCjs } from '@blackbyte/sugar/is';
+ * isCjs(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCjs() {
+export default function isCjs() {
     try {
         return typeof module !== 'undefined';
     }

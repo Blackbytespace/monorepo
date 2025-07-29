@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 function processObj(object, filter, settings) {
     const newObj = {}, keys = Object.keys(object);
     // loop on the object keys
@@ -9,11 +9,11 @@ function processObj(object, filter, settings) {
         const res = filter({
             key,
             value,
-            isObject: __isPlainObject(value),
+            isObject: isPlainObject(value),
         });
         // true mean: we keep this totally
         if (res === true) {
-            if (__isPlainObject(value)) {
+            if (isPlainObject(value)) {
                 newObj[key] = settings.clone
                     ? processObj(Object.assign({}, value), filter, settings)
                     : processObj(value, filter, settings);
@@ -23,7 +23,7 @@ function processObj(object, filter, settings) {
             }
         }
         else if (res === undefined) {
-            if (__isPlainObject(value)) {
+            if (isPlainObject(value)) {
                 newObj[key] = settings.clone
                     ? processObj(Object.assign({}, value), filter, settings)
                     : processObj(value, filter, settings);
@@ -39,7 +39,7 @@ function processObj(object, filter, settings) {
     }
     return newObj;
 }
-export default function __deepFilter(object, filter, settings) {
+export default function deepFilter(object, filter, settings) {
     settings = Object.assign({ clone: true }, (settings !== null && settings !== void 0 ? settings : {}));
     return processObj(settings.clone ? Object.assign({}, object) : object, filter, settings);
 }

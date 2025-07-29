@@ -15,11 +15,11 @@ import { kebabCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __dashCase($1)
+ * @snippet         dashCase($1)
  *
  * @example     js
- * import { __dashCase } from '@blackbyte/sugar/string';
- * __dashCase('hello world'); // => hello-world
+ * import { dashCase } from '@blackbyte/sugar/string';
+ * dashCase('hello world'); // => hello-world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

@@ -13,15 +13,15 @@
  *
  * @todo      tests
  *
- * @snippet         __get($1, $2)
+ * @snippet         __delete($1, $2)
  *
  * @example             js
- * import { __delete } from '@lotsof/sugar/object';
+ * import { __delete } from '@blackbyte/sugar/object';
  * __delete(myObject, 'my.cool.value');
  * __delete(myObject, 'my.cool.value.0');
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __delete(object, dotpath) {
     // const parentdotpath = dotpath.split('.').slice(0, -1).join('.');

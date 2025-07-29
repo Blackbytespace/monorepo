@@ -14,18 +14,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isFunction($1)
+ * @snippet         isFunction($1)
  *
  * @example    js
- * import { __isFunction } from '@lotsof/sugar/is'
- * if (__isFunction(function() {})) {
+ * import { isFunction } from '@blackbyte/sugar/is'
+ * if (isFunction(function() {})) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isFunction(value) {
+export default function isFunction(value) {
     return value && {}.toString.call(value) === '[object Function]';
 }
 //# sourceMappingURL=isFunction.js.map

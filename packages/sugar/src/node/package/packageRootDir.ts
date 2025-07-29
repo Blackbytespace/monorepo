@@ -1,14 +1,14 @@
-import __findPkgJson from 'find-package-json';
-import __fs from 'fs';
-import __objectHash from '../../shared/object/objectHash.js';
-import __isFile from '../is/isFile.js';
+import findPkgJson from 'find-package-json';
+import fs from 'fs';
+import objectHash from '../../shared/object/objectHash.js';
+import isFile from '../is/isFile.js';
 
 /**
  * @name                    packageRootDir
- * @namespace            node.path
+ * @namespace               node.path
  * @type                    Function
- * @platform        node
- * @status          beta
+ * @platform                node
+ * @status                  beta
  *
  * Return the path to either the first finded package root going up the folders, or the highest package root finded
  *
@@ -23,11 +23,11 @@ import __isFile from '../is/isFile.js';
  * @param           {Boolean}             [settings={}]         Some settings to configure the research
  * @return          {String}                                      The finded package path or false if not finded
  *
- * @snippet         __packageRootDir()
+ * @snippet         packageRootDir()
  *
  * @example         js
- * import { __packageRootDir } from '@blackbyte/sugar/path';
- * const root = __packageRootDir();
+ * import { packageRootDir } from '@blackbyte/sugar/path';
+ * const root = packageRootDir();
  *
  * @see       https://www.npmjs.com/package/find-package-json
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -39,8 +39,8 @@ export type TPackageRootSettings = {
   requiredProperties: string[];
 };
 
-const __packageRootDirsCache = {};
-export default function __packageRootDir(
+const packageRootDirsCache = {};
+export default function packageRootDir(
   from = process.cwd(),
   settings?: Partial<TPackageRootSettings>,
 ) {
@@ -52,23 +52,23 @@ export default function __packageRootDir(
   };
 
   // cache
-  const storageKey = __objectHash({
+  const storageKey = objectHash({
     from,
     ...finalSettings,
   });
-  if (!from && __packageRootDirsCache[storageKey]) {
-    return __packageRootDirsCache[storageKey];
+  if (!from && packageRootDirsCache[storageKey]) {
+    return packageRootDirsCache[storageKey];
   }
 
-  if (__isFile(from)) {
+  if (isFile(from)) {
     from = from.split('/').slice(0, -1).join('/');
   }
 
-  if (__fs.existsSync(`${from}/package.json`)) {
+  if (fs.existsSync(`${from}/package.json`)) {
     return from;
   }
 
-  const f = __findPkgJson(from);
+  const f = findPkgJson(from);
   let file = f.next();
 
   let finalFile,
@@ -123,6 +123,6 @@ export default function __packageRootDir(
   }
 
   const finalPath = finalFile.filename.split('/').slice(0, -1).join('/');
-  __packageRootDirsCache[storageKey] = finalPath;
+  packageRootDirsCache[storageKey] = finalPath;
   return finalPath;
 }

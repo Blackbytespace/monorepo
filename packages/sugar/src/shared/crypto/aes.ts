@@ -10,11 +10,11 @@ import toString from '../../shared/string/toString.js';
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the aes algorithm
  *
- * @snippet         __aes.encrypt($1)
+ * @snippet         aes.encrypt($1)
  *
  * @example         js
- * import { __aes } from '@blackbyte/sugar/crypto';
- * __aes.encrypt('hello world');
+ * import { aes } from '@blackbyte/sugar/crypto';
+ * aes.encrypt('hello world');
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)

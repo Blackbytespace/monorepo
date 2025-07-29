@@ -12,13 +12,13 @@
  * @param       {String}            path            The file path you want to check. With or without an extension
  * @param       {String}            content             The content to add to the file
  *
- * @snippet         __prependToFileSync($1, $2)
+ * @snippet         prependToFileSync($1, $2)
  *
  * @example         js
- * import { __prependToFileSync } from '@lotsof/sugar/fs';
- * __prependToFileSync('/my/cool/file.txt', 'Hello world');
+ * import { prependToFileSync } from '@blackbyte/sugar/fs';
+ * prependToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __prependToFileSync(path: string, content: string): void;
+export default function prependToFileSync(path: string, content: string): void;

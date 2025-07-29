@@ -1,5 +1,5 @@
-import __copyFile from './copyFile.js';
-import __copyText from './copyText.js';
-import __readFile from './readFile.js';
-import __readText from './readText.js';
-export { __copyFile, __copyText, __readFile, __readText };
+import copyFile from './copyFile.js';
+import copyText from './copyText.js';
+import readFile from './readFile.js';
+import readText from './readText.js';
+export { copyFile as __copyFile, copyText as __copyText, readFile as __readFile, readText as __readText, copyFile, copyText, readFile, readText, };

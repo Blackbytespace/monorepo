@@ -5,19 +5,19 @@
  * @platform        node
  * @status          stable
  *
- * Return the dirname the same as the __dirname cjs variable.
+ * Return the dirname the same as the dirname cjs variable.
  * The only difference is that it's a function and you need to pass the "import" variable
  * from the filename in which you use this...
  *
  * @return      {String}                            The dirname path
  *
- * @snippet         __dirname()
+ * @snippet         dirname()
  *
  * @example             js
- * import { __dirname } from '@lotsof/sugar/fs';
- * __dirname();
+ * import { dirname } from '@blackbyte/sugar/fs';
+ * dirname();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __dirname(): string;
+export default function dirname(): string;

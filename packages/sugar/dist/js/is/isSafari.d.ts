@@ -12,15 +12,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isSafari()
+ * @snippet         isSafari()
  *
  * @example 	js
- * import { __isSafari } from '@lotsof/sugar/is'
- * if (__isSafari()) {
+ * import { isSafari } from '@blackbyte/sugar/is'
+ * if (isSafari()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSafari(ua?: string): boolean;
+export default function isSafari(ua?: string): boolean;

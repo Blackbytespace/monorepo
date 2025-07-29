@@ -1,10 +1,14 @@
-import __distanceFromElementTopToViewportBottom from './distanceFromElementTopToViewportBottom.js';
-import __distanceFromElementTopToViewportTop from './distanceFromElementTopToViewportTop.js';
-import __scrollLeft from './scrollLeft.js';
-import __scrollTop from './scrollTop.js';
+import distanceFromElementTopToViewportBottom from './distanceFromElementTopToViewportBottom.js';
+import distanceFromElementTopToViewportTop from './distanceFromElementTopToViewportTop.js';
+import scrollLeft from './scrollLeft.js';
+import scrollTop from './scrollTop.js';
 export {
-  __distanceFromElementTopToViewportBottom,
-  __distanceFromElementTopToViewportTop,
-  __scrollLeft,
-  __scrollTop,
+  distanceFromElementTopToViewportBottom as __distanceFromElementTopToViewportBottom,
+  distanceFromElementTopToViewportTop as __distanceFromElementTopToViewportTop,
+  scrollLeft as __scrollLeft,
+  scrollTop as __scrollTop,
+  distanceFromElementTopToViewportBottom,
+  distanceFromElementTopToViewportTop,
+  scrollLeft,
+  scrollTop,
 };

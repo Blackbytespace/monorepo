@@ -1,8 +1,8 @@
 import __path from 'path';
-import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid.js';
-import __toString from '../../shared/string/toString.js';
-import __writeFileSync from './writeFileSync.js';
+import tmpDir from 'temp-dir';
+import uniqid from '../../node/string/uniqid.js';
+import toString from '../../shared/string/toString.js';
+import writeFileSync from './writeFileSync.js';
 
 /**
  * @name                writeTmpFileSync
@@ -23,11 +23,11 @@ import __writeFileSync from './writeFileSync.js';
  *
  * @todo      tests
  *
- * @snippet         __writeTmpFileSync($1, $2)
+ * @snippet         writeTmpFileSync($1, $2)
  *
  * @example       js
- * import { __writeTmpFileSync } from '@blackbyte/sugar/fs';
- * const path = __writeTmpFileSync('Hello World');
+ * import { writeTmpFileSync } from '@blackbyte/sugar/fs';
+ * const path = writeTmpFileSync('Hello World');
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -37,7 +37,7 @@ export type TWriteTmpFileSyncSettings = {
   path: string;
 };
 
-export default function __writeTmpFileSync(
+export default function writeTmpFileSync(
   data: any,
   settings: Partial<TWriteTmpFileSyncSettings> = {},
 ): string {
@@ -46,7 +46,7 @@ export default function __writeTmpFileSync(
     ...settings,
   };
 
-  let path = __path.resolve(__tmpDir, settings.path ?? __uniqid() + '.tmp');
-  __writeFileSync(path, __toString(data));
+  let path = __path.resolve(tmpDir, settings.path ?? uniqid() + '.tmp');
+  writeFileSync(path, toString(data));
   return path;
 }

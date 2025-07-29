@@ -13,20 +13,16 @@
  * @param       {Number}       [$max=null]        The maximum number of items to pick
  * @return      {Any}                         The random array item(s)
  *
- * @snippet         __pickSome($1,$2,$3);
+ * @snippet         pickSome($1,$2,$3);
  *
  * @example         ts
- * import { __pickSome } from '@blackbyte/sugar/array':
- * __pickSome(['hello','world','test'], 1, 2);
+ * import { pickSome } from '@blackbyte/sugar/array':
+ * pickSome(['hello','world','test'], 1, 2);
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __pickSome(
-  array: any[],
-  min: number = 1,
-  max?: number,
-) {
+export default function pickSome(array: any[], min: number = 1, max?: number) {
   if (!max) {
     max = array.length;
   }

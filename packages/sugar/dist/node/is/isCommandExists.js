@@ -23,17 +23,17 @@ import { spawnSync } from 'child_process';
  * @param       {String}            command         The command to check like "ls", "node", etc...
  * @return      {Promise}                           A promise fullfiled once the check has finished with true of false as value
  *
- * @snippet         __isCommandExists($1)
- * await __isCommandExists($1)
+ * @snippet         isCommandExists($1)
+ * await isCommandExists($1)
  *
  * @example         js
- * import { __isCommandExists } from '@lotsof/sugar/is';
- * await  __isCommandExists('ls'); // => true
+ * import { isCommandExists } from '@blackbyte/sugar/is';
+ * await  isCommandExists('ls'); // => true
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCommandExists(command) {
+export default function isCommandExists(command) {
     return __awaiter(this, void 0, void 0, function* () {
         const isWin = process.platform === 'win32';
         const where = isWin ? 'where' : 'whereis';

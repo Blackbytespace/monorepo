@@ -11,20 +11,20 @@
  * @param    {HTMLElement}    elm    The element to listen on
  * @return   {Promise<HTMLElement>}                  A promise that will be resolved once the animation has ended
  *
- * @snippet         __whenAnimationEnd($1)
- * __whenAnimationEnd($1).then(\$elm => {
+ * @snippet         whenAnimationEnd($1)
+ * whenAnimationEnd($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import { __whenAnimationEnd } from '@lotsof/sugar/dom'
- * __whenAnimationEnd(myCoolElm).then(($elm) => {
+ * import { whenAnimationEnd } from '@blackbyte/sugar/dom'
+ * whenAnimationEnd(myCoolElm).then(($elm) => {
  *      // do something...
  * });
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenAnimationEnd($elm: HTMLElement): Promise<HTMLElement>;
+export default function whenAnimationEnd($elm: HTMLElement): Promise<HTMLElement>;

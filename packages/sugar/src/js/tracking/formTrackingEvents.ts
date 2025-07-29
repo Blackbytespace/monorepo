@@ -1,8 +1,5 @@
-import { __parseHtml } from '@blackbyte/sugar/console';
-import {
-  __generateIdFromForm,
-  __querySelectorLive,
-} from '@blackbyte/sugar/dom';
+import { parseHtml } from '@blackbyte/sugar/console';
+import { generateIdFromForm, querySelectorLive } from '@blackbyte/sugar/dom';
 
 /**
  * @name            formTrackingEvents
@@ -27,7 +24,7 @@ import {
  * 1. If a `data-form-id` attribute is present on the form, this will be used as the form id
  * 2. If an input named `form_id` is present in the form, it's value will be used as the form id
  * 3. If an `id` attribute is present on the form, this will be used as the form id
- * 4. If nothing is found, a form id is generated using the `__generateIdFromForm` function
+ * 4. If nothing is found, a form id is generated using the `generateIdFromForm` function
  *
  * @param        {TFormTrackingEventsSettings}       [settings={}]         Some settings to configure your form tracking events
  *
@@ -37,11 +34,11 @@ import {
  *
  * @todo      tests
  *
- * @snippet         __formTrackingEvents($1)
+ * @snippet         formTrackingEvents($1)
  *
  * @example         js
- * import { __formTrackingEvents } from '@blackbyte/sugar/tracking';
- * __formTrackingEvents();
+ * import { formTrackingEvents } from '@blackbyte/sugar/tracking';
+ * formTrackingEvents();
  *
  * // Each dispatched events are like:
  * {
@@ -79,7 +76,7 @@ function _getFormId($form) {
   }
 
   // generate form id
-  const formId = __generateIdFromForm($form);
+  const formId = generateIdFromForm($form);
 
   // apply the form id on the form
   $form.setAttribute('data-form-id', formId);
@@ -109,11 +106,11 @@ export default function formTrackingEvents(
 
   const _log = (msg: string) => {
     if (!finalSettings.debug) return;
-    console.info(__parseHtml(`[FormTrackingEvents]: ${msg}`));
+    console.info(parseHtml(`[FormTrackingEvents]: ${msg}`));
   };
 
   // get each forms in the page
-  __querySelectorLive('form', ($form) => {
+  querySelectorLive('form', ($form) => {
     // get the form id
     const formId = _getFormId($form);
 

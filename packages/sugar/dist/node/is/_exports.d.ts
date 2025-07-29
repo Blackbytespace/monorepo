@@ -1,7 +1,7 @@
-import __isCommandExists from './isCommandExists.js';
-import __isDirectory from './isDirectory.js';
-import __isFile from './isFile.js';
-import __isFolder from './isFolder.js';
-import __isSymlink from './isSymlink.js';
+import isCommandExists from './isCommandExists.js';
+import isDirectory from './isDirectory.js';
+import isFile from './isFile.js';
+import isFolder from './isFolder.js';
+import isSymlink from './isSymlink.js';
 export * from '../../shared/is/_exports.js';
-export { __isCommandExists, __isDirectory, __isFile, __isFolder, __isSymlink };
+export { isCommandExists as __isCommandExists, isDirectory as __isDirectory, isFile as __isFile, isFolder as __isFolder, isSymlink as __isSymlink, isCommandExists, isDirectory, isFile, isFolder, isSymlink, };

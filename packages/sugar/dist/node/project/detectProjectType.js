@@ -1,15 +1,15 @@
-import __fs from 'fs';
+import fs from 'fs';
 import __packageRootDir from '../package/packageRootDir.js';
 export default function detectProjectType(cwd = process.cwd()) {
     var _a, _b, _c, _d, _e;
     let packageJson = {}, composerJson = {};
     const packageRootDir = __packageRootDir(cwd);
     try {
-        packageJson = JSON.parse(__fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString());
+        packageJson = JSON.parse(fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString());
     }
     catch (e) { }
     try {
-        composerJson = JSON.parse(__fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString());
+        composerJson = JSON.parse(fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString());
     }
     catch (e) { }
     // detecting the package type laravel
@@ -25,9 +25,9 @@ export default function detectProjectType(cwd = process.cwd()) {
         };
     }
     // detecting the package type next
-    if (__fs.existsSync(`${packageRootDir}/next.config.js`) ||
-        __fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
-        __fs.existsSync(`${packageRootDir}/next.config.ts`)) {
+    if (fs.existsSync(`${packageRootDir}/next.config.js`) ||
+        fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
+        fs.existsSync(`${packageRootDir}/next.config.ts`)) {
         const version = (_b = packageJson.dependencies) === null || _b === void 0 ? void 0 : _b.next.replace(/\^/, '');
         return {
             type: 'next',
@@ -39,9 +39,9 @@ export default function detectProjectType(cwd = process.cwd()) {
         };
     }
     // detecting the package type nuxt
-    if (__fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
-        __fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
-        __fs.existsSync(`${packageRootDir}/nuxt.config.ts`)) {
+    if (fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
+        fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
+        fs.existsSync(`${packageRootDir}/nuxt.config.ts`)) {
         const version = packageJson.dependencies.nuxt.replace(/\^/, '');
         return {
             type: 'nuxt',
@@ -53,9 +53,9 @@ export default function detectProjectType(cwd = process.cwd()) {
         };
     }
     // detecting the package type svelte
-    if (__fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
-        __fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
-        __fs.existsSync(`${packageRootDir}/svelte.config.ts`)) {
+    if (fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
+        fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
+        fs.existsSync(`${packageRootDir}/svelte.config.ts`)) {
         const version = (_c = packageJson.dependencies) === null || _c === void 0 ? void 0 : _c['@sveltejs/kit'].replace(/\^/, '');
         return {
             type: 'sveltekit',
@@ -67,9 +67,9 @@ export default function detectProjectType(cwd = process.cwd()) {
         };
     }
     // detecting the package type astro
-    if (__fs.existsSync(`${packageRootDir}/astro.config.js`) ||
-        __fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
-        __fs.existsSync(`${packageRootDir}/astro.config.ts`)) {
+    if (fs.existsSync(`${packageRootDir}/astro.config.js`) ||
+        fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
+        fs.existsSync(`${packageRootDir}/astro.config.ts`)) {
         const version = (_d = packageJson.dependencies) === null || _d === void 0 ? void 0 : _d.astro.replace(/\^/, '');
         return {
             type: 'astro',

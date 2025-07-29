@@ -12,13 +12,13 @@
  *
  * @todo            tests
  *
- * @snippet         __readJsonSync($1)
+ * @snippet         readJsonSync($1)
  *
  * @example         js
- * import { __readJsonSync } from '@lotsof/sugar/fs';
- * __readJsonSync('my-cool-json/file.json');
+ * import { readJsonSync } from '@blackbyte/sugar/fs';
+ * readJsonSync('my-cool-json/file.json');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readJsonSync(path: string): any;
+export default function readJsonSync(path: string): any;

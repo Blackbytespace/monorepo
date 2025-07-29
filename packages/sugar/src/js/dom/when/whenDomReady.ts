@@ -11,16 +11,16 @@
  * @param       {Function}          [callback=null]     A callback to call when ready
  * @return 		{Promise<void>} 					A promise that will be resolved when the dom is ready
  *
- * @snippet         __whenDomReady()
- * __whenDomReady().then(() => {
+ * @snippet         whenDomReady()
+ * whenDomReady().then(() => {
  *      $1
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __whenDomReady } from '@blackbyte/sugar/dom'
- * __whenDomReady().then(() => {
+ * import { whenDomReady } from '@blackbyte/sugar/dom'
+ * whenDomReady().then(() => {
  *     // do something...
  * });
  *
@@ -28,7 +28,7 @@
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenDomReady(): Promise<void> {
+export default function whenDomReady(): Promise<void> {
   return new Promise((resolve) => {
     if (document.readyState === 'complete') {
       resolve();

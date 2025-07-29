@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __alphaToHex($1)
+ * @snippet         alphaToHex($1)
  *
  * @example         js
- * import { __alphaToHex } from '@lotsof/sugar/color';
- * __alphaToHex(1); // FF
+ * import { alphaToHex } from '@blackbyte/sugar/color';
+ * alphaToHex(1); // FF
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __alphaToHex(alpha) {
+export default function alphaToHex(alpha) {
     const _opacity = Math.round(Math.min(Math.max(alpha || 1, 0), 1) * 255);
     return _opacity.toString(16);
 }

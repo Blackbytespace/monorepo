@@ -1,4 +1,4 @@
-export default function __setCookie(name, value, settings = {}) {
+export default function setCookie(name, value, settings = {}) {
     settings = Object.assign({ path: '/', expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365 * 1000).toUTCString(), secure: document.location.protocol === 'https:' }, settings);
     try {
         value = JSON.stringify(value);

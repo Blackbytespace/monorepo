@@ -20,17 +20,17 @@
  *
  * @todo      tests
  *
- * @snippet         __crop($1, $2)
+ * @snippet         crop($1, $2)
  *
  * @example         js
- * import { __crop } from '@lotsof/sugar/string';
- * __crop('Hello World', 10); // => Hello w...
+ * import { crop } from '@blackbyte/sugar/string';
+ * crop('Hello World', 10); // => Hello w...
  *
  * @since       1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TCropSettings = {
     chars?: string;
     splitWords?: boolean;
 };
-export default function __crop(text: string, length: number, settings?: TCropSettings): string;
+export default function crop(text: string, length: number, settings?: TCropSettings): string;

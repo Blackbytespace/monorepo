@@ -20,19 +20,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @param      {HTMLElement}                   [$context=document]     The context from which you want to adopt the styles
  * @return      {Promise}                                               Return a promise fullfilled when the styles have been adopted
  *
- * @snippet         __adoptStyleInShadowRoot($1)
+ * @snippet         adoptStyleInShadowRoot($1)
  *
  * @todo        tests
  *
  * @example         js
- * import { __adoptStyleInShadowRoot } from '@lotsof/sugar/dom';
+ * import { adoptStyleInShadowRoot } from '@blackbyte/sugar/dom';
  * const myShadowRoot = $myElement.shadowRoot;
- * await __adoptStyleInShadowRoot(myShadowRoot);
+ * await adoptStyleInShadowRoot(myShadowRoot);
  *
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __adoptStyleInShadowRoot($shadowRoot_1) {
+export default function adoptStyleInShadowRoot($shadowRoot_1) {
     return __awaiter(this, arguments, void 0, function* ($shadowRoot, $context = document) {
         const $links = $context.querySelectorAll('link[rel="stylesheet"]');
         if ($links && $shadowRoot) {

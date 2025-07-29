@@ -4,5 +4,5 @@ interface IHexToToRbaResult {
     b: number;
     a: number;
 }
-export default function __hexToRgba(hex: string): IHexToToRbaResult;
+export default function hexToRgba(hex: string): IHexToToRbaResult;
 export {};

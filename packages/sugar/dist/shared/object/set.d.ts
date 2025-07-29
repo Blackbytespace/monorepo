@@ -18,16 +18,16 @@
  *
  * @todo      tests
  *
- * @snippet         __set($1, $2)
+ * @snippet         set($1, $2)
  *
  * @example               js
- * import { __set } from '@lotsof/sugar/object';
- *  __set('myObject.cool.value', 'Hello world'); // => Hello world
+ * import { set } from '@blackbyte/sugar/object';
+ *  set('myObject.cool.value', 'Hello world'); // => Hello world
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TSetSettings = {
     preferAssign: boolean;
 };
-export default function __set(obj: any, path: string | string[], value: any, settings?: TSetSettings): void;
+export default function set(obj: any, path: string | string[], value: any, settings?: TSetSettings): void;

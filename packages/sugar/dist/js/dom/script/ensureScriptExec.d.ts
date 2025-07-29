@@ -1,1 +1,1 @@
-export default function __ensureExec($script: HTMLScriptElement | HTMLScriptElement[] | NodeListOf<HTMLScriptElement>): void;
+export default function ensureScriptExec($script: HTMLScriptElement | HTMLScriptElement[] | NodeListOf<HTMLScriptElement>): void;

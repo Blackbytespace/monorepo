@@ -1,4 +1,4 @@
-import __uniqid from '../../string/uniqid.js';
+import uniqid from '../../string/uniqid.js';
 
 /**
  * @name            reloadStylesheets
@@ -13,11 +13,11 @@ import __uniqid from '../../string/uniqid.js';
  *
  * @param       {HTMLElement}           [$root=document]            The root element in which to reload the stylesheets
  *
- * @snippet         __reloadStylesheets()
+ * @snippet         reloadStylesheets()
  *
  * @example         js
  * import { __reloeadStylesheets } from '@blackbyte/sugar/dom';
- * __reloadStylesheets();
+ * reloadStylesheets();
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -38,7 +38,7 @@ export default function reloadStylesheets(
   Array.from(
     finalSettings.$root.querySelectorAll('link[rel=stylesheet]') ?? [],
   ).forEach(($link) => {
-    const id = $link.id ?? __uniqid();
+    const id = $link.id ?? uniqid();
 
     // clone the link element
     const $newLink = <HTMLLinkElement>$link.cloneNode();

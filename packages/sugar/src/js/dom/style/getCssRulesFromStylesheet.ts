@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __getCssRulesFromStylesheet($1)
+ * @snippet         getCssRulesFromStylesheet($1)
  *
  * @example  	js
- * import { __getCssRulesFromStylesheet } from '@blackbyte/sugar/dom';
- * __getCssRulesFromStylesheet(myStylesheet);
+ * import { getCssRulesFromStylesheet } from '@blackbyte/sugar/dom';
+ * getCssRulesFromStylesheet(myStylesheet);
  *
  * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getCssRulesFromStylesheet(
+export default function getCssRulesFromStylesheet(
   styleSheet: StyleSheet,
   recursive = true,
 ) {

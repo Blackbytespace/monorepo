@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __parseHsla($1)
+ * @snippet         parseHsla($1)
  *
  * @example         js
- * import { __parseHsla } from '@lotsof/sugar/color';
- * __parseHsla('hsl(20,20,20)');
+ * import { parseHsla } from '@blackbyte/sugar/color';
+ * parseHsla('hsl(20,20,20)');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __parseHsla(hslaString) {
+export default function parseHsla(hslaString) {
     hslaString = hslaString.toLowerCase();
     const string = hslaString
         .replace('hsla(', '')

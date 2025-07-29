@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __cloneClass($1)
+ * @snippet         cloneClass($1)
  *
  * @example         js
- * import { __cloneClass } from '@lotsof/sugar/class';
- * const NewClass = __cloneClass(class MyClass() {});
+ * import { cloneClass } from '@blackbyte/sugar/class';
+ * const NewClass = cloneClass(class MyClass() {});
  *
  * @see             https://www.npmjs.com/package/clone-class
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function (cls: any): any;

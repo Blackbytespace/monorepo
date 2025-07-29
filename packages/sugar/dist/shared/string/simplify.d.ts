@@ -20,11 +20,11 @@
  *
  * @todo      tests
  *
- * @snippet         __simplify($1)
+ * @snippet         simplify($1)
  *
  * @example       js
- * import { __simplify } from '@lotsof/sugar/string';
- * __simplify('éàddö'); // => eaddo
+ * import { simplify } from '@blackbyte/sugar/string';
+ * simplify('éàddö'); // => eaddo
  *
  * @since     1.0.0
  * @author    João Filipe Ventura Coelho <joaoventura93@outlook.com>
@@ -35,4 +35,4 @@ export type TSimplifySettings = {
     dashSpace?: boolean;
     trim?: boolean;
 };
-export default function __simplify(string: string, settings?: TSimplifySettings): string;
+export default function simplify(string: string, settings?: TSimplifySettings): string;

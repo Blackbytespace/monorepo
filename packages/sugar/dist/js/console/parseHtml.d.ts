@@ -1,9 +1,9 @@
 /**
- * @name                                parseHtml
- * @namespace            js.console
- * @type                                Function
- * @platform          js
- * @status          beta
+ * @name                      parseHtml
+ * @namespace                 js.console
+ * @type                      Function
+ * @platform                  js
+ * @status                    beta
  *
  * Parse the simple html tags to format the console message
  *
@@ -13,9 +13,9 @@
  * @todo        interface
  * @todo        doc
  *
- * @snippet         __parseHtml($1)
+ * @snippet         parseHtml($1)
  *
  * @since       2.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __parseHtml(message: any): any;
+export default function parseHtml(message: any): any;

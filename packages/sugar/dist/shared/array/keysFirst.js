@@ -1,4 +1,4 @@
-import __unique from './unique.js';
+import unique from './unique.js';
 /**
  * @name            keysFirst
  * @namespace       shared.array
@@ -13,16 +13,16 @@ import __unique from './unique.js';
  * @param    {Array}    keys    The keys to start the array with
  * @return    {Array}    The processed array
  *
- * @snippet         __keysFirst($1, $2)
+ * @snippet         keysFirst($1, $2)
  *
  * @example    js
- * import { __keysFirst } from '@lotsof/sugar/array'
- * __keysFirst(['a','b','d','g','c'], ['d','g'])
+ * import { keysFirst } from '@blackbyte/sugar/array'
+ * keysFirst(['a','b','d','g','c'], ['d','g'])
  * // ['d','g','a','b','c']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __keysFirst(array, keys) {
+export default function keysFirst(array, keys) {
     // all the keys has to exist in the array stack
     // otherwise we filter it out
     keys = keys.filter((key) => {
@@ -32,7 +32,7 @@ export default function __keysFirst(array, keys) {
     const empty = [];
     let res = empty.concat(keys).concat(array);
     // remove double items
-    res = __unique(res);
+    res = unique(res);
     // return the result
     return res;
 }

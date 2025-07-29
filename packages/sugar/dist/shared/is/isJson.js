@@ -13,18 +13,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isJson($1)
+ * @snippet         isJson($1)
  *
  * @example    js
- * import { __isJson } from '@lotsof/sugar/is'
- * if (__isJson('[{id:10}]')) {
+ * import { isJson } from '@blackbyte/sugar/is'
+ * if (isJson('[{id:10}]')) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isJson(value) {
+export default function isJson(value) {
     try {
         const res = JSON.parse(value);
         if (Object.keys(res).length)

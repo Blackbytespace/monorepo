@@ -22,18 +22,18 @@
  *
  * @todo      tests
  *
- * @snippet         __countLineChars($1)
+ * @snippet         countLineChars($1)
  *
  * @example         js
- * import { __countLineChars } from '@lotsof/sugar/string';
- *  __countLineChars('Hello <red>World</red>'); // 11
+ * import { countLineChars } from '@blackbyte/sugar/string';
+ *  countLineChars('Hello <red>World</red>'); // 11
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TCountLineCharsSettings = {
     htmlTags?: boolean;
     terminalSpecialChars?: boolean;
     newLineChars?: boolean;
 };
-export default function __countLineChars(line: string, count?: TCountLineCharsSettings): number;
+export default function countLineChars(line: string, count?: TCountLineCharsSettings): number;

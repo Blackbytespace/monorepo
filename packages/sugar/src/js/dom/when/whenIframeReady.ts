@@ -11,16 +11,16 @@
  * @param       {HTMLIframeElement}         $iframe          The iframe to wait on
  * @return 		{Promise<HTMLIframeElement>} 					A promise that will be resolved when an interaction has been made
  *
- * @snippet         __whenIframeReady($1)
- * __whenIframeReady($1).then(\$elm => {
+ * @snippet         whenIframeReady($1)
+ * whenIframeReady($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __whenIframeReady } from '@blackbyte/sugar/dom'
- * __whenIframeReady($myCoolIframe).then($iframe => {
+ * import { whenIframeReady } from '@blackbyte/sugar/dom'
+ * whenIframeReady($myCoolIframe).then($iframe => {
  *      // do something...
  * });
  *
@@ -28,7 +28,7 @@
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __whenIframeReady(
+export default function whenIframeReady(
   $iframe: HTMLIFrameElement,
 ): Promise<any> {
   return new Promise((resolve) => {

@@ -1,5 +1,5 @@
-import __replaceTags from '../../shared/html/replaceTags.js';
-import __tagsMap from './tagsMap.js';
+import replaceTags from '../../shared/html/replaceTags.js';
+import tagsMap from './tagsMap.js';
 /**
  * @name                    parseHtml
  * @namespace               node.console
@@ -14,12 +14,12 @@ import __tagsMap from './tagsMap.js';
  *
  * @todo        tests
  *
- * @snippet         __parseHtml($1)
+ * @snippet         parseHtml($1)
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __parseHtml(message) {
+export default function parseHtml(message) {
     let isArray = false;
     if (Array.isArray(message)) {
         isArray = true;
@@ -28,7 +28,7 @@ export default function __parseHtml(message) {
         message = [message];
     }
     message = message.map((m) => {
-        return __replaceTags(m, __tagsMap);
+        return replaceTags(m, tagsMap);
     });
     if (isArray)
         return message;

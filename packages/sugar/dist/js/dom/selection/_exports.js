@@ -1,3 +1,3 @@
-import __clearSelection from './clearSelection.js';
-export { __clearSelection };
+import clearSelection from './clearSelection.js';
+export { clearSelection as __clearSelection, clearSelection };
 //# sourceMappingURL=_exports.js.map

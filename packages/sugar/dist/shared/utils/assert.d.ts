@@ -16,4 +16,4 @@
  * @since       1.0.0
  * @author 		Olivier Bossel<olivier.bossel@gmail.com>
  */
-export default function __assert(condition: any, message: string): void;
+export default function assert(condition: any, message: string): void;

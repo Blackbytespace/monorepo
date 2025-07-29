@@ -11,15 +11,15 @@
  * @param       {String}            str         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __stripDocblocks($1)
+ * @snippet         stripDocblocks($1)
  *
  * @todo      tests
  *
  * @example         js
- * import { __stripDocblocks } from '@lotsof/sugar/string';
- * __stripDocblocks('...');
+ * import { stripDocblocks } from '@blackbyte/sugar/string';
+ * stripDocblocks('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __stripDocblocks(str: string): string;
+export default function stripDocblocks(str: string): string;

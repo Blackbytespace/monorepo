@@ -15,11 +15,11 @@ import { pathCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __pathCase($1)
+ * @snippet         pathCase($1)
  *
  * @example     js
- * import { __pathCase } from '@blackbyte/sugar/string';
- * __pathCase('hello world'); // => hello/world
+ * import { pathCase } from '@blackbyte/sugar/string';
+ * pathCase('hello world'); // => hello/world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

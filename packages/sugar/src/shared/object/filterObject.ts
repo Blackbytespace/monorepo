@@ -16,12 +16,12 @@
  *
  * @todo      tests
  *
- * @snippet         __filterObject($1, $2)
- * __filterObject
+ * @snippet         filterObject($1, $2)
+ * filterObject
  *
  * @example           js
- * import { __filterObject } from '@blackbyte/sugar/object';
- * __filterObject({
+ * import { filterObject } from '@blackbyte/sugar/object';
+ * filterObject({
  *    coco: 'hello',
  *    plop: true
  * }, (key, item) => typeof item === 'string');
@@ -31,7 +31,7 @@
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __filterObject(
+export default function filterObject(
   object: any,
   filter: (key: string, value: any) => boolean,
 ): any {

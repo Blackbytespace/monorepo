@@ -14,15 +14,15 @@ import { constantCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __constantCase($1)
+ * @snippet         constantCase($1)
  *
  * @example     js
- * import { __constantCase } from '@lotsof/sugar/string';
- * __constantCase('hello world'); // => HELLO_WORLD
+ * import { constantCase } from '@blackbyte/sugar/string';
+ * constantCase('hello world'); // => HELLO_WORLD
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __constantCase(text) {
     return constantCase(text);

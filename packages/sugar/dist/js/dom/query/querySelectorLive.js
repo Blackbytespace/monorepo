@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __uniqid from '../../string/uniqid.js';
-import __when from '../when/when.js';
-export default function __querySelectorLive(selector, cb, settings, _isFirstLevel = true) {
+import uniqid from '../../string/uniqid.js';
+import when from '../when/when.js';
+export default function querySelectorLive(selector, cb, settings, _isFirstLevel = true) {
     var _a, _b, _c, _d, _e, _f;
     let noScopeSelector, observer, canceled = false;
     const selectedNodes = [];
@@ -86,7 +86,7 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
                 (!finalSettings.once || !selectedNodes.includes($node))) {
                 // handle the "when" setting
                 if (finalSettings.when) {
-                    yield __when($node, [finalSettings.when]);
+                    yield when($node, [finalSettings.when]);
                     if (isCanceled()) {
                         return;
                     }
@@ -115,20 +115,20 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
             !((_b = (_a = finalSettings.rootNode) === null || _a === void 0 ? void 0 : _a.hasAttribute) === null || _b === void 0 ? void 0 : _b.call(_a, 's-scope')))) {
         let isAfterCalledByScopeId = {};
         // search for scopes and handle nested nodes
-        innerQuerySelectorLive.push(__querySelectorLive('[s-scope]', ($scope) => __awaiter(this, void 0, void 0, function* () {
+        innerQuerySelectorLive.push(querySelectorLive('[s-scope]', ($scope) => __awaiter(this, void 0, void 0, function* () {
             // get or generate a new id
-            const scopeId = $scope.id || `s-scope-${__uniqid()}`;
+            const scopeId = $scope.id || `s-scope-${uniqid()}`;
             if ($scope.id !== scopeId) {
                 $scope.setAttribute('id', scopeId);
             }
             if (isCanceled()) {
                 return;
             }
-            yield __when($scope, ['nearViewport']);
+            yield when($scope, ['nearViewport']);
             if (isCanceled()) {
                 return;
             }
-            innerQuerySelectorLive.push(__querySelectorLive(selector, ($elm) => {
+            innerQuerySelectorLive.push(querySelectorLive(selector, ($elm) => {
                 processNode($elm, selector);
             }, Object.assign({}, settings, {
                 rootNode: $scope,
@@ -151,7 +151,7 @@ export default function __querySelectorLive(selector, cb, settings, _isFirstLeve
             scopes: false,
         }), false));
         // handle things not in a scope
-        innerQuerySelectorLive.push(__querySelectorLive(noScopeSelector, ($elm) => {
+        innerQuerySelectorLive.push(querySelectorLive(noScopeSelector, ($elm) => {
             // findAndProcess($scope, selector);
             processNode($elm, selector);
         }, Object.assign({}, settings, {

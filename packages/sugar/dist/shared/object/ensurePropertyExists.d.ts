@@ -15,15 +15,15 @@
  *
  * @todo      tests
  *
- * @snippet         __ensurePropertyExists($1, $2)
+ * @snippet         ensurePropertyExists($1, $2)
  *
  * @example           js
- * import { __ensureProperyExists } from '@lotsof/sugar/object';
+ * import { ensurePropertyExists } from '@blackbyte/sugar/object';
  * const myObj = { hello: 'world' }«
- * __ensureProperyExists(myObj, 'cool.object', {});
+ * ensurePropertyExists(myObj, 'cool.object', {});
  * // { hello: 'world', cool: { object: {} } }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureProperyExists(obj: any, path: string, value?: any): any;
+export default function ensurePropertyExists(obj: any, path: string, value?: any): any;

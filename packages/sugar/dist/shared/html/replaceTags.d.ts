@@ -14,15 +14,15 @@
  *
  * @todo      tests
  *
- * @snippet         __replaceTags($1m $2)
+ * @snippet         replaceTags($1m $2)
  *
  * @example             js
- * import { __replaceTags } from '@lotsof/sugar/html';
- *  __replaceTags('<span>Hello</span> world', {
+ * import { replaceTags } from '@blackbyte/sugar/html';
+ *  replaceTags('<span>Hello</span> world', {
  *    span: (tag, content) => `<div>${content}</div>`; // => <div>Hello</div> world
  * });
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __replaceTags(text: string, tags: Record<string, Function>): string;
+export default function replaceTags(text: string, tags: Record<string, Function>): string;

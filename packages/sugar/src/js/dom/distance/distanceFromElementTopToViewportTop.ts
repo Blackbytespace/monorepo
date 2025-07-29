@@ -1,5 +1,5 @@
 import __scrollTop from '../distance/scrollTop.js';
-import __offsetFromViewport from '../offset/offsetFromViewport.js';
+import offsetFromViewport from '../offset/offsetFromViewport.js';
 
 /**
  * @name            distanceFromElementTopToViewportTop
@@ -14,19 +14,19 @@ import __offsetFromViewport from '../offset/offsetFromViewport.js';
  * @param       {HTMLElement}       elm             The element you want to get the distance from
  * @return      {Number}                            The calculated distance
  *
- * @snippet         __distanceFromElementTopToViewportTop($1)
+ * @snippet         distanceFromElementTopToViewportTop($1)
  *
  * @example         js
- * import { __distanceFromElementTopToViewportTop } from '@blackbyte/sugar/dom';
- * __distanceFromElementTopToViewportTop(myElement); // => 23
+ * import { distanceFromElementTopToViewportTop } from '@blackbyte/sugar/dom';
+ * distanceFromElementTopToViewportTop(myElement); // => 23
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __distanceFromElementTopToViewportTop(
+export default function distanceFromElementTopToViewportTop(
   elm: HTMLElement,
 ): number {
-  const offsets = __offsetFromViewport(elm);
+  const offsets = offsetFromViewport(elm);
   const scrollTop = __scrollTop();
   // @ts-ignore
   return offsets.top - scrollTop;

@@ -1,5 +1,6 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
-import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
+import unique from '../array/unique.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
+import commonProgrammingFileExtensions from './commonProgrammingFileExtensions.js';
 
 /**
  * @name            commonTextFileExtensions
@@ -10,9 +11,15 @@ import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions
  * @status          stable
  *
  * This function allows you to get an array of common text file extensions with or without the dot
+ * Common formats includes: txt, htm, html, md, json, csv, rss, xhtml, xml, log, rtf, doc, docx, odt, pdf, tex, latex, readme, changelog, license, yaml, yml, ini, cfg, conf, properties
+ * Extended formats includes: asc, asciidoc, adoc, rst, textile, wiki, mediawiki, creole, pod, texi, texinfo, info, man, nroff, troff, groff, me, ms, mm, sgml, sgm, dtd, ent, mod, xsd, rng, rnc, xsl, xslt, fo, dita, ditamap, ditaval, docbook, dbk, fb2, opf, ncx, epub, mobi, azw, azw3, kf8, pdb, lit, lrf, rb, tcr, pml, prc, imp, ebk, tr2, tr3, tomeraider
  *
- * @param       {Boolean}           withDot          If true, the dot will be added to the extension
- * @return     {Array<String>}                           The array of extensions
+ * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
+ * @return      {Array<String>}                           The array of extensions
+ *
+ * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
+ * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
+ * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
  * @snippet         __commonTextFileExtensions()
  *
@@ -25,14 +32,16 @@ import __commonProgrammingFileExtensions from './commonProgrammingFileExtensions
  */
 
 export default function __commonTextFileExtensions(
-  settings: Partial<ICommonFileExtensionsSettings> = {},
+  settings: Partial<TCommonFileExtensionsSettings> = {},
 ): string[] {
-  const finalSettings: ICommonFileExtensionsSettings = {
+  const finalSettings: TCommonFileExtensionsSettings = {
     dot: false,
     exclude: [],
+    extended: false,
     ...settings,
   };
-  return [
+
+  const commons = [
     'txt',
     'htm',
     'html',
@@ -41,8 +50,89 @@ export default function __commonTextFileExtensions(
     'csv',
     'rss',
     'xhtml',
-    ...__commonProgrammingFileExtensions(finalSettings),
-  ]
+    'xml',
+    'log',
+    'rtf',
+    'doc',
+    'docx',
+    'odt',
+    'pdf',
+    'tex',
+    'latex',
+    'readme',
+    'changelog',
+    'license',
+    'yaml',
+    'yml',
+    'ini',
+    'cfg',
+    'conf',
+    'properties',
+  ];
+
+  const extended = [
+    'asc',
+    'asciidoc',
+    'adoc',
+    'rst',
+    'textile',
+    'wiki',
+    'mediawiki',
+    'creole',
+    'pod',
+    'texi',
+    'texinfo',
+    'info',
+    'man',
+    'nroff',
+    'troff',
+    'groff',
+    'me',
+    'ms',
+    'mm',
+    'sgml',
+    'sgm',
+    'dtd',
+    'ent',
+    'mod',
+    'xsd',
+    'rng',
+    'rnc',
+    'xsl',
+    'xslt',
+    'fo',
+    'dita',
+    'ditamap',
+    'ditaval',
+    'docbook',
+    'dbk',
+    'fb2',
+    'opf',
+    'ncx',
+    'epub',
+    'mobi',
+    'azw',
+    'azw3',
+    'kf8',
+    'pdb',
+    'lit',
+    'lrf',
+    'rb',
+    'tcr',
+    'pml',
+    'prc',
+    'imp',
+    'ebk',
+    'tr2',
+    'tr3',
+    'tomeraider',
+  ];
+
+  return unique([
+    ...commons,
+    ...(finalSettings.extended ? extended : []),
+    ...commonProgrammingFileExtensions(finalSettings),
+  ])
     .filter((ext) => !finalSettings.exclude.includes(ext))
     .map((ext) => (finalSettings.dot ? `.${ext}` : ext));
 }

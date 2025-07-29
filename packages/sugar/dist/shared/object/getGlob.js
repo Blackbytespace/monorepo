@@ -1,9 +1,9 @@
 import { minimatch as __minimatch } from 'minimatch';
-import __deepize from './deepize.js';
-import __flatten from './flatten.js';
-export default function __getGlob(obj, glob, settings = {}) {
+import deepize from './deepize.js';
+import flatten from './flatten.js';
+export default function getGlob(obj, glob, settings = {}) {
     settings = Object.assign({ deepize: true }, settings);
-    const flat = __flatten(obj);
+    const flat = flatten(obj);
     const resultObj = {};
     Object.keys(flat).forEach((path) => {
         if (__minimatch(path, glob)) {
@@ -11,7 +11,7 @@ export default function __getGlob(obj, glob, settings = {}) {
         }
     });
     if (settings.deepize === true)
-        return __deepize(resultObj);
+        return deepize(resultObj);
     return resultObj;
 }
 //# sourceMappingURL=getGlob.js.map

@@ -1,4 +1,12 @@
-import __composerJsonSync from './composerJsonSync.js';
-import __composerVendorDir from './composerVendorDir.js';
+import composerJsonSync from './composerJsonSync.js';
+import composerPackageDir from './composerPackageDir.js';
+import composerVendorDir from './composerVendorDir.js';
 
-export { __composerJsonSync, __composerVendorDir };
+export {
+  composerJsonSync as __composerJsonSync,
+  composerPackageDir as __composerPackageDir,
+  composerVendorDir as __composerVendorDir,
+  composerJsonSync,
+  composerPackageDir,
+  composerVendorDir,
+};

@@ -12,18 +12,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isEdge()
+ * @snippet         isEdge()
  *
  * @example 	js
- * import { __isEdge } from '@lotsof/sugar/is'
- * if (__isEdge()) {
+ * import { isEdge } from '@blackbyte/sugar/is'
+ * if (isEdge()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEdge(ua = navigator.userAgent) {
+export default function isEdge(ua = navigator.userAgent) {
     return ua.indexOf('Edg/') > -1;
 }
 //# sourceMappingURL=isEdge.js.map

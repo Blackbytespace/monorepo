@@ -1,4 +1,4 @@
-import __onDrag from './onDrag.js';
-import __onScrollEnd from './onScrollEnd.js';
-import __onSwipe from './onSwipe.js';
-export { __onDrag, __onScrollEnd, __onSwipe };
+import onDrag from './onDrag.js';
+import onScrollEnd from './onScrollEnd.js';
+import onSwipe from './onSwipe.js';
+export { onDrag as __onDrag, onScrollEnd as __onScrollEnd, onSwipe as __onSwipe, onDrag, onScrollEnd, onSwipe, };

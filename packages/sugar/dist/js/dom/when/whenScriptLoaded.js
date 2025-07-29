@@ -14,23 +14,23 @@
  * @param       {Function}      [cb=null]     A callback if you prefer
  * @return    {Promise}    The promise that will be resolved when the script is fully loaded
  *
- * @snippet         __whenScriptLoaded($1)
- * __whenScriptLoaded($1).then(\$script => {
+ * @snippet         whenScriptLoaded($1)
+ * whenScriptLoaded($1).then(\$script => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import { __whenScriptLoaded } from '@lotsof/sugar/dom'
- * __whenScriptLoaded($script).then(($script) => {
+ * import { whenScriptLoaded } from '@blackbyte/sugar/dom'
+ * whenScriptLoaded($script).then(($script) => {
  *   // do something here
  * })
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenScriptLoaded($script, cb) {
+export default function whenScriptLoaded($script, cb) {
     const promise = new Promise((resolve, reject) => {
         let done = false;
         $script.onload = handleLoad;

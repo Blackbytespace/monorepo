@@ -1,10 +1,10 @@
-import __simplifySpecialChars from './simplifySpecialChars.js';
-export default function __namespaceCompliant(str, settings) {
+import simplifySpecialChars from './simplifySpecialChars.js';
+export default function namespaceCompliant(str, settings) {
     settings = Object.assign({ exclude: [] }, (settings !== null && settings !== void 0 ? settings : {}));
     // spaces
     str = str.replace(/\s{1,9999999999999999}/gm, '-');
     // special characters
-    str = __simplifySpecialChars(str);
+    str = simplifySpecialChars(str);
     // replace characters like /, etc...
     const dict = {
         '\\': '-',

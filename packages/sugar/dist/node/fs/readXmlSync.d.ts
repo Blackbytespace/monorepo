@@ -12,13 +12,13 @@
  *
  * @todo            tests
  *
- * @snippet         __readXmlSync($1)
+ * @snippet         readXmlSync($1)
  *
  * @example         js
- * import { __readXmlSync } from '@lotsof/sugar/fs';
- * __readXmlSync('my-cool-xml/file.xml');
+ * import { readXmlSync } from '@blackbyte/sugar/fs';
+ * readXmlSync('my-cool-xml/file.xml');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readXmlSync(path: string): any;
+export default function readXmlSync(path: string): any;

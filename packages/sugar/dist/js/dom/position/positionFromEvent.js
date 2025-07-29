@@ -10,19 +10,19 @@
  * @param 		{MouseEvent|TouchEvent} 					e  		The event to get the position from
  * @return 		{x: number; y: number;} 									The absolute position of the event
  *
- * @snippet         __positionFromEvent($1)
+ * @snippet         positionFromEvent($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __positionFromEvent } from '@lotsof/sugar/dom'
- * __positionFromEvent(e);
+ * import { positionFromEvent } from '@blackbyte/sugar/dom'
+ * positionFromEvent(e);
  * // output : { x, 230, y: 122 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __positionFromEvent(e) {
+export default function positionFromEvent(e) {
     let x, y;
     if (e.type == 'touchstart' ||
         e.type == 'touchmove' ||

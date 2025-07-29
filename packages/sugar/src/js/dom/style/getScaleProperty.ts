@@ -14,11 +14,11 @@ import * as rematrix from 'rematrix';
  *
  * @todo      tests
  *
- * @snippet         __getScaleProperty($1)
+ * @snippet         getScaleProperty($1)
  *
  * @example  	js
- * import { __getScaleProperty } from '@blackbyte/sugar/dom'
- * const props = __getScaleProperty(myCoolHTMLElement);
+ * import { getScaleProperty } from '@blackbyte/sugar/dom'
+ * const props = getScaleProperty(myCoolHTMLElement);
  * // output format
  * // 2
  *
@@ -32,7 +32,7 @@ export type TGetScalePropertyResult = {
   z: number;
 };
 
-export default function __getScaleProperty(
+export default function getScaleProperty(
   $elm: HTMLElement,
 ): TGetScalePropertyResult | undefined {
   if (!window.getComputedStyle) return;

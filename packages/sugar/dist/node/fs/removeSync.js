@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 /**
  * @name            removeSync
  * @namespace       node.fs
@@ -12,17 +12,17 @@ import __fs from 'fs-extra';
  *
  * @todo      tests
  *
- * @snippet         __removeSync($1)
+ * @snippet         removeSync($1)
  *
  * @example       js
- * import { __removeSync } from '@lotsof/sugar/fs';
- *  __removeSync('my/cool/file.json');
+ * import { removeSync } from '@blackbyte/sugar/fs';
+ *  removeSync('my/cool/file.json');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __removeSync(path) {
-    __fs.removeSync(path);
+export default function removeSync(path) {
+    fs.removeSync(path);
 }
 //# sourceMappingURL=removeSync.js.map

@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isColor($1)
+ * @snippet         isColor($1)
  *
  * @example 	js
- * import { __isColor } from '@lotsof/sugar/is';
- * __isColor('red') => true
- * __isColor('#fff') => true
- * __isColor('hello') => false
+ * import { isColor } from '@blackbyte/sugar/is';
+ * isColor('red') => true
+ * isColor('#fff') => true
+ * isColor('hello') => false
  *
  * @see 		http://stackoverflow.com/questions/6386090/validating-css-color-names
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isColor(value: any): boolean;
+export default function isColor(value: any): boolean;

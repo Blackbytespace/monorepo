@@ -14,15 +14,15 @@
  *
  * @todo      tests
  *
- * @snippet         __hexToRgba($1)
+ * @snippet         hexToRgba($1)
  *
  * @example         js
- * import { __hexToRgba } from '@lotsof/sugar/color';
- * __hexToRgba('#ff00ff');
+ * import { hexToRgba } from '@blackbyte/sugar/color';
+ * hexToRgba('#ff00ff');
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function hexToRGBA(h) {
     let r = 0, g = 0, b = 0;
@@ -40,7 +40,7 @@ function hexToRGBA(h) {
     }
     return { r, g, b, a: 1 };
 }
-export default function __hexToRgba(hex) {
+export default function hexToRgba(hex) {
     // return hexToRgba(hex, 1);
     return hexToRGBA(hex);
 }

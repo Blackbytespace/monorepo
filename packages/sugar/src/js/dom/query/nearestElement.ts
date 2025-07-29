@@ -1,4 +1,4 @@
-import __distanceBetween from '../../../shared/math/distanceBetween.js';
+import distanceBetween from '../../../shared/math/distanceBetween.js';
 
 /**
  * @name            nearestElement
@@ -18,11 +18,11 @@ import __distanceBetween from '../../../shared/math/distanceBetween.js';
  *
  * @todo      tests
  *
- * @snippet         __nearestElement($1, $2, $3)
+ * @snippet         nearestElement($1, $2, $3)
  *
  * @example    js
- * import { __nearestElement } from '@blackbyte/sugar/dom'
- * __nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
+ * import { nearestElement } from '@blackbyte/sugar/dom'
+ * nearestElement(myCoolElement, document.querySelectorAll('.my-cool-elements'), {
  *      direction: 'top'
  * });
  *
@@ -33,7 +33,7 @@ export type TNearestElementSettings = {
   direction?: 'top' | 'right' | 'bottom' | 'left';
 };
 
-export default function __nearestElement(
+export default function nearestElement(
   $from: HTMLElement,
   $elements: HTMLElement[] | NodeListOf<HTMLElement>,
   settings?: TNearestElementSettings,
@@ -80,7 +80,7 @@ export default function __nearestElement(
         break;
     }
 
-    distance = __distanceBetween(fromElmBound, elmBound);
+    distance = distanceBetween(fromElmBound, elmBound);
     if (distance < nearestDistance) {
       nearestDistance = distance;
       $nearestElement = $elm as HTMLElement;

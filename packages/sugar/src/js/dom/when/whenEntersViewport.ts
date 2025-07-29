@@ -1,4 +1,4 @@
-import __isInViewport from '../../is/isInViewport.js';
+import isInViewport from '../../is/isInViewport.js';
 
 /**
  * @name                whenEntersViewport
@@ -19,16 +19,16 @@ import __isInViewport from '../../is/isInViewport.js';
  *
  * @setting         {String}        [offset='0px 0px -25% 0px']         An offset to detect the element entering in viewport earlier or later
  *
- * @snippet         __whenEntersViewport($1)
- * __whenEntersViewport($1).then(\$elm => {
+ * @snippet         whenEntersViewport($1)
+ * whenEntersViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenEntersViewport } from '@blackbyte/sugar/dom'
- * __whenEntersViewport($myElement).then(($elm) => {
+ * import { whenEntersViewport } from '@blackbyte/sugar/dom'
+ * whenEntersViewport($myElement).then(($elm) => {
  * 		// do something with your element that has entered the viewport...
  * });
  *
@@ -40,7 +40,7 @@ export type TWhenEntersViewportSettings = {
   offset: string | number | undefined;
 };
 
-export default function __whenEntersViewport(
+export default function whenEntersViewport(
   elm: HTMLElement,
   settings?: TWhenEntersViewportSettings,
 ): Promise<HTMLElement> {
@@ -71,7 +71,7 @@ export default function __whenEntersViewport(
       threshold: 0, // visible amount of item shown in relation to root
     };
 
-    if (__isInViewport(elm)) {
+    if (isInViewport(elm)) {
       return resolve(elm);
     }
 

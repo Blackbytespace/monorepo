@@ -1,12 +1,12 @@
 import { decycle } from 'json-cyclic';
-import __mapToObj from '../convert/mapToObject.js';
-import __isArray from '../is/isArray.js';
-import __isBoolean from '../is/isBoolean.js';
-import __isFunction from '../is/isFunction.js';
-import __isJson from '../is/isJson.js';
-import __isMap from '../is/isMap.js';
-import __isObject from '../is/isObject.js';
-import __deepMap from '../object/deepMap.js';
+import mapToObj from '../convert/mapToObject.js';
+import isArray from '../is/isArray.js';
+import isBoolean from '../is/isBoolean.js';
+import isFunction from '../is/isFunction.js';
+import isJson from '../is/isJson.js';
+import isMap from '../is/isMap.js';
+import isObject from '../is/isObject.js';
+import deepMap from '../object/deepMap.js';
 
 /**
  * @name            toString
@@ -27,11 +27,11 @@ import __deepMap from '../object/deepMap.js';
  *
  * @todo      tests
  *
- * @snippet         __toString($1)
+ * @snippet         toString($1)
  *
  * @example    js
- * import { __toString } from '@blackbyte/sugar/string'
- * __toString({
+ * import { toString } from '@blackbyte/sugar/string'
+ * toString({
  * 	id:'hello'
  * }) // '{"id":"hello"}'
  *
@@ -44,7 +44,10 @@ export type TToStringSettings = {
   verbose?: boolean;
 };
 
-function fn(value: any, settings: TToStringSettings = {}): string {
+export default function toString(
+  value: any,
+  settings: TToStringSettings = {},
+): string {
   settings = {
     beautify: true,
     verbose: true,
@@ -75,18 +78,18 @@ function fn(value: any, settings: TToStringSettings = {}): string {
   }
 
   // Map
-  if (__isMap(value)) {
-    value = __mapToObj(value);
+  if (isMap(value)) {
+    value = mapToObj(value);
   }
 
   // JSON
-  if (__isObject(value) || __isArray(value) || __isJson(value)) {
+  if (isObject(value) || isArray(value) || isJson(value)) {
     try {
       value = decycle(value);
     } catch (e) {}
 
-    value = __deepMap(value, ({ value }) => {
-      if (value instanceof Map) return __mapToObj(value);
+    value = deepMap(value, ({ value }) => {
+      if (value instanceof Map) return mapToObj(value);
       return value;
     });
 
@@ -97,12 +100,12 @@ function fn(value: any, settings: TToStringSettings = {}): string {
     return prettyString;
   }
   // boolean
-  if (__isBoolean(value)) {
+  if (isBoolean(value)) {
     if (value) return 'true';
     else return 'false';
   }
   // function
-  if (__isFunction(value)) {
+  if (isFunction(value)) {
     return '' + value;
   }
   // stringify
@@ -119,4 +122,3 @@ function fn(value: any, settings: TToStringSettings = {}): string {
   }
   return returnString;
 }
-export default fn;

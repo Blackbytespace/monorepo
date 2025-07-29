@@ -15,14 +15,14 @@
  *
  * @todo      tests
  *
- * @snippet         __merge($1, $2)
+ * @snippet         merge($1, $2)
  *
  * @example           js
- * import { __merge } from '@lotsof/sugar/object';
- * __merge({a: 'hello'}, {a: 'plop', hello: 'world');
+ * import { merge } from '@blackbyte/sugar/object';
+ * merge({a: 'hello'}, {a: 'plop', hello: 'world');
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function _merge(firstObj, secondObj) {
     const newObj = {};

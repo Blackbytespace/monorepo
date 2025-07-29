@@ -1,7 +1,7 @@
-import __fs from 'fs-extra';
-import __toString from '../../shared/string/toString.js';
-import __ensureDirSync from '../fs/ensureDirSync.js';
-import __folderPath from './folderPath.js';
+import fs from 'fs-extra';
+import toString from '../../shared/string/toString.js';
+import ensureDirSync from '../fs/ensureDirSync.js';
+import { __folderPath } from './_exports.js';
 
 /**
  * @name            writeFile
@@ -20,12 +20,12 @@ import __folderPath from './folderPath.js';
  *
  * @todo        tests
  *
- * @snippet         __writeFile($1, $2)
- * await __writeFile($1, $2)
+ * @snippet         writeFile($1, $2)
+ * await writeFile($1, $2)
  *
  * @example       js
- * import { __writeFile } from '@blackbyte/sugar/fs';
- * __writeFile('my/cool/file.txt', 'Hello World').then(() => {
+ * import { writeFile } from '@blackbyte/sugar/fs';
+ * writeFile('my/cool/file.txt', 'Hello World').then(() => {
  *    // do something on complete...
  * });
  *
@@ -33,15 +33,15 @@ import __folderPath from './folderPath.js';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeFile(
+export default function writeFile(
   path: string,
   data: any,
   options = {},
 ): Promise<string> {
   return new Promise(async (resolve) => {
     const folderPath = __folderPath(path);
-    __ensureDirSync(folderPath);
-    await __fs.outputFile(path, __toString(data), options);
+    ensureDirSync(folderPath);
+    await fs.outputFile(path, toString(data), options);
     resolve(path);
   });
 }

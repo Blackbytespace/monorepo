@@ -15,11 +15,11 @@ import { capitalCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __capitalCase($1)
+ * @snippet         capitalCase($1)
  *
  * @example     js
- * import { __capitalCase } from '@blackbyte/sugar/string';
- * __capitalCase('hello world'); // => HELLO WORLD
+ * import { capitalCase } from '@blackbyte/sugar/string';
+ * capitalCase('hello world'); // => HELLO WORLD
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

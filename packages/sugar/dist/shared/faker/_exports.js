@@ -1,3 +1,3 @@
-import __richText from './richText.js';
-export { __richText };
+import richText from './richText.js';
+export { richText as __richText, richText };
 //# sourceMappingURL=_exports.js.map

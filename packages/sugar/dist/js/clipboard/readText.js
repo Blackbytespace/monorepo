@@ -24,13 +24,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @snippet         __readText($1)
  *
  * @example         js
- * import { __copyText, __readText } from '@lotsof/sugar/clipboard';
- * await __readText();
+ * import { copyText, __readText } from '@blackbyte/sugar/clipboard';
+ * await readText();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readText() {
+export default function readText() {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
         if ((_a = navigator === null || navigator === void 0 ? void 0 : navigator.clipboard) === null || _a === void 0 ? void 0 : _a.readText) {

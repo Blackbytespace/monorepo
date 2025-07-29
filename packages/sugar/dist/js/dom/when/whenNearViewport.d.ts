@@ -17,23 +17,23 @@
  *
  * @setting         {String}            [offset=`${window.innerHeight}px ${window.innerWidth}px`]           Some offset
  *
- * @snippet         __whenNearViewport($1)
- * __whenNearViewport($1).then(\$elm => {
+ * @snippet         whenNearViewport($1)
+ * whenNearViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenNearViewport } from '@lotsof/sugar/dom'
- * __whenNearViewport(myCoolHTMLElement).then($elm => {
+ * import { whenNearViewport } from '@blackbyte/sugar/dom'
+ * whenNearViewport(myCoolHTMLElement).then($elm => {
  * 		// do something with your element that has entered the viewport...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWhenNearViewportSettings = {
     offset: string | number | undefined;
 };
-export default function __whenNearViewport(elm: HTMLElement, settings?: Partial<TWhenNearViewportSettings>): Promise<HTMLElement>;
+export default function whenNearViewport(elm: HTMLElement, settings?: Partial<TWhenNearViewportSettings>): Promise<HTMLElement>;

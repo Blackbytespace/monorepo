@@ -14,14 +14,14 @@
  *
  * @todo      tests
  *
- * @snippet         __getCssDeclarations()
+ * @snippet         getCssDeclarations()
  *
  * @example  	js
- * import { __getCssDeclarations } from '@lotsof/sugar/dom';
- * __getCssDeclarations('style', [myCoolCssRules]);
+ * import { getCssDeclarations } from '@blackbyte/sugar/dom';
+ * getCssDeclarations('style', [myCoolCssRules]);
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-declarations.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-declarations.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function getCssDeclarations(typeName?: string, rules?: never[], predecate?: boolean | Function): any[];

@@ -1,4 +1,4 @@
-import __md5 from '../../shared/crypto/md5.js';
+import md5 from '../../shared/crypto/md5.js';
 
 /**
  * @name                gravatarUrl
@@ -16,18 +16,15 @@ import __md5 from '../../shared/crypto/md5.js';
  *
  * @todo      tests
  *
- * @snippet         __gravatarUrl($1)
+ * @snippet         gravatarUrl($1)
  *
  * @example       js
- * import { __gravatarUrl } from '@blackbyte/sugar/url';
- * __gravatarUrl('olivier.bossel@gmail.com'); // https://www.gravatar.com/avatar/b5df60055b6287bb7c90c0078ce20a5f
+ * import { gravatarUrl } from '@blackbyte/sugar/url';
+ * gravatarUrl('olivier.bossel@gmail.com'); // https://www.gravatar.com/avatar/b5df60055b6287bb7c90c0078ce20a5f
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __gravatarUrl(
-  email: string,
-  size: number = 200,
-): string {
-  return `https://www.gravatar.com/avatar/${__md5.encrypt(email)}?s=${size}`;
+export default function gravatarUrl(email: string, size: number = 200): string {
+  return `https://www.gravatar.com/avatar/${md5.encrypt(email)}?s=${size}`;
 }

@@ -1,4 +1,4 @@
-export default function __ensureExec(
+export default function ensureScriptExec(
   $script:
     | HTMLScriptElement
     | HTMLScriptElement[]

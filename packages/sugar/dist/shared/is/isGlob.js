@@ -1,4 +1,4 @@
-import __isGlob from 'is-glob';
+import isGlob from 'is-glob';
 /**
  * @name                    isGlob
  * @namespace               shared.is
@@ -14,17 +14,17 @@ import __isGlob from 'is-glob';
  *
  * @todo      tests
  *
- * @snippet         __isGlob($1)
+ * @snippet         isGlob($1)
  *
  * @example               js
- * import { __isGlob } from '@lotsof/sugar/is';
- * __isGlob('something/*.js); // => true
+ * import { isGlob } from '@blackbyte/sugar/is';
+ * isGlob('something/*.js); // => true
  *
  * @see       https://www.npmjs.com/package/is-glob
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function (string) {
-    return __isGlob(string);
+    return isGlob(string);
 }
 //# sourceMappingURL=isGlob.js.map

@@ -1,6 +1,6 @@
-import __isPlainObject from '../is/isPlainObject.js';
-import __unquote from '../string/unquote.js';
-import __get from './get.js';
+import isPlainObject from '../is/isPlainObject.js';
+import unquote from '../string/unquote.js';
+import get from './get.js';
 
 /**
  * @name                    set
@@ -22,11 +22,11 @@ import __get from './get.js';
  *
  * @todo      tests
  *
- * @snippet         __set($1, $2)
+ * @snippet         set($1, $2)
  *
  * @example               js
- * import { __set } from '@blackbyte/sugar/object';
- *  __set('myObject.cool.value', 'Hello world'); // => Hello world
+ * import { set } from '@blackbyte/sugar/object';
+ *  set('myObject.cool.value', 'Hello world'); // => Hello world
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -36,7 +36,7 @@ export type TSetSettings = {
   preferAssign: boolean;
 };
 
-export default function __set(
+export default function set(
   obj: any,
   path: string | string[],
   value: any,
@@ -62,9 +62,9 @@ export default function __set(
 
     path = path.replace(/\[(\w+)\]/g, '.[$1]');
     // path = path.replace(/^\./, '');
-    a = __unquote(path)
+    a = unquote(path)
       .split(/(?!\B"[^"]*)\.(?![^"]*"\B)/gm)
-      .map((p) => __unquote(p));
+      .map((p) => unquote(p));
   } else if (Array.isArray(path)) {
     a = [...path];
   }
@@ -93,8 +93,8 @@ export default function __set(
     o.push(value);
   } else {
     if (
-      __isPlainObject(o[a[0]]) &&
-      __isPlainObject(value) &&
+      isPlainObject(o[a[0]]) &&
+      isPlainObject(value) &&
       finalSettings.preferAssign
     ) {
       // empty the current obj
@@ -107,5 +107,5 @@ export default function __set(
       o[a[0]] = value;
     }
   }
-  return __get(obj, path);
+  return get(obj, path);
 }

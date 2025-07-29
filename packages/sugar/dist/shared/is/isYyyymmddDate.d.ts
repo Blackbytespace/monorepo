@@ -14,15 +14,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isYyyymmddDate($1)
+ * @snippet         isYyyymmddDate($1)
  *
  * @example    js
- * import { __isYyyymmddDate } from '@lotsof/sugar/is'
- * if (__isYyyymmddDate('2018.12.25')) {
+ * import { isYyyymmddDate } from '@blackbyte/sugar/is'
+ * if (isYyyymmddDate('2018.12.25')) {
  *     // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isYyyymmddDate(date: string): boolean;
+export default function isYyyymmddDate(date: string): boolean;

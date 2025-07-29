@@ -14,11 +14,11 @@
  * @todo      integrate some kind of media query check
  * @todo      tests
  *
- * @snippet         __isMobile()
+ * @snippet         isMobile()
  *
  * @example 	js
- * import { __isMobile } from '@blackbyte/sugar/is'
- * if (__isMobile()) {
+ * import { isMobile } from '@blackbyte/sugar/is'
+ * if (isMobile()) {
  *   // do something cool...
  * }
  *
@@ -26,7 +26,7 @@
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isMobile(): boolean {
+export default function isMobile(): boolean {
   // touch event
   if (!('ontouchstart' in document.documentElement)) return false;
   // orientation

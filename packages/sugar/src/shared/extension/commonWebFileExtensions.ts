@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name            commonWebFileExtensions
@@ -9,9 +9,15 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @status          stable
  *
  * This function allows you to get an array of common text file extensions with or without the dot
+ * Common formats includes: html, htm, css, js, php, asp, jsp, py, rb, pl, cgi, cfm, xml, json, rss, xhtml, ts, jsx, tsx, scss, sass, less, vue, svelte
+ * Extended formats includes: aspx, ashx, asmx, axd, do, action, faces, xhtml, jspx, tag, tld, erb, rhtml, haml, slim, ejs, hbs, handlebars, mustache, twig, blade, smarty, ftl, vm, vsl, tpl, tmpl, phtml, php3, php4, php5, phps, pht, phar, shtml, shtm, stm, ihtml, mhtml, mht, wml, wap, csp, cer, part, webmanifest, appcache, webapp, map, coffee, dart, elm, cljs, elm
  *
- * @param       {Boolean}           withDot          If true, the dot will be added to the extension
- * @return     {Array<String>}                           The array of extensions
+ * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
+ * @return      {Array<String>}                           The array of extensions
+ *
+ * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
+ * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
+ * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
  * @snippet         __commonWebFileExtensions()
  *
@@ -23,30 +29,100 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonWebFileExtensions(
-  settings: Partial<ICommonFileExtensionsSettings> = {},
+  settings: Partial<TCommonFileExtensionsSettings> = {},
 ): string[] {
-  const finalSettings: ICommonFileExtensionsSettings = {
+  const finalSettings: TCommonFileExtensionsSettings = {
     dot: false,
     exclude: [],
+    extended: false,
     ...settings,
   };
-  return [
-    'asp',
-    'cer',
-    'cfm',
-    'cgi',
-    'pl',
-    'css',
-    'htm',
+
+  const commons = [
     'html',
+    'htm',
+    'css',
     'js',
-    'jsp',
-    'part',
     'php',
+    'asp',
+    'jsp',
     'py',
+    'rb',
+    'pl',
+    'cgi',
+    'cfm',
+    'xml',
+    'json',
     'rss',
     'xhtml',
-  ]
+    'ts',
+    'jsx',
+    'tsx',
+    'scss',
+    'sass',
+    'less',
+    'vue',
+    'svelte',
+  ];
+
+  const extended = [
+    'aspx',
+    'ashx',
+    'asmx',
+    'axd',
+    'do',
+    'action',
+    'faces',
+    'xhtml',
+    'jspx',
+    'tag',
+    'tld',
+    'erb',
+    'rhtml',
+    'haml',
+    'slim',
+    'ejs',
+    'hbs',
+    'handlebars',
+    'mustache',
+    'twig',
+    'blade',
+    'smarty',
+    'ftl',
+    'vm',
+    'vsl',
+    'tpl',
+    'tmpl',
+    'phtml',
+    'php3',
+    'php4',
+    'php5',
+    'phps',
+    'pht',
+    'phar',
+    'shtml',
+    'shtm',
+    'stm',
+    'ihtml',
+    'mhtml',
+    'mht',
+    'wml',
+    'wap',
+    'csp',
+    'cer',
+    'part',
+    'webmanifest',
+    'appcache',
+    'webapp',
+    'map',
+    'coffee',
+    'dart',
+    'elm',
+    'cljs',
+    'elm',
+  ];
+
+  return [...commons, ...(finalSettings.extended ? extended : [])]
     .filter((ext) => !finalSettings.exclude.includes(ext))
     .map((ext) => (finalSettings.dot ? `.${ext}` : ext));
 }

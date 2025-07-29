@@ -1,3 +1,3 @@
-import __formatFileSize from './fileSize.js';
-export { __formatFileSize };
+import formatFileSize from './fileSize.js';
+export { formatFileSize as __formatFileSize, formatFileSize };
 //# sourceMappingURL=_exports.js.map

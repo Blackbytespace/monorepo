@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
 
 /**
  * @name            commonDataFileExtensions
@@ -9,9 +9,15 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @status          stable
  *
  * This function allows you to get an array of common text file extensions with or without the dot
+ * Common formats includes: json, xml, csv, sql, db, sqlite, log, txt, yaml, yml, ini, cfg, conf, properties, env, tsv, dat, dbf, mdb, accdb, xlsx, xls, ods, parquet, avro, jsonl, ndjson.
+ * Extended formats includes: sav, dta, por, sas7bdat, xpt, rdata, rds, feather, hdf5, h5, nc, cdf, mat, pickle, pkl, msgpack, bson, cbor, protobuf, pb, arff, weka, libsvm, svmlight, tfrecord, lmdb, leveldb, rocksdb, bdb, gdbm, dbm, ndbm, qdbm, tc, tch, fdb, realm, sqlite3, db3, s3db, sl3, dump, backup, bak
  *
- * @param       {Boolean}           withDot          If true, the dot will be added to the extension
- * @return     {Array<String>}                           The array of extensions
+ * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
+ * @return      {Array<String>}                           The array of extensions
+ *
+ * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
+ * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
+ * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
  * @snippet         __commonDataFileExtensions()
  *
@@ -23,26 +29,93 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonDataFileExtensions(
-  settings: Partial<ICommonFileExtensionsSettings> = {},
+  settings: Partial<TCommonFileExtensionsSettings> = {},
 ): string[] {
-  const finalSettings: ICommonFileExtensionsSettings = {
+  const finalSettings: TCommonFileExtensionsSettings = {
     dot: false,
     exclude: [],
+    extended: false,
     ...settings,
   };
-  return [
-    'csv',
-    'dat',
-    'db',
-    'dbf',
+
+  const commons = [
     'json',
-    'log',
-    'mdb',
-    'sav',
-    'sql',
-    'tar',
     'xml',
-  ]
+    'csv',
+    'sql',
+    'db',
+    'sqlite',
+    'log',
+    'txt',
+    'yaml',
+    'yml',
+    'ini',
+    'cfg',
+    'conf',
+    'properties',
+    'env',
+    'tsv',
+    'dat',
+    'dbf',
+    'mdb',
+    'accdb',
+    'xlsx',
+    'xls',
+    'ods',
+    'parquet',
+    'avro',
+    'jsonl',
+    'ndjson',
+  ];
+
+  const extended = [
+    'sav',
+    'dta',
+    'por',
+    'sas7bdat',
+    'xpt',
+    'rdata',
+    'rds',
+    'feather',
+    'hdf5',
+    'h5',
+    'nc',
+    'cdf',
+    'mat',
+    'pickle',
+    'pkl',
+    'msgpack',
+    'bson',
+    'cbor',
+    'protobuf',
+    'pb',
+    'arff',
+    'weka',
+    'libsvm',
+    'svmlight',
+    'tfrecord',
+    'lmdb',
+    'leveldb',
+    'rocksdb',
+    'bdb',
+    'gdbm',
+    'dbm',
+    'ndbm',
+    'qdbm',
+    'tc',
+    'tch',
+    'fdb',
+    'realm',
+    'sqlite3',
+    'db3',
+    's3db',
+    'sl3',
+    'dump',
+    'backup',
+    'bak',
+  ];
+
+  return [...commons, ...(finalSettings.extended ? extended : [])]
     .filter((ext) => !finalSettings.exclude.includes(ext))
     .map((ext) => (finalSettings.dot ? `.${ext}` : ext));
 }

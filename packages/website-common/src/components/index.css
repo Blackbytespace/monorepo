@@ -23,6 +23,7 @@
 @import './ui/typo/typo.css';
 
 @import './generic/advancedSelect/advancedSelect.css';
+@import './generic/codeTabs/codeTabs.css';
 @import './generic/internalNav/internalNav.css';
 @import './generic/markdown/markdown.css';
 @import './generic/blackbytePicto/blackbytePicto.css';

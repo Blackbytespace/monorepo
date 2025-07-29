@@ -1,4 +1,4 @@
-import __uncamelize from '../../../shared/string/uncamelize.js';
+import uncamelize from '../../../shared/string/uncamelize.js';
 
 /**
  * @name            styleObject2String
@@ -15,11 +15,11 @@ import __uncamelize from '../../../shared/string/uncamelize.js';
  *
  * @todo      tests
  *
- * @snippet         __styleObjectToString($1)
+ * @snippet         styleObjectToString($1)
  *
  * @example 	js
- * import { __styleObjectToString } from '@blackbyte/sugar/css'
- * const styleString =  __styleObjectToString({
+ * import { styleObjectToString } from '@blackbyte/sugar/css'
+ * const styleString =  styleObjectToString({
  * 		paddingLeft : '20px',
  * 		display : 'block'
  * });
@@ -28,7 +28,7 @@ import __uncamelize from '../../../shared/string/uncamelize.js';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __styleObjectToString(styleObj: any): string {
+export default function styleObjectToString(styleObj: any): string {
   // process the style object
   const propertiesArray: string[] = [];
   for (const key in styleObj) {
@@ -38,7 +38,7 @@ export default function __styleObjectToString(styleObj: any): string {
     if (value === undefined || value === '') {
       delete styleObj[key];
     } else {
-      propertiesArray.push(`${__uncamelize(key)}:${value};`);
+      propertiesArray.push(`${uncamelize(key)}:${value};`);
     }
   }
   // return the css text

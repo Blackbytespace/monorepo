@@ -2,4 +2,5 @@
 @import './settings/sugarcss.css';
 @import '@blackbyte/website-common/src/components/index.css';
 
+@import './sections/getStarted/getStarted.css';
 @import './sections/welcome/welcome.css';

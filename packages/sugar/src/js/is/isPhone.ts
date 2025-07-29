@@ -13,11 +13,11 @@ import __isMobile from './isMobile.js';
  *
  * @todo      tests
  *
- * @snippet         __isPhone()
+ * @snippet         isPhone()
  *
  * @example 	js
- * import { __isPhone } from '@blackbyte/sugar/is'
- * if (__isPhone()) {
+ * import { isPhone } from '@blackbyte/sugar/is'
+ * if (isPhone()) {
  *   // do something cool...
  * }
  *

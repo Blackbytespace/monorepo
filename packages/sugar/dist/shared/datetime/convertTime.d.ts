@@ -14,17 +14,17 @@
  *
  * @todo      tests
  *
- * @snippet         __convertTime($1, $2)
+ * @snippet         convertTime($1, $2)
  *
  * @example           js
- * import { __convertTime } from '@lotsof/sugar/datetime';
- * __convertTime('10s', 'ms'); // => 10000
+ * import { convertTime } from '@blackbyte/sugar/datetime';
+ * convertTime('10s', 'ms'); // => 10000
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-declare function __convertTime(from: string | number, to?: string): number;
-declare namespace __convertTime {
+declare function convertTime(from: string | number, to?: string): number;
+declare namespace convertTime {
     var MILLISECOND: string;
     var SECOND: string;
     var MINUTE: string;
@@ -34,4 +34,4 @@ declare namespace __convertTime {
     var MONTH: string;
     var YEAR: string;
 }
-export default __convertTime;
+export default convertTime;

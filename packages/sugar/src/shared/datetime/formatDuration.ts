@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __formatDuration($1)
+ * @snippet         formatDuration($1)
  *
  * @example       js
- * import { __formatDuration } from '@blackbyte/sugar/datetime';
- * __formatDuration(2000); // => 2s
+ * import { formatDuration } from '@blackbyte/sugar/datetime';
+ * formatDuration(2000); // => 2s
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __formatDuration(duration: number): string {
+export default function formatDuration(duration: number): string {
   if (duration === Infinity) {
     return '...';
   }

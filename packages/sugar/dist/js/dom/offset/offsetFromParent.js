@@ -1,4 +1,4 @@
-import __offsetFromViewport from './offsetFromViewport.js';
+import offsetFromViewport from './offsetFromViewport.js';
 /**
  * @name            offsetFromParent
  * @namespace       js.dom.offset
@@ -11,21 +11,21 @@ import __offsetFromViewport from './offsetFromViewport.js';
  * @param 		{HTMLElement} 					elm  		The element to get the offset from
  * @return 		{top: number; left: number;} 									The offset top and left object
  *
- * @snippet         __offsetFromParent($1)
+ * @snippet         offsetFromParent($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __offsetFromParent } from '@lotsof/sugar/dom'
- * const offsetFromParentElm = __offsetFromParent(myCoolElement);
+ * import { offsetFromParent } from '@blackbyte/sugar/dom'
+ * const offsetFromParentElm = offsetFromParent(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __offsetFromParent(elm) {
-    const parentOffset = __offsetFromViewport(elm.parentElement);
-    const offset = __offsetFromViewport(elm);
+export default function offsetFromParent(elm) {
+    const parentOffset = offsetFromViewport(elm.parentElement);
+    const offset = offsetFromViewport(elm);
     return {
         top: offset.top - parentOffset.top,
         left: offset.left - parentOffset.left,

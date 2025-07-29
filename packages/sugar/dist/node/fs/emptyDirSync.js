@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 /**
  * @name                emptyDirSync
  * @namespace           node.fs
@@ -12,17 +12,17 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet         __emptyDirSync($1)
+ * @snippet         emptyDirSync($1)
  *
  * @example       js
- * import { __emptyDirSync } from '@lotsof/sugar/fs';
- * __emptyDirSync('my/cool/directory');
+ * import { emptyDirSync } from '@blackbyte/sugar/fs';
+ * emptyDirSync('my/cool/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __emptyDirSync(dir) {
-    __fs.emptyDirSync(dir);
+export default function emptyDirSync(dir) {
+    fs.emptyDirSync(dir);
 }
 //# sourceMappingURL=emptyDirSync.js.map

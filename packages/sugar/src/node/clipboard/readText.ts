@@ -1,10 +1,10 @@
 // @ts-nocheck
 
-import __clipboardy from 'clipboardy';
+import clipboardy from 'clipboardy';
 
 /**
  * @name            readText
- * @namespace            node.clipboard
+ * @namespace       node.clipboard
  * @type            Function
  * @platform        node
  * @status          stable
@@ -16,17 +16,17 @@ import __clipboardy from 'clipboardy';
  *
  * @todo      tests
  *
- * @snippet         __read()
+ * @snippet         readText()
  *
  * @example       js
- * import { __copy, __read } from '@blackbyte/sugar/clipboard';
- * __copy('Hello world');
- * __read(); // => Hello world
+ * import { copyText, readText } from '@blackbyte/sugar/clipboard';
+ * copyText('Hello world');
+ * readText(); // => Hello world
  *
  * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readText(): string {
-  return __clipboardy.readSync();
+export default function readText(): string {
+  return clipboardy.readSync();
 }

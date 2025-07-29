@@ -1,4 +1,4 @@
-import __simplifySpecialChars from './simplifySpecialChars.js';
+import simplifySpecialChars from './simplifySpecialChars.js';
 
 /**
  * @name            idCompliant
@@ -15,13 +15,13 @@ import __simplifySpecialChars from './simplifySpecialChars.js';
  * @param       {String}        string         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __idCompliant($1)
+ * @snippet         idCompliant($1)
  *
  * @todo      tests
  *
  * @example         php
- * import { __idCompliant } from '@blackbyte/sugar/string';
- * __idCompliant('Hello world'); // => hello-world
+ * import { idCompliant } from '@blackbyte/sugar/string';
+ * idCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -31,7 +31,7 @@ export type TIdCompliantSettings = {
   exclude: string[];
 };
 
-export default function __idCompliant(
+export default function idCompliant(
   str: string,
   settings?: TIdCompliantSettings,
 ): string {
@@ -43,7 +43,7 @@ export default function __idCompliant(
   // spaces
   str = str.replace(/\s/gm, '-');
   // special characters
-  str = __simplifySpecialChars(str);
+  str = simplifySpecialChars(str);
   // replace characters like /, etc...
   const dict = {
     '/': '-',

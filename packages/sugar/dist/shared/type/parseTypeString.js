@@ -1,5 +1,5 @@
-import __deepMap from '../object/deepMap.js';
-import __parse from '../string/parse.js';
+import deepMap from '../object/deepMap.js';
+import parse from '../string/parse.js';
 function parseSingleTypeString(typeString) {
     let ofStr = '', typeStr = typeString, ofTypes = [];
     // string value
@@ -11,7 +11,7 @@ function parseSingleTypeString(typeString) {
         };
     }
     // number value
-    const autoCastedValue = __parse(typeStr);
+    const autoCastedValue = parse(typeStr);
     if (typeof autoCastedValue === 'number') {
         return {
             type: 'number',
@@ -36,11 +36,11 @@ function parseSingleTypeString(typeString) {
     }
     // values in "of"
     // ofStr.split('|').forEach((of) => {
-    //     if (typeof __parse(of) !== 'string') {
+    //     if (typeof parse(of) !== 'string') {
     //         console.log('NO string', of);
     //     }
     // });
-    // values = typeString.split(/\|/).map((v) => __parse(v));
+    // values = typeString.split(/\|/).map((v) => parse(v));
     const result = {
         type: typeStr,
         of: ofTypes,
@@ -53,7 +53,7 @@ function parseSingleTypeString(typeString) {
     });
     return result;
 }
-export default function __parseTypeString(typeString) {
+export default function parseTypeString(typeString) {
     const originalTypeString = typeString;
     typeString = typeString.trim();
     // remove starting { and ending }
@@ -99,7 +99,7 @@ export default function __parseTypeString(typeString) {
     let finalTypes = [];
     firstTypes.forEach((type) => {
         if (type.areSubLevels) {
-            finalTypes = [...finalTypes, ...__parseTypeString(type.type)];
+            finalTypes = [...finalTypes, ...parseTypeString(type.type)];
         }
         else {
             finalTypes.push(parseSingleTypeString(type.type.replace('^', '<').replace('$', '>')));
@@ -117,7 +117,7 @@ export default function __parseTypeString(typeString) {
         // @ts-ignore
         return result;
     }
-    finalTypes = __deepMap(finalTypes, ({ object, prop, value, path }) => {
+    finalTypes = deepMap(finalTypes, ({ object, prop, value, path }) => {
         if (typeof value === 'string') {
             value = value.replace(/^\./, '').trim();
         }

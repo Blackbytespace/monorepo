@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isPlainObject($1)
+ * @snippet         isPlainObject($1)
  *
  * @example           js
- * import { __isPlainObject } from '@lotsof/sugar/is';
- * __isPlainObject({ hello: 'world'}); // => true
+ * import { isPlainObject } from '@blackbyte/sugar/is';
+ * isPlainObject({ hello: 'world'}); // => true
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isPlainObject(object) {
+export default function isPlainObject(object) {
     if (!object)
         return false;
     if (typeof object !== 'object')

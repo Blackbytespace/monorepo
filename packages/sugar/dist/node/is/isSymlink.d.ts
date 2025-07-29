@@ -12,15 +12,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isSymlink($1)
+ * @snippet         isSymlink($1)
  *
  * @example     js
- * import { __isSymlink } from '@lotsof/sugar/is';
- * __isSymlink('something/cool');
+ * import { isSymlink } from '@blackbyte/sugar/is';
+ * isSymlink('something/cool');
  *
  * @todo        Tests
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSymlink(path: string): boolean;
+export default function isSymlink(path: string): boolean;

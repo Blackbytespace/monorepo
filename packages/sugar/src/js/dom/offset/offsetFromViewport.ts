@@ -10,19 +10,19 @@
  * @param 		{HTMLElement} 					elm  		The element to get the offset from
  * @return 		{top: number; left: number;} 									The offset top and left object
  *
- * @snippet         __offsetFromViewport($1)
+ * @snippet         offsetFromViewport($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __offsetFromViewport } from '@blackbyte/sugar/dom'
- * const __offsetFromViewport = offset(myCoolElement);
+ * import { offsetFromViewport } from '@blackbyte/sugar/dom'
+ * const offsetFromViewport = offset(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __offsetFromViewport(elm: HTMLElement): {
+export default function offsetFromViewport(elm: HTMLElement): {
   top: number;
   left: number;
 } {

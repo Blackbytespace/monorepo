@@ -1,2 +1,2 @@
-import __generateIdFromForm from './generateIdFromForm.js';
-export { __generateIdFromForm };
+import generateIdFromForm from './generateIdFromForm.js';
+export { generateIdFromForm as __generateIdFromForm, generateIdFromForm };

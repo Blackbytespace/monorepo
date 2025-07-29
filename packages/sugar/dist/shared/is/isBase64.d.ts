@@ -13,15 +13,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isBase64($1)
+ * @snippet         isBase64($1)
  *
  * @example    js
- * import { __isBase64 } from '@lotsof/sugar/is'
- * if (__isBase64('wfwefwefiowjfiojwiefjwoiejfiowjfi9jef98je9f3j') {
+ * import { isBase64 } from '@blackbyte/sugar/is'
+ * if (isBase64('wfwefwefiowjfiojwiefjwoiejfiowjfi9jef98je9f3j') {
  *   // do something
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isBase64(value: any): boolean;
+export default function isBase64(value: any): boolean;

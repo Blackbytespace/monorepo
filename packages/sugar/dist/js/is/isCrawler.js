@@ -13,19 +13,19 @@ import { isbot as __isbot } from 'isbot';
  *
  * @todo      tests
  *
- * @snippet         __isCrawler()
+ * @snippet         isCrawler()
  *
  * @example 	js
- * import { __isCrawler } from '@lotsof/sugar/is'
- * if (__isCrawler()) {
+ * import { isCrawler } from '@blackbyte/sugar/is'
+ * if (isCrawler()) {
  *   // do something cool
  * }
  *
  * @see            https://www.npmjs.com/package/isbot
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCrawler(ua = navigator.userAgent) {
+export default function isCrawler(ua = navigator.userAgent) {
     return __isbot(ua);
 }
 //# sourceMappingURL=isCrawler.js.map

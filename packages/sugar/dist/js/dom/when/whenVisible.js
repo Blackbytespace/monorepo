@@ -1,6 +1,6 @@
-import __uniqid from '../../string/uniqid.js';
+import uniqid from '../../string/uniqid.js';
 const _whenVisibleStatuses = new WeakMap();
-export default function __whenVisible($elm, settings) {
+export default function whenVisible($elm, settings) {
     let observer;
     const pro = new Promise((resolve, reject) => {
         var _a;
@@ -8,7 +8,7 @@ export default function __whenVisible($elm, settings) {
         const statuses = (_a = _whenVisibleStatuses.get($elm)) !== null && _a !== void 0 ? _a : {};
         _whenVisibleStatuses.set($elm, statuses);
         // generate a uniqid for this listener
-        const id = __uniqid();
+        const id = uniqid();
         observer = new IntersectionObserver(function (entries) {
             var _a, _b;
             if (entries[0]['intersectionRatio'] == 0) {

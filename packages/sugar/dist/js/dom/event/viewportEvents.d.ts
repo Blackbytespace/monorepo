@@ -18,24 +18,24 @@
  * @event       viewport.in               Dispatched when the passed element enters the viewport
  * @event       viewport.out               Dispatched when the passed element exits the viewport
  *
- * @snippet         __viewportEvents($1)
- * __viewportEvents($1).addEventListener('viewport.enter', (e) => {
+ * @snippet         viewportEvents($1)
+ * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example  	js
- * import { __viewportEvents } from '@lotsof/sugar/dom';
- * __viewportEvents($1).addEventListener('viewport.enter', (e) => {
+ * import { viewportEvents } from '@blackbyte/sugar/dom';
+ * viewportEvents($1).addEventListener('viewport.enter', (e) => {
  *      // do something
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TViewportEventsSettings = {
     offset: number | string;
     once: boolean;
 };
-export default function __viewportEvents($elm: HTMLElement, settings?: Partial<TViewportEventsSettings>): HTMLElement;
+export default function viewportEvents($elm: HTMLElement, settings?: Partial<TViewportEventsSettings>): HTMLElement;

@@ -1,4 +1,9 @@
-import __disablePasswordManagerAttributes from './disablePasswordManagerAttributes.js';
-import __getFormValues from './getFormValues.js';
+import disablePasswordManagerAttributes from './disablePasswordManagerAttributes.js';
+import getFormValues from './getFormValues.js';
 
-export { __disablePasswordManagerAttributes, __getFormValues };
+export {
+  disablePasswordManagerAttributes as __disablePasswordManagerAttributes,
+  getFormValues as __getFormValues,
+  disablePasswordManagerAttributes,
+  getFormValues,
+};

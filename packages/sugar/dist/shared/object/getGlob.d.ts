@@ -19,20 +19,20 @@
  *
  * @todo      tests
  *
- * @snippet         __getGlob($1, $2)
+ * @snippet         getGlob($1, $2)
  *
  * @example             js
- * import { __getGlob } from '@lotsof/sugar/object';
- * __getGlob({
+ * import { getGlob } from '@blackbyte/sugar/object';
+ * getGlob({
  *  hello: {
  *     world: true,
  *     plop: false
  * }, 'hello.*');
  *
  * @since     1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetGlobSettings = {
     deepize?: boolean;
 };
-export default function __getGlob(obj: any, glob: string, settings?: TGetGlobSettings): any;
+export default function getGlob(obj: any, glob: string, settings?: TGetGlobSettings): any;

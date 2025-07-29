@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                    deepMerge
@@ -26,11 +26,11 @@ import __isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         __deepMerge($1, $2)
+ * @snippet         deepMerge($1, $2)
  *
  * @example           js
- * import { __deepMerge } from '@blackbyte/sugar/object';
- * __deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
+ * import { deepMerge } from '@blackbyte/sugar/object';
+ * deepMerge([{a: {b: {c: 'c', d: 'd'}}}, {a: {b: {e: 'e', f: 'f'}}}]);
  * // => { a: { b: { c: 'c', d: 'd', e: 'e', f: 'f' } } }
  *
  * @since       1.0.0
@@ -41,7 +41,7 @@ export type TDeepMergeSettings = {
   clone?: boolean;
 };
 
-export default function __deepMerge(
+export default function deepMerge(
   objects: any[],
   settings?: TDeepMergeSettings,
 ): any {
@@ -77,10 +77,7 @@ export default function __deepMerge(
         Array.isArray(secondObj[key])
       ) {
         newObj[key] = [...firstObj[key], ...secondObj[key]];
-      } else if (
-        __isPlainObject(newObj[key]) &&
-        __isPlainObject(secondObj[key])
-      ) {
+      } else if (isPlainObject(newObj[key]) && isPlainObject(secondObj[key])) {
         newObj[key] = merge(newObj[key], secondObj[key]);
       } else {
         newObj[key] = secondObj[key];

@@ -13,11 +13,11 @@
  * @setting        {number}        [offset=window.innerHeight/2]        The offset you want before adding the classes
  * @setting        {string}        [activeClass=-active]        The class name you want to add/remove
  *
- * @snippet          __scrollSpy($1);
+ * @snippet          scrollSpy($1);
  *
  * @example         js
- * import { __scrollSpy } from '@blackbyte/sugar/scroll';
- * __scrollSpy($myLinks);
+ * import { scrollSpy } from '@blackbyte/sugar/scroll';
+ * scrollSpy($myLinks);
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

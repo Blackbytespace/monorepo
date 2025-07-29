@@ -1,4 +1,4 @@
-import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
+import expandPleasantCssClassname from './expandPleasantCssClassname.js';
 /**
  * @name            expandPleasantCssClassnames
  * @namespace       shared.html
@@ -13,16 +13,16 @@ import __expandPleasantCssClassname from './expandPleasantCssClassname.js';
  * @param     {String}          html          The HTML to process. It can be actually any string values like .vue file, etc...
  * @return    {String}                      The processed string with converted classnames
  *
- * @snippet         __expandPleasantCssClassnames($1)
+ * @snippet         expandPleasantCssClassnames($1)
  *
  * @example         js
- * import { __expandPleasantCssClassnames } from '@lotsof/sugar/html';
- * __expandPleasantCssClassnames('...');
+ * import { expandPleasantCssClassnames } from '@blackbyte/sugar/html';
+ * expandPleasantCssClassnames('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __expandPleasantCssClassnames(html) {
+export default function expandPleasantCssClassnames(html) {
     let reg = /class="[a-zA-Z0-9_\-:@\s]+"/gm, needClassAttr = true;
     if (html.trim().match(/class="[a-zA-Z0-9_\-:@\s]+$/)) {
         reg = /class="[a-zA-Z0-9_\-:@\s]+"?/gm;
@@ -38,7 +38,7 @@ export default function __expandPleasantCssClassnames(html) {
     matches.forEach((match) => {
         const endQuote = match.match(/"$/) ? '"' : '';
         const classesStr = match.trim().replace('class="', '').replace('"', '');
-        const newClassesStr = __expandPleasantCssClassname(classesStr);
+        const newClassesStr = expandPleasantCssClassname(classesStr);
         if (needClassAttr) {
             html = html.replace(match, `class="${newClassesStr.trim()}${endQuote}`);
         }

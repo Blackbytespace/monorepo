@@ -14,15 +14,15 @@ import __getCssDeclarations from './getCssDeclarations.js';
  *
  * @todo      tests
  *
- * @snippet         __getKeyframesDeclarations($1)
+ * @snippet         getKeyframesDeclarations($1)
  *
  * @example  	js
- * import { __getKeyframesDeclarations } from '@lotsof/sugar/dom';
- * __getKeyframesDeclarations('myCoolAnimation', [myCoolCssRules]);
+ * import { getKeyframesDeclarations } from '@blackbyte/sugar/dom';
+ * getKeyframesDeclarations('myCoolAnimation', [myCoolCssRules]);
  *
- * @see             https://github.com/marionebl/jogwheel/blob/master/source/library/get-keyframe-declarations.js
+ * @see             https://github.com/marionebl/jogwheel/blob/main/source/library/get-keyframe-declarations.js
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function getKeyframesDeclarations(animationName, rules) {
     const keyframesNames = [];

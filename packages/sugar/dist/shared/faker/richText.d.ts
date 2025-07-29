@@ -4,11 +4,9 @@
  * @type            Function
  * @platform        node
  * @platform        ts
- * @status          stable
+ * @status          wip
  *
  * This function simply returns you a rich text content that you can use in your tests for example.
- *
- *
  *
  * @return      {DOMElement}                    The new element
  *
@@ -18,7 +16,7 @@
  * print \Sugar\dom\changeTagName(element, 'a');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TRichTextSettings = {
     p?: boolean;

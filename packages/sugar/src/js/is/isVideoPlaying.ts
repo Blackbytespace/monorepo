@@ -13,11 +13,11 @@
  *
  * @todo      tests
  *
- * @snippet         __isVideoPlaying($1)
+ * @snippet         isVideoPlaying($1)
  *
  * @example 	js
- * import { __isVideoPlaying } from '@blackbyte/sugar/is'
- * if (__isVideoPlaying($myVideo)) {
+ * import { isVideoPlaying } from '@blackbyte/sugar/is'
+ * if (isVideoPlaying($myVideo)) {
  *   // do something cool...
  * }
  *

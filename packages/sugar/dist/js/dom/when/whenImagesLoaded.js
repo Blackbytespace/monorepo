@@ -1,4 +1,4 @@
-import __whenImageLoaded from './whenImageLoaded.js';
+import whenImageLoaded from './whenImageLoaded.js';
 /**
  * @name            whenImagesLoaded
  * @namespace       js.dom.when
@@ -15,16 +15,16 @@ import __whenImageLoaded from './whenImageLoaded.js';
  * @param    {Array<HTMLImageElement>}    $imgs    An array (or nodeList) of HTMLImageElement to detect the load
  * @return    {Promise}    A promise resolved when all images are loaded properly
  *
- * @snippet         __whenImagesLoaded($1)
- * __whenImagesLoaded($1).then(imgs => {
+ * @snippet         whenImagesLoaded($1)
+ * whenImagesLoaded($1).then(imgs => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import { __whenImagesLoaded } from '@lotsof/sugar/dom'
- * __whenImagesLoaded([
+ * import { whenImagesLoaded } from '@blackbyte/sugar/dom'
+ * whenImagesLoaded([
  * 	$img1, $img2, $img3
  * ]).on('loaded', $img => {
  *    // do something with the loaded image
@@ -33,13 +33,13 @@ import __whenImageLoaded from './whenImageLoaded.js';
  * })
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenImagesLoaded($imgs) {
+export default function whenImagesLoaded($imgs) {
     return new Promise((resolve, reject) => {
         const promises = [], loadedImages = [];
         Array.from($imgs).forEach(($img) => {
-            const pro = __whenImageLoaded($img);
+            const pro = whenImageLoaded($img);
             pro
                 .then((_$img) => {
                 loadedImages.push(_$img);

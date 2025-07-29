@@ -1,5 +1,5 @@
-import __convertTime from '../../../shared/datetime/convertTime.js';
-import __getStyleProperty from './getStyleProperty.js';
+import convertTime from '../../../shared/datetime/convertTime.js';
+import getStyleProperty from './getStyleProperty.js';
 
 /**
  * @name            getTransitionProperties
@@ -15,11 +15,11 @@ import __getStyleProperty from './getStyleProperty.js';
  *
  * @todo      tests
  *
- * @snippet         __getTransitionProperties($1)
+ * @snippet         getTransitionProperties($1)
  *
  * @example  	js
  * import { getTransitionProperties } from '@blackbyte/sugar/dom'
- * const props = __getTransitionProperties(myCoolHTMLElement);
+ * const props = getTransitionProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	property : ['all'],
@@ -56,20 +56,18 @@ function getTransitionProperties(
   elm: HTMLElement,
 ): TGetTransitionPropertiesResult {
   // get the transition properties
-  const property = __getStyleProperty(elm, 'transition-property');
-  const duration = __getStyleProperty(elm, 'transition-duration') || 0;
-  const timingFunction = __getStyleProperty(elm, 'transition-timing-function');
-  const delay = __getStyleProperty(elm, 'transition-delay');
+  const property = getStyleProperty(elm, 'transition-property');
+  const duration = getStyleProperty(elm, 'transition-duration') || 0;
+  const timingFunction = getStyleProperty(elm, 'transition-timing-function');
+  const delay = getStyleProperty(elm, 'transition-delay');
 
   // return the transition object
   const props = {
     properties: splitIfNeeded(property, ','),
     durations: splitIfNeeded(duration, ',').map((value) =>
-      __convertTime(value, 'ms'),
+      convertTime(value, 'ms'),
     ),
-    delays: splitIfNeeded(delay, ',').map((value) =>
-      __convertTime(value, 'ms'),
-    ),
+    delays: splitIfNeeded(delay, ',').map((value) => convertTime(value, 'ms')),
     timingFunctions: splitIfNeeded(timingFunction, ','),
   };
 

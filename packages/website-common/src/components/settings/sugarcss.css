@@ -14,7 +14,7 @@
   --s-media-xl: 1024px 1279px;
   --s-media-xxl: 1280px;
 
-  --s-container-default: 120px 900px 20px;
+  --s-container-default: 120px 1080px 20px;
 
   --s-ease-default: cubic-bezier(0.745, 0, 0.18, 1);
 
@@ -120,4 +120,5 @@
   --s-typo-p: s-font(default) s-size(p) 1.8 0.05em;
   --s-typo-code: s-font(code) s-size(code) 1.4;
   --s-typo-brand: s-font(brand) s-size(lead) 1.4;
+  --s-typo-caption: s-font(default) s-size(caption) 1.4 0.05em;
 }

@@ -7,14 +7,14 @@
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the md5 algorithm
  *
- * @snippet         __md5.encrypt($1)
+ * @snippet         md5.encrypt($1)
  *
  * @example         js
- * import { __md5 } from '@lotsof/sugar/crypto';
- * __md5.encrypt('hello world');
+ * import { md5 } from '@blackbyte/sugar/crypto';
+ * md5.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 declare const _default: {
     /**
@@ -26,7 +26,7 @@ declare const _default: {
      * @param       {String}      message         The message to encrypt
      * @return      {String}                      The encrypted string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     encrypt: (message: any) => string;
     /**
@@ -38,7 +38,7 @@ declare const _default: {
      * @param       {String}        message         The message to decrypt
      * @return      {String}                        The decrypted message
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     decrypt: (message: string) => any;
 };

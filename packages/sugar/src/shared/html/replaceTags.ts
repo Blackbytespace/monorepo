@@ -1,4 +1,4 @@
-import __toString from '../string/toString.js';
+import toString from '../string/toString.js';
 
 /**
  * @name                replaceTags
@@ -16,23 +16,23 @@ import __toString from '../string/toString.js';
  *
  * @todo      tests
  *
- * @snippet         __replaceTags($1m $2)
+ * @snippet         replaceTags($1m $2)
  *
  * @example             js
- * import { __replaceTags } from '@blackbyte/sugar/html';
- *  __replaceTags('<span>Hello</span> world', {
+ * import { replaceTags } from '@blackbyte/sugar/html';
+ *  replaceTags('<span>Hello</span> world', {
  *    span: (tag, content) => `<div>${content}</div>`; // => <div>Hello</div> world
  * });
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __replaceTags(
+export default function replaceTags(
   text: string,
   tags: Record<string, Function>,
 ): string {
   if (!text) text = '';
-  text = __toString(text);
+  text = toString(text);
   let oneLineText = text.replace(/\r\n/g, '|rn|');
   oneLineText = oneLineText.replace(/\n/g, '|n|');
   oneLineText = oneLineText.replace(/\r/g, '|r|');

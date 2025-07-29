@@ -9,7 +9,7 @@
  * It will take care of executing the last registered action first, then the others...
  * This function returns a SPromise instance on which you can call the `cancel` method to unregister your
  * action in the queue.
- * Note that you can get the current queue length by calling `__escapeQueueLength()`.
+ * Note that you can get the current queue length by calling `escapeQueueLength()`.
  *
  * @param           {Function}          [callback=null]            The callback to call on pressing escape
  * @param         {Object}      [settings={}]    An option object to configure your hotkey. Here's the list of available settings:
@@ -20,13 +20,13 @@
  *
  * @todo      tests
  *
- * @snippet         __escapeQueue($1).then(() => {
+ * @snippet         escapeQueue($1).then(() => {
  *      $2
  * });
  *
  * @example    js
- * import { __escapeQueue } from '@lotsof/sugar/keyboard'
- * const promise = __escapeQueue();
+ * import { escapeQueue } from '@blackbyte/sugar/keyboard'
+ * const promise = escapeQueue();
  * promise.then(() => {
  *      // do something...
  * });
@@ -35,7 +35,7 @@
  * promise.cancel();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TEscapeQueueSettings = {
     id?: string;
@@ -52,5 +52,5 @@ export type TEscapeQueueItem = {
 export type TEscapeQueueResult = Promise<void> & {
     cancel: Function;
 };
-export declare function __escapeQueueLength(): number;
+export declare function escapeQueueLength(): number;
 export default function escapeQueue(callback?: Function, settings?: TEscapeQueueSettings): TEscapeQueueResult;

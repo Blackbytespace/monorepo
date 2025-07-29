@@ -1,5 +1,5 @@
-import __isPlainObject from '../is/isPlainObject.js';
-import __camelCase from '../string/camelCase.js';
+import isPlainObject from '../is/isPlainObject.js';
+import camelCase from '../string/camelCase.js';
 
 /**
  * @name                camelCaseProps
@@ -18,11 +18,11 @@ import __camelCase from '../string/camelCase.js';
  *
  * @todo        tests
  *
- * @snippet         __camelCaseProps($1)
+ * @snippet         camelCaseProps($1)
  *
  * @example         js
- * import { __camelCaseProps } from '@blackbyte/sugar/object';
- * __camelCaseProps({
+ * import { camelCaseProps } from '@blackbyte/sugar/object';
+ * camelCaseProps({
  *    'hello-world': true
  * });
  * // {
@@ -35,7 +35,7 @@ import __camelCase from '../string/camelCase.js';
 export type TCamelCasePropsSettings = {
   deep: boolean;
 };
-export default function __camelCaseProps(
+export default function camelCaseProps(
   object: any,
   settings?: Partial<TCamelCasePropsSettings>,
 ): any {
@@ -45,11 +45,11 @@ export default function __camelCaseProps(
   };
 
   for (let [key, value] of Object.entries(object)) {
-    const newKey = __camelCase(key);
+    const newKey = camelCase(key);
 
     // treat deep
-    if (__isPlainObject(value) && finalSettings.deep) {
-      object[newKey] = __camelCaseProps(object[key], finalSettings);
+    if (isPlainObject(value) && finalSettings.deep) {
+      object[newKey] = camelCaseProps(object[key], finalSettings);
     } else {
       object[newKey] = value;
     }

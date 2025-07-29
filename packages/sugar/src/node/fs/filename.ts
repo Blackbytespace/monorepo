@@ -1,4 +1,4 @@
-import __extension from '../fs/extension.js';
+import extension from '../fs/extension.js';
 
 /**
  * @name                 filename
@@ -15,22 +15,22 @@ import __extension from '../fs/extension.js';
  *
  * @todo        tests
  *
- * @snippet         __filename($1)
+ * @snippet         filename($1)
  *
  * @example       js
- * import { __filename } from '@blackbyte/sugar/fs';
- * __filename('hello/world.js'); // => world.js
+ * import { filename } from '@blackbyte/sugar/fs';
+ * filename('hello/world.js'); // => world.js
  *
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __filename(
+export default function filename(
   path: string,
   withExtension: boolean = true,
 ): string {
   let filename = path.split('/').pop() ?? '';
   if (!withExtension) {
-    filename = filename.replace(`.${__extension(filename)}`, '');
+    filename = filename.replace(`.${extension(filename)}`, '');
   }
   return filename;
 }

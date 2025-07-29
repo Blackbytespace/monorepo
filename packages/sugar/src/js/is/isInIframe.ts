@@ -9,20 +9,20 @@
  *
  * @return    {Boolean}    true if in iframe, false if not
  *
- * @snippet         __isInIframe($1)
+ * @snippet         isInIframe($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isInIframe } from '@blackbyte/sugar/dom'
- * if (__isInIframe()) {
+ * import { isInIframe } from '@blackbyte/sugar/dom'
+ * if (isInIframe()) {
  *   // do something
  * }
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isInIframe(): boolean {
+export default function isInIframe(): boolean {
   try {
     return window.self !== window.top;
   } catch (e) {

@@ -1,3 +1,3 @@
-import __copyText from './copyText.js';
-import __readText from './readText.js';
-export { __copyText, __readText };
+import copyText from './copyText.js';
+import readText from './readText.js';
+export { copyText as __copyText, readText as __readText, copyText, readText };

@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isCreditCard($1)
+ * @snippet         isCreditCard($1)
  *
  * @example 	js
- * import {__isCreditCard } from '@lotsof/sugar/is';
- * __isCreditCard('john.doe@gmail.com') => true
- * __isCreditCard('plop@yop.com') => true
- * __isCreditCard('hello') => false
- * __isCreditCard('378282246310006') => true
+ * import {isCreditCard } from '@blackbyte/sugar/is';
+ * isCreditCard('john.doe@gmail.com') => true
+ * isCreditCard('plop@yop.com') => true
+ * isCreditCard('hello') => false
+ * isCreditCard('378282246310006') => true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCreditCard(value: string): boolean;
+export default function isCreditCard(value: string): boolean;

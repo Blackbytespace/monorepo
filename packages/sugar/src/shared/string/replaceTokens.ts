@@ -17,16 +17,16 @@
  * @setting     {String}        [regexp=\[([a-zA-Z0-9-_]+)\] The regexp to use to match the tokens
  * @setting     {Boolean}       [stripUndefined=true]       Specify if you want to strip the tokens that are not found in the tokensObj
  *
- * @snippet         (string) __replaceTokens($1, $2)
- * __replaceTokens($1, $2)
+ * @snippet         replaceTokens($1, $2)
+ * replaceTokens($1, $2)
  *
  * @todo      Add setting to define tokens delimiter
  * @todo      Support multi level tokens like [something.cool]
  * @todo      tests
  *
  * @example     js
- * import { __replaceTokens } from '@blackbyte/sugar/string';
- * __replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
+ * import { replaceTokens } from '@blackbyte/sugar/string';
+ * replaceTokens('hello [world]', { world: 'Coco' }); // => hello Coco
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

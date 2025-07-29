@@ -11,18 +11,18 @@
  * @param 		{String} 						selector 	A css selector to search for
  * @return 		{HTMLElement|undefined} 								The element found or undefined
  *
- * @snippet         __previousElement($1, $2)
+ * @snippet         previousElement($1, $2)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __previousElement } from '@lotsof/sugar/dom'
- * const previousElm = __previousElement(myCoolElement, '.my-cool-class');
+ * import { previousElement } from '@blackbyte/sugar/dom'
+ * const previousElm = previousElement(myCoolElement, '.my-cool-class');
  * if (previousElm) {
  * 		// we have found en element that matches the selector
  * }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __previousElement($elm: HTMLElement, selector: string): HTMLElement | undefined;
+export default function previousElement($elm: HTMLElement, selector: string): HTMLElement | undefined;

@@ -11,17 +11,17 @@
  *
  * @todo      tests
  *
- * @snippet         __cursorToEnd($1)
+ * @snippet         cursorToEnd($1)
  *
  * @example 	js
- * import { __cursorToEnd } from '@blackbyte/sugar/dom';
- * __cursorToEnd($input);
+ * import { cursorToEnd } from '@blackbyte/sugar/dom';
+ * cursorToEnd($input);
  *
  * @see             https://stackoverflow.com/a/56416714
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://olivierboss$input.com)
  */
-export default function __cursorToEnd(
+export default function cursorToEnd(
   $input: HTMLTextAreaElement | HTMLInputElement,
 ): void {
   $input.focus();

@@ -14,11 +14,11 @@ const __encryptedMessages = {};
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the sha256 algorithm
  *
- * @snippet         __sha256.encrypt($1)
+ * @snippet         sha256.encrypt($1)
  *
  * @example         js
- * import { __sha256 } from '@blackbyte/sugar/crypto';
- * __sha256.encrypt('hello world');
+ * import { sha256 } from '@blackbyte/sugar/crypto';
+ * sha256.encrypt('hello world');
  *
  * @todo        tests
  *

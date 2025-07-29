@@ -14,14 +14,14 @@
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __nodeModulesDir($1)
+ * @snippet         nodeModulesDir($1)
  *
  * @example         js
- * import { __nodeModulesDir } from '@lotsof/sugar/composer`;
- * __nodeModulesDir('lodash');
+ * import { nodeModulesDir } from '@blackbyte/sugar/composer`;
+ * nodeModulesDir('lodash');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TNodeModulesDirSettings = {
     cwd: string;

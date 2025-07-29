@@ -1,7 +1,7 @@
 import distanceBetween from './distanceBetween.js';
 
 /**
- * @name 		        circleConstrain
+ * @name 		            circleConstrain
  * @namespace           shared.math
  * @type                Function
  * @platform            js
@@ -17,7 +17,7 @@ import distanceBetween from './distanceBetween.js';
  *
  * @todo      tests
  *
- * @snippet         __circleConstrain($1, $1)
+ * @snippet         circleConstrain($1, $1)
  * __circleConstain({
  *      x: $1, y: $2
  * }, $3, {
@@ -25,8 +25,8 @@ import distanceBetween from './distanceBetween.js';
  * })
  *
  * @example    js
- * import { __circleConstrain } from '@blackbyte/sugar/math'
- * __circleConstrain({
+ * import { circleConstrain } from '@blackbyte/sugar/math'
+ * circleConstrain({
  * 	x: 10, y: 10
  * }, 10, {
  * 	x: 10, y: 5
@@ -42,7 +42,7 @@ export type TCircleConstrainPoint = {
   y: number;
 };
 
-export default function __circleConstrain(
+export default function circleConstrain(
   center: TCircleConstrainPoint,
   radius: number,
   point: TCircleConstrainPoint,

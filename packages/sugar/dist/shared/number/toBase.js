@@ -16,16 +16,16 @@
  *
  * @todo      tests
  *
- * @snippet         __toBase($1, $2)
+ * @snippet         toBase($1, $2)
  *
  * @example    js
- * import { __toBase } from '@lotsof/sugar/number'
- * __toBase(1024, 62); // qF
+ * import { toBase } from '@blackbyte/sugar/number'
+ * toBase(1024, 62); // qF
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __toBase(num, base, settings) {
+export default function toBase(num, base, settings) {
     settings = Object.assign({ chars: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' }, (settings !== null && settings !== void 0 ? settings : {}));
     const symbols = settings.chars.split('');
     let conversion = '';

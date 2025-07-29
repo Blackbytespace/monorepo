@@ -12,11 +12,11 @@
  *
  * @todo      tests
  *
- * @snippet         __getAnimationProperties($1)
+ * @snippet         getAnimationProperties($1)
  *
  * @example  	js
- * import { __getAnimationProperties } from '@lotsof/sugar/dom'
- * const props = __getAnimationProperties(myCoolHTMLElement);
+ * import { getAnimationProperties } from '@blackbyte/sugar/dom'
+ * const props = getAnimationProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	name : ['animation1'],
@@ -29,7 +29,7 @@
  * // }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TGetAnimationPropertiesObject = {
     name: string;
@@ -45,4 +45,4 @@ export type TGetAnimationPropertiesResult = {
     totalDuration: number;
     animations: TGetAnimationPropertiesObject[];
 };
-export default function __getAnimationProperties(elm: HTMLElement): TGetAnimationPropertiesResult;
+export default function getAnimationProperties(elm: HTMLElement): TGetAnimationPropertiesResult;

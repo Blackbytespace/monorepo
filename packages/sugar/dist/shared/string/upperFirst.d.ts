@@ -13,13 +13,13 @@
  *
  * @todo      tests
  *
- * @snippet         __upperFirst($1)
+ * @snippet         upperFirst($1)
  *
  * @example    js
- * import { __upperFirst } from '@lotsof/sugar/string'
- * __upperFirst('hello world') // Hello world
+ * import { upperFirst } from '@blackbyte/sugar/string'
+ * upperFirst('hello world') // Hello world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __upperFirst(string: string): string;
+export default function upperFirst(string: string): string;

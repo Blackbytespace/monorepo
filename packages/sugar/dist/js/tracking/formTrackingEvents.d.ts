@@ -21,7 +21,7 @@
  * 1. If a `data-form-id` attribute is present on the form, this will be used as the form id
  * 2. If an input named `form_id` is present in the form, it's value will be used as the form id
  * 3. If an `id` attribute is present on the form, this will be used as the form id
- * 4. If nothing is found, a form id is generated using the `__generateIdFromForm` function
+ * 4. If nothing is found, a form id is generated using the `generateIdFromForm` function
  *
  * @param        {TFormTrackingEventsSettings}       [settings={}]         Some settings to configure your form tracking events
  *
@@ -31,11 +31,11 @@
  *
  * @todo      tests
  *
- * @snippet         __formTrackingEvents($1)
+ * @snippet         formTrackingEvents($1)
  *
  * @example         js
- * import { __formTrackingEvents } from '@lotsof/sugar/tracking';
- * __formTrackingEvents();
+ * import { formTrackingEvents } from '@blackbyte/sugar/tracking';
+ * formTrackingEvents();
  *
  * // Each dispatched events are like:
  * {
@@ -45,7 +45,7 @@
  * }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TFormTrackingEventsSettings = {
     lang?: boolean;

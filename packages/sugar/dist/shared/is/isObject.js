@@ -13,18 +13,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isObject($1)
+ * @snippet         isObject($1)
  *
  * @example    js
- * import { __isObject } from '@lotsof/sugar/is'
- * if (__isObject({}) {
+ * import { isObject } from '@blackbyte/sugar/is'
+ * if (isObject({}) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isObject(value) {
+export default function isObject(value) {
     return value && typeof value === 'object' && value.constructor === Object;
 }
 //# sourceMappingURL=isObject.js.map

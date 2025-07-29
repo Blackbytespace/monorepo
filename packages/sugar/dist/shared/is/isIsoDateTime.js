@@ -13,19 +13,19 @@
  *
  * @todo      tests
  *
- * @snippet         __isIsoDateTime($1)
+ * @snippet         isIsoDateTime($1)
  *
  * @example 	js
- * import { __isIsoDateTime } from '@lotsof/sugar/is';
- * __isIsoDateTime('john.doe@gmail.com') => false
- * __isIsoDateTime('plop@yop.com') => false
- * __isIsoDateTime('2008-08-30 17:21:59') => true
+ * import { isIsoDateTime } from '@blackbyte/sugar/is';
+ * isIsoDateTime('john.doe@gmail.com') => false
+ * isIsoDateTime('plop@yop.com') => false
+ * isIsoDateTime('2008-08-30 17:21:59') => true
  *
  * @see             https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isIsoDateTime(value) {
+export default function isIsoDateTime(value) {
     const res = value.match(/^([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])↵\s(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])$/) ||
         value.match(/^(?:([0-9]{4})-?(1[0-2]|0[1-9])-?(3[01]|0[1-9]|[12][0-9])\s(2[0-3]|[01][0-9]):?([0-5][0-9]):?([0-5][0-9])|([0-9]{4})(1[0-2]|0[1-9])(3[01]|0[1-9]|[12][0-9])\s(2[0-3]|[01][0-9])([0-5][0-9])([0-5][0-9]))$/);
     return res !== null;

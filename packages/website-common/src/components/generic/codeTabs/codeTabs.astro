@@ -1,0 +1,75 @@
+---
+import type { TCodeTabs } from './codeTabs.type';
+// @ts-ignore
+import CodeTabs from './codeTabs.vue';
+
+type Props = TCodeTabs;
+
+const codeTabs: TCodeTabs = {
+  tabs: [
+    {
+      title: 'querySelectorLive',
+      description:
+        'A live query selector that listens for changes in the DOM and executes a callback function when the specified selector is found.',
+      language: 'typescript',
+      code: `import { __querySelectorLive } from '@blackbyte/sugar/dom'
+const query = __querySelectorLive('.my-cool-item', (node, api) => {
+    // do something here with the detected node
+    // call api.cancel if you want to stop listening for this selector
+    api.cancel();
+ });
+ // cancel the query manually when needed
+ query.cancel();`,
+    },
+    {
+      title: 'querySelectorLive',
+      description:
+        'A live query selector that listens for changes in the DOM and executes a callback function when the specified selector is found.',
+      language: 'typescript',
+      code: `import { __querySelectorLive } from '@blackbyte/sugar/dom'
+ const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ 	    // do something here with the detected node
+      // call api.cancel if you want to stop listening for this selector
+      api.cancel();
+ });
+ // cancel the query manually when needed
+ query.cancel();`,
+    },
+    {
+      title: 'querySelectorLive',
+      language: 'typescript',
+      code: `import { __querySelectorLive } from '@blackbyte/sugar/dom'
+ const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ 	    // do something here with the detected node
+      // call api.cancel if you want to stop listening for this selector
+      api.cancel();
+ });
+ // cancel the query manually when needed
+ query.cancel();
+ const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ 	    // do something here with the detected node
+      // call api.cancel if you want to stop listening for this selector
+      api.cancel();
+ });
+ // cancel the query manually when needed
+ query.cancel();`,
+    },
+    {
+      title: 'querySelectorLive',
+      language: 'typescript',
+      code: `import { __querySelectorLive } from '@blackbyte/sugar/dom'
+ const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ 	    // do something here with the detected node
+      // call api.cancel if you want to stop listening for this selector
+      api.cancel();
+ });
+ // cancel the query manually when needed
+ query.cancel();`,
+    },
+  ],
+};
+
+const props: Props = Astro.props;
+---
+
+<CodeTabs client:load {...codeTabs} />

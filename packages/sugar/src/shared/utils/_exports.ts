@@ -1,3 +1,3 @@
-import __assert from './assert.js';
+import assert from './assert.js';
 
-export { __assert };
+export { assert as __assert, assert };

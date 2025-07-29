@@ -14,16 +14,16 @@
  *
  * @todo      tests
  *
- * @snippet         __convertTime($1, $2)
+ * @snippet         convertTime($1, $2)
  *
  * @example           js
- * import { __convertTime } from '@blackbyte/sugar/datetime';
- * __convertTime('10s', 'ms'); // => 10000
+ * import { convertTime } from '@blackbyte/sugar/datetime';
+ * convertTime('10s', 'ms'); // => 10000
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __convertTime(from: string | number, to = 'ms') {
+export default function convertTime(from: string | number, to = 'ms') {
   // @ts-ignore
   let fromMs: number = from;
 
@@ -128,11 +128,11 @@ export default function __convertTime(from: string | number, to = 'ms') {
       break;
   }
 }
-__convertTime.MILLISECOND = 'ms';
-__convertTime.SECOND = 's';
-__convertTime.MINUTE = 'm';
-__convertTime.HOUR = 'h';
-__convertTime.DAY = 'd';
-__convertTime.WEEK = 'w';
-__convertTime.MONTH = 'month';
-__convertTime.YEAR = 'y';
+convertTime.MILLISECOND = 'ms';
+convertTime.SECOND = 's';
+convertTime.MINUTE = 'm';
+convertTime.HOUR = 'h';
+convertTime.DAY = 'd';
+convertTime.WEEK = 'w';
+convertTime.MONTH = 'month';
+convertTime.YEAR = 'y';

@@ -13,20 +13,20 @@
  *
  * @todo      tests
  *
- * @snippet         __querySelectorUp($1, $2)
+ * @snippet         querySelectorUp($1, $2)
  *
  * @example  	js
- * import { __querySelectorUp } from '@lotsof/sugar/dom'
- * const closestElm =  __querySelectorUp(myCoolElement, '.my-cool-class');
+ * import { querySelectorUp } from '@blackbyte/sugar/dom'
+ * const closestElm =  querySelectorUp(myCoolElement, '.my-cool-class');
  * if (closestElm) {
  * 		// we have found en element that matches the selector
  * }
  * // the selector param can be a function that need to return either true or false like so:
- *  __querySelectorUp(myCoolElement, (elm) => {
+ *  querySelectorUp(myCoolElement, (elm) => {
  *   return elm.hasAttribute('my-cool-attribute')
  * })
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __querySelectorUp($from: HTMLElement, selector: string | Function): HTMLElement | undefined;
+export default function querySelectorUp($from: HTMLElement, selector: string | Function): HTMLElement | undefined;

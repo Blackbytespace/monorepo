@@ -17,14 +17,14 @@
  *
  * @todo      tests
  *
- * @snippet         __truncate($1, $2, $3)
+ * @snippet         truncate($1, $2, $3)
  *
  * @example    js
- * import __truncate from '@lotsof/sugar/string';
- * __truncate('Hello world', 5); // => Hello...
+ * import truncate from '@blackbyte/sugar/string';
+ * truncate('Hello world', 5); // => Hello...
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TTruncateSettings = {
     ellipsis: string;

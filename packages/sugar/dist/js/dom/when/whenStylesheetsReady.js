@@ -1,4 +1,4 @@
-import __whenLinkLoaded from './whenLinkLoaded.js';
+import whenLinkLoaded from './whenLinkLoaded.js';
 /**
  * @name            whenStylesheetsReady
  * @namespace       js.dom.when
@@ -17,14 +17,14 @@ import __whenLinkLoaded from './whenLinkLoaded.js';
  *
  * @todo      tests
  *
- * @snippet         __whenStylesheetsReady($1)
- * __whenStylesheetsReady($1).then(stylesheets => {
+ * @snippet         whenStylesheetsReady($1)
+ * whenStylesheetsReady($1).then(stylesheets => {
  *      $2
  * });
  *
  * @example 	js
- * import { __whenStylesheetsReady } from '@lotsof/sugar/dom'
- * __whenStylesheetsReady([
+ * import { whenStylesheetsReady } from '@blackbyte/sugar/dom'
+ * whenStylesheetsReady([
  * 		myHTMLLinkElement1,
  * 		myHTMLLinkElement2
  * ]).then(stylesheets => {
@@ -32,15 +32,15 @@ import __whenLinkLoaded from './whenLinkLoaded.js';
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenStylesheetsReady(links) {
+export default function whenStylesheetsReady(links) {
     if (!links) {
         links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
     }
     const promises = [];
     [].forEach.call(links, ($link) => {
-        promises.push(__whenLinkLoaded($link));
+        promises.push(whenLinkLoaded($link));
     });
     const allPromises = Promise.all(promises);
     return allPromises;

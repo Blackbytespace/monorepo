@@ -1,4 +1,4 @@
-import __parseRgba from './parseRgba.js';
+import parseRgba from './parseRgba.js';
 
 /**
  * @name                    rgba2hex
@@ -18,11 +18,11 @@ import __parseRgba from './parseRgba.js';
  *
  * @todo      tests
  *
- * @snippet         __rgbaToHex($1)
+ * @snippet         rgbaToHex($1)
  *
  * @example         js
- * import { __rgbaToHex } from '@blackbyte/sugar/color';
- * __rgbaToHex(10,20,30,10);
+ * import { rgbaToHex } from '@blackbyte/sugar/color';
+ * rgbaToHex(10,20,30,10);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
@@ -40,7 +40,7 @@ function RGBToHex(r, g, b) {
   return '#' + r + g + b;
 }
 
-export default function __rgbaToHex(
+export default function rgbaToHex(
   r: string | number | any,
   g: number,
   b: number,
@@ -53,7 +53,7 @@ export default function __rgbaToHex(
         '<red>[rgbaToHex]</red> When passing a string to the first parameter, it MUST be formatted like: rgba?(.*)',
       );
     }
-    r = __parseRgba(r);
+    r = parseRgba(r);
   }
 
   // object support

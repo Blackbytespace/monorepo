@@ -12,17 +12,17 @@ import __isMobile from './isMobile.js';
  *
  * @todo      tests
  *
- * @snippet         __isPhone()
+ * @snippet         isPhone()
  *
  * @example 	js
- * import { __isPhone } from '@lotsof/sugar/is'
- * if (__isPhone()) {
+ * import { isPhone } from '@blackbyte/sugar/is'
+ * if (isPhone()) {
  *   // do something cool...
  * }
  *
  * @see       https://blog.devgenius.io/4-ways-to-detect-mobile-browsers-in-javascript-943b66657524
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default __isMobile;
 //# sourceMappingURL=isPhone.js.map

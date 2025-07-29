@@ -13,18 +13,18 @@
  * @param       {String}            str         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __stripSourcemap($1)
+ * @snippet         stripSourcemap($1)
  *
  * @todo     tests
  *
  * @example         js
- * import { __stripSourcemap } from '@lotsof/sugar/string';
- * __stripSourcemap('...');
+ * import { stripSourcemap } from '@blackbyte/sugar/string';
+ * stripSourcemap('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __stripSourcemap(str) {
+export default function stripSourcemap(str) {
     str = str.replace(/\/\/#\s?sourceMappingURL=[\w\W]+/gm, '');
     return str;
 }

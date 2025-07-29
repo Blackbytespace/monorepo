@@ -15,11 +15,11 @@
  *
  * @todo        tests
  *
- * @snippet         __camelCaseProps($1)
+ * @snippet         camelCaseProps($1)
  *
  * @example         js
- * import { __camelCaseProps } from '@lotsof/sugar/object';
- * __camelCaseProps({
+ * import { camelCaseProps } from '@blackbyte/sugar/object';
+ * camelCaseProps({
  *    'hello-world': true
  * });
  * // {
@@ -27,9 +27,9 @@
  * // }
  *
  * @since           1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TCamelCasePropsSettings = {
     deep: boolean;
 };
-export default function __camelCaseProps(object: any, settings?: Partial<TCamelCasePropsSettings>): any;
+export default function camelCaseProps(object: any, settings?: Partial<TCamelCasePropsSettings>): any;

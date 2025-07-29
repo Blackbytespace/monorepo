@@ -14,19 +14,19 @@
  *
  * @todo      tests
  *
- * @snippet         __whenLinkLoaded($1)
- * __whenLinkLoaded($1).then(\$elm => {
+ * @snippet         whenLinkLoaded($1)
+ * whenLinkLoaded($1).then(\$elm => {
  *      $2
  * });
  *
  * @example  	js
- * import { __whenLinkLoaded } from '@lotsof/sugar/dom'
- * __whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
+ * import { whenLinkLoaded } from '@blackbyte/sugar/dom'
+ * whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
  * 		// do something when the link is loaded
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function alreadyLoaded(link) {
     var _a;
@@ -44,7 +44,7 @@ function alreadyLoaded(link) {
     }
     return result;
 }
-export default function __whenLinkLoaded($link, cb) {
+export default function whenLinkLoaded($link, cb) {
     return new Promise((resolve, reject) => {
         // check if image is already loaded
         if (alreadyLoaded($link)) {

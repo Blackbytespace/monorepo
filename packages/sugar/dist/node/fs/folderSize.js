@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // @ts-ignore
-import __fastFolderSize from 'fast-folder-size';
+import fastFolderSize from 'fast-folder-size';
 /**
  * @name                folderSize
  * @namespace           node.fs
@@ -24,21 +24,21 @@ import __fastFolderSize from 'fast-folder-size';
  *
  * @todo            tests
  *
- * @snippet         __folderSize($1)
- * await __folderSize($1)
+ * @snippet         folderSize($1)
+ * await folderSize($1)
  *
  * @example           js
- * import { __folderSize } from '@lotsof/sugar/fs';
- * await __folderSize('my/cool/folder');
+ * import { folderSize } from '@blackbyte/sugar/fs';
+ * await folderSize('my/cool/folder');
  *
  *
  * @see             https://www.npmjs.com/package/get-folder-size
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __folderSize(folderPath) {
+export default function folderSize(folderPath) {
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-        __fastFolderSize(folderPath, (err, bytes) => {
+        fastFolderSize(folderPath, (err, bytes) => {
             resolve(bytes !== null && bytes !== void 0 ? bytes : 0);
         });
     }));

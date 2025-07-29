@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isCyclic($1)
+ * @snippet         isCyclic($1)
  *
  * @example           js
- * import { __isCyclic } from '@lotsof/sugar/is';
+ * import { isCyclic } from '@blackbyte/sugar/is';
  * const obj = { hello: 'world' };
  * obj.cyclic = obj;
- * __isCyclic(obj);
+ * isCyclic(obj);
  *
  * @see            https://stackoverflow.com/questions/14962018/detecting-and-fixing-circular-references-in-javascript
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isCyclic(obj: any): boolean;
+export default function isCyclic(obj: any): boolean;

@@ -1,5 +1,5 @@
 import __uniqid from '../../../js/string/uniqid.js';
-export default function __injectStyle(style, settings) {
+export default function injectStyle(style, settings) {
     var _a;
     const finalSettings = Object.assign({ id: `injected-style-${__uniqid()}`, rootNode: undefined }, (settings !== null && settings !== void 0 ? settings : {}));
     if (document.querySelector(`#${finalSettings.id}`))

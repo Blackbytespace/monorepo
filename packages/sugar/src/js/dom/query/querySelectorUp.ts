@@ -1,4 +1,4 @@
-import __matches from './matches.js';
+import matches from './matches.js';
 
 /**
  * @name                 querySelectorUp
@@ -15,23 +15,23 @@ import __matches from './matches.js';
  *
  * @todo      tests
  *
- * @snippet         __querySelectorUp($1, $2)
+ * @snippet         querySelectorUp($1, $2)
  *
  * @example  	js
- * import { __querySelectorUp } from '@blackbyte/sugar/dom'
- * const closestElm =  __querySelectorUp(myCoolElement, '.my-cool-class');
+ * import { querySelectorUp } from '@blackbyte/sugar/dom'
+ * const closestElm =  querySelectorUp(myCoolElement, '.my-cool-class');
  * if (closestElm) {
  * 		// we have found en element that matches the selector
  * }
  * // the selector param can be a function that need to return either true or false like so:
- *  __querySelectorUp(myCoolElement, (elm) => {
+ *  querySelectorUp(myCoolElement, (elm) => {
  *   return elm.hasAttribute('my-cool-attribute')
  * })
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __querySelectorUp(
+export default function querySelectorUp(
   $from: HTMLElement,
   selector: string | Function,
 ): HTMLElement | undefined {
@@ -40,7 +40,7 @@ export default function __querySelectorUp(
   while ($parent && $parent != originalElm.ownerDocument) {
     if (typeof selector === 'function') {
       if (selector($parent)) return $parent as HTMLElement;
-    } else if (typeof selector === 'string' && __matches($parent, selector)) {
+    } else if (typeof selector === 'string' && matches($parent, selector)) {
       return $parent as HTMLElement;
     }
     $parent = $parent.parentNode;

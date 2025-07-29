@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 /**
  * @name            remove
  * @namespace       node.fs
@@ -13,20 +13,20 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet         __remove($1)
- * await __remove($1)
+ * @snippet         remove($1)
+ * await remove($1)
  *
  * @example       js
- * import { __remove } from '@lotsof/sugar/fs';
- * await __remove('my/cool/file.json').then(() => {
+ * import { remove } from '@blackbyte/sugar/fs';
+ * await remove('my/cool/file.json').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __remove(path) {
-    return __fs.remove(path);
+export default function remove(path) {
+    return fs.remove(path);
 }
 //# sourceMappingURL=remove.js.map

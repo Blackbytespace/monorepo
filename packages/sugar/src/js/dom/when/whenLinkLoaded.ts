@@ -14,14 +14,14 @@
  *
  * @todo      tests
  *
- * @snippet         __whenLinkLoaded($1)
- * __whenLinkLoaded($1).then(\$elm => {
+ * @snippet         whenLinkLoaded($1)
+ * whenLinkLoaded($1).then(\$elm => {
  *      $2
  * });
  *
  * @example  	js
- * import { __whenLinkLoaded } from '@blackbyte/sugar/dom'
- * __whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
+ * import { whenLinkLoaded } from '@blackbyte/sugar/dom'
+ * whenLinkLoaded(myCoolHTMLLinlElement).then($link => {
  * 		// do something when the link is loaded
  * });
  *
@@ -45,7 +45,7 @@ function alreadyLoaded(link: HTMLLinkElement): boolean {
   return result;
 }
 
-export default function __whenLinkLoaded(
+export default function whenLinkLoaded(
   $link: HTMLLinkElement,
   cb?: Function,
 ): Promise<HTMLLinkElement> {

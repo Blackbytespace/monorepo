@@ -7,18 +7,18 @@
  *
  * Clear the current selection in the DOM even in inputs, etc...
  **
- * @snippet         __clearSelection()
+ * @snippet         clearSelection()
  *
  * @todo        tests
  *
  * @example       js
- * import { __clearSelection } from '@lotsof/sugar/dom';
- * __clearSelection();
+ * import { clearSelection } from '@blackbyte/sugar/dom';
+ * clearSelection();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __clearSelection() {
+export default function clearSelection() {
     if (window.getSelection) {
         const sel = window.getSelection();
         if (sel === null || sel === void 0 ? void 0 : sel.empty) {

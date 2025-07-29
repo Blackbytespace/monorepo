@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __toQueryString($1)
+ * @snippet         toQueryString($1)
  *
  * @example 	js
- * import { __toQueryString } from '@lotsof/sugar/object'
- * console.log(__toQueryString({
+ * import { toQueryString } from '@blackbyte/sugar/object'
+ * console.log(toQueryString({
  * 	value1 : 'coco',
  * 	value1 : 'plop'
  * }));
  * // => ?value1=coco&value2=plop
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __toQueryString(obj: any): string;
+export default function toQueryString(obj: any): string;

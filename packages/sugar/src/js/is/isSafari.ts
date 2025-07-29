@@ -12,17 +12,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isSafari()
+ * @snippet         isSafari()
  *
  * @example 	js
- * import { __isSafari } from '@blackbyte/sugar/is'
- * if (__isSafari()) {
+ * import { isSafari } from '@blackbyte/sugar/is'
+ * if (isSafari()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSafari(ua: string = navigator.userAgent): boolean {
+export default function isSafari(ua: string = navigator.userAgent): boolean {
   return ua.indexOf('Safari') != -1 && ua.indexOf('Chrome') == -1;
 }

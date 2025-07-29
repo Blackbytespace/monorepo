@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * @name                ensureFile
@@ -15,12 +15,12 @@ import __fs from 'fs-extra';
  *
  * @todo            tests
  *
- * @snippet         __ensureFile($1)
- * await __ensureFile($1)
+ * @snippet         ensureFile($1)
+ * await ensureFile($1)
  *
  * @example       js
- * import { __ensureFile } from '@blackbyte/sugar/fs';
- * await __ensureFile('my/cool/file.jpg').then(() => {
+ * import { ensureFile } from '@blackbyte/sugar/fs';
+ * await ensureFile('my/cool/file.jpg').then(() => {
  *    // do something...
  * });
  *
@@ -28,6 +28,6 @@ import __fs from 'fs-extra';
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureFile(filePath: string): Promise<void> {
-  return __fs.ensureFile(filePath);
+export default function ensureFile(filePath: string): Promise<void> {
+  return fs.ensureFile(filePath);
 }

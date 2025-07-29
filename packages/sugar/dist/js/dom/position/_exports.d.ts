@@ -1,2 +1,2 @@
-import __positionFromEvent from './positionFromEvent.js';
-export { __positionFromEvent };
+import positionFromEvent from './positionFromEvent.js';
+export { positionFromEvent as __positionFromEvent, positionFromEvent };

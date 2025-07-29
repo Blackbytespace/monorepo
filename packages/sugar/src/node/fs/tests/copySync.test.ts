@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { describe, it } from 'vitest';
-import __copySync from '../copy.js';
+import copySync from '../copy.js';
 
 describe('sugar.node.fs.copySync', () => {
   it('should copy correctly a file', async () => {
@@ -9,7 +9,7 @@ describe('sugar.node.fs.copySync', () => {
     }
 
     await new Promise((resolve) => {
-      __copySync(
+      copySync(
         `${__dirname}/data/copy/copySync.src`,
         `${__dirname}/data/copy/copySync.dest`,
       );

@@ -14,15 +14,15 @@ import { dotCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __dotCase($1)
+ * @snippet         dotCase($1)
  *
  * @example     js
- * import { __dotCase } from '@lotsof/sugar/string';
- * __dotCase('hello world'); // => hello.world
+ * import { dotCase } from '@blackbyte/sugar/string';
+ * dotCase('hello world'); // => hello.world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __dotCase(text) {
     return dotCase(text);

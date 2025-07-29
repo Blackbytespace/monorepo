@@ -19,8 +19,8 @@
  *
  * @setting       {Number}              [threshold=100]       The swipe threshold
  *
- * @snippet         __onSwipe($1, $2)
- * __onSwipe($1, swipe => {
+ * @snippet         onSwipe($1, $2)
+ * onSwipe($1, swipe => {
  *      $2
  * });
  *
@@ -28,8 +28,8 @@
  * @todo      tests
  *
  * @example 	js
- * import { __onSwipe } from '@lotsof/sugar/dom'
- * __onSwipe(myCoolElm, (swipe) => {
+ * import { onSwipe } from '@blackbyte/sugar/dom'
+ * onSwipe(myCoolElm, (swipe) => {
  * 	// check the swipe direction
  * 	if (swipe.left) {
  * 		// do something...
@@ -42,7 +42,7 @@
  *
  * @see 		https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TOnSwipeSettings = {
     threshold: number;
@@ -55,4 +55,4 @@ export type TOnSwipeResult = {
     up: boolean;
     down: boolean;
 };
-export default function __onSwipe(elm: HTMLElement, cb: Function, settings?: Partial<TOnSwipeSettings>): void;
+export default function onSwipe(elm: HTMLElement, cb: Function, settings?: Partial<TOnSwipeSettings>): void;

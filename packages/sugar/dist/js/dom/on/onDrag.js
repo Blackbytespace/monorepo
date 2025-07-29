@@ -1,12 +1,12 @@
-import __positionFromEvent from '../position/positionFromEvent.js';
-export default function __onDrag($elm, cb, settings) {
+import positionFromEvent from '../position/positionFromEvent.js';
+export default function onDrag($elm, cb, settings) {
     const finalSettings = Object.assign({ maxSpeed: 0.01 }, (settings !== null && settings !== void 0 ? settings : {}));
     let isMouseDown = false;
     let startPos, $target;
     let track = [];
     let lastCapturedTime;
     function buildTrackPoint(e) {
-        const { x, y } = __positionFromEvent(e);
+        const { x, y } = positionFromEvent(e);
         const deltaX = x - startPos.x, deltaY = y - startPos.y, time = Date.now() - lastCapturedTime;
         const secondPercentage = (100 / 1000) * time;
         const lastTrackPoint = track[track.length - 1];
@@ -32,7 +32,7 @@ export default function __onDrag($elm, cb, settings) {
         if (e.target !== $elm && !$elm.contains(e.target))
             return;
         $target = e.target;
-        const { x, y } = __positionFromEvent(e);
+        const { x, y } = positionFromEvent(e);
         // set the start position
         startPos = {
             x,

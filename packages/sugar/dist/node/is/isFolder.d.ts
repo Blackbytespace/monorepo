@@ -12,16 +12,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isFolder($1)
+ * @snippet         isFolder($1)
  *
  * @example     js
- * import { __isfolder } from '@lotsof/sugar/is';
- * __isfolder('something/cool');
+ * import { isfolder } from '@blackbyte/sugar/is';
+ * isfolder('something/cool');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TIsFolderSettings = {
     symlink?: boolean;
 };
-export default function __isfolder(path: string, settings?: TIsFolderSettings): boolean;
+export default function isfolder(path: string, settings?: TIsFolderSettings): boolean;

@@ -1,4 +1,4 @@
-import __sameItems from './sameItems.js';
+import sameItems from './sameItems.js';
 
 /**
  * @name            intersection
@@ -19,13 +19,13 @@ import __sameItems from './sameItems.js';
  * @setting         {Boolean}          [references=true]        Specify if you want to use the references comparaison or not
  * @setting         {Boolean}           [hash=true]             Specify if you want to allows transforming object etc in to hashes and compare this instead
  *
- * @snippet         __intersection($1, $2)
+ * @snippet         intersection($1, $2)
  *
  * @example         js
- * import { __intersection } from '@blackbyte/sugar/array';
- * __intersection([1,2,3,4], [1,3,5]); // => [1,3]
+ * import { intersection } from '@blackbyte/sugar/array';
+ * intersection([1,2,3,4], [1,3,5]); // => [1,3]
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default __sameItems;
+export default sameItems;

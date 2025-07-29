@@ -9,16 +9,16 @@
  *
  * @return      {Number}            The amount of scroll top that the user as made in the page
  *
- * @snippet         __scrollTop()
+ * @snippet         scrollTop()
  *
  * @todo      tests
  *
  * @example     js
- * import { __scrollTop } from '@lotsof/sugar/dom';
- * __scrollTop();
+ * import { scrollTop } from '@blackbyte/sugar/dom';
+ * scrollTop();
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev) (https://olivierbossel.com)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space) (https://olivierbossel.com)
  */
 declare function scrollTop(): number;
 export default scrollTop;

@@ -1,5 +1,5 @@
-import * as __fs from 'fs';
-import __writeFileSync from '../fs/writeFileSync.js';
+import * as fs from 'fs';
+import writeFileSync from '../fs/writeFileSync.js';
 
 /**
  * @name            prependToFileSync
@@ -15,24 +15,21 @@ import __writeFileSync from '../fs/writeFileSync.js';
  * @param       {String}            path            The file path you want to check. With or without an extension
  * @param       {String}            content             The content to add to the file
  *
- * @snippet         __prependToFileSync($1, $2)
+ * @snippet         prependToFileSync($1, $2)
  *
  * @example         js
- * import { __prependToFileSync } from '@blackbyte/sugar/fs';
- * __prependToFileSync('/my/cool/file.txt', 'Hello world');
+ * import { prependToFileSync } from '@blackbyte/sugar/fs';
+ * prependToFileSync('/my/cool/file.txt', 'Hello world');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __prependToFileSync(
-  path: string,
-  content: string,
-): void {
-  if (!__fs.existsSync(path)) {
-    __writeFileSync(path, content);
+export default function prependToFileSync(path: string, content: string): void {
+  if (!fs.existsSync(path)) {
+    writeFileSync(path, content);
     return;
   }
-  const currentContent = __fs.readFileSync(path).toString();
+  const currentContent = fs.readFileSync(path).toString();
   const newContent = `${content}\n${currentContent}`;
-  __fs.writeFileSync(path, newContent);
+  fs.writeFileSync(path, newContent);
 }

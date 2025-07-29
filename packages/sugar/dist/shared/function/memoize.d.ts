@@ -9,14 +9,14 @@
  * This function can be used to memorize a function call result in order to save memory.
  * This is just a "proxy" of the "memoizee" package.
  *
- * @snippet         __momoize($1)
+ * @snippet         memoize($1)
  *
  * @param       {Function}          fn      The function to memoize his result
  * @return      {Any}                       The memoized function result
  *
  * @example         js
- * import { __memoize } from '@lotsof/sugar/function';
- * const fn =  __memoize(function(text) => {
+ * import { memoize } from '@blackbyte/sugar/function';
+ * const fn = memoize(function(text) => {
  *    return `Hello ${text}`;
  * });
  * const result = fn('world'); // first execution. no cache
@@ -25,6 +25,6 @@
  *
  * @see             https://www.npmjs.com/package/memoizee
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __memoize(...args: any[]): any;
+export default function memoize(...args: any[]): any;

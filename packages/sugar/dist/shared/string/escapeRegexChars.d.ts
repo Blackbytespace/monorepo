@@ -13,13 +13,13 @@
  *
  * @todo      tests
  *
- * @snippet         __escapeRegexChars($1)
+ * @snippet         escapeRegexChars($1)
  *
  * @example     js
- * import { __escapeRegexChars } from '@lotsof/sugar/string';
- * __escapeRegexChars('/hello()'); // => \/hello\(\)
+ * import { escapeRegexChars } from '@blackbyte/sugar/string';
+ * escapeRegexChars('/hello()'); // => \/hello\(\)
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __escapeRegexChars(str: string): string;
+export default function escapeRegexChars(str: string): string;

@@ -33,11 +33,11 @@
  *
  * @example 	js
  * import { __scrollTop } from '@coffeekraken/sugar/dom'
- * import { __easeInOutQuad } from '@coffeekraken/sugar/easing'
+ * import { easeInOutQuad } from '@coffeekraken/sugar/easing'
  * __scrollTo(myCoolHTMLElement);
  *
  * @since           2.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://coffeekraken.io)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export interface IScrollToSettings {
     $elm: HTMLElement | typeof window | typeof document;

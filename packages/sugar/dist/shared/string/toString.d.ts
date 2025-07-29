@@ -17,20 +17,19 @@
  *
  * @todo      tests
  *
- * @snippet         __toString($1)
+ * @snippet         toString($1)
  *
  * @example    js
- * import { __toString } from '@lotsof/sugar/string'
- * __toString({
+ * import { toString } from '@blackbyte/sugar/string'
+ * toString({
  * 	id:'hello'
  * }) // '{"id":"hello"}'
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TToStringSettings = {
     beautify?: boolean;
     verbose?: boolean;
 };
-declare function fn(value: any, settings?: TToStringSettings): string;
-export default fn;
+export default function toString(value: any, settings?: TToStringSettings): string;

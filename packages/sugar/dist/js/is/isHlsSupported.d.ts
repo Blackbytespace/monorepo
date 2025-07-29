@@ -9,17 +9,17 @@
  *
  * @return      {Boolean}       true if supported, false if not
  *
- * @snippet         __isHlsSupported($1)
+ * @snippet         isHlsSupported($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isHlsSupported } from '@lotsof/sugar/id'
- * if (!__isHlsSupported()) {
+ * import { isHlsSupported } from '@blackbyte/sugar/id'
+ * if (!isHlsSupported()) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function isHlsSupported(): boolean;

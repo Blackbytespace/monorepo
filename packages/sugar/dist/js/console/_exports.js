@@ -1,4 +1,4 @@
-import __parseHtml from './parseHtml.js';
+import parseHtml from './parseHtml.js';
 export * from '../../shared/console/_exports.js';
-export { __parseHtml };
+export { parseHtml as __parseHtml, parseHtml };
 //# sourceMappingURL=_exports.js.map

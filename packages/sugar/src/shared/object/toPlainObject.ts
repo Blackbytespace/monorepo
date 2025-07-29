@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                        toPlainObject
@@ -16,11 +16,11 @@ import __isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         __toPlainObject($1)
+ * @snippet         toPlainObject($1)
  *
  * @example           js
- * import { __toPlainObject } from '@blackbyte/sugar/object';
- * __toPlainObject({ something: 'cool' });
+ * import { toPlainObject } from '@blackbyte/sugar/object';
+ * toPlainObject({ something: 'cool' });
  *
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -28,7 +28,7 @@ import __isPlainObject from '../is/isPlainObject.js';
 export type TToPlainObjectSettings = {
   deep: boolean;
 };
-export default function __toPlainObject(
+export default function toPlainObject(
   object: any,
   settings?: Partial<TToPlainObjectSettings>,
 ): any {
@@ -41,7 +41,7 @@ export default function __toPlainObject(
     const newObj = Object.assign({}, obj);
     for (let [key, value] of Object.entries(newObj)) {
       newObj[key] = value;
-      if (finalSettings.deep && __isPlainObject(newObj[key])) {
+      if (finalSettings.deep && isPlainObject(newObj[key])) {
         newObj[key] = clean(newObj[key]);
       }
     }

@@ -11,17 +11,25 @@ import { format } from 'fecha';
  *
  * Format the passed string using the requested format. Available formats are:
  * - isoDate
+ * - isoDateTime
+ * - isoTime
+ * - integer
+ * - number
+ * - alphanum
+ * - hex
+ * - hexa
+ * - creditCard
  *
- * @param    {String}    string    The string to format
+ * @param       {String}    string    The string to format
  * @param       {String}        format      The format to use
- * @return    {String}    The formatted value
+ * @return      {String}    The formatted value
  *
  * @todo      tests
  *
- * @snippet         __format($1, $2)
+ * @snippet         format($1, $2)
  *
  * @example    js
- * import { __format } from '@blackbyte/sugar/string'
+ * import { format } from '@blackbyte/sugar/string'
  *
  * @see       https://www.npmjs.com/package/fecha
  * @since     1.0.0

@@ -15,11 +15,11 @@ import { cloneClass } from 'clone-class';
  *
  * @todo      tests
  *
- * @snippet         __cloneClass($1)
+ * @snippet         cloneClass($1)
  *
  * @example         js
- * import { __cloneClass } from '@blackbyte/sugar/class';
- * const NewClass = __cloneClass(class MyClass() {});
+ * import { cloneClass } from '@blackbyte/sugar/class';
+ * const NewClass = cloneClass(class MyClass() {});
  *
  * @see             https://www.npmjs.com/package/clone-class
  * @since           1.0.0

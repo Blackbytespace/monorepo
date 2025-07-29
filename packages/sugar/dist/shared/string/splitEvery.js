@@ -1,5 +1,5 @@
-import __countLineChars from './countLineChars.js';
-export default function __splitEvery(text, every, settings = {}) {
+import countLineChars from './countLineChars.js';
+export default function splitEvery(text, every, settings = {}) {
     const finalSettings = Object.assign({ splitWords: true }, settings);
     if (finalSettings.splitWords) {
         const reg = new RegExp(`.{1,${every}}`, 'g');
@@ -42,9 +42,9 @@ export default function __splitEvery(text, every, settings = {}) {
                 const rest = lastOpenedTag + item.replace(toAdd, '');
                 // if (toAdd.slice(-1) !== ' ' && rest.slice(0, 1) !== ' ')
                 //   finalLines[finalLines.length - 1] += '-';
-                const restLines = __splitEvery(rest, every);
+                const restLines = splitEvery(rest, every);
                 finalLines = [...finalLines, ...restLines];
-                lineCount = __countLineChars(finalLines[finalLines.length - 1]);
+                lineCount = countLineChars(finalLines[finalLines.length - 1]);
             }
             else {
                 lineCount += item.length;

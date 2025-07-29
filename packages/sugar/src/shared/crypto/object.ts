@@ -1,4 +1,4 @@
-import __base64 from './base64.js';
+import base64 from './base64.js';
 
 /**
  * @name                object
@@ -10,11 +10,11 @@ import __base64 from './base64.js';
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the object algorithm
  *
- * @snippet         __object.encrypt($1)
+ * @snippet         object.encrypt($1)
  *
  * @example         js
- * import { __object } from '@blackbyte/sugar/crypto';
- * __object.encrypt({
+ * import { object } from '@blackbyte/sugar/crypto';
+ * object.encrypt({
  *      hello: 'world'
  * });
  *
@@ -35,7 +35,7 @@ export default {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
    */
   encrypt: function (object, salt = 'blackbyte.sugar.crypto.object') {
-    return __base64.encrypt(`${JSON.stringify(object)}-${salt}`);
+    return base64.encrypt(`${JSON.stringify(object)}-${salt}`);
   },
 
   /**
@@ -51,7 +51,7 @@ export default {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
    */
   decrypt: function (encodedObject, salt = 'blackbyte.sugar.crypto.object') {
-    return JSON.parse(__base64.decrypt(encodedObject).replace(`-${salt}`, ''));
+    return JSON.parse(base64.decrypt(encodedObject).replace(`-${salt}`, ''));
   },
 } as {
   encrypt: (object: any, salt?: string) => string;

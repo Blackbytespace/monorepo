@@ -1,6 +1,6 @@
+import base64 from 'crypto-js/enc-base64.js';
+import encUtf8 from 'crypto-js/enc-utf8.js';
 import toString from '../../shared/string/toString.js';
-import __base64 from 'crypto-js/enc-base64.js';
-import __encUtf8 from 'crypto-js/enc-utf8.js';
 /**
  * @name            base64
  * @namespace       shared.crypto
@@ -10,14 +10,14 @@ import __encUtf8 from 'crypto-js/enc-utf8.js';
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the base64 algorithm
  *
- * @snippet         __base64.encrypt($1)
+ * @snippet         base64.encrypt($1)
  *
  * @example         js
- * import { __base64 } from '@lotsof/sugar/crypto';
- * __base64.encrypt('hello world');
+ * import { base64 } from '@blackbyte/sugar/crypto';
+ * base64.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default {
     /**
@@ -30,12 +30,12 @@ export default {
      * @return      {String}                       The encrypted message
      *
      * @since       1.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     encrypt: function (message) {
         if (typeof message !== 'string')
             message = toString(message);
-        return __base64.stringify(__encUtf8.parse(message));
+        return base64.stringify(encUtf8.parse(message));
     },
     /**
      * @name        decrypt
@@ -47,12 +47,12 @@ export default {
      * @return      {String}                      The decrypted message
      *
      * @since         1.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     decrypt: function (message) {
         if (typeof message !== 'string')
             message = toString(message);
-        return __base64.parse(message).toString(__encUtf8);
+        return base64.parse(message).toString(encUtf8);
     },
 };
 //# sourceMappingURL=base64.js.map

@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                        deepFilter
@@ -21,8 +21,8 @@ import __isPlainObject from '../is/isPlainObject.js';
  * @todo      tests
  *
  * @example           js
- * import { __deepFilter } from '@blackbyte/sugar/object';
- * __deepFilter ({
+ * import { deepFilter } from '@blackbyte/sugar/object';
+ * deepFilter ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -67,12 +67,12 @@ function processObj(object: any, filter: TDeepFilterFilter, settings): any {
     const res = filter({
       key,
       value,
-      isObject: __isPlainObject(value),
+      isObject: isPlainObject(value),
     });
 
     // true mean: we keep this totally
     if (res === true) {
-      if (__isPlainObject(value)) {
+      if (isPlainObject(value)) {
         newObj[key] = settings.clone
           ? processObj(Object.assign({}, value), filter, settings)
           : processObj(value, filter, settings);
@@ -80,7 +80,7 @@ function processObj(object: any, filter: TDeepFilterFilter, settings): any {
         newObj[key] = value;
       }
     } else if (res === undefined) {
-      if (__isPlainObject(value)) {
+      if (isPlainObject(value)) {
         newObj[key] = settings.clone
           ? processObj(Object.assign({}, value), filter, settings)
           : processObj(value, filter, settings);
@@ -97,7 +97,7 @@ function processObj(object: any, filter: TDeepFilterFilter, settings): any {
   return newObj;
 }
 
-export default function __deepFilter(
+export default function deepFilter(
   object: any,
   filter: TDeepFilterFilter,
   settings?: Partial<TDeepFilterSettings>,

@@ -12,18 +12,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isBrowser()
+ * @snippet         isBrowser()
  *
  * @example    js
- * import { __isBrowser } from '@lotsof/sugar/is'
- * if (__isBrowser() {
+ * import { isBrowser } from '@blackbyte/sugar/is'
+ * if (isBrowser() {
  *   // do something
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isBrowser() {
+export default function isBrowser() {
     return typeof window !== 'undefined';
 }
 //# sourceMappingURL=isBrowser.js.map

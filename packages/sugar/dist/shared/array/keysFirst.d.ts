@@ -12,13 +12,13 @@
  * @param    {Array}    keys    The keys to start the array with
  * @return    {Array}    The processed array
  *
- * @snippet         __keysFirst($1, $2)
+ * @snippet         keysFirst($1, $2)
  *
  * @example    js
- * import { __keysFirst } from '@lotsof/sugar/array'
- * __keysFirst(['a','b','d','g','c'], ['d','g'])
+ * import { keysFirst } from '@blackbyte/sugar/array'
+ * keysFirst(['a','b','d','g','c'], ['d','g'])
  * // ['d','g','a','b','c']
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __keysFirst(array: any[], keys: any[]): any[];
+export default function keysFirst(array: any[], keys: any[]): any[];

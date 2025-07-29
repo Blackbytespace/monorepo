@@ -1,4 +1,9 @@
-import __styleObjectToString from './styleObjectToString.js';
-import __styleStringToObject from './styleStringToObject.js';
+import styleObjectToString from './styleObjectToString.js';
+import styleStringToObject from './styleStringToObject.js';
 
-export { __styleObjectToString, __styleStringToObject };
+export {
+  styleObjectToString as __styleObjectToString,
+  styleStringToObject as __styleStringToObject,
+  styleObjectToString,
+  styleStringToObject,
+};

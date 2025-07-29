@@ -13,16 +13,16 @@
  *
  * @todo      tests
  *
- * @snippet         __isOdd($1)
+ * @snippet         isOdd($1)
  *
  * @example    js
- * import { __isOdd } from '@blackbyte/sugar/is'
- * __isOdd(1) // true
- * __isOdd(2) // false
+ * import { isOdd } from '@blackbyte/sugar/is'
+ * isOdd(1) // true
+ * isOdd(2) // false
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isOdd(value: number): boolean {
+export default function isOdd(value: number): boolean {
   return value % 2 === 1;
 }

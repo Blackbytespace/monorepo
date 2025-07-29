@@ -15,16 +15,16 @@
  *
  * @todo      tests
  *
- * @snippet         __sprintf($1)
+ * @snippet         sprintf($1)
  *
  * @example    js
- * import { __sprintf } from '@lotsof/sugar/string'
- * __sprintf('Hello %s', 'world') // Hello World
+ * import { sprintf } from '@blackbyte/sugar/string'
+ * sprintf('Hello %s', 'world') // Hello World
  * const user = { name: 'Dolly' }
- * __sprintf('Hello %(name)s', user) // Hello Dolly
+ * sprintf('Hello %(name)s', user) // Hello Dolly
  *
  * @see    https://github.com/alexei/sprintf.js
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __sprintf(): string;
+export default function sprintf(): string;

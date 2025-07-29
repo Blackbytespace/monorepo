@@ -14,18 +14,18 @@ import __idCompliant from '../string/idCompliant.js';
  * @param       {String}        string         The string to process
  * @return      {Boolean}                        true if compliant, false if not
  *
- * @snippet         __isIdCompliant($1)
+ * @snippet         isIdCompliant($1)
  *
  * @example         php
- * import { __isIdCompliant } from '@blackbyte/sugar/string';
- * __isIdCompliant('Hello world'); // => false
- * __isIdCompliant('hello-world'); // => true
+ * import { isIdCompliant } from '@blackbyte/sugar/string';
+ * isIdCompliant('Hello world'); // => false
+ * isIdCompliant('hello-world'); // => true
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __isIdCompliant(str: string): boolean {
+export default function isIdCompliant(str: string): boolean {
   if (!str) {
     return false;
   }

@@ -17,15 +17,15 @@
  *
  * @todo      tests
  *
- * @snippet         __sort($1, $2)
- * __sort($1, (a, b) => {
+ * @snippet         sort($1, $2)
+ * sort($1, (a, b) => {
  *      // a.key - a.value | b.key - b.value
  *      $2
  * })
  *
  * @example               js
- * import { __sort } from '@blackbyte/sugar/object';
- * __sort({
+ * import { sort } from '@blackbyte/sugar/object';
+ * sort({
  *    coco: { weight: 10 },
  *    lolo: { weight: 2 },
  *    plop: { weight: 5 }
@@ -42,7 +42,7 @@
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 
-export default function __sort(
+export default function sort(
   object: any,
   sort?: (
     a: {

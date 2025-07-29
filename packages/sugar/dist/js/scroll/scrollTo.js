@@ -8,12 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // @ts-nocheck
-import __easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
-import __isUserScrolling from '../is/isUserScrolling.js';
+import easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
+import isUserScrolling from '../is/isUserScrolling.js';
 export default function __scrollTo(target, settings = {}) {
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
-        const finalSettings = Object.assign({ $elm: window, duration: 500, easing: __easeInOutQuad, offsetX: 0, offsetY: 0, align: 'start', justify: 'start', force: false }, settings);
+        const finalSettings = Object.assign({ $elm: window, duration: 500, easing: easeInOutQuad, offsetX: 0, offsetY: 0, align: 'start', justify: 'start', force: false }, settings);
         // remap element if needed
         if (finalSettings.$elm === document.body)
             finalSettings.$elm = window;
@@ -156,7 +156,7 @@ __scrollTo.step = function () {
     const x = this.targetX - (1 - this.easing(t)) * this.deltaX;
     const y = this.targetY - (1 - this.easing(t)) * this.deltaY;
     $scrollElm.scrollTo(x, y);
-    if (!this.force && __isUserScrolling(this.$elm))
+    if (!this.force && isUserScrolling(this.$elm))
         return;
     // Continue animation as long as duration hasn't surpassed
     if (t !== 1) {

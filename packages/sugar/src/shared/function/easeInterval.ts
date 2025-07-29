@@ -1,4 +1,4 @@
-import __easeInOutQuart from '../easing/easeInOutQuart.js';
+import easeInOutQuart from '../easing/easeInOutQuart.js';
 
 /**
  * @name                easeInterval
@@ -25,16 +25,16 @@ import __easeInOutQuart from '../easing/easeInOutQuart.js';
  *
  * ª@todo      tests
  *
- * @snippet         __easeInterval($1, $2)
- * const easeInterval = __easeInterval($1, percent => {
+ * @snippet         easeInterval($1, $2)
+ * const easeInterval = easeInterval($1, percent => {
  *      $2
  * });
  * // easeInterval.cancel(); // stop the easing process
  * await easeInterval;
  *
  * @example         js
- * import { __easeInterval } from '@blackbyte/sugar/function';
- * await __easeInterval(2000, (easedPercent) => {
+ * import { easeInterval } from '@blackbyte/sugar/function';
+ * await easeInterval(2000, (easedPercent) => {
  *      // do something...
  * }, {
  *      interval: 1000 / 25 // 25 times by second
@@ -52,7 +52,7 @@ export type TEaseIntervalSettings = {
   onEnd?: Function;
 };
 
-export default function __easeInterval(
+export default function easeInterval(
   duration: number,
   cb: Function,
   settings: TEaseIntervalSettings = {},
@@ -63,7 +63,7 @@ export default function __easeInterval(
   const pro = new Promise((resolve) => {
     settings = {
       interval: 1000 / 25,
-      easing: __easeInOutQuart,
+      easing: easeInOutQuart,
       from: 0,
       to: 100,
       onEnd: undefined,

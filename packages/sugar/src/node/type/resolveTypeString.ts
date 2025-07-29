@@ -1,10 +1,9 @@
-import __packageRootDir from '../package/packageRootDir.js';
-
-import __fs from 'fs';
+import fs from 'fs';
 import __path from 'path';
-import __parseTypeString, {
+import parseTypeString, {
   TTypeStringObject,
 } from '../../shared/type/parseTypeString.js';
+import packageRootDir from '../package/packageRootDir.js';
 
 /**
  * @name            resolveTypeString
@@ -23,11 +22,11 @@ import __parseTypeString, {
  *
  * @setting         {String}       [cwd=process.cwd()]          The cwd to use to resolve the type string when they are path
  *
- * @snippet         __resolveTypeString($1)
+ * @snippet         resolveTypeString($1)
  *
  * @example       js
- * import { __resolveTypeString } from '@blackbyte/sugar/type';
- * __resolveTypeString('string');
+ * import { resolveTypeString } from '@blackbyte/sugar/type';
+ * resolveTypeString('string');
  * // {
  * //    types: [{
  * //       type: 'string',
@@ -49,7 +48,7 @@ export type TResolveTypeStringSettings = {
   cwd: string;
 };
 
-export default async function __resolveTypeString(
+export default async function resolveTypeString(
   typeString: string,
   settings: Partial<TResolveTypeStringSettings> = {},
 ): Promise<TResolveTypeStringResult> {
@@ -70,12 +69,12 @@ export default async function __resolveTypeString(
       potentialTypeFilePath = __path.resolve(finalSettings.cwd, path);
     } else {
       potentialTypeFilePath = __path.resolve(
-        __packageRootDir(finalSettings.cwd),
+        packageRootDir(finalSettings.cwd),
         path,
       );
     }
 
-    if (__fs.existsSync(potentialTypeFilePath)) {
+    if (fs.existsSync(potentialTypeFilePath)) {
       // @ts-ignore
       const typeData = (await import(potentialTypeFilePath)).default;
       types = [
@@ -90,7 +89,7 @@ export default async function __resolveTypeString(
     }
     // regular types
   } else {
-    types = __parseTypeString(typeString);
+    types = parseTypeString(typeString);
   }
 
   return {

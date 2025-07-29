@@ -15,20 +15,20 @@
  * @param 		{HTMLElement} 				$elm 				The HTMLElement on which to monitor
  * @return 		(Promise<HTMLElement>) 										The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
  *
- * @snippet         __whenRemoved($1);
- * __whenRemoved($1).then(() => {
+ * @snippet         whenRemoved($1);
+ * whenRemoved($1).then(() => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenRemoved } from '@lotsof/sugar/dom'
- * __whenRemoved(myCoolHTMLElement).then(() => {
+ * import { whenRemoved } from '@blackbyte/sugar/dom'
+ * whenRemoved(myCoolHTMLElement).then(() => {
  * 		// the element has been removed
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenRemoved($elm: HTMLElement): Promise<HTMLElement>;
+export default function whenRemoved($elm: HTMLElement): Promise<HTMLElement>;

@@ -1,6 +1,6 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 // @ts-ignore
-import __isValidPath from 'is-valid-path';
+import isValidPath from 'is-valid-path';
 /**
  * @name                isPath
  * @namespace           node.fs
@@ -16,17 +16,17 @@ import __isValidPath from 'is-valid-path';
  *
  * @todo        tests
  *
- * @snippet         __isPath($1)
+ * @snippet         isPath($1)
  *
  * @example       js
- * import { __isPath } from '@lotsof/sugar/fs';
- * __isPath('hello/world'); // => true
+ * import { isPath } from '@blackbyte/sugar/fs';
+ * isPath('hello/world'); // => true
  *
  * @see         https://www.npmjs.com/package/is-valid-path
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isPath(path, checkExistence = false) {
+export default function isPath(path, checkExistence = false) {
     if (typeof path !== 'string')
         return false;
     // empty string
@@ -41,11 +41,11 @@ export default function __isPath(path, checkExistence = false) {
             return false;
     }
     // check if the path is valid or not
-    if (!__isValidPath(path))
+    if (!isValidPath(path))
         return false;
     // if we have to check the path existence
     if (checkExistence) {
-        if (!__fs.existsSync(path))
+        if (!fs.existsSync(path))
             return false;
     }
     // otherwise, all is ok

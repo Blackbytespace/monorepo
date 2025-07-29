@@ -14,17 +14,17 @@ import * as __fs from 'fs';
  *
  * @todo      tests
  *
- * @snippet         __isSymlink($1)
+ * @snippet         isSymlink($1)
  *
  * @example     js
- * import { __isSymlink } from '@blackbyte/sugar/is';
- * __isSymlink('something/cool');
+ * import { isSymlink } from '@blackbyte/sugar/is';
+ * isSymlink('something/cool');
  *
  * @todo        Tests
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isSymlink(path: string): boolean {
+export default function isSymlink(path: string): boolean {
   return __fs.existsSync(path) && __fs.lstatSync(path).isSymbolicLink();
 }

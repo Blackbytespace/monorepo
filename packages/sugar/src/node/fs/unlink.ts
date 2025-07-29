@@ -1,5 +1,5 @@
-import __fs from 'fs';
-import __isDirectory from '../is/isDirectory.js';
+import fs from 'fs';
+import isDirectory from '../is/isDirectory.js';
 
 /**
  * @name            unlink
@@ -15,12 +15,12 @@ import __isDirectory from '../is/isDirectory.js';
  *
  * @todo        tests
  *
- * @snippet         __unlink($1)
- * await __unlink($1)
+ * @snippet         unlink($1)
+ * await unlink($1)
  *
  * @example       js
- * import { __unlink } from '@blackbyte/sugar/fs';
- * await __unlink('my/cool/file.json').then(() => {
+ * import { unlink } from '@blackbyte/sugar/fs';
+ * await unlink('my/cool/file.json').then(() => {
  *    // do something on complete...
  * });
  *
@@ -28,11 +28,11 @@ import __isDirectory from '../is/isDirectory.js';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __unlink(path: string): Promise<void> {
-  if (!__fs.existsSync(path)) return Promise.resolve();
-  if (__isDirectory(path)) {
-    return __fs.promises.rmdir(path, { recursive: true });
+export default function unlink(path: string): Promise<void> {
+  if (!fs.existsSync(path)) return Promise.resolve();
+  if (isDirectory(path)) {
+    return fs.promises.rmdir(path, { recursive: true });
   } else {
-    return __fs.promises.unlink(path);
+    return fs.promises.unlink(path);
   }
 }

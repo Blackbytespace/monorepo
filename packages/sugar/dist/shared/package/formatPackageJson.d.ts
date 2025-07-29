@@ -18,12 +18,12 @@
  *
  * @todo      tests
  *
- * @snippet         __formatPackageJson($1)
+ * @snippet         formatPackageJson($1)
  *
  * @example       js
- * import { __formatPackageJson } from '@lotsof/sugar/package';
- * __formatPackageJson({
- *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)"
+ * import { formatPackageJson } from '@blackbyte/sugar/package';
+ * formatPackageJson({
+ *    "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)"
  * }); // => {
  *    "author": {
  *      "name": "Olivier Bossel",
@@ -33,6 +33,6 @@
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __formatPackageJson(json: any): any;
+export default function formatPackageJson(json: any): any;

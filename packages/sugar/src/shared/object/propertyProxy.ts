@@ -21,12 +21,12 @@
  * @todo      tests
  *
  * @example 	js
- * import { __propertyProxy } from '@blackbyte/sugar/object';
+ * import { propertyProxy } from '@blackbyte/sugar/object';
  * const myObject = {
  * 		title : 'World'
  * };
  * // create the proxy
- * __propertyProxy(myObject, 'title', {
+ * propertyProxy(myObject, 'title', {
  * 		get : (value) => {
  * 			return `Hello ${value}`;
  * 		},
@@ -49,7 +49,7 @@ export type TPropertyProxyDescriptor = {
   enumarable: boolean;
 };
 
-export default function __propertyProxy(
+export default function propertyProxy(
   obj: any,
   property: string,
   descriptor: TPropertyProxyDescriptor,

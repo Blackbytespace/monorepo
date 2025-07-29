@@ -8,16 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import __path from 'path';
-import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid.js';
-import __toString from '../../shared/string/toString.js';
-import __writeFileSync from './writeFileSync.js';
-export default function __writeTmpFile(data_1) {
+import tmpDir from 'temp-dir';
+import uniqid from '../../node/string/uniqid.js';
+import toString from '../../shared/string/toString.js';
+import writeFileSync from './writeFileSync.js';
+export default function writeTmpFile(data_1) {
     return __awaiter(this, arguments, void 0, function* (data, settings = {}) {
         var _a;
         settings = Object.assign({ path: undefined }, settings);
-        let path = __path.resolve(__tmpDir, (_a = settings.path) !== null && _a !== void 0 ? _a : __uniqid() + '.tmp');
-        __writeFileSync(path, __toString(data));
+        let path = __path.resolve(tmpDir, (_a = settings.path) !== null && _a !== void 0 ? _a : uniqid() + '.tmp');
+        writeFileSync(path, toString(data));
         return path;
     });
 }

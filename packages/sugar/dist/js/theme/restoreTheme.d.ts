@@ -15,16 +15,16 @@
  *
  * @todo      tests
  *
- * @snippet         __setTheme($1)
+ * @snippet         setTheme($1)
  *
  * @example         js
- * import { __setTheme } from '@lotsof/sugar/theme';
- * __setTheme('dark');
+ * import { setTheme } from '@blackbyte/sugar/theme';
+ * setTheme('dark');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TRestoreThemeSettings = {
     cookieName: string;
 };
-export default function setTheme(defaultTheme: string, settings?: TRestoreThemeSettings): void;
+export default function restoreTheme(defaultTheme: string, settings?: TRestoreThemeSettings): void;

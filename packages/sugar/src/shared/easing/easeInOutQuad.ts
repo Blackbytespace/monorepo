@@ -11,17 +11,17 @@
  * @param 		{Number} 		t 		The current time
  * @return 		{Number} 				The value depending on time
  *
- * @snippet         __easeInOutQuad($1)
+ * @snippet         easeInOutQuad($1)
  *
  * @example         js
- * import { __easeInOutQuad } from '@blackbyte/sugar/easing';
- * __easeInOutQuad(0.4);
+ * import { easeInOutQuad } from '@blackbyte/sugar/easing';
+ * easeInOutQuad(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __easeInOutQuad(t: number): number {
+export default function easeInOutQuad(t: number): number {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }

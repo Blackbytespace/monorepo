@@ -1,5 +1,5 @@
 // @ts-nocheck
-import __parseHsla from './parseHsla.js';
+import parseHsla from './parseHsla.js';
 /**
  * @name              hslaToHexa
  * @namespace         shared.color
@@ -18,15 +18,15 @@ import __parseHsla from './parseHsla.js';
  *
  * @todo      tests
  *
- * @snippet         __hslaToHexa($1)
+ * @snippet         hslaToHexa($1)
  *
  * @example         js
- * import { __hslaToHexa } from '@lotsof/sugar/color';
- * __hslaToHexa(10,20,30,1);
+ * import { hslaToHexa } from '@blackbyte/sugar/color';
+ * hslaToHexa(10,20,30,1);
  *
  * @see         https://www.npmjs.com/package/colors-convert
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function HSLAToHexA(h, s, l, a) {
     s /= 100;
@@ -77,13 +77,13 @@ function HSLAToHexA(h, s, l, a) {
         a = '0' + a;
     return '#' + r + g + b + a;
 }
-export default function __hslaToHexa(h, s, l, a = 1) {
+export default function hslaToHexa(h, s, l, a = 1) {
     // string support
     if (typeof h === 'string') {
         if (!h.match(/^hsla?\(/)) {
             throw new Error('<red>[hslaToRgba]</red> When passing a string to the first parameter, it MUST be formatted like: hsla?(.*)');
         }
-        h = __parseHsla(h);
+        h = parseHsla(h);
     }
     // object support
     if (typeof h === 'object') {

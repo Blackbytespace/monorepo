@@ -12,15 +12,15 @@
  *
  * @todo            tests
  *
- * @snippet         __urlFromString($1)
+ * @snippet         urlFromString($1)
  *
  * @example             js
- * import { __urlFromString } from '@lotsof/sugar/url';
- * __urlFromString('Sir James Paul McCartney MBE is an English singer-songwriter');
+ * import { urlFromString } from '@blackbyte/sugar/url';
+ * urlFromString('Sir James Paul McCartney MBE is an English singer-songwriter');
  * // sir-james-paul-mc-cartney-mbe-is-an-english-singer-songwriter
  *
  * @see             https://www.npmjs.com/package/url-slug
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function urlFromString(string: string): string;

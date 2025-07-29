@@ -14,11 +14,11 @@ import * as __fs from 'fs';
  *
  * @todo      tests
  *
- * @snippet         __isFile($1);
+ * @snippet         isFile($1);
  *
  * @example     js
- * import { __isFile } from '@blackbyte/sugar/is';
- * __isFile('something/cool');
+ * import { isFile } from '@blackbyte/sugar/is';
+ * isFile('something/cool');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -28,7 +28,7 @@ export type TIsFileSettings = {
   symlink?: boolean;
 };
 
-export default function __isFile(path: string, settings: TIsFileSettings = {}) {
+export default function isFile(path: string, settings: TIsFileSettings = {}) {
   settings = {
     symlink: true,
     ...settings,

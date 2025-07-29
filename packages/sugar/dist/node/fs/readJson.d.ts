@@ -11,14 +11,14 @@
  * @param       {String}           path            The json file path to read
  * @return      {Object}                            The readed json
  *
- * @snippet         __readJson($1)
- * await __readJson($1)
+ * @snippet         readJson($1)
+ * await readJson($1)
  *
  * @example         js
- * import { __readJson } from '@lotsof/sugar/fs';
- * await __readJson('my-cool-json/file.json');
+ * import { readJson } from '@blackbyte/sugar/fs';
+ * await readJson('my-cool-json/file.json');
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readJson(path: string): Promise<any>;
+export default function readJson(path: string): Promise<any>;

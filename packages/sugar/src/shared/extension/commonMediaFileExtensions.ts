@@ -1,10 +1,8 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
-
-import __commonAudioFileExtensions from './commonAudioFileExtensions.js';
-import __commonImageFileExtensions from './commonImageFileExtensions.js';
-import __commonVideoFileExtensions from './commonVideoFileExtensions.js';
-
-import __unique from '../array/unique.js';
+import unique from '../array/unique.js';
+import commonAudioFileExtensions from './commonAudioFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
+import commonImageFileExtensions from './commonImageFileExtensions.js';
+import commonVideoFileExtensions from './commonVideoFileExtensions.js';
 
 /**
  * @name            commonMediaFileExtensions
@@ -16,8 +14,12 @@ import __unique from '../array/unique.js';
  *
  * This function allows you to get an array of common media file extensions with or without the dot
  *
- * @param       {Boolean}           withDot          If true, the dot will be added to the extension
- * @return     {Array<String>}                           The array of extensions
+ * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
+ * @return      {Array<String>}                           The array of extensions
+ *
+ * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
+ * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
+ * @setting     {boolean}         [extended=false]    If true, the extended formats will be included *
  *
  * @snippet         __commonMediaFileExtensions()
  *
@@ -29,17 +31,18 @@ import __unique from '../array/unique.js';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __commonMediaFileExtensions(
-  settings: Partial<ICommonFileExtensionsSettings> = {},
+  settings: Partial<TCommonFileExtensionsSettings> = {},
 ): string[] {
-  const finalSettings: ICommonFileExtensionsSettings = {
+  const finalSettings: TCommonFileExtensionsSettings = {
     dot: false,
     exclude: [],
+    extended: false,
     ...settings,
   };
-  return __unique([
-    ...__commonImageFileExtensions(finalSettings),
-    ...__commonVideoFileExtensions(finalSettings),
-    ...__commonAudioFileExtensions(finalSettings),
+  return unique([
+    ...commonImageFileExtensions(finalSettings),
+    ...commonVideoFileExtensions(finalSettings),
+    ...commonAudioFileExtensions(finalSettings),
   ])
     .filter((ext) => !finalSettings.exclude.includes(ext))
     .map((ext) => (finalSettings.dot ? `.${ext}` : ext));

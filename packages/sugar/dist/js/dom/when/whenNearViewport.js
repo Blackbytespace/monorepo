@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import __closestScrollableElement from '../query/closestScrollableElement.js';
-export default function __whenNearViewport(elm, settings) {
+export default function whenNearViewport(elm, settings) {
     function getRootMargin() {
         return [
             `${Math.round(window.innerHeight * 0.5)}px`,

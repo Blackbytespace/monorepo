@@ -1,4 +1,4 @@
-import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
+import { type TCommonFileExtensionsSettings } from './commonFileExtensions.js';
 /**
  * @name            commonEmailFileExtensions
  * @namespace       shared.extension
@@ -8,17 +8,22 @@ import { ICommonFileExtensionsSettings } from './commonFileExtensions.js';
  * @status          stable
  *
  * This function allows you to get an array of common text file extensions with or without the dot
+ * Common formats includes: eml, msg, pst, ost, oft, vcf, mbox, emlx, dbx.
+ * Extended formats includes: email, emix, mbx, tbb, wab, contact, group, p7m, p7s, smime, winmail.dat, tnef, vcs, vcard, ldif, nws, fol, pmm, pmr, pmi, mmf, msf, snm, bms, ims, mbg, arc, pab, oab, nk2, pip.
  *
- * @param       {Boolean}           withDot          If true, the dot will be added to the extension
- * @return     {Array<String>}                           The array of extensions
+ * @param       {TCommonFileExtensionsSettings}           [settings={}]         Settings to customize the function behavior
+ * @return      {Array<String>}                           The array of extensions
  *
+ * @setting     {boolean}         [dot=false]         If true, the dot will be added to the extension
+ * @setting     {Array<String>}   [exclude=[]]        An array of extensions to exclude
+ * @setting     {boolean}         [extended=false]    If true, the extended formats will be included * *
  * @snippet         __commonEmailFileExtensions()
  *
  * @example         js
- * import { __commonEmailFileExtensions } from '@lotsof/sugar/extension';
+ * import { __commonEmailFileExtensions } from '@blackbyte/sugar/extension';
  * const extensions = __commonEmailFileExtensions();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __commonEmailFileExtensions(settings?: Partial<ICommonFileExtensionsSettings>): string[];
+export default function __commonEmailFileExtensions(settings?: Partial<TCommonFileExtensionsSettings>): string[];

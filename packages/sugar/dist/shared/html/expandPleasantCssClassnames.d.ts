@@ -12,13 +12,13 @@
  * @param     {String}          html          The HTML to process. It can be actually any string values like .vue file, etc...
  * @return    {String}                      The processed string with converted classnames
  *
- * @snippet         __expandPleasantCssClassnames($1)
+ * @snippet         expandPleasantCssClassnames($1)
  *
  * @example         js
- * import { __expandPleasantCssClassnames } from '@lotsof/sugar/html';
- * __expandPleasantCssClassnames('...');
+ * import { expandPleasantCssClassnames } from '@blackbyte/sugar/html';
+ * expandPleasantCssClassnames('...');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __expandPleasantCssClassnames(html: string): string;
+export default function expandPleasantCssClassnames(html: string): string;

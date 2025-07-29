@@ -11,11 +11,11 @@
  *
  * @todo      tests
  *
- * @snippet         __autoResize($1)
+ * @snippet         autoResize($1)
  *
  * @example 	js
- * import { __autoResize } from '@blackbyte/sugar/dom';
- * __autoResize($textarea);
+ * import { autoResize } from '@blackbyte/sugar/dom';
+ * autoResize($textarea);
  *
  * @see             https://stackoverflow.com/a/56416714
  * @since           1.0.0

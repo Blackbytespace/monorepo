@@ -16,16 +16,16 @@
  * @setting         {String}        [cwd=process.cwd()]       The current working directory to search in
  * @setting         {Boolean}         [SFile=true]          Return an SFile instance if true, otherwise just a simple path string
  *
- * @snippet         __pickOneSync([$1])
+ * @snippet         pickOneSync([$1])
  *
  * @example         js
- * import { __pickOneSync } from '@lotsof/sugar/fs';
- * __pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
+ * import { pickOneSync } from '@blackbyte/sugar/fs';
+ * pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TPickOneSyncSettings = {
     cwd: string;
 };
-export default function __pickOneSync(filesNames: string[], settings?: Partial<TPickOneSyncSettings>): string;
+export default function pickOneSync(filesNames: string[], settings?: Partial<TPickOneSyncSettings>): string;

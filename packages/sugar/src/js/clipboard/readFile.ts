@@ -15,13 +15,13 @@
  * @snippet         __readFile($1)
  *
  * @example         js
- * import { __readFile } from '@blackbyte/sugar/clipboard';
- * await __readFile();
+ * import { readFile } from '@blackbyte/sugar/clipboard';
+ * await readFile();
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default async function __readText(): Promise<any> {
+export default async function readText(): Promise<any> {
   if (navigator?.clipboard?.read) {
     return navigator.clipboard.read();
   }

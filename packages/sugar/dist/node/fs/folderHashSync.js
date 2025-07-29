@@ -1,12 +1,12 @@
 import __isDirectory from '../is/isDirectory.js';
 import __fileHashSync from './fileHashSync.js';
-import * as __fs from 'fs';
-import __sha256 from '../../shared/crypto/sha256.js';
-export default function __folderHashSync(folderPath, settings = {}) {
+import * as fs from 'fs';
+import sha256 from '../../shared/crypto/sha256.js';
+export default function folderHashSync(folderPath, settings = {}) {
     const finalSettings = Object.assign({ recursive: true, algo: 'sha256', encoding: 'base64' }, (settings !== null && settings !== void 0 ? settings : {}));
     const paths = [];
     function readDir(dir) {
-        const files = __fs.readdirSync(dir);
+        const files = fs.readdirSync(dir);
         files.forEach((filePath) => {
             if (finalSettings.recursive && __isDirectory(`${dir}/${filePath}`)) {
                 return readDir(`${dir}/${filePath}`);
@@ -24,6 +24,6 @@ export default function __folderHashSync(folderPath, settings = {}) {
             encoding: finalSettings.encoding,
         }));
     });
-    return __sha256.encrypt(filesHashes.join('-'));
+    return sha256.encrypt(filesHashes.join('-'));
 }
 //# sourceMappingURL=folderHashSync.js.map

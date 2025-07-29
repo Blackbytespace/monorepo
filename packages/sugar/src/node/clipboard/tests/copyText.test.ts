@@ -1,12 +1,12 @@
-import { __wait } from '@blackbyte/sugar/datetime';
-import __copyText from '../copyText';
-import __readText from '../readText';
+import { wait } from '@blackbyte/sugar/datetime';
+import copyText from '../copyText';
+import readText from '../readText';
 
-describe('__copyText', () => {
+describe('copyText', () => {
   it('should copy the text and get it back correctly', async () => {
     const text = 'Hello world';
-    __copyText(text);
-    await __wait(); // Wait for the clipboard to update
-    expect(__readText()).toBe(text);
+    copyText(text);
+    await wait(); // Wait for the clipboard to update
+    expect(readText()).toBe(text);
   });
 });

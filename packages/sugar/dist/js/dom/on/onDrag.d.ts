@@ -14,21 +14,21 @@
  *
  * @setting     {Number}      [maxSpeed=0.01]       The maximum speed
  *
- * @snippet         __onDrag($1, $2)
- * __onDrag($1, drag => {
+ * @snippet         onDrag($1, $2)
+ * onDrag($1, drag => {
  *     $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __onDrag } from '@lotsof/sugar/dom'
- * __onDrag($myElement, (drag) => {
+ * import { onDrag } from '@blackbyte/sugar/dom'
+ * onDrag($myElement, (drag) => {
  *    // do something...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TOnDragTrackItem = {
     x: number;
@@ -41,4 +41,4 @@ export type TOnDragTrackItem = {
 export type TOnDragSettings = {
     maxSpeed: number;
 };
-export default function __onDrag($elm: HTMLElement, cb: Function, settings?: Partial<TOnDragSettings>): void;
+export default function onDrag($elm: HTMLElement, cb: Function, settings?: Partial<TOnDragSettings>): void;

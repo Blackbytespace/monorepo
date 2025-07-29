@@ -1,7 +1,7 @@
-import __isInViewport from '../../is/isInViewport.js';
-import __isVisible from '../../is/isVisible.js';
-import __closestNotVisible from './closestNotVisibleElement.js';
-export default function __querySelectorAll(selector, settings = {}) {
+import isInViewport from '../../is/isInViewport.js';
+import isVisible from '../../is/isVisible.js';
+import closestNotVisible from './closestNotVisibleElement.js';
+export default function querySelectorAll(selector, settings = {}) {
     // extend settings
     const finalSettings = Object.assign({ visible: null, inViewport: null, rootNode: document.body }, settings);
     // results array
@@ -12,19 +12,19 @@ export default function __querySelectorAll(selector, settings = {}) {
     [].forEach.call(elms, ($elm) => {
         // check settings
         if (settings.visible === false) {
-            if (__isVisible($elm) || __closestNotVisible($elm))
+            if (isVisible($elm) || closestNotVisible($elm))
                 return;
         }
         else if (settings.visible === true) {
-            if (!__isVisible($elm) || !__closestNotVisible($elm))
+            if (!isVisible($elm) || !closestNotVisible($elm))
                 return;
         }
         if (settings.inViewport === false) {
-            if (__isInViewport($elm))
+            if (isInViewport($elm))
                 return;
         }
         else if (settings.inViewport === true) {
-            if (!__isInViewport($elm))
+            if (!isInViewport($elm))
                 return;
         }
         // add the element to the result array

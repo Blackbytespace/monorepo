@@ -8,14 +8,14 @@ import type { TWhenOutOfViewportSettings } from '../when/whenOutOfViewport.js';
 import type { IWhenStyleSheetsReadySettings } from '../when/whenStylesheetsReady.js';
 import type { TWhenVisibleSettings } from '../when/whenVisible.js';
 
-import __whenAnimationEnd from '../when/whenAnimationEnd.js';
-import __whenEntersViewport from '../when/whenEntersViewport.js';
-import __whenInteract from '../when/whenInteract.js';
-import __whenInViewport from '../when/whenInViewport.js';
-import __whenNearViewport from '../when/whenNearViewport.js';
-import __whenOutOfViewport from '../when/whenOutOfViewport.js';
-import __whenStylesheetsReady from '../when/whenStylesheetsReady.js';
-import __whenVisible from '../when/whenVisible.js';
+import whenAnimationEnd from '../when/whenAnimationEnd.js';
+import whenEntersViewport from '../when/whenEntersViewport.js';
+import whenInteract from '../when/whenInteract.js';
+import whenInViewport from '../when/whenInViewport.js';
+import whenNearViewport from '../when/whenNearViewport.js';
+import whenOutOfViewport from '../when/whenOutOfViewport.js';
+import whenStylesheetsReady from '../when/whenStylesheetsReady.js';
+import whenVisible from '../when/whenVisible.js';
 
 /**
  * @name            when
@@ -40,16 +40,16 @@ import __whenVisible from '../when/whenVisible.js';
  * @setting         {Partial<TWhenVisibleSettings>}      [whenVisible={}]         Some settings for the whenVisible function
  * @setting         {Partial<IWhenStyleSheetsReadySettings>}      [whenStylesheetsReady={}]         Some settings for the whenStylesheetsReady function
  *
- * @snippet         __when($1, $2, $3)
- * __when($1, $2).then(() => {
+ * @snippet         when($1, $2, $3)
+ * when($1, $2).then(() => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example         js
- * import { __when } from '@blackbyte/sugar/dom';
- * __when($elm, 'inViewport', {
+ * import { when } from '@blackbyte/sugar/dom';
+ * when($elm, 'inViewport', {
  *    whenInViewport: {
  *       offset: 50
  *    }
@@ -98,7 +98,7 @@ export const WhenTriggers = [
   'animationEnd',
 ];
 
-export default function __when(
+export default function when(
   $elm: HTMLElement,
   trigger: TWhenTrigger[],
   settings?: TwhenSettings,
@@ -135,42 +135,40 @@ export default function __when(
 
       switch (t) {
         case 'inViewport':
-          promises.push(__whenInViewport($elm, finalSettings.whenInViewport));
+          promises.push(whenInViewport($elm, finalSettings.whenInViewport));
           break;
         case 'nearViewport':
-          promises.push(
-            __whenNearViewport($elm, finalSettings.whenNearViewport),
-          );
+          promises.push(whenNearViewport($elm, finalSettings.whenNearViewport));
           break;
         case 'entersViewport':
           promises.push(
-            __whenEntersViewport($elm, finalSettings.whenEntersViewport),
+            whenEntersViewport($elm, finalSettings.whenEntersViewport),
           );
           break;
         case 'outOfViewport':
           promises.push(
-            __whenOutOfViewport($elm, finalSettings.whenOutOfViewport),
+            whenOutOfViewport($elm, finalSettings.whenOutOfViewport),
           );
           break;
         case 'interact':
-          promises.push(__whenInteract($elm, finalSettings.whenInteract));
+          promises.push(whenInteract($elm, finalSettings.whenInteract));
           break;
         case 'visible':
           promises.push(
-            __whenVisible($elm, {
+            whenVisible($elm, {
               whenVisible: finalSettings.whenVisible,
               once: true,
             }),
           );
           break;
         case 'domReady':
-          promises.push(__whenDomReady());
+          promises.push(whenDomReady());
           break;
         case 'stylesheetsReady':
-          promises.push(__whenStylesheetsReady($elm ? [$elm] : null));
+          promises.push(whenStylesheetsReady($elm ? [$elm] : null));
           break;
         case 'animationEnd':
-          promises.push(__whenAnimationEnd($elm));
+          promises.push(whenAnimationEnd($elm));
           break;
       }
     });

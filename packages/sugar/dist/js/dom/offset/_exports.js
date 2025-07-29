@@ -1,4 +1,4 @@
-import __offsetFromParent from './offsetFromParent.js';
-import __offsetFromViewport from './offsetFromViewport.js';
-export { __offsetFromParent, __offsetFromViewport };
+import offsetFromParent from './offsetFromParent.js';
+import offsetFromViewport from './offsetFromViewport.js';
+export { offsetFromParent as __offsetFromParent, offsetFromViewport as __offsetFromViewport, offsetFromParent, offsetFromViewport, };
 //# sourceMappingURL=_exports.js.map

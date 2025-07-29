@@ -19,11 +19,11 @@
  *
  * @todo        tests
  *
- * @snippet         __stripCssComments($1)
+ * @snippet         stripCssComments($1)
  *
  * @example       js
- * import { __stripCssComments } from '@lotsof/sugar/css';
- * __stripCssComments(`
+ * import { stripCssComments } from '@blackbyte/sugar/css';
+ * stripCssComments(`
  * // something cool
  * body { background-color: red; }
  * `);
@@ -31,7 +31,7 @@
  *
  * @see         https://www.npmjs.com/package/strip-css-comments
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TStripCssCommentsSettings = {
     block: boolean;

@@ -1,4 +1,4 @@
-export default function __simplify(string, settings = {}) {
+export default function simplify(string, settings = {}) {
     settings = Object.assign({ specialChars: true, lowerCase: true, dashSpace: true, trim: true }, settings);
     if (string == null)
         return '';

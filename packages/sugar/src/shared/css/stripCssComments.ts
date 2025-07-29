@@ -21,11 +21,11 @@ import __stripCssComments from 'strip-css-comments';
  *
  * @todo        tests
  *
- * @snippet         __stripCssComments($1)
+ * @snippet         stripCssComments($1)
  *
  * @example       js
- * import { __stripCssComments } from '@blackbyte/sugar/css';
- * __stripCssComments(`
+ * import { stripCssComments } from '@blackbyte/sugar/css';
+ * stripCssComments(`
  * // something cool
  * body { background-color: red; }
  * `);

@@ -14,13 +14,13 @@
  *
  * @todo      tests
  *
- * @snippet         __gravatarUrl($1)
+ * @snippet         gravatarUrl($1)
  *
  * @example       js
- * import { __gravatarUrl } from '@lotsof/sugar/url';
- * __gravatarUrl('olivier.bossel@gmail.com'); // https://www.gravatar.com/avatar/b5df60055b6287bb7c90c0078ce20a5f
+ * import { gravatarUrl } from '@blackbyte/sugar/url';
+ * gravatarUrl('olivier.bossel@gmail.com'); // https://www.gravatar.com/avatar/b5df60055b6287bb7c90c0078ce20a5f
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __gravatarUrl(email: string, size?: number): string;
+export default function gravatarUrl(email: string, size?: number): string;

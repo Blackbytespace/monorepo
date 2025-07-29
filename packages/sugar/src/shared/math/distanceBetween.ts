@@ -1,5 +1,5 @@
 /**
- * @name 		        distanceBetween
+ * @name 		            distanceBetween
  * @namespace           shared.math
  * @type                Function
  * @platform            js
@@ -14,16 +14,16 @@
  *
  * @todo      tests
  *
- * @snippet         __distanceBetween($1, $2)
- * __distanceBeetween({
+ * @snippet         distanceBetween($1, $2)
+ * distanceBetween({
  *      x: $1, y: $2
  * }, {
  *      x: $3, y: $4
  * })
  *
  * @example    js
- * import { __distanceBetween } from '@blackbyte/sugar/geom'
- * __distanceBetween({
+ * import { distanceBetween } from '@blackbyte/sugar/geom'
+ * distanceBetween({
  * 	x: 10, y: 20
  * }, {
  * 	x: 10, y: 30
@@ -38,7 +38,7 @@ export type TDistanceBetweenPoint = {
   y: number;
 };
 
-export default function __distanceBetween(
+export default function distanceBetween(
   point1: TDistanceBetweenPoint,
   point2: TDistanceBetweenPoint,
 ): number {

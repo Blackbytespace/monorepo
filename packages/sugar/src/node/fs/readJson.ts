@@ -1,5 +1,5 @@
-import * as __fs from 'fs';
-import __readJsonSync from './readJsonSync.js';
+import * as fs from 'fs';
+import readJsonSync from './readJsonSync.js';
 
 /**
  * @name            readJson
@@ -14,24 +14,24 @@ import __readJsonSync from './readJsonSync.js';
  * @param       {String}           path            The json file path to read
  * @return      {Object}                            The readed json
  *
- * @snippet         __readJson($1)
- * await __readJson($1)
+ * @snippet         readJson($1)
+ * await readJson($1)
  *
  * @example         js
- * import { __readJson } from '@blackbyte/sugar/fs';
- * await __readJson('my-cool-json/file.json');
+ * import { readJson } from '@blackbyte/sugar/fs';
+ * await readJson('my-cool-json/file.json');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readJson(path: string): Promise<any> {
-  if (!__fs.existsSync(path)) {
+export default function readJson(path: string): Promise<any> {
+  if (!fs.existsSync(path)) {
     throw new Error(
       `<red>[readJson]</red> Sorry but the passed file path "<cyan>${path}</cyan>" does not exists...`,
     );
   }
   return new Promise(async (resolve, reject) => {
-    const json = __readJsonSync(path);
+    const json = readJsonSync(path);
     resolve(json);
   });
 }

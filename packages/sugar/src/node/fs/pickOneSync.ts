@@ -1,5 +1,5 @@
-import * as __fs from 'fs';
-import __micromatch from 'micromatch';
+import * as fs from 'fs';
+import micromatch from 'micromatch';
 
 /**
  * @name            pickOneSync
@@ -19,11 +19,11 @@ import __micromatch from 'micromatch';
  * @setting         {String}        [cwd=process.cwd()]       The current working directory to search in
  * @setting         {Boolean}         [SFile=true]          Return an SFile instance if true, otherwise just a simple path string
  *
- * @snippet         __pickOneSync([$1])
+ * @snippet         pickOneSync([$1])
  *
  * @example         js
- * import { __pickOneSync } from '@blackbyte/sugar/fs';
- * __pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
+ * import { pickOneSync } from '@blackbyte/sugar/fs';
+ * pickOneSync(['myCoolFile.json', 'myCoolFile2.json'], {});
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -33,7 +33,7 @@ export type TPickOneSyncSettings = {
   cwd: string;
 };
 
-export default function __pickOneSync(
+export default function pickOneSync(
   filesNames: string[],
   settings?: Partial<TPickOneSyncSettings>,
 ): string {
@@ -43,9 +43,9 @@ export default function __pickOneSync(
   };
   let result: string = '';
   // check if we have a file
-  const files = __fs.readdirSync(finalSettings.cwd);
+  const files = fs.readdirSync(finalSettings.cwd);
   for (const fileName of files) {
-    if (__micromatch.isMatch(fileName, filesNames)) {
+    if (micromatch.isMatch(fileName, filesNames)) {
       result = `${finalSettings.cwd}/${fileName}`;
       break;
     }

@@ -19,16 +19,16 @@ import __closestScrollableElement from '../query/closestScrollableElement.js';
  *
  * @setting         {String}            [offset=`${window.innerHeight}px ${window.innerWidth}px`]           Some offset
  *
- * @snippet         __whenNearViewport($1)
- * __whenNearViewport($1).then(\$elm => {
+ * @snippet         whenNearViewport($1)
+ * whenNearViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenNearViewport } from '@blackbyte/sugar/dom'
- * __whenNearViewport(myCoolHTMLElement).then($elm => {
+ * import { whenNearViewport } from '@blackbyte/sugar/dom'
+ * whenNearViewport(myCoolHTMLElement).then($elm => {
  * 		// do something with your element that has entered the viewport...
  * });
  *
@@ -40,7 +40,7 @@ export type TWhenNearViewportSettings = {
   offset: string | number | undefined;
 };
 
-export default function __whenNearViewport(
+export default function whenNearViewport(
   elm: HTMLElement,
   settings?: Partial<TWhenNearViewportSettings>,
 ): Promise<HTMLElement> {

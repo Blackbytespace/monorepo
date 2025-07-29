@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isIsoTime($1)
+ * @snippet         isIsoTime($1)
  *
  * @example 	js
- * import { __isIsoTime } from '@lotsof/sugar/is';
- * __isIsoTime('john.doe@gmail.com') => false
- * __isIsoTime('plop@yop.com') => false
- * __isIsoTime('hello') => false
- * __isIsoTime('17:21') => true
+ * import { isIsoTime } from '@blackbyte/sugar/is';
+ * isIsoTime('john.doe@gmail.com') => false
+ * isIsoTime('plop@yop.com') => false
+ * isIsoTime('hello') => false
+ * isIsoTime('17:21') => true
  *
  * @see             https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isIsoTime(value: string): boolean;
+export default function isIsoTime(value: string): boolean;

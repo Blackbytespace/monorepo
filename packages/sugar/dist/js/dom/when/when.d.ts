@@ -28,16 +28,16 @@ import type { TWhenVisibleSettings } from '../when/whenVisible.js';
  * @setting         {Partial<TWhenVisibleSettings>}      [whenVisible={}]         Some settings for the whenVisible function
  * @setting         {Partial<IWhenStyleSheetsReadySettings>}      [whenStylesheetsReady={}]         Some settings for the whenStylesheetsReady function
  *
- * @snippet         __when($1, $2, $3)
- * __when($1, $2).then(() => {
+ * @snippet         when($1, $2, $3)
+ * when($1, $2).then(() => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example         js
- * import { __when } from '@lotsof/sugar/dom';
- * __when($elm, 'inViewport', {
+ * import { when } from '@blackbyte/sugar/dom';
+ * when($elm, 'inViewport', {
  *    whenInViewport: {
  *       offset: 50
  *    }
@@ -46,7 +46,7 @@ import type { TWhenVisibleSettings } from '../when/whenVisible.js';
  * });
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TwhenSettings = {
     whenInViewport?: TWhenInViewportSettings;
@@ -59,4 +59,4 @@ export type TwhenSettings = {
 };
 export type TWhenTrigger<string> = ('direct' | 'directly' | 'inViewport' | 'nearViewport' | 'enterViewport' | 'outOfViewport' | 'interact' | 'visible' | 'domReady' | 'stylesheetsReady' | 'animationEnd')[];
 export declare const WhenTriggers: string[];
-export default function __when($elm: HTMLElement, trigger: TWhenTrigger[], settings?: TwhenSettings): Promise<any>;
+export default function when($elm: HTMLElement, trigger: TWhenTrigger[], settings?: TwhenSettings): Promise<any>;

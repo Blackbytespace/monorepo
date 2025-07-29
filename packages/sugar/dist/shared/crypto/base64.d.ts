@@ -7,14 +7,14 @@
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the base64 algorithm
  *
- * @snippet         __base64.encrypt($1)
+ * @snippet         base64.encrypt($1)
  *
  * @example         js
- * import { __base64 } from '@lotsof/sugar/crypto';
- * __base64.encrypt('hello world');
+ * import { base64 } from '@blackbyte/sugar/crypto';
+ * base64.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 declare const _default: {
     /**
@@ -27,7 +27,7 @@ declare const _default: {
      * @return      {String}                       The encrypted message
      *
      * @since       1.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     encrypt: (message: any) => any;
     /**
@@ -40,7 +40,7 @@ declare const _default: {
      * @return      {String}                      The decrypted message
      *
      * @since         1.0.0
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     decrypt: (message: any) => any;
 };

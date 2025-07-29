@@ -1,4 +1,4 @@
-export default function __onScrollEnd($elm, callback, settings) {
+export default function onScrollEnd($elm, callback, settings) {
     const finalSettings = Object.assign({ offset: 20, once: false, times: -1 }, (settings !== null && settings !== void 0 ? settings : {}));
     let isBody = false;
     let $scrollListenedElm = $elm;

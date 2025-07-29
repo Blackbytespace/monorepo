@@ -19,8 +19,8 @@
  *
  * @setting       {Number}              [threshold=100]       The swipe threshold
  *
- * @snippet         __onSwipe($1, $2)
- * __onSwipe($1, swipe => {
+ * @snippet         onSwipe($1, $2)
+ * onSwipe($1, swipe => {
  *      $2
  * });
  *
@@ -28,8 +28,8 @@
  * @todo      tests
  *
  * @example 	js
- * import { __onSwipe } from '@blackbyte/sugar/dom'
- * __onSwipe(myCoolElm, (swipe) => {
+ * import { onSwipe } from '@blackbyte/sugar/dom'
+ * onSwipe(myCoolElm, (swipe) => {
  * 	// check the swipe direction
  * 	if (swipe.left) {
  * 		// do something...
@@ -58,7 +58,7 @@ export type TOnSwipeResult = {
   down: boolean;
 };
 
-export default function __onSwipe(
+export default function onSwipe(
   elm: HTMLElement,
   cb: Function,
   settings: Partial<TOnSwipeSettings> = {},

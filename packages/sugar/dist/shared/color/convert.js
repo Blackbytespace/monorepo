@@ -1,7 +1,7 @@
-import __hslaToRgba from './hslaToRgba.js';
-import __parseColor from './parseColor.js';
-import __rgbaToHex from './rgbaToHex.js';
-import __rgbaToHsla from './rgbaToHsla.js';
+import hslaToRgba from './hslaToRgba.js';
+import parseColor from './parseColor.js';
+import rgbaToHex from './rgbaToHex.js';
+import rgbaToHsla from './rgbaToHsla.js';
 /**
  * @name                    convert
  * @namespace               shared.color
@@ -19,21 +19,21 @@ import __rgbaToHsla from './rgbaToHsla.js';
  *
  * @todo      tests
  *
- * @snippet         __convert($1, $2)
+ * @snippet         convert($1, $2)
  *
  * @example         js
- * import { __convert } from '@lotsof/sugar/color';
- * __convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
+ * import { convert } from '@blackbyte/sugar/color';
+ * convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __convert(input, format = 'rgba') {
+export default function convert(input, format = 'rgba') {
     // transforming the input into rgba object
     let rgbaObj = {};
     if (typeof input === 'string') {
         // @ts-ignore
-        rgbaObj = __parseColor(input, 'rgba');
+        rgbaObj = parseColor(input, 'rgba');
     }
     else if (typeof input === 'object') {
         if (input.r !== undefined &&
@@ -44,10 +44,10 @@ export default function __convert(input, format = 'rgba') {
         else if (input.h !== undefined &&
             input.s !== undefined &&
             input.l !== undefined) {
-            rgbaObj = __hslaToRgba(input.h, input.s, input.l);
+            rgbaObj = hslaToRgba(input.h, input.s, input.l);
         }
     }
-    const hslaObj = __rgbaToHsla(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
+    const hslaObj = rgbaToHsla(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
     switch (format) {
         case 'rgb':
             return {
@@ -75,7 +75,7 @@ export default function __convert(input, format = 'rgba') {
             return `hsla(${hslaObj.h},${hslaObj.s},${hslaObj.l},${hslaObj.a})`;
         case 'hex':
         case 'hexString':
-            return __rgbaToHex(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
+            return rgbaToHex(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
     }
     throw new Error(`The requested "${format}" color format is not supported for now...`);
 }

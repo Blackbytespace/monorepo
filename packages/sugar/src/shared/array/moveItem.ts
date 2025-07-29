@@ -13,16 +13,16 @@
  * @param    {any|integer}      to          Either the element itself where you want to move the first one, or the index of the element you want to move your element to
  * @return    {Array}    The processed array
  *
- * @snippet         __moveItem($1, $2, $3)
+ * @snippet         moveItem($1, $2, $3)
  *
  * @example    js
- * import { __moveItem } from '@blackbyte/sugar/array';
+ * import { moveItem } from '@blackbyte/sugar/array';
  * const myArray = ['hello','world','something'];
- * __moveItem(myArray, 0, 1); // ['world','hello','something']
+ * moveItem(myArray, 0, 1); // ['world','hello','something']
  *
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __moveItem(
+export default function moveItem(
   arr: any[],
   from: any | number,
   to: any | number,

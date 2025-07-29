@@ -17,16 +17,16 @@
  *
  * @todo      tests
  *
- * @snippet         __writeTmpFileSync($1, $2)
+ * @snippet         writeTmpFileSync($1, $2)
  *
  * @example       js
- * import { __writeTmpFileSync } from '@lotsof/sugar/fs';
- * const path = __writeTmpFileSync('Hello World');
+ * import { writeTmpFileSync } from '@blackbyte/sugar/fs';
+ * const path = writeTmpFileSync('Hello World');
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWriteTmpFileSyncSettings = {
     path: string;
 };
-export default function __writeTmpFileSync(data: any, settings?: Partial<TWriteTmpFileSyncSettings>): string;
+export default function writeTmpFileSync(data: any, settings?: Partial<TWriteTmpFileSyncSettings>): string;

@@ -1,7 +1,7 @@
-import __isClass from '../is/isClass.js';
+import isClass from '../is/isClass.js';
 const fn = function (cls, settings = {}) {
     const stack = {};
-    if (!__isClass(cls)) {
+    if (!isClass(cls)) {
         cls = cls.constructor;
     }
     if (settings.includeBaseClass === true) {

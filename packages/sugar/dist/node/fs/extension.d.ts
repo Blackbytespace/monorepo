@@ -12,13 +12,13 @@
  *
  * @todo        tests
  *
- * @snippet         __extension($1)
+ * @snippet         extension($1)
  *
  * @example         js
- * import { __extension } from '@lotsof/sugar/fs';
- * __extension('hello/world.jpg'); // => jpg
+ * import { extension } from '@blackbyte/sugar/fs';
+ * extension('hello/world.jpg'); // => jpg
  *
  * @since         1.0.0
- * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	        Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __extension(path: string): string;
+export default function extension(path: string): string;

@@ -1,4 +1,4 @@
-import { __pad } from '@lotsof/sugar/number';
+import { pad } from '@blackbyte/sugar/number';
 export default function convert24To12(time, settings) {
     const finalSettings = Object.assign({ keepZeroMinute: false, keepLeadingZero: false }, (settings !== null && settings !== void 0 ? settings : {}));
     if (typeof time !== 'string' || !time.match(/^[012][0-9]\:[012345][0-9]$/)) {
@@ -8,10 +8,10 @@ export default function convert24To12(time, settings) {
     let finalHours = parseInt(hours, 10);
     let finalMinutes = parseInt(minutes, 10);
     let suffix = finalHours > 12 || finalHours === 0 ? 'pm' : 'am';
-    let finalHoursStr = __pad(finalHours > 12 ? finalHours - 12 : finalHours === 0 ? 12 : finalHours, finalSettings.keepLeadingZero ? 2 : 1);
+    let finalHoursStr = pad(finalHours > 12 ? finalHours - 12 : finalHours === 0 ? 12 : finalHours, finalSettings.keepLeadingZero ? 2 : 1);
     let finalMinutesStr = finalMinutes === 0 && !finalSettings.keepZeroMinute
         ? ''
-        : `:${__pad(finalMinutes, 2)}`;
+        : `:${pad(finalMinutes, 2)}`;
     return `${finalHoursStr}${finalMinutesStr}${suffix}`;
 }
 //# sourceMappingURL=convert24To12.js.map

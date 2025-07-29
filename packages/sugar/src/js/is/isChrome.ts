@@ -12,17 +12,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isChrome()
+ * @snippet         isChrome()
  *
  * @example 	js
- * import { __isChrome } from '@blackbyte/sugar/is'
- * if ( __isChrome()) {
+ * import { isChrome } from '@blackbyte/sugar/is'
+ * if ( isChrome()) {
  *   // do something cool
  * }
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isChrome(ua: string = navigator.userAgent): boolean {
+export default function isChrome(ua: string = navigator.userAgent): boolean {
   return ua.indexOf('Chrome') > -1;
 }

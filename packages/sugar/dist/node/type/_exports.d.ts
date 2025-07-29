@@ -1,3 +1,3 @@
-import __resolveTypeString from './resolveTypeString.js';
+import resolveTypeString from './resolveTypeString.js';
 export * from '../../shared/type/_exports.js';
-export { __resolveTypeString };
+export { resolveTypeString as __resolveTypeString, resolveTypeString };

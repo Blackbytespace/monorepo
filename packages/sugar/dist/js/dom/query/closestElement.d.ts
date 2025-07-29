@@ -1,4 +1,4 @@
-import __querySelectorUp from './querySelectorUp.js';
+import querySelectorUp from './querySelectorUp.js';
 /**
  * @name                closestElement
  * @namespace           js.dom.query
@@ -12,13 +12,13 @@ import __querySelectorUp from './querySelectorUp.js';
  * @param 		{String|Function} 				selector 	A css selector to search for or a check function that will be used
  * @return 		{HTMLElement} 								The element found or null
  *
- * @snippet         __closest($1, $2)
+ * @snippet         closestElement($1, $2)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __closestElement } from '@lotsof/sugar/dom'
- * const closestElm =  __closestElement(myCoolElement, '.my-cool-class');
+ * import { closestElement } from '@blackbyte/sugar/dom'
+ * const closestElm =  closestElement(myCoolElement, '.my-cool-class');
  * if (closestElm) {
  * 		// we have found en element that matches the selector
  * }
@@ -28,6 +28,6 @@ import __querySelectorUp from './querySelectorUp.js';
  * })
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default __querySelectorUp;
+export default querySelectorUp;

@@ -1,4 +1,4 @@
-import __stripAnsi from 'strip-ansi';
+import stripAnsi from 'strip-ansi';
 
 /**
  * @name                            countLineChars
@@ -24,11 +24,11 @@ import __stripAnsi from 'strip-ansi';
  *
  * @todo      tests
  *
- * @snippet         __countLineChars($1)
+ * @snippet         countLineChars($1)
  *
  * @example         js
- * import { __countLineChars } from '@blackbyte/sugar/string';
- *  __countLineChars('Hello <red>World</red>'); // 11
+ * import { countLineChars } from '@blackbyte/sugar/string';
+ *  countLineChars('Hello <red>World</red>'); // 11
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -40,7 +40,7 @@ export type TCountLineCharsSettings = {
   newLineChars?: boolean;
 };
 
-export default function __countLineChars(
+export default function countLineChars(
   line: string,
   count: TCountLineCharsSettings = {},
 ): number {
@@ -53,7 +53,7 @@ export default function __countLineChars(
 
   let newLine = line;
   if (count.terminalSpecialChars === false) {
-    newLine = __stripAnsi(newLine);
+    newLine = stripAnsi(newLine);
   }
   if (count.htmlTags === false) {
     newLine = newLine.replace(/<\/?[a-zA-Z0-9]+\s?\/?>/g, '');

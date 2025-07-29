@@ -1,7 +1,7 @@
-import __fs from 'fs';
-import __ensureDirSync from './ensureDirSync.js';
-import __moveSync from './moveSync.js';
-import __unlinkSync from './unlinkSync.js';
+import fs from 'fs';
+import ensureDirSync from './ensureDirSync.js';
+import moveSync from './moveSync.js';
+import unlinkSync from './unlinkSync.js';
 
 /**
  * @name            renameSync
@@ -17,11 +17,11 @@ import __unlinkSync from './unlinkSync.js';
  * @param       {TRenameSyncSettings} [settings={}] The settings for the operation
  * @return      {String}                          The new path
  *
- * @snippet         __renameSync($1, $2)
+ * @snippet         renameSync($1, $2)
  *
  * @example       js
- * import { __renameSync } from '@blackbyte/sugar/fs';
- * __renameSync('my/cool/dir', 'another/place/for/directory');
+ * import { renameSync } from '@blackbyte/sugar/fs';
+ * renameSync('my/cool/dir', 'another/place/for/directory');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
@@ -33,7 +33,7 @@ export type TRenameSyncSettings = {
   dry: boolean;
 };
 
-export default function __renameSync(
+export default function renameSync(
   src: string,
   newName: string,
   settings?: Partial<TRenameSyncSettings>,
@@ -73,15 +73,15 @@ export default function __renameSync(
   if (!finalSettings.dry) {
     // if want to override and file exists,
     // remove it
-    if (finalSettings.override && __fs.existsSync(newPath)) {
-      __unlinkSync(newPath);
+    if (finalSettings.override && fs.existsSync(newPath)) {
+      unlinkSync(newPath);
     }
 
     // make sure we have the folder to write in
-    __ensureDirSync(newPath);
+    ensureDirSync(newPath);
 
     // move the file to his new destination
-    __moveSync(src, newPath);
+    moveSync(src, newPath);
   }
 
   return newPath;

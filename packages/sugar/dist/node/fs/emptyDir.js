@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 /**
  * @name                emptyDir
  * @namespace           node.fs
@@ -14,20 +14,20 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet             __emptyDir($1)
- * await __emptyDir($1)
+ * @snippet             emptyDir($1)
+ * await emptyDir($1)
  *
  * @example       js
- * import { __emptyDir } from '@lotsof/sugar/fs';
- * await __emptyDir('my/cool/directory').then(() => {
+ * import { emptyDir } from '@blackbyte/sugar/fs';
+ * await emptyDir('my/cool/directory').then(() => {
  *    // do something...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __emptyDir(dir) {
-    return __fs.emptyDir(dir);
+export default function emptyDir(dir) {
+    return fs.emptyDir(dir);
 }
 //# sourceMappingURL=emptyDir.js.map

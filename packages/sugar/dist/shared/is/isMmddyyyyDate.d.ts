@@ -14,15 +14,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isMmddyyyyDate($1)
+ * @snippet         isMmddyyyyDate($1)
  *
  * @example    js
- * import { __isMmddyyyyDate } from '@lotsof/sugar/is'
- * if (__isMmddyyyyDate('12.25.2018')) {
+ * import { isMmddyyyyDate } from '@blackbyte/sugar/is'
+ * if (isMmddyyyyDate('12.25.2018')) {
  *     // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isMmddyyyyDate(date: string): boolean;
+export default function isMmddyyyyDate(date: string): boolean;

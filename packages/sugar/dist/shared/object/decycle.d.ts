@@ -11,13 +11,13 @@
  * @param     {Object}      obj         The object to process
  * @return    {Object}                  The new object circular references free
  *
- * @snippet         __decycle($1)
+ * @snippet         decycle($1)
  *
  * @todo     tests
  *
  * @example     js
- * import { __decycle } from '@lotsof/sugar/object';
- * __decycle({
+ * import { decycle } from '@blackbyte/sugar/object';
+ * decycle({
  *    something: 'cool',
  *    with: 'circular references',
  *    //..
@@ -25,6 +25,6 @@
  *
  * @see         https://www.npmjs.com/package/json-cyclic
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function decycle(obj: any): any;

@@ -13,18 +13,18 @@
  * @param       {Number}       max             The maximum value
  * @return      {Number}                The clamped number
  *
- * @snippet         __clamp($1, $2, $3)
+ * @snippet         clamp($1, $2, $3)
  *
  * @todo      tests
  *
  * @example       js
- * import { __clamp } from '@lotsof/sugar/math';
- * __clamp(10, 0, 100); // => 10
- * __clamp(0, 0, 100); // => 0
- * __clamp(100, 0, 100); // => 100
- * __clamp(101, 0, 100); // => 100
+ * import { clamp } from '@blackbyte/sugar/math';
+ * clamp(10, 0, 100); // => 10
+ * clamp(0, 0, 100); // => 0
+ * clamp(100, 0, 100); // => 100
+ * clamp(101, 0, 100); // => 100
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __clamp(num: number, min: number, max: number): number;
+export default function clamp(num: number, min: number, max: number): number;

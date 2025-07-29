@@ -15,14 +15,14 @@
  *
  * @todo      tests
  *
- * @snippet         __getStyleProperty($1, $2)
+ * @snippet         getStyleProperty($1, $2)
  *
  * @example  	js
- * import { __getStyleProperty } from '@lotsof/sugar/dom'
- * const opacity = __getStyleProperty(myCoolHTMLElement, 'opacity');
+ * import { getStyleProperty } from '@blackbyte/sugar/dom'
+ * const opacity = getStyleProperty(myCoolHTMLElement, 'opacity');
  *
  * @see 		https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getStyleProperty(elm: HTMLElement, property: string): any;
+export default function getStyleProperty(elm: HTMLElement, property: string): any;

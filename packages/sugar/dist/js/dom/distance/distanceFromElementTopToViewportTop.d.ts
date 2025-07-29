@@ -11,13 +11,13 @@
  * @param       {HTMLElement}       elm             The element you want to get the distance from
  * @return      {Number}                            The calculated distance
  *
- * @snippet         __distanceFromElementTopToViewportTop($1)
+ * @snippet         distanceFromElementTopToViewportTop($1)
  *
  * @example         js
- * import { __distanceFromElementTopToViewportTop } from '@lotsof/sugar/dom';
- * __distanceFromElementTopToViewportTop(myElement); // => 23
+ * import { distanceFromElementTopToViewportTop } from '@blackbyte/sugar/dom';
+ * distanceFromElementTopToViewportTop(myElement); // => 23
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __distanceFromElementTopToViewportTop(elm: HTMLElement): number;
+export default function distanceFromElementTopToViewportTop(elm: HTMLElement): number;

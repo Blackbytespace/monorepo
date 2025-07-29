@@ -1,10 +1,10 @@
 /**
  * @name                    emToPx
- * @namespace            js.convert
+ * @namespace               js.convert
  * @type                    Function
- * @platform          js
- * @platform          node
- * @status        stable
+ * @platform                js
+ * @platform                node
+ * @status                  stable
  *
  * Convert rem value to a px one
  *
@@ -14,16 +14,16 @@
  *
  * @todo      tests
  *
- * @snippet         __emToPx($1)
+ * @snippet         emToPx($1)
  *
  * @example         js
- * import { __emToPx } from '@lotsof/sugar/convert';
- * __emToPx(2);
+ * import { emToPx } from '@blackbyte/sugar/convert';
+ * emToPx(2);
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __emToPx(em, $elm = document.documentElement) {
+export default function emToPx(em, $elm = document.documentElement) {
     return em * parseFloat(getComputedStyle($elm).fontSize || '16px');
 }
 //# sourceMappingURL=emToPx.js.map

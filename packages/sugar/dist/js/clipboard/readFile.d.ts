@@ -15,10 +15,10 @@
  * @snippet         __readFile($1)
  *
  * @example         js
- * import { __readFile } from '@lotsof/sugar/clipboard';
- * await __readFile();
+ * import { readFile } from '@blackbyte/sugar/clipboard';
+ * await readFile();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readText(): Promise<any>;
+export default function readText(): Promise<any>;

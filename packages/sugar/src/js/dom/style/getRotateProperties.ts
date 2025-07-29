@@ -14,11 +14,11 @@ import * as rematrix from 'rematrix';
  *
  * @todo      tests
  *
- * @snippet         __getRotateProperties($1)
+ * @snippet         getRotateProperties($1)
  *
  * @example  	js
- * import { __getRotateProperties } from '@blackbyte/sugar/dom'
- * const props = __getRotateProperties(myCoolHTMLElement);
+ * import { getRotateProperties } from '@blackbyte/sugar/dom'
+ * const props = getRotateProperties(myCoolHTMLElement);
  * // output format
  * // {
  * // 	x : 100,
@@ -29,7 +29,7 @@ import * as rematrix from 'rematrix';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getRotateProperties($elm: HTMLElement):
+export default function getRotateProperties($elm: HTMLElement):
   | {
       x: number;
       y: number;

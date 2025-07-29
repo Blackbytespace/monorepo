@@ -15,8 +15,8 @@
  * @todo        tests
  *
  * @example       js
- * import { __proxyArray } from '@lotsof/sugar/array';
- * const myArray = __proxyArray([1,2,3]);
+ * import { proxyArray } from '@blackbyte/sugar/array';
+ * const myArray = proxyArray([1,2,3]);
  * myArray.watch(['push','pop'], (watchObj) => {
  *    // check the watchObj action
  *    switch (watchObj.action) {
@@ -26,6 +26,6 @@
  *    }
  * });
  *
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __proxyArray(array: any): any;
+export default function proxyArray(array: any): any;

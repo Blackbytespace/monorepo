@@ -1,8 +1,8 @@
 import __path from 'path';
-import __tmpDir from 'temp-dir';
-import __uniqid from '../../node/string/uniqid.js';
-import __toString from '../../shared/string/toString.js';
-import __writeFileSync from './writeFileSync.js';
+import tmpDir from 'temp-dir';
+import uniqid from '../../node/string/uniqid.js';
+import toString from '../../shared/string/toString.js';
+import writeFileSync from './writeFileSync.js';
 
 /**
  * @name                writeTmpFile
@@ -23,12 +23,12 @@ import __writeFileSync from './writeFileSync.js';
  *
  * @setting         {String}            [path=null]         A path relative to the temp folder to store your file
  *
- * @snippet         __writeTmpFile($1, $2)
- * await __writeTmpFile($1, $2)
+ * @snippet         writeTmpFile($1, $2)
+ * await writeTmpFile($1, $2)
  *
  * @example       js
- * import { __writeTmpFile } from '@blackbyte/sugar/fs';
- * __writeTmpFile('Hello World').then((path) => {
+ * import { writeTmpFile } from '@blackbyte/sugar/fs';
+ * writeTmpFile('Hello World').then((path) => {
  *    // do something on complete...
  * });
  *
@@ -40,7 +40,7 @@ export type TWriteTmpFileSettings = {
   path: string;
 };
 
-export default async function __writeTmpFile(
+export default async function writeTmpFile(
   data: any,
   settings: Partial<TWriteTmpFileSettings> = {},
 ): Promise<String> {
@@ -49,7 +49,7 @@ export default async function __writeTmpFile(
     ...settings,
   };
 
-  let path = __path.resolve(__tmpDir, settings.path ?? __uniqid() + '.tmp');
-  __writeFileSync(path, __toString(data));
+  let path = __path.resolve(tmpDir, settings.path ?? uniqid() + '.tmp');
+  writeFileSync(path, toString(data));
   return path;
 }

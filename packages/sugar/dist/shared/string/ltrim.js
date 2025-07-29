@@ -15,16 +15,16 @@
  *
  * @todo      tests
  *
- * @snippet         __ltrim($1, $2)
+ * @snippet         ltrim($1, $2)
  *
  * @example    js
- * import { __ltrim } from '@lotsof/sugar/string'
- *  __ltrim('Hello World', 'Hello') // World
+ * import { ltrim } from '@blackbyte/sugar/string'
+ *  ltrim('Hello World', 'Hello') // World
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ltrim(string, needle, trimResult = true) {
+export default function ltrim(string, needle, trimResult = true) {
     if (string.substr(0, needle.length) === needle) {
         return trimResult
             ? string.substr(needle.length).trim()

@@ -11,15 +11,15 @@
  * @param 		{HTMLElement} 					$elm  		The element to start on
  * @return 		{HTMLElement|undefined} 								The element found or undefined
  *
- * @snippet         __closestScrollableElement($1)
+ * @snippet         closestScrollableElement($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __closestScrollableElement } from '@lotsof/sugar/dom';
- * __closestScrollableElement($myElement);
+ * import { closestScrollableElement } from '@blackbyte/sugar/dom';
+ * closestScrollableElement($myElement);
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __closestScrollableElement($elm: HTMLElement): HTMLElement | undefined;
+export default function closestScrollableElement($elm: HTMLElement): HTMLElement | undefined;

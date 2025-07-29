@@ -13,18 +13,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isNumber($1)
+ * @snippet         isNumber($1)
  *
  * @example 	js
- * import { __isNumber } from '@lotsof/sugar/is';
- * __isNumber(12) => true
- * __isNumber(22.3) => true
- * __isNumber('20') => false
+ * import { isNumber } from '@blackbyte/sugar/is';
+ * isNumber(12) => true
+ * isNumber(22.3) => true
+ * isNumber('20') => false
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isNumber(source) {
+export default function isNumber(source) {
     return !isNaN(parseFloat(source)) && isFinite(source);
 }
 //# sourceMappingURL=isNumber.js.map

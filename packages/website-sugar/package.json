@@ -16,6 +16,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/vue": "^5.1.0",
     "@blackbyte/icon-element": "^1.0.0-beta.1",
     "@blackbyte/sugar": "^1.0.0-beta.1",
     "@blackbyte/sugarcss": "^1.0.0-beta.1",
@@ -28,7 +29,8 @@
     "astro-compress": "^2.3.6",
     "astro-purgecss": "^5.1.0",
     "purgecss": "^7.0.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vue": "^3.5.18"
   },
   "devDependencies": {
     "vite": "^5.2.12"

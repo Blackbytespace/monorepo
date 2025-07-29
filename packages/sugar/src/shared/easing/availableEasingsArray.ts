@@ -10,18 +10,18 @@
  *
  * @return      {Array}             An array of all the easing functions available
  *
- * @snippet         __availableEasingsArray()
+ * @snippet         availableEasingsArray()
  *
  * @example         js
- * import { __availableEasingsArray } from '@blackbyte/sugar/easing';
- * __availableEasingsArray();
+ * import { availableEasingsArray } from '@blackbyte/sugar/easing';
+ * availableEasingsArray();
  *
  * @todo      tests
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __availableEasingsArray(): string[] {
+export default function availableEasingsArray(): string[] {
   return [
     'easeInOutCubic',
     'easeInOutQuad',

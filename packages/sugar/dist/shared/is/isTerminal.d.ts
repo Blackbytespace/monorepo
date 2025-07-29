@@ -10,13 +10,13 @@
  *
  * @return      {Boolean}           true if is in the terminal, false if not
  *
- * @snippet         __isTerminal($1)
+ * @snippet         isTerminal($1)
  *
  * @example         js
- * import { __isTerminal } from '@lotsof/sugar/is';
- * __isTerminal(); // => true
+ * import { isTerminal } from '@blackbyte/sugar/is';
+ * isTerminal(); // => true
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isTerminal(): boolean;
+export default function isTerminal(): boolean;

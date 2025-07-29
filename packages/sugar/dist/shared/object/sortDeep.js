@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 import __sort from './sort.js';
 /**
  * @name                                sortDeep
@@ -16,14 +16,14 @@ import __sort from './sort.js';
  *
  * @todo      tests
  *
- * @snippet         __sortDeep($1, $2)
- * __sortDeep($1, (a, b) => {
+ * @snippet         sortDeep($1, $2)
+ * sortDeep($1, (a, b) => {
  *      $2
  * })
  *
  * @example               js
- * import { __sortDeep } from '@lotsof/sugar/object';
- * __sortDeep({
+ * import { sortDeep } from '@blackbyte/sugar/object';
+ * sortDeep({
  *    lolo: { weight: 2 },
  *    coco: { weight: 10 },
  *    plop: { weight: 5 },
@@ -45,15 +45,15 @@ import __sort from './sort.js';
  * // }
  *
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __sortDeep(object, sort) {
+export default function sortDeep(object, sort) {
     // sort passed object
     const sortedObject = __sort(object, sort);
     // go deep to sort lower levels
     for (let [key, value] of Object.entries(sortedObject)) {
-        if (__isPlainObject(value)) {
-            sortedObject[key] = __sortDeep(sortedObject[key], sort);
+        if (isPlainObject(value)) {
+            sortedObject[key] = sortDeep(sortedObject[key], sort);
         }
     }
     return sortedObject;

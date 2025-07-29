@@ -11,19 +11,19 @@
  * @param 		{HTMLElement} 				$elm  		The element to check
  * @return 		{Boolean}								If the element is visible or not
  *
- * @snippet         __isVisible($1)
+ * @snippet         isVisible($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __isVisible } from '@lotsof/sugar/dom'
+ * import { isVisible } from '@blackbyte/sugar/dom'
  * if (isVisible(myCoolHTMLElement) {
  * 		// i'm visible
  * }
  *
  * @see             https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 function _isVisible(e) {
     return !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);

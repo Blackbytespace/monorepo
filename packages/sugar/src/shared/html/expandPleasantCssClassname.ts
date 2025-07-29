@@ -12,20 +12,18 @@
  * @param     {String}          classesStr          The classes string to convert like "s-typo:h1 s-font:40", etc...
  * @return    {String}                      The processed string with converted classnames
  *
- * @snippet         __expandPleasantCssClassname($1)
+ * @snippet         expandPleasantCssClassname($1)
  *
  * @todo      tests
  *
  * @example         js
- * import { __expandPleasantCssClassname } from '@blackbyte/sugar/html';
- * __expandPleasantCssClassname('...');
+ * import { expandPleasantCssClassname } from '@blackbyte/sugar/html';
+ * expandPleasantCssClassname('...');
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __expandPleasantCssClassname(
-  classesStr: string,
-): string {
+export default function expandPleasantCssClassname(classesStr: string): string {
   let classesArray: string[] = [];
 
   const classNames = classesStr.split(/\s+/);

@@ -1,5 +1,5 @@
 import __simplifySpecialChars from './simplifySpecialChars.js';
-export default function __urlCompliant(str, settings) {
+export default function urlCompliant(str, settings) {
     settings = Object.assign({ exclude: [] }, (settings !== null && settings !== void 0 ? settings : {}));
     // spaces
     str = str.replace(/\s/gm, '-');

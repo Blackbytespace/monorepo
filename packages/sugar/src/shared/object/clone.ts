@@ -1,5 +1,5 @@
 import __clone from 'lodash.clone';
-import __deepClone from 'lodash.clonedeep';
+import deepClone from 'lodash.clonedeep';
 
 /**
  * @name                clone
@@ -19,11 +19,11 @@ import __deepClone from 'lodash.clonedeep';
  *
  * @todo      tests
  *
- * @snippet         __clone($1)
+ * @snippet         clone($1)
  *
  * @example       js
- * import { __clone } from '@blackbyte/sugar/object';
- * __clone({
+ * import { clone } from '@blackbyte/sugar/object';
+ * clone({
  *    hello: 'world'
  * });
  *
@@ -41,7 +41,7 @@ export default function clone(object: any, settings: TCloneSettings = {}): any {
     ...settings,
   };
   if (settings.deep) {
-    return __deepClone(object);
+    return deepClone(object);
   }
   return __clone(object);
 }

@@ -49,11 +49,6 @@
   .header_title {
     color: s-color(current);
     font-size: s-rem(20px);
-
-    /* @s-font (title);
-    line-height: normal;
-    text-transform: uppercase;
-    font-size: s-size(6); */
   }
 
   .header_version {

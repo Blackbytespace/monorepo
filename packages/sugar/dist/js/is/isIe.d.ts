@@ -12,15 +12,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isIe()
+ * @snippet         isIe()
  *
  * @example 	js
- * import { __isIe } from '@lotsof/sugar/is'
- * if (__isIe()) {
+ * import { isIe } from '@blackbyte/sugar/is'
+ * if (isIe()) {
  *   // do something cool
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isIe(ua?: string): boolean;
+export default function isIe(ua?: string): boolean;

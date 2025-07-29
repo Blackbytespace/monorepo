@@ -1,4 +1,9 @@
-import __formatPackageJson from './formatPackageJson.js';
-import __parseAuthorString from './parseAuthorString.js';
+import formatPackageJson from './formatPackageJson.js';
+import parseAuthorString from './parseAuthorString.js';
 
-export { __formatPackageJson, __parseAuthorString };
+export {
+  formatPackageJson as __formatPackageJson,
+  parseAuthorString as __parseAuthorString,
+  formatPackageJson,
+  parseAuthorString,
+};

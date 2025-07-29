@@ -1,5 +1,5 @@
-import * as __fs from 'fs';
-import __ensureDirSync from './ensureDirSync.js';
+import * as fs from 'fs';
+import ensureDirSync from './ensureDirSync.js';
 import __folderPath from './folderPath.js';
 /**
  * @name            writeJsonSync
@@ -16,23 +16,23 @@ import __folderPath from './folderPath.js';
  *
  * @todo        tests
  *
- * @snippet         __writeJsonSync($1, $2)
+ * @snippet         writeJsonSync($1, $2)
  *
  * @example       js
- * import { __writeJsonSync } from '@lotsof/sugar/fs';
- * __writeJsonSync('my/cool/file.json', { hello: 'world' });
+ * import { writeJsonSync } from '@blackbyte/sugar/fs';
+ * writeJsonSync('my/cool/file.json', { hello: 'world' });
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeJsonSync(path, data) {
+export default function writeJsonSync(path, data) {
     const folderPath = __folderPath(path);
-    __ensureDirSync(folderPath);
+    ensureDirSync(folderPath);
     let jsonStr = data;
     if (typeof jsonStr !== 'string') {
         jsonStr = JSON.stringify(data, null, 4);
     }
-    __fs.writeFileSync(path, jsonStr);
+    fs.writeFileSync(path, jsonStr);
     return path;
 }
 //# sourceMappingURL=writeJsonSync.js.map

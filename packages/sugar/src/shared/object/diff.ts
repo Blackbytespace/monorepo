@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                    diff
@@ -24,10 +24,10 @@ import __isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         __diff($1, $2)
+ * @snippet         diff($1, $2)
  *
  * @example         js
- * import { __diff } from '@blackbyte/sugar/object';
+ * import { diff } from '@blackbyte/sugar/object';
  * const myObject1 = {
  *    hello: 'world',
  *    plop: 'yop'
@@ -37,7 +37,7 @@ import __isPlainObject from '../is/isPlainObject.js';
  *    hello: 'hey!',
  *    plop: 'yop'
  * };
- * __diff(myObject1, myObject2);
+ * diff(myObject1, myObject2);
  * {
  *    coco: 'plop',
  *    hello: 'hey!'
@@ -57,7 +57,7 @@ export type TDiffSettings = {
   updated?: boolean;
 };
 
-export default function __diff(
+export default function diff(
   object1: any,
   object2: any,
   settings: TDiffSettings = {},
@@ -82,8 +82,8 @@ export default function __diff(
     const _prop = keys[i];
 
     if (settings.deep) {
-      if (__isPlainObject(object1[_prop]) && __isPlainObject(object2[_prop])) {
-        finalObj[_prop] = __diff(object1[_prop], object2[_prop], settings);
+      if (isPlainObject(object1[_prop]) && isPlainObject(object2[_prop])) {
+        finalObj[_prop] = diff(object1[_prop], object2[_prop], settings);
         if (Object.keys(finalObj[_prop]).length === 0) delete finalObj[_prop];
         continue;
       }
@@ -113,7 +113,7 @@ export default function __diff(
 
     if (settings.emptyObject) {
       if (
-        __isPlainObject(object1[_prop]) &&
+        isPlainObject(object1[_prop]) &&
         Object.keys(object1[_prop]).length === 0
       ) {
         finalObj[_prop] = {};

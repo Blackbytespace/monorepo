@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __isOdd($1)
+ * @snippet         isOdd($1)
  *
  * @example    js
- * import { __isOdd } from '@lotsof/sugar/is'
- * __isOdd(1) // true
- * __isOdd(2) // false
+ * import { isOdd } from '@blackbyte/sugar/is'
+ * isOdd(1) // true
+ * isOdd(2) // false
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isOdd(value) {
+export default function isOdd(value) {
     return value % 2 === 1;
 }
 //# sourceMappingURL=isOdd.js.map

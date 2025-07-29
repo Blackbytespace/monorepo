@@ -15,16 +15,16 @@
  *
  * @todo        tests
  *
- * @snippet         __writeJson($1, $2)
+ * @snippet         writeJson($1, $2)
  * await _writeJson($1, $2)
  *
  * @example       js
- * import { __writeJson } from '@lotsof/sugar/fs';
- * __writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
+ * import { writeJson } from '@blackbyte/sugar/fs';
+ * writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
  *    // do something on complete...
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeJson(path: string, data: any): Promise<string>;
+export default function writeJson(path: string, data: any): Promise<string>;

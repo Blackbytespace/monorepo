@@ -11,17 +11,17 @@
  * @param       {String|Number}         value       The value to check
  * @return      {Boolean}                           true if is a valid unit based value, false if not
  *
- * @snippet         __isValidCssUnitValue($1)
+ * @snippet         isValidCssUnitValue($1)
  *
  * @example         js
- * import { __isValidCssUnitValue } from '@lotsof/sugar/css';
- * __isValidCssUnitValue('10px'); // => true
- * __isValidCssUnitValue('default'); // => false
+ * import { isValidCssUnitValue } from '@blackbyte/sugar/css';
+ * isValidCssUnitValue('10px'); // => true
+ * isValidCssUnitValue('default'); // => false
  *
  * @since       1.0.0
- * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	                Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isValidCssUnitValue(value) {
+export default function isValidCssUnitValue(value) {
     if (typeof value === 'number')
         return true;
     if (typeof value !== 'string')
@@ -50,6 +50,7 @@ export default function __isValidCssUnitValue(value) {
         'svw',
         'vmin',
         'vmax',
+        'lh', // line height
         '%',
     ].indexOf(unit) === -1)
         return false;

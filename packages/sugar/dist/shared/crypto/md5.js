@@ -1,4 +1,4 @@
-import __md5 from 'crypto-js/md5.js';
+import md5 from 'crypto-js/md5.js';
 import parse from '../../shared/string/parse.js';
 import toString from '../../shared/string/toString.js';
 const __encryptedMessages = {};
@@ -11,14 +11,14 @@ const __encryptedMessages = {};
  *
  * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the md5 algorithm
  *
- * @snippet         __md5.encrypt($1)
+ * @snippet         md5.encrypt($1)
  *
  * @example         js
- * import { __md5 } from '@lotsof/sugar/crypto';
- * __md5.encrypt('hello world');
+ * import { md5 } from '@blackbyte/sugar/crypto';
+ * md5.encrypt('hello world');
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default {
     /**
@@ -30,12 +30,12 @@ export default {
      * @param       {String}      message         The message to encrypt
      * @return      {String}                      The encrypted string
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     encrypt: function (message) {
         if (typeof message !== 'string')
             message = toString(message);
-        const md5Str = __md5(message).toString();
+        const md5Str = md5(message).toString();
         __encryptedMessages[md5Str] = message;
         return md5Str;
     },
@@ -48,7 +48,7 @@ export default {
      * @param       {String}        message         The message to decrypt
      * @return      {String}                        The decrypted message
      *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     decrypt: function (message) {
         if (!__encryptedMessages[message]) {

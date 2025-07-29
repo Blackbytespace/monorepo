@@ -1,4 +1,4 @@
-import __fs from 'fs';
+import fs from 'fs';
 import __packageRootDir from '../package/packageRootDir.js';
 
 /**
@@ -22,11 +22,11 @@ import __packageRootDir from '../package/packageRootDir.js';
  * @param       {String}            [cwd=process.cwd()]         The root project directory to detect the type from
  * @return      {IDetectProjectTypeResult}                      An object that describe the detected project type
  *
- * @snippet         __detectProjectType()
+ * @snippet         detectProjectType()
  *
  * @example         js
- * import { __detectProjectType } from '@coffeekraken/sugar/project';
- * __detectProjectType();
+ * import { detectProjectType } from '@coffeekraken/sugar/project';
+ * detectProjectType();
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -51,12 +51,12 @@ export default function detectProjectType(
 
   try {
     packageJson = JSON.parse(
-      __fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString(),
+      fs.readFileSync(`${packageRootDir}/package.json`, 'utf8').toString(),
     );
   } catch (e) {}
   try {
     composerJson = JSON.parse(
-      __fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString(),
+      fs.readFileSync(`${packageRootDir}/composer.json`, 'utf8').toString(),
     );
   } catch (e) {}
 
@@ -75,9 +75,9 @@ export default function detectProjectType(
 
   // detecting the package type next
   if (
-    __fs.existsSync(`${packageRootDir}/next.config.js`) ||
-    __fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
-    __fs.existsSync(`${packageRootDir}/next.config.ts`)
+    fs.existsSync(`${packageRootDir}/next.config.js`) ||
+    fs.existsSync(`${packageRootDir}/next.config.mjs`) ||
+    fs.existsSync(`${packageRootDir}/next.config.ts`)
   ) {
     const version = packageJson.dependencies?.next.replace(/\^/, '');
     return {
@@ -92,9 +92,9 @@ export default function detectProjectType(
 
   // detecting the package type nuxt
   if (
-    __fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
-    __fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
-    __fs.existsSync(`${packageRootDir}/nuxt.config.ts`)
+    fs.existsSync(`${packageRootDir}/nuxt.config.js`) ||
+    fs.existsSync(`${packageRootDir}/nuxt.config.mjs`) ||
+    fs.existsSync(`${packageRootDir}/nuxt.config.ts`)
   ) {
     const version = packageJson.dependencies.nuxt.replace(/\^/, '');
     return {
@@ -109,9 +109,9 @@ export default function detectProjectType(
 
   // detecting the package type svelte
   if (
-    __fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
-    __fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
-    __fs.existsSync(`${packageRootDir}/svelte.config.ts`)
+    fs.existsSync(`${packageRootDir}/svelte.config.js`) ||
+    fs.existsSync(`${packageRootDir}/svelte.config.mjs`) ||
+    fs.existsSync(`${packageRootDir}/svelte.config.ts`)
   ) {
     const version = packageJson.dependencies?.['@sveltejs/kit'].replace(
       /\^/,
@@ -129,9 +129,9 @@ export default function detectProjectType(
 
   // detecting the package type astro
   if (
-    __fs.existsSync(`${packageRootDir}/astro.config.js`) ||
-    __fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
-    __fs.existsSync(`${packageRootDir}/astro.config.ts`)
+    fs.existsSync(`${packageRootDir}/astro.config.js`) ||
+    fs.existsSync(`${packageRootDir}/astro.config.mjs`) ||
+    fs.existsSync(`${packageRootDir}/astro.config.ts`)
   ) {
     const version = packageJson.dependencies?.astro.replace(/\^/, '');
     return {

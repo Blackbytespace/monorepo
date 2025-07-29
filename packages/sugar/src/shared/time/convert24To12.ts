@@ -1,4 +1,4 @@
-import { __pad } from '@blackbyte/sugar/number';
+import { pad } from '@blackbyte/sugar/number';
 
 /**
  * @name                 convert24To12
@@ -15,11 +15,11 @@ import { __pad } from '@blackbyte/sugar/number';
  *
  * @todo      tests
  *
- * @snippet         __convert24To12($1)
+ * @snippet         convert24To12($1)
  *
  * @example    js
- * import { __convert24To12 } from '@blackbyte/sugar/time'
- * __convert24To12('23:12') // => '11:12pm'
+ * import { convert24To12 } from '@blackbyte/sugar/time'
+ * convert24To12('23:12') // => '11:12pm'
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -51,14 +51,14 @@ export default function convert24To12(
   let finalMinutes = parseInt(minutes, 10);
   let suffix = finalHours > 12 || finalHours === 0 ? 'pm' : 'am';
 
-  let finalHoursStr = __pad(
+  let finalHoursStr = pad(
     finalHours > 12 ? finalHours - 12 : finalHours === 0 ? 12 : finalHours,
     finalSettings.keepLeadingZero ? 2 : 1,
   );
   let finalMinutesStr =
     finalMinutes === 0 && !finalSettings.keepZeroMinute
       ? ''
-      : `:${__pad(finalMinutes, 2)}`;
+      : `:${pad(finalMinutes, 2)}`;
 
   return `${finalHoursStr}${finalMinutesStr}${suffix}`;
 }

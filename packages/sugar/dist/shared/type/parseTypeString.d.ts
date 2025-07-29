@@ -12,11 +12,11 @@
  * @param     {String}        typeString      The type string to parse
  * @return    {TTypeStringObject[]}             An array of object(s) describing the type string passed
  *
- * @snippet         __parseTypeString($1)
+ * @snippet         parseTypeString($1)
  *
  * @example       js
- * import { __parseTypeString } from '@lotsof/sugar/type';
- * __parseTypeString('string|number');
+ * import { parseTypeString } from '@blackbyte/sugar/type';
+ * parseTypeString('string|number');
  * //[{
  * //   type: 'string',
  * //   of: undefined,
@@ -34,4 +34,4 @@ export type TTypeStringObject = {
     value?: any;
 };
 export type TParseTypeStringSingleResultObj = {};
-export default function __parseTypeString(typeString: string): TTypeStringObject[];
+export default function parseTypeString(typeString: string): TTypeStringObject[];

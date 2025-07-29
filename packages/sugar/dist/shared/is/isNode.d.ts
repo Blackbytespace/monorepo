@@ -12,13 +12,13 @@
  *
  * @todo      tests
  *
- * @snippet         __isNode()
+ * @snippet         isNode()
  *
  * @example               js
- * import { __isNode } from '@lotsof/sugar/is';
- * __isNode(); // => true
+ * import { isNode } from '@blackbyte/sugar/is';
+ * isNode(); // => true
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isNode(): boolean;
+export default function isNode(): boolean;

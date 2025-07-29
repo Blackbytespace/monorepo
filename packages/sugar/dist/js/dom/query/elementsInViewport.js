@@ -1,5 +1,5 @@
-import __isInViewport from '../../is/isInViewport.js';
-export default function __elementsInViewport(settings = {}) {
+import isInViewport from '../../is/isInViewport.js';
+export default function elementsInViewport(settings = {}) {
     var _a, _b;
     // extend settings
     const finalSettings = Object.assign({ rootNode: document.body, threshold: 10 }, settings);
@@ -12,7 +12,7 @@ export default function __elementsInViewport(settings = {}) {
         if (currentThreshold >= finalSettings.threshold) {
             break;
         }
-        if (!__isInViewport($elm)) {
+        if (!isInViewport($elm)) {
             currentThreshold++;
             continue;
         }

@@ -13,14 +13,14 @@
  *
  * @todo        tests
  *
- * @snippet         __writeFileSync($1, $2)
+ * @snippet         writeFileSync($1, $2)
  *
  * @example       js
- * import { __writeFileSync } from '@lotsof/sugar/fs';
- * __writeFileSync('my/cool/file.txt', 'Hello World');
+ * import { writeFileSync } from '@blackbyte/sugar/fs';
+ * writeFileSync('my/cool/file.txt', 'Hello World');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeFileSync(path: string, data: any, options?: {}): string;
+export default function writeFileSync(path: string, data: any, options?: {}): string;

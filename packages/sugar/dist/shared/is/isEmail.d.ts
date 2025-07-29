@@ -13,15 +13,15 @@
  *
  * @todo      tests
  *
- * @snippet         __isEmail($1)
+ * @snippet         isEmail($1)
  *
  * @example 	js
- * import { __isEmail } from '@lotsof/sugar/is';
- * __isEmail('john.doe@gmail.com') => true
- * __isEmail('plop@yop.com') => true
- * __isEmail('hello') => false
+ * import { isEmail } from '@blackbyte/sugar/is';
+ * isEmail('john.doe@gmail.com') => true
+ * isEmail('plop@yop.com') => true
+ * isEmail('hello') => false
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEmail(value: string): boolean;
+export default function isEmail(value: string): boolean;

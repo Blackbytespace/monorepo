@@ -1,4 +1,4 @@
-import __uniqid from '../../string/uniqid.js';
+import uniqid from '../../string/uniqid.js';
 
 /**
  * @name                whenInViewport
@@ -19,16 +19,16 @@ import __uniqid from '../../string/uniqid.js';
  * @param 		{Partial<TWhenInViewportSettings>} 					[settings={}] 		Some settings to tweak the detection behavior
  * @return 		(SPromise<HTMLElement>) 											The promise that will be resolved when the element is in the viewport
  *
- * @snippet         __whenInViewport($1)
- * __whenInViewport($1).then(\$elm => {
+ * @snippet         whenInViewport($1)
+ * whenInViewport($1).then(\$elm => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenInViewport } from '@blackbyte/sugar/dom'
- * const promise = __whenInViewport(myCoolHTMLElement).then((elm) => {
+ * import { whenInViewport } from '@blackbyte/sugar/dom'
+ * const promise = whenInViewport(myCoolHTMLElement).then((elm) => {
  * 		// do something with your element that has entered the viewport...
  * });
  * // when you want to stop listening
@@ -45,7 +45,7 @@ export type TWhenInViewportSettings = {
   once: boolean;
 };
 
-const __whenInViewportStatuses = new WeakMap();
+const whenInViewportStatuses = new WeakMap();
 
 export type TWhenInViewportResult = Promise<HTMLElement> & {
   cancel: Function;
@@ -55,7 +55,7 @@ class CancelablePromise extends Promise<HTMLElement> {
   cancel() {}
 }
 
-export default function __whenInViewport(
+export default function whenInViewport(
   $elm: HTMLElement,
   settings?: Partial<TWhenInViewportSettings>,
 ): TWhenInViewportResult {
@@ -79,7 +79,7 @@ export default function __whenInViewport(
   }
 
   // generate a uniqid for this listener
-  const id = __uniqid();
+  const id = uniqid();
 
   const rootMargin = finalSettings.offset
     ? `${finalSettings.offset}`
@@ -93,8 +93,8 @@ export default function __whenInViewport(
     };
 
     // store status for all listeners
-    let statuses = __whenInViewportStatuses.get($elm) ?? {};
-    __whenInViewportStatuses.set($elm, statuses);
+    let statuses = whenInViewportStatuses.get($elm) ?? {};
+    whenInViewportStatuses.set($elm, statuses);
 
     function onChange(changes) {
       changes.forEach((change) => {

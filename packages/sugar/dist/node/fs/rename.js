@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __renameSync from './renameSync.js';
-export default function __rename(src, newName, settings) {
+import renameSync from './renameSync.js';
+export default function rename(src, newName, settings) {
     return __awaiter(this, void 0, void 0, function* () {
-        __renameSync(src, newName, settings);
+        renameSync(src, newName, settings);
     });
 }
 //# sourceMappingURL=rename.js.map

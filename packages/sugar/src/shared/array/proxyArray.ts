@@ -17,8 +17,8 @@
  * @todo        tests
  *
  * @example       js
- * import { __proxyArray } from '@blackbyte/sugar/array';
- * const myArray = __proxyArray([1,2,3]);
+ * import { proxyArray } from '@blackbyte/sugar/array';
+ * const myArray = proxyArray([1,2,3]);
  * myArray.watch(['push','pop'], (watchObj) => {
  *    // check the watchObj action
  *    switch (watchObj.action) {
@@ -30,7 +30,7 @@
  *
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __proxyArray(array) {
+export default function proxyArray(array) {
   if (array.__$proxied) return array;
 
   const watchStack = {};

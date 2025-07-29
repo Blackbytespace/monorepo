@@ -14,19 +14,19 @@
  * @todo      integrate some kind of media query check
  * @todo      tests
  *
- * @snippet         __isMobile()
+ * @snippet         isMobile()
  *
  * @example 	js
- * import { __isMobile } from '@lotsof/sugar/is'
- * if (__isMobile()) {
+ * import { isMobile } from '@blackbyte/sugar/is'
+ * if (isMobile()) {
  *   // do something cool...
  * }
  *
  * @see       https://blog.devgenius.io/4-ways-to-detect-mobile-browsers-in-javascript-943b66657524
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isMobile() {
+export default function isMobile() {
     // touch event
     if (!('ontouchstart' in document.documentElement))
         return false;

@@ -1,9 +1,9 @@
 // @ts-nocheck
-import __clipboardy from 'clipboardy';
-import __ncp from 'copy-paste';
+import clipboardy from 'clipboardy';
+import ncp from 'copy-paste';
 /**
  * @name            copyText
- * @namespace            node.clipboard
+ * @namespace       node.clipboard
  * @type            Function
  * @platform        node
  * @status          stable
@@ -16,22 +16,22 @@ import __ncp from 'copy-paste';
  *
  * @todo      tests
  *
- * @snippet         __copyText($1)
+ * @snippet         copyText($1)
  *
  * @example       js
- * import { __copyText } from '@lotsof/sugar/clipboard';
- * __copyText('Hello world');
+ * import { copyText } from '@blackbyte/sugar/clipboard';
+ * copyText('Hello world');
  *
  * @since       1.0.0
  * @see         https://www.npmjs.com/package/clipboardy
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copyText(text) {
+export default function copyText(text) {
     try {
-        __clipboardy.writeSync(text);
+        clipboardy.writeSync(text);
     }
     catch (e) {
-        __ncp.copy(text);
+        ncp.copy(text);
     }
     return text;
 }

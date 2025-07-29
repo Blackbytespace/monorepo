@@ -11,14 +11,14 @@
  *
  * @todo        tests
  *
- * @snippet         __ensureFileSync($1)
+ * @snippet         ensureFileSync($1)
  *
  * @example       js
- * import { __ensureFileSync } from '@lotsof/sugar/fs';
- * __ensureFileSync('my/cool/file.jpg');
+ * import { ensureFileSync } from '@blackbyte/sugar/fs';
+ * ensureFileSync('my/cool/file.jpg');
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureFileSync(filePath: string): void;
+export default function ensureFileSync(filePath: string): void;

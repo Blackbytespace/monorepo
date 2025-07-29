@@ -13,13 +13,13 @@
  *
  * @todo        tests
  *
- * @snippet         __writeJsonSync($1, $2)
+ * @snippet         writeJsonSync($1, $2)
  *
  * @example       js
- * import { __writeJsonSync } from '@lotsof/sugar/fs';
- * __writeJsonSync('my/cool/file.json', { hello: 'world' });
+ * import { writeJsonSync } from '@blackbyte/sugar/fs';
+ * writeJsonSync('my/cool/file.json', { hello: 'world' });
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeJsonSync(path: string, data: any): string;
+export default function writeJsonSync(path: string, data: any): string;

@@ -16,21 +16,21 @@
  *
  * @todo      tests
  *
- * @snippet         __filterObject($1, $2)
- * __filterObject
+ * @snippet         filterObject($1, $2)
+ * filterObject
  *
  * @example           js
- * import { __filterObject } from '@lotsof/sugar/object';
- * __filterObject({
+ * import { filterObject } from '@blackbyte/sugar/object';
+ * filterObject({
  *    coco: 'hello',
  *    plop: true
  * }, (key, item) => typeof item === 'string');
  * // { coco: 'hello' }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __filterObject(object, filter) {
+export default function filterObject(object, filter) {
     // init the new object to return
     const result = {};
     // loop on the object keys

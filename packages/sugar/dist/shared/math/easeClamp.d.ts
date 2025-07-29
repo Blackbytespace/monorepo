@@ -16,10 +16,10 @@
  * @todo      tests
  *
  * @example       js
- * import { __easeClamp } from '@lotsof/sugar/math';
- * __easeClamp(-20, -10, 0, 100, 110); // => -10
+ * import { easeClamp } from '@blackbyte/sugar/math';
+ * easeClamp(-20, -10, 0, 100, 110); // => -10
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __easeClamp(num: number, minEnd: number, minStart: number, maxStart: number, maxEnd: number): number;
+export default function easeClamp(num: number, minEnd: number, minStart: number, maxStart: number, maxEnd: number): number;

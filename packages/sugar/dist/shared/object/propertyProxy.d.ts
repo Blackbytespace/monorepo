@@ -19,12 +19,12 @@
  * @todo      tests
  *
  * @example 	js
- * import { __propertyProxy } from '@lotsof/sugar/object';
+ * import { propertyProxy } from '@blackbyte/sugar/object';
  * const myObject = {
  * 		title : 'World'
  * };
  * // create the proxy
- * __propertyProxy(myObject, 'title', {
+ * propertyProxy(myObject, 'title', {
  * 		get : (value) => {
  * 			return `Hello ${value}`;
  * 		},
@@ -37,7 +37,7 @@
  * console.log(myObject.title) => 'Hello Youhou Universe';
  *
  * @since         1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TPropertyProxyDescriptor = {
     get: (value: any) => any;
@@ -45,4 +45,4 @@ export type TPropertyProxyDescriptor = {
     configurable: boolean;
     enumarable: boolean;
 };
-export default function __propertyProxy(obj: any, property: string, descriptor: TPropertyProxyDescriptor, applySetterAtStart?: boolean): void;
+export default function propertyProxy(obj: any, property: string, descriptor: TPropertyProxyDescriptor, applySetterAtStart?: boolean): void;

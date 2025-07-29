@@ -16,14 +16,14 @@
  * @snippet         isEven($1)
  *
  * @example    js
- * import { __isEven } from '@lotsof/sugar/is'
- * __isEven(1) // false
- * __isEven(2) // true
+ * import { isEven } from '@blackbyte/sugar/is'
+ * isEven(1) // false
+ * isEven(2) // true
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEven(value) {
+export default function isEven(value) {
     return value % 2 === 0;
 }
 //# sourceMappingURL=isEven.js.map

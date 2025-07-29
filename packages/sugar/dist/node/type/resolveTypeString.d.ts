@@ -16,11 +16,11 @@ import { TTypeStringObject } from '../../shared/type/parseTypeString.js';
  *
  * @setting         {String}       [cwd=process.cwd()]          The cwd to use to resolve the type string when they are path
  *
- * @snippet         __resolveTypeString($1)
+ * @snippet         resolveTypeString($1)
  *
  * @example       js
- * import { __resolveTypeString } from '@lotsof/sugar/type';
- * __resolveTypeString('string');
+ * import { resolveTypeString } from '@blackbyte/sugar/type';
+ * resolveTypeString('string');
  * // {
  * //    types: [{
  * //       type: 'string',
@@ -39,4 +39,4 @@ export type TResolveTypeStringResult = {
 export type TResolveTypeStringSettings = {
     cwd: string;
 };
-export default function __resolveTypeString(typeString: string, settings?: Partial<TResolveTypeStringSettings>): Promise<TResolveTypeStringResult>;
+export default function resolveTypeString(typeString: string, settings?: Partial<TResolveTypeStringSettings>): Promise<TResolveTypeStringResult>;

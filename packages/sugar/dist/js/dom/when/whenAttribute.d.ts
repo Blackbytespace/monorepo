@@ -17,23 +17,23 @@
  * @param 		{Function} 					[checkFn=null] 		An optional function to check the attribute. The promise is resolved when this function return true
  * @return 		(Promise) 										The promise that will be resolved when the attribute exist on the element (and that it passes the checkFn)
  *
- * @snippet         __whenAttribute($1, $2)
- * __whenAttribute($1, $2).then(value => {
+ * @snippet         whenAttribute($1, $2)
+ * whenAttribute($1, $2).then(value => {
  *      $3
  * });
  *
  * @todo      tests
  *
  * @example 	js
- * import { __whenAttribute } from '@lotsof/sugar/dom'
+ * import { whenAttribute } from '@blackbyte/sugar/dom'
  *
  * // using promise
- * __whenAttribute(myCoolHTMLElement, 'value').then(value => {
+ * whenAttribute(myCoolHTMLElement, 'value').then(value => {
  *      // do something...
  * });
  *
  * // with a check function
- * __whenAttribute(myCoolHTMLElement, 'value', {
+ * whenAttribute(myCoolHTMLElement, 'value', {
  *    check(newVal, oldVal) {
  * 	      // make sure the value is a number
  * 		  return typeof(newVal) === 'number';
@@ -43,9 +43,9 @@
  * });
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TWhenAttributeSettings = {
     check?: Function;
 };
-export default function __whenAttribute($elm: HTMLElement, attrName: string, settings?: TWhenAttributeSettings): Promise<any>;
+export default function whenAttribute($elm: HTMLElement, attrName: string, settings?: TWhenAttributeSettings): Promise<any>;

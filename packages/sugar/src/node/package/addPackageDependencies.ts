@@ -1,9 +1,9 @@
-import __childProcess from 'child_process';
-import __fs from 'fs';
-import * as __semver from 'semver';
-import __readJsonSync from '../fs/readJsonSync.js';
-import __writeJsonSync from '../fs/writeJsonSync.js';
-import __packageRootDir from './packageRootDir.js';
+import childProcess from 'child_process';
+import fs from 'fs';
+import * as semver from 'semver';
+import readJsonSync from '../fs/readJsonSync.js';
+import writeJsonSync from '../fs/writeJsonSync.js';
+import packageRootDir from './packageRootDir.js';
 
 /**
  * @name                    addPackageDependencies
@@ -25,11 +25,11 @@ import __packageRootDir from './packageRootDir.js';
  * @setting     {Boolean}       [install=false]           Specify if you want to install the dependencies after adding them
  * @setting     {Boolean}       [override=false]          Specify if you want to override the dependencies if they already exists
  *
- * @snippet         __addPackageDependencies($1, $2)
+ * @snippet         addPackageDependencies($1, $2)
  *
  * @example         js
- * import { __addPackageDependencies } from '@blackbyte/sugar/package`;
- * __addPackageDependencies('lodash');
+ * import { addPackageDependencies } from '@blackbyte/sugar/package`;
+ * addPackageDependencies('lodash');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -43,7 +43,7 @@ export type TAddPackageDependenciesSettings = {
   override: boolean;
 };
 
-export default function __addPackageDependencies(
+export default function addPackageDependencies(
   deps: Record<string, string>,
   settings: Partial<TAddPackageDependenciesSettings>,
 ): any {
@@ -57,16 +57,16 @@ export default function __addPackageDependencies(
 
   return new Promise((resolve, reject) => {
     // get the package.json file path
-    const packageJsonPath = `${__packageRootDir(settings.cwd)}/package.json`;
+    const packageJsonPath = `${packageRootDir(settings.cwd)}/package.json`;
 
-    if (!__fs.existsSync(packageJsonPath)) {
+    if (!fs.existsSync(packageJsonPath)) {
       throw new Error(
         `No package.json file found at "<yellow>${packageJsonPath}</yellow>"`,
       );
     }
 
     // read the current package.json file
-    const packageJson = __readJsonSync(packageJsonPath);
+    const packageJson = readJsonSync(packageJsonPath);
 
     const depProp = settings.dev
       ? 'devDependencies'
@@ -93,8 +93,8 @@ export default function __addPackageDependencies(
         continue;
       }
 
-      const componentVersion = __semver.minVersion(version),
-        projectVersion = __semver.coerce(packageJson[depProp][name]);
+      const componentVersion = semver.minVersion(version),
+        projectVersion = semver.coerce(packageJson[depProp][name]);
 
       // check if the dependency satifdy the semver range
       if (
@@ -109,12 +109,12 @@ export default function __addPackageDependencies(
     }
 
     // write the new package.json file
-    __writeJsonSync(packageJsonPath, packageJson);
+    writeJsonSync(packageJsonPath, packageJson);
 
     // check if we need to install the dependencies
     if (settings.install) {
-      const res = __childProcess.spawnSync('npm install', [], {
-        cwd: __packageRootDir(settings.cwd),
+      const res = childProcess.spawnSync('npm install', [], {
+        cwd: packageRootDir(settings.cwd),
         shell: true,
       });
       if (res.stderr.toString() !== '') {

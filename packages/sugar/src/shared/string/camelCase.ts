@@ -15,11 +15,11 @@ import { camelCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __camelCase($1)
+ * @snippet         camelCase($1)
  *
  * @example     js
- * import { __camelCase } from '@blackbyte/sugar/string';
- * __camelCase('hello world'); // => helloWorld
+ * import { camelCase } from '@blackbyte/sugar/string';
+ * camelCase('hello world'); // => helloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

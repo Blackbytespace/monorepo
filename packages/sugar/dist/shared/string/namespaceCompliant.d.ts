@@ -12,18 +12,18 @@
  * @param       {String}        string         The string to process
  * @return      {String}                        The processed string
  *
- * @snippet         __namespaceCompliant($1)
+ * @snippet         namespaceCompliant($1)
  *
  * @todo     tests
  *
  * @example         php
- * import { __namespaceCompliant } from '@lotsof/sugar/string';
- * __namespaceCompliant('Hello world'); // => hello-world
+ * import { namespaceCompliant } from '@blackbyte/sugar/string';
+ * namespaceCompliant('Hello world'); // => hello-world
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TNamespaceCompliantSettings = {
     exclude: string[];
 };
-export default function __namespaceCompliant(str: string, settings?: TNamespaceCompliantSettings): string;
+export default function namespaceCompliant(str: string, settings?: TNamespaceCompliantSettings): string;

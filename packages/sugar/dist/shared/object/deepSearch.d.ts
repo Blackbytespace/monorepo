@@ -16,8 +16,8 @@
  * @todo      tests
  *
  * @example           js
- * import { __deepSearch } from '@lotsof/sugar/object';
- * __deepSearch ({
+ * import { deepSearch } from '@blackbyte/sugar/object';
+ * deepSearch ({
  *    coco: 'hello',
  *    plop: true,
  *    sub: {
@@ -32,7 +32,7 @@
  * // }
  *
  * @since         1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDeepSearchFilter = {
     (item: TDeepSearchItem): undefined | boolean;
@@ -41,4 +41,4 @@ export type TDeepSearchItem = {
     key: string;
     value: any;
 };
-export default function __deepSearch(object: any, filter: TDeepSearchFilter): any;
+export default function deepSearch(object: any, filter: TDeepSearchFilter): any;

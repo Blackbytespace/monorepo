@@ -1,4 +1,4 @@
-import __urlSlug from 'url';
+import urlSlug from 'url';
 
 /**
  * @name            urlFromString
@@ -14,11 +14,11 @@ import __urlSlug from 'url';
  *
  * @todo            tests
  *
- * @snippet         __urlFromString($1)
+ * @snippet         urlFromString($1)
  *
  * @example             js
- * import { __urlFromString } from '@blackbyte/sugar/url';
- * __urlFromString('Sir James Paul McCartney MBE is an English singer-songwriter');
+ * import { urlFromString } from '@blackbyte/sugar/url';
+ * urlFromString('Sir James Paul McCartney MBE is an English singer-songwriter');
  * // sir-james-paul-mc-cartney-mbe-is-an-english-singer-songwriter
  *
  * @see             https://www.npmjs.com/package/url-slug
@@ -30,7 +30,7 @@ export default function urlFromString(string: string): string {
     .split('/')
     .map((l) => {
       // @ts-ignore
-      return __urlSlug(l.trim());
+      return urlSlug(l.trim());
     })
     .join('/');
 }

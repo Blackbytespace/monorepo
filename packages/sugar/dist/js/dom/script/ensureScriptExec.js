@@ -1,4 +1,4 @@
-export default function __ensureExec($script) {
+export default function ensureScriptExec($script) {
     var _a;
     let $scripts = [];
     if ($script instanceof HTMLScriptElement) {

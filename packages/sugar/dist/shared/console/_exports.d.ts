@@ -1,3 +1,3 @@
-import __SugarConsole from './SugarConsole.js';
-import __extendsNativeConsole from './extendsNativeConsole.js';
-export { __extendsNativeConsole, __SugarConsole };
+import SugarConsole from './SugarConsole.js';
+import extendsNativeConsole from './extendsNativeConsole.js';
+export { extendsNativeConsole as __extendsNativeConsole, SugarConsole as __SugarConsole, extendsNativeConsole, SugarConsole, };

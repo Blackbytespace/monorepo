@@ -1,4 +1,4 @@
-import __isPlainObject from '../is/isPlainObject.js';
+import isPlainObject from '../is/isPlainObject.js';
 
 /**
  * @name                deepClean
@@ -22,12 +22,12 @@ import __isPlainObject from '../is/isPlainObject.js';
  *
  * @todo      tests
  *
- * @snippet         __deepClean($1)
- * __deepClean($1);
+ * @snippet         deepClean($1)
+ * deepClean($1);
  *
  * @example       js
- * import { __deepClean } from '@blackbyte/sugar/object';
- * __deepClean({
+ * import { deepClean } from '@blackbyte/sugar/object';
+ * deepClean({
  *    hello: 'world',
  *    something: null
  * });
@@ -42,7 +42,7 @@ export type TDeepCleanSettings = {
   cleaner(value: any): boolean;
 };
 
-export default function __deepClean(
+export default function deepClean(
   objectOrArray: any,
   settings?: TDeepCleanSettings,
 ) {
@@ -53,7 +53,7 @@ export default function __deepClean(
       if (value === undefined || value === null || value === '') {
         return false;
       }
-      if (__isPlainObject(value) && !Object.keys(value).length) {
+      if (isPlainObject(value) && !Object.keys(value).length) {
         return false;
       }
       return true;
@@ -72,17 +72,17 @@ export default function __deepClean(
 
   if (settings.array && Array.isArray(objectOrArray)) {
     for (let [i, v] of objectOrArray.entries()) {
-      if (__isPlainObject(v) || Array.isArray(v)) {
-        workingObj[i] = __deepClean(v, settings);
+      if (isPlainObject(v) || Array.isArray(v)) {
+        workingObj[i] = deepClean(v, settings);
       }
       if (!settings.cleaner(workingObj[i])) {
         workingObj.splice(workingObj.indexOf(v), 1);
       }
     }
-  } else if (__isPlainObject(objectOrArray)) {
+  } else if (isPlainObject(objectOrArray)) {
     for (let [k, v] of Object.entries(objectOrArray)) {
-      if (__isPlainObject(v) || Array.isArray(v)) {
-        workingObj[k] = __deepClean(v, settings);
+      if (isPlainObject(v) || Array.isArray(v)) {
+        workingObj[k] = deepClean(v, settings);
       }
       if (!settings.cleaner(workingObj[k])) {
         delete workingObj[k];

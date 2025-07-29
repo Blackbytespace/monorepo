@@ -1,4 +1,4 @@
-import __setCookie from './setCookie.js';
+import setCookie from './setCookie.js';
 /**
  * @name            deleteCookie
  * @namespace       js.cookie
@@ -11,19 +11,19 @@ import __setCookie from './setCookie.js';
  * @param       {String}            name            The cookie name to delete
  * @return      {any}                               The cookie value
  *
- * @snippet         __deleteCookie($1)
+ * @snippet         deleteCookie($1)
  *
  * @todo            tests
  *
  * @example         js
- * import { __deleteCookie } from '@lotsof/sugar/cookie';
- * __deleteCookie('myCookie');
+ * import { deleteCookie } from '@blackbyte/sugar/cookie';
+ * deleteCookie('myCookie');
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __deleteCookie(name) {
-    __setCookie(name, '', {
+export default function deleteCookie(name) {
+    setCookie(name, '', {
         'max-age': -1,
     });
 }

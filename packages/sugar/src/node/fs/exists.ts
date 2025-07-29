@@ -1,4 +1,4 @@
-import * as __fs from 'fs';
+import * as fs from 'fs';
 
 /**
  * @name                exists
@@ -19,12 +19,12 @@ import * as __fs from 'fs';
  * @setting         {Boolean}       [file=true]         Specify if you want to take care of files
  * @setting         {Boolean}       [symlink=true]      Specify if you want to take care of symlinks
  *
- * @snippet         __exists($1)
- * await __exists($1)
+ * @snippet         exists($1)
+ * await exists($1)
  *
  * @example         js
- * import { __exists } from '@blackbyte/sugar/fs';
- *  __exists('/something/cool.txt'); // => true
+ * import { exists } from '@blackbyte/sugar/fs';
+ *  exists('/something/cool.txt'); // => true
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -34,7 +34,7 @@ export type TExistsSettings = {
   file: boolean;
   symlink: boolean;
 };
-export default async function __exists(
+export default async function exists(
   path: string,
   settings?: Partial<TExistsSettings>,
 ): Promise<boolean> {
@@ -49,10 +49,10 @@ export default async function __exists(
     stats: any;
 
   try {
-    stats = __fs.statSync(path);
+    stats = fs.statSync(path);
     if (!stats) return false;
 
-    const realPath = __fs.realpathSync(path);
+    const realPath = fs.realpathSync(path);
     isSymlink = path !== realPath;
   } catch (e) {}
 

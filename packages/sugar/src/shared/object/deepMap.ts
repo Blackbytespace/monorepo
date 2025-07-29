@@ -1,6 +1,6 @@
-import __isClassInstance from '../is/isClassInstance.js';
-import __isPlainObject from '../is/isPlainObject.js';
-import __clone from './clone.js';
+import isClassInstance from '../is/isClassInstance.js';
+import isPlainObject from '../is/isPlainObject.js';
+import clone from './clone.js';
 
 /**
  * @name                deepMap
@@ -23,14 +23,14 @@ import __clone from './clone.js';
  *
  * @todo      tests
  *
- * @snippet         __deepMap($1, $2)
- * __deepMap($1, ({object, prop, value, path}) => {
+ * @snippet         deepMap($1, $2)
+ * deepMap($1, ({object, prop, value, path}) => {
  *      $2
  * })
  *
  * @example       js
- * import { __deepMap } from '@blackbyte/sugar/object';
- * __deepMap({
+ * import { deepMap } from '@blackbyte/sugar/object';
+ * deepMap({
  *    hello: 'world'
  * }, ({object, prop, value, path}) => {
  *    return '~ ' + value;
@@ -47,7 +47,7 @@ export type TDeepMapSettings = {
   privateProps?: boolean;
 };
 
-export default function __deepMap(
+export default function deepMap(
   objectOrArray: any,
   processor?: Function,
   settings?: TDeepMapSettings,
@@ -66,18 +66,18 @@ export default function __deepMap(
   let newObject = isArray
     ? []
     : settings?.clone
-    ? __clone(objectOrArray, { deep: true })
+    ? clone(objectOrArray, { deep: true })
     : objectOrArray;
 
   Object.keys(objectOrArray).forEach((prop) => {
     if (!settings?.privateProps && prop.match(/^_/)) return;
 
     if (
-      __isPlainObject(objectOrArray[prop]) ||
-      (__isClassInstance(objectOrArray[prop]) && settings?.classInstances) ||
+      isPlainObject(objectOrArray[prop]) ||
+      (isClassInstance(objectOrArray[prop]) && settings?.classInstances) ||
       (Array.isArray(objectOrArray[prop]) && settings?.array)
     ) {
-      const res = __deepMap(
+      const res = deepMap(
         objectOrArray[prop],
         processor,
         {
@@ -91,7 +91,7 @@ export default function __deepMap(
       if (isArray) {
         newObject.push(res);
       } else {
-        if (prop === '...' && __isPlainObject(res)) {
+        if (prop === '...' && isPlainObject(res)) {
           newObject = {
             ...newObject,
             ...res,
@@ -116,7 +116,7 @@ export default function __deepMap(
     if (isArray) {
       newObject.push(res);
     } else {
-      if (prop === '...' && __isPlainObject(res)) {
+      if (prop === '...' && isPlainObject(res)) {
         // console.log('DEFEF', res);
         newObject = {
           ...newObject,

@@ -16,17 +16,17 @@ import __isEsm from './isEsm.js';
  *
  * @todo        tests
  *
- * @snippet         __isModuleSystem($1)
+ * @snippet         isModuleSystem($1)
  *
  * @example       js
- * import { __isModuleSystem } from '@blackbyte/sugar/is';
- * __isModuleSystem('esm'); // => true
- * __isModuleSystem('cjs'); // => false
+ * import { isModuleSystem } from '@blackbyte/sugar/is';
+ * isModuleSystem('esm'); // => true
+ * isModuleSystem('cjs'); // => false
  *
  * @since     1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isModuleSystem(
+export default function isModuleSystem(
   systemNames: ('esm' | 'cjs')[],
 ): boolean {
   if (!Array.isArray(systemNames)) systemNames = [systemNames];

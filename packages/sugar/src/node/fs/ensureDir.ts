@@ -1,4 +1,4 @@
-import __fs from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * @name            ensureDir
@@ -15,12 +15,12 @@ import __fs from 'fs-extra';
  *
  * @todo        tests
  *
- * @snippet         __ensureDir($1)
- * await __ensureDir($1)
+ * @snippet         ensureDir($1)
+ * await ensureDir($1)
  *
  * @example       js
- * import { __ensureDir } from '@blackbyte/sugar/fs';
- *  __ensureDir('my/cool/dir').then(() => {
+ * import { ensureDir } from '@blackbyte/sugar/fs';
+ *  ensureDir('my/cool/dir').then(() => {
  *    // do something...
  * });
  *
@@ -28,6 +28,6 @@ import __fs from 'fs-extra';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __ensureDir(dir: string): Promise<void> {
-  return __fs.ensureDir(dir);
+export default function ensureDir(dir: string): Promise<void> {
+  return fs.ensureDir(dir);
 }

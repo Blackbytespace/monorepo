@@ -14,17 +14,17 @@ import ltrim from '../string/ltrim.js';
  *
  * @todo      tests
  *
- * @snippet         __queryStringToObject($1)
+ * @snippet         queryStringToObject($1)
  *
  * @example    js
- * import { __queryStringToObject } from '@lotsof/sugar/url'
- * __queryStringToObject('?var1=value1&var2=value2') // { var1: 'value1', var2: 'value2' }
+ * import { queryStringToObject } from '@blackbyte/sugar/url'
+ * queryStringToObject('?var1=value1&var2=value2') // { var1: 'value1', var2: 'value2' }
  *
  * @see  	http://stackoverflow.com/questions/8648892/convert-url-parameters-to-a-javascript-object
  * @since     1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __queryStringToObject(str) {
+export default function queryStringToObject(str) {
     str = ltrim(str, '?');
     str = str.replace(/%20/gm, ' ');
     str = decodeURIComponent(str);

@@ -18,11 +18,11 @@ import __stripTags from 'striptags';
  *
  * @todo      tests
  *
- * @snippet         __stripTags($1)
+ * @snippet         stripTags($1)
  *
  * @example    js
- * import { __stripTags } from '@blackbyte/sugar/html'
- * __stripTags('<p><span>Hello</span> world</p>', '<span>') // <span>Hello</span> world
+ * import { stripTags } from '@blackbyte/sugar/html'
+ * stripTags('<p><span>Hello</span> world</p>', '<span>') // <span>Hello</span> world
  *
  * @see       https://www.npmjs.com/package/striptags
  * @since     1.0.0

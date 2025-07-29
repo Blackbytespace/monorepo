@@ -1,10 +1,10 @@
-import __copyText from '../copyText';
-import __readText from '../readText';
+import copyText from '../copyText';
+import readText from '../readText';
 
-describe('__copyText', () => {
+describe('copyText', () => {
   it('should copy the text and get it back correctly', () => {
     const text = 'Hello world';
-    __copyText(text);
-    expect(__readText()).toBe(text);
+    copyText(text);
+    expect(readText()).toBe(text);
   });
 });

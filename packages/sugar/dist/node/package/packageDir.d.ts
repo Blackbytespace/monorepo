@@ -16,16 +16,16 @@
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __packageDir($1, $2)
+ * @snippet         packageDir($1, $2)
  *
  * @example         js
- * import { __packageDir } from '@lotsof/sugar/package`;
- * __packageDir('lodash');
+ * import { packageDir } from '@blackbyte/sugar/package`;
+ * packageDir('lodash');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TPackageDirSettings = {
     cwd: string;

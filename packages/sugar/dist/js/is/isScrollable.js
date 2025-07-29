@@ -9,20 +9,20 @@
  *
  * @return    {Boolean}    true if is scrollable, false if not
  *
- * @snippet         __isScrollable($1)
+ * @snippet         isScrollable($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isScrollable } from '@lotsof/sugar/dom'
- * if (__isScrollable($myElement)) {
+ * import { isScrollable } from '@blackbyte/sugar/dom'
+ * if (isScrollable($myElement)) {
  *   // do something
  * }
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isScrollable($elm, settings) {
+export default function isScrollable($elm, settings) {
     var _a;
     settings = Object.assign({ x: true, y: true }, (settings !== null && settings !== void 0 ? settings : {}));
     // check only Element nodes

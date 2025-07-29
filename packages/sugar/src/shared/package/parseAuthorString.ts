@@ -14,11 +14,11 @@
  *
  * @todo      tests
  *
- * @snippet         __parseAuthorString($1)
+ * @snippet         parseAuthorString($1)
  *
  * @example       js
- * import { __parseAuthorString } from '@blackbyte/sugar/package';
- *  __parseAuthorString("Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)")
+ * import { parseAuthorString } from '@blackbyte/sugar/package';
+ *  parseAuthorString("Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)")
  * // => {
  *   "name": "Olivier Bossel",
  *   "email": "olivier.bossel@gmail.com",
@@ -34,7 +34,7 @@ export type TParseAuthorStringResult = {
   url: string;
 };
 
-export default function __parseAuthorString(
+export default function parseAuthorString(
   string: string,
 ): TParseAuthorStringResult {
   const reg = /(.*)\s?<(.*)>\s?\((.*)\)/gm;

@@ -11,18 +11,18 @@ import __whenScriptLoaded from '../when/whenScriptLoaded.js';
  * @param    {String}    src    The script src to load
  * @return    {Promise}    A promise resolved with the script tag when it has fully loaded
  *
- * @snippet         __injectScript($1)
+ * @snippet         injectScript($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __injectScript } from '@lotsof/sugar/dom'
- *  __injectScript('dist/js/app.js')
+ * import { injectScript } from '@blackbyte/sugar/dom'
+ *  injectScript('dist/js/app.js')
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __injectScript(src, $parent = document.body) {
+export default function injectScript(src, $parent = document.body) {
     const $script = document.createElement('script');
     $script.src = src;
     $parent.appendChild($script);

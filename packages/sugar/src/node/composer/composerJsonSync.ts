@@ -1,5 +1,5 @@
-import __fs from 'fs';
-import __composerPackageDir from './composerPackageDir.js';
+import fs from 'fs';
+import composerPackageDir from './composerPackageDir.js';
 
 /**
  * @name                    composerJsonSync
@@ -19,11 +19,11 @@ import __composerPackageDir from './composerPackageDir.js';
  * @setting     {Boolean}       [monorepo=false]         Specify if you are in a monorepo context
  * @setting     {Boolean}       [checkExistence=true]    Specify if you want to check if the vendor dir exists
  *
- * @snippet         __composerJsonSync($1)
+ * @snippet         composerJsonSync($1)
  *
  * @example         js
- * import { __composerJsonSync } from '@blackbyte/sugar/composer`;
- * __composerJsonSync('blackbyte/sugar');
+ * import { composerJsonSync } from '@blackbyte/sugar/composer`;
+ * composerJsonSync('blackbyte/sugar');
  *
  * @todo        Implement a cache strategy to avoid making same process again and again
  *
@@ -48,6 +48,6 @@ export default function composerJsonSync(
     ...(settings ?? {}),
   };
 
-  const packageDir = __composerPackageDir(nameOrPath, settings);
-  return JSON.parse(__fs.readFileSync(`${packageDir}/composer.json`, 'utf8'));
+  const packageDir = composerPackageDir(nameOrPath, settings);
+  return JSON.parse(fs.readFileSync(`${packageDir}/composer.json`, 'utf8'));
 }

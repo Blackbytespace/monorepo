@@ -18,11 +18,11 @@
  *
  * @todo      tests
  *
- * @snippet         __trimLines($1)
+ * @snippet         trimLines($1)
  *
  * @example         js
- * import { __trimLines } from '@blackbyte/sugar/string';
- * __trimLines(`my cool lines
+ * import { trimLines } from '@blackbyte/sugar/string';
+ * trimLines(`my cool lines
  *      that have some lines to trim
  * and some not...`);
  * // my cool lines
@@ -39,7 +39,7 @@ export type TTrimLinesSettings = {
   keepEmptyLines?: boolean;
 };
 
-export default function __trimLines(
+export default function trimLines(
   string: string,
   settings: TTrimLinesSettings = {},
 ): string {

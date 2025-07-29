@@ -14,11 +14,11 @@
  *
  * @todo      tests
  *
- * @snippet         __loopsCount($1)
+ * @snippet         loopsCount($1)
  *
  * @example       js
- * import { __loopsCount } from '@blackbyte/sugar/perf';
- * __loopsCount(); // 122003
+ * import { loopsCount } from '@blackbyte/sugar/perf';
+ * loopsCount(); // 122003
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)

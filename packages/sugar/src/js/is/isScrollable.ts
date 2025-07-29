@@ -9,13 +9,13 @@
  *
  * @return    {Boolean}    true if is scrollable, false if not
  *
- * @snippet         __isScrollable($1)
+ * @snippet         isScrollable($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __isScrollable } from '@blackbyte/sugar/dom'
- * if (__isScrollable($myElement)) {
+ * import { isScrollable } from '@blackbyte/sugar/dom'
+ * if (isScrollable($myElement)) {
  *   // do something
  * }
  *
@@ -28,7 +28,7 @@ export type TIsScrollableSettings = {
   y: boolean;
 };
 
-export default function __isScrollable(
+export default function isScrollable(
   $elm: HTMLElement,
   settings?: Partial<TIsScrollableSettings>,
 ): boolean {

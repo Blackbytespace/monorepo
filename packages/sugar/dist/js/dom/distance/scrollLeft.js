@@ -9,16 +9,16 @@
  *
  * @todo      tests
  *
- * @snippet         __scrollLeft()
+ * @snippet         scrollLeft()
  *
  * @example    js
- * import { __scrollLeft } from '@lotsof/sugar/dom'
- * __scrollLeft() // 40
+ * import { scrollLeft } from '@blackbyte/sugar/dom'
+ * scrollLeft() // 40
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://olivier.bossel@gmail.com)
  */
-export default function __scrollLeft() {
+export default function scrollLeft() {
     return (window.scrollX ||
         window.pageXOffset ||
         // @ts-ignore

@@ -15,17 +15,17 @@
  *
  * @todo        tests
  *
- * @snippet         __writeFile($1, $2)
- * await __writeFile($1, $2)
+ * @snippet         writeFile($1, $2)
+ * await writeFile($1, $2)
  *
  * @example       js
- * import { __writeFile } from '@lotsof/sugar/fs';
- * __writeFile('my/cool/file.txt', 'Hello World').then(() => {
+ * import { writeFile } from '@blackbyte/sugar/fs';
+ * writeFile('my/cool/file.txt', 'Hello World').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeFile(path: string, data: any, options?: {}): Promise<string>;
+export default function writeFile(path: string, data: any, options?: {}): Promise<string>;

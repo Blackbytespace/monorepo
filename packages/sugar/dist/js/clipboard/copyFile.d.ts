@@ -16,11 +16,11 @@
  * @snippet         __copyFile($1)
  *
  * @example         js
- * import { __copyFile } from '@lotsof/sugar/clipboard';
- * __copyFile('https://www.google.com/favicon.ico');
+ * import { copyFile } from '@blackbyte/sugar/clipboard';
+ * copyFile('https://www.google.com/favicon.ico');
  *
  * @see             https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __copyFile(url: string): Promise<void>;
+export default function copyFile(url: string): Promise<void>;

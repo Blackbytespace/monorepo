@@ -1,3 +1,3 @@
-import __scrolledClasses from './scrolledClasses.js';
+import scrollClasses from './scrollClasses.js';
 
-export { __scrolledClasses };
+export { scrollClasses as __scrolledClasses, scrollClasses };

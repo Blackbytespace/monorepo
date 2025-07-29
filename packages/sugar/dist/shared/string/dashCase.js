@@ -14,15 +14,15 @@ import { kebabCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __dashCase($1)
+ * @snippet         dashCase($1)
  *
  * @example     js
- * import { __dashCase } from '@lotsof/sugar/string';
- * __dashCase('hello world'); // => hello-world
+ * import { dashCase } from '@blackbyte/sugar/string';
+ * dashCase('hello world'); // => hello-world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function __dashCase(text) {
     return kebabCase(text);

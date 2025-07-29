@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __fs from 'fs-extra';
-import __toString from '../../shared/string/toString.js';
-import __ensureDirSync from '../fs/ensureDirSync.js';
-import __folderPath from './folderPath.js';
+import fs from 'fs-extra';
+import toString from '../../shared/string/toString.js';
+import ensureDirSync from '../fs/ensureDirSync.js';
+import { __folderPath } from './_exports.js';
 /**
  * @name            writeFile
  * @namespace       node.fs
@@ -28,24 +28,24 @@ import __folderPath from './folderPath.js';
  *
  * @todo        tests
  *
- * @snippet         __writeFile($1, $2)
- * await __writeFile($1, $2)
+ * @snippet         writeFile($1, $2)
+ * await writeFile($1, $2)
  *
  * @example       js
- * import { __writeFile } from '@lotsof/sugar/fs';
- * __writeFile('my/cool/file.txt', 'Hello World').then(() => {
+ * import { writeFile } from '@blackbyte/sugar/fs';
+ * writeFile('my/cool/file.txt', 'Hello World').then(() => {
  *    // do something on complete...
  * });
  *
  * @see             https://github.com/jprichardson/node-fs-extra
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __writeFile(path, data, options = {}) {
+export default function writeFile(path, data, options = {}) {
     return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
         const folderPath = __folderPath(path);
-        __ensureDirSync(folderPath);
-        yield __fs.outputFile(path, __toString(data), options);
+        ensureDirSync(folderPath);
+        yield fs.outputFile(path, toString(data), options);
         resolve(path);
     }));
 }

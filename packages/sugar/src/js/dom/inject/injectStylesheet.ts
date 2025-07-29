@@ -12,18 +12,18 @@ import __whenLinkLoaded from '../when/whenLinkLoaded.js';
  * @param    {String}    href    THe url to the stylesheet
  * @return    {Promise}    A promise when the stylesheet is loaded with the link element as parameter
  *
- * @snippet         __injectStylesheet($1)
+ * @snippet         injectStylesheet($1)
  *
  * @todo      tests
  *
  * @example    js
- * import { __injectStylesheet } from '@blackbyte/sugar/dom'
- * __injectStylesheet('/dist/css/style.css')
+ * import { injectStylesheet } from '@blackbyte/sugar/dom'
+ * injectStylesheet('/dist/css/style.css')
  *
  * @since           1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __injectStylesheet(
+export default function injectStylesheet(
   href: string,
 ): Promise<HTMLLinkElement> {
   const $link = document.createElement('link');

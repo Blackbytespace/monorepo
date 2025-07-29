@@ -23,16 +23,16 @@
  *
  * ª@todo      tests
  *
- * @snippet         __easeInterval($1, $2)
- * const easeInterval = __easeInterval($1, percent => {
+ * @snippet         easeInterval($1, $2)
+ * const easeInterval = easeInterval($1, percent => {
  *      $2
  * });
  * // easeInterval.cancel(); // stop the easing process
  * await easeInterval;
  *
  * @example         js
- * import { __easeInterval } from '@lotsof/sugar/function';
- * await __easeInterval(2000, (easedPercent) => {
+ * import { easeInterval } from '@blackbyte/sugar/function';
+ * await easeInterval(2000, (easedPercent) => {
  *      // do something...
  * }, {
  *      interval: 1000 / 25 // 25 times by second
@@ -48,4 +48,4 @@ export type TEaseIntervalSettings = {
     to?: number;
     onEnd?: Function;
 };
-export default function __easeInterval(duration: number, cb: Function, settings?: TEaseIntervalSettings): Promise<unknown>;
+export default function easeInterval(duration: number, cb: Function, settings?: TEaseIntervalSettings): Promise<unknown>;

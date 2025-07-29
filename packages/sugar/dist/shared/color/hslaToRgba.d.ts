@@ -4,5 +4,5 @@ interface IHslaToRgbaResult {
     b: number;
     a: number;
 }
-export default function __hslaToRgba(h: string | number | any, s: any, l: any, a?: number): IHslaToRgbaResult;
+export default function hslaToRgba(h: string | number | any, s: any, l: any, a?: number): IHslaToRgbaResult;
 export {};

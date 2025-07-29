@@ -1,5 +1,5 @@
 // @ts-nocheck
-export default function __propertyProxy(obj, property, descriptor, applySetterAtStart = false) {
+export default function propertyProxy(obj, property, descriptor, applySetterAtStart = false) {
     // handle property like "something.cool"
     const objPath = property.split('.').slice(0, -1).join('.');
     if (objPath) {

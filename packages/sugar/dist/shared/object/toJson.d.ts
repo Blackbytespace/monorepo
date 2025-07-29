@@ -11,17 +11,17 @@
  * @param       {Any}           object      The object to convert
  * @return      {Any}                       The converted object
  *
- * @snippet         __toJson($1)
+ * @snippet         toJson($1)
  *
  * @example         js
- * import { __toJson } from '@lotsof/sugar/object';
+ * import { toJson } from '@blackbyte/sugar/object';
  * class MyClass {
  *      hello = 'world';
  *      something() {}
  * }
- * __toJson(new MyClass()); // => { hello: 'world' }
+ * toJson(new MyClass()); // => { hello: 'world' }
  *
  * @since       1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __toJson(object: any): any;
+export default function toJson(object: any): any;

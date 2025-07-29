@@ -15,11 +15,11 @@ import { snakeCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __snakeCase($1)
+ * @snippet         snakeCase($1)
  *
  * @example     js
- * import { __snakeCase } from '@blackbyte/sugar/string';
- * __snakeCase('hello world'); // => hello_world
+ * import { snakeCase } from '@blackbyte/sugar/string';
+ * snakeCase('hello world'); // => hello_world
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

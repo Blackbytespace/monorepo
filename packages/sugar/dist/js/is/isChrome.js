@@ -12,18 +12,18 @@
  *
  * @todo      tests
  *
- * @snippet         __isChrome()
+ * @snippet         isChrome()
  *
  * @example 	js
- * import { __isChrome } from '@lotsof/sugar/is'
- * if ( __isChrome()) {
+ * import { isChrome } from '@blackbyte/sugar/is'
+ * if ( isChrome()) {
  *   // do something cool
  * }
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isChrome(ua = navigator.userAgent) {
+export default function isChrome(ua = navigator.userAgent) {
     return ua.indexOf('Chrome') > -1;
 }
 //# sourceMappingURL=isChrome.js.map

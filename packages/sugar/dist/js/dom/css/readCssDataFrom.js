@@ -9,14 +9,14 @@
  *
  * @param       {HTMLElement}           [$elm=document.body]        The element from which to get data
  *
- * @snippet         __readCssDataFrom(document.body)
+ * @snippet         readCssDataFrom(document.body)
  *
  * @example         js
- * import { __readCssDataFrom } from '@lotsof/sugar/dom';
- * const data = __readCssDataFrom();
+ * import { readCssDataFrom } from '@blackbyte/sugar/dom';
+ * const data = readCssDataFrom();
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function readCssDataFrom($elm, settings) {
     // const finalSettings: TReadCssDaraSettings = {

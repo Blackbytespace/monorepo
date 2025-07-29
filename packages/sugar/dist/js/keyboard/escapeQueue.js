@@ -1,11 +1,11 @@
-import __uniqid from '../string/uniqid.js';
+import uniqid from '../string/uniqid.js';
 let _escapeQueue = [];
 const _escapeQueueMap = new WeakMap();
 let _isEscaping = false;
 class CancelablePromise extends Promise {
     cancel() { }
 }
-export function __escapeQueueLength() {
+export function escapeQueueLength() {
     return _escapeQueue.length;
 }
 export default function escapeQueue(callback, settings) {
@@ -39,7 +39,7 @@ export default function escapeQueue(callback, settings) {
         });
         // create the queue item to register
         const queueItem = {
-            id: (_a = finalSettings.id) !== null && _a !== void 0 ? _a : __uniqid(),
+            id: (_a = finalSettings.id) !== null && _a !== void 0 ? _a : uniqid(),
             callback,
             resolve,
         };

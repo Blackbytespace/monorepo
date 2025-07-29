@@ -1,8 +1,8 @@
-import __easeInOutQuart from '../easing/easeInOutQuart.js';
-export default function __easeInterval(duration, cb, settings = {}) {
+import easeInOutQuart from '../easing/easeInOutQuart.js';
+export default function easeInterval(duration, cb, settings = {}) {
     let cleared = false, animationFrame;
     const pro = new Promise((resolve) => {
-        settings = Object.assign({ interval: 1000 / 25, easing: __easeInOutQuart, from: 0, to: 100, onEnd: undefined }, settings);
+        settings = Object.assign({ interval: 1000 / 25, easing: easeInOutQuart, from: 0, to: 100, onEnd: undefined }, settings);
         const startTime = Date.now();
         function animate() {
             var _a;

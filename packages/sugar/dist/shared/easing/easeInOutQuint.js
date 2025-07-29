@@ -11,18 +11,18 @@
  * @param 		{Number} 		t 		The current time
  * @return 		{Number} 				The value depending on time
  *
- * @snippet         __easeInOutQuint($1)
+ * @snippet         easeInOutQuint($1)
  *
  * @example         js
- * import { __easeInOutQuint } from '@lotsof/sugar/easing';
- * __easeInOutQuint(0.4);
+ * import { easeInOutQuint } from '@blackbyte/sugar/easing';
+ * easeInOutQuint(0.4);
  *
  * @todo      tests
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __easeInOutQuint(t) {
+export default function easeInOutQuint(t) {
     return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
 }
 //# sourceMappingURL=easeInOutQuint.js.map

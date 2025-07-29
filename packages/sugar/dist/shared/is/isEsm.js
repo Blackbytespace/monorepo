@@ -11,18 +11,18 @@ import __isCjs from './isCjs.js';
  *
  * @return      {Boolean}           true if the current system is esm
  *
- * @snippet         __isEsm()
+ * @snippet         isEsm()
  *
  * @todo            tests
  *
  * @example       js
- * import { __isEsm } from '@lotsof/sugar/is';
- * __isEsm(); // => true
+ * import { isEsm } from '@blackbyte/sugar/is';
+ * isEsm(); // => true
  *
  * @since     1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isEsm() {
+export default function isEsm() {
     return !__isCjs();
 }
 //# sourceMappingURL=isEsm.js.map

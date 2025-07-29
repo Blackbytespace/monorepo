@@ -10,19 +10,19 @@
  * @param 		{HTMLElement} 					elm  		The element to get the offset from
  * @return 		{top: number; left: number;} 									The offset top and left object
  *
- * @snippet         __offsetFromParent($1)
+ * @snippet         offsetFromParent($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __offsetFromParent } from '@lotsof/sugar/dom'
- * const offsetFromParentElm = __offsetFromParent(myCoolElement);
+ * import { offsetFromParent } from '@blackbyte/sugar/dom'
+ * const offsetFromParentElm = offsetFromParent(myCoolElement);
  * // output : { top : 200, left : 300 }
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __offsetFromParent(elm: HTMLElement): {
+export default function offsetFromParent(elm: HTMLElement): {
     top: number;
     left: number;
 };

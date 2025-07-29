@@ -11,22 +11,22 @@
  * @param       {Any}           object          The object to check
  * @return      {Boolean}                           true if is an custom object instance, false if not
  *
- * @snippet         __isClassInstance($1)
+ * @snippet         isClassInstance($1)
  *
  * @example         js
- * import { __isClassInstance } from '@blackbyte/sugar/is';
- * if (__isClassInstance({
+ * import { isClassInstance } from '@blackbyte/sugar/is';
+ * if (isClassInstance({
  *      something: 'hello'
  * })); // => false
  * class MyClass {
  *      constructor() {}
  * }
- * __isClassInstance(new MyClass());
+ * isClassInstance(new MyClass());
  *
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __isClassInstance(object: any): boolean {
+export default function isClassInstance(object: any): boolean {
   if (!object) return false;
   if (typeof object !== 'object') return false;
   if (object.constructor && object.constructor.name === 'Object') return false;

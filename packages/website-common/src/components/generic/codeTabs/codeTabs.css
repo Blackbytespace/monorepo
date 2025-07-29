@@ -1,0 +1,143 @@
+.code-tabs {
+  display: flex;
+
+  .code-tabs_nav {
+    flex-shrink: 0;
+    width: 33%;
+    position: relative;
+    user-select: none;
+    padding-block: s-space(10);
+    flex-grow: 1;
+  }
+
+  .code-tabs_tabs {
+  }
+
+  .code-tabs_tab {
+    cursor: pointer;
+    padding: s-space(4) s-space(10) s-space(4) s-space(10);
+    position: relative;
+    /* background: linear-gradient(
+      to right,
+      s-color(main, surface, --alpha 0) 0%,
+      s-color(main, surface, --alpha 0) 100%
+    ); */
+
+    @s-transition (fast);
+    @s-radius;
+
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      border: 0px solid transparent;
+      background: linear-gradient(
+          135deg,
+          s-color(accent, --alpha 1),
+          s-color(accent, --alpha 0) 40%
+        )
+        border-box; /*3*/
+      mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      @s-radius;
+      @s-transition;
+    }
+
+    &:after {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      border: 0px solid transparent;
+      background: linear-gradient(
+          270deg,
+          s-color(main, surface, --alpha 1),
+          s-color(main, surface, --alpha 0) 40%
+        )
+        border-box;
+      @s-transition;
+    }
+
+    &.-active {
+      padding: s-space(10) s-space(10) s-space(10) s-space(10);
+
+      &::before {
+        border-width: 1px;
+        opacity: 1;
+      }
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .code-tabs_tab-title {
+    margin-block-end: s-space(2);
+  }
+  .code-tabs_tab:hover .code-tabs_tab-title,
+  .code-tabs_tab:focus-within .code-tabs_tab-title {
+    color: s-color(accent);
+  }
+  .code-tabs_tab.-active .code-tabs_tab-title {
+    color: s-color(accent);
+  }
+
+  .code-tabs_tab-description {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    @s-transition;
+  }
+  .code-tabs_tab.-active .code-tabs_tab-description {
+    height: calc-size(auto, size);
+    opacity: var(--opacity, 1);
+  }
+
+  .shiki,
+  .code {
+    height: 100%;
+    @s-transition;
+    background: none !important;
+    border: none !important;
+  }
+
+  .code-tabs_content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: s-color(main, surface) !important;
+    border: s-color(accent, --alpha 0.01) 1px solid;
+    @s-radius;
+  }
+
+  .code-tabs_code-wrapper {
+    @s-transition;
+  }
+
+  .code-tabs_code {
+    opacity: 0;
+    translate: 0 10px;
+    @s-transition;
+    transition-delay: 0.2s !important;
+  }
+  .code-tabs_code.-active {
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 10px;
+    }
+  }
+}

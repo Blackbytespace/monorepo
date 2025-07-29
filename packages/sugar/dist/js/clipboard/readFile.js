@@ -24,13 +24,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
  * @snippet         __readFile($1)
  *
  * @example         js
- * import { __readFile } from '@lotsof/sugar/clipboard';
- * await __readFile();
+ * import { readFile } from '@blackbyte/sugar/clipboard';
+ * await readFile();
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __readText() {
+export default function readText() {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
         if ((_a = navigator === null || navigator === void 0 ? void 0 : navigator.clipboard) === null || _a === void 0 ? void 0 : _a.read) {

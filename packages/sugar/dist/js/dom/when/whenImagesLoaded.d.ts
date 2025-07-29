@@ -14,16 +14,16 @@
  * @param    {Array<HTMLImageElement>}    $imgs    An array (or nodeList) of HTMLImageElement to detect the load
  * @return    {Promise}    A promise resolved when all images are loaded properly
  *
- * @snippet         __whenImagesLoaded($1)
- * __whenImagesLoaded($1).then(imgs => {
+ * @snippet         whenImagesLoaded($1)
+ * whenImagesLoaded($1).then(imgs => {
  *      $2
  * });
  *
  * @todo      tests
  *
  * @example    js
- * import { __whenImagesLoaded } from '@lotsof/sugar/dom'
- * __whenImagesLoaded([
+ * import { whenImagesLoaded } from '@blackbyte/sugar/dom'
+ * whenImagesLoaded([
  * 	$img1, $img2, $img3
  * ]).on('loaded', $img => {
  *    // do something with the loaded image
@@ -32,6 +32,6 @@
  * })
  *
  * @since           1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __whenImagesLoaded($imgs: HTMLImageElement[]): Promise<HTMLImageElement[]>;
+export default function whenImagesLoaded($imgs: HTMLImageElement[]): Promise<HTMLImageElement[]>;

@@ -13,17 +13,17 @@
  *
  * @todo      tests
  *
- * @snippet         __styleObjectToString($1)
+ * @snippet         styleObjectToString($1)
  *
  * @example 	js
- * import { __styleObjectToString } from '@lotsof/sugar/css'
- * const styleString =  __styleObjectToString({
+ * import { styleObjectToString } from '@blackbyte/sugar/css'
+ * const styleString =  styleObjectToString({
  * 		paddingLeft : '20px',
  * 		display : 'block'
  * });
  * // output => padding-left:20px; display:block;
  *
  * @since           1.0.0
- * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __styleObjectToString(styleObj: any): string;
+export default function styleObjectToString(styleObj: any): string;

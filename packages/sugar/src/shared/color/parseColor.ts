@@ -1,8 +1,8 @@
-import __hexToRgba from './hexToRgba.js';
-import __hslaToRgba from './hslaToRgba.js';
-import __parseHsla from './parseHsla.js';
-import __parseRgba from './parseRgba.js';
-import __rgbaToHsla from './rgbaToHsla.js';
+import hexToRgba from './hexToRgba.js';
+import hslaToRgba from './hslaToRgba.js';
+import parseHsla from './parseHsla.js';
+import parseRgba from './parseRgba.js';
+import rgbaToHsla from './rgbaToHsla.js';
 
 /**
  * @name                parseColor
@@ -21,11 +21,11 @@ import __rgbaToHsla from './rgbaToHsla.js';
  *
  * @todo      tests
  *
- * @snippet         __parseColor($1)
+ * @snippet         parseColor($1)
  *
  * @example         js
- * import { __parseColor } from '@blackbyte/sugar/color';
- * __parseColor('rgba(10,20,30,100)'); // => { r: 10, b: 20, b: 30, a: 100 }
+ * import { parseColor } from '@blackbyte/sugar/color';
+ * parseColor('rgba(10,20,30,100)'); // => { r: 10, b: 20, b: 30, a: 100 }
  *
  * @since         1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -44,7 +44,7 @@ export type TParseColorHslaResult = {
   a: number;
 };
 
-export default function __parseColor(
+export default function parseColor(
   color: string,
   format = 'rgba',
 ): TParseColorHslaResult | TParseColorRgbaResult {
@@ -53,12 +53,12 @@ export default function __parseColor(
   let parsedColor: any;
 
   if (color.startsWith('rgb')) {
-    parsedColor = __parseRgba(color);
+    parsedColor = parseRgba(color);
   } else if (color.startsWith('hsl')) {
-    const hsla: any = __parseHsla(color);
-    parsedColor = __hslaToRgba(hsla.h, hsla.s, hsla.l);
+    const hsla: any = parseHsla(color);
+    parsedColor = hslaToRgba(hsla.h, hsla.s, hsla.l);
   } else if (color.startsWith('#')) {
-    parsedColor = __hexToRgba(color);
+    parsedColor = hexToRgba(color);
   } else {
     throw new Error(
       `The passed color "${color}" is in a format that cannot be parsed for now...`,
@@ -68,7 +68,7 @@ export default function __parseColor(
   switch (format) {
     case 'hsla':
     case 'hsl':
-      return __rgbaToHsla(
+      return rgbaToHsla(
         parsedColor.r,
         parsedColor.g,
         parsedColor.b,

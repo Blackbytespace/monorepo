@@ -1,5 +1,5 @@
-import { __querySelectorUp } from '@lotsof/sugar/dom';
-export default function __isDarkMode(settings) {
+import { __querySelectorUp } from '@blackbyte/sugar/dom';
+export default function isDarkMode(settings) {
     const finalSettings = Object.assign({ ctx: window }, (settings !== null && settings !== void 0 ? settings : {}));
     if (finalSettings.rootNode) {
         if (finalSettings.rootNode.classList.contains('-dark')) {

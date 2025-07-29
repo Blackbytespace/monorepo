@@ -1,7 +1,6 @@
-import __ensureDirSync from './ensureDirSync.js';
+import * as fs from 'fs';
+import ensureDirSync from './ensureDirSync.js';
 import __folderPath from './folderPath.js';
-
-import * as __fs from 'fs';
 
 /**
  * @name                writeJson
@@ -20,29 +19,29 @@ import * as __fs from 'fs';
  *
  * @todo        tests
  *
- * @snippet         __writeJson($1, $2)
+ * @snippet         writeJson($1, $2)
  * await _writeJson($1, $2)
  *
  * @example       js
- * import { __writeJson } from '@blackbyte/sugar/fs';
- * __writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
+ * import { writeJson } from '@blackbyte/sugar/fs';
+ * writeJson('my/cool/file.json', { hello: 'world' }).then(() => {
  *    // do something on complete...
  * });
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default async function __writeJson(
+export default async function writeJson(
   path: string,
   data: any,
 ): Promise<string> {
   const folderPath = __folderPath(path);
-  __ensureDirSync(folderPath);
+  ensureDirSync(folderPath);
   let jsonStr = data;
   if (typeof jsonStr !== 'string') {
     jsonStr = JSON.stringify(data, null, 4);
   }
   // @ts-ignore
-  await __fs.writeFile(path, jsonStr);
+  await fs.writeFile(path, jsonStr);
   return path;
 }

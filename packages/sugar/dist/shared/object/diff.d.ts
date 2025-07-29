@@ -22,10 +22,10 @@
  *
  * @todo      tests
  *
- * @snippet         __diff($1, $2)
+ * @snippet         diff($1, $2)
  *
  * @example         js
- * import { __diff } from '@lotsof/sugar/object';
+ * import { diff } from '@blackbyte/sugar/object';
  * const myObject1 = {
  *    hello: 'world',
  *    plop: 'yop'
@@ -35,7 +35,7 @@
  *    hello: 'hey!',
  *    plop: 'yop'
  * };
- * __diff(myObject1, myObject2);
+ * diff(myObject1, myObject2);
  * {
  *    coco: 'plop',
  *    hello: 'hey!'
@@ -43,7 +43,7 @@
  *
  * @see       https://www.npmjs.com/package/is-equal
  * @since       1.0.0
- * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TDiffSettings = {
     deep?: boolean;
@@ -53,4 +53,4 @@ export type TDiffSettings = {
     emptyObject?: boolean;
     updated?: boolean;
 };
-export default function __diff(object1: any, object2: any, settings?: TDiffSettings): any;
+export default function diff(object1: any, object2: any, settings?: TDiffSettings): any;

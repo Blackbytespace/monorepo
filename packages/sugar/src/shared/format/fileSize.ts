@@ -27,13 +27,13 @@ import { filesize as __filesize } from 'filesize';
  * @setting             {String}                [separator='.']         (string) Separator of thousands, default is '.'
  * @setting             {String}                [spacer=' ']            (string) Spacer of the output, default is ' '
  *
- * @snippet         __formatFileSize($1)
+ * @snippet         formatFileSize($1)
  *
  * @todo     tests
  *
  * @example             js
- * import { __formatFilesize } from '@blackbyte/sugar/fs';
- * __formatFilesize(163931); // => 326.86 KB
+ * import { formatFilesize } from '@blackbyte/sugar/fs';
+ * formatFilesize(163931); // => 326.86 KB
  *
  * @see             https://www.npmjs.com/package/filesize
  * @since           1.0.0
@@ -54,7 +54,7 @@ export type TFormatFileSizeSettings = {
   spacer?: string;
 };
 
-export default function __formatFileSize(
+export default function formatFileSize(
   size: number,
   settings: TFormatFileSizeSettings = {},
 ) {

@@ -1,4 +1,4 @@
-import __countLineChars from './countLineChars.js';
+import countLineChars from './countLineChars.js';
 
 /**
  * @name                        splitEvery
@@ -19,11 +19,11 @@ import __countLineChars from './countLineChars.js';
  *
  * @todo      tests
  *
- * @snippet         __splitEvery($1, $2)
+ * @snippet         splitEvery($1, $2)
  *
  * @example           js
- * import { __splitEvery } from '@blackbyte/sugar/string';
- * __splitEvery('Hello World', 2, {
+ * import { splitEvery } from '@blackbyte/sugar/string';
+ * splitEvery('Hello World', 2, {
  *    splitWords: true
  * }); // => ['He','ll','o ','Wo','rl','d']
  *
@@ -37,7 +37,7 @@ export type TSplitEverySettings = {
   splitWords: boolean;
 };
 
-export default function __splitEvery(
+export default function splitEvery(
   text: string,
   every: number,
   settings: Partial<TSplitEverySettings> = {},
@@ -92,9 +92,9 @@ export default function __splitEvery(
         const rest = lastOpenedTag + item.replace(toAdd, '');
         // if (toAdd.slice(-1) !== ' ' && rest.slice(0, 1) !== ' ')
         //   finalLines[finalLines.length - 1] += '-';
-        const restLines = __splitEvery(rest, every);
+        const restLines = splitEvery(rest, every);
         finalLines = [...finalLines, ...restLines];
-        lineCount = __countLineChars(finalLines[finalLines.length - 1]);
+        lineCount = countLineChars(finalLines[finalLines.length - 1]);
       } else {
         lineCount += item.length;
         finalLines[finalLines.length - 1] += item;

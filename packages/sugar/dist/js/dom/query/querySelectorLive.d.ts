@@ -24,14 +24,14 @@ import type { TWhenTrigger } from '../when/when.js';
  * @setting         {HTMLElement}           [rootNode=document]         The root node from where to observe childs
  * @setting         {Boolean}              [once=true]                If true, each observed nodes will be handled only once even if they are removed and reinjected in the dom
  *
- * @snippet         __querySelectorLive($1, $2)
- * __querySelectorLive($1, \$elm => {
+ * @snippet         querySelectorLive($1, $2)
+ * querySelectorLive($1, \$elm => {
  *      $2
  * });
  *
  * @example 	js
- * import { __querySelectorLive } from '@lotsof/sugar/dom'
- * const query = __querySelectorLive('.my-cool-item', (node, api) => {
+ * import { querySelectorLive } from '@blackbyte/sugar/dom'
+ * const query = querySelectorLive('.my-cool-item', (node, api) => {
  * 	    // do something here with the detected node
  *      // call api.cancel if you want to stop listening for this selector
  *      api.cancel();
@@ -40,7 +40,7 @@ import type { TWhenTrigger } from '../when/when.js';
  * query.cancel();
  *
  * @since           1.0.0
- * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author 	Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export type TQuerySelectorLiveSettings = {
     rootNode: HTMLElement | Document;
@@ -56,5 +56,5 @@ export type TQuerySelectorLiveApi = {
     cancel: Function;
 };
 type TQuerySelectorLiveCallback = ($elm: HTMLElement, api: TQuerySelectorLiveApi) => void;
-export default function __querySelectorLive(selector: string, cb: TQuerySelectorLiveCallback, settings?: Partial<TQuerySelectorLiveSettings>, _isFirstLevel?: boolean): TQuerySelectorLiveApi;
+export default function querySelectorLive(selector: string, cb: TQuerySelectorLiveCallback, settings?: Partial<TQuerySelectorLiveSettings>, _isFirstLevel?: boolean): TQuerySelectorLiveApi;
 export {};

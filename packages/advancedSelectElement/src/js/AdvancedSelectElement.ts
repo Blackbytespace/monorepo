@@ -404,7 +404,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle arrows
-    this.addEventListenerOn(document, 'keyup', (e: any) => {
+    this.addEventListenerOn(document, 'keydown', (e: any) => {
       if (!this.isActive()) return;
       if (!this._filteredItems.length) return;
 

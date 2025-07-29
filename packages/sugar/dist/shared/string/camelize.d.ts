@@ -13,14 +13,14 @@
  *
  * @todo      tests
  *
- * @snippet         __camelCase($1)
+ * @snippet         camelize($1)
  *
  * @example     js
- * import { __camelCase } from '@lotsof/sugar/string';
- * __camelCase('hello world'); // => helloWorld
+ * import { camelize } from '@blackbyte/sugar/string';
+ * camelize('hello world'); // => helloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __camelCase(text: string): string;
+export default function camelize(text: string): string;

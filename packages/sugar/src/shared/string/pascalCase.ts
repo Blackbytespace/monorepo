@@ -15,11 +15,11 @@ import { pascalCase } from 'change-case';
  *
  * @todo      tests
  *
- * @snippet         __pascalCase($1)
+ * @snippet         pascalCase($1)
  *
  * @example     js
- * import { __pascalCase } from '@blackbyte/sugar/string';
- * __pascalCase('hello world'); // => HelloWorld
+ * import { pascalCase } from '@blackbyte/sugar/string';
+ * pascalCase('hello world'); // => HelloWorld
  *
  * @see             https://www.npmjs.com/package/change-case
  * @since       1.0.0

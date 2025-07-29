@@ -6,11 +6,9 @@ import { faker } from '@faker-js/faker';
  * @type            Function
  * @platform        node
  * @platform        ts
- * @status          stable
+ * @status          wip
  *
  * This function simply returns you a rich text content that you can use in your tests for example.
- *
- *
  *
  * @return      {DOMElement}                    The new element
  *

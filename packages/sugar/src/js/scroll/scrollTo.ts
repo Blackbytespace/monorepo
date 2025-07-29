@@ -1,6 +1,6 @@
 // @ts-nocheck
-import __easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
-import __isUserScrolling from '../is/isUserScrolling.js';
+import easeInOutQuad from '../../shared/easing/easeInOutQuad.js';
+import isUserScrolling from '../is/isUserScrolling.js';
 
 /**
  * @name                scrollTo
@@ -37,7 +37,7 @@ import __isUserScrolling from '../is/isUserScrolling.js';
  *
  * @example 	js
  * import { __scrollTop } from '@coffeekraken/sugar/dom'
- * import { __easeInOutQuad } from '@coffeekraken/sugar/easing'
+ * import { easeInOutQuad } from '@coffeekraken/sugar/easing'
  * __scrollTo(myCoolHTMLElement);
  *
  * @since           2.0.0
@@ -63,7 +63,7 @@ export default function __scrollTo(
     const finalSettings: IScrollToSettings = {
       $elm: window,
       duration: 500,
-      easing: __easeInOutQuad,
+      easing: easeInOutQuad,
       offsetX: 0,
       offsetY: 0,
       align: 'start',
@@ -234,7 +234,7 @@ __scrollTo.step = function () {
 
   $scrollElm.scrollTo(x, y);
 
-  if (!this.force && __isUserScrolling(this.$elm)) return;
+  if (!this.force && isUserScrolling(this.$elm)) return;
 
   // Continue animation as long as duration hasn't surpassed
   if (t !== 1) {

@@ -1,5 +1,5 @@
-import __isScrollable from '../../is/isScrollable.js';
-import __querySelectorUp from './querySelectorUp.js';
+import isScrollable from '../../is/isScrollable.js';
+import querySelectorUp from './querySelectorUp.js';
 
 /**
  * @name                closestScrollableElement
@@ -14,20 +14,20 @@ import __querySelectorUp from './querySelectorUp.js';
  * @param 		{HTMLElement} 					$elm  		The element to start on
  * @return 		{HTMLElement|undefined} 								The element found or undefined
  *
- * @snippet         __closestScrollableElement($1)
+ * @snippet         closestScrollableElement($1)
  *
  * @todo      tests
  *
  * @example  	js
- * import { __closestScrollableElement } from '@blackbyte/sugar/dom';
- * __closestScrollableElement($myElement);
+ * import { closestScrollableElement } from '@blackbyte/sugar/dom';
+ * closestScrollableElement($myElement);
  *
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __closestScrollableElement(
+export default function closestScrollableElement(
   $elm: HTMLElement,
 ): HTMLElement | undefined {
-  const res = __querySelectorUp($elm, ($e) => __isScrollable($e));
+  const res = querySelectorUp($elm, ($e) => isScrollable($e));
   return res;
 }

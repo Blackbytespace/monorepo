@@ -13,19 +13,19 @@
  *
  * @todo      tests
  *
- * @snippet         __getMethods($1)
+ * @snippet         getMethods($1)
  *
  * @example         js
- * import { __getMethods } from '@lotsof/sugar/class';
+ * import { getMethods } from '@blackbyte/sugar/class';
  * myClass {
  *  constructor() {}
  *  hello() {}
  *  world() {}
  * }
  * const myInstance = new myClass();
- * __getMethods(myInstance); // => ['hello','world']
+ * getMethods(myInstance); // => ['hello','world']
  *
  * @since       1.0.0
- * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://lotsof.dev)
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function __getMethods(toCheck: any): string[];
+export default function getMethods(toCheck: any): string[];

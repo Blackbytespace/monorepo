@@ -1,4 +1,4 @@
-import { __setCookie } from '@blackbyte/sugar/cookie';
+import { setCookie } from '@blackbyte/sugar/cookie';
 
 /**
  * @name            setTheme
@@ -19,11 +19,11 @@ import { __setCookie } from '@blackbyte/sugar/cookie';
  *
  * @todo      tests
  *
- * @snippet         __setTheme($1)
+ * @snippet         setTheme($1)
  *
  * @example         js
- * import { __setTheme } from '@blackbyte/sugar/theme';
- * __setTheme('dark');
+ * import { setTheme } from '@blackbyte/sugar/theme';
+ * setTheme('dark');
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
@@ -49,5 +49,5 @@ export default function setTheme(
   });
   document.body.classList.add(`theme-${theme}`);
 
-  __setCookie(finalSettings.cookieName, theme);
+  setCookie(finalSettings.cookieName, theme);
 }
