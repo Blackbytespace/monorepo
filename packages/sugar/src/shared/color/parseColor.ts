@@ -46,7 +46,7 @@ export type TParseColorHslaResult = {
 
 export default function parseColor(
   color: string,
-  format = 'rgba',
+  format: 'rgb' | 'rgba' | 'hsl' | 'hsla' = 'rgba',
 ): TParseColorHslaResult | TParseColorRgbaResult {
   color = color.replace(/\s/g, '');
 

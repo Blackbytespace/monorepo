@@ -28,10 +28,15 @@ import __jsAgo from 'js-ago';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function timeAgo(
-  timestamp: number,
+  timestamp: number | Date,
   format: 'short' | 'medium' | 'long' = 'medium',
 ): string {
-  return __jsAgo(timestamp, {
+  let finalTimestamp: number = timestamp;
+  if (timestamp instanceof Date) {
+    finalTimestamp = timestamp.getTime();
+  }
+
+  return __jsAgo(finalTimestamp, {
     format,
   });
 }

@@ -27,7 +27,11 @@ import __jsAgo from 'js-ago';
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
 export default function timeAgo(timestamp, format = 'medium') {
-    return __jsAgo(timestamp, {
+    let finalTimestamp = timestamp;
+    if (timestamp instanceof Date) {
+        finalTimestamp = timestamp.getTime();
+    }
+    return __jsAgo(finalTimestamp, {
         format,
     });
 }

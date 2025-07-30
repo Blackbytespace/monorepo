@@ -14,7 +14,7 @@ import parseRgba from './parseRgba.js';
  * @param       	{Number}        	g 	        	The green value between 0-255
  * @param       	{Number}        	b 	        	The blue value between 0-255
  * @param       	{Number}        	a 	        	The alpha value between 0-100|0-1
- * @return 	      {object} 		                    	The hsl object representation
+ * @return 	      {object} 		                    The hsl object representation with a "toString" method
  *
  * @todo      tests
  *
@@ -68,7 +68,7 @@ function RGBAToHSLA(r, g, b, a) {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return { h, s, l, a };
+  return { h, s, l, a, toString: () => `hsla(${h}, ${s}%, ${l}%, ${a})` };
 }
 
 export type TRgbaToHslaResult = {
@@ -76,6 +76,7 @@ export type TRgbaToHslaResult = {
   s: number;
   l: number;
   a: number;
+  toString: () => string;
 };
 
 export default function rgbaToHsla(

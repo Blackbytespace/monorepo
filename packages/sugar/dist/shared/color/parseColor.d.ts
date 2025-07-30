@@ -36,4 +36,4 @@ export type TParseColorHslaResult = {
     l: number;
     a: number;
 };
-export default function parseColor(color: string, format?: string): TParseColorHslaResult | TParseColorRgbaResult;
+export default function parseColor(color: string, format?: 'rgb' | 'rgba' | 'hsl' | 'hsla'): TParseColorHslaResult | TParseColorRgbaResult;

@@ -8,8 +8,8 @@
  *
  * This function allows you to convert time like seconds, ms, hours, minutes, etc... from one format to another
  *
- * @param           {String|Number}             from                  The value to start from like "10s", "20ms", "2h", etc...
- * @param           {String}                    [to='ms']             The format you want to get back
+ * @param           {String|Number}             from                  The value to start from like "10s", "20ms", "2h", etc... Supports 'ms', 'millisecond', 'milliseconds', 's', 'second', 'seconds', 'm', 'minute', 'minutes', 'h', 'hour', 'hours', 'd', 'day', 'days', 'w', 'week', 'weeks', 'month', 'months', 'y', 'year', 'years'
+ * @param           {String}                    [to='ms']             The format you want to get back. Can be 'ms' | 'millisecond' | 'milliseconds' | 's' | 'second' | 'seconds' | 'm' | 'minute' | 'minutes' | 'h' | 'hour' | 'hours' | 'd' | 'day' | 'days' | 'w' | 'week' | 'weeks' | 'month' | 'months' | 'y' | 'year' | 'years'
  * @return          {Number}                                          The converted value
  *
  * @todo      tests

@@ -7,7 +7,7 @@
     position: relative;
     user-select: none;
     padding-block: s-space(10);
-    flex-grow: 1;
+    flex-grow: 0;
   }
 
   .code-tabs_tabs {
@@ -87,10 +87,10 @@
   }
   .code-tabs_tab:hover .code-tabs_tab-title,
   .code-tabs_tab:focus-within .code-tabs_tab-title {
-    color: s-color(accent);
+    color: s-color(accent, text);
   }
   .code-tabs_tab.-active .code-tabs_tab-title {
-    color: s-color(accent);
+    color: s-color(accent, text);
   }
 
   .code-tabs_tab-description {

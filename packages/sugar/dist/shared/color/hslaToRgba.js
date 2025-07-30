@@ -13,7 +13,7 @@ import parseHsla from './parseHsla.js';
  * @param	        {Number}        	s 	        	The saturation value between 0-100|0-1
  * @param	        {Number}        	l 	        	The luminence value between 0-100|0-1
  * @param	        {Number}        	a 	        	The alpha value between 0-100|0-1
- * @return 	      {object} 		                  	The rgba object representation
+ * @return 	      {object} 		                  	The rgba object representation with a "toString" method
  *
  * @todo      tests
  *
@@ -87,7 +87,15 @@ export default function hslaToRgba(h, s, l, a = 1) {
         l = h.l;
         a = h.a;
     }
-    // convert
-    return HSLAToRGBA(h, s, l, a);
+    const rgba = HSLAToRGBA(h, s, l, a);
+    return {
+        r: rgba.r,
+        g: rgba.g,
+        b: rgba.b,
+        a: rgba.a !== undefined ? rgba.a : 1, // default alpha to 1 if not provided
+        toString: () => {
+            return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+        },
+    };
 }
 //# sourceMappingURL=hslaToRgba.js.map

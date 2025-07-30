@@ -10,7 +10,7 @@
  * Hex to RGBA
  *
  * @param	              {string}       	hex         		The hex string to convert
- * @return            	{object} 			                  	The rgba object representation
+ * @return            	{object} 			                  The rgba object representation with a "toString" method
  *
  * @todo      tests
  *
@@ -41,7 +41,7 @@ function hexToRGBA(h) {
     g = '0x' + h[3] + h[4];
     b = '0x' + h[5] + h[6];
   }
-  return { r, g, b, a: 1 };
+  return { r, g, b, a: 1, toString: () => `rgba(${r}, ${g}, ${b}, 1)` };
 }
 
 interface IHexToToRbaResult {
@@ -49,6 +49,7 @@ interface IHexToToRbaResult {
   g: number;
   b: number;
   a: number;
+  toString: () => string;
 }
 
 export default function hexToRgba(hex: string): IHexToToRbaResult {

@@ -15,6 +15,7 @@
   --s-color-current: s-color(accent);
 
   --s-shade-text: --lightness 90;
+  --s-shade-text-accent: --lightness 80;
 
   --s-shade-foreground: --lightness 90;
   --s-shade-background: --lightness 0;

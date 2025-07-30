@@ -1,5 +1,5 @@
 <template>
-  <div class="code-tabs">
+  <div class="code-tabs" ref="$root">
     <nav class="code-tabs_nav">
       <ol class="code-tabs_tabs">
         <li
@@ -46,11 +46,13 @@ import { type TCodeTabs } from './codeTabs.type';
 const height = ref(0);
 const selectedTabIndex = ref(0);
 
+const $root = ref<HTMLElement | null>(null);
+
 withDefaults(defineProps<TCodeTabs>(), {});
 
 const selectTab = async (index: number) => {
   selectedTabIndex.value = index;
-  const $tab = document.querySelector(
+  const $tab = $root.value?.querySelector(
     `.code-tabs_code:nth-child(${index + 1})`,
   ) as HTMLElement;
   if (!$tab) {

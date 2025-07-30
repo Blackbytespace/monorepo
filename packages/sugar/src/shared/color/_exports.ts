@@ -1,5 +1,5 @@
 import alphaToHex from './alphaToHex.js';
-import convert from './convert.js';
+import convertColor from './convertColor.js';
 import hexToRgba from './hexToRgba.js';
 import hslaToHex from './hslaToHex.js';
 import hslaToHexa from './hslaToHexa.js';
@@ -11,8 +11,9 @@ import rgbaToHex from './rgbaToHex.js';
 import rgbaToHsla from './rgbaToHsla.js';
 
 export {
-  alphaToHex as __alphaToHex,
-  convert as __convert,
+  alphaToHex as __alphaToHex, // alias for backward compatibility
+  convertColor as __convert,
+  convertColor as __convertColor, // alias for backward compatibility
   hexToRgba as __hexToRgba,
   hslaToHex as __hslaToHex,
   hslaToHexa as __hslaToHexa,
@@ -23,7 +24,8 @@ export {
   rgbaToHex as __rgbaToHex,
   rgbaToHsla as __rgbaToHsla,
   alphaToHex,
-  convert,
+  convertColor as convert,
+  convertColor,
   hexToRgba,
   hslaToHex,
   hslaToHexa,

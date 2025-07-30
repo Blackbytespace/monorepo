@@ -24,4 +24,4 @@
  * @since       1.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function timeAgo(timestamp: number, format?: 'short' | 'medium' | 'long'): string;
+export default function timeAgo(timestamp: number | Date, format?: 'short' | 'medium' | 'long'): string;

@@ -4,7 +4,7 @@ import rgbaToHex from './rgbaToHex.js';
 import rgbaToHsla from './rgbaToHsla.js';
 
 /**
- * @name                    convert
+ * @name                    convertColor
  * @namespace               shared.color
  * @type                    Function
  * @platform                js
@@ -20,18 +20,18 @@ import rgbaToHsla from './rgbaToHsla.js';
  *
  * @todo      tests
  *
- * @snippet         convert($1, $2)
+ * @snippet         convertColor($1, $2)
  *
  * @example         js
- * import { convert } from '@blackbyte/sugar/color';
- * convert('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
+ * import { convertColor } from '@blackbyte/sugar/color';
+ * convertColor('rgba(10,20,30,100)', 'rgba'); // => { r: 10, g: 20, b: 30, a: 100 }
  *
  * @since       1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default function convert(
+export default function convertColor(
   input: any,
-  format: string = 'rgba',
+  format: 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'hex' = 'rgba',
 ): string | object {
   // transforming the input into rgba object
   let rgbaObj: any = {};
@@ -62,27 +62,20 @@ export default function convert(
         r: rgbaObj.r,
         g: rgbaObj.g,
         b: rgbaObj.b,
+        toString: () => `rgb(${rgbaObj.r}, ${rgbaObj.g}, ${rgbaObj.b})`,
       };
-    case 'rgbString':
-      return `rgb(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b})`;
     case 'rgba':
       return rgbaObj;
-    case 'rgbaString':
-      return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
     case 'hsl':
       return {
         h: hslaObj.h,
         s: hslaObj.s,
         l: hslaObj.l,
+        toString: () => `hsl(${hslaObj.h}, ${hslaObj.s}%, ${hslaObj.l}%)`,
       };
-    case 'hslString':
-      return `hsl(${hslaObj.h},${hslaObj.s},${hslaObj.l})`;
     case 'hsla':
       return hslaObj;
-    case 'hslaString':
-      return `hsla(${hslaObj.h},${hslaObj.s},${hslaObj.l},${hslaObj.a})`;
     case 'hex':
-    case 'hexString':
       return rgbaToHex(rgbaObj.r, rgbaObj.g, rgbaObj.b, rgbaObj.a);
   }
 
