@@ -1,6 +1,7 @@
-import { __defineDefaultConfig, __getConfig } from '@lotsof/config';
-import { __dirname } from '@lotsof/sugar/fs';
+import { __defineDefaultConfig, __getConfig } from '@blackbyte/config';
+import { __dirname } from '@blackbyte/sugar/fs';
 import __path from 'path';
+console.log('CONFI', __getConfig());
 const componentsConfig = __getConfig().components.settings;
 const config = {
     components: componentsConfig,
@@ -31,6 +32,5 @@ const config = {
 __defineDefaultConfig({
     factory: config,
 });
-console.log(__getConfig());
 export { config };
 //# sourceMappingURL=factory.config.js.map

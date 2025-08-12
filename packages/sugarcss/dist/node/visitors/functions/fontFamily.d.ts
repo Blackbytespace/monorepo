@@ -21,6 +21,6 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function fontFamily(value: any, settings: TSugarCssSettings): any;

@@ -1,4 +1,4 @@
-import { __dashCase } from '@lotsof/sugar/string';
+import { __dashCase } from '@blackbyte/sugar/string';
 export default function argsToCustomPropertiesAst(name, args) {
     const result = [];
     for (let [key, value] of Object.entries(args.ast)) {

@@ -8,16 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __parseHtml } from '@lotsof/sugar/console';
+import { __parseHtml } from '@blackbyte/sugar/console';
 import { Command as __Command } from 'commander';
 import __figlet from 'figlet';
 // @ts-ignore
+import { __loadConfig } from '@blackbyte/config';
 import __packageJson from '../../package.json' with { type: 'json' };
-import { __loadConfig } from '@lotsof/config';
 // import __registerComponentsCommands from './modules/components/components.api.js';
 import __registerDocmapCommands from './modules/docmap/docmap.api.js';
-import __registerFactoryCommands from './modules/factory/factory.api.js';
-import __registerPuppetCommands from './modules/puppet/puppet.api.js';
+// import __registerPuppetCommands from './modules/puppet/puppet.api.js';
 const nativeConsoleLog = console.log;
 console.log = (...args) => {
     args.forEach((arg) => {
@@ -28,7 +27,7 @@ console.log = (...args) => {
     });
 };
 const program = new __Command();
-console.log(__figlet.textSync('Lotsof'));
+console.log(__figlet.textSync('Blackbyte'));
 program.version(__packageJson.version).description(__packageJson.description);
 program.hook('preAction', () => __awaiter(void 0, void 0, void 0, function* () {
     yield __loadConfig();
@@ -36,7 +35,7 @@ program.hook('preAction', () => __awaiter(void 0, void 0, void 0, function* () {
 // register commands
 __registerDocmapCommands(program);
 // __registerComponentsCommands(program);
-__registerFactoryCommands(program);
-__registerPuppetCommands(program);
+// __registerFactoryCommands(program);
+// __registerPuppetCommands(program);
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map

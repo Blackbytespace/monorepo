@@ -1,3 +1,21 @@
+/**
+ * @name            aes
+ * @namespace       shared.crypto
+ * @type            Object
+ * @platform        node
+ * @status          stable
+ *
+ * Expose two function named "encrypt" and "decrypt" that you can use to process your content using the aes algorithm
+ *
+ * @snippet         aes.encrypt($1)
+ *
+ * @example         js
+ * import { aes } from '@blackbyte/sugar/crypto';
+ * aes.encrypt('hello world');
+ *
+ * @since           1.0.0
+ * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
+ */
 declare const _default: {
     /**
      * @name        encrypt
@@ -12,18 +30,5 @@ declare const _default: {
      * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
      */
     encrypt: (message: any, key?: string) => any;
-    /**
-     * @name        decrypt
-     * @type        Function
-     *
-     * Decrypt
-     *
-     * @param       {String}      message         The message to decrypt
-     * @param       {String}      [key='blackbyte.sugar.crypto.aes']      The secret key to decrypt
-     * @return      {String}                      The decrypted message
-     *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
-     */
-    decrypt: (message: any, key?: string) => any;
 };
 export default _default;

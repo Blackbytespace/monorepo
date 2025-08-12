@@ -1,8 +1,5 @@
 import md5 from 'crypto-js/md5.js';
-import parse from '../../shared/string/parse.js';
 import toString from '../../shared/string/toString.js';
-
-const __encryptedMessages: any = {};
 
 /**
  * @name              md5
@@ -37,28 +34,6 @@ export default {
   encrypt: function (message: any): string {
     if (typeof message !== 'string') message = toString(message);
     const md5Str = md5(message).toString();
-    __encryptedMessages[md5Str] = message;
     return md5Str;
-  },
-
-  /**
-   * @name        decrypt
-   * @type        Function
-   *
-   * Decrypt
-   *
-   * @param       {String}        message         The message to decrypt
-   * @return      {String}                        The decrypted message
-   *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
-   */
-  decrypt: function (message: string): any {
-    if (!__encryptedMessages[message]) {
-      console.warn(`The message "${message}" cannot be decrypted...`);
-      return;
-    }
-    const string = __encryptedMessages[message];
-    delete __encryptedMessages[message];
-    return parse(string);
   },
 };

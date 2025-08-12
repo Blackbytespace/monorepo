@@ -20,7 +20,31 @@
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
  */
 declare const _default: {
-    encrypt: (object: any, salt?: string) => string;
-    decrypt: (encodedObject: string, salt?: string) => any;
+    /**
+     * @name        encrypt
+     * @type        Function
+     *
+     * Encrypt
+     *
+     * @param       {Object}       object         The object to encrypt
+     * @param       {String}       [salt="blackbyte.sugar.crypto.object"]   The salt to encode the object. Needed to decode correctly the object
+     * @return      {String}                       The encrypted object
+     *
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
+     */
+    encrypt: (object: any, salt?: string) => any;
+    /**
+     * @name        decrypt
+     * @type        Function
+     *
+     * Decrypt
+     *
+     * @param       {String}      encodedObject          The object to decrypt
+     * @param       {String}      [salt='blackbyte.sugar.crypto.object']        The salt to decode the object
+     * @return      {Object}                      The decrypted object
+     *
+     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
+     */
+    decrypt: (encodedObject: any, salt?: string) => any;
 };
 export default _default;

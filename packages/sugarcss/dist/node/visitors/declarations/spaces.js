@@ -1,4 +1,4 @@
-import { __camelCase } from '@lotsof/sugar/string';
+import { __camelCase } from '@blackbyte/sugar/string';
 import { env } from '../../sugarcss.js';
 import __parseArgs from '../../utils/parseArgs.js';
 import __toRem from '../../utils/toRem.js';
@@ -28,7 +28,7 @@ import __toRem from '../../utils/toRem.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function spaces(v, settings) {
     const args = __parseArgs(v.value, ['min', 'max', 'easing'], {

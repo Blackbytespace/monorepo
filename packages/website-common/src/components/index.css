@@ -4,6 +4,7 @@
 @import './settings/scrollbar/scrollbar.mixin.css';
 
 @import './layout/container/container.css';
+@import './layout/doc/doc.css';
 @import './layout/footer/footer.css';
 @import './layout/header/header.css';
 @import './layout/main/main.css';
@@ -22,8 +23,7 @@
 @import './ui/tooltip/tooltip.css';
 @import './ui/typo/typo.css';
 
-@import './generic/advancedSelect/advancedSelect.css';
 @import './generic/codeTabs/codeTabs.css';
 @import './generic/internalNav/internalNav.css';
-@import './generic/markdown/markdown.css';
+@import './generic/docmap/docmap.css';
 @import './generic/blackbytePicto/blackbytePicto.css';

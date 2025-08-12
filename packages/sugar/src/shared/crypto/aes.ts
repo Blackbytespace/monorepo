@@ -19,9 +19,6 @@ import toString from '../../shared/string/toString.js';
  * @since           1.0.0
  * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
  */
-
-const __encryptedMessages = {};
-
 export default {
   /**
    * @name        encrypt
@@ -38,27 +35,6 @@ export default {
   encrypt: function (message, key = 'blackbyte.sugar.crypto.aes') {
     if (typeof message !== 'string') message = toString(message);
     const aesStr = AES.encrypt(message, key).toString();
-    __encryptedMessages[aesStr] = message;
     return aesStr;
-  },
-
-  /**
-   * @name        decrypt
-   * @type        Function
-   *
-   * Decrypt
-   *
-   * @param       {String}      message         The message to decrypt
-   * @param       {String}      [key='blackbyte.sugar.crypto.aes']      The secret key to decrypt
-   * @return      {String}                      The decrypted message
-   *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.io)
-   */
-  decrypt: function (message, key = 'blackbyte.sugar.crypto.aes') {
-    if (!__encryptedMessages[message]) {
-      console.warn(`[AES] The message "${message}" cannot be decrypted...`);
-      return;
-    }
-    return __encryptedMessages[message];
   },
 };

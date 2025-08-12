@@ -4,12 +4,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import __LitElement from '@lotsof/lit-element';
-import { __querySelectorLive } from '@lotsof/sugar/dom';
+import __LitElement from '@blackbyte/lit-element';
+import { __querySelectorLive } from '@blackbyte/sugar/dom';
 import { html } from 'lit';
 // @ts-ignore
-import { __copyText } from '@lotsof/sugar/clipboard';
-import { __isDarkMode } from '@lotsof/sugar/is';
+import { __copyText } from '@blackbyte/sugar/clipboard';
+import { __isDarkMode } from '@blackbyte/sugar/is';
 import { property } from 'lit/decorators.js';
 import '../../src/css/output/carpenter.build.css';
 import __Carpenter from './carpenter.js';

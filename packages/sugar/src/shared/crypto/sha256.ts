@@ -1,9 +1,6 @@
 // @ts-ignore
 import sha256 from 'crypto-js/sha256.js';
-import parse from '../../shared/string/parse.js';
 import toString from '../../shared/string/toString.js';
-
-const __encryptedMessages = {};
 
 /**
  * @name            sha256
@@ -40,28 +37,6 @@ export default {
   encrypt: function (message) {
     if (typeof message !== 'string') message = toString(message);
     const string = sha256(message).toString();
-    __encryptedMessages[string] = message;
     return string;
-  },
-
-  /**
-   * @name        decrypt
-   * @type        Function
-   *
-   * Decrypt
-   *
-   * @param       {String}        message         The message to decrypt
-   * @return      {String}                        The decrypted message
-   *
-   * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
-   */
-  decrypt: function (message) {
-    if (!__encryptedMessages[message]) {
-      console.warn(`[SHA256] The message "${message}" cannot be decrypted...`);
-      return;
-    }
-    const string = __encryptedMessages[message];
-    delete __encryptedMessages[message];
-    return parse(string);
   },
 };

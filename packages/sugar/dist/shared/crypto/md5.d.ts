@@ -29,17 +29,5 @@ declare const _default: {
      * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
      */
     encrypt: (message: any) => string;
-    /**
-     * @name        decrypt
-     * @type        Function
-     *
-     * Decrypt
-     *
-     * @param       {String}        message         The message to decrypt
-     * @return      {String}                        The decrypted message
-     *
-     * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
-     */
-    decrypt: (message: string) => any;
 };
 export default _default;

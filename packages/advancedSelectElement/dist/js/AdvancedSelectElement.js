@@ -273,7 +273,7 @@ export default class AdvancedSelectElement extends __LitElement {
                 }
             });
             // handle update on key event
-            this.addEventListenerOn(this._$input, 'keydown', (e) => __awaiter(this, void 0, void 0, function* () {
+            this.addEventListenerOn(this._$input, 'keyup', (e) => __awaiter(this, void 0, void 0, function* () {
                 if (!this.isActive()) {
                     return;
                 }
@@ -512,7 +512,6 @@ export default class AdvancedSelectElement extends __LitElement {
      */
     setSearch(value) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('setSearch', value);
             this._$input.value = value;
             this._filterValue = value;
             yield this.refreshItems();
@@ -570,7 +569,6 @@ export default class AdvancedSelectElement extends __LitElement {
         }
         // dispatch an event
         if (!item.preventSelect) {
-            console.log('dispatch select', item);
             this.dispatch('select', {
                 detail: {
                     item,

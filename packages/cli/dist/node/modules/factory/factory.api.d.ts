@@ -1,2 +1,2 @@
-import '@lotsof/factory';
+import '@blackbyte/factory';
 export default function __registerCommands(program: any): void;

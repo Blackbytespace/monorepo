@@ -12,6 +12,7 @@
     "rootDir": "src/node",
     "outDir": "dist/node",
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "strict": true,
     "target": "es6",
     "module": "nodenext",

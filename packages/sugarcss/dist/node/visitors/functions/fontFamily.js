@@ -21,7 +21,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function fontFamily(value, settings) {
     const args = __parseArgs(value.arguments, ['name'], {

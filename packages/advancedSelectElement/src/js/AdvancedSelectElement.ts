@@ -333,7 +333,7 @@ export default class AdvancedSelectElement extends __LitElement {
     });
 
     // handle update on key event
-    this.addEventListenerOn(this._$input, 'keydown', async (e) => {
+    this.addEventListenerOn(this._$input, 'keyup', async (e) => {
       if (!this.isActive()) {
         return;
       }
@@ -607,7 +607,6 @@ export default class AdvancedSelectElement extends __LitElement {
    * @since       1.0.0
    */
   public async setSearch(value: string): Promise<void> {
-    console.log('setSearch', value);
     this._$input.value = value;
     this._filterValue = value;
     await this.refreshItems();
@@ -665,7 +664,6 @@ export default class AdvancedSelectElement extends __LitElement {
 
     // dispatch an event
     if (!item.preventSelect) {
-      console.log('dispatch select', item);
       this.dispatch('select', {
         detail: {
           item,

@@ -1,5 +1,4 @@
-import __Docmap, { TDocmapBuildParams, __defaults } from '@blackbyte/docmap';
-import { __diff } from '@blackbyte/sugar/object';
+import __Docmap, { __defaults } from '@blackbyte/docmap';
 
 export default function __registerCommands(program: any): void {
   program
@@ -26,19 +25,16 @@ export default function __registerCommands(program: any): void {
     )
     .option(
       '--mdx',
-      'Specify if you want to have the .json files generated when setting up the <outDir> option',
+      'Specify if you want to generate the .mdx files',
       __defaults.build.mdx,
     )
     .option(
-      '--json',
+      '--no-json',
       'Specify if you want to have the .json files generated when setting up the <outDir> option',
-      __defaults.build.json,
+      !__defaults.build.json,
     )
     .action(async (args) => {
-      const finalParams: TDocmapBuildParams = __diff(__defaults.build, args, {
-        added: false,
-      });
       const docmap = new __Docmap();
-      await docmap.build(finalParams);
+      await docmap.build(args);
     });
 }

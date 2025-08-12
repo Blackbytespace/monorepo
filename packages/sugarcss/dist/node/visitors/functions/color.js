@@ -39,7 +39,7 @@ import __parseArgs from '../../utils/parseArgs.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function color(value, settings) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j;

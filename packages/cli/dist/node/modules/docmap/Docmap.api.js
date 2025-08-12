@@ -7,8 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import __Docmap, { __defaults } from '@lotsof/docmap';
-import { __diff } from '@lotsof/sugar/object';
+import __Docmap, { __defaults } from '@blackbyte/docmap';
 export default function __registerCommands(program) {
     program
         .command('docmap.build')
@@ -16,14 +15,11 @@ export default function __registerCommands(program) {
         .option('--outDir <dir>', 'Specify the directory where to output the generated docmaps', __defaults.build.outDir)
         .option('--globs <globs>', 'Specify the globs to use to search for files to parse', __defaults.build.globs)
         .option('--save', 'Specify if you want to save the generated files', __defaults.build.save)
-        .option('--mdx', 'Specify if you want to have the .json files generated when setting up the <outDir> option', __defaults.build.mdx)
-        .option('--json', 'Specify if you want to have the .json files generated when setting up the <outDir> option', __defaults.build.json)
+        .option('--mdx', 'Specify if you want to generate the .mdx files', __defaults.build.mdx)
+        .option('--no-json', 'Specify if you want to have the .json files generated when setting up the <outDir> option', !__defaults.build.json)
         .action((args) => __awaiter(this, void 0, void 0, function* () {
-        const finalParams = __diff(__defaults.build, args, {
-            added: false,
-        });
         const docmap = new __Docmap();
-        yield docmap.build(finalParams);
+        yield docmap.build(args);
     }));
 }
 //# sourceMappingURL=docmap.api.js.map

@@ -1,4 +1,4 @@
-import __LitElement from '@lotsof/lit-element';
+import __LitElement from '@blackbyte/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/JsonSchemaFormElement.css';
 import '../components/groupRenderers/defaultGroupRenderer/defaultGroupRenderer.js';

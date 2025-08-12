@@ -1,6 +1,6 @@
+import '@blackbyte/json-schema-form';
+import __LitElement from '@blackbyte/lit-element';
 import '@fontsource/poppins';
-import '@lotsof/json-schema-form';
-import __LitElement from '@lotsof/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/output/carpenter.build.css';
 import { type TCarpenterAdapter, type TCarpenterComponent, type TCarpenterGroup } from '../shared/carpenter.type.js';

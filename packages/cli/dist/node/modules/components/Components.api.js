@@ -1,19 +1,19 @@
-// import { __dirname, __readJsonSync } from '@lotsof/sugar/fs';
-// import { __packageRootDir } from '@lotsof/sugar/package';
+// import { __dirname, __readJsonSync } from '@blackbyte/sugar/fs';
+// import { __packageRootDir } from '@blackbyte/sugar/package';
 export {};
-// import { __getConfig } from '@lotsof/config';
+// import { __getConfig } from '@blackbyte/config';
 // // @ts-ignore
 // import __Components, {
 //   __ComponentsComponent,
 //   __ComponentsDependency,
 //   type TComponentsComponentsConfigJson,
 //   type TComponentsLibrarySettings,
-// } from '@lotsof/components';
+// } from '@blackbyte/components';
 // let _components: __Components;
 // function setup() {
 //   // init a new components instance
 //   _components = new __Components();
-//   // get the lotsof file path from this package to register defaults
+//   // get the blackbyte file path from this package to register defaults
 //   const packageRootDir = __packageRootDir(__dirname()),
 //     componentsJson: TComponentsComponentsConfigJson = __readJsonSync(
 //       `${packageRootDir}/components.config.json`,

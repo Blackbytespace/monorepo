@@ -8,10 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import '@lotsof/components';
-import '@lotsof/factory';
-import '@lotsof/puppet';
-import { __packageRootDir } from '@lotsof/sugar/package';
+import '@blackbyte/components';
+// import '@blackbyte/factory';
+import '@blackbyte/puppet';
+import { __packageRootDir } from '@blackbyte/sugar/package';
 import __fs from 'fs';
 import __defineConfig from './defineConfig.js';
 import __getConfig from './getConfig.js';
@@ -19,9 +19,9 @@ export default function loadConfig(path, def) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
         const possibleFiles = [
-            // `${__packageRootDir()}/lotsof.config.ts`,
-            `${__packageRootDir()}/lotsof.config.js`,
-            `${__packageRootDir()}/lotsof.config.json`,
+            `${__packageRootDir()}/blackbyte.config.ts`,
+            `${__packageRootDir()}/blackbyte.config.js`,
+            `${__packageRootDir()}/blackbyte.config.json`,
         ];
         let configFilePath = '';
         for (let i = 0; i < possibleFiles.length; i++) {
@@ -31,7 +31,7 @@ export default function loadConfig(path, def) {
                 break;
             }
             if (!configFilePath) {
-                return (_a = process.lotsofConfig) !== null && _a !== void 0 ? _a : {};
+                return (_a = process.blackbyteConfig) !== null && _a !== void 0 ? _a : {};
             }
         }
         // read the config file

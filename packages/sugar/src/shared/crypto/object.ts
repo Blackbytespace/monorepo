@@ -53,7 +53,4 @@ export default {
   decrypt: function (encodedObject, salt = 'blackbyte.sugar.crypto.object') {
     return JSON.parse(base64.decrypt(encodedObject).replace(`-${salt}`, ''));
   },
-} as {
-  encrypt: (object: any, salt?: string) => string;
-  decrypt: (encodedObject: string, salt?: string) => any;
 };

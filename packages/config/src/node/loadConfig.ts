@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import '@blackbyte/components';
-import '@blackbyte/factory';
+// import '@blackbyte/factory';
 import '@blackbyte/puppet';
 import { __packageRootDir } from '@blackbyte/sugar/package';
 import __fs from 'fs';
@@ -13,7 +13,7 @@ export default async function loadConfig(
   def?: any,
 ): Promise<any> {
   const possibleFiles: string[] = [
-    // `${__packageRootDir()}/blackbyte.config.ts`,
+    `${__packageRootDir()}/blackbyte.config.ts`,
     `${__packageRootDir()}/blackbyte.config.js`,
     `${__packageRootDir()}/blackbyte.config.json`,
   ];

@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __getConfig } from '@lotsof/config';
-import '@lotsof/factory';
+import { __getConfig } from '@blackbyte/config';
+import '@blackbyte/factory';
 import __childProcess from 'child_process';
 let factoryConfig;
 function setup() {

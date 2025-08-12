@@ -44,7 +44,7 @@ import __weightRule from './visitors/rules/weight.js';
 import __zindexRule from './visitors/rules/zindex.js';
 import browserslist from 'browserslist';
 import { browserslistToTargets, composeVisitors, } from 'lightningcss';
-import { __parseHtml } from '@lotsof/sugar/console';
+import { __parseHtml } from '@blackbyte/sugar/console';
 export const env = {
     remFactor: 0.0625,
     functions: {},

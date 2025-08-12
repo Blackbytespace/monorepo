@@ -1,5 +1,5 @@
-import { __escapeQueue } from '@lotsof/sugar/keyboard';
-import { __set } from '@lotsof/sugar/object';
+import { __escapeQueue } from '@blackbyte/sugar/keyboard';
+import { __set } from '@blackbyte/sugar/object';
 import { __CarpenterVueProxy } from './_exports.js';
 // save the carpenter vue proxy to access globally
 // @ts-ignore

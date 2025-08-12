@@ -1,14 +1,13 @@
 ---
 // @ts-nocheck
-import Layout from '../../layouts/main.astro';
-
+import Menu from '@blackbyte/website-common/src/components/layout/menu/menu.astro';
 import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils.js';
-
 import { getCollection } from 'astro:content';
+import docmapJson from '../../../docmap.json';
+import Layout from '../../layouts/main.astro';
 
 export async function getStaticPaths() {
   const allDoc = await getCollection('sugar');
-
   const params = [];
   for (let [i, docObj] of allDoc.entries()) {
     params.push({
@@ -31,10 +30,19 @@ for (let [i, docObj] of allDoc.entries()) {
     break;
   }
 }
+
+// console.log(__deepize(docmapJson.generated.map));
 ---
 
 <Layout pageTitle={DocItem.remarkPluginFrontmatter.title}>
-  <div class="markdown typo-format typo-rhythm">
-    <DocItem.Content />
+  <div class="doc">
+    <div class="doc_nav">
+      <Menu docmapJson={docmapJson} />
+    </div>
+    <div class="doc_body">
+      <div class="markdown typo-format typo-rhythm">
+        <DocItem.Content />
+      </div>
+    </div>
   </div>
 </Layout>

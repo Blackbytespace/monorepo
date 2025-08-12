@@ -1,19 +1,22 @@
 // @ts-nocheck
-import { __deepMerge } from '@lotsof/sugar/object';
-process.lotsofConfigDefaults = {};
-process.lotsofConfig = {};
+import { __deepMerge } from '@blackbyte/sugar/object';
+process.blackbyteConfigDefaults = {};
+process.blackbyteConfig = {};
 export default function defineConfig(config, settings) {
     var _a;
     if (settings === null || settings === void 0 ? void 0 : settings.defaults) {
-        process.lotsofConfigDefaults = __deepMerge([
-            process.lotsofConfigDefaults,
+        process.blackbyteConfigDefaults = __deepMerge([
+            process.blackbyteConfigDefaults,
             config,
         ]);
-        return process.lotsofConfigDefaults;
+        return process.blackbyteConfigDefaults;
     }
     else {
-        process.lotsofConfig = __deepMerge([(_a = process.lotsofConfig) !== null && _a !== void 0 ? _a : {}, config]);
-        return process.lotsofConfig;
+        process.blackbyteConfig = __deepMerge([
+            (_a = process.blackbyteConfig) !== null && _a !== void 0 ? _a : {},
+            config,
+        ]);
+        return process.blackbyteConfig;
     }
 }
 //# sourceMappingURL=defineConfig.js.map

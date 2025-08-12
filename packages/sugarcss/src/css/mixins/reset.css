@@ -9,7 +9,9 @@
  * reset rules like:
  * - Reset `mark` background color
  * - Font smoothing to "antialiased" for --webkit browsers
- *
+ * - Apply `user-select: none` to all elements except `input`, `textarea`, and `[contenteditable]`
+ * - Remove the default outline
+ * 
  * @return        {Css}                The generated css
  * 
  * @example         css
@@ -20,6 +22,15 @@
  * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 @mixin s-reset {
+  *:not(input, textarea, [contenteditable]) {
+    user-select: none;
+  }
+
+  a,
+  [tabindex] {
+    outline: none;
+  }
+
   *,
   ::before,
   ::after {

@@ -1,4 +1,4 @@
-import __LitElement from '@lotsof/lit-element';
+import __LitElement from '@blackbyte/lit-element';
 import { PropertyValues } from 'lit';
 import '../../src/css/output/carpenter.build.css';
 import { TCarpenterComponent } from '../shared/carpenter.type.js';

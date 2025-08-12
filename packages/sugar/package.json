@@ -7,7 +7,7 @@
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
-    "doc.build": "blackbyte docmap.build",
+    "doc.build": "blackbyte docmap.build --mdx --outPath ../website-sugar/docmap.json --outDir ../website-sugar/src/content/sugar",
     "test": "vitest",
     "publish": "npm publish --access public"
   },

@@ -1,0 +1,11 @@
+---
+import Menu from './menu.vue';
+
+interface Props {
+  docmapJson: any;
+}
+
+const { docmapJson } = Astro.props;
+---
+
+<Menu docmapJson={docmapJson} client:load />

@@ -51,6 +51,7 @@ const items = Astro.props;
   });
 
   __AdvancedSelectElement.define('lo-search', {
+    minChars: 0,
     async items() {
       if (cachedItems) {
         return cachedItems;

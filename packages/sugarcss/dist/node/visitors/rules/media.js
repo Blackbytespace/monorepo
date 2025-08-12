@@ -52,7 +52,7 @@ import { env } from '../../sugarcss.js';
  * }
  *
  * @since           0.0.1
- * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@lotsof.dev)
+ * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function media(v, settings) {
     var _a, _b, _c, _d, _e;

@@ -1,6 +1,6 @@
+import '@blackbyte/json-schema-form';
+import __LitElement from '@blackbyte/lit-element';
 import '@fontsource/poppins';
-import '@lotsof/json-schema-form';
-import __LitElement from '@lotsof/lit-element';
 import '../../src/css/output/carpenter.build.css';
 import { TCarpenterComponent, TCarpenterGroup } from '../shared/carpenter.type.js';
 export default class CarpenterEditorElement extends __LitElement {

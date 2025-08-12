@@ -4,6 +4,8 @@ import { __dirname } from '@blackbyte/sugar/fs';
 import __path from 'path';
 import type { TFactoryConfig } from '../shared/factory.type.js';
 
+console.log('CONFI', __getConfig());
+
 const componentsConfig: TComponentsSettings = __getConfig().components.settings;
 
 const config: TFactoryConfig = {
@@ -36,7 +38,5 @@ const config: TFactoryConfig = {
 __defineDefaultConfig({
   factory: config,
 });
-
-console.log(__getConfig());
 
 export { config };

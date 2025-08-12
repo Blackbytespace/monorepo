@@ -684,42 +684,42 @@ class Docmap {
             result.push(`author: '${JSON.stringify(docmapObj.author)}'`);
         }
         result.push('---');
-        result.push('<div class="docmap-mdx">');
+        result.push('<div class="docmap -mdx">');
         result.push(`# ${docmapObj.name}`);
         // metas (type, status, since, platform)
         if (docmapObj.status || docmapObj.since || docmapObj.platform) {
-            result.push('<div class="_metas">');
+            result.push('<div class="docmap_metas">');
         }
         if (docmapObj.type) {
-            result.push(`<div class="_type"><span class="_type-label">Type:</span><span class="_type-value">${encodeEntities((_c = (_b = docmapObj.type.raw) !== null && _b !== void 0 ? _b : docmapObj.type) !== null && _c !== void 0 ? _c : '')}</span></div>`);
+            result.push(`<div class="docmap_type"><span class="docmap_type-label">Type:</span><span class="docmap_type-value">${encodeEntities((_c = (_b = docmapObj.type.raw) !== null && _b !== void 0 ? _b : docmapObj.type) !== null && _c !== void 0 ? _c : '')}</span></div>`);
         }
         if (docmapObj.status) {
-            result.push(`<div class="_status"><span class="_status-label">Status:</span><span class="_status-value -${docmapObj.status}">${docmapObj.status}</span></div>`);
+            result.push(`<div class="docmap_status"><span class="docmap_status-label">Status:</span><span class="docmap_status-value -${docmapObj.status}">${docmapObj.status}</span></div>`);
         }
         if (docmapObj.since) {
-            result.push(`<div class="_since"><span class="_since-label">Since:</span><span class="_since-value">${docmapObj.since}</span></div>`);
+            result.push(`<div class="docmap_since"><span class="docmap_since-label">Since:</span><span class="docmap_since-value">${docmapObj.since}</span></div>`);
         }
         if (docmapObj.platform) {
-            result.push(`<div class="_platform"><span class="_platform-label">Platform:</span>${docmapObj.platform
-                .map((p) => `<span class="_platform-value -${p.name}">${p.name}</span>`)
+            result.push(`<div class="docmap_platform"><span class="docmap_platform-label">Platform:</span>${docmapObj.platform
+                .map((p) => `<span class="docmap_platform-value -${p.name}">${p.name}</span>`)
                 .join('')}</div>`);
         }
         if (docmapObj.status || docmapObj.since || docmapObj.platform) {
             result.push('</div>');
         }
         // namespace
-        result.push(`<div class="_namespace">${docmapObj.namespace}</div>`);
+        result.push(`<div class="docmap_namespace">${docmapObj.namespace}</div>`);
         // description
         if (docmapObj.description) {
-            result.push('<div class="_description typo-lead typo-format">');
+            result.push('<div class="docmap_description typo-lead typo-format">');
             result.push(docmapObj.description);
             result.push('</div>');
         }
         // params
         if (docmapObj.param) {
-            result.push('<div class="_params">');
+            result.push('<div class="docmap_params">');
             result.push('## Params');
-            result.push(`<ol class="_list">`);
+            result.push(`<ol class="docmap_list">`);
             Object.entries(docmapObj.param).forEach(([id, paramObj], i) => {
                 var _a, _b, _c;
                 // handle default value
@@ -727,11 +727,11 @@ class Docmap {
                 if (__isPlainObject(paramObj)) {
                     defaultStr = JSON.stringify(paramObj.default, null, 4);
                 }
-                result.push('<li class="_item">');
-                result.push(`<span class="_name">${paramObj.name}${paramObj.default === undefined
-                    ? '<span class="_required">*</span>'
-                    : ''}</span><span class="_default">${encodeEntities(defaultStr !== null && defaultStr !== void 0 ? defaultStr : '-')}</span> <span class="_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
-                result.push(`<p class="_description">${encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
+                result.push('<li class="docmap_item">');
+                result.push(`<span class="docmap_name">${paramObj.name}${paramObj.default === undefined
+                    ? '<span class="docmap_required">*</span>'
+                    : ''}</span><span class="docmap_default">${encodeEntities(defaultStr !== null && defaultStr !== void 0 ? defaultStr : '-')}</span> <span class="docmap_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                result.push(`<p class="docmap_description">${encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
                 result.push('</li>');
             });
             result.push('</ol>');
@@ -739,20 +739,20 @@ class Docmap {
         }
         // return
         if (docmapObj.return) {
-            result.push('<div class="_return">');
+            result.push('<div class="docmap_return">');
             result.push(`## Return`);
-            result.push('<ol class="_list">');
-            result.push('<li class="_item">');
-            result.push(`<span class="_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : '-'}</span><span class="_type">${encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
-            result.push(`<p class="_description">${encodeEntities((_f = docmapObj.return.description) !== null && _f !== void 0 ? _f : '')}</p>`);
+            result.push('<ol class="docmap_list">');
+            result.push('<li class="docmap_item">');
+            result.push(`<span class="docmap_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : '-'}</span><span class="docmap_type">${encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
+            result.push(`<p class="docmap_description">${encodeEntities((_f = docmapObj.return.description) !== null && _f !== void 0 ? _f : '')}</p>`);
             result.push('</li>');
             result.push('</ol>');
             result.push('</div>');
         }
         // examples
         if ((_g = docmapObj.example) === null || _g === void 0 ? void 0 : _g.length) {
-            result.push('<div class="_examples">');
-            result.push(`## sssExample${docmapObj.example.length > 1 ? 's' : ''}`);
+            result.push('<div class="docmap_examples">');
+            result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
             docmapObj.example.forEach((exampleObj) => {
                 result.push(`\`\`\`${exampleObj.language}`);
                 result.push(exampleObj.code);
@@ -762,16 +762,16 @@ class Docmap {
         }
         // settings
         if (docmapObj.setting) {
-            result.push('<div class="_settings">');
+            result.push('<div class="docmap_settings">');
             result.push('## Settings');
-            result.push(`<ol class="_list">`);
+            result.push(`<ol class="docmap_list">`);
             Object.entries(docmapObj.setting).forEach(([id, settingObj], i) => {
                 var _a, _b;
-                result.push('<li class="_item">');
-                result.push(`<span class="_name">${settingObj.name}${settingObj.default === undefined
-                    ? '<span class="_required">*</span>'
-                    : ''}</span><span class="_default">${encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="_type">${encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
-                result.push(`<p class="_description">${settingObj.description}</p>`);
+                result.push('<li class="docmap_item">');
+                result.push(`<span class="docmap_name">${settingObj.name}${settingObj.default === undefined
+                    ? '<span class="docmap_required">*</span>'
+                    : ''}</span><span class="docmap_default">${encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="docmap_type">${encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                result.push(`<p class="docmap_description">${settingObj.description}</p>`);
                 result.push('</li>');
             });
             result.push('</ol>');
@@ -779,14 +779,14 @@ class Docmap {
         }
         // todo
         if (docmapObj.todo) {
-            result.push('<div class="_todo">');
+            result.push('<div class="docmap_todo">');
             result.push(`## Todo`);
-            result.push('<ul class="_list">');
+            result.push('<ul class="docmap_list">');
             docmapObj.todo.forEach((todo) => {
-                result.push('<li class="_item">');
-                result.push(`<span class="_description">${todo.description}</span>`);
+                result.push('<li class="docmap_item">');
+                result.push(`<span class="docmap_description">${todo.description}</span>`);
                 if (todo.priority) {
-                    result.push(`<span class="_priority -${todo.priority}">${todo.priority}</span>`);
+                    result.push(`<span class="docmap_priority -${todo.priority}">${todo.priority}</span>`);
                 }
                 result.push('</li>');
             });
@@ -795,16 +795,16 @@ class Docmap {
         }
         // author
         if (docmapObj.author) {
-            result.push('<div class="_author">');
+            result.push('<div class="docmap_author">');
             result.push('## Author');
-            result.push('<ul class="_list">');
-            result.push('<li class="_item">');
-            result.push(`<span class="_name">${docmapObj.author.name}</span>`);
+            result.push('<ul class="docmap_list">');
+            result.push('<li class="docmap_item">');
+            result.push(`<span class="docmap_name">${docmapObj.author.name}</span>`);
             if (docmapObj.author.email) {
-                result.push(`<span class="_email">${docmapObj.author.email}</span>`);
+                result.push(`<span class="docmap_email">${docmapObj.author.email}</span>`);
             }
             if (docmapObj.author.url) {
-                result.push(`<a href="${docmapObj.author.url}" target="_blank" class="_url">${docmapObj.author.url}</a>`);
+                result.push(`<a href="${docmapObj.author.url}" target="_blank" class="docmap_url">${docmapObj.author.url}</a>`);
             }
             result.push('</li>');
             result.push('</ul>');
@@ -812,17 +812,17 @@ class Docmap {
         }
         // contributor
         if (docmapObj.contributor) {
-            result.push('<div class="_contributors">');
+            result.push('<div class="docmap_contributors">');
             result.push(`## Contributor${docmapObj.contributor.length > 1 ? 's' : ''}`);
-            result.push('<ul class="_list">');
+            result.push('<ul class="docmap_list">');
             docmapObj.contributor.forEach((contributorObj) => {
-                result.push('<li class="_item">');
-                result.push(`<span class="_name">${contributorObj.name}</span>`);
+                result.push('<li class="docmap_item">');
+                result.push(`<span class="docmap_name">${contributorObj.name}</span>`);
                 if (contributorObj.email) {
-                    result.push(`<span class="_email">${contributorObj.email}</span>`);
+                    result.push(`<span class="docmap_email">${contributorObj.email}</span>`);
                 }
                 if (contributorObj.url) {
-                    result.push(`<a href="${contributorObj.url}" target="_blank" class="_url">${contributorObj.url}</a>`);
+                    result.push(`<a href="${contributorObj.url}" target="_blank" class="docmap_url">${contributorObj.url}</a>`);
                 }
                 result.push('</li>');
             });

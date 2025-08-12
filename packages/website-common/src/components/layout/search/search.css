@@ -104,7 +104,7 @@
     }
   }
 
-  input[type='search']:not(:placeholder-shown) + .s-advanced-select_dropdown {
+  input[type='search']:focus + .s-advanced-select_dropdown {
     opacity: 1 !important;
     pointer-events: auto;
   }
