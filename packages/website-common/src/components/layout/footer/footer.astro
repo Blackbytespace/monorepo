@@ -13,24 +13,35 @@ import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.sv
 const { title, version, license } = Astro.props;
 ---
 
-<footer class="main_footer">
-  <div class="main_footer-brand">
-    <a href="/" title={title}>
-      <div class="main_footer-logo">
-        <Fragment set:html={__logoBlackbyte} />
-      </div>
-      <h1 class="main_footer-title">{title}</h1>
-    </a>
-  </div>
-  <div class="main_footer-content">
-    <p class="main_footer-version">v{version}</p>
-    <a
-      class="main_footer-license"
-      href={license.url}
-      target="_blank"
-      title={license.name}
-    >
-      {license.name}
-    </a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer_brand">
+      <a href="/" title={title}>
+        <div class="footer_logo">
+          <Fragment set:html={__logoBlackbyte} />
+        </div>
+        <h1 class="footer_title font-family-brand">{title}</h1>
+      </a>
+    </div>
+    <div class="footer_spacer"></div>
+    <div class="footer_metas">
+      <p class="footer_version">v{version}</p>
+      <a
+        class="footer_license"
+        href={license.url}
+        target="_blank"
+        title={license.name}
+      >
+        {license.name}
+      </a>
+      <a
+        class="footer_github"
+        href="https://github.com/blackbytespace/monorepo"
+        title="Blackbyte monorepo on GitHub"
+        target="_blank"
+      >
+        <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>
+      </a>
+    </div>
   </div>
 </footer>

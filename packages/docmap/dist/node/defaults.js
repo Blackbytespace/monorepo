@@ -65,6 +65,7 @@ export default {
             'since',
             'todo',
             'author',
+            'see',
         ],
         save: true,
         outPath: `${process.cwd()}/docmap.json`,

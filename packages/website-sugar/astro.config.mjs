@@ -4,7 +4,16 @@ import vue from '@astrojs/vue';
 import { sugarize } from '@blackbyte/sugarcss';
 import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
+import { createLogger } from 'vite';
 import __shikiBlackbyteTheme from './src/shikijs/blackbyte.theme.json';
+
+const logger = createLogger();
+const loggerWarn = logger.warn;
+logger.warn = (msg, options) => {
+  // Ignore empty CSS files warning
+  if (msg.includes('vite:css')) return;
+  loggerWarn(msg, options);
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +33,7 @@ export default defineConfig({
     vue(),
   ],
   vite: {
+    customLogger: logger,
     resolve: {
       // preserveSymlinks: true,
     },

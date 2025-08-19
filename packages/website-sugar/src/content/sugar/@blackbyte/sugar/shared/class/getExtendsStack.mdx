@@ -44,12 +44,14 @@ This function take a class as parameter and return an array of all the class nam
 </div>
 <div class="docmap_examples">
 ## Example
+<s-code language="js">
 ```js
 import { getExtendsStack } from '@blackbyte/sugar/class';
 class Coco extends Error {}
 class Plop extends Coco {}
 getExtendsStack(Plop); // => {Coco: [class ...], Error: [class ...]};
 ```
+</s-code>
 </div>
 <div class="docmap_settings">
 ## Settings

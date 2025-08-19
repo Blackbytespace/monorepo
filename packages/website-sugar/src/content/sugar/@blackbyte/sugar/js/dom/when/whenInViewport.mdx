@@ -44,6 +44,7 @@ Monitor an HTMLElement to be notified when it is in the viewport
 </div>
 <div class="docmap_examples">
 ## Example
+<s-code language="js">
 ```js
 import { whenInViewport } from '@blackbyte/sugar/dom'
 const promise = whenInViewport(myCoolHTMLElement).then((elm) => {
@@ -52,6 +53,7 @@ const promise = whenInViewport(myCoolHTMLElement).then((elm) => {
 // when you want to stop listening
 promise.cancel();
 ```
+</s-code>
 </div>
 <div class="docmap_settings">
 ## Settings

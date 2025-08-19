@@ -113,6 +113,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/url-slug",
+                        "description": ""
+                    }
+                ],
                 "filename": "urlFromString.ts",
                 "extension": "ts",
                 "relPath": "src/shared/url/urlFromString.ts",
@@ -189,6 +195,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "http://stackoverflow.com/questions/8648892/convert-url-parameters-to-a-javascript-object",
+                        "description": ""
+                    }
+                ],
                 "filename": "queryStringToObject.ts",
                 "extension": "ts",
                 "relPath": "src/shared/url/queryStringToObject.ts",
@@ -1170,6 +1182,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "trainCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/trainCase.ts",
@@ -1518,6 +1536,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/strip-ansi",
+                        "description": ""
+                    }
+                ],
                 "filename": "stripAnsi.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/stripAnsi.ts",
@@ -1607,6 +1631,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/alexei/sprintf.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "sprintf.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/sprintf.ts",
@@ -1802,6 +1832,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "snakeCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/snakeCase.ts",
@@ -1878,6 +1914,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string/14114443",
+                        "description": ""
+                    }
+                ],
                 "filename": "simplifySpecialChars.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/simplifySpecialChars.ts",
@@ -2100,6 +2142,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "sentenceCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/sentenceCase.ts",
@@ -2539,6 +2587,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/sprintf-js",
+                        "description": ""
+                    }
+                ],
                 "filename": "printf.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/printf.ts",
@@ -2615,6 +2669,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "pathCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/pathCase.ts",
@@ -2691,6 +2751,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "pascalSnakeCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/pascalSnakeCase.ts",
@@ -2767,6 +2833,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "pascalCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/pascalCase.ts",
@@ -2919,6 +2991,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "paramCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/paramCase.ts",
@@ -2995,6 +3073,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "noCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/noCase.ts",
@@ -3326,6 +3410,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "kebabCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/kebabCase.ts",
@@ -3506,6 +3596,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://markjs.io",
+                        "description": ""
+                    }
+                ],
                 "filename": "highlightText.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/highlightText.ts",
@@ -3595,6 +3691,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/fecha",
+                        "description": ""
+                    }
+                ],
                 "filename": "format.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/format.ts",
@@ -3853,6 +3955,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "dotCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/dotCase.ts",
@@ -3929,6 +4037,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "dashCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/dashCase.ts",
@@ -4274,6 +4388,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "constantCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/constantCase.ts",
@@ -4350,6 +4470,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "capitalCase.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/capitalCase.ts",
@@ -4426,6 +4552,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "camelize.ts",
                 "extension": "ts",
                 "relPath": "src/shared/string/camelize.ts",
@@ -5461,6 +5593,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/hash-sum",
+                        "description": ""
+                    }
+                ],
                 "filename": "objectHash.ts",
                 "extension": "ts",
                 "relPath": "src/shared/object/objectHash.ts",
@@ -6329,6 +6467,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/is-equal",
+                        "description": ""
+                    }
+                ],
                 "filename": "diff.ts",
                 "extension": "ts",
                 "relPath": "src/shared/object/diff.ts",
@@ -7145,6 +7289,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/json-cyclic",
+                        "description": ""
+                    }
+                ],
                 "filename": "decycle.ts",
                 "extension": "ts",
                 "relPath": "src/shared/object/decycle.ts",
@@ -7251,6 +7401,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/lodash",
+                        "description": ""
+                    }
+                ],
                 "filename": "clone.ts",
                 "extension": "ts",
                 "relPath": "src/shared/object/clone.ts",
@@ -8013,6 +8169,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/8515900/how-to-constrain-movement-within-the-area-of-a-circle",
+                        "description": ""
+                    }
+                ],
                 "filename": "circleConstrain.ts",
                 "extension": "ts",
                 "relPath": "src/shared/math/circleConstrain.ts",
@@ -8378,6 +8540,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/",
+                        "description": ""
+                    }
+                ],
                 "filename": "isUrl.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isUrl.ts",
@@ -9602,6 +9770,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html",
+                        "description": ""
+                    }
+                ],
                 "filename": "isIsoTime.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isIsoTime.ts",
@@ -9678,6 +9852,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html",
+                        "description": ""
+                    }
+                ],
                 "filename": "isIsoDateTime.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isIsoDateTime.ts",
@@ -9754,6 +9934,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s07.html",
+                        "description": ""
+                    }
+                ],
                 "filename": "isIsoDate.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isIsoDate.ts",
@@ -9976,6 +10162,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/is-glob",
+                        "description": ""
+                    }
+                ],
                 "filename": "isGlob.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isGlob.ts",
@@ -10341,6 +10533,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object",
+                        "description": ""
+                    }
+                ],
                 "filename": "isDomNode.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isDomNode.ts",
@@ -10413,6 +10611,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object",
+                        "description": ""
+                    }
+                ],
                 "filename": "isDomElement.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isDomElement.ts",
@@ -10568,6 +10772,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/14962018/detecting-and-fixing-circular-references-in-javascript",
+                        "description": ""
+                    }
+                ],
                 "filename": "isCyclic.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isCyclic.ts",
@@ -10720,6 +10930,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "http://stackoverflow.com/questions/6386090/validating-css-color-names",
+                        "description": ""
+                    }
+                ],
                 "filename": "isColor.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isColor.ts",
@@ -10869,6 +11085,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/is-class",
+                        "description": ""
+                    }
+                ],
                 "filename": "isClass.ts",
                 "extension": "ts",
                 "relPath": "src/shared/is/isClass.ts",
@@ -11289,6 +11511,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/unescape",
+                        "description": ""
+                    }
+                ],
                 "filename": "unescapeHtml.ts",
                 "extension": "ts",
                 "relPath": "src/shared/html/unescapeHtml.ts",
@@ -11394,6 +11622,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/striptags",
+                        "description": ""
+                    }
+                ],
                 "filename": "stripTags.ts",
                 "extension": "ts",
                 "relPath": "src/shared/html/stripTags.ts",
@@ -11766,6 +12000,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/escape-html",
+                        "description": ""
+                    }
+                ],
                 "filename": "escapeHtml.ts",
                 "extension": "ts",
                 "relPath": "src/shared/html/escapeHtml.ts",
@@ -11842,6 +12082,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/escape-html",
+                        "description": ""
+                    }
+                ],
                 "filename": "encodeEntities.ts",
                 "extension": "ts",
                 "relPath": "src/shared/html/encodeEntities.ts",
@@ -12080,6 +12326,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/memoizee",
+                        "description": ""
+                    }
+                ],
                 "filename": "memoize.ts",
                 "extension": "ts",
                 "relPath": "src/shared/function/memoize.ts",
@@ -12639,6 +12891,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/filesize",
+                        "description": ""
+                    }
+                ],
                 "filename": "fileSize.ts",
                 "extension": "ts",
                 "relPath": "src/shared/format/fileSize.ts",
@@ -15692,6 +15950,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/js-ago",
+                        "description": ""
+                    }
+                ],
                 "filename": "timeAgo.ts",
                 "extension": "ts",
                 "relPath": "src/shared/datetime/timeAgo.ts",
@@ -16059,6 +16323,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/strip-css-comments",
+                        "description": ""
+                    }
+                ],
                 "filename": "stripCssComments.ts",
                 "extension": "ts",
                 "relPath": "src/shared/css/stripCssComments.ts",
@@ -16366,6 +16636,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/remove-vendor-prefix.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "removeVendorPrefix.ts",
                 "extension": "ts",
                 "relPath": "src/shared/css/rule/removeVendorPrefix.ts",
@@ -17100,6 +17376,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/fast-xml-parser",
+                        "description": ""
+                    }
+                ],
                 "filename": "xmlTojson.ts",
                 "extension": "ts",
                 "relPath": "src/shared/convert/xmlTojson.ts",
@@ -17291,6 +17573,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "rgbaToHsla.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/rgbaToHsla.ts",
@@ -17412,6 +17700,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "rgbaToHex.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/rgbaToHex.ts",
@@ -17685,6 +17979,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "hslaToRgba.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/hslaToRgba.ts",
@@ -17806,6 +18106,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "hslaToHexa.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/hslaToHexa.ts",
@@ -17927,6 +18233,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "hslaToHex.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/hslaToHex.ts",
@@ -18003,6 +18315,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/colors-convert",
+                        "description": ""
+                    }
+                ],
                 "filename": "hexToRgba.ts",
                 "extension": "ts",
                 "relPath": "src/shared/color/hexToRgba.ts",
@@ -18594,6 +18912,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/clone-class",
+                        "description": ""
+                    }
+                ],
                 "filename": "cloneClass.ts",
                 "extension": "ts",
                 "relPath": "src/shared/class/cloneClass.ts",
@@ -20003,6 +20327,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/14114411/remove-all-special-characters-from-a-string/14114443",
+                        "description": ""
+                    }
+                ],
                 "filename": "simplifySpecialChars.php",
                 "extension": "php",
                 "relPath": "src/php/string/simplifySpecialChars.php",
@@ -20367,6 +20697,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/change-case",
+                        "description": ""
+                    }
+                ],
                 "filename": "camelCase.php",
                 "extension": "php",
                 "relPath": "src/php/string/camelCase.php",
@@ -20687,6 +21023,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.wordpress.org/reference/functions/deepMap/",
+                        "description": ""
+                    }
+                ],
                 "filename": "firstItem.php",
                 "extension": "php",
                 "relPath": "src/php/object/firstItem.php",
@@ -20849,6 +21191,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.wordpress.org/reference/functions/deepMerge/",
+                        "description": ""
+                    }
+                ],
                 "filename": "deepMerge.php",
                 "extension": "php",
                 "relPath": "src/php/object/deepMerge.php",
@@ -20929,6 +21277,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.wordpress.org/reference/functions/deepMap/",
+                        "description": ""
+                    }
+                ],
                 "filename": "deepMap.php",
                 "extension": "php",
                 "relPath": "src/php/object/deepMap.php",
@@ -21226,6 +21580,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.php.net/manual/en/function.preg-match.php#93824",
+                        "description": ""
+                    }
+                ],
                 "filename": "isUrl.php",
                 "extension": "php",
                 "relPath": "src/php/is/isUrl.php",
@@ -21277,6 +21637,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.php.net/manual/en/function.preg-match.php#93824",
+                        "description": ""
+                    }
+                ],
                 "filename": "isRequestFromIframe.php",
                 "extension": "php",
                 "relPath": "src/php/is/isRequestFromIframe.php",
@@ -22496,6 +22862,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.wordpress.org/reference/functions/deepMap/",
+                        "description": ""
+                    }
+                ],
                 "filename": "deepMap.php",
                 "extension": "php",
                 "relPath": "src/php/array/deepMap.php",
@@ -22814,6 +23186,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/uuid",
+                        "description": ""
+                    }
+                ],
                 "filename": "uniqid.ts",
                 "extension": "ts",
                 "relPath": "src/node/string/uniqid.ts",
@@ -23007,6 +23385,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/find-package-json",
+                        "description": ""
+                    }
+                ],
                 "filename": "packageRootDir.ts",
                 "extension": "ts",
                 "relPath": "src/node/package/packageRootDir.ts",
@@ -24397,6 +24781,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "writeFileSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/writeFileSync.ts",
@@ -24498,6 +24888,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "writeFile.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/writeFile.ts",
@@ -24559,6 +24955,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "unlinkSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/unlinkSync.ts",
@@ -24632,6 +25034,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "unlink.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/unlink.ts",
@@ -24724,6 +25132,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "renameSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/renameSync.ts",
@@ -24793,6 +25207,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "rename.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/rename.ts",
@@ -24854,6 +25274,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "removeSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/removeSync.ts",
@@ -24927,6 +25353,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "remove.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/remove.ts",
@@ -25403,6 +25835,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "moveSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/moveSync.ts",
@@ -25489,6 +25927,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "move.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/move.ts",
@@ -25575,6 +26019,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/is-valid-path",
+                        "description": ""
+                    }
+                ],
                 "filename": "isPath.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/isPath.ts",
@@ -25724,6 +26174,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/get-folder-size",
+                        "description": ""
+                    }
+                ],
                 "filename": "folderSize.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/folderSize.ts",
@@ -26610,6 +27066,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "ensureFileSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/ensureFileSync.ts",
@@ -26684,6 +27146,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "ensureFile.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/ensureFile.ts",
@@ -26756,6 +27224,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "ensureDirSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/ensureDirSync.ts",
@@ -26830,6 +27304,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "ensureDir.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/ensureDir.ts",
@@ -26891,6 +27371,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "emptyDirSync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/emptyDirSync.ts",
@@ -26965,6 +27451,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "emptyDir.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/emptyDir.ts",
@@ -27084,6 +27576,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "copySync.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/copySync.ts",
@@ -27165,6 +27663,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/jprichardson/node-fs-extra",
+                        "description": ""
+                    }
+                ],
                 "filename": "copy.ts",
                 "extension": "ts",
                 "relPath": "src/node/fs/copy.ts",
@@ -27824,6 +28328,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/clipboardy",
+                        "description": ""
+                    }
+                ],
                 "filename": "readText.ts",
                 "extension": "ts",
                 "relPath": "src/node/clipboard/readText.ts",
@@ -27896,6 +28406,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/clipboardy",
+                        "description": ""
+                    }
+                ],
                 "filename": "copyText.ts",
                 "extension": "ts",
                 "relPath": "src/node/clipboard/copyText.ts",
@@ -28980,6 +29496,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/questions/19669786/check-if-element-is-visible-in-dom",
+                        "description": ""
+                    }
+                ],
                 "filename": "isVisible.ts",
                 "extension": "ts",
                 "relPath": "src/js/is/isVisible.ts",
@@ -29249,6 +29771,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://blog.devgenius.io/4-ways-to-detect-mobile-browsers-in-javascript-943b66657524",
+                        "description": ""
+                    }
+                ],
                 "filename": "isTablet.ts",
                 "extension": "ts",
                 "relPath": "src/js/is/isTablet.ts",
@@ -29509,6 +30037,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://blog.devgenius.io/4-ways-to-detect-mobile-browsers-in-javascript-943b66657524",
+                        "description": ""
+                    }
+                ],
                 "filename": "isPhone.ts",
                 "extension": "ts",
                 "relPath": "src/js/is/isPhone.ts",
@@ -29643,6 +30177,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://blog.devgenius.io/4-ways-to-detect-mobile-browsers-in-javascript-943b66657524",
+                        "description": ""
+                    }
+                ],
                 "filename": "isMobile.ts",
                 "extension": "ts",
                 "relPath": "src/js/is/isMobile.ts",
@@ -30375,6 +30915,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.npmjs.com/package/isbot",
+                        "description": ""
+                    }
+                ],
                 "filename": "isCrawler.ts",
                 "extension": "ts",
                 "relPath": "src/js/is/isCrawler.ts",
@@ -32027,6 +32573,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://www.jstips.co/en/javascript/detect-document-ready-in-pure-js/",
+                        "description": ""
+                    }
+                ],
                 "filename": "whenDomReady.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/when/whenDomReady.ts",
@@ -32584,6 +33136,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/transform-keyframe-declaration.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "transformKeyframesDeclarations.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/transformKeyframesDeclarations.ts",
@@ -32885,6 +33443,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle",
+                        "description": ""
+                    }
+                ],
                 "filename": "getStyleProperty.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/getStyleProperty.ts",
@@ -33117,6 +33681,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/get-keyframe-declarations.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "getKeyframesDeclarations.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/getKeyframesDeclarations.ts",
@@ -33186,6 +33756,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/get-defined-styles.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "getDefinedStyles.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/getDefinedStyles.ts",
@@ -33275,6 +33851,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/get-css-rules.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "getCssRulesFromStylesheet.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/getCssRulesFromStylesheet.ts",
@@ -33376,6 +33958,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://github.com/marionebl/jogwheel/blob/main/source/library/get-declarations.js",
+                        "description": ""
+                    }
+                ],
                 "filename": "getCssDeclarations.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/style/getCssDeclarations.ts",
@@ -34398,6 +34986,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://developer.mozilla.org/en/docs/Web/API/Element/matches",
+                        "description": ""
+                    }
+                ],
                 "filename": "matches.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/query/matches.ts",
@@ -34912,6 +35506,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d",
+                        "description": ""
+                    }
+                ],
                 "filename": "onSwipe.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/on/onSwipe.ts",
@@ -35357,6 +35957,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://olivierboss$input.com"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/a/56416714",
+                        "description": ""
+                    }
+                ],
                 "filename": "cursorToEnd.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/input/cursorToEnd.ts",
@@ -35418,6 +36024,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://olivierboss$input.com"
                 },
+                "see": [
+                    {
+                        "url": "https://stackoverflow.com/a/56416714",
+                        "description": ""
+                    }
+                ],
                 "filename": "autoResize.ts",
                 "extension": "ts",
                 "relPath": "src/js/dom/input/autoResize.ts",
@@ -37701,6 +38313,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.",
+                        "description": ""
+                    }
+                ],
                 "filename": "copyText.ts",
                 "extension": "ts",
                 "relPath": "src/js/clipboard/copyText.ts",
@@ -37774,6 +38392,12 @@
                     "email": "olivier.bossel@gmail.com",
                     "url": "https://blackbyte.space"
                 },
+                "see": [
+                    {
+                        "url": "https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/#:~:text=To%20write%20text%20to%20the,in%20the%20active%20browser%20tab.",
+                        "description": ""
+                    }
+                ],
                 "filename": "copyFile.ts",
                 "extension": "ts",
                 "relPath": "src/js/clipboard/copyFile.ts",

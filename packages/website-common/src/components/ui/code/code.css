@@ -1,13 +1,6 @@
 @import './code.mixin.css';
 
-.code {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-}
-
-.shiki {
-  @s-radius;
+.s-code {
   @include code;
   @include bb-scrollbar;
 }

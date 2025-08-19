@@ -6,11 +6,23 @@
         :href="`/doc/${__toSlug(item.id)}`"
         :title="item.name"
       >
-        {{ item.name }}
+        <span class="menu-item_label-name">
+          {{ item.name }}
+        </span>
+        <span class="menu-item_platforms">
+          <span
+            :class="`menu-item_platform platform -${platform.name}`"
+            v-for="platform in item.platform"
+            :key="platform"
+            >{{ platform.name }}</span
+          >
+        </span>
       </a>
     </div>
     <div class="menu-item_group" tabindex="0" v-else>
-      <div class="menu-item_group-label">{{ title }}</div>
+      <div class="menu-item_group-label">
+        {{ title }}
+      </div>
       <MenuItem
         v-for="(child, key) in item"
         :key="key"
@@ -25,7 +37,7 @@ import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils.j
 import { onMounted, ref } from 'vue';
 import { type TMenuItem } from './menu.type';
 
-withDefaults(defineProps<TMenuItem>(), {
+const props = withDefaults(defineProps<TMenuItem>(), {
   item: {},
 });
 

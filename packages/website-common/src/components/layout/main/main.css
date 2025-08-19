@@ -1,9 +1,5 @@
 @import './main.settings.css';
 
-/* @mixin log {
-  gap: s-space(3) s-space(4);
-} */
-
 body {
   overflow-x: hidden;
 }

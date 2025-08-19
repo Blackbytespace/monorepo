@@ -7,12 +7,13 @@
   --s-scrolled-classes-class: scrolled;
   --s-scrolled-classes-offset: 50;
 
-  --s-media-xs: 0 474px;
+  --s-media-2xs: 0 319px;
+  --s-media-xs: 320px 474px;
   --s-media-sm: 475px 639px;
   --s-media-md: 640px 767px;
   --s-media-lg: 768px 1023px;
   --s-media-xl: 1024px 1279px;
-  --s-media-xxl: 1280px;
+  --s-media-2xl: 1280px;
 
   --s-container-default: 120px 1080px 20px;
 

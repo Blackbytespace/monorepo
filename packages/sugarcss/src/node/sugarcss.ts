@@ -301,6 +301,9 @@ export default function sugarcss(
         }
       },
       custom: {
+        's-transition'(rule) {
+          return __transitionRule(rule, finalSettings);
+        },
         mixin(rule) {
           if (rule.prelude.value === 'log') {
             console.log(JSON.stringify(rule, null, 2));

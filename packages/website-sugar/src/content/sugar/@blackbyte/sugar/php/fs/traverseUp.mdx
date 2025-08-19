@@ -44,6 +44,7 @@ Go up through the filesystem from a specified folder until the closure returns t
 </div>
 <div class="docmap_examples">
 ## Example
+<s-code language="php">
 ```php
 const finalPath = \Sugar\Fs\traverseUp('/Users/something/cool', function($path) {
    if (count(explode('/', $path)) <= 2) {
@@ -51,6 +52,7 @@ const finalPath = \Sugar\Fs\traverseUp('/Users/something/cool', function($path) 
    }
 }); // '/Users/something'
 ```
+</s-code>
 </div>
 <div class="docmap_todo">
 ## Todo

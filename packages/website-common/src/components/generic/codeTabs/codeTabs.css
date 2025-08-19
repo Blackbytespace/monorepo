@@ -28,7 +28,7 @@
 
     &:before {
       content: '';
-      z-index: -1;
+      z-index: 1;
       position: absolute;
       top: 0;
       left: 0;
@@ -63,7 +63,7 @@
       background: linear-gradient(
           270deg,
           s-color(main, surface, --alpha 1),
-          s-color(main, surface, --alpha 0) 40%
+          s-color(main, surface, --alpha 1) 40%
         )
         border-box;
       @s-transition;

@@ -9,6 +9,7 @@
   .docmap_namespace {
     position: relative;
     display: flex;
+    font-size: s-rem(14px);
     padding: s-space(5);
     background: s-color(main, surface);
     margin-block-end: s-space(10);
@@ -42,9 +43,13 @@
     @media xs {
       flex-direction: column;
     }
+
+    .docmap_type-value {
+      font-size: s-rem(10px);
+    }
   }
 
-  .astro-code {
+  .s-code {
     margin-block-end: s-space(10);
   }
 
@@ -52,6 +57,7 @@
     display: flex;
     align-items: center;
     gap: s-space(2);
+    font-size: s-rem(14px) !important;
   }
   .docmap_type-label {
     @media xs {
@@ -60,7 +66,6 @@
   }
   .docmap_type-value {
     background: s-color(accent);
-    font-size: s-size(caption);
     letter-spacing: 0.1em;
     color: s-color(accent, foreground);
     padding: s-space(1) s-space(3);
@@ -80,8 +85,8 @@
     }
   }
   .docmap_status-value {
+    font-size: s-rem(10px) !important;
     background: s-color(complementary);
-    font-size: s-size(caption);
     color: s-color(complementary, --lightness 20);
     letter-spacing: 0.1em;
     padding: s-space(1) s-space(3);
@@ -92,9 +97,6 @@
     &.-beta {
       color: s-color(error, --lighten 30);
       background: s-color(error, --darken 20);
-    }
-
-    @media theme-oddworld {
     }
   }
 
@@ -109,8 +111,8 @@
     }
   }
   .docmap_since-value {
+    font-size: s-rem(10px);
     background: s-color(main, surface);
-    font-size: s-size(caption);
     letter-spacing: 0.1em;
     color: s-color(main, text);
     padding: s-space(1) s-space(3);
@@ -131,10 +133,10 @@
   }
   .docmap_platform-value {
     background: s-color(main, surface);
-    font-size: s-size(caption);
     letter-spacing: 0.1em;
     color: s-color(main, text);
     padding: s-space(1) s-space(3);
+    font-size: s-rem(10px);
     text-transform: uppercase;
     user-select: all;
     @s-radius();
@@ -174,7 +176,7 @@
     .docmap_name {
       flex-grow: 1;
       background: s-color(main, surface);
-      padding: s-space(5);
+      padding: s-space(4);
       border-top-left-radius: s-radius();
       border-bottom-left-radius: s-radius();
       letter-spacing: 0.05em;
@@ -232,6 +234,7 @@
     background: s-color(main, surface);
     padding: s-space(5);
     font: s-font(code);
+    font-size: s-rem(14px) !important;
 
     @media xs {
       display: flex;
@@ -281,6 +284,8 @@
   }
 
   .docmap_todo {
+    margin-block-end: s-space(10);
+
     .docmap_list {
       display: flex;
       flex-direction: column;
@@ -353,5 +358,8 @@
     .docmap_email {
       flex-grow: 1;
     }
+  }
+
+  .docmap_see {
   }
 }

@@ -49,12 +49,14 @@ The replacer function take as argument the token value
 </div>
 <div class="docmap_examples">
 ## Example
+<s-code language="js">
 ```js
 import { replaceChunks } from '@blackbyte/sugar/string'
 replaceChunks('hello world', ['or'], (token) => {
      return `<span>${token}</span>;
 }) // Hello w<span>or</span>ld
 ```
+</s-code>
 </div>
 <div class="docmap_todo">
 ## Todo

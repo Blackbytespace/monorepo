@@ -3,11 +3,21 @@
   grid-template-columns: 1fr 3fr;
   gap: s-space(10);
 
+  @media md {
+    grid-template-columns: 1fr;
+  }
+
   .doc_nav {
-    height: calc(100vh - var(--bb-header-height));
-    overflow-y: auto;
-    position: sticky;
-    top: 0;
-    @s-scrollbar (1px, s-color(accent, --alpha .5), s-color(accent));
+    @media md {
+      display: none;
+    }
+
+    .menu {
+      max-height: calc(100vh - var(--bb-header-height));
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+      @s-scrollbar (1px, s-color(accent, --alpha .5), s-color(accent));
+    }
   }
 }

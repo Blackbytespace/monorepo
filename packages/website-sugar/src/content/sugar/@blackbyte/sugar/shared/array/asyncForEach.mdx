@@ -33,6 +33,7 @@ Allow to make some async foreach on your arrays
 </div>
 <div class="docmap_examples">
 ## Example
+<s-code language="js">
 ```js
 import { asyncForEach } from '@blackbyte/sugar/array';
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
@@ -45,6 +46,7 @@ asyncForEach([0,1,2,3], async (item) => {
 // 2
 // 3
 ```
+</s-code>
 </div>
 <div class="docmap_author">
 ## Author

@@ -6,10 +6,16 @@
   display: flex;
   align-items: center;
   height: var(--bb-header-height);
-  background: s-color(main, background);
-  border-bottom: 1px solid s-color(accent, border);
+  background: s-color(main, background, --alpha 0);
+  border-bottom: 1px solid s-color(accent, border, --alpha 0);
   @s-transition;
   @s-zindex (header);
+
+  .scrolled & {
+    background: s-color(main, background, --alpha 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid s-color(accent, border, --alpha 0.1);
+  }
 
   .scrolled-down & {
     translate: 0 -100%;
@@ -41,6 +47,12 @@
 
   .header_search {
     flex-grow: 1;
+
+    .search {
+      @media md {
+        display: none;
+      }
+    }
   }
 
   .header_metas {
@@ -65,6 +77,10 @@
     user-select: all;
     @s-radius;
     @s-transition (fast);
+
+    @media md {
+      display: none;
+    }
   }
 
   .header_license {

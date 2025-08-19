@@ -12,7 +12,6 @@ interface Props {
   };
 }
 
-import { ViewTransitions } from 'astro:transitions';
 import '../../settings/fonts/fonts';
 import '../../settings/fonts/fonts.css';
 import Posthog from '../../system/posthog/posthog.astro';
@@ -54,7 +53,7 @@ const { title, pageTitle, description, og } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <title>Blackbyte {`${pageTitle ? `- ${pageTitle}` : ''}`}</title>
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
     <Posthog />
   </head>
   <body>

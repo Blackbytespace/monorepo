@@ -1064,9 +1064,11 @@ class Docmap implements TDocmap {
 
       result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
       docmapObj.example.forEach((exampleObj) => {
+        result.push(`<s-code language="${exampleObj.language}">`);
         result.push(`\`\`\`${exampleObj.language}`);
         result.push(exampleObj.code);
         result.push(`\`\`\``);
+        result.push(`</s-code>`);
       });
 
       result.push('</div>');
@@ -1172,6 +1174,23 @@ class Docmap implements TDocmap {
             `<a href="${contributorObj.url}" target="_blank" class="docmap_url">${contributorObj.url}</a>`,
           );
         }
+        result.push('</li>');
+      });
+      result.push('</ul>');
+
+      result.push('</div>');
+    }
+
+    // see
+    if (docmapObj.see) {
+      result.push('<div class="docmap_see">');
+
+      result.push(`## See`);
+
+      result.push('<ul class="docmap_see-list">');
+      docmapObj.see.forEach((seeObj) => {
+        result.push('<li class="docmap_see-item">');
+        result.push(seeObj.url);
         result.push('</li>');
       });
       result.push('</ul>');

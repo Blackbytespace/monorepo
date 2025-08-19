@@ -6,16 +6,18 @@
   }
 
   .menu-item_label {
+    display: flex;
   }
 
   .menu-item_link {
-    display: block;
-    white-space: ellipsis;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    opacity: 0.5;
-    padding: s-space(2) 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-block: s-space(1);
+    padding-inline: 0 s-space(2);
     outline: none;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
 
     &.-active,
     &:hover,
@@ -23,6 +25,18 @@
       opacity: 1;
       color: s-color(accent, text);
     }
+  }
+
+  .menu-item_label-name {
+    flex-grow: 1;
+    white-space: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu-item_platforms {
+    display: flex;
+    flex-wrap: nowrap;
   }
 
   .menu-item_group {

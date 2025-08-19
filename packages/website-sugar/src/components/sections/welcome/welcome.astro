@@ -39,9 +39,9 @@
   </div>
 
   <div class="welcome_header">
-    <h1 class="welcome_title">
+    <!-- <h1 class="welcome_title">
       Blackbyte <span class="color-accent font-family-brand">Sugar</span>
-    </h1>
+    </h1> -->
     <!-- <p class="welcome_description">
       A toolkit that gives you access to lots of cool and useful <span
         class="color-accent">Node/Js/Php</span
@@ -55,10 +55,10 @@
         >a sugar in your coffee!</span
       >
     </p>
-    <code class="welcome_install">
+    <div class="welcome_install">
       npm i @blackbyte/sugar
       <s-icon name="clipboard" provider="pixelarticons"></s-icon>
-    </code>
+    </div>
     <div class="welcome_actions">
       <a
         href="https://github.com/blackbytespace/monorepo"
@@ -94,11 +94,11 @@
   import { animate } from 'animejs';
 
   const $welcome = document.querySelector('.welcome'),
-    $getStarted = $welcome.querySelector('#get-started'),
-    $pictoWhite = $welcome.querySelector(
+    $getStarted = $welcome?.querySelector('#get-started'),
+    $pictoWhite = $welcome?.querySelector(
       '.blackbyte-picto.-white',
     ) as HTMLElement,
-    $pictoBlack = $welcome.querySelector(
+    $pictoBlack = $welcome?.querySelector(
       '.blackbyte-picto.-black',
     ) as HTMLElement,
     $bits = $pictoWhite.querySelectorAll('div') as NodeListOf<HTMLDivElement>;
@@ -117,6 +117,7 @@
   let speed = 0.1,
     exploded = false,
     maxBitRotation = 20,
+    // @ts-ignore
     maxBitDistance = $welcome?.getBoundingClientRect().height / 2;
 
   $welcome?.addEventListener('mousemove', (event) => {
@@ -142,7 +143,7 @@
   setInterval(() => {
     if (speed >= 0.9) {
       if (!exploded) {
-        $bits.forEach(($bit, index) => {
+        $bits.forEach(($bit) => {
           applyToBit($bit, {
             x: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
             y: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
@@ -166,7 +167,7 @@
     }
 
     if (exploded) {
-      $bits.forEach(($bit, index) => {
+      $bits.forEach(($bit) => {
         applyToBit($bit, {
           x: 0,
           y: 0,
