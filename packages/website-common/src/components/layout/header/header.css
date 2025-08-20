@@ -8,8 +8,13 @@
   height: var(--bb-header-height);
   background: s-color(main, background, --alpha 0);
   border-bottom: 1px solid s-color(accent, border, --alpha 0);
+  opacity: 1;
   @s-transition;
   @s-zindex (header);
+
+  @starting-style {
+    opacity: 0;
+  }
 
   .scrolled & {
     background: s-color(main, background, --alpha 0.7);
@@ -17,7 +22,7 @@
     border-bottom: 1px solid s-color(accent, border, --alpha 0.1);
   }
 
-  .scrolled-down & {
+  .scrolled-down.scrolled &:not(:has(input:focus)) {
     translate: 0 -100%;
   }
   &:focus-within {

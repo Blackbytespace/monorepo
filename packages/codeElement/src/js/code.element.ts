@@ -46,10 +46,13 @@ export default class CodeElement extends __LitElement {
   public language: string = 'html';
 
   @property({ type: String })
-  public name: string = 'example.js';
+  public filename: string = '';
 
   @property({ type: String })
   public theme: string = 'github-dark';
+
+  @property({ type: Boolean })
+  public header: boolean = false;
 
   @property({ type: String })
   public copyIcon: string = `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
@@ -66,55 +69,65 @@ export default class CodeElement extends __LitElement {
   }
 
   public connectedCallback(): void {
-    this.code = this.innerText;
+    this.code = this.innerText.trim();
+    this.innerHTML = '';
     super.connectedCallback();
   }
 
   public async firstUpdated(_changedProperties: PropertyValues): Promise<void> {
+    // get the code element to inject later code into
     this.$code = this.querySelector('.s-code_code');
 
-    Array.from(this.children).forEach(($elm) => {
-      if ($elm.classList.contains('s-code')) {
-        return;
-      }
-      $elm.remove();
-    });
-
+    // convert the code to HTML
     const html = await codeToHtml(this.code, {
       lang: this.language,
       theme: this.theme,
     });
 
+    // set the compiled code
     if (this.$code) {
       this.$code.innerHTML = html;
     }
+
+    // add some classes on the element itself
+    this.classList.add('-ready', `-${this.language}`);
+
     super.firstUpdated(_changedProperties);
   }
 
   public render() {
-    return html`<div class="s-code ${this.language}">
-      <div class="${this.cls('_header')}">
-        <div class="${this.cls('_metas')}">
-          ${this.name
-            ? html` <div class="${this.cls('_name')}">${this.name}</div> `
-            : ''}
-          <div class="${this.cls('_language')}">
-            <span class="${this.cls('_language-parenthesis')}">(</span>${this
-              .language}<span class="${this.cls('_language-parenthesis')}"
-              >)</span
-            >
-          </div>
-        </div>
-        <div class="${this.cls('_tools')}">
-          <button
-            class="${this.cls('_copy')}"
-            @click="${() => this.copyCode()}"
-          >
-            <span class="${this.cls('_copy-text')}">Copy</span>
-            ${unsafeHTML(this.copyIcon)}
-          </button>
-        </div>
-      </div>
+    return html`<div class="${this.cls('_wrapper')} ${this.language}">
+      ${this.header
+        ? html`
+            <div class="${this.cls('_header')}">
+              <div class="${this.cls('_metas')}">
+                ${this.filename
+                  ? html`
+                      <div class="${this.cls('_filename')}">
+                        ${this.filename}
+                      </div>
+                    `
+                  : ''}
+                <div class="${this.cls('_language')}">
+                  <span class="${this.cls('_language-parenthesis')}">(</span
+                  >${this.language}<span
+                    class="${this.cls('_language-parenthesis')}"
+                    >)</span
+                  >
+                </div>
+              </div>
+              <div class="${this.cls('_tools')}">
+                <button
+                  class="${this.cls('_copy')}"
+                  @click="${() => this.copyCode()}"
+                >
+                  <span class="${this.cls('_copy-text')}">Copy</span>
+                  ${unsafeHTML(this.copyIcon)}
+                </button>
+              </div>
+            </div>
+          `
+        : ''}
       <div class="${this.cls('_code')}"></div>
       <div class="${this.cls('_footer')}"></div>
     </div>`;

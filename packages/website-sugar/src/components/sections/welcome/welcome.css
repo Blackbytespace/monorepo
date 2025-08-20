@@ -42,9 +42,16 @@
 .welcome {
   height: 90vh;
   max-height: s-rem(900px);
+  min-height: s-rem(700px);
   position: relative;
   color: white;
   user-select: none;
+  opacity: 1;
+  @s-transition (slow);
+
+  @starting-style {
+    opacity: 0;
+  }
 
   --glow-multiplier: 1;
 
@@ -102,8 +109,8 @@
   }
 
   .welcome_title {
-    @s-typo (h1);
     margin-block-end: s-space(5);
+    @s-typo (h1);
   }
 
   .welcome_description {

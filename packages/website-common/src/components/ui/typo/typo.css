@@ -10,6 +10,7 @@
 .typo-format h3,
 .typo-format h4,
 .typo-format h5 {
+  user-select: text;
   word-break: break-all;
 }
 
@@ -35,6 +36,7 @@
 
 .typo-p,
 .typo-format p {
+  user-select: text;
   @s-typo (p);
 
   &:empty {
@@ -46,6 +48,7 @@
 .typo-lead > p,
 .typo-format .typo-lead,
 .typo-format .typo-lead p {
+  user-select: text;
   @s-typo (lead);
 }
 
@@ -58,7 +61,8 @@
 
 .typo-code,
 .typo-format code {
-  color: s-color(accent);
+  color: s-color(complementary);
+  user-select: text;
   @include code;
 }
 
@@ -84,6 +88,7 @@
 .typo-ol,
 .typo-format ol {
   > li {
+    user-select: text;
     position: relative;
     padding-left: s-space(8);
     margin-bottom: s-space(5);

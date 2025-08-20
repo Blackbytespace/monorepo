@@ -754,7 +754,7 @@ class Docmap {
             result.push('<div class="docmap_examples">');
             result.push(`## Example${docmapObj.example.length > 1 ? 's' : ''}`);
             docmapObj.example.forEach((exampleObj) => {
-                result.push(`<s-code language="${exampleObj.language}">`);
+                result.push(`<s-code language="${exampleObj.language}" header>`);
                 result.push(`\`\`\`${exampleObj.language}`);
                 result.push(exampleObj.code);
                 result.push(`\`\`\``);

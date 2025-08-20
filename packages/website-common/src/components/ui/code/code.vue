@@ -1,7 +1,8 @@
 <template>
   <div class="code">
-    <div class="code_code" v-html="codeHtml?.trim()"></div>
-    <div style="flex-grow: 1"></div>
+    <component is="s-code" language="js">
+      <div v-html="code"></div>
+    </component>
   </div>
 </template>
 <script lang="ts" setup>

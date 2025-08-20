@@ -25,13 +25,15 @@
       user-select: none;
       flex-grow: 1;
       @s-font (default);
+
+      @media xs {
+        display: block;
+        margin-block-end: s-space(2);
+      }
     }
 
-    @media theme-half-life {
-      color: s-color(accent);
-    }
-    @media theme-oddworld {
-      color: s-color(accent);
+    @media xs {
+      display: block;
     }
   }
 
@@ -90,8 +92,9 @@
     color: s-color(complementary, --lightness 20);
     letter-spacing: 0.1em;
     padding: s-space(1) s-space(3);
+    display: flex;
+    align-items: center;
     text-transform: uppercase;
-    user-select: all;
     @s-radius();
 
     &.-beta {
@@ -111,7 +114,7 @@
     }
   }
   .docmap_since-value {
-    font-size: s-rem(10px);
+    font-size: s-rem(10px) !important;
     background: s-color(main, surface);
     letter-spacing: 0.1em;
     color: s-color(main, text);
@@ -132,6 +135,7 @@
     }
   }
   .docmap_platform-value {
+    font-size: s-rem(10px) !important;
     background: s-color(main, surface);
     letter-spacing: 0.1em;
     color: s-color(main, text);
@@ -170,6 +174,7 @@
 
       @media xs {
         flex-direction: column;
+        align-items: stretch;
       }
     }
 

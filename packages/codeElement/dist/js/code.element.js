@@ -59,8 +59,9 @@ export default class CodeElement extends __LitElement {
     constructor() {
         super('s-code');
         this.language = 'html';
-        this.name = 'example.js';
+        this.filename = '';
         this.theme = 'github-dark';
+        this.header = false;
         this.copyIcon = `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
         this.code = '';
         this.$code = null;
@@ -70,7 +71,8 @@ export default class CodeElement extends __LitElement {
         __copyText((_b = (_a = this.$code) === null || _a === void 0 ? void 0 : _a.innerText) !== null && _b !== void 0 ? _b : '');
     }
     connectedCallback() {
-        this.code = this.innerText;
+        this.code = this.innerText.trim();
+        this.innerHTML = '';
         super.connectedCallback();
     }
     firstUpdated(_changedProperties) {
@@ -78,47 +80,55 @@ export default class CodeElement extends __LitElement {
             firstUpdated: { get: () => super.firstUpdated }
         });
         return __awaiter(this, void 0, void 0, function* () {
+            // get the code element to inject later code into
             this.$code = this.querySelector('.s-code_code');
-            Array.from(this.children).forEach(($elm) => {
-                if ($elm.classList.contains('s-code')) {
-                    return;
-                }
-                $elm.remove();
-            });
+            // convert the code to HTML
             const html = yield codeToHtml(this.code, {
                 lang: this.language,
                 theme: this.theme,
             });
+            // set the compiled code
             if (this.$code) {
                 this.$code.innerHTML = html;
             }
+            // add some classes on the element itself
+            this.classList.add('-ready', `-${this.language}`);
             _super.firstUpdated.call(this, _changedProperties);
         });
     }
     render() {
-        return html `<div class="s-code ${this.language}">
-      <div class="${this.cls('_header')}">
-        <div class="${this.cls('_metas')}">
-          ${this.name
-            ? html ` <div class="${this.cls('_name')}">${this.name}</div> `
+        return html `<div class="${this.cls('_wrapper')} ${this.language}">
+      ${this.header
+            ? html `
+            <div class="${this.cls('_header')}">
+              <div class="${this.cls('_metas')}">
+                ${this.filename
+                ? html `
+                      <div class="${this.cls('_filename')}">
+                        ${this.filename}
+                      </div>
+                    `
+                : ''}
+                <div class="${this.cls('_language')}">
+                  <span class="${this.cls('_language-parenthesis')}">(</span
+                  >${this.language}<span
+                    class="${this.cls('_language-parenthesis')}"
+                    >)</span
+                  >
+                </div>
+              </div>
+              <div class="${this.cls('_tools')}">
+                <button
+                  class="${this.cls('_copy')}"
+                  @click="${() => this.copyCode()}"
+                >
+                  <span class="${this.cls('_copy-text')}">Copy</span>
+                  ${unsafeHTML(this.copyIcon)}
+                </button>
+              </div>
+            </div>
+          `
             : ''}
-          <div class="${this.cls('_language')}">
-            <span class="${this.cls('_language-parenthesis')}">(</span>${this
-            .language}<span class="${this.cls('_language-parenthesis')}"
-              >)</span
-            >
-          </div>
-        </div>
-        <div class="${this.cls('_tools')}">
-          <button
-            class="${this.cls('_copy')}"
-            @click="${() => this.copyCode()}"
-          >
-            <span class="${this.cls('_copy-text')}">Copy</span>
-            ${unsafeHTML(this.copyIcon)}
-          </button>
-        </div>
-      </div>
       <div class="${this.cls('_code')}"></div>
       <div class="${this.cls('_footer')}"></div>
     </div>`;
@@ -129,10 +139,13 @@ __decorate([
 ], CodeElement.prototype, "language", void 0);
 __decorate([
     property({ type: String })
-], CodeElement.prototype, "name", void 0);
+], CodeElement.prototype, "filename", void 0);
 __decorate([
     property({ type: String })
 ], CodeElement.prototype, "theme", void 0);
+__decorate([
+    property({ type: Boolean })
+], CodeElement.prototype, "header", void 0);
 __decorate([
     property({ type: String })
 ], CodeElement.prototype, "copyIcon", void 0);

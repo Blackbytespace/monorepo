@@ -13,7 +13,7 @@
     }
 
     .menu {
-      max-height: calc(100vh - var(--bb-header-height));
+      max-height: 100svh;
       overflow-y: auto;
       position: sticky;
       top: 0;

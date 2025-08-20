@@ -21,7 +21,7 @@
       </ol>
     </nav>
     <div class="code-tabs_content">
-      <div class="code-tabs_code-wrapper" :style="{ height: `${height}px` }">
+      <div class="code-tabs_code-wrapper">
         <div
           :class="`code-tabs_code ${
             selectedTabIndex === index ? '-active' : ''
@@ -33,7 +33,6 @@
           <Code :code="tab.code" :language="tab.language" />
         </div>
       </div>
-      <div style="flex-grow: 1"></div>
     </div>
   </div>
 </template>

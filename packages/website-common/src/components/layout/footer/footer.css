@@ -3,7 +3,7 @@
   filter: grayscale(100%);
 
   .container {
-    background: s-color(main, --darken 2);
+    background: s-color(main, --lighten 2);
     padding: s-space(10);
     display: flex;
     align-items: center;

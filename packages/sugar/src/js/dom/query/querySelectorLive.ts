@@ -28,7 +28,7 @@ import when from '../when/when.js';
  * @setting         {Boolean}              [scopes=true]              If true, the selector
  * @setting         {Boolean}              [firstOnly=false]          If true, the query will stop after the first node has been found
  * @setting         {TWhenTrigger}         [when=undefined]           A when trigger to wait for before executing the callback. Can be direct, inViewport, nearViewport, enterViewport, outOfViewport, interact, visible, domReady, stylesheetsReady or animationEnd
- * @setting         {Function}             [disconnectedCallback=undefined] A function to call when a node is disconnected from the dom
+ * @setting         {Function}             [disconnectedCallback=undefined]         A function to call when a node is disconnected from the dom
  *
  * @snippet         querySelectorLive($1, $2)
  * querySelectorLive($1, \$elm => {

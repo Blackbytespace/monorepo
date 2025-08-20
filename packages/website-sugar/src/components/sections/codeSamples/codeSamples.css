@@ -1,0 +1,12 @@
+.code-samples {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0.3s !important;
+  margin-block-end: s-space(10);
+  @s-transition (slow);
+
+  @starting-style {
+    translate: 0 s-rem(20px);
+    opacity: 0;
+  }
+}

@@ -42,14 +42,6 @@ const items = Astro.props;
     );
   });
 
-  const $loSearch = document.querySelector('lo-search') as HTMLElement;
-  document.addEventListener('keydown', () => {
-    if (document.activeElement?.tagName === 'INPUT') {
-      return;
-    }
-    $loSearch?.focus();
-  });
-
   __AdvancedSelectElement.define('lo-search', {
     minChars: 0,
     async items() {

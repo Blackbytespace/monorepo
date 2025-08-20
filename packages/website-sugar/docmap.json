@@ -34322,8 +34322,8 @@
                         "description": "A when trigger to wait for before executing the callback. Can be direct, inViewport, nearViewport, enterViewport, outOfViewport, interact, visible, domReady, stylesheetsReady or animationEnd",
                         "defaultStr": "undefined"
                     },
-                    "[disconnectedCallback=undefined] A function to call when a node is disconnected from the dom": {
-                        "name": "[disconnectedCallback=undefined] A function to call when a node is disconnected from the dom",
+                    "disconnectedCallback": {
+                        "name": "disconnectedCallback",
                         "type": {
                             "types": [
                                 {
@@ -34332,8 +34332,8 @@
                             ],
                             "raw": "Function"
                         },
-                        "description": null,
-                        "defaultStr": ""
+                        "description": "A function to call when a node is disconnected from the dom",
+                        "defaultStr": "undefined"
                     }
                 },
                 "platform": [

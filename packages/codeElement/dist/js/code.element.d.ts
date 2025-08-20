@@ -38,8 +38,9 @@ import '../../src/css/code.element.css';
  */
 export default class CodeElement extends __LitElement {
     language: string;
-    name: string;
+    filename: string;
     theme: string;
+    header: boolean;
     copyIcon: string;
     private code;
     private $code;

@@ -50,7 +50,7 @@ when you don&#39;t have the chance to use the custom elements API instead
 </div>
 <div class="docmap_examples">
 ## Example
-<s-code language="js">
+<s-code language="js" header>
 ```js
 import { querySelectorLive } from '@blackbyte/sugar/dom'
 const query = querySelectorLive('.my-cool-item', (node, api) => {
@@ -91,8 +91,8 @@ query.cancel();
 <p class="docmap_description">A when trigger to wait for before executing the callback. Can be direct, inViewport, nearViewport, enterViewport, outOfViewport, interact, visible, domReady, stylesheetsReady or animationEnd</p>
 </li>
 <li class="docmap_item">
-<span class="docmap_name">[disconnectedCallback=undefined] A function to call when a node is disconnected from the dom<span class="docmap_required">*</span></span><span class="docmap_default">-</span> <span class="docmap_type">Function</span>
-<p class="docmap_description">null</p>
+<span class="docmap_name">disconnectedCallback<span class="docmap_required">*</span></span><span class="docmap_default">-</span> <span class="docmap_type">Function</span>
+<p class="docmap_description">A function to call when a node is disconnected from the dom</p>
 </li>
 </ol>
 </div>
