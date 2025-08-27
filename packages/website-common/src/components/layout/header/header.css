@@ -88,6 +88,10 @@
     }
   }
 
+  .header_version-pseudo {
+    color: s-color(complementary);
+  }
+
   .header_license {
     opacity: 0.8;
     display: inline-block;

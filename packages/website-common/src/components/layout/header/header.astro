@@ -1,17 +1,16 @@
 ---
-interface Props {
-  title: string;
-  version: string;
-  license: {
-    name: string;
-    url: string;
-  };
-}
-
-import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.svg?raw';
+import { BlackbyteLogoSvg } from '@blackbyte/website-common';
 import Search from '../search/search.astro';
+import { type THeader } from './header.type';
 
-const { title, version, license } = Astro.props;
+type Props = THeader;
+
+const { title, version, license, repository } = Astro.props;
+let versionHtml = `v${version.split('-')[0]}`;
+const pseudoVersion = version.split('-')[1];
+if (pseudoVersion) {
+  versionHtml += `-<span class="header_version-pseudo">${pseudoVersion}</span>`;
+}
 ---
 
 <header class="header">
@@ -19,16 +18,18 @@ const { title, version, license } = Astro.props;
     <div class="header_brand">
       <a href="/" title={title}>
         <div class="header_logo">
-          <Fragment set:html={__logoBlackbyte} />
+          <Fragment set:html={BlackbyteLogoSvg} />
         </div>
         <h1 class="header_title font-family-brand">{title}</h1>
       </a>
     </div>
     <div class="header_search">
-      <Search />
+      <Search menu={Astro.props.menu} />
     </div>
     <div class="header_metas">
-      <p class="header_version">v{version}</p>
+      <p class="header_version">
+        <Fragment set:html={versionHtml} />
+      </p>
       <a
         class="header_license"
         href={license.url}
@@ -39,8 +40,8 @@ const { title, version, license } = Astro.props;
       </a>
       <a
         class="header_github"
-        href="https://github.com/blackbytespace/monorepo"
-        title="Blackbyte monorepo on GitHub"
+        href={repository.url}
+        title={repository.name}
         target="_blank"
       >
         <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>

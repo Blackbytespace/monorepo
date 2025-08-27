@@ -1,0 +1,11 @@
+---
+import CodeTabs from '../../generic/codeTabs/codeTabs.astro';
+import './codeSamples.css';
+import { type TCodeSamples } from './codeSamples.type';
+
+type Props = TCodeSamples;
+---
+
+<section class="code-samples">
+  <CodeTabs tabs={Astro.props.samples} />
+</section>

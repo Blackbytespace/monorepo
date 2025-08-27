@@ -30,16 +30,16 @@
           :key="index"
           v-show="selectedTabIndex === index"
         >
-          <Code :code="tab.code" :language="tab.language" />
+          <Code :code="tab.code" header :language="tab.language" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { __wait } from '@blackbyte/sugar/datetime';
 import { onMounted, ref } from 'vue';
 import Code from '../../ui/code/code.vue';
+import './codeTabs.css';
 import { type TCodeTabs } from './codeTabs.type';
 
 const height = ref(0);
@@ -49,7 +49,7 @@ const $root = ref<HTMLElement | null>(null);
 
 withDefaults(defineProps<TCodeTabs>(), {});
 
-const selectTab = async (index: number) => {
+const selectTab = (index: number) => {
   selectedTabIndex.value = index;
   const $tab = $root.value?.querySelector(
     `.code-tabs_code:nth-child(${index + 1})`,
@@ -57,7 +57,6 @@ const selectTab = async (index: number) => {
   if (!$tab) {
     return;
   }
-  await __wait(0);
   height.value = $tab.offsetHeight;
 };
 

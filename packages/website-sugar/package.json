@@ -3,6 +3,9 @@
   "name": "@blackbyte/website-sugar",
   "type": "module",
   "version": "1.0.0-beta.1",
+  "repository": {
+    "url": "https://github.com/blackbytespace/monorepo"
+  },
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev --host",
@@ -14,8 +17,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.0",
-    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/sitemap": "^3.5.1",
     "@astrojs/vue": "^5.1.0",
     "@blackbyte/icon-element": "^1.0.0-beta.1",
     "@blackbyte/sugar": "^1.0.0-beta.1",
@@ -25,7 +28,7 @@
     "@fontsource/bungee-spice": "^5.2.9",
     "@fontsource/rock-salt": "^5.2.6",
     "animejs": "^4.0.2",
-    "astro": "^5.11.0",
+    "astro": "^5.13.4",
     "astro-compress": "^2.3.6",
     "astro-purgecss": "^5.1.0",
     "purgecss": "^7.0.2",

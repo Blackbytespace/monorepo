@@ -1,3 +1,5 @@
+import { flatten } from 'flat';
+
 /**
  * @name                        flatten
  * @namespace                   shared.object
@@ -12,9 +14,6 @@
  * @param               {Object}                          [settings={}]             An object of settings to configure your flatten process
  * @return              {Object}                                                    The flatten object
  *
- * @setting               {String}            [separation="."]          The separation character to use for preperty names
- * @setting               {String}            [prefix=""]               A prefix to add to the property names
- *
  * @todo      tests
  *
  * @snippet         flatten($1)
@@ -27,39 +26,10 @@
  *    }
  * });
  *
+ * @see.     https://www.npmjs.com/package/flat
  * @since       1.0.0
  * @author  Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-
-export type TFlattenSettings = {
-  separator: string;
-  prefix: string;
-};
-
-export default function flatten(
-  obj,
-  settings?: Partial<TFlattenSettings>,
-): Record<string, any> {
-  const finalSettings: TFlattenSettings = {
-    separator: '.',
-    prefix: '',
-    ...(settings ?? {}),
-  };
-  return Object.keys(obj).reduce((acc, k) => {
-    const pre = finalSettings.prefix.length
-      ? finalSettings.prefix + finalSettings.separator
-      : '';
-    if (typeof obj[k] === 'object' && obj[k] !== null) {
-      Object.assign(
-        acc,
-        flatten(obj[k], {
-          ...finalSettings,
-          prefix: pre + k,
-        }),
-      );
-    } else {
-      acc[pre + k] = obj[k];
-    }
-    return acc;
-  }, {});
+export default function _flatten(obj): Record<string, any> {
+  return flatten(obj);
 }

@@ -3,7 +3,7 @@
     <div v-if="item.name" class="menu-item_label">
       <a
         :class="`menu-item_link ${currentItemId == item.id ? '-active' : ''}`"
-        :href="`/doc/${__toSlug(item.id)}`"
+        :href="`/doc/${toSlug(item.id)}`"
         :title="item.name"
       >
         <span class="menu-item_label-name">
@@ -33,7 +33,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils.js';
+import { toSlug } from '@blackbyte/website-common';
 import { onMounted, ref } from 'vue';
 import { type TMenuItem } from './menu.type';
 

@@ -1,0 +1,9 @@
+---
+import type { TCode } from './code.type';
+// @ts-ignore
+import Code from './code.vue';
+
+type Props = TCode;
+---
+
+<Code client:load {...Astro.props} />

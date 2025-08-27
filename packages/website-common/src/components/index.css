@@ -1,3 +1,4 @@
+@import './settings/sugarcss.css';
 @import './settings/settings.css';
 @import './settings/reset/reset.css';
 @import './settings/selection/selection.css';
@@ -23,7 +24,5 @@
 @import './ui/tooltip/tooltip.css';
 @import './ui/typo/typo.css';
 
-@import './generic/codeTabs/codeTabs.css';
-@import './generic/internalNav/internalNav.css';
 @import './generic/docmap/docmap.css';
 @import './generic/blackbytePicto/blackbytePicto.css';

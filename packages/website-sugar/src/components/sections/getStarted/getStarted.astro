@@ -1,10 +1,77 @@
 ---
-
+import { Code } from '@blackbyte/website-common';
+import './getStarted.css';
 ---
 
-<section class="get-started">
-  <h2 class="typo-h2">Get Started</h2>
-  <p class="typo-lead">
-    Follow these steps to set up your environment and start using our platform.
-  </p>
+<script>
+  function initGetStarted($getStarted: HTMLElement): void {
+    const $hotkey = $getStarted.querySelector('.get-started_hotkey');
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Meta') {
+        $hotkey?.classList.add('-active');
+      }
+    });
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'Meta') {
+        $hotkey?.classList.remove('-active');
+      }
+    });
+  }
+
+  const $getStarted = document.querySelector('.get-started');
+  $getStarted && initGetStarted($getStarted);
+</script>
+
+<section class="get-started" id="get-started">
+  <header class="get-started_header typo-rhythm">
+    <h2 class="typo-h2">Get Started</h2>
+    <p class="typo-lead">
+      Start using <code>@blackbyte/sugar</code> in your project with this quick guide.
+    </p>
+  </header>
+
+  <div class="get-started_steps">
+    <div class="get-started_step">
+      <div class="get-started_step-metas">
+        <h3 class="typo-h3">
+          <span class="get-started_step-number">1.</span> Install the package
+        </h3>
+        <p class="typo-p">
+          You can install <code>@blackbyte/sugar</code> using npm, yarn or pnpm.
+        </p>
+      </div>
+      <Code language="bash" header code="npm install @blackbyte/sugar" />
+    </div>
+
+    <div class="get-started_step">
+      <div class="get-started_step-metas">
+        <h3 class="typo-h3">
+          <span class="get-started_step-number">2.</span> Discover the API
+        </h3>
+        <p class="typo-p">
+          Press <strong>CMD + P</strong> to open the command palette and start typing
+          to search for available functions.
+        </p>
+      </div>
+      <div class="get-started_hotkey">
+        <span class="get-started_hotkey-cmd">CMD</span>
+        <span class="get-started_hotkey-plus">+</span>
+        <span class="get-started_hotkey-p">P</span>
+      </div>
+    </div>
+
+    <div class="get-started_step">
+      <div class="get-started_step-metas">
+        <h3 class="typo-h3">
+          <span class="get-started_step-number">3.</span> Import what you need
+        </h3>
+        <p class="typo-p">
+          Import the components you need from <code>@blackbyte/sugar</code> in your
+          project files.
+        </p>
+      </div>
+      <Code language="ts" header code="import {  } from '@blackbyte/sugar';" />
+    </div>
+  </div>
 </section>

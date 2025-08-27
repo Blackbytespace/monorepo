@@ -1,29 +1,13 @@
 ---
-interface Props {
-  version: string;
-  title: string;
-  pageTitle: string;
-  description: string;
-  menu: any;
-  og: {
-    imageUrl: string;
-  };
-  license: {
-    name: string;
-    url: string;
-  };
-  themes: {
-    name: string;
-    value: string;
-  }[];
-}
-
 import { fade } from 'astro:transitions';
 import Layout from '../layout/layout.astro';
 import Header from '../header/header.astro';
 import Footer from '../footer/footer.astro';
 import './main';
 import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-picto.svg?raw';
+import type { TMain } from './main.type';
+
+type Props = TMain;
 ---
 
 <script>
@@ -52,6 +36,8 @@ import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-pi
   pageTitle={Astro.props.pageTitle}
   description={Astro.props.description}
   license={Astro.props.license}
+  version={Astro.props.version}
+  repository={Astro.props.repository}
   og={Astro.props.og}
 >
   <main class="main">
@@ -59,6 +45,8 @@ import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-pi
       title={Astro.props.title}
       version={Astro.props.version}
       license={Astro.props.license}
+      repository={Astro.props.repository}
+      menu={Astro.props.menu}
     />
 
     <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
@@ -72,5 +60,6 @@ import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-pi
     title={Astro.props.title}
     version={Astro.props.version}
     license={Astro.props.license}
+    repository={Astro.props.repository}
   />
 </Layout>

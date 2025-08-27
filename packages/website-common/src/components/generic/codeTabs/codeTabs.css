@@ -62,10 +62,11 @@
       border: 0px solid transparent;
       background: linear-gradient(
           270deg,
-          s-color(main, surface, --alpha 1),
+          s-color(main, surface, --alpha 0),
           s-color(main, surface, --alpha 1) 40%
         )
         border-box;
+      @s-radius;
       @s-transition;
     }
 
@@ -109,7 +110,7 @@
   }
   .code-tabs_tab.-active .code-tabs_tab-description {
     height: calc-size(auto, size);
-    opacity: var(--opacity, 1);
+    opacity: 0.5;
   }
 
   .shiki,

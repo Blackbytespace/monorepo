@@ -1,0 +1,186 @@
+---
+import type { TWelcome } from './welcome.type';
+import './welcome.css';
+
+type Props = TWelcome;
+---
+
+<div class="welcome">
+  <div class="welcome_animation">
+    <div class="welcome_animation-picto">
+      <div class="blackbyte-picto -white">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="blackbyte-picto -black">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="welcome_animation-picto-white">
+      <div class="blackbyte-picto">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="welcome_header">
+    <p class="welcome_description">
+      <Fragment set:html={Astro.props.description} />
+    </p>
+    <div class="welcome_install">
+      {Astro.props.install}
+      <s-icon name="clipboard" provider="pixelarticons"></s-icon>
+    </div>
+    <div class="welcome_actions">
+      <a
+        href="https://www.npmjs.com/package/@blackbyte/sugar"
+        title="Blackbyte Sugar package on NPM"
+        target="_blank"
+      >
+        <s-icon name="download" provider="pixelarticons"></s-icon>
+      </a>
+      <a
+        id="get-started"
+        class="welcome_get-started button"
+        href={Astro.props.getStarted.url}
+        title="Get started"
+      >
+        Get started
+      </a>
+      <a
+        href="https://github.com/blackbytespace/monorepo"
+        title="Blackbyte monorepo on GitHub"
+        target="_blank"
+      >
+        <s-icon name="github" provider="pixelarticons"></s-icon>
+      </a>
+    </div>
+
+    <p class="welcome_made">
+      Made with <span class="color-accent">♥</span> by Blackbyte
+    </p>
+  </div>
+</div>
+
+<script>
+  import { animate } from 'animejs';
+
+  function initWelcome() {
+    const $getStarted = $welcome?.querySelector('#get-started'),
+      $pictoWhite = $welcome?.querySelector(
+        '.blackbyte-picto.-white',
+      ) as HTMLElement,
+      $pictoBlack = $welcome?.querySelector(
+        '.blackbyte-picto.-black',
+      ) as HTMLElement,
+      $bits = $pictoWhite.querySelectorAll('div') as NodeListOf<HTMLDivElement>;
+
+    const bitsMap = new WeakMap<HTMLElement, any>();
+
+    // Create a map of bits to their corresponding white and black elements
+    const $blackBits = $pictoBlack.querySelectorAll('div');
+    $bits.forEach(($bit, index) => {
+      bitsMap.set($bit, {
+        white: $bit,
+        black: $blackBits[index],
+      });
+    });
+
+    let speed = 0.1,
+      exploded = false,
+      maxBitRotation = 20,
+      // @ts-ignore
+      maxBitDistance = $welcome?.getBoundingClientRect().height / 2;
+
+    $welcome?.addEventListener('mousemove', (event) => {
+      if (!$getStarted) return;
+
+      const { clientX, clientY } = event as any;
+      const { left, top, width, height } = $getStarted.getBoundingClientRect();
+
+      const distX = Math.abs(left + width * 0.5 - clientX),
+        distY = Math.abs(top + height * 0.5 - clientY);
+
+      let speedX = 1 - Math.min(distX / 500, 1),
+        speedY = 1 - Math.min(distY / 500, 1);
+
+      speed = Math.min(speedX, speedY);
+    });
+
+    const applyToBit = ($bit: HTMLElement, props: any) => {
+      const bitMap = bitsMap.get($bit);
+      animate([bitMap.white, bitMap.black], props);
+    };
+
+    setInterval(() => {
+      if (speed >= 0.9) {
+        if (!exploded) {
+          $bits.forEach(($bit) => {
+            applyToBit($bit, {
+              x: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
+              y: maxBitDistance * -1 + Math.random() * maxBitDistance * 2,
+              z: -300 + Math.random() * 600,
+              rotateX: -maxBitRotation + Math.random() * maxBitRotation * 2,
+              rotateY: -maxBitRotation + Math.random() * maxBitRotation * 2,
+              duration: 700,
+              ease: 'out(5)',
+            });
+          });
+          animate([$pictoWhite, $pictoBlack], {
+            duration: 500,
+            ease: 'out(5)',
+            rotate: `+=${speed * 150}`,
+          });
+          $welcome?.classList.add('-exploded');
+        }
+
+        exploded = true;
+        return;
+      }
+
+      if (exploded) {
+        $bits.forEach(($bit) => {
+          applyToBit($bit, {
+            x: 0,
+            y: 0,
+            z: 0,
+            rotate: 0,
+            rotateX: 0,
+            rotateY: 0,
+            duration: 1000,
+            ease: 'out(5)',
+          });
+        });
+        exploded = false;
+        $welcome?.classList.remove('-exploded');
+      }
+
+      animate([$pictoWhite, $pictoBlack], {
+        duration: 100,
+        ease: 'in-out',
+        rotate: `+=${speed * 150}`,
+      });
+    }, 50);
+  }
+
+  const $welcome = document.querySelector('.welcome');
+  $welcome && initWelcome();
+</script>

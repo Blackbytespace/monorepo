@@ -1,7 +1,6 @@
 ---
 // @ts-nocheck
-import Menu from '@blackbyte/website-common/src/components/layout/menu/menu.astro';
-import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils.js';
+import { Menu, toSlug } from '@blackbyte/website-common';
 import { getCollection } from 'astro:content';
 import docmapJson from '../../../docmap.json';
 import Layout from '../../layouts/main.astro';
@@ -12,7 +11,7 @@ export async function getStaticPaths() {
   for (let [i, docObj] of allDoc.entries()) {
     params.push({
       params: {
-        namespace: __toSlug(docObj.id),
+        namespace: toSlug(docObj.id),
       },
     });
   }
@@ -25,7 +24,7 @@ const allDoc = await getCollection('sugar'),
 
 let DocItem;
 for (let [i, docObj] of allDoc.entries()) {
-  if (__toSlug(docObj.id) === params.namespace) {
+  if (toSlug(docObj.id) === params.namespace) {
     DocItem = await docObj.render();
     break;
   }

@@ -1,14 +1,8 @@
 ---
-interface Props {
-  title: string;
-  version: string;
-  license: {
-    name: string;
-    url: string;
-  };
-}
+import { BlackbyteLogoSvg } from '@blackbyte/website-common';
+import { type TFooter } from './footer.type';
 
-import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo.svg?raw';
+type Props = TFooter;
 
 const { title, version, license } = Astro.props;
 ---
@@ -18,7 +12,7 @@ const { title, version, license } = Astro.props;
     <div class="footer_brand">
       <a href="/" title={title}>
         <div class="footer_logo">
-          <Fragment set:html={__logoBlackbyte} />
+          <Fragment set:html={BlackbyteLogoSvg} />
         </div>
         <h1 class="footer_title font-family-brand">{title}</h1>
       </a>

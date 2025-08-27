@@ -1,21 +1,11 @@
 ---
-interface Props {
-  title: string;
-  pageTitle: string;
-  description: string;
-  license: {
-    name: string;
-    url: string;
-  };
-  og: {
-    imageUrl: string;
-  };
-}
-
 import '../../settings/fonts/fonts';
 import '../../settings/fonts/fonts.css';
 import Posthog from '../../system/posthog/posthog.astro';
 import './layout.css';
+import type { TLayout } from './layout.type';
+
+type Props = TLayout;
 
 // @ts-ignore
 const { title, pageTitle, description, og } = Astro.props;

@@ -1,9 +1,5 @@
 ---
-interface Props {
-  items: any[];
-}
 
-const items = Astro.props;
 ---
 
 <script>
@@ -12,7 +8,7 @@ const items = Astro.props;
   import { __isMobile } from '@blackbyte/sugar/is';
   import { __hotkey } from '@blackbyte/sugar/keyboard';
   import { __idCompliant } from '@blackbyte/sugar/string';
-  import { __toSlug } from '@blackbyte/website-common/src/components/utils/utils';
+  import { toSlug } from '@blackbyte/website-common';
   import { navigate } from 'astro:transitions/client';
 
   const $expand = document.querySelector('.search ._expand') as HTMLElement;
@@ -35,7 +31,7 @@ const items = Astro.props;
         } else if (item.slug) {
           navigate(item.slug);
         } else {
-          navigate(`/doc/${__toSlug(item.value)}`);
+          navigate(`/doc/${toSlug(item.value)}`);
         }
       },
       __isMobile() ? 200 : 0,
@@ -92,10 +88,26 @@ const items = Astro.props;
         });
       });
 
-      cachedItems = [...Object.values(sections)];
-      if ((window as any).searchItems) {
-        cachedItems = [...(window as any).searchItems, ...cachedItems];
-      }
+      const menuGroups: any[] = ((window as any).menuGroups ?? []).map(
+        (group) => {
+          return {
+            ...group,
+            items: group.items.map((item: any) => {
+              return {
+                ...item,
+                label: `<div class="_item">
+                    <div class="_item-metas">
+                      <div class="_item-title">${item.label}</div>
+                      ${item.description ? `<div class="_item-description">${item.description}</div>` : ''}
+                    </div>
+                  </div>`,
+              };
+            }),
+          };
+        },
+      );
+
+      cachedItems = [...menuGroups, ...Object.values(sections)];
       return cachedItems;
     },
     filtrable: ['label'],
@@ -118,10 +130,18 @@ const items = Astro.props;
 </script>
 
 <form class="search">
-  <script style="application/json" define:vars={{ items }} is:inline>
-    window.searchItems = items.items;
+  <script
+    style="application/json"
+    define:vars={{ groups: Astro.props.menu }}
+    is:inline
+  >
+    window.menuGroups = groups;
   </script>
   <lo-search inline>
-    <input type="search" class="_input form-input" placeholder="Search" />
+    <input
+      type="search"
+      class="_input form-input"
+      placeholder="Search ( CMD + P )"
+    />
   </lo-search>
 </form>
