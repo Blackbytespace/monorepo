@@ -54,6 +54,7 @@ export type TSLitElementDefaultProps = {
     | 'interact'
     | 'visible'
     | 'domReady';
+  avoidNameClass: boolean;
   adoptStyle: boolean;
   saveState: boolean;
   stateId: string;
@@ -82,6 +83,7 @@ export type TSLitElementSettings = {};
  * @attribute       {'direct'|'inViewport'|'nearViewport'|'interact'|'visible'|'domReady'}      [mountWhen='direct']      Specify when the component should be mounted
  * @attribute       {Boolean}       [prefixEvent=true]      Specify if the event dispatched by the component should be prefixed by the component name
  * @attribute       {Boolean}       [adoptStyle=true]       Specify if the component should adopt the styles of the context when the shadow dom is used
+ * @attribute       {Boolean}       [avoidNameClass=false]  Specify if the component should avoid adding its name as a class
  * @attribute       {Boolean}       [saveState=false]       Specify if the state of the component should be saved in the localStorage
  * @attribute       {String}        [stateId='']            Specify the id to use to save the state in the localStorage
  * @attribute       {Boolean}       [shadowDom=false]       Specify if the component should use the shadow dom or not
@@ -136,6 +138,9 @@ export default class LitElement extends __LitElement {
 
   @property({ type: String })
   public classesSchema: TClassesSchema = 'slim';
+
+  @property({ type: Boolean })
+  public avoidNameClass: boolean = false;
 
   protected _internalName: string = this.tagName.toLowerCase();
 
@@ -634,7 +639,9 @@ export default class LitElement extends __LitElement {
         finalClasses.push(this._internalName.toLowerCase());
       }
       if (this.name && this.name !== this.tagName.toLowerCase()) {
-        finalClasses.push(this.name.toLowerCase());
+        if (!this.avoidNameClass) {
+          finalClasses.push(this.name.toLowerCase());
+        }
       }
       // ensure the toString method is correct
       finalClasses.toString = function () {
@@ -671,16 +678,20 @@ export default class LitElement extends __LitElement {
       }
       // if a special "name" is setted
       if (this.name && this.name !== this.tagName.toLowerCase()) {
-        if (classesSchema === 'full') {
-          finalClasses.push(
-            `${this.name.toLowerCase()}${
-              clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
-            }${clsName}`,
-          );
-        } else {
-          finalClasses.push(
-            `${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`,
-          );
+        if (!this.avoidNameClass) {
+          if (classesSchema === 'full') {
+            finalClasses.push(
+              `${this.name.toLowerCase()}${
+                clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
+              }${clsName}`,
+            );
+          } else {
+            finalClasses.push(
+              `${
+                clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''
+              }${clsName}`,
+            );
+          }
         }
       }
     });

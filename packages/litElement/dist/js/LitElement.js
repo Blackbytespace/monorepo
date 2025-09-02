@@ -13,11 +13,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __wait } from '@lotsof/sugar/datetime';
-import { __adoptStyleInShadowRoot, __injectStyle, __querySelectorLive, __when, } from '@lotsof/sugar/dom';
-import { __unique } from '@lotsof/sugar/array';
-import { __isInViewport } from '@lotsof/sugar/is';
-import { __camelCase } from '@lotsof/sugar/string';
+import { __wait } from '@blackbyte/sugar/datetime';
+import { __adoptStyleInShadowRoot, __injectStyle, __querySelectorLive, __when, } from '@blackbyte/sugar/dom';
+import { __unique } from '@blackbyte/sugar/array';
+import { __isInViewport } from '@blackbyte/sugar/is';
+import { __camelCase } from '@blackbyte/sugar/string';
 import { LitElement as __LitElement, html as __html, } from 'lit';
 import { property } from 'lit/decorators.js';
 export { __html as html };
@@ -39,6 +39,7 @@ export { __html as html };
  * @attribute       {'direct'|'inViewport'|'nearViewport'|'interact'|'visible'|'domReady'}      [mountWhen='direct']      Specify when the component should be mounted
  * @attribute       {Boolean}       [prefixEvent=true]      Specify if the event dispatched by the component should be prefixed by the component name
  * @attribute       {Boolean}       [adoptStyle=true]       Specify if the component should adopt the styles of the context when the shadow dom is used
+ * @attribute       {Boolean}       [avoidNameClass=false]  Specify if the component should avoid adding its name as a class
  * @attribute       {Boolean}       [saveState=false]       Specify if the state of the component should be saved in the localStorage
  * @attribute       {String}        [stateId='']            Specify the id to use to save the state in the localStorage
  * @attribute       {Boolean}       [shadowDom=false]       Specify if the component should use the shadow dom or not
@@ -172,6 +173,7 @@ class LitElement extends __LitElement {
         this.stateId = '';
         this.shadowDom = false;
         this.classesSchema = 'slim';
+        this.avoidNameClass = false;
         this._internalName = this.tagName.toLowerCase();
         this._shouldUpdate = false;
         this._listenersMap = new Map();
@@ -476,7 +478,9 @@ class LitElement extends __LitElement {
                 finalClasses.push(this._internalName.toLowerCase());
             }
             if (this.name && this.name !== this.tagName.toLowerCase()) {
-                finalClasses.push(this.name.toLowerCase());
+                if (!this.avoidNameClass) {
+                    finalClasses.push(this.name.toLowerCase());
+                }
             }
             // ensure the toString method is correct
             finalClasses.toString = function () {
@@ -502,11 +506,13 @@ class LitElement extends __LitElement {
             }
             // if a special "name" is setted
             if (this.name && this.name !== this.tagName.toLowerCase()) {
-                if (classesSchema === 'full') {
-                    finalClasses.push(`${this.name.toLowerCase()}${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`);
-                }
-                else {
-                    finalClasses.push(`${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`);
+                if (!this.avoidNameClass) {
+                    if (classesSchema === 'full') {
+                        finalClasses.push(`${this.name.toLowerCase()}${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`);
+                    }
+                    else {
+                        finalClasses.push(`${clsName && !clsName.match(/^(_{1,2}|-)/) ? '-' : ''}${clsName}`);
+                    }
                 }
             }
         });
@@ -663,4 +669,7 @@ __decorate([
 __decorate([
     property({ type: String })
 ], LitElement.prototype, "classesSchema", void 0);
+__decorate([
+    property({ type: Boolean })
+], LitElement.prototype, "avoidNameClass", void 0);
 //# sourceMappingURL=LitElement.js.map

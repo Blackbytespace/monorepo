@@ -42,8 +42,13 @@ export default class CodeElement extends __LitElement {
     theme: string;
     header: boolean;
     copyIcon: string;
-    private code;
-    private $code;
+    copyStr: string;
+    copiedIcon: string;
+    copiedStr: string;
+    copiedTimeout: any;
+    code: string;
+    private _$code;
+    private _copyTimeout;
     constructor();
     copyCode(): void;
     connectedCallback(): void;

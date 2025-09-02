@@ -28,7 +28,7 @@
           }`"
           v-for="(tab, index) in tabs"
           :key="index"
-          v-show="selectedTabIndex === index"
+          v-show="selectedTabIndex !== -1 && selectedTabIndex === index"
         >
           <Code :code="tab.code" header :language="tab.language" />
         </div>
@@ -37,30 +37,16 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Code from '../../ui/code/code.vue';
 import './codeTabs.css';
 import { type TCodeTabs } from './codeTabs.type';
 
-const height = ref(0);
 const selectedTabIndex = ref(0);
-
 const $root = ref<HTMLElement | null>(null);
-
 withDefaults(defineProps<TCodeTabs>(), {});
 
 const selectTab = (index: number) => {
   selectedTabIndex.value = index;
-  const $tab = $root.value?.querySelector(
-    `.code-tabs_code:nth-child(${index + 1})`,
-  ) as HTMLElement;
-  if (!$tab) {
-    return;
-  }
-  height.value = $tab.offsetHeight;
 };
-
-onMounted(() => {
-  selectTab(0);
-});
 </script>

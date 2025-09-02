@@ -57,26 +57,63 @@ export default class CodeElement extends __LitElement {
   @property({ type: String })
   public copyIcon: string = `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
 
-  private code: string = '';
-  private $code: HTMLElement | null = null;
+  @property({ type: String })
+  public copyStr: string = 'Copy';
+
+  @property({ type: String })
+  public copiedIcon: string =
+    '<s-icon name="check" provider="pixelarticons"></s-icon>';
+
+  @property({ type: String })
+  public copiedStr: string = 'Copied';
+
+  @property({ type: Number })
+  public copiedTimeout: any = 1000;
+
+  @property({ type: String })
+  public code: string = '';
+
+  private _$code: HTMLElement | null = null;
+  private _copyTimeout: number | null = null;
 
   constructor() {
     super('s-code');
   }
 
   public copyCode(): void {
-    __copyText(this.$code?.innerText ?? '');
+    // avoid copying multiple times
+    if (this._copyTimeout) {
+      return;
+    }
+
+    // add the copied class
+    this.classList.add('-copied');
+
+    // @ts-ignore
+    this._copyTimeout = setTimeout(() => {
+      this._copyTimeout = null;
+
+      this.classList.remove('-copied');
+
+      this.requestUpdate();
+    }, this.copiedTimeout);
+    this.requestUpdate();
+    __copyText(this._$code?.innerText ?? '');
   }
 
   public connectedCallback(): void {
-    this.code = this.innerText.trim();
+    if (!this.code) {
+      this.code = this.innerText.trim();
+    }
     this.innerHTML = '';
     super.connectedCallback();
   }
 
   public async firstUpdated(_changedProperties: PropertyValues): Promise<void> {
+    super.firstUpdated(_changedProperties);
+
     // get the code element to inject later code into
-    this.$code = this.querySelector('.s-code_code');
+    this._$code = this.querySelector('.s-code_code');
 
     // convert the code to HTML
     const html = await codeToHtml(this.code, {
@@ -85,18 +122,16 @@ export default class CodeElement extends __LitElement {
     });
 
     // set the compiled code
-    if (this.$code) {
-      this.$code.innerHTML = html;
+    if (this._$code) {
+      this._$code.innerHTML = html;
     }
 
     // add some classes on the element itself
     this.classList.add('-ready', `-${this.language}`);
-
-    super.firstUpdated(_changedProperties);
   }
 
   public render() {
-    return html`<div class="${this.cls('_wrapper')} ${this.language}">
+    return html`<div class="${this.cls('_wrapper')} ${this.language} ">
       ${this.header
         ? html`
             <div class="${this.cls('_header')}">
@@ -121,8 +156,19 @@ export default class CodeElement extends __LitElement {
                   class="${this.cls('_copy')}"
                   @click="${() => this.copyCode()}"
                 >
-                  <span class="${this.cls('_copy-text')}">Copy</span>
-                  ${unsafeHTML(this.copyIcon)}
+                  ${this._copyTimeout
+                    ? html`
+                        <span class="${this.cls('_copy-text')}"
+                          >${this.copiedStr}</span
+                        >
+                        ${unsafeHTML(this.copiedIcon)}
+                      `
+                    : html`
+                        <span class="${this.cls('_copy-text')}"
+                          >${this.copyStr}</span
+                        >
+                        ${unsafeHTML(this.copyIcon)}
+                      `}
                 </button>
               </div>
             </div>

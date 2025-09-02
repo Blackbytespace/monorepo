@@ -63,15 +63,35 @@ export default class CodeElement extends __LitElement {
         this.theme = 'github-dark';
         this.header = false;
         this.copyIcon = `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
+        this.copyStr = 'Copy';
+        this.copiedIcon = '<s-icon name="check" provider="pixelarticons"></s-icon>';
+        this.copiedStr = 'Copied';
+        this.copiedTimeout = 1000;
         this.code = '';
-        this.$code = null;
+        this._$code = null;
+        this._copyTimeout = null;
     }
     copyCode() {
         var _a, _b;
-        __copyText((_b = (_a = this.$code) === null || _a === void 0 ? void 0 : _a.innerText) !== null && _b !== void 0 ? _b : '');
+        // avoid copying multiple times
+        if (this._copyTimeout) {
+            return;
+        }
+        // add the copied class
+        this.classList.add('-copied');
+        // @ts-ignore
+        this._copyTimeout = setTimeout(() => {
+            this._copyTimeout = null;
+            this.classList.remove('-copied');
+            this.requestUpdate();
+        }, this.copiedTimeout);
+        this.requestUpdate();
+        __copyText((_b = (_a = this._$code) === null || _a === void 0 ? void 0 : _a.innerText) !== null && _b !== void 0 ? _b : '');
     }
     connectedCallback() {
-        this.code = this.innerText.trim();
+        if (!this.code) {
+            this.code = this.innerText.trim();
+        }
         this.innerHTML = '';
         super.connectedCallback();
     }
@@ -80,24 +100,24 @@ export default class CodeElement extends __LitElement {
             firstUpdated: { get: () => super.firstUpdated }
         });
         return __awaiter(this, void 0, void 0, function* () {
+            _super.firstUpdated.call(this, _changedProperties);
             // get the code element to inject later code into
-            this.$code = this.querySelector('.s-code_code');
+            this._$code = this.querySelector('.s-code_code');
             // convert the code to HTML
             const html = yield codeToHtml(this.code, {
                 lang: this.language,
                 theme: this.theme,
             });
             // set the compiled code
-            if (this.$code) {
-                this.$code.innerHTML = html;
+            if (this._$code) {
+                this._$code.innerHTML = html;
             }
             // add some classes on the element itself
             this.classList.add('-ready', `-${this.language}`);
-            _super.firstUpdated.call(this, _changedProperties);
         });
     }
     render() {
-        return html `<div class="${this.cls('_wrapper')} ${this.language}">
+        return html `<div class="${this.cls('_wrapper')} ${this.language} ">
       ${this.header
             ? html `
             <div class="${this.cls('_header')}">
@@ -122,8 +142,19 @@ export default class CodeElement extends __LitElement {
                   class="${this.cls('_copy')}"
                   @click="${() => this.copyCode()}"
                 >
-                  <span class="${this.cls('_copy-text')}">Copy</span>
-                  ${unsafeHTML(this.copyIcon)}
+                  ${this._copyTimeout
+                ? html `
+                        <span class="${this.cls('_copy-text')}"
+                          >${this.copiedStr}</span
+                        >
+                        ${unsafeHTML(this.copiedIcon)}
+                      `
+                : html `
+                        <span class="${this.cls('_copy-text')}"
+                          >${this.copyStr}</span
+                        >
+                        ${unsafeHTML(this.copyIcon)}
+                      `}
                 </button>
               </div>
             </div>
@@ -149,4 +180,19 @@ __decorate([
 __decorate([
     property({ type: String })
 ], CodeElement.prototype, "copyIcon", void 0);
+__decorate([
+    property({ type: String })
+], CodeElement.prototype, "copyStr", void 0);
+__decorate([
+    property({ type: String })
+], CodeElement.prototype, "copiedIcon", void 0);
+__decorate([
+    property({ type: String })
+], CodeElement.prototype, "copiedStr", void 0);
+__decorate([
+    property({ type: Number })
+], CodeElement.prototype, "copiedTimeout", void 0);
+__decorate([
+    property({ type: String })
+], CodeElement.prototype, "code", void 0);
 //# sourceMappingURL=code.element.js.map

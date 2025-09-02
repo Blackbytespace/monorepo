@@ -142,9 +142,26 @@
     padding: s-space(2) s-space(3);
     margin-block-end: s-space(10);
     display: inline-block;
-    user-select: all;
+    user-select: none;
+    cursor: pointer;
     @s-typo (code);
     @s-radius;
+
+    .-check {
+      display: none;
+      color: s-color(success);
+    }
+
+    &.-copied {
+      border-color: s-color(success, --alpha 0.3);
+
+      .-check {
+        display: inline-block;
+      }
+      .-clipboard {
+        display: none;
+      }
+    }
   }
 
   .welcome_made {
@@ -186,9 +203,7 @@
 
     &,
     * {
-      transition:
-        box-shadow 0.2s ease-in-out,
-        filter 0.5s ease-in-out;
+      transition: box-shadow 0.2s ease-in-out, filter 0.5s ease-in-out;
     }
   }
   &.-exploded {
@@ -203,8 +218,7 @@
     &,
     * {
       backface-visibility: hidden;
-      box-shadow:
-        0 0 calc(20px * var(--glow-multiplier)) 10px #fff,
+      box-shadow: 0 0 calc(20px * var(--glow-multiplier)) 10px #fff,
         0 0 calc(100px * var(--glow-multiplier)) 40px
           s-color(complementary, --alpha 0.1),
         0 0 calc(50px * var(--glow-multiplier)) 20px s-color(accent);

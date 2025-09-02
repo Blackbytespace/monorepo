@@ -73,11 +73,13 @@ export default class AdvancedSelectElement extends __LitElement {
 
   constructor() {
     super('s-icon');
+    this.avoidNameClass = true;
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
     // add the provider class
     this.classList.add(`-${this.provider}`);
+    this.classList.add(`-${this.name}`);
   }
 
   public update(changedProperties: PropertyValues): void {

@@ -25,6 +25,7 @@ export type TSLitElementDefaultProps = {
     prefixEvent: boolean;
     activeWhen: 'inViewport'[];
     mountWhen: 'direct' | 'inViewport' | 'nearViewport' | 'interact' | 'visible' | 'domReady';
+    avoidNameClass: boolean;
     adoptStyle: boolean;
     saveState: boolean;
     stateId: string;
@@ -51,6 +52,7 @@ export type TSLitElementSettings = {};
  * @attribute       {'direct'|'inViewport'|'nearViewport'|'interact'|'visible'|'domReady'}      [mountWhen='direct']      Specify when the component should be mounted
  * @attribute       {Boolean}       [prefixEvent=true]      Specify if the event dispatched by the component should be prefixed by the component name
  * @attribute       {Boolean}       [adoptStyle=true]       Specify if the component should adopt the styles of the context when the shadow dom is used
+ * @attribute       {Boolean}       [avoidNameClass=false]  Specify if the component should avoid adding its name as a class
  * @attribute       {Boolean}       [saveState=false]       Specify if the state of the component should be saved in the localStorage
  * @attribute       {String}        [stateId='']            Specify the id to use to save the state in the localStorage
  * @attribute       {Boolean}       [shadowDom=false]       Specify if the component should use the shadow dom or not
@@ -72,6 +74,7 @@ export default class LitElement extends __LitElement {
     stateId: string;
     shadowDom: boolean;
     classesSchema: TClassesSchema;
+    avoidNameClass: boolean;
     protected _internalName: string;
     private _shouldUpdate;
     private _listenersMap;

@@ -48,6 +48,7 @@ type Props = TWelcome;
     <div class="welcome_install">
       {Astro.props.install}
       <s-icon name="clipboard" provider="pixelarticons"></s-icon>
+      <s-icon name="check" provider="pixelarticons"></s-icon>
     </div>
     <div class="welcome_actions">
       <a
@@ -81,7 +82,20 @@ type Props = TWelcome;
 </div>
 
 <script>
+  import { __copyText } from '@lotsof/sugar/clipboard';
   import { animate } from 'animejs';
+
+  function initInstall() {
+    const $install = $welcome?.querySelector('.welcome_install');
+    $install?.addEventListener('pointerup', () => {
+      const installStr = $install?.textContent;
+      __copyText(installStr);
+      $install?.classList.add('-copied');
+      setTimeout(() => {
+        $install.classList.remove('-copied');
+      }, 1000);
+    });
+  }
 
   function initWelcome() {
     const $getStarted = $welcome?.querySelector('#get-started'),
@@ -183,4 +197,5 @@ type Props = TWelcome;
 
   const $welcome = document.querySelector('.welcome');
   $welcome && initWelcome();
+  $welcome && initInstall();
 </script>

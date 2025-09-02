@@ -48,6 +48,7 @@ export default function rem(value: any, settings: TSugarCssSettings): any {
 
   const fallbacks = {
     thin: 100,
+    'ultra-light': 200,
     'extra-light': 200,
     lighter: 200,
     light: 300,
@@ -57,6 +58,7 @@ export default function rem(value: any, settings: TSugarCssSettings): any {
     'semi-bold': 600,
     bold: 700,
     bolder: 800,
+    'ultra-bold': 800,
     'extra-bold': 800,
     black: 900,
   };

@@ -101,6 +101,11 @@ s-code {
     }
   }
 
+  &.-copied .s-code_copy {
+    color: s-color(success);
+    opacity: 1;
+  }
+
   .s-code_copy-text {
   }
 
