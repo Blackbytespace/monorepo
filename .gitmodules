@@ -1,3 +1,6 @@
 [submodule "packages/website-sugar"]
 	path = packages/website-sugar
 	url = git@github.com:Blackbytespace/website-sugar.git
+[submodule "packages/sugar"]
+	path = packages/sugar
+	url = git@github.com:Blackbytespace/sugar.git
