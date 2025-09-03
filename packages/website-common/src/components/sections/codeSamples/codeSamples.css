@@ -1,12 +1,28 @@
 .code-samples {
-  opacity: 1;
-  translate: 0 0;
+  /* opacity: 0; */
+  /* translate: 0 50px; */
   transition-delay: 0.3s !important;
   margin-block-end: s-space(10);
-  @s-transition (slow);
 
-  @starting-style {
-    translate: 0 s-rem(20px);
+  .code-tabs_nav {
     opacity: 0;
+    translate: 50px 0;
+  }
+
+  .code-tabs_content {
+    opacity: 0;
+    translate: -50px 0;
+  }
+  &.-in-viewport {
+    .code-tabs_nav {
+      opacity: 1;
+      translate: 0 0;
+      @s-transition (slow, --delay 0.3s);
+    }
+    .code-tabs_content {
+      opacity: 1;
+      translate: 0 0;
+      @s-transition (slow, --delay 0.4s);
+    }
   }
 }

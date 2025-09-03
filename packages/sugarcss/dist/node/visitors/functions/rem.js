@@ -16,26 +16,18 @@ import __toRem from '../../utils/toRem.js';
  * @example         css
  * .my-element {
  *    font-size: s-rem(20px); // 1.25rem
- *    padding: s-rem(10px 20px); // 0.625rem 1.25rem
+ *    padding: s-rem(10px); // 0.625rem
  * }
  *
  * @since           0.0.1
  * @author          Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
 export default function rem(value, settings) {
-    const args = Object.assign({}, __parseArgs(value.arguments, [], {
-        separator: ['white-space', 'comma'],
-    }));
-    const remValues = [];
+    const args = Object.assign({}, __parseArgs(value.arguments, [], {}));
+    const finalValue = [];
     for (let [key, value] of Object.entries(args.ast)) {
-        remValues.push(__toRem(value));
+        finalValue.push(__toRem(value));
     }
-    return {
-        raw: remValues
-            .map((v) => {
-            return `${v.value.value}${v.value.unit}`;
-        })
-            .join(' '),
-    };
+    return finalValue;
 }
 //# sourceMappingURL=rem.js.map

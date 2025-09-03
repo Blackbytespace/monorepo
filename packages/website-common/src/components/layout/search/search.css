@@ -35,13 +35,13 @@
     line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: s-rem(16px);
+    font-size: 16px;
   }
 
   ._item-description {
     font: s-font(small);
     color: s-color(main, --lightness 60);
-    font-size: s-rem(12px);
+    font-size: 12px;
     white-space: nowrap;
     line-height: 1.2;
     overflow: hidden;
@@ -78,7 +78,7 @@
     width: calc(100vw - 2 * s-space(4));
     max-width: 1900px;
     height: calc(100svh - var(--bb-header-height) - s-space(4));
-    translate: -50% s-rem(20px);
+    translate: -50% 20px;
     background: s-color(main, --lightness 15);
     border: s-color(accent, border);
     overflow: hidden;
@@ -135,7 +135,7 @@
     color: s-color(main, text, --alpha 0.4);
     background: s-color(main, --lightness 14);
     padding: s-space(2) s-space(4);
-    font-size: s-rem(10px);
+    font-size: 10px;
     text-transform: uppercase;
     margin-block: s-space(2);
   }

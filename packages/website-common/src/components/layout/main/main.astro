@@ -11,7 +11,7 @@ type Props = TMain;
 ---
 
 <script>
-  import { __scrolledClasses } from '@blackbyte/sugar/feature';
+  import { scrollClasses, sectionClasses } from '@blackbyte/sugar/feature';
   import Lenis from 'lenis';
 
   const lenis = new Lenis({
@@ -20,7 +20,8 @@ type Props = TMain;
     allowNestedScroll: true,
   });
 
-  __scrolledClasses();
+  scrollClasses();
+  sectionClasses();
 
   document.addEventListener('astro:page-load', () => {
     if (document.location.pathname === '/') {

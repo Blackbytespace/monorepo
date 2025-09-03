@@ -5,7 +5,7 @@ import './welcome.css';
 type Props = TWelcome;
 ---
 
-<div class="welcome">
+<section class="welcome">
   <div class="welcome_animation">
     <div class="welcome_animation-picto">
       <div class="blackbyte-picto -white">
@@ -52,14 +52,14 @@ type Props = TWelcome;
     </div>
     <div class="welcome_actions">
       <a
-        href="https://www.npmjs.com/package/@blackbyte/sugar"
-        title="Blackbyte Sugar package on NPM"
+        href={`${Astro.props.repository.url}/archive/refs/heads/main.zip`}
+        title="Download source code"
         target="_blank"
       >
         <s-icon name="download" provider="pixelarticons"></s-icon>
       </a>
       <a
-        id="get-started"
+        id="welcome-get-started"
         class="welcome_get-started button"
         href={Astro.props.getStarted.url}
         title="Get started"
@@ -67,8 +67,8 @@ type Props = TWelcome;
         Get started
       </a>
       <a
-        href="https://github.com/blackbytespace/monorepo"
-        title="Blackbyte monorepo on GitHub"
+        href={Astro.props.repository.url}
+        title="Blackbyte on GitHub"
         target="_blank"
       >
         <s-icon name="github" provider="pixelarticons"></s-icon>
@@ -79,7 +79,7 @@ type Props = TWelcome;
       Made with <span class="color-accent">♥</span> by Blackbyte
     </p>
   </div>
-</div>
+</section>
 
 <script>
   import { __copyText } from '@lotsof/sugar/clipboard';
@@ -98,7 +98,7 @@ type Props = TWelcome;
   }
 
   function initWelcome() {
-    const $getStarted = $welcome?.querySelector('#get-started'),
+    const $getStarted = $welcome?.querySelector('#welcome-get-started'),
       $pictoWhite = $welcome?.querySelector(
         '.blackbyte-picto.-white',
       ) as HTMLElement,

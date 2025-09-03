@@ -41,12 +41,12 @@
 
   .footer_title {
     color: s-color(current);
-    font-size: s-rem(20px);
+    font-size: 20px;
   }
 
   .footer_version {
     pointer-events: none;
-    font-size: s-rem(12px);
+    font-size: 12px;
     display: inline-block;
     background: s-color(main, surface, --lightness 20) !important;
     color: s-color(main, foreground, --alpha 0.6);

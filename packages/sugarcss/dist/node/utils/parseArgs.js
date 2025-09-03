@@ -41,48 +41,45 @@ export default function parseArgs(args, schema = [], settings) {
             currentProp = (_a = schema === null || schema === void 0 ? void 0 : schema[argId]) !== null && _a !== void 0 ? _a : `arg${argId}`;
             return;
         }
-        switch (arg.type) {
-            case 'dashed-ident':
-                // flag that we are in a dashed ident
-                if (!dashedArg) {
-                    dashedArg = currentProp;
-                }
-                // handle dashed ident like (--darken 10) etc...
-                if (resultArgs[dashedArg] === undefined) {
-                    resultArgs[dashedArg] = {};
-                }
-                currentProp = `${dashedArg}.${arg.value.replace(/-{1,2}/g, '')}`;
-                if (finalSettings.debug) {
-                    console.log('dashed', currentProp);
-                }
-                break;
-            case 'function':
-                if (arg.value.name === 'cubic-bezier') {
-                    arg.rawValue = __toString(arg);
-                    __set(resultArgs, currentProp, arg);
-                }
-                else if (env.functions[arg.value.name]) {
-                    const v = env.functions[arg.value.name](arg.value);
-                    if (finalSettings.debug) {
-                        console.log('function', currentProp, v);
-                    }
-                    // get the raw value
-                    arg.rawValue = (_b = v.raw) !== null && _b !== void 0 ? _b : v;
-                    // set the resulting value
-                    __set(resultArgs, currentProp, arg);
-                    // update current prop
-                    currentProp = (_c = schema === null || schema === void 0 ? void 0 : schema[argId + 1]) !== null && _c !== void 0 ? _c : `arg${argId + 1}`;
-                    argId++;
-                }
-                break;
-            default:
-                if (finalSettings.debug) {
-                    console.log('h', currentProp, arg);
-                }
-                // get the raw value
-                arg.rawValue = arg.value.value;
-                // handle others
-                __set(resultArgs, currentProp, arg);
+        if (arg.type === 'dashed-ident') {
+            // flag that we are in a dashed ident
+            if (!dashedArg) {
+                dashedArg = currentProp;
+            }
+            // handle dashed ident like (--darken 10) etc...
+            if (resultArgs[dashedArg] === undefined) {
+                resultArgs[dashedArg] = {};
+            }
+            currentProp = `${dashedArg}.${arg.value.replace(/-{1,2}/g, '')}`;
+            if (finalSettings.debug) {
+                console.log('dashed', currentProp);
+            }
+        }
+        else if (arg.type === 'function' && arg.value.name === 'cubic-bezier') {
+            arg.rawValue = __toString(arg);
+            __set(resultArgs, currentProp, arg);
+        }
+        else if (arg.type === 'function' && env.functions[arg.value.name]) {
+            const v = env.functions[arg.value.name](arg.value);
+            if (finalSettings.debug) {
+                console.log('function', currentProp, v);
+            }
+            // get the raw value
+            arg.rawValue = (_b = v.raw) !== null && _b !== void 0 ? _b : v;
+            // set the resulting value
+            __set(resultArgs, currentProp, arg);
+            // update current prop
+            currentProp = (_c = schema === null || schema === void 0 ? void 0 : schema[argId + 1]) !== null && _c !== void 0 ? _c : `arg${argId + 1}`;
+            argId++;
+        }
+        else {
+            if (finalSettings.debug) {
+                console.log('h', currentProp, arg);
+            }
+            // get the raw value
+            arg.rawValue = arg.value.value;
+            // handle others
+            __set(resultArgs, currentProp, arg);
         }
     };
     for (let [i, arg] of args.entries()) {

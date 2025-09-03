@@ -1,5 +1,5 @@
 :root {
-  --s-carpenter-side-padding: s-rem(20px);
+  --s-carpenter-side-padding: 20px;
   --s-carpenter-canvas-width: 100%;
   --s-carpenter-panel-width: clamp(350px, 25%, 400px);
   --s-carpenter-editor-width: clamp(450px, 25%, 600px);

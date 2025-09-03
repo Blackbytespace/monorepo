@@ -12,6 +12,20 @@ export default function toRem<T>(
 ): T extends number ? number : TAstToken {
   let finalValue = astToken as TAstToken;
 
+  // array we take only the first value for now
+  if (Array.isArray(finalValue.value?.value)) {
+    return toRem(finalValue.value.value[0]) as T extends number
+      ? number
+      : TAstToken;
+  }
+
+  // if the value is a nested object
+  if (typeof finalValue.value?.value === 'object') {
+    return toRem(finalValue.value.value as any) as T extends number
+      ? number
+      : TAstToken;
+  }
+
   // handle simple number
   if (typeof finalValue === 'number') {
     return (finalValue * 0.0625) as T extends number ? number : TAstToken;

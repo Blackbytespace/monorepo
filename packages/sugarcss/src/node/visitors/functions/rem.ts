@@ -18,7 +18,7 @@ import __toRem from '../../utils/toRem.js';
  * @example         css
  * .my-element {
  *    font-size: s-rem(20px); // 1.25rem
- *    padding: s-rem(10px 20px); // 0.625rem 1.25rem
+ *    padding: s-rem(10px); // 0.625rem
  * }
  *
  * @since           0.0.1
@@ -26,21 +26,12 @@ import __toRem from '../../utils/toRem.js';
  */
 export default function rem(value: any, settings: TSugarCssSettings): any {
   const args = {
-    ...__parseArgs(value.arguments, [], {
-      separator: ['white-space', 'comma'],
-    }),
+    ...__parseArgs(value.arguments, [], {}),
   };
 
-  const remValues: any[] = [];
+  const finalValue: any[] = [];
   for (let [key, value] of Object.entries(args.ast)) {
-    remValues.push(__toRem(value));
+    finalValue.push(__toRem(value));
   }
-
-  return {
-    raw: remValues
-      .map((v) => {
-        return `${v.value.value}${v.value.unit}`;
-      })
-      .join(' '),
-  };
+  return finalValue;
 }

@@ -157,7 +157,7 @@ body {
 .typo-format ol {
   display: flex;
   flex-direction: column;
-  gap: s-rem(10px);
+  gap: 10px;
 
   ol,
   ul {
@@ -190,8 +190,8 @@ body {
       display: block;
       top: 0.7em;
       background: s-color(current);
-      width: s-rem(4px);
-      height: s-rem(4px);
+      width: 4px;
+      height: 4px;
       border-radius: 100%;
       content: '';
     }

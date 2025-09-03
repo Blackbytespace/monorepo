@@ -62,6 +62,7 @@ export const env: TSugarCssEnv = {
     verbose: true,
     mobileFirst: false,
     scalable: ['padding'],
+    pxToRem: true,
   },
   colors: {},
   shades: {},
@@ -178,6 +179,17 @@ export default function sugarcss(
   let mixins = new Map();
 
   const visitors = {
+    Length(length) {
+      // auto convert to rem
+      if (env.settings.pxToRem && length.unit === 'px') {
+        return {
+          unit: 'rem',
+          value: length.value * 0.0625,
+        };
+      }
+      return length;
+    },
+
     Function: {
       [`s-color`](v) {
         return __colorFunction(v, finalSettings);

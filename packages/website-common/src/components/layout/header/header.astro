@@ -1,5 +1,5 @@
 ---
-import { BlackbyteLogoSvg } from '@blackbyte/website-common';
+import { BlackbyteLogoSvg, BlackbytePictoSvg } from '@blackbyte/website-common';
 import Search from '../search/search.astro';
 import { type THeader } from './header.type';
 
@@ -19,6 +19,9 @@ if (pseudoVersion) {
       <a href="/" title={title}>
         <div class="header_logo">
           <Fragment set:html={BlackbyteLogoSvg} />
+        </div>
+        <div class="header_picto">
+          <Fragment set:html={BlackbytePictoSvg} />
         </div>
         <h1 class="header_title font-family-brand">{title}</h1>
       </a>

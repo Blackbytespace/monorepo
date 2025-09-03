@@ -41,7 +41,7 @@
     display: flex;
     justify-content: end;
     flex-wrap: nowrap;
-    font-size: s-rem(30px);
+    font-size: 30px;
     background: s-color(main, background, --lightness 98 --alpha 0.38);
     backdrop-filter: blur(5px);
     box-shadow: var(--s-carpenter-depth);
@@ -54,7 +54,7 @@
   }
 
   .s-json-schema-form_header-tool {
-    font-size: s-rem(38px);
+    font-size: 38px;
     width: 1em;
     height: 1em;
     display: flex;
@@ -192,7 +192,7 @@
   }
 
   .s-json-schema-form_group-description {
-    font-size: s-rem(12px);
+    font-size: 12px;
   }
 
   .s-json-schema-form_group-body {
@@ -321,7 +321,7 @@
   }
 
   .s-json-schema-form_values-prop-tool {
-    font-size: s-rem(38px);
+    font-size: 38px;
     width: 1em;
     height: 1em;
     display: flex;

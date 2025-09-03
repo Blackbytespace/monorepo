@@ -8,6 +8,9 @@
   }
 
   .doc_nav {
+    opacity: 0;
+    translate: 0 10px 0;
+
     @media md {
       display: none;
     }
@@ -19,5 +22,20 @@
       top: 0;
       @s-scrollbar (1px, s-color(accent, --alpha .5), s-color(accent));
     }
+  }
+  &.-in-viewport .doc_nav {
+    opacity: 1;
+    translate: 0;
+    @s-transition (slow, --delay 0.3s);
+  }
+
+  .doc_body {
+    opacity: 0;
+    translate: 0 10px 0;
+  }
+  &.-in-viewport .doc_body {
+    opacity: 1;
+    translate: 0;
+    @s-transition (slow, --delay 0.3s);
   }
 }

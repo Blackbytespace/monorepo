@@ -10,7 +10,7 @@
   border-width: var(--s-carpenter-daemon-border-width);
   border-color: s-color(main, background, --alpha 0.6);
   color: s-color(accent, foreground);
-  font-size: s-rem(14px);
+  font-size: 14px;
   /* @s-transition; */
   @s-radius;
 

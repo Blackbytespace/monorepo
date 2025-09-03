@@ -9,7 +9,7 @@
   .docmap_namespace {
     position: relative;
     display: flex;
-    font-size: s-rem(14px);
+    font-size: 14px;
     padding: s-space(5);
     background: s-color(main, surface);
     margin-block-end: s-space(10);
@@ -47,7 +47,7 @@
     }
 
     .docmap_type-value {
-      font-size: s-rem(10px);
+      font-size: 10px;
     }
   }
 
@@ -59,7 +59,7 @@
     display: flex;
     align-items: center;
     gap: s-space(2);
-    font-size: s-rem(14px) !important;
+    font-size: 14px !important;
   }
   .docmap_type-label {
     @media xs {
@@ -87,7 +87,7 @@
     }
   }
   .docmap_status-value {
-    font-size: s-rem(10px) !important;
+    font-size: 10px !important;
     background: s-color(complementary);
     color: s-color(complementary, --lightness 20);
     letter-spacing: 0.1em;
@@ -114,7 +114,7 @@
     }
   }
   .docmap_since-value {
-    font-size: s-rem(10px) !important;
+    font-size: 10px !important;
     background: s-color(main, surface);
     letter-spacing: 0.1em;
     color: s-color(main, text);
@@ -135,12 +135,12 @@
     }
   }
   .docmap_platform-value {
-    font-size: s-rem(10px) !important;
+    font-size: 10px !important;
     background: s-color(main, surface);
     letter-spacing: 0.1em;
     color: s-color(main, text);
     padding: s-space(1) s-space(3);
-    font-size: s-rem(10px);
+    font-size: 10px;
     text-transform: uppercase;
     user-select: all;
     @s-radius();
@@ -239,7 +239,7 @@
     background: s-color(main, surface);
     padding: s-space(5);
     font: s-font(code);
-    font-size: s-rem(14px) !important;
+    font-size: 14px !important;
 
     @media xs {
       display: flex;

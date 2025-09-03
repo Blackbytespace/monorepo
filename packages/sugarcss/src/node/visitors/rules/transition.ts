@@ -1,3 +1,4 @@
+import { camelCase } from '@blackbyte/sugar/string';
 import { TSugarCssSettings } from '../../sugarcss.types.js';
 import __parseArgs from '../../utils/parseArgs.js';
 
@@ -34,12 +35,19 @@ import __parseArgs from '../../utils/parseArgs.js';
 export default function transition(v: any, settings: TSugarCssSettings): any {
   // parse args
   const args = {
-    ...__parseArgs(v.prelude, ['name']),
+    ...__parseArgs(v.prelude, ['nameOrModifiers', 'modifiers'], {}),
   };
-  args.values = {
-    name: 'default',
-    ...args.values,
-  };
+
+  let name = 'default',
+    modifiers = {};
+  if (typeof args.values.nameOrModifiers === 'string') {
+    name = args.values.nameOrModifiers;
+  } else if (typeof args.values.nameOrModifiers === 'object') {
+    modifiers = args.ast.nameOrModifiers;
+  }
+  if (typeof args.values.modifiers === 'object') {
+    modifiers = args.ast.modifiers;
+  }
 
   const ast = [
     {
@@ -60,6 +68,20 @@ export default function transition(v: any, settings: TSugarCssSettings): any {
             'timing-function',
             'delay',
           ].map((prop) => {
+            const camelProp = camelCase(prop);
+            if (modifiers[prop] || modifiers[camelProp]) {
+              return {
+                property: 'unparsed',
+                value: {
+                  propertyId: {
+                    property: `transition-${prop}`,
+                    vendor_prefix: [],
+                  },
+                  value: [modifiers[prop] || modifiers[camelProp]],
+                },
+              };
+            }
+
             return {
               property: 'unparsed',
               value: {
@@ -72,7 +94,7 @@ export default function transition(v: any, settings: TSugarCssSettings): any {
                     type: 'var',
                     value: {
                       name: {
-                        ident: `--s-transition-${args.values.name}-${prop}`,
+                        ident: `--s-transition-${name}-${prop}`,
                         from: null,
                       },
                       fallback: null,

@@ -14,7 +14,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { __wait } from '@blackbyte/sugar/datetime';
-import { __adoptStyleInShadowRoot, __injectStyle, __querySelectorLive, __when, } from '@blackbyte/sugar/dom';
+import { __adoptStyleInShadowRoot, __injectStyle, __when, } from '@blackbyte/sugar/dom';
 import { __unique } from '@blackbyte/sugar/array';
 import { __isInViewport } from '@blackbyte/sugar/is';
 import { __camelCase } from '@blackbyte/sugar/string';
@@ -272,22 +272,6 @@ class LitElement extends __LitElement {
             __injectStyle(this.constructor.styles, {
                 rootNode: doc,
             });
-        }
-        // make sure the injected styles stays BEFORE the link[rel="stylesheet"]
-        // to avoid style override
-        if (!LitElement._keepInjectedCssBeforeStylesheetLinksInited) {
-            const $firstStylesheetLink = document.head.querySelector('link[rel="stylesheet"]');
-            __querySelectorLive('style', ($style) => {
-                if ($firstStylesheetLink) {
-                    try {
-                        document.head.insertBefore($style, $firstStylesheetLink);
-                    }
-                    catch (e) { }
-                }
-            }, {
-                rootNode: document.head,
-            });
-            LitElement._keepInjectedCssBeforeStylesheetLinksInited = true;
         }
         super.connectedCallback();
     }

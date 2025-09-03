@@ -1,6 +1,10 @@
 .code-tabs {
   display: flex;
 
+  @media sm {
+    flex-direction: column;
+  }
+
   .code-tabs_nav {
     flex-shrink: 0;
     width: 33%;
@@ -8,6 +12,10 @@
     user-select: none;
     padding-block: s-space(10);
     flex-grow: 0;
+
+    @media sm {
+      width: 100%;
+    }
   }
 
   .code-tabs_tabs {

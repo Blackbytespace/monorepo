@@ -89,12 +89,12 @@
   --s-size-h3: s-size(5);
   --s-size-h4: s-size(4);
   --s-size-tagline: s-size(10);
-  --s-size-lead: s-rem(16px);
-  --s-size-p: s-rem(14px);
+  --s-size-lead: 16px;
+  --s-size-p: 14px;
   --s-size-form: s-size(3);
   --s-size-button: s-size(4);
   --s-size-caption: s-size(3);
-  --s-size-code: s-rem(14px);
+  --s-size-code: 14px;
   --s-size-menu: s-size(4);
   --s-size-quote: s-size(6);
   --s-size-tooltip: s-size(4);

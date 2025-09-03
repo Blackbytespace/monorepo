@@ -15,7 +15,7 @@ import { TSugarCssSettings } from '../../sugarcss.types.js';
  * @example         css
  * .my-element {
  *    font-size: s-rem(20px); // 1.25rem
- *    padding: s-rem(10px 20px); // 0.625rem 1.25rem
+ *    padding: s-rem(10px); // 0.625rem
  * }
  *
  * @since           0.0.1

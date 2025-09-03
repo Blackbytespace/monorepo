@@ -49,7 +49,6 @@
 .typo-lead > p,
 .typo-format .typo-lead,
 .typo-format .typo-lead p {
-  opacity: 0.5;
   user-select: text;
   @s-typo (lead);
 }
