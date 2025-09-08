@@ -1,13 +1,13 @@
 {
   "name": "@blackbyte/sugarcss",
-  "description": "Add a sugar in your css with nice features like live update and more",
+  "description": "Add a sugar in your css with features like advanced color handling, media queries management, and a lot more... ",
   "version": "1.0.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
     "build": "tsc",
-    "doc.build": "blackbyte docmap.build",
+    "doc.build": "blackbyte docmap.build --mdx --outPath ../website-sugarcss/docmap.json --outDir ../website-sugarcss/src/content/sugarcss",
     "test": "vitest",
     "publish": "npm publish --access public"
   },

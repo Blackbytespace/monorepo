@@ -1,4 +1,4 @@
-import { __defineConfig } from '@lotsof/config';
+import { __defineDefaultConfig } from '@blackbyte/config';
 const config = {
     settings: {
         vw: 1600,
@@ -12,10 +12,8 @@ const config = {
         height: 900,
     },
 };
-__defineConfig({
+__defineDefaultConfig({
     puppet: config,
-}, {
-    defaults: true,
 });
-export default config;
+export { config };
 //# sourceMappingURL=puppet.config.js.map

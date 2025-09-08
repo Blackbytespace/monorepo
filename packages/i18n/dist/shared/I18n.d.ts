@@ -22,7 +22,7 @@
  * i18n.set('en');
  *
  * @example             js
- * import __I18n from '@lotsof/i18n';
+ * import __I18n from '@blackbyte/i18n';
  * const i18n = new __I18n();
  * await i18n.load('en');
  * i18n.set('en');

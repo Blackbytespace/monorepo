@@ -1,5 +1,5 @@
 var _a;
-import { __get } from '@lotsof/sugar/object';
+import { __get } from '@blackbyte/sugar/object';
 /**
  * @name            i18n
  * @namespace       shared

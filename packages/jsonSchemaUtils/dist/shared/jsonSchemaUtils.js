@@ -1,5 +1,5 @@
-import { __isPlainObject } from '@lotsof/sugar/is';
-import { __clone, __deepMerge } from '@lotsof/sugar/object';
+import { __isPlainObject } from '@blackbyte/sugar/is';
+import { __clone, __deepMerge } from '@blackbyte/sugar/object';
 class JsonSchemaMock {
     static registerSchema(name, schema) {
         if (this.schemas[name]) {

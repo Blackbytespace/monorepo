@@ -1,4 +1,4 @@
-import { __unique } from '@lotsof/sugar/array';
+import { __unique } from '@blackbyte/sugar/array';
 export default function __getDefaultThemeClasses(theme) {
     const defaultThemeClasses = [];
     for (let [parameterId, parameter] of Object.entries(theme.parameters)) {

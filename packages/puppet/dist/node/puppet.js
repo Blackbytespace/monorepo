@@ -7,14 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __getConfig } from '@lotsof/config';
-import { __readJsonSync } from '@lotsof/sugar/fs';
-import { __deepMerge } from '@lotsof/sugar/object';
+import { __getConfig } from '@blackbyte/config';
+import { __readJsonSync } from '@blackbyte/sugar/fs';
 import * as __glob from 'glob';
 import __puppeteer from 'puppeteer';
 import __fs from 'fs';
 import __path from 'path';
-import { __generateThemeClassesCombinations } from '@lotsof/theme';
+import { __generateThemeClassesCombinations } from '@blackbyte/theme';
 export default class Puppet {
     constructor(settings) {
         var _a;
@@ -74,7 +73,7 @@ export default class Puppet {
     screenshot(settings) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-            const finalSettings = __deepMerge(Object.assign({ name: `screenshot-${Date.now()}`, vw: this.settings.vw, vh: this.settings.vh }, (settings !== null && settings !== void 0 ? settings : {})));
+            const finalSettings = Object.assign({ name: `screenshot-${Date.now()}`, vw: this.settings.vw, vh: this.settings.vh }, (settings !== null && settings !== void 0 ? settings : {}));
             const screenshots = [];
             // chewck if we have a theme file to load
             if (finalSettings.themeFiles) {
@@ -114,7 +113,7 @@ export default class Puppet {
                     .replace('~', process.cwd())
                     .replace(/\%name/g, finalSettings.name);
                 screenshots.push({
-                    url: (_k = settings === null || settings === void 0 ? void 0 : settings.url) !== null && _k !== void 0 ? _k : 'https://lotsof.dev',
+                    url: (_k = settings === null || settings === void 0 ? void 0 : settings.url) !== null && _k !== void 0 ? _k : 'https://blackbyte.space',
                     name: finalSettings.name,
                     outPath,
                     selector: finalSettings.selector,
