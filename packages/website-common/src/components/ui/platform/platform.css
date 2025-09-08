@@ -1,3 +1,16 @@
 .platform {
   @include bb-platform;
 }
+
+.-css {
+  color: s-color(accent, platform);
+}
+.-js {
+  color: s-color(accent, platform);
+}
+.-node {
+  color: s-color(complementary, platform);
+}
+.-php {
+  color: s-color(php, platform);
+}

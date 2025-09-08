@@ -13,7 +13,7 @@
     padding: s-space(5);
     background: s-color(main, surface);
     margin-block-end: s-space(10);
-    color: s-color(accent);
+    color: s-color(accent, text);
     letter-spacing: 0.05em;
     user-select: all;
     @s-font (code);
@@ -138,7 +138,6 @@
     font-size: 10px !important;
     background: s-color(main, surface);
     letter-spacing: 0.1em;
-    color: s-color(main, text);
     padding: s-space(1) s-space(3);
     font-size: 10px;
     text-transform: uppercase;
@@ -231,11 +230,11 @@
   }
 
   .docmap_required {
-    color: s-color(error);
+    color: s-color(error, --lightness 70);
   }
 
   .docmap_default {
-    color: s-color(accent);
+    color: s-color(accent, text);
     background: s-color(main, surface);
     padding: s-space(5);
     font: s-font(code);
@@ -257,7 +256,7 @@
   .docmap_params,
   .docmap_return {
     .docmap_type {
-      color: s-color(complementary);
+      color: s-color(complementary, text);
       background: s-color(main, surface);
       padding: s-space(5);
       font: s-font(code);
@@ -277,13 +276,6 @@
           @s-font (default);
           flex-grow: 1;
         }
-      }
-
-      @media theme-half-life {
-        color: s-color(accent);
-      }
-      @media theme-oddworld {
-        color: s-color(accent);
       }
     }
   }
@@ -366,5 +358,8 @@
   }
 
   .docmap_see {
+    p {
+      opacity: 1;
+    }
   }
 }

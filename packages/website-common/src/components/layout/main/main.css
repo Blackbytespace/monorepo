@@ -6,6 +6,7 @@ body {
 
 .main {
   padding-block-start: var(--bb-header-height);
+  overflow-x: hidden;
 
   .main_nav-toggle {
     position: absolute !important;

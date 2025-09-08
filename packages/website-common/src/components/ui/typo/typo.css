@@ -69,7 +69,7 @@
 
 .typo-a,
 .typo-format a {
-  color: s-color(accent);
+  color: s-color(accent, text);
 }
 
 .typo-strong,
@@ -88,11 +88,14 @@
 .typo-format ul,
 .typo-ol,
 .typo-format ol {
+  display: flex;
+  flex-direction: column;
+  gap: s-space(2);
+
   > li {
     user-select: text;
     position: relative;
     padding-left: s-space(8);
-    margin-bottom: s-space(5);
     line-height: 1.5;
 
     &:before {
