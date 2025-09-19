@@ -1182,6 +1182,24 @@ class Docmap implements TDocmap {
     }
 
     // see
+    if (docmapObj.changelog) {
+      result.push('<div class="docmap_changelog">');
+
+      result.push(`## Changelog`);
+
+      result.push('<ul class="docmap_changelog-list">');
+      docmapObj.changelog.forEach((seeObj) => {
+        result.push(`<li class="docmap_changelog-item">
+          <div class="docmap_changelog-version">${seeObj.version}</div>
+          <div class="docmap_changelog-description">${seeObj.description}</div>
+        </li>`);
+      });
+      result.push('</ul>');
+
+      result.push('</div>');
+    }
+
+    // see
     if (docmapObj.see) {
       result.push('<div class="docmap_see">');
 

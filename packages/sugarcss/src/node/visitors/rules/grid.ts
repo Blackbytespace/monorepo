@@ -64,7 +64,7 @@ export default function grid(v: any, settings: TSugarCssSettings): any {
     colsEndByArea = {},
     rowsEndByArea = {};
 
-  const rows = grid.layout
+  const rows = `${grid.layout}`
     .split(/(\n|_)/gm)
     .map((l) => l.trim())
     .filter((l) => l != '_' && l != '');

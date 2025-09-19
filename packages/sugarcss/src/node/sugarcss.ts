@@ -1,5 +1,11 @@
+import { __parseHtml } from '@blackbyte/sugar/console';
+import browserslist from 'browserslist';
+import {
+  TransformOptions,
+  browserslistToTargets,
+  composeVisitors,
+} from 'lightningcss';
 import { TSugarCssEnv, TSugarCssSettings } from './sugarcss.types.js';
-
 import __colorDeclaration from './visitors/declarations/color.js';
 import __containerDeclaration from './visitors/declarations/container.js';
 import __delayDeclaration from './visitors/declarations/delay.js';
@@ -45,15 +51,6 @@ import __typoRule from './visitors/rules/typo.js';
 import __weightRule from './visitors/rules/weight.js';
 import __zindexRule from './visitors/rules/zindex.js';
 
-import browserslist from 'browserslist';
-import {
-  TransformOptions,
-  browserslistToTargets,
-  composeVisitors,
-} from 'lightningcss';
-
-import { __parseHtml } from '@blackbyte/sugar/console';
-
 export const env: TSugarCssEnv = {
   remFactor: 0.0625,
   functions: {},
@@ -63,6 +60,7 @@ export const env: TSugarCssEnv = {
     mobileFirst: false,
     scalable: ['padding'],
     pxToRem: true,
+    opacityZeroValue: 0.0001,
   },
   colors: {},
   shades: {},
@@ -189,7 +187,6 @@ export default function sugarcss(
       }
       return length;
     },
-
     Function: {
       [`s-color`](v) {
         return __colorFunction(v, finalSettings);
@@ -235,6 +232,12 @@ export default function sugarcss(
       },
     },
     Declaration: {
+      opacity(decl) {
+        if (decl.value === 0 && finalSettings.opacityZeroValue !== undefined) {
+          decl.value = finalSettings.opacityZeroValue;
+        }
+        return decl;
+      },
       custom(v) {
         if (v.name === 'custom') {
           console.log(JSON.stringify(v, null, 4));

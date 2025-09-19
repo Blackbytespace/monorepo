@@ -46,7 +46,7 @@ export default function grid(v, settings) {
         grid = env.grids[args.values.layout];
     }
     const areas = [], colsCountByArea = {}, rowsCountByArea = {}, areasCountedByLine = {}, areasCountedByCol = {}, colsStartByArea = {}, rowsStartByArea = {}, colsEndByArea = {}, rowsEndByArea = {};
-    const rows = grid.layout
+    const rows = `${grid.layout}`
         .split(/(\n|_)/gm)
         .map((l) => l.trim())
         .filter((l) => l != '_' && l != '');

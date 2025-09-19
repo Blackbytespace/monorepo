@@ -1,11 +1,11 @@
 /**
- * @name          s-menu
+ * @name          s-burger-menu
  * @namespace     css.mixins
  * @type          Mixin 
  * @platform      css
  * @status        stable
  * 
- * This mixin allows you to create a menu icon easily.
+ * This mixin allows you to create a burger menu icon easily.
  * Note that you can use the `s-menu-active` mixin to apply the active state to the menu icon.
  * The color applyed to the menu icon is the `current` color.
  *
@@ -13,17 +13,17 @@
  * 
  * @example         css
  * .my-menu {
- *   @include s-menu;
+ *   @include s-burger-menu;
  *   
  *   &:hover {
- *     @include s-menu-active;
+ *     @include s-burger-menu-active;
  *   }
  * }
  *
  * @since       1.0.0
  * @author      Olivier Bossel <olivier.bossel@gmail.com> (https://hello@blackbyte.space)
  */
-@mixin s-menu {
+@mixin s-burger-menu {
   display: block;
   position: relative;
   width: 1em;
@@ -54,7 +54,7 @@
   }
 }
 
-@mixin s-menu-active {
+@mixin s-burger-menu-active {
   background: transparent;
 
   &:before {

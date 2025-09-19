@@ -1,0 +1,24 @@
+{
+  "exclude": [
+    "**/*.test.*",
+    "**/node_modules/**",
+    "**/dist/**/*",
+    "node_modules/**/*",
+    "vendor/**/*",
+    "components/**/*"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "target": "es6",
+    "module": "nodenext",
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "nodenext"
+  }
+}

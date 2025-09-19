@@ -22,7 +22,7 @@ body {
 
   .main_nav-toggle-inner {
     font-size: 30px;
-    @include s-menu;
+    @include s-burger-menu;
   }
 
   .main_nav {
@@ -58,7 +58,7 @@ body {
       translate: 0 0;
 
       .main_nav-toggle-inner {
-        @include s-menu-active;
+        @include s-burger-menu-active;
       }
     }
 

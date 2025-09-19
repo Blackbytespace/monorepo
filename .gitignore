@@ -12,7 +12,7 @@
 #!.yarn/cache
 .pnp.*
 
-/packages/website-cosc/
+/packages/_external
 
 /node_modules
 /packages/*/node_modules

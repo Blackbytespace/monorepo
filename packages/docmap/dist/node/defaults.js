@@ -58,6 +58,7 @@ export default {
             'status',
             'snippet',
             'example',
+            'changelog',
             'install',
             'interface',
             'async',

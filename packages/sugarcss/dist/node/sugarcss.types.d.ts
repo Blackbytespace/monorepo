@@ -56,6 +56,7 @@ export type TSugarCssSettings = {
     mobileFirst: boolean;
     scalable: string[];
     pxToRem: boolean;
+    opacityZeroValue?: number;
 };
 export type TSugarCssFonts = {
     family: Record<string, string[]>;
