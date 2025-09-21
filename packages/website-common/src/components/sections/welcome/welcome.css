@@ -76,7 +76,7 @@
     translate: -50% -50%;
     opacity: 0;
     background-color: s-color(main, background, --lightness 10);
-    background-image: url('/public/blackbyte-earth-bkg.jpg');
+    background-image: url('/public/blackbyte-earth-bkg.webp');
     background-position: bottom center;
     background-size: cover;
     pointer-events: none;
@@ -209,7 +209,9 @@
 
     &,
     * {
-      transition: box-shadow 0.2s ease-in-out, filter 0.5s ease-in-out;
+      transition:
+        box-shadow 0.2s ease-in-out,
+        filter 0.5s ease-in-out;
     }
   }
   &.-exploded {
@@ -224,7 +226,8 @@
     &,
     * {
       backface-visibility: hidden;
-      box-shadow: 0 0 calc(20px * var(--glow-multiplier)) 10px #fff,
+      box-shadow:
+        0 0 calc(20px * var(--glow-multiplier)) 10px #fff,
         0 0 calc(100px * var(--glow-multiplier)) 40px
           s-color(complementary, --alpha 0.1),
         0 0 calc(50px * var(--glow-multiplier)) 20px s-color(accent);

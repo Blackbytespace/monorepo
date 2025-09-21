@@ -12,12 +12,7 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
-    "@blackbyte/cli": "^1.0.0-beta.1",
-    "@blackbyte/docmap": "^1.0.0-beta.1",
-    "@blackbyte/factory": "^1.0.0-beta.1",
-    "@blackbyte/puppet": "^1.0.0-beta.1",
     "@blackbyte/sugar": "^1.0.0-beta.1",
-    "@blackbyte/components": "^1.0.0-beta.1",
     "typescript": "^5.4.5"
   },
   "exports": {

@@ -1,8 +1,8 @@
 // @ts-nocheck
 
-import '@blackbyte/components';
+// import '@blackbyte/components';
 // import '@blackbyte/factory';
-import '@blackbyte/puppet';
+// import '@blackbyte/puppet';
 import { __packageRootDir } from '@blackbyte/sugar/package';
 import __fs from 'fs';
 import __defineConfig from './defineConfig.js';
