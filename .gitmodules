@@ -7,3 +7,6 @@
 [submodule "packages/website-sugarcss"]
 	path = packages/website-sugarcss
 	url = git@github.com:Blackbytespace/website-sugarcss.git
+[submodule "packages/sugarcss"]
+	path = packages/sugarcss
+	url = git@github.com:Blackbytespace/sugarcss.git
