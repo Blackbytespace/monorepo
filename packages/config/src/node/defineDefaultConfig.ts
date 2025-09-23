@@ -1,7 +1,7 @@
-import __defineConfig from './defineConfig.js';
+import defineConfig from './defineConfig.js';
 
 export default function defineDefaultConfig(config) {
-  return __defineConfig(config, {
+  return defineConfig(config, {
     defaults: true,
   });
 }

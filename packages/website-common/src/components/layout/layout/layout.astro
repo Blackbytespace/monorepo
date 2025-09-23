@@ -6,9 +6,6 @@ import './layout.css';
 import type { TLayout } from './layout.type';
 
 type Props = TLayout;
-
-// @ts-ignore
-const { title, pageTitle, description, og } = Astro.props;
 ---
 
 <html lang="en">
@@ -17,15 +14,18 @@ const { title, pageTitle, description, og } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       property="og:site_name"
-      content={`Blackbyte ${pageTitle ? `- ${pageTitle}` : ''}`}
+      content={`Blackbyte ${Astro.props.pageTitle ? `- ${Astro.props.pageTitle}` : ''}`}
     />
-    <meta name="description" content={description} />
+    <meta name="description" content={Astro.props.websiteConfig.description} />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:description" content={description} />
+    <meta
+      property="og:description"
+      content={Astro.props.websiteConfig.description}
+    />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={Astro.props.websiteConfig.pageTitle} />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content={og.imageUrl} />
+    <meta property="og:image" content={Astro.props.websiteConfig.og.imageUrl} />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -45,33 +45,12 @@ const { title, pageTitle, description, og } = Astro.props;
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <title>Blackbyte {`${pageTitle ? `- ${pageTitle}` : ''}`}</title>
-    <!-- <ViewTransitions /> -->
-    <Posthog />
+    <title>
+      Blackbyte {`${Astro.props.pageTitle ? `- ${Astro.props.pageTitle}` : ''}`}
+    </title>
+    <Posthog projectApiKey={Astro.props.websiteConfig.posthog.projectApiKey} />
   </head>
   <body>
-    <!-- <script is:inline>
-      function getCookie(cname) {
-        var name = cname + '=';
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length).replace(/\%22/gm, '');
-          }
-        }
-        return '';
-      }
-      const theme = getCookie('theme');
-      if (theme) {
-        document.body.classList.add(`theme-${theme}`);
-      } else {
-        document.body.classList.add('theme-dark');
-      } -->
-
     <slot />
   </body>
 </html>

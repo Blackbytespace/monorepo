@@ -1,18 +1,18 @@
 // @ts-nocheck
-import { __deepMerge } from '@blackbyte/sugar/object';
+import { mergeDeep } from '@blackbyte/sugar/object';
 process.blackbyteConfigDefaults = {};
 process.blackbyteConfig = {};
 export default function defineConfig(config, settings) {
     var _a;
     if (settings === null || settings === void 0 ? void 0 : settings.defaults) {
-        process.blackbyteConfigDefaults = __deepMerge([
+        process.blackbyteConfigDefaults = mergeDeep([
             process.blackbyteConfigDefaults,
             config,
         ]);
         return process.blackbyteConfigDefaults;
     }
     else {
-        process.blackbyteConfig = __deepMerge([
+        process.blackbyteConfig = mergeDeep([
             (_a = process.blackbyteConfig) !== null && _a !== void 0 ? _a : {},
             config,
         ]);

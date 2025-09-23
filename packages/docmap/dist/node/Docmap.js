@@ -8,13 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { __getConfig } from '@blackbyte/config';
-import { __encodeEntities } from '@blackbyte/sugar/html';
+import { getConfig } from '@blackbyte/config';
+import { encodeEntities } from '@blackbyte/sugar/html';
 import __Docblock from '@blackbyte/docblock';
 import { __composerJsonSync } from '@blackbyte/sugar/composer';
-import { __checkPathWithMultipleExtensions, __fileName, __folderPath, __readJsonSync, __writeFileSync, } from '@blackbyte/sugar/fs';
-import { __writeJsonSync } from '@blackbyte/sugar/fs';
-import { __deepFilter, __deepMap, __deepMerge, __get, __set, __sort, __sortDeep, } from '@blackbyte/sugar/object';
+import { checkPathWithMultipleExtensions, fileName, folderPath, readJsonSync, writeFileSync, } from '@blackbyte/sugar/fs';
+import { writeJsonSync } from '@blackbyte/sugar/fs';
+import { filterDeep, mapDeep, mergeDeep, get, set, sort, sortDeep, } from '@blackbyte/sugar/object';
 import __defaults from './defaults.js';
 import { __packageJsonSync, __packageRootDir } from '@blackbyte/sugar/package';
 import { globSync as __globSync } from 'glob';
@@ -96,9 +96,9 @@ class Docmap {
          * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
          */
         this._entries = {};
-        this.settings = __deepMerge([
+        this.settings = mergeDeep([
             __defaults.settings,
-            (_a = __getConfig('docmap.settings')) !== null && _a !== void 0 ? _a : {},
+            (_a = getConfig('docmap.settings')) !== null && _a !== void 0 ? _a : {},
             settings !== null && settings !== void 0 ? settings : {},
         ]);
         // @ts-ignore
@@ -124,9 +124,9 @@ class Docmap {
     read(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c, _d, _e;
-            const finalParams = __deepMerge([
+            const finalParams = mergeDeep([
                 __defaults.read,
-                (_a = __getConfig('docmap.read')) !== null && _a !== void 0 ? _a : {},
+                (_a = getConfig('docmap.read')) !== null && _a !== void 0 ? _a : {},
                 params !== null && params !== void 0 ? params : {},
             ]);
             let docmapVersion = 'current';
@@ -136,7 +136,7 @@ class Docmap {
                 // @ts-ignore
                 this.constructor._cachedDocmapJson[docmapVersion]);
             }
-            let docmapRootPath = __folderPath(finalParams.input);
+            let docmapRootPath = folderPath(finalParams.input);
             if (!__fs.existsSync(finalParams.input)) {
                 return resolve({
                     map: {},
@@ -167,7 +167,7 @@ class Docmap {
                 }
                 const packageRootPath = currentPathDocmapJsonPath.replace('/docmap.json', '');
                 // read the docmap file
-                const docmapJson = __readJsonSync(currentPathDocmapJsonPath);
+                const docmapJson = readJsonSync(currentPathDocmapJsonPath);
                 // get package metas
                 const packageMetas = __packageJsonSync(packageRootPath);
                 Object.keys(docmapJson.map).forEach((namespace) => {
@@ -194,7 +194,7 @@ class Docmap {
                     // checking ".dev...."
                     let ext = obj.relPath.split('.').pop();
                     obj.path =
-                        (_f = __checkPathWithMultipleExtensions(obj.path, [`dev.${ext}`, ext])) !== null && _f !== void 0 ? _f : obj.path;
+                        (_f = checkPathWithMultipleExtensions(obj.path, [`dev.${ext}`, ext])) !== null && _f !== void 0 ? _f : obj.path;
                     docmapJson.map[namespace] = obj;
                 }
                 for (let [namespace, docmapObj] of Object.entries(docmapJson.map)) {
@@ -210,7 +210,7 @@ class Docmap {
                 }
             });
             // load package docmap
-            const docmapJsonFolderPath = __folderPath(finalParams.input);
+            const docmapJsonFolderPath = folderPath(finalParams.input);
             yield loadJson(docmapJsonFolderPath);
             // load npm dependencies docmap
             if (finalParams.dependencies) {
@@ -237,18 +237,18 @@ class Docmap {
             this.constructor._cachedDocmapJson[docmapVersion] = finalDocmapJson;
             // sorting
             finalParams.sort.forEach((dotPath) => {
-                const toSort = __get(finalDocmapJson, dotPath);
+                const toSort = get(finalDocmapJson, dotPath);
                 if (!toSort)
                     return;
-                __set(finalDocmapJson, dotPath, __sort(toSort, (a, b) => {
+                set(finalDocmapJson, dotPath, sort(toSort, (a, b) => {
                     return a.key.localeCompare(b.key);
                 }));
             });
             finalParams.sortDeep.forEach((dotPath) => {
-                const toSort = __get(finalDocmapJson, dotPath);
+                const toSort = get(finalDocmapJson, dotPath);
                 if (!toSort)
                     return;
-                __set(finalDocmapJson, dotPath, __sortDeep(toSort, (a, b) => {
+                set(finalDocmapJson, dotPath, sortDeep(toSort, (a, b) => {
                     return a.key.localeCompare(b.key);
                 }));
             });
@@ -282,9 +282,9 @@ class Docmap {
     search(params) {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             var _a, _b, _c;
-            const finalParams = __deepMerge([
+            const finalParams = mergeDeep([
                 __defaults.search,
-                (_a = __getConfig('docmap.search')) !== null && _a !== void 0 ? _a : {},
+                (_a = getConfig('docmap.search')) !== null && _a !== void 0 ? _a : {},
                 params !== null && params !== void 0 ? params : {},
             ]);
             const docmapJson = yield this.read(finalParams);
@@ -372,7 +372,7 @@ class Docmap {
                 // @ts-ignore
                 finalMenu.packages[packageName] = {
                     name: packageName,
-                    tree: __deepMap(menuObj.tree, ({ prop, value }) => {
+                    tree: mapDeep(menuObj.tree, ({ prop, value }) => {
                         if (prop === 'slug')
                             return `/package/${packageName}${value}`;
                         return value;
@@ -385,28 +385,28 @@ class Docmap {
             if (!finalMenu.custom[menuName])
                 finalMenu.custom[menuName] = {};
             // @ts-ignore
-            finalMenu.custom[menuName].tree = __deepFilter(finalMenu.tree, 
+            finalMenu.custom[menuName].tree = filterDeep(finalMenu.tree, 
             // @ts-ignore
             this.settings.customMenu[menuName]);
             // @ts-ignore
-            finalMenu.custom[menuName].slug = __deepFilter(finalMenu.slug, 
+            finalMenu.custom[menuName].slug = filterDeep(finalMenu.slug, 
             // @ts-ignore
             this.settings.customMenu[menuName]);
             Object.keys(finalMenu.packages).forEach((packageName) => {
                 const packageObj = finalMenu.packages[packageName];
                 // @ts-ignore
-                const packageFilteredTree = __deepFilter(packageObj.tree, 
+                const packageFilteredTree = filterDeep(packageObj.tree, 
                 // @ts-ignore
                 this.settings.customMenu[menuName]);
-                finalMenu.custom[menuName].tree = __deepMerge([
+                finalMenu.custom[menuName].tree = mergeDeep([
                     finalMenu.custom[menuName].tree,
                     packageFilteredTree,
                 ]);
                 // @ts-ignore
-                const packageFilteredSlug = __deepFilter(packageObj.slug, 
+                const packageFilteredSlug = filterDeep(packageObj.slug, 
                 // @ts-ignore
                 this.settings.customMenu[menuName]);
-                finalMenu.custom[menuName].slug = __deepMerge([
+                finalMenu.custom[menuName].slug = mergeDeep([
                     finalMenu.custom[menuName].slug,
                     packageFilteredSlug,
                 ]);
@@ -473,9 +473,9 @@ class Docmap {
      */
     build(params) {
         var _a;
-        const finalParams = __deepMerge([
+        const finalParams = mergeDeep([
             __defaults.build,
-            (_a = __getConfig('docmap.build')) !== null && _a !== void 0 ? _a : {},
+            (_a = getConfig('docmap.build')) !== null && _a !== void 0 ? _a : {},
             params !== null && params !== void 0 ? params : {},
         ]);
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
@@ -492,7 +492,7 @@ class Docmap {
             });
             // check if a file already exists
             if (__fs.existsSync(`${packageRoot}/docmap.json`)) {
-                const currentDocmapJson = __readJsonSync(`${packageRoot}/docmap.json`);
+                const currentDocmapJson = readJsonSync(`${packageRoot}/docmap.json`);
                 docmapJson = currentDocmapJson;
                 docmapJson.generated = {
                     map: {},
@@ -582,7 +582,7 @@ class Docmap {
                     if (docblock.private)
                         continue;
                     // const path = __path.relative(outputDir, filepath);
-                    const filename = __fileName(filePath);
+                    const filename = fileName(filePath);
                     const docblockEntryObj = {
                         id: 'undefined',
                     };
@@ -626,7 +626,7 @@ class Docmap {
                         }
                         // json
                         if (finalParams.json) {
-                            __writeJsonSync(finalOutPath, docmapObj);
+                            writeJsonSync(finalOutPath, docmapObj);
                             console.log(`<green>[save]</green> JSON file saved <green>successfully</green> under "<cyan>${outPath.replace(__packageRootDir() + '/', '')}</cyan>"`);
                         }
                         // mdx
@@ -636,7 +636,7 @@ class Docmap {
                             // transform to mdx
                             const mdx = this.toMdx(docmapObj);
                             // write to disk
-                            __writeFileSync(mdxOutPath, mdx);
+                            writeFileSync(mdxOutPath, mdx);
                             console.log(`<green>[save]</green> MDX file saved <green>successfully</green> under "<cyan>${mdxOutPath.replace(__packageRootDir() + '/', '')}</cyan>"`);
                         }
                     }
@@ -653,11 +653,11 @@ class Docmap {
     toMdx(docmapObj) {
         var _a, _b, _c, _d, _e, _f, _g;
         const result = [];
-        function encodeEntities(str) {
+        function _encodeEntities(str) {
             if (typeof str !== 'string') {
                 str = `${str}`;
             }
-            return __encodeEntities(str);
+            return encodeEntities(str);
         }
         result.push('---');
         result.push(`title: '${docmapObj.name}'`);
@@ -666,7 +666,7 @@ class Docmap {
             result.push(`description: '${docmapObj.description.split('\n').join(' ')}'`);
         }
         if (docmapObj.type) {
-            result.push(`type: '${encodeEntities((_a = docmapObj.type.raw) !== null && _a !== void 0 ? _a : '')}'`);
+            result.push(`type: '${_encodeEntities((_a = docmapObj.type.raw) !== null && _a !== void 0 ? _a : '')}'`);
         }
         if (docmapObj.status) {
             result.push(`status: '${docmapObj.status}'`);
@@ -691,7 +691,7 @@ class Docmap {
             result.push('<div class="docmap_metas">');
         }
         if (docmapObj.type) {
-            result.push(`<div class="docmap_type"><span class="docmap_type-label">Type:</span><span class="docmap_type-value">${encodeEntities((_c = (_b = docmapObj.type.raw) !== null && _b !== void 0 ? _b : docmapObj.type) !== null && _c !== void 0 ? _c : '')}</span></div>`);
+            result.push(`<div class="docmap_type"><span class="docmap_type-label">Type:</span><span class="docmap_type-value">${_encodeEntities((_c = (_b = docmapObj.type.raw) !== null && _b !== void 0 ? _b : docmapObj.type) !== null && _c !== void 0 ? _c : '')}</span></div>`);
         }
         if (docmapObj.status) {
             result.push(`<div class="docmap_status"><span class="docmap_status-label">Status:</span><span class="docmap_status-value -${docmapObj.status}">${docmapObj.status}</span></div>`);
@@ -730,8 +730,8 @@ class Docmap {
                 result.push('<li class="docmap_item">');
                 result.push(`<span class="docmap_name">${paramObj.name}${paramObj.default === undefined
                     ? '<span class="docmap_required">*</span>'
-                    : ''}</span><span class="docmap_default">${encodeEntities(defaultStr !== null && defaultStr !== void 0 ? defaultStr : '-')}</span> <span class="docmap_type">${encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
-                result.push(`<p class="docmap_description">${encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
+                    : ''}</span><span class="docmap_default">${_encodeEntities(defaultStr !== null && defaultStr !== void 0 ? defaultStr : '-')}</span> <span class="docmap_type">${_encodeEntities((_b = paramObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                result.push(`<p class="docmap_description">${_encodeEntities((_c = paramObj.description) !== null && _c !== void 0 ? _c : '')}</p>`);
                 result.push('</li>');
             });
             result.push('</ol>');
@@ -743,8 +743,8 @@ class Docmap {
             result.push(`## Return`);
             result.push('<ol class="docmap_list">');
             result.push('<li class="docmap_item">');
-            result.push(`<span class="docmap_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : '-'}</span><span class="docmap_type">${encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
-            result.push(`<p class="docmap_description">${encodeEntities((_f = docmapObj.return.description) !== null && _f !== void 0 ? _f : '')}</p>`);
+            result.push(`<span class="docmap_default">${(_d = docmapObj.return.default) !== null && _d !== void 0 ? _d : '-'}</span><span class="docmap_type">${_encodeEntities((_e = docmapObj.return.type.raw) !== null && _e !== void 0 ? _e : '')}</span>`);
+            result.push(`<p class="docmap_description">${_encodeEntities((_f = docmapObj.return.description) !== null && _f !== void 0 ? _f : '')}</p>`);
             result.push('</li>');
             result.push('</ol>');
             result.push('</div>');
@@ -772,7 +772,7 @@ class Docmap {
                 result.push('<li class="docmap_item">');
                 result.push(`<span class="docmap_name">${settingObj.name}${settingObj.default === undefined
                     ? '<span class="docmap_required">*</span>'
-                    : ''}</span><span class="docmap_default">${encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="docmap_type">${encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
+                    : ''}</span><span class="docmap_default">${_encodeEntities((_a = settingObj.default) !== null && _a !== void 0 ? _a : '-')}</span> <span class="docmap_type">${_encodeEntities((_b = settingObj.type.raw) !== null && _b !== void 0 ? _b : '')}</span>`);
                 result.push(`<p class="docmap_description">${settingObj.description}</p>`);
                 result.push('</li>');
             });

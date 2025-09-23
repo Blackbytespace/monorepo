@@ -1,16 +1,16 @@
-import __IconElement from '@blackbyte/icon-element';
-import __JsonSchemaUtils from '@blackbyte/json-schema-utils';
-import __LitElement from '@blackbyte/lit-element';
-import { __copyText } from '@blackbyte/sugar/clipboard';
-import { __disablePasswordManagerAttributes } from '@blackbyte/sugar/dom';
-import { __isPlainObject } from '@blackbyte/sugar/is';
+import IconElement from '@blackbyte/icon-element';
+import JsonSchemaUtils from '@blackbyte/json-schema-utils';
+import LitElement from '@blackbyte/lit-element';
+import { copyText } from '@blackbyte/sugar/clipboard';
+import { disablePasswordManagerAttributes } from '@blackbyte/sugar/dom';
+import { isPlainObject } from '@blackbyte/sugar/is';
 import {
-  __deepFilter,
-  __deepize,
-  __deepMap,
-  __deepMerge,
-  __get,
-  __set,
+  filterDeep,
+  undlatten,
+  mapDeep,
+  mergeDeep,
+  get,
+  set,
 } from '@blackbyte/sugar/object';
 import { faker } from '@faker-js/faker';
 import { spread } from '@open-wc/lit-helpers';
@@ -44,7 +44,7 @@ JSONSchemaFaker.extend('faker', () => {
   return faker;
 });
 
-export default class JsonSchemaFormElement extends __LitElement {
+export default class JsonSchemaFormElement extends LitElement {
   public static widgets: Record<string, TJsonSchemaFormWidget> = {};
   public static registerWidget(widget: TJsonSchemaFormWidget): void {
     this.widgets[widget.id] = widget;
@@ -76,7 +76,7 @@ export default class JsonSchemaFormElement extends __LitElement {
 
   private _registeredWidgets: Record<string, TJsonSchemaFormWidget> = {};
   private _errorsByPath: Record<string, JsonError[]> = {};
-  private _jsonSchemaUtils: __JsonSchemaUtils = new __JsonSchemaUtils();
+  private _jsonSchemaUtils: JsonSchemaUtils = new JsonSchemaUtils();
   private _finalSchema: any = {};
 
   constructor() {
@@ -217,12 +217,11 @@ export default class JsonSchemaFormElement extends __LitElement {
       (value === null || value === undefined) &&
       schema.default !== undefined
     ) {
-      __set(this.values, path, schema.default);
+      set(this.values, path, schema.default);
       value = schema.default;
     }
 
-    const disablePasswordManagerAttributes =
-      __disablePasswordManagerAttributes();
+    const disablePasswordManagerAttributes = disablePasswordManagerAttributes();
 
     // validate the value
     let renderedErrors = '';
@@ -246,7 +245,7 @@ export default class JsonSchemaFormElement extends __LitElement {
               }`}
               autofocus=${schema.autofocus ?? nothing}
               @change=${(e) => {
-                __set(this.values, path, e.target.value);
+                set(this.values, path, e.target.value);
                 this._emitUpdate({
                   value: e.target.value,
                   path,
@@ -274,7 +273,7 @@ export default class JsonSchemaFormElement extends __LitElement {
             autofocus=${schema.autofocus ?? nothing}
             placeholder=${schema.placeholder ?? ''}
             @input=${(e: any) => {
-              __set(this.values, path, e.target.value);
+              set(this.values, path, e.target.value);
             }}
             @change=${(e) => {
               this._emitUpdate({
@@ -295,7 +294,7 @@ export default class JsonSchemaFormElement extends __LitElement {
             }`}
             autofocus=${schema.autofocus ?? nothing}
             @change=${(e) => {
-              __set(this.values, path, e.target.checked);
+              set(this.values, path, e.target.checked);
               this._emitUpdate({
                 value: e.target.checked,
                 path,
@@ -318,7 +317,7 @@ export default class JsonSchemaFormElement extends __LitElement {
             }`}
             autofocus=${schema.autofocus ?? nothing}
             @input=${(e: any) => {
-              __set(this.values, path, parseFloat(e.target.value));
+              set(this.values, path, parseFloat(e.target.value));
             }}
             @change=${(e) => {
               this._emitUpdate({
@@ -334,14 +333,14 @@ export default class JsonSchemaFormElement extends __LitElement {
     return typeof value === 'number'
       ? html`<span class="-number">${value}</span>`
       : value === true
-      ? html`<span class="-true">true</span>`
-      : value === false
-      ? html`<span class="-false">false</span>`
-      : value === null
-      ? html`<span class="-null">null</span>`
-      : value === undefined
-      ? html`<span class="-undefined">undefined</span>`
-      : value;
+        ? html`<span class="-true">true</span>`
+        : value === false
+          ? html`<span class="-false">false</span>`
+          : value === null
+            ? html`<span class="-null">null</span>`
+            : value === undefined
+              ? html`<span class="-undefined">undefined</span>`
+              : value;
   }
 
   private async _emitUpdate(
@@ -362,7 +361,7 @@ export default class JsonSchemaFormElement extends __LitElement {
   private _createComponentDefaultValuesFromSchema(schema: any): any {
     const newValues: any = {};
 
-    __deepMap(schema, ({ object, prop, value, path }) => {
+    mapDeep(schema, ({ object, prop, value, path }) => {
       if (object.type !== 'object' && prop === 'type') {
         const finalPath = path
           .split('.')
@@ -394,7 +393,7 @@ export default class JsonSchemaFormElement extends __LitElement {
       }
       return value;
     });
-    return __deepize(newValues);
+    return undlatten(newValues);
   }
 
   public getIdFromPath(path: string[]): string {
@@ -403,7 +402,7 @@ export default class JsonSchemaFormElement extends __LitElement {
 
   private _renderComponentValuesPreview(schema: any, path: string[] = []): any {
     // get the values for the current path
-    let values = __get(this.values, path);
+    let values = get(this.values, path);
 
     // check if we have a widget specified and that it is available
     if (schema.editor?.widget) {
@@ -417,14 +416,14 @@ export default class JsonSchemaFormElement extends __LitElement {
       )}`;
       return staticHtml`
         <${tag} class="${this.cls(
-        '_widget _values-value',
-      )}" .value=${values} .schema=${schema} .applyUpdate=${(newValue) => {
-        __set(this.values, path, newValue);
-        this._emitUpdate({
-          value: newValue,
-          path,
-        });
-      }}></${tag}>
+          '_widget _values-value',
+        )}" .value=${values} .schema=${schema} .applyUpdate=${(newValue) => {
+          set(this.values, path, newValue);
+          this._emitUpdate({
+            value: newValue,
+            path,
+          });
+        }}></${tag}>
       `;
     }
 
@@ -485,9 +484,7 @@ export default class JsonSchemaFormElement extends __LitElement {
               <li class=${this.cls(`_group -${group.type ?? 'default'}`)}>
                 <div class="${this.cls('_group-body')}">
                   ${staticHtml`
-                    <${tag} .renderedProps=${renderedProps} ${spread(
-                    group,
-                  )}>        
+                    <${tag} .renderedProps=${renderedProps} ${spread(group)}>        
                     ${renderedProps}
                     </${tag}>
                 `}
@@ -524,7 +521,7 @@ export default class JsonSchemaFormElement extends __LitElement {
               <ul class=${this.cls('_values-object-items')}>
                 ${Object.entries(schema.properties).map(([key, value]) => {
                   if ((<any>value).type === 'object') {
-                    const objectId = __get(this.values, [...path, key, 'id']);
+                    const objectId = get(this.values, [...path, key, 'id']);
 
                     return html`
                       <li class=${this.cls('_values-object-item')}>
@@ -541,7 +538,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                                     '_values-array-item-id',
                                   )} button -sm -outline"
                                   @click=${() => {
-                                    __copyText(objectId);
+                                    copyText(objectId);
                                   }}
                                 >
                                   ID: #${objectId}
@@ -592,7 +589,7 @@ export default class JsonSchemaFormElement extends __LitElement {
 
                                     // set the value in the values object
                                     // and emit the update
-                                    __set(this.values, [...path, key], mock);
+                                    set(this.values, [...path, key], mock);
                                     this._emitUpdate({
                                       value: mock,
                                       path: [...path, key],
@@ -643,7 +640,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                                       '_values-array-item-id',
                                     )} button -outline"
                                     @click=${() => {
-                                      __copyText(value.id);
+                                      copyText(value.id);
                                     }}
                                   >
                                     ID: #${value.id}
@@ -680,8 +677,8 @@ export default class JsonSchemaFormElement extends __LitElement {
                   this.buttonClasses === true
                     ? 'button'
                     : typeof this.buttonClasses === 'string'
-                    ? this.buttonClasses
-                    : ''
+                      ? this.buttonClasses
+                      : ''
                 }`}
                 @click=${() => {
                   const newValues =
@@ -727,7 +724,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                             '_header-title-id',
                           )} button -outline"
                           @click=${() => {
-                            __copyText(this.values.id);
+                            copyText(this.values.id);
                           }}
                           >ID: #${this.values.id}
                           <s-icon name="clipboard-document-list"
@@ -742,7 +739,7 @@ export default class JsonSchemaFormElement extends __LitElement {
                       <button
                         class=${this.cls('_header-tool')}
                         @click=${(e: MouseEvent) => {
-                          const finalSchema = __deepFilter(
+                          const finalSchema = filterDeep(
                             this.schema,
                             ({ key, value, isObject }) => {
                               if (
@@ -770,11 +767,11 @@ export default class JsonSchemaFormElement extends __LitElement {
 
                           for (let [key, value] of Object.entries(mock)) {
                             if (
-                              __isPlainObject(this.values[key]) &&
-                              __isPlainObject(value)
+                              isPlainObject(this.values[key]) &&
+                              isPlainObject(value)
                             ) {
                               console.log('key', key, this.values[key]);
-                              __deepMerge([this.values[key], value], {
+                              mergeDeep([this.values[key], value], {
                                 clone: false,
                               });
                             } else {
@@ -819,6 +816,6 @@ JsonSchemaFormElement.registerWidget({
 });
 
 JsonSchemaFormElement.define('s-json-schema-form', JsonSchemaFormElement, {});
-__IconElement.define('s-icon', {
+IconElement.define('s-icon', {
   type: 'outline',
 });

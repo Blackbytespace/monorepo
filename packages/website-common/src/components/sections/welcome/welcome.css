@@ -65,8 +65,7 @@
     --glow-multiplier: 3.5;
   }
 
-  &:after {
-    content: '';
+  .welcome_earth {
     z-index: 1;
     position: absolute;
     top: 50%;
@@ -74,7 +73,8 @@
     width: 100vw;
     height: 90%;
     translate: -50% -50%;
-    opacity: 0;
+    /* opacity: 0; */
+    opacity: 0.3;
     background-color: s-color(main, background, --lightness 10);
     background-image: url('/public/blackbyte-earth-bkg.webp');
     background-position: bottom center;
@@ -88,7 +88,7 @@
       white 80%,
       transparent 100%
     );
-    animation: welcome-earth-in 2s ease-out 0.7s forwards;
+    /* animation: welcome-earth-in 2s ease-out 0.7s forwards; */
   }
 
   .welcome_header {

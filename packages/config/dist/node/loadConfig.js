@@ -8,25 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import '@blackbyte/components';
+// import '@blackbyte/components';
 // import '@blackbyte/factory';
-import '@blackbyte/puppet';
-import { __packageRootDir } from '@blackbyte/sugar/package';
-import __fs from 'fs';
-import __defineConfig from './defineConfig.js';
-import __getConfig from './getConfig.js';
+// import '@blackbyte/puppet';
+import { packageRootDir } from '@blackbyte/sugar/package';
+import fs from 'fs';
+import defineConfig from './defineConfig.js';
+import getConfig from './getConfig.js';
 export default function loadConfig(path, def) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
         const possibleFiles = [
-            `${__packageRootDir()}/blackbyte.config.ts`,
-            `${__packageRootDir()}/blackbyte.config.js`,
-            `${__packageRootDir()}/blackbyte.config.json`,
+            `${packageRootDir()}/blackbyte.config.ts`,
+            `${packageRootDir()}/blackbyte.config.js`,
+            `${packageRootDir()}/blackbyte.config.json`,
         ];
         let configFilePath = '';
         for (let i = 0; i < possibleFiles.length; i++) {
             const file = possibleFiles[i];
-            if (__fs.existsSync(file)) {
+            if (fs.existsSync(file)) {
                 configFilePath = file;
                 break;
             }
@@ -38,10 +38,10 @@ export default function loadConfig(path, def) {
         const config = yield import(configFilePath).then((mod) => mod.default);
         if (config) {
             // set the new config
-            __defineConfig(config);
+            defineConfig(config);
         }
         // return the wanted config
-        return __getConfig(path, def);
+        return getConfig(path, def);
     });
 }
 //# sourceMappingURL=loadConfig.js.map

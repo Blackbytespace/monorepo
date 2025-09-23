@@ -1,7 +1,7 @@
-import __defineConfig from './defineConfig.js';
-import __defineDefaultConfig from './defineDefaultConfig.js';
-import __getConfig from './getConfig.js';
-import __loadConfig from './loadConfig.js';
+import defineConfig from './defineConfig.js';
+import defineDefaultConfig from './defineDefaultConfig.js';
+import getConfig from './getConfig.js';
+import loadConfig from './loadConfig.js';
 export * from './types.js';
-export { __defineConfig, __defineDefaultConfig, __getConfig, __loadConfig };
+export { defineConfig, defineConfig as __defineConfig, defineDefaultConfig, defineDefaultConfig as __defineDefaultConfig, getConfig, getConfig as __getConfig, loadConfig, loadConfig as __loadConfig, };
 //# sourceMappingURL=_exports.js.map

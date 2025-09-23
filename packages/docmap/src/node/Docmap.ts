@@ -1,30 +1,27 @@
 // @ts-nocheck
 
-import { __getConfig } from '@blackbyte/config';
-
-import { __encodeEntities } from '@blackbyte/sugar/html';
-
+import { getConfig } from '@blackbyte/config';
+import { encodeEntities } from '@blackbyte/sugar/html';
 import type { TDocblockSettings } from '@blackbyte/docblock';
 import __Docblock from '@blackbyte/docblock';
 import { __composerJsonSync } from '@blackbyte/sugar/composer';
 import {
-  __checkPathWithMultipleExtensions,
-  __fileName,
-  __folderPath,
-  __readJsonSync,
-  __writeFileSync,
+  checkPathWithMultipleExtensions,
+  fileName,
+  folderPath,
+  readJsonSync,
+  writeFileSync,
 } from '@blackbyte/sugar/fs';
-
-import { __writeJsonSync } from '@blackbyte/sugar/fs';
+import { writeJsonSync } from '@blackbyte/sugar/fs';
 
 import {
-  __deepFilter,
-  __deepMap,
-  __deepMerge,
-  __get,
-  __set,
-  __sort,
-  __sortDeep,
+  filterDeep,
+  mapDeep,
+  mergeDeep,
+  get,
+  set,
+  sort,
+  sortDeep,
 } from '@blackbyte/sugar/object';
 
 import __defaults from './defaults.js';
@@ -155,9 +152,9 @@ class Docmap implements TDocmap {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   constructor(settings?: Partial<TDocmapSettings>) {
-    this.settings = __deepMerge([
+    this.settings = mergeDeep([
       __defaults.settings,
-      __getConfig('docmap.settings') ?? {},
+      getConfig('docmap.settings') ?? {},
       settings ?? {},
     ]);
     // @ts-ignore
@@ -187,9 +184,9 @@ class Docmap implements TDocmap {
    */
   read(params?: Partial<TDocmapReadParams>): Promise<TDocmapObj> {
     return new Promise(async (resolve) => {
-      const finalParams: TDocmapReadParams = __deepMerge([
+      const finalParams: TDocmapReadParams = mergeDeep([
         __defaults.read,
-        __getConfig('docmap.read') ?? {},
+        getConfig('docmap.read') ?? {},
         params ?? {},
       ]);
 
@@ -203,7 +200,7 @@ class Docmap implements TDocmap {
         );
       }
 
-      let docmapRootPath = __folderPath(finalParams.input);
+      let docmapRootPath = folderPath(finalParams.input);
 
       if (!__fs.existsSync(finalParams.input)) {
         return resolve({
@@ -256,7 +253,7 @@ class Docmap implements TDocmap {
         );
 
         // read the docmap file
-        const docmapJson = __readJsonSync(currentPathDocmapJsonPath);
+        const docmapJson = readJsonSync(currentPathDocmapJsonPath);
 
         // get package metas
         const packageMetas = __packageJsonSync(packageRootPath);
@@ -292,7 +289,7 @@ class Docmap implements TDocmap {
           // checking ".dev...."
           let ext = obj.relPath.split('.').pop();
           obj.path =
-            __checkPathWithMultipleExtensions(obj.path, [`dev.${ext}`, ext]) ??
+            checkPathWithMultipleExtensions(obj.path, [`dev.${ext}`, ext]) ??
             obj.path;
 
           docmapJson.map[namespace] = obj;
@@ -313,7 +310,7 @@ class Docmap implements TDocmap {
       };
 
       // load package docmap
-      const docmapJsonFolderPath = __folderPath(finalParams.input);
+      const docmapJsonFolderPath = folderPath(finalParams.input);
       await loadJson(docmapJsonFolderPath);
 
       // load npm dependencies docmap
@@ -353,23 +350,23 @@ class Docmap implements TDocmap {
 
       // sorting
       finalParams.sort.forEach((dotPath) => {
-        const toSort = __get(finalDocmapJson, dotPath);
+        const toSort = get(finalDocmapJson, dotPath);
         if (!toSort) return;
-        __set(
+        set(
           finalDocmapJson,
           dotPath,
-          __sort(toSort, (a, b) => {
+          sort(toSort, (a, b) => {
             return a.key.localeCompare(b.key);
           }),
         );
       });
       finalParams.sortDeep.forEach((dotPath) => {
-        const toSort = __get(finalDocmapJson, dotPath);
+        const toSort = get(finalDocmapJson, dotPath);
         if (!toSort) return;
-        __set(
+        set(
           finalDocmapJson,
           dotPath,
-          __sortDeep(toSort, (a, b) => {
+          sortDeep(toSort, (a, b) => {
             return a.key.localeCompare(b.key);
           }),
         );
@@ -408,9 +405,9 @@ class Docmap implements TDocmap {
    */
   search(params?: Partial<TDocmapSearchParams>): Promise<TDocmapSearchResult> {
     return new Promise(async (resolve) => {
-      const finalParams: TDocmapSearchParams = __deepMerge([
+      const finalParams: TDocmapSearchParams = mergeDeep([
         __defaults.search,
-        __getConfig('docmap.search') ?? {},
+        getConfig('docmap.search') ?? {},
         params ?? {},
       ]);
 
@@ -526,7 +523,7 @@ class Docmap implements TDocmap {
         // @ts-ignore
         finalMenu.packages[packageName] = {
           name: packageName,
-          tree: __deepMap(menuObj.tree, ({ prop, value }) => {
+          tree: mapDeep(menuObj.tree, ({ prop, value }) => {
             if (prop === 'slug') return `/package/${packageName}${value}`;
             return value;
           }),
@@ -538,13 +535,13 @@ class Docmap implements TDocmap {
     Object.keys(this.settings.customMenu).forEach((menuName) => {
       if (!finalMenu.custom[menuName]) finalMenu.custom[menuName] = {};
       // @ts-ignore
-      finalMenu.custom[menuName].tree = __deepFilter(
+      finalMenu.custom[menuName].tree = filterDeep(
         finalMenu.tree,
         // @ts-ignore
         this.settings.customMenu[menuName],
       );
       // @ts-ignore
-      finalMenu.custom[menuName].slug = __deepFilter(
+      finalMenu.custom[menuName].slug = filterDeep(
         finalMenu.slug,
         // @ts-ignore
         this.settings.customMenu[menuName],
@@ -553,22 +550,22 @@ class Docmap implements TDocmap {
       Object.keys(finalMenu.packages).forEach((packageName) => {
         const packageObj = finalMenu.packages[packageName];
         // @ts-ignore
-        const packageFilteredTree = __deepFilter(
+        const packageFilteredTree = filterDeep(
           packageObj.tree,
           // @ts-ignore
           this.settings.customMenu[menuName],
         );
-        finalMenu.custom[menuName].tree = __deepMerge([
+        finalMenu.custom[menuName].tree = mergeDeep([
           finalMenu.custom[menuName].tree,
           packageFilteredTree,
         ]);
         // @ts-ignore
-        const packageFilteredSlug = __deepFilter(
+        const packageFilteredSlug = filterDeep(
           packageObj.slug,
           // @ts-ignore
           this.settings.customMenu[menuName],
         );
-        finalMenu.custom[menuName].slug = __deepMerge([
+        finalMenu.custom[menuName].slug = mergeDeep([
           finalMenu.custom[menuName].slug,
           packageFilteredSlug,
         ]);
@@ -646,9 +643,9 @@ class Docmap implements TDocmap {
    * @author         Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
    */
   build(params?: Partial<TDocmapBuildParams>): Promise<any> {
-    const finalParams: TDocmapBuildParams = __deepMerge([
+    const finalParams: TDocmapBuildParams = mergeDeep([
       __defaults.build,
-      __getConfig('docmap.build') ?? {},
+      getConfig('docmap.build') ?? {},
       params ?? {},
     ]);
 
@@ -667,7 +664,7 @@ class Docmap implements TDocmap {
 
       // check if a file already exists
       if (__fs.existsSync(`${packageRoot}/docmap.json`)) {
-        const currentDocmapJson = __readJsonSync(`${packageRoot}/docmap.json`);
+        const currentDocmapJson = readJsonSync(`${packageRoot}/docmap.json`);
         docmapJson = currentDocmapJson;
         docmapJson.generated = {
           map: {},
@@ -786,7 +783,7 @@ class Docmap implements TDocmap {
           if (docblock.private) continue;
 
           // const path = __path.relative(outputDir, filepath);
-          const filename = __fileName(filePath);
+          const filename = fileName(filePath);
 
           const docblockEntryObj: TDocmapEntry = {
             id: 'undefined',
@@ -853,7 +850,7 @@ class Docmap implements TDocmap {
 
             // json
             if (finalParams.json) {
-              __writeJsonSync(finalOutPath, docmapObj);
+              writeJsonSync(finalOutPath, docmapObj);
               console.log(
                 `<green>[save]</green> JSON file saved <green>successfully</green> under "<cyan>${outPath.replace(
                   __packageRootDir() + '/',
@@ -869,7 +866,7 @@ class Docmap implements TDocmap {
               // transform to mdx
               const mdx = this.toMdx(docmapObj);
               // write to disk
-              __writeFileSync(mdxOutPath, mdx);
+              writeFileSync(mdxOutPath, mdx);
               console.log(
                 `<green>[save]</green> MDX file saved <green>successfully</green> under "<cyan>${mdxOutPath.replace(
                   __packageRootDir() + '/',
@@ -902,11 +899,11 @@ class Docmap implements TDocmap {
   toMdx(docmapObj: TDocmapObj): string {
     const result: string[] = [];
 
-    function encodeEntities(str: string): string {
+    function _encodeEntities(str: string): string {
       if (typeof str !== 'string') {
         str = `${str}`;
       }
-      return __encodeEntities(str);
+      return encodeEntities(str);
     }
 
     result.push('---');
@@ -918,7 +915,7 @@ class Docmap implements TDocmap {
       );
     }
     if (docmapObj.type) {
-      result.push(`type: '${encodeEntities(docmapObj.type.raw ?? '')}'`);
+      result.push(`type: '${_encodeEntities(docmapObj.type.raw ?? '')}'`);
     }
     if (docmapObj.status) {
       result.push(`status: '${docmapObj.status}'`);
@@ -955,7 +952,7 @@ class Docmap implements TDocmap {
     }
     if (docmapObj.type) {
       result.push(
-        `<div class="docmap_type"><span class="docmap_type-label">Type:</span><span class="docmap_type-value">${encodeEntities(
+        `<div class="docmap_type"><span class="docmap_type-label">Type:</span><span class="docmap_type-value">${_encodeEntities(
           docmapObj.type.raw ?? docmapObj.type ?? '',
         )}</span></div>`,
       );
@@ -1013,14 +1010,14 @@ class Docmap implements TDocmap {
             paramObj.default === undefined
               ? '<span class="docmap_required">*</span>'
               : ''
-          }</span><span class="docmap_default">${encodeEntities(
+          }</span><span class="docmap_default">${_encodeEntities(
             defaultStr ?? '-',
-          )}</span> <span class="docmap_type">${encodeEntities(
+          )}</span> <span class="docmap_type">${_encodeEntities(
             paramObj.type.raw ?? '',
           )}</span>`,
         );
         result.push(
-          `<p class="docmap_description">${encodeEntities(
+          `<p class="docmap_description">${_encodeEntities(
             paramObj.description ?? '',
           )}</p>`,
         );
@@ -1042,12 +1039,12 @@ class Docmap implements TDocmap {
       result.push(
         `<span class="docmap_default">${
           docmapObj.return.default ?? '-'
-        }</span><span class="docmap_type">${encodeEntities(
+        }</span><span class="docmap_type">${_encodeEntities(
           docmapObj.return.type.raw ?? '',
         )}</span>`,
       );
       result.push(
-        `<p class="docmap_description">${encodeEntities(
+        `<p class="docmap_description">${_encodeEntities(
           docmapObj.return.description ?? '',
         )}</p>`,
       );
@@ -1087,9 +1084,9 @@ class Docmap implements TDocmap {
             settingObj.default === undefined
               ? '<span class="docmap_required">*</span>'
               : ''
-          }</span><span class="docmap_default">${encodeEntities(
+          }</span><span class="docmap_default">${_encodeEntities(
             settingObj.default ?? '-',
-          )}</span> <span class="docmap_type">${encodeEntities(
+          )}</span> <span class="docmap_type">${_encodeEntities(
             settingObj.type.raw ?? '',
           )}</span>`,
         );

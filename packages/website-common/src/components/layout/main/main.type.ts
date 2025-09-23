@@ -1,5 +1,6 @@
 import { type TLayout } from '../layout/layout.type';
+import type { TWebsiteConfig } from '../../../types/websiteConfig.type';
 
 export type TMain = TLayout & {
-  menu: any;
+  websiteConfig: TWebsiteConfig;
 };

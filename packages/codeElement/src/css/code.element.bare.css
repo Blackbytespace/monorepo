@@ -51,11 +51,6 @@ s-code {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-
-    &,
-    * {
-      user-select: text !important;
-    }
   }
 
   code,

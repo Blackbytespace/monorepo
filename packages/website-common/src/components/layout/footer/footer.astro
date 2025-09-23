@@ -4,7 +4,7 @@ import { type TFooter } from './footer.type';
 
 type Props = TFooter;
 
-const { title, version, license } = Astro.props;
+const { title, version, license } = Astro.props.websiteConfig;
 ---
 
 <footer class="footer">

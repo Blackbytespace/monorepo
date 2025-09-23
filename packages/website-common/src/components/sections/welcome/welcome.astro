@@ -6,6 +6,8 @@ type Props = TWelcome;
 ---
 
 <section class="welcome">
+  <div class="welcome_earth"></div>
+
   <div class="welcome_animation">
     <div class="welcome_animation-picto">
       <div class="blackbyte-picto -white">
@@ -43,16 +45,16 @@ type Props = TWelcome;
 
   <div class="welcome_header">
     <p class="welcome_description">
-      <Fragment set:html={Astro.props.description} />
+      <Fragment set:html={Astro.props.websiteConfig.welcome.description} />
     </p>
     <div class="welcome_install">
-      {Astro.props.install}
+      {Astro.props.websiteConfig.install}
       <s-icon name="clipboard" provider="pixelarticons"></s-icon>
       <s-icon name="check" provider="pixelarticons"></s-icon>
     </div>
     <div class="welcome_actions">
       <a
-        href={`${Astro.props.repository.url}/archive/refs/heads/main.zip`}
+        href={`${Astro.props.websiteConfig.repository.url}/archive/refs/heads/main.zip`}
         title="Download source code"
         target="_blank"
       >
@@ -61,13 +63,13 @@ type Props = TWelcome;
       <a
         id="welcome-get-started"
         class="welcome_get-started button"
-        href={Astro.props.getStarted.url}
+        href={Astro.props.websiteConfig.getStarted.url}
         title="Get started"
       >
         Get started
       </a>
       <a
-        href={Astro.props.repository.url}
+        href={Astro.props.websiteConfig.repository.url}
         title="Blackbyte on GitHub"
         target="_blank"
       >
@@ -99,6 +101,7 @@ type Props = TWelcome;
 
   function initWelcome() {
     const $getStarted = $welcome?.querySelector('#welcome-get-started'),
+      $earth = $welcome?.querySelector('.welcome_earth') as HTMLElement,
       $pictoWhite = $welcome?.querySelector(
         '.blackbyte-picto.-white',
       ) as HTMLElement,
@@ -108,6 +111,14 @@ type Props = TWelcome;
       $bits = $pictoWhite.querySelectorAll('div') as NodeListOf<HTMLDivElement>;
 
     const bitsMap = new WeakMap<HTMLElement, any>();
+
+    window.addEventListener('scroll', (e) => {
+      animate($earth, {
+        y: window.scrollY * 0.2,
+        duration: 300,
+        easing: 'out(5)',
+      });
+    });
 
     // Create a map of bits to their corresponding white and black elements
     const $blackBits = $pictoBlack.querySelectorAll('div');
@@ -195,7 +206,7 @@ type Props = TWelcome;
     }, 50);
   }
 
-  const $welcome = document.querySelector('.welcome');
+  const $welcome = document.querySelector('.welcome') as HTMLElement;
   $welcome && initWelcome();
   $welcome && initInstall();
 </script>

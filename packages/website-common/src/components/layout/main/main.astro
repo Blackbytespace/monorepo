@@ -1,11 +1,9 @@
 ---
-import { fade } from 'astro:transitions';
 import Layout from '../layout/layout.astro';
 import Header from '../header/header.astro';
 import Footer from '../footer/footer.astro';
-import './main';
-import __logoBlackbyte from '@blackbyte/website-common/src/img/blackbyte-logo-picto.svg?raw';
 import type { TMain } from './main.type';
+import './main';
 
 type Props = TMain;
 ---
@@ -32,35 +30,16 @@ type Props = TMain;
   });
 </script>
 
-<Layout
-  title={Astro.props.title}
-  pageTitle={Astro.props.pageTitle}
-  description={Astro.props.description}
-  license={Astro.props.license}
-  version={Astro.props.version}
-  repository={Astro.props.repository}
-  og={Astro.props.og}
->
+<Layout websiteConfig={Astro.props.websiteConfig}>
   <main class="main">
-    <Header
-      title={Astro.props.title}
-      version={Astro.props.version}
-      license={Astro.props.license}
-      repository={Astro.props.repository}
-      menu={Astro.props.menu}
-    />
+    <Header websiteConfig={Astro.props.websiteConfig} />
 
-    <div class="main_body" transition:animate={fade({ duration: '0.1s' })}>
+    <div class="main_body">
       <div class="container">
         <slot />
       </div>
     </div>
   </main>
 
-  <Footer
-    title={Astro.props.title}
-    version={Astro.props.version}
-    license={Astro.props.license}
-    repository={Astro.props.repository}
-  />
+  <Footer websiteConfig={Astro.props.websiteConfig} />
 </Layout>

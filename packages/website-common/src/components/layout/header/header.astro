@@ -6,9 +6,8 @@ import { type THeader } from './header.type';
 
 type Props = THeader;
 
-const { title, version, license, repository } = Astro.props;
-let versionHtml = `v${version.split('-')[0]}`;
-const pseudoVersion = version.split('-')[1];
+let versionHtml = `v${Astro.props.websiteConfig.version.split('-')[0]}`;
+const pseudoVersion = Astro.props.websiteConfig.version.split('-')[1];
 if (pseudoVersion) {
   versionHtml += `-<span class="header_version-pseudo">${pseudoVersion}</span>`;
 }
@@ -17,18 +16,20 @@ if (pseudoVersion) {
 <header class="header">
   <div class="container">
     <div class="header_brand">
-      <a href="/" title={title}>
+      <a href="/" title={Astro.props.websiteConfig.title}>
         <div class="header_logo">
           <Fragment set:html={BlackbyteLogoSvg} />
         </div>
         <div class="header_picto">
           <Fragment set:html={BlackbytePictoSvg} />
         </div>
-        <h1 class="header_title font-family-brand">{title}</h1>
+        <h1 class="header_title font-family-brand">
+          {Astro.props.websiteConfig.title}
+        </h1>
       </a>
     </div>
     <div class="header_search">
-      <Search menu={Astro.props.menu} />
+      <Search menu={Astro.props.websiteConfig.menu} />
     </div>
     <div class="header_metas">
       <p class="header_version">
@@ -36,16 +37,16 @@ if (pseudoVersion) {
       </p>
       <a
         class="header_license"
-        href={license.url}
+        href={Astro.props.websiteConfig.license.url}
         target="_blank"
-        title={license.name}
+        title={Astro.props.websiteConfig.license.name}
       >
-        {license.name}
+        {Astro.props.websiteConfig.license.name}
       </a>
       <a
         class="header_github"
-        href={repository.url}
-        title={repository.name}
+        href={Astro.props.websiteConfig.repository.url}
+        title={Astro.props.websiteConfig.repository.name}
         target="_blank"
       >
         <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>
