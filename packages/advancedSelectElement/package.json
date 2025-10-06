@@ -1,7 +1,19 @@
 {
   "name": "@blackbyte/advanced-select-element",
-  "version": "1.0.0-beta.1",
   "description": "Fully features and simple to use advanced select element built on top of LitElement and TypeScript.",
+  "version": "1.0.0-beta.1",
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "lit",
+    "lit-element",
+    "typescript",
+    "select",
+    "dropdown",
+    "ui",
+    "sugar",
+    "blackbyte"
+  ],
   "type": "module",
   "author": "Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)",
   "license": "MIT",
@@ -18,6 +30,9 @@
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
   },
+  "files": [
+    "dist/"
+  ],
   "main": "dist/js/_exports.js",
   "module": "dist/js/_exports.js",
   "types": "src/js/_exports.ts",

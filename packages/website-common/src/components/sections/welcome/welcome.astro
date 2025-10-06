@@ -78,7 +78,7 @@ type Props = TWelcome;
     </div>
 
     <p class="welcome_made">
-      Made with <span class="color-accent">♥</span> by Blackbyte
+      <Fragment set:html={Astro.props.websiteConfig.welcome.withLove} />
     </p>
   </div>
 </section>

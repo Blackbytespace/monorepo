@@ -24,14 +24,14 @@ const { title, version, license } = Astro.props.websiteConfig;
         class="footer_license"
         href={license.url}
         target="_blank"
-        title={license.name}
+        title={`Blackbyte ${Astro.props.websiteConfig.title} ${license.name} license`}
       >
         {license.name}
       </a>
       <a
         class="footer_github"
-        href="https://github.com/blackbytespace/monorepo"
-        title="Blackbyte monorepo on GitHub"
+        href={Astro.props.websiteConfig.repository.url}
+        title={`Blackbyte ${Astro.props.websiteConfig.title} on GitHub`}
         target="_blank"
       >
         <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>

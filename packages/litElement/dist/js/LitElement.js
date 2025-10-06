@@ -47,25 +47,6 @@ export { __html as html };
  * @since           1.0.0
  */
 class LitElement extends __LitElement {
-    get state() {
-        var _a;
-        const stateId = this.stateId || this.id;
-        if (this.saveState && stateId) {
-            try {
-                const savedState = JSON.parse((_a = localStorage.getItem(stateId)) !== null && _a !== void 0 ? _a : '{}');
-                return savedState;
-            }
-            catch (e) { }
-        }
-        return this._state;
-    }
-    set state(state) {
-        Object.assign(this._state, state);
-        const stateId = this.stateId || this.id;
-        if (this.saveState && stateId) {
-            localStorage.setItem(stateId, JSON.stringify(this._state));
-        }
-    }
     /**
      * @name            define
      * @type            Function
@@ -159,7 +140,7 @@ class LitElement extends __LitElement {
      * @author 		Olivier Bossel<olivier.bossel@gmail.com>
      */
     constructor(internalName, props) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         super();
         this.id = undefined;
         this.lnf = false;
@@ -175,9 +156,9 @@ class LitElement extends __LitElement {
         this.classesSchema = 'slim';
         this.avoidNameClass = false;
         this._internalName = this.tagName.toLowerCase();
+        this.state = {};
         this._shouldUpdate = false;
         this._listenersMap = new Map();
-        this._state = {};
         /**
          * @name      isMounted
          * @type      Function
@@ -193,11 +174,13 @@ class LitElement extends __LitElement {
             this._internalName = internalName;
         }
         // set the id as property
-        this.setAttribute('id', (_a = this.id) !== null && _a !== void 0 ? _a : `s-${Math.round(Math.random() * 9999)}`);
+        this.setAttribute('id', (_b = (_a = this.id) !== null && _a !== void 0 ? _a : this.getAttribute('id')) !== null && _b !== void 0 ? _b : `s-${Math.round(Math.random() * 9999)}`);
         // @ts-ignore
-        const nodeFirstUpdated = (_b = this.firstUpdated) === null || _b === void 0 ? void 0 : _b.bind(this);
+        const nodeFirstUpdated = (_c = this.firstUpdated) === null || _c === void 0 ? void 0 : _c.bind(this);
         // @ts-ignore
         this.firstUpdated = () => __awaiter(this, void 0, void 0, function* () {
+            // restore state
+            this.restoreState();
             // make sure the component has it's base class
             // this is useful when some classes are added on the component itself
             // and overrides the base class
@@ -220,7 +203,7 @@ class LitElement extends __LitElement {
         });
         // litElement shouldUpdate
         // @ts-ignore
-        const nodeShouldUpdate = (_c = this.shouldUpdate) === null || _c === void 0 ? void 0 : _c.bind(this);
+        const nodeShouldUpdate = (_d = this.shouldUpdate) === null || _d === void 0 ? void 0 : _d.bind(this);
         // @ts-ignore
         this.shouldUpdate = () => {
             if (nodeShouldUpdate) {
@@ -232,7 +215,7 @@ class LitElement extends __LitElement {
             return this._shouldUpdate;
         };
         const defaultProps = Object.assign(Object.assign(Object.assign({}, LitElement.getDefaultProps(internalName.toLowerCase())), LitElement.getDefaultProps(this.tagName.toLowerCase())), (props !== null && props !== void 0 ? props : {}));
-        const mountWhen = (_e = (_d = this.getAttribute('mountWhen')) !== null && _d !== void 0 ? _d : defaultProps.mountWhen) !== null && _e !== void 0 ? _e : 'direct';
+        const mountWhen = (_f = (_e = this.getAttribute('mountWhen')) !== null && _e !== void 0 ? _e : defaultProps.mountWhen) !== null && _f !== void 0 ? _f : 'direct';
         // wait until mount
         this._waitAndExecute(mountWhen, () => {
             this._mount();
@@ -274,6 +257,24 @@ class LitElement extends __LitElement {
             });
         }
         super.connectedCallback();
+    }
+    restoreState() {
+        const stateId = this.stateId || this.id || this.getAttribute('id');
+        if (this.saveState && stateId) {
+            const savedStateStr = localStorage.getItem(stateId);
+            if (savedStateStr) {
+                try {
+                    this.state = JSON.parse(savedStateStr);
+                }
+                catch (e) { }
+            }
+        }
+    }
+    writeState() {
+        const stateId = this.stateId || this.id;
+        if (this.saveState && stateId) {
+            localStorage.setItem(stateId, JSON.stringify(this.state));
+        }
     }
     /**
      * @name           setState

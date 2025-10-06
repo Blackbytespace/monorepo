@@ -2,6 +2,7 @@
   <div class="code">
     <component
       is="s-code"
+      :filename="filename"
       :language="language"
       :header="header ? true : undefined"
       :code="code"

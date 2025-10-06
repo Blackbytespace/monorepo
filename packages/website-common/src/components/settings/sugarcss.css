@@ -122,4 +122,7 @@
   --s-typo-code: s-font(code) s-size(code) 1.4;
   --s-typo-brand: s-font(brand) s-size(lead) 1.4;
   --s-typo-caption: s-font(default) s-size(caption) 1.4 0.05em;
+
+  --s-color-white: #fff;
+  --s-color-black: #000;
 }

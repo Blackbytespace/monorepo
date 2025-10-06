@@ -55,7 +55,8 @@ export default class CodeElement extends __LitElement {
   public header: boolean = false;
 
   @property({ type: String })
-  public copyIcon: string = `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
+  public copyIcon: string =
+    `<s-icon name="clipboard" provider="pixelarticons"></s-icon>`;
 
   @property({ type: String })
   public copyStr: string = 'Copy';
@@ -142,14 +143,9 @@ export default class CodeElement extends __LitElement {
                         ${this.filename}
                       </div>
                     `
-                  : ''}
-                <div class="${this.cls('_language')}">
-                  <span class="${this.cls('_language-parenthesis')}">(</span
-                  >${this.language}<span
-                    class="${this.cls('_language-parenthesis')}"
-                    >)</span
-                  >
-                </div>
+                  : html` <div class="${this.cls('_language')}">
+                      ${this.language}
+                    </div>`}
               </div>
               <div class="${this.cls('_tools')}">
                 <button

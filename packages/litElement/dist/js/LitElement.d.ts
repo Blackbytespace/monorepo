@@ -27,7 +27,6 @@ export type TSLitElementDefaultProps = {
     mountWhen: 'direct' | 'inViewport' | 'nearViewport' | 'interact' | 'visible' | 'domReady';
     avoidNameClass: boolean;
     adoptStyle: boolean;
-    saveState: boolean;
     stateId: string;
     shadowDom: boolean;
     classesSchema: TClassesSchema;
@@ -76,11 +75,9 @@ export default class LitElement extends __LitElement {
     classesSchema: TClassesSchema;
     avoidNameClass: boolean;
     protected _internalName: string;
+    protected state: any;
     private _shouldUpdate;
     private _listenersMap;
-    protected _state: any;
-    get state(): LitElement['_state'];
-    set state(state: LitElement['_state']);
     /**
      * @name            define
      * @type            Function
@@ -145,6 +142,8 @@ export default class LitElement extends __LitElement {
     constructor(internalName: string, props?: TSLitElementDefaultProps);
     protected update(changedProperties: PropertyValues): void;
     connectedCallback(): void;
+    restoreState(): void;
+    writeState(): void;
     /**
      * @name           setState
      * @type            Function
@@ -157,7 +156,7 @@ export default class LitElement extends __LitElement {
      *
      * @since           1.0.0
      */
-    setState(newState: Partial<LitElement['_state']>): void;
+    setState(newState: Partial<LitElement['state']>): void;
     log(...args: any[]): void;
     _getDocumentFromElement($elm: any): any;
     /**

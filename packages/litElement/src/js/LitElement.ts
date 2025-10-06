@@ -55,7 +55,6 @@ export type TSLitElementDefaultProps = {
     | 'domReady';
   avoidNameClass: boolean;
   adoptStyle: boolean;
-  saveState: boolean;
   stateId: string;
   shadowDom: boolean;
   classesSchema: TClassesSchema;
@@ -143,30 +142,13 @@ export default class LitElement extends __LitElement {
 
   protected _internalName: string = this.tagName.toLowerCase();
 
+  protected state: any = {};
+
   private _shouldUpdate = false;
   private _listenersMap: Map<
     HTMLElement | Document | Window,
     TLitElementEventListenerObject[]
   > = new Map();
-
-  protected _state: any = {};
-  get state(): LitElement['_state'] {
-    const stateId = this.stateId || this.id;
-    if (this.saveState && stateId) {
-      try {
-        const savedState = JSON.parse(localStorage.getItem(stateId) ?? '{}');
-        return savedState;
-      } catch (e) {}
-    }
-    return this._state;
-  }
-  set state(state: LitElement['_state']) {
-    Object.assign(this._state, state);
-    const stateId = this.stateId || this.id;
-    if (this.saveState && stateId) {
-      localStorage.setItem(stateId, JSON.stringify(this._state));
-    }
-  }
 
   /**
    * @name            define
@@ -283,12 +265,20 @@ export default class LitElement extends __LitElement {
     }
 
     // set the id as property
-    this.setAttribute('id', this.id ?? `s-${Math.round(Math.random() * 9999)}`);
+    this.setAttribute(
+      'id',
+      this.id ??
+        this.getAttribute('id') ??
+        `s-${Math.round(Math.random() * 9999)}`,
+    );
 
     // @ts-ignore
     const nodeFirstUpdated = this.firstUpdated?.bind(this);
     // @ts-ignore
     this.firstUpdated = async () => {
+      // restore state
+      this.restoreState();
+
       // make sure the component has it's base class
       // this is useful when some classes are added on the component itself
       // and overrides the base class
@@ -382,6 +372,25 @@ export default class LitElement extends __LitElement {
     super.connectedCallback();
   }
 
+  public restoreState(): void {
+    const stateId = this.stateId || this.id || this.getAttribute('id');
+    if (this.saveState && stateId) {
+      const savedStateStr = localStorage.getItem(stateId);
+      if (savedStateStr) {
+        try {
+          this.state = JSON.parse(savedStateStr);
+        } catch (e) {}
+      }
+    }
+  }
+
+  public writeState(): void {
+    const stateId = this.stateId || this.id;
+    if (this.saveState && stateId) {
+      localStorage.setItem(stateId, JSON.stringify(this.state));
+    }
+  }
+
   /**
    * @name           setState
    * @type            Function
@@ -394,7 +403,7 @@ export default class LitElement extends __LitElement {
    *
    * @since           1.0.0
    */
-  public setState(newState: Partial<LitElement['_state']>): void {
+  public setState(newState: Partial<LitElement['state']>): void {
     this.state = {
       ...this.state,
       ...newState,

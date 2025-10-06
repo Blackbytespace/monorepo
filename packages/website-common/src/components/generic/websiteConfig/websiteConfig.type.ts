@@ -17,6 +17,7 @@ export type TWebsiteConfig = {
   welcome: {
     title: string;
     description: string;
+    withLove: string;
   };
   license: TLicense;
   repository: TRepository;

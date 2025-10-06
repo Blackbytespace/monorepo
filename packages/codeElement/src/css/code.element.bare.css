@@ -28,6 +28,9 @@ s-code {
     flex-grow: 1;
   }
 
+  .s-code_filename {
+  }
+
   .s-code_language {
   }
 

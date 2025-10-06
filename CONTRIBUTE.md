@@ -22,15 +22,11 @@ Our git workflow is very simple and normally well known by developers around the
 Here's the branches schema that has to be followed:
 
 - `master`: Master branch that represent the published packages.
-- `hotfix/package-name...`: Branches that handle hotfix and will be merged into `master` and `develop`
-  - Example for the `sugar` package: `hotfix/sugar-querySelectorLive`
+- `hotfix/name...`: Branches that handle hotfix and will be merged into `master` and `develop`
+  - Example: `hotfix/querySelectorLive-...`
 - `develop`: Main development branch where features, fixes, etc... will be merged.
-- `feature/package-name-...`: Feature branches on which maintainers and developers has to work.
-  - Example for the `sugar` package: `feature/sugar-myAwesomeQueryFunction`
-
-Why no `release` branch?
-
-For now, we are going to use the `tags` to mark releases on the `master` branch. This may change in futur but for now, it's the way it is...
+- `feature/name-...`: Feature branches on which maintainers and developers has to work.
+  - Example: `feature/myAwesomeQueryFunction`
 
 ## Pull request
 

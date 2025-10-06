@@ -1,0 +1,70 @@
+@import './fluidMenu.element.bare.css';
+
+s-fluid-menu {
+}
+
+.s-fluid-menu {
+  .s-fluid-menu_nav {
+  }
+
+  .s-fluid-menu_list {
+  }
+
+  .s-fluid-menu_list-item {
+  }
+
+  .s-fluid-menu_link {
+    position: relative;
+    padding-block: 5px;
+    opacity: 1;
+
+    &[href^='#'] {
+      opacity: 0.3;
+    }
+
+    &.-active {
+      opacity: 1;
+    }
+  }
+
+  &.-ready {
+    .s-fluid-menu_link {
+      transition:
+        font-size 0.2s cubic-bezier(0.745, 0, 0.18, 1),
+        color 0.2s cubic-bezier(0.745, 0, 0.18, 1);
+    }
+  }
+
+  /* opened nav */
+  .s-fluid-menu_link.-active ~ .s-fluid-menu_nav:not(:has(.-active)) {
+    margin-block-start: 10px;
+  }
+
+  nav {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* hidded list items */
+  li:not(:has(.-active)) {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    translate: 0 -10px;
+    transition:
+      height 0.3s cubic-bezier(0.465, 0, 0.19, 1.325) 0s,
+      opacity 0.3s cubic-bezier(0.745, 0, 0.18, 1) 0s,
+      translate 1s cubic-bezier(0.465, 0, 0.19, 1.325) 0s;
+  }
+
+  /* displayed list items */
+  &:not(:has(.-active)) > nav > ol > li,
+  .-active ~ nav:not(:has(.-active)) > ol > li {
+    height: calc-size(auto, size);
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      height 0.2s cubic-bezier(0.465, 0, 0.43, 1.195) 0s,
+      opacity 0.4s cubic-bezier(0.745, 0, 0.18, 1) 0.1s,
+      translate 0.4s cubic-bezier(0.465, 0, 0.43, 1.195) 0.1s;
+  }
+}

@@ -89,6 +89,10 @@ s-code {
     opacity: 0.2;
   }
 
+  .s-code_filename {
+    opacity: 0.2;
+  }
+
   .s-code_tools {
   }
 

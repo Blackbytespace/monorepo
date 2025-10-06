@@ -30,9 +30,18 @@ type Props = TMain;
   });
 </script>
 
-<Layout websiteConfig={Astro.props.websiteConfig}>
+<Layout
+  pageTitle={Astro.props.pageTitle}
+  websiteConfig={Astro.props.websiteConfig}
+>
   <main class="main">
-    <Header websiteConfig={Astro.props.websiteConfig} />
+    {
+      Astro.props.header !== false ? (
+        <Header websiteConfig={Astro.props.websiteConfig} />
+      ) : (
+        ''
+      )
+    }
 
     <div class="main_body">
       <div class="container">
@@ -41,5 +50,11 @@ type Props = TMain;
     </div>
   </main>
 
-  <Footer websiteConfig={Astro.props.websiteConfig} />
+  {
+    Astro.props.footer !== false ? (
+      <Footer websiteConfig={Astro.props.websiteConfig} />
+    ) : (
+      ''
+    )
+  }
 </Layout>

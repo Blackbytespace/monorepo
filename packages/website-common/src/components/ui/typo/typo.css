@@ -35,7 +35,7 @@
 
 .typo-p,
 .typo-format p {
-  opacity: 0.5;
+  color: s-color(white, --alpha 0.6);
   @s-typo (p);
 
   &:empty {
@@ -66,6 +66,11 @@
 .typo-a,
 .typo-format a {
   color: s-color(accent, text);
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }
 
 .typo-strong,

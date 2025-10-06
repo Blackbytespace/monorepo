@@ -16,7 +16,7 @@ if (pseudoVersion) {
 <header class="header">
   <div class="container">
     <div class="header_brand">
-      <a href="/" title={Astro.props.websiteConfig.title}>
+      <a href="/" title={`Blackbyte ${Astro.props.websiteConfig.title}`}>
         <div class="header_logo">
           <Fragment set:html={BlackbyteLogoSvg} />
         </div>
@@ -39,14 +39,14 @@ if (pseudoVersion) {
         class="header_license"
         href={Astro.props.websiteConfig.license.url}
         target="_blank"
-        title={Astro.props.websiteConfig.license.name}
+        title={`Blackbyte ${Astro.props.websiteConfig.title} ${Astro.props.websiteConfig.license.name} license`}
       >
         {Astro.props.websiteConfig.license.name}
       </a>
       <a
         class="header_github"
         href={Astro.props.websiteConfig.repository.url}
-        title={Astro.props.websiteConfig.repository.name}
+        title={`Blackbyte ${Astro.props.websiteConfig.title} on GitHub`}
         target="_blank"
       >
         <s-icon name="github" provider="pixelarticons" type="brands"></s-icon>

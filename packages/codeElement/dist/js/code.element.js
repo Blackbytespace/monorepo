@@ -128,14 +128,9 @@ export default class CodeElement extends __LitElement {
                         ${this.filename}
                       </div>
                     `
-                : ''}
-                <div class="${this.cls('_language')}">
-                  <span class="${this.cls('_language-parenthesis')}">(</span
-                  >${this.language}<span
-                    class="${this.cls('_language-parenthesis')}"
-                    >)</span
-                  >
-                </div>
+                : html ` <div class="${this.cls('_language')}">
+                      ${this.language}
+                    </div>`}
               </div>
               <div class="${this.cls('_tools')}">
                 <button
