@@ -11,6 +11,10 @@
     "build": "tsc",
     "publish": "npm publish --access public"
   },
+  "files": [
+    "dist/",
+    "src/node/types.ts"
+  ],
   "dependencies": {
     "@blackbyte/sugar": "^1.0.0-beta.1",
     "typescript": "^5.4.5"
