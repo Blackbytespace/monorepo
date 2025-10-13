@@ -3,6 +3,7 @@
 :root {
   --s-setting-verbose: false;
   --s-setting-mobile-first: false;
+  --s-setting-rem-factor: 0.0625;
 
   --s-scrolled-classes-class: scrolled;
   --s-scrolled-classes-offset: 50;
