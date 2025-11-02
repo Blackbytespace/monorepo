@@ -1,24 +1,25 @@
 // @ts-nocheck
 
 import { getConfig } from '@blackbyte/config';
-import { encodeEntities } from '@blackbyte/sugar/html';
 import type { TDocblockSettings } from '@blackbyte/docblock';
 import __Docblock from '@blackbyte/docblock';
 import { __composerJsonSync } from '@blackbyte/sugar/composer';
 import {
   checkPathWithMultipleExtensions,
+  ensureDirSync,
   fileName,
   folderPath,
   readJsonSync,
   writeFileSync,
+  writeJsonSync,
 } from '@blackbyte/sugar/fs';
-import { writeJsonSync } from '@blackbyte/sugar/fs';
+import { encodeEntities } from '@blackbyte/sugar/html';
 
 import {
   filterDeep,
+  get,
   mapDeep,
   mergeDeep,
-  get,
   set,
   sort,
   sortDeep,
@@ -26,11 +27,11 @@ import {
 
 import __defaults from './defaults.js';
 
-import { __packageJsonSync, __packageRootDir } from '@blackbyte/sugar/package';
+import { __packageJsonSync, packageRootDir } from '@blackbyte/sugar/package';
 import { globSync as __globSync } from 'glob';
 
 import { __namespaceCompliant } from '@blackbyte/sugar/string';
-import __fs from 'fs';
+import fs from 'fs';
 import __micromatch from 'micromatch';
 import __path from 'path';
 
@@ -202,14 +203,14 @@ class Docmap implements TDocmap {
 
       let docmapRootPath = folderPath(finalParams.input);
 
-      if (!__fs.existsSync(finalParams.input)) {
+      if (!fs.existsSync(finalParams.input)) {
         return resolve({
           map: {},
           menu: {},
         });
       }
 
-      const packageMonoRoot = __packageRootDir(process.cwd(), {
+      const packageMonoRoot = packageRootDir(process.cwd(), {
         highest: true,
       });
 
@@ -237,11 +238,11 @@ class Docmap implements TDocmap {
             'docmap.json',
           );
 
-        if (__fs.existsSync(potentialPackageDocmapJsonPath)) {
+        if (fs.existsSync(potentialPackageDocmapJsonPath)) {
           currentPathDocmapJsonPath = potentialPackageDocmapJsonPath;
-        } else if (__fs.existsSync(`${packageNameOrPath}/docmap.json`)) {
+        } else if (fs.existsSync(`${packageNameOrPath}/docmap.json`)) {
           currentPathDocmapJsonPath = `${packageNameOrPath}/docmap.json`;
-        } else if (__fs.existsSync(potentialRootPackageDocmapJsonPath)) {
+        } else if (fs.existsSync(potentialRootPackageDocmapJsonPath)) {
           currentPathDocmapJsonPath = potentialRootPackageDocmapJsonPath;
         } else {
           return;
@@ -649,6 +650,10 @@ class Docmap implements TDocmap {
       params ?? {},
     ]);
 
+    if (typeof finalParams.outPath === 'string') {
+      finalParams.outPath = finalParams.outPath.split(',').map((l) => l.trim());
+    }
+
     return new Promise(async (resolve) => {
       let docmapJson = {
         map: {},
@@ -657,13 +662,13 @@ class Docmap implements TDocmap {
         },
       };
 
-      const packageRoot = __packageRootDir();
-      const packageMonoRoot = __packageRootDir(process.cwd(), {
+      const packageRoot = packageRootDir();
+      const packageMonoRoot = packageRootDir(process.cwd(), {
         highest: true,
       });
 
       // check if a file already exists
-      if (__fs.existsSync(`${packageRoot}/docmap.json`)) {
+      if (fs.existsSync(`${packageRoot}/docmap.json`)) {
         const currentDocmapJson = readJsonSync(`${packageRoot}/docmap.json`);
         docmapJson = currentDocmapJson;
         docmapJson.generated = {
@@ -679,14 +684,22 @@ class Docmap implements TDocmap {
       if (finalParams.clear) {
         if (finalParams.outDir) {
           try {
-            __fs.rmSync(finalParams.outDir, {
+            fs.rmSync(finalParams.outDir, {
               recursive: true,
             });
           } catch (e) {}
         }
+        if (Array.isArray(finalParams.outPath)) {
+          for (let i = 0; i < finalParams.outPath.length; i++) {
+            const outPath = finalParams.outPath[i];
+            try {
+              fs.rmSync(outPath);
+            } catch (e) {}
+          }
+        }
         if (typeof finalParams.outPath === 'string') {
           try {
-            __fs.rmSync(finalParams.outPath);
+            fs.rmSync(finalParams.outPath);
           } catch (e) {}
         }
       }
@@ -706,7 +719,7 @@ class Docmap implements TDocmap {
 
         console.log(
           `<yellow>[build]</yellow> Parsing file "<cyan>${__path.relative(
-            __packageRootDir(),
+            packageRootDir(),
             // @ts-ignore
             filePath,
           )}</cyan>"`,
@@ -811,7 +824,7 @@ class Docmap implements TDocmap {
               ...docblockEntryObj,
               filename,
               extension: filename.split('.').slice(1)[0],
-              relPath: __path.relative(__packageRootDir(), filePath),
+              relPath: __path.relative(packageRootDir(), filePath),
             };
             this._entries[dotPath] = docblockObj;
           } else if (docblock.name) {
@@ -853,7 +866,7 @@ class Docmap implements TDocmap {
               writeJsonSync(finalOutPath, docmapObj);
               console.log(
                 `<green>[save]</green> JSON file saved <green>successfully</green> under "<cyan>${outPath.replace(
-                  __packageRootDir() + '/',
+                  packageRootDir() + '/',
                   '',
                 )}</cyan>"`,
               );
@@ -869,7 +882,7 @@ class Docmap implements TDocmap {
               writeFileSync(mdxOutPath, mdx);
               console.log(
                 `<green>[save]</green> MDX file saved <green>successfully</green> under "<cyan>${mdxOutPath.replace(
-                  __packageRootDir() + '/',
+                  packageRootDir() + '/',
                   '',
                 )}</cyan>"`,
               );
@@ -877,15 +890,29 @@ class Docmap implements TDocmap {
           }
         }
 
+        // save some docmaps.json file(s)
+        if (Array.isArray(finalParams.outPath)) {
+          for (let i = 0; i < finalParams.outPath.length; i++) {
+            const outPath = finalParams.outPath[i];
+
+            // make sure the folder exists
+            const outDir = folderPath(outPath);
+            ensureDirSync(outDir);
+
+            // write the file
+            fs.writeFileSync(outPath, JSON.stringify(docmapJson, null, 4));
+          }
+        }
+
         // save the docmap.json file if wanted
         if (typeof finalParams.outPath === 'string') {
-          __fs.writeFileSync(
+          fs.writeFileSync(
             finalParams.outPath,
             JSON.stringify(docmapJson, null, 4),
           );
           console.log(
             `<green>[save]</green> docmap.json file saved <green>successfully</green> under "<cyan>${finalParams.outPath.replace(
-              __packageRootDir() + '/',
+              packageRootDir() + '/',
               '',
             )}</cyan>"`,
           );

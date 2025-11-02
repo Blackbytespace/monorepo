@@ -9,6 +9,7 @@ export type TDocmapConfig = {
 
 export type TDocmapBuildOutPathParam =
   | string
+  | string[]
   | ((docmapObj: TDocmapObj, settings: TDocmapSettings) => string);
 
 export type TDocmapBuildParams = {

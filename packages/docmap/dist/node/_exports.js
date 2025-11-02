@@ -1,7 +1,7 @@
 import Docmap from './Docmap.js';
-import __defaults from './defaults.js';
+import defaults from './defaults.js';
 export * from './Docmap.js';
 export * from './types.js';
-export { __defaults };
+export { defaults as __defaults, defaults };
 export default Docmap;
 //# sourceMappingURL=_exports.js.map
