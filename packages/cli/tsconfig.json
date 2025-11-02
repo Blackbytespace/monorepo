@@ -1,0 +1,25 @@
+{
+  "exclude": [
+    "blackbyte.config.ts",
+    "**/*.test.*",
+    "dist/**/*",
+    "node_modules/**/*",
+    "vendor/**/*",
+    "_wip/**/*"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "rootDir": "src/node",
+    "outDir": "dist/node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "es6",
+    "module": "nodenext",
+    "sourceMap": true,
+    "declaration": true,
+
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext"
+  }
+}
