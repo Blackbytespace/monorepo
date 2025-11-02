@@ -1,0 +1,38 @@
+{
+  "name": "css-language-server",
+  "version": "1.0.0",
+  "description": "A Language Server Protocol implementation for CSS-based languages",
+  "main": "out/server.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "start": "node out/server.js --stdio",
+    "dev": "npm run build && npm run start",
+    "clean": "rimraf out",
+    "prestart": "npm run build"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@blackbyte/sugarcss": "^1.0.0-beta.5",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "vscode-uri": "^3.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "rimraf": "^5.0.5"
+  },
+  "keywords": [
+    "language-server",
+    "lsp",
+    "css",
+    "typescript",
+    "autocomplete",
+    "syntax-highlighting"
+  ],
+  "author": "",
+  "license": "MIT"
+}

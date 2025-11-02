@@ -1,0 +1,97 @@
+/* Example CSS file to test the Language Server features */
+
+/* Basic selector - hover over properties for documentation */
+.container {
+  display: flex; /* Hover to see flexbox documentation */
+  justify-content: center; /* Try autocomplete after typing justify- */
+  align-items: center;
+  width: calc(100% - 40px); /* Hover over calc() for function info */
+  height: 100vh; /* Hover over vh unit for explanation */
+  background-color: #3498db; /* Hover over hex color */
+  margin: 20px auto;
+  padding: 1rem 2rem;
+}
+
+/* Pseudo-classes and pseudo-elements */
+.button:hover {
+  background-color: rgba(52, 152, 219, 0.8); /* Hover over rgba() */
+  transform: translateY(-2px); /* Hover over transform functions */
+  transition: all 0.3s ease; /* Hover over transition properties */
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Grid layout example */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Try autocomplete for grid properties */
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+/* CSS Custom Properties (CSS Variables) */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --font-size-base: 16px;
+}
+
+.card {
+  color: var(--primary-color); /* Hover over var() function */
+  font-size: var(--font-size-base, 14px); /* With fallback value */
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+/* Animation example */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-element {
+  animation: fadeIn 0.5s ease-in-out; /* Hover for animation properties */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Try autocomplete for flex properties */
+    padding: 1rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+}
+
+/* Examples that will show diagnostics/errors */
+.error-examples {
+  /* Uncomment these lines to see error detection in action */
+  
+  /* Invalid property - will show warning */
+  /* invalid-property: value; */
+  
+  /* Missing semicolon - will show error */
+  /* color: red */
+  
+  /* Invalid hex color - will show error */
+  /* background-color: #invalid; */
+  
+  /* Unknown unit - will show error */
+  /* width: 100xyz; */
+  
+  /* Empty property value - will show warning */
+  /* margin: ; */
+}
