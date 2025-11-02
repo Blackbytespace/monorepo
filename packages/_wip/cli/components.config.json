@@ -1,8 +1,0 @@
-{
-  "libraries": {
-    "@blackbyte/components": {
-      "type": "git",
-      "url": "git@github.com:blackbytespace/components.git"
-    }
-  }
-}
