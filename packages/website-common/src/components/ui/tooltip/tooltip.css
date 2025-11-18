@@ -1,18 +1,9 @@
-@import './tooltip.settings.css';
 @import './tooltip.bare.css';
 
 .tooltip {
-  background: var(--tooltip-background);
-  color: var(--tooltip-color);
-  padding: var(--tooltip-padding);
-  @s-transition (fast);
-  @s-radius;
-
-  &.-hotkey {
-    font: s-font(code);
-    font-size: s-size(tooltip);
-    letter-spacing: 0.1em;
-    color: s-color(current, --lighten 50);
-    text-transform: uppercase !important;
-  }
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: s-color(white);
+  @s-tooltip (5px, 10px, s-color(complementary, --darken 20));
 }

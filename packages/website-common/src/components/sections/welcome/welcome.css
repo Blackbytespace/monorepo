@@ -54,7 +54,6 @@
     translate: 0 0;
     @s-transition (slow, --delay 0.3s);
   }
-
   @media sm {
     height: 500px;
   }
@@ -139,6 +138,10 @@
         color: s-color(accent);
       }
     }
+  }
+
+  .welcome_get-started {
+    position: relative;
   }
 
   .welcome_install {

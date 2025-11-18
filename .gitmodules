@@ -13,3 +13,12 @@
 [submodule "packages/website"]
 	path = packages/website
 	url = git@github.com:Blackbytespace/website.git
+[submodule "packages/pixelarticons"]
+	path = packages/pixelarticons
+	url = git@github.com:Blackbytespace/pixelarticons.git
+[submodule "packages/sugarcss-lsp-server"]
+	path = packages/sugarcss-lsp-server
+	url = git@github.com:Blackbytespace/sugarcss-lsp-server.git
+[submodule "packages/sugarcss-lsp-vscode-extension"]
+	path = packages/sugarcss-lsp-vscode-extension
+	url = git@github.com:Blackbytespace/sugarcss-lsp-vscode-extension.git
