@@ -26,7 +26,7 @@
   "dependencies": {
     "@blackbyte/i18n": "^1.0.0-beta.1",
     "@blackbyte/lit-element": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
   },

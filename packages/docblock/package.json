@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@blackbyte/config": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
     "marked": "^9.0.2",
     "minimatch": "^3.1.2",
     "typescript": "^5.4.5"

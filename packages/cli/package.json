@@ -40,7 +40,7 @@
     "@blackbyte/docmap": "^1.0.0-beta.1",
     "@blackbyte/factory": "^1.0.0-beta.1",
     "@blackbyte/puppet": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
     "commander": "^12.0.0",
     "figlet": "^1.7.0",
     "glob": "^10.4.1",

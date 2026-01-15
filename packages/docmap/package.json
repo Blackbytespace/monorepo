@@ -14,7 +14,7 @@
   "dependencies": {
     "@blackbyte/config": "^1.0.0-beta.1",
     "@blackbyte/docblock": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
     "micromatch": "^4.0.5",
     "typescript": "^5.4.5"
   },

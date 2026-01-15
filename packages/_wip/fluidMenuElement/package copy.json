@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@blackbyte/lit-element": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.8",
     "lit": "^3.1.3",
     "typescript": "^5.4.5"
   },

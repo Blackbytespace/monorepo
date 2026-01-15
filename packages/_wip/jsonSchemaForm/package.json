@@ -25,7 +25,7 @@
     "@blackbyte/icon-element": "^1.0.0-beta.1",
     "@blackbyte/json-schema-utils": "^1.0.0-beta.1",
     "@blackbyte/lit-element": "^1.0.0-beta.1",
-    "@blackbyte/sugar": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
     "@open-wc/lit-helpers": "^0.7.0",
     "@types/json-schema": "^7.0.15",
     "json-schema": "^0.4.0",
