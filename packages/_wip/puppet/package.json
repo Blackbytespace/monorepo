@@ -25,7 +25,6 @@
   "dependencies": {
     "@blackbyte/config": "^1.0.0-beta.1",
     "@blackbyte/sugar": "^1.0.0-beta.10",
-    "@blackbyte/theme": "^1.0.0-beta.1",
     "glob": "^11.0.0",
     "puppeteer": "^23.3.0"
   },

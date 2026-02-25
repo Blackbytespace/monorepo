@@ -48,9 +48,10 @@
     "lerna": "^8.1.8",
     "nx": "^19.6.3",
     "prettier-plugin-organize-imports": "^4.2.0",
-    "vitest": "^1.4.0"
+    "vitest": "^4.0.18"
   },
   "dependencies": {
-    "glob": "^10.3.10"
+    "glob": "^10.3.10",
+    "vite": "7.3.1"
   }
 }
