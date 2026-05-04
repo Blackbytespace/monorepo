@@ -34,30 +34,21 @@ import '../../src/css/icon.element.css';
  * @since           2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default class AdvancedSelectElement extends __LitElement {
+export default class IconElement extends __LitElement {
+    static providers: Record<string, {
+        name: string;
+        url: string;
+    }>;
     name: string;
     type: string;
     provider: string;
-    providers: {
-        heroicons: {
-            name: string;
-            url: string;
-        };
-        fontawesome: {
-            name: string;
-            url: string;
-        };
-        fa: {
-            name: string;
-            url: string;
-        };
-        pixelarticons: {
-            name: string;
-            url: string;
-        };
-    };
+    providers: Record<string, {
+        name: string;
+        url: string;
+    }>;
     svg: string;
     constructor();
+    static addProvider(name: string, url: string): void;
     protected firstUpdated(_changedProperties: PropertyValues): void;
     update(changedProperties: PropertyValues): void;
     private _updateIcon;

@@ -50,31 +50,17 @@ import '../../src/css/icon.element.css';
  * @since           2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default class AdvancedSelectElement extends __LitElement {
+class IconElement extends __LitElement {
     constructor() {
         super('s-icon');
         this.type = 'outline';
         this.provider = 'heroicons';
-        this.providers = {
-            heroicons: {
-                name: 'Heroicons',
-                url: 'https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@2.2.0/src/24/%type/%name.svg',
-            },
-            fontawesome: {
-                name: 'FontAwesome',
-                url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
-            },
-            fa: {
-                name: 'FontAwesome',
-                url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
-            },
-            pixelarticons: {
-                name: 'PixelArtIcons',
-                url: 'https://cdn.jsdelivr.net/gh/halfmage/pixelarticons@master/svg/%name.svg',
-            },
-        };
+        this.providers = IconElement.providers;
         this.svg = '';
         this.avoidNameClass = true;
+    }
+    static addProvider(name, url) {
+        this.providers[name] = { name, url };
     }
     firstUpdated(_changedProperties) {
         // add the provider class
@@ -109,20 +95,39 @@ export default class AdvancedSelectElement extends __LitElement {
         return unsafeHTML(this.svg);
     }
 }
+IconElement.providers = {
+    heroicons: {
+        name: 'Heroicons',
+        url: 'https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@2.2.0/src/24/%type/%name.svg',
+    },
+    fontawesome: {
+        name: 'FontAwesome',
+        url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
+    },
+    fa: {
+        name: 'FontAwesome',
+        url: 'https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@6.x/svgs/%type/%name.svg',
+    },
+    pixelarticons: {
+        name: 'PixelArtIcons',
+        url: 'https://cdn.jsdelivr.net/gh/halfmage/pixelarticons@master/svg/%name.svg',
+    },
+};
+export default IconElement;
 __decorate([
     property({ type: String })
     // @ts-ignore
-], AdvancedSelectElement.prototype, "name", void 0);
+], IconElement.prototype, "name", void 0);
 __decorate([
     property({ type: String })
-], AdvancedSelectElement.prototype, "type", void 0);
+], IconElement.prototype, "type", void 0);
 __decorate([
     property({ type: String })
-], AdvancedSelectElement.prototype, "provider", void 0);
+], IconElement.prototype, "provider", void 0);
 __decorate([
     property({ type: Object })
-], AdvancedSelectElement.prototype, "providers", void 0);
+], IconElement.prototype, "providers", void 0);
 __decorate([
     state()
-], AdvancedSelectElement.prototype, "svg", void 0);
+], IconElement.prototype, "svg", void 0);
 //# sourceMappingURL=icon.element.js.map

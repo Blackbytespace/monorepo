@@ -26,6 +26,9 @@
     ".": {
       "default": "./src/components/_exports.ts"
     },
+    "./index.ts": {
+      "default": "./src/components/index.ts"
+    },
     "./index.css": {
       "default": "./src/components/index.css"
     }

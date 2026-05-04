@@ -13,6 +13,9 @@
 [submodule "packages/website"]
 	path = packages/website
 	url = git@github.com:Blackbytespace/website.git
+[submodule "packages/cdn"]
+	path = packages/cdn
+	url = git@github.com:Blackbytespace/cdn.git
 [submodule "packages/pixelarticons"]
 	path = packages/pixelarticons
 	url = git@github.com:Blackbytespace/pixelarticons.git

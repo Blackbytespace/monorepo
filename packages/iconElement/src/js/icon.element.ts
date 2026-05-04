@@ -37,19 +37,8 @@ import '../../src/css/icon.element.css';
  * @since           2.0.0
  * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://blackbyte.space)
  */
-export default class AdvancedSelectElement extends __LitElement {
-  @property({ type: String })
-  // @ts-ignore
-  public name: string;
-
-  @property({ type: String })
-  public type: string = 'outline';
-
-  @property({ type: String })
-  public provider: string = 'heroicons';
-
-  @property({ type: Object })
-  public providers = {
+export default class IconElement extends __LitElement {
+  public static providers: Record<string, { name: string; url: string }> = {
     heroicons: {
       name: 'Heroicons',
       url: 'https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@2.2.0/src/24/%type/%name.svg',
@@ -68,12 +57,29 @@ export default class AdvancedSelectElement extends __LitElement {
     },
   };
 
+  @property({ type: String })
+  // @ts-ignore
+  public name: string;
+
+  @property({ type: String })
+  public type: string = 'outline';
+
+  @property({ type: String })
+  public provider: string = 'heroicons';
+
+  @property({ type: Object })
+  public providers = IconElement.providers;
+
   @state()
   public svg: string = '';
 
   constructor() {
     super('s-icon');
     this.avoidNameClass = true;
+  }
+
+  public static addProvider(name: string, url: string): void {
+    this.providers[name] = { name, url };
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
