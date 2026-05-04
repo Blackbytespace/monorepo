@@ -1,9 +1,0 @@
-{
-  "id": "ui-card",
-  "version": "1.0.0",
-  "name": "@blackbyte/image",
-  "type": "ui",
-  "description": "Simple image component",
-  "files": ["*"],
-  "dependencies": {}
-}

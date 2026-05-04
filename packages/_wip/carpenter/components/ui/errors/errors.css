@@ -1,7 +1,0 @@
-@import './errors.bare.css';
-
-body:has(.s-carpenter),
-.s-carpenter-daemon {
-  .errors {
-  }
-}

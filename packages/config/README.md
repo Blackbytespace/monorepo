@@ -1,3 +1,0 @@
-# Blackbyte Config
-
-TBD

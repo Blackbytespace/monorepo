@@ -1,7 +1,0 @@
-/* .s-carpenter_canvas {
-  body:has(.s-factory_editor:hover) &,
-  .-show-editor &,
-  .-show-ui & {
-    width: calc(100% - var(--s-factory-editor-width) * 2);
-  }
-} */

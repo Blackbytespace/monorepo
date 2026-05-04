@@ -1,9 +1,0 @@
-{
-  "id": "ui-link",
-  "version": "1.0.0",
-  "name": "@blackbyte/link",
-  "type": "ui",
-  "description": "Simple link component",
-  "files": ["*"],
-  "dependencies": {}
-}
