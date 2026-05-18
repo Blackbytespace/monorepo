@@ -1,0 +1,5 @@
+.button {
+  display: inline-block;
+  padding: s-space(sm) s-space(md);
+  cursor: pointer;
+}

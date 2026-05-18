@@ -1,0 +1,55 @@
+{
+  "id": "ui-button",
+  "version": "1.0.0",
+  "name": "@blackbyte/body",
+  "type": "ui",
+  "description": "Simple body (suptitle, titles, subtitle, lead, (rich)text and buttons) component",
+  "files": ["*.css"],
+  "subset": {
+    "engine": {
+      "question": "Which engine do you use?",
+      "type": "checkbox",
+      "choices": ["tsx", "vue", "blade", "twig"],
+      "component": {
+        "tsx": {
+          "files": ["*.tsx", "body.type.ts"],
+          "packageJson": {
+            "dependencies": {
+              "react": "^18.0.0"
+            }
+          }
+        },
+        "vue": {
+          "files": ["*.vue", "body.type.ts"],
+          "packageJson": {
+            "dependencies": {
+              "vue": "^3.5.3"
+            }
+          }
+        },
+        "twig": {
+          "files": ["*.twig", "body.type.php", "body.component.php"],
+          "dependencies": {
+            "@blackbyte/components/renderer": "^1.0.0"
+          }
+        },
+        "blade": {
+          "files": ["*.blade.php", "body.type.php", "body.component.php"],
+          "dependencies": {
+            "@blackbyte/components/renderer": "^1.0.0"
+          }
+        }
+      }
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@blackbyte/types": "^1.0"
+    }
+  },
+  "composerJson": {
+    "require": {
+      "blackbyte/types": "^1.0"
+    }
+  }
+}

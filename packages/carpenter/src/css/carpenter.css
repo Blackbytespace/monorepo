@@ -1,0 +1,16 @@
+@import './carpenter.bare.css';
+
+body {
+  overflow: hidden;
+}
+
+.s-carpenter.-lnf {
+}
+
+div:has(> [carpenter]) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; */
+}

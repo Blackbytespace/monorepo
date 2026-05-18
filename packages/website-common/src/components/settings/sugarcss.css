@@ -24,6 +24,10 @@
   --s-transition-default: all 0.2s s-ease();
   --s-transition-fast: all 0.1s s-ease();
 
+  --s-responsive-breakpoints: 768px 1200px;
+  --s-responsive-default: 10px 50px;
+  --s-responsive-h1: 20px 40px;
+
   --s-delay-default: 0s;
   --s-delay-in-viewport: 0.5s;
 

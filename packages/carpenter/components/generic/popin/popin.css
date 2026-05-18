@@ -1,0 +1,17 @@
+@import './popin.bare.css';
+
+.popin {
+  width: clamp(200px, 50%, 400px);
+  background: s-color(main, background);
+  box-shadow: var(--s-carpenter-depth);
+  padding: s-space(md);
+  @s-radius;
+
+  &:before {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+  }
+  &:after {
+    @s-radius;
+  }
+}

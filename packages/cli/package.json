@@ -1,0 +1,49 @@
+{
+  "name": "@blackbyte/cli",
+  "description": "An easy to use cli that allows you to import reusable components and more.",
+  "version": "1.0.0-beta.1",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf src/**/*.js src/**/*.d.ts src/**/*.map",
+    "build": "tsc && npm run build.permissions",
+    "build.permissions": "chmod +x ./dist/node/index.js",
+    "test": "vitest",
+    "publish": "npm publish --access public"
+  },
+  "bin": {
+    "blackbyte": "./dist/node/index.js"
+  },
+  "homepage": "https://components.blackbyte.space",
+  "author": "Blackbyte <hello@blackbyte.space> (https://blackbyte.space)",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "https://blackbyte.space"
+    }
+  ],
+  "license": "MIT",
+  "globalDependencies": {},
+  "exports": {
+    ".": "./dist/node/_exports.js"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.8",
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.3",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@blackbyte/components": "^1.0.0-beta.1",
+    "@blackbyte/config": "^1.0.0-beta.1",
+    "@blackbyte/docmap": "^1.0.0-beta.1",
+    "@blackbyte/sugar": "^1.0.0-beta.10",
+    "commander": "^12.0.0",
+    "figlet": "^1.7.0",
+    "glob": "^10.4.1",
+    "inquirer": "^9.2.17",
+    "vite": "7.3.2"
+  },
+  "gitHead": "152e8da258e0c14d43ce0e775f2d6b5b2e04f87e"
+}

@@ -1,0 +1,38 @@
+import __LitElement from '@blackbyte/lit-element';
+import { PropertyValues } from 'lit';
+import '../../src/css/JsonSchemaFormElement.css';
+import '../components/groupRenderers/defaultGroupRenderer/defaultGroupRenderer.js';
+import '../components/groupRenderers/stackGroupRenderer/stackGroupRenderer.js';
+import '../components/widgets/textareaWidget/textareaWidget.js';
+import { TJsonSchemaFormWidget, TJsonSchemaGroupRenderer } from '../shared/JsonSchemaForm.type.js';
+export default class JsonSchemaFormElement extends __LitElement {
+    static widgets: Record<string, TJsonSchemaFormWidget>;
+    static registerWidget(widget: TJsonSchemaFormWidget): void;
+    static groupRenderers: Record<string, TJsonSchemaGroupRenderer>;
+    static registerGroupRenderer(groupRenderer: TJsonSchemaGroupRenderer): void;
+    accessor schema: any;
+    accessor values: any;
+    accessor formClasses: boolean;
+    accessor buttonClasses: boolean | string;
+    accessor header: boolean | string;
+    accessor widgets: Record<string, TJsonSchemaFormWidget>;
+    private _registeredWidgets;
+    private _errorsByPath;
+    private _jsonSchemaUtils;
+    private _finalSchema;
+    constructor();
+    get $form(): HTMLFormElement | null;
+    mount(): Promise<void>;
+    protected update(changedProperties: PropertyValues): void;
+    protected firstUpdated(_changedProperties: PropertyValues): void;
+    private _handleFormSubmit;
+    private _findInSchema;
+    private _validateValues;
+    private _renderComponentValueErrors;
+    private _renderComponentValueEditWidget;
+    private _emitUpdate;
+    private _createComponentDefaultValuesFromSchema;
+    getIdFromPath(path: string[]): string;
+    private _renderComponentValuesPreview;
+    protected render(): import("lit-html").TemplateResult<1> | undefined;
+}

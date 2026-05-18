@@ -1,0 +1,11 @@
+.s-icon {
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}

@@ -1,0 +1,9 @@
+.s-factory.-lnf .s-factory_logo {
+  [fill='black'] {
+    fill: s-color(complementary);
+  }
+
+  .-accent {
+    fill: s-color(accent);
+  }
+}

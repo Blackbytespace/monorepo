@@ -1,0 +1,26 @@
+{
+  "name": "blackbyte/components",
+  "version": "1.0.0",
+  "description": "Blackbyte components",
+  "type": "project",
+  "autoload": {
+    "files": [
+      "src/php/_requires.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../types"
+    },
+    {
+      "type": "path",
+      "url": "../sugar"
+    }
+  ],
+  "require": {
+    "blackbyte/types": "^1.0.0",
+    "eftec/bladeone": "^4.13",
+    "twig/twig": "^3.10"
+  }
+}

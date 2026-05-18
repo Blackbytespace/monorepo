@@ -1,0 +1,14 @@
+{
+  "id": "ui-card",
+  "version": "1.0.0",
+  "name": "@blackbyte/card",
+  "type": "ui",
+  "icon": "credit-card",
+  "description": "Simple card component",
+  "files": ["*.php", "*.css"],
+  "composerJson": {
+    "require": {
+      "blackbyte/types": "^1.0.0"
+    }
+  }
+}

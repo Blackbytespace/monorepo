@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "@blackbyte/components",
+  "type": "git",
+  "url": "git@github.com:blackbytespace/components.git",
+  "dependencies": {
+    "@blackbyte/components-test": {
+      "type": "git",
+      "url": "git@github.com:blackbytespace/components-test.git"
+    }
+  },
+  "composerJson": {
+    "dependencies": {
+      "blackbyte/types": "^1.0.0"
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@blackbyte/types": "^1.0.0"
+    }
+  }
+}
