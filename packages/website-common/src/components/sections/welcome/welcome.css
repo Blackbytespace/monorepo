@@ -138,6 +138,7 @@
 
   .welcome_get-started {
     position: relative;
+    @s-focus();
   }
 
   .welcome_install {

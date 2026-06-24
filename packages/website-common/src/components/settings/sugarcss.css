@@ -20,13 +20,13 @@
 
   --s-ease-default: cubic-bezier(0.745, 0, 0.18, 1);
 
+  --s-focus-default: 2px solid s-color(accent, --alpha 0.6);
+
   --s-transition-slow: all 0.3s s-ease();
   --s-transition-default: all 0.2s s-ease();
   --s-transition-fast: all 0.1s s-ease();
 
   --s-responsive-breakpoints: 768px 1200px;
-  --s-responsive-default: 10px 50px;
-  --s-responsive-h1: 20px 40px;
 
   --s-delay-default: 0s;
   --s-delay-in-viewport: 0.5s;

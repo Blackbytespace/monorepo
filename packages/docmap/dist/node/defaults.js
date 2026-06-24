@@ -37,7 +37,7 @@ export default {
             `src/**/*.+(${__commonTextFileExtensions({}).join('|')})`,
             // `dist/+(css)/*`,
         ],
-        exclude: [],
+        exclude: ['**/*.test.*', '**/*.spec.*'],
         excludeByTags: {
             status: [/^(?!stable|beta)([a-z0-9]+)$/],
             type: [/^CssClass$/],

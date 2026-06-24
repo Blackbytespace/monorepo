@@ -2,7 +2,7 @@
   <div class="menu-item">
     <div v-if="item.name" class="menu-item_label">
       <a
-        :class="`menu-item_link ${currentItemId == item.id ? '-active' : ''}`"
+        :class="`menu-item_link ${currentItemId == item.id.toLowerCase() ? '-active' : ''}`"
         :href="`/doc/${toSlug(item.id)}`"
         :title="item.name"
       >
@@ -44,7 +44,6 @@ const props = withDefaults(defineProps<TMenuItem>(), {
 const currentItemId = ref<string | null>(null);
 
 onMounted(() => {
-  currentItemId.value =
-    `@${document.location.pathname.split('@').pop()?.trim()}` || null;
+  currentItemId.value = `@${document.location.pathname.replace(/\/$/, '').split('/').pop()?.toLowerCase()}`;
 });
 </script>
